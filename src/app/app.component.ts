@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -11,4 +11,13 @@ import { RouterOutlet } from '@angular/router';
 export class AppComponent {
   title = 'cweiselife';
 
+  constructor(private router: Router) {
+    const redirect = sessionStorage['redirect'];
+    if (redirect) {
+      sessionStorage.removeItem('redirect');
+      this.router.navigateByUrl(redirect).catch(err => {
+        console.error('Redirect failed:', err);
+      });
+    }
+  }
 }
