@@ -1,0 +1,16 @@
+mat-sidenav-container {
+    height: 100%; /* Adjust 64px to the height of your topbar */
+ }
+ mat-sidenav {
+     width: auto;
+     padding: 0 9px;
+ }
+ app-sidenav {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+ }
+ mat-sidenav-content {
+    height: 100%;
+    padding: 10px;
+ }

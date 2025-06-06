@@ -1,0 +1,72 @@
+.contact-section {
+    margin: 84px 0;
+    display: flex;
+    flex-direction: row;
+    .section-panel {
+        display: flex;
+        flex-direction: column;
+        margin-top: 84px;
+        flex-grow: 1;
+        .panel-left {
+          background: var(--panel-right-background); /* ✅ dynamically pulls from theme variable */
+
+        }
+    }
+    .section-title-button {
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+      margin-bottom: 2rem;
+      mat-icon {
+        color: var(--text-color);
+      }
+    }
+    .intro-blurb {
+      max-width: 80%;
+      text-align: center;
+      margin-bottom: 3rem;
+  
+      p {
+        margin: 0;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: var(--text-color);
+      }
+    }
+
+  .contact-card {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    margin-bottom: 2rem;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    mat-form-field {
+      width: 100%;
+    }
+
+    button {
+      align-self: flex-start;
+      transition: transform 0.2s ease, background-color 0.3s ease;
+      &:hover {
+        transform: translateY(-2px);
+        background-color: #3f51b5;
+        color: #fff;
+      }
+    }
+  }
+
+  .contact-links {
+    font-size: 0.95rem;
+    a {
+      color: #3f51b5;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

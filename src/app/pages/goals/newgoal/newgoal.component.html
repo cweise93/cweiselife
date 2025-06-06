@@ -1,0 +1,80 @@
+
+<mat-card appearance="outlined">
+  <mat-stepper [orientation]="(stepperOrientation | async)!">
+    <mat-step [stepControl]="visionFormGroup" label="Vision" editable>
+        <form [formGroup]="visionFormGroup">
+            <mat-form-field>
+              <mat-label>What do you want?</mat-label>
+              <input matInput formControlName="visionCtrl" placeholder="I want ..."
+                     required>
+            </mat-form-field>
+            <div class="stageButton_container">
+                <button class="stageButton" mat-button matStepperPrevious>Back</button>
+                <button class="stageButton" mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+    </mat-step>
+    <mat-step [stepControl]="valuesFormGroup" label="Values">
+        Insert sliders here on one side and diagram on right side showing current with watermark of spider chart for all
+        Use bagua
+        Fame / Rank / Popularity
+        Marriage / Relationship
+        Children
+        Helpful People
+        Career
+        Knowledge
+        Family / Health
+        Wealth
+      <form [formGroup]="valuesFormGroup">
+        <mat-form-field>
+          <mat-label>Address</mat-label>
+          <input matInput formControlName="valuesCtrl" placeholder="I want ..."
+                 required>
+        </mat-form-field>
+        <div class="stageButton_container">
+            <button class="stageButton" mat-button matStepperPrevious>Back</button>
+            <button class="stageButton" mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="methodsFormGroup" label="Methods">
+      <form [formGroup]="methodsFormGroup">
+        <mat-form-field>
+          <mat-label>Address</mat-label>
+          <input matInput formControlName="methodsCtrl" placeholder="Ex. 1 Main St, New York, NY"
+                 required>
+        </mat-form-field>
+        <div class="stageButton_container">
+            <button class="stageButton" mat-button matStepperPrevious>Back</button>
+            <button class="stageButton" mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="obstaclesFormGroup" label="Obstacles">
+      <form [formGroup]="obstaclesFormGroup">
+        <mat-form-field>
+          <mat-label>Address</mat-label>
+          <input matInput formControlName="obstaclesCtrl" placeholder="Ex. 1 Main St, New York, NY"
+                 required>
+        </mat-form-field>
+        <div class="stageButton_container">
+            <button class="stageButton" mat-button matStepperPrevious>Back</button>
+            <button class="stageButton" mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="measurementsFormGroup" label="Measurements">
+      <form [formGroup]="measurementsFormGroup">
+        <mat-form-field>
+          <mat-label>Address</mat-label>
+          <input matInput formControlName="measurementsCtrl" placeholder="Ex. 1 Main St, New York, NY"
+                 required>
+        </mat-form-field>
+        <div class="stageButton_container">
+            <button class="stageButton" mat-button matStepperPrevious>Back</button>
+            <button class="stageButton" mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+  </mat-stepper>
+</mat-card>

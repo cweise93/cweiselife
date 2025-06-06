@@ -1,0 +1,74 @@
+<mat-toolbar>
+    <!-- future state - when on mobile, replace side bar with drop down from hamburger providing same options -->
+<!--
+    pre-area concept - example of how to expand sidenav for using in other area
+    <button mat-icon-button aria-label="Hamburger icon-button with menu icon"  (click)="toggleSidenav()">
+        <mat-icon>menu</mat-icon>
+    </button>
+-->
+<!-- future state, retrieve logo for organization, fall back to organization name, determined by current users subscriberorgid -->
+
+    <button mat-icon-button  [matMenuTriggerFor]="areaMenu" class="topbar-icon" aria-label="App Selection icon-button with apps icon">
+        <mat-icon>apps</mat-icon>
+    </button>
+    <mat-menu #areaMenu="matMenu" xPosition="after" class="app-selector">
+        <div class="horizontal-tiles">
+            <mat-grid-list cols="2" rowHeight="100px">
+                @for (tile of tiles; track tile) {
+                    <mat-grid-tile colspan="1" rowspan="1">
+                        <button class="areaSelectionButton" [routerLink]="tile.link">
+                            <mat-icon>{{tile.icon}}</mat-icon>
+                            <span class="buttonText">{{tile.text}}</span>
+                        </button>
+                    </mat-grid-tile>
+                }
+            </mat-grid-list>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="app-selection-footer">
+            <span class="app-name">Weise Life</span>
+            <span class="app-selection-footer-spacer"></span>
+            <span id="app-version" routerLink="./settings/releasenotes">v 1.0.0</span>
+        </div>
+    </mat-menu>
+    <button mat-icon-button (click)="openDialog()" class="topbar-icon" aria-label="Search icon-button with search icon">
+        <mat-icon>search</mat-icon>
+    </button>
+    <span class="toolbar-spacer"></span>
+    <span routerLink="./welcome" id="homeLink">{{ subscriberOrgName }}</span>
+    <span class="toolbar-spacer"></span>
+    <button mat-icon-button  [matMenuTriggerFor]="helpMenu" class="topbar-icon" aria-label="Help icon-button with help_outline icon">
+        <mat-icon>help_outline</mat-icon>
+    </button>
+    <mat-menu #helpMenu="matMenu" xPosition="before">
+        <button mat-menu-item routerLink="./settings">
+            <mat-icon>contact_support</mat-icon>
+            <span>Chat</span>
+        </button>
+        <button mat-menu-item routerLink="./settings">
+            <mat-icon>bug_report</mat-icon>
+            <span>Report Bug</span>
+        </button>
+        <button mat-menu-item routerLink="./settings/documentation">
+            <mat-icon>description</mat-icon>
+            <span>Documentation</span>
+        </button>
+    </mat-menu>
+    <button mat-icon-button  [matMenuTriggerFor]="accountMenu" class="topbar-icon" aria-label="User Profile icon-button with perm_identity icon">
+        <mat-icon>account_circle</mat-icon>
+    </button>
+    <mat-menu #accountMenu="matMenu" xPosition="before">
+        <button mat-menu-item routerLink="./settings/profile">
+            <mat-icon>perm_identity</mat-icon>
+            <span>Profile</span>
+        </button>
+        <button mat-menu-item routerLink="./settings">
+            <mat-icon>settings</mat-icon>
+            <span>Settings</span>
+        </button>
+        <button mat-menu-item routerLink="../account/logout">
+            <mat-icon>logout</mat-icon>
+            <span>Logout</span>
+        </button>
+    </mat-menu>
+</mat-toolbar>

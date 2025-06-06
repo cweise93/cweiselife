@@ -1,0 +1,72 @@
+<div class="service-section">
+  <div class="section-title-button">
+    <mat-icon>construction</mat-icon>
+    Services
+  </div>
+  <div class="service-intro">
+    <p>
+      Learn more about each offering — from AI integration to leadership coaching.<br>
+      Select a service below to explore case studies, testimonials, and example projects.
+    </p>
+    <div class="type-selection">
+    @for (type of serviceTypes; track type) {
+      <div class="service-type">
+        <mat-checkbox [checked]="type.selected" (change)="update($event.checked, type.label)"></mat-checkbox>
+        {{type.label}}
+      </div>
+    }
+    </div>
+  </div>
+  <div class="services-row">
+    @for (service of getServicesByCategory(); track service.id) {
+      <div class="service-box" @cardAnimation>
+        <div class="service-box-header">
+          <div class="header-icon-container">
+            <mat-icon>{{service.icon}}</mat-icon>
+          </div>
+          <div class="header-title">
+            {{service.title}}
+          </div>
+        </div>
+        <div class="service-box-image">
+          <img [src]="service.imageUrl">
+        </div>
+        <div class="service-box-description">
+          <div class="description-text">
+          {{service.description}}
+          </div>
+        </div>
+        <div class="service-box-ul">
+          <ul>
+          @for (list_item of service.list_items; track list_item){
+            <li class="service-box-li">{{list_item}}</li>
+          }
+          </ul>
+        </div>
+        <div class="service-box-footer">
+          <div class="call-to-action" (click)="scrollToSection('contact')">
+            Tap to Learn More
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>
+<!--
+<p>
+  What solution are you providing for the client?
+  What problem are you solving?
+  Why would they want to pay you money?
+  How are you going to solve the issue?
+  Top line or bottom line?
+  Where are we making or saving money based on the service provided?
+  That's the model ...
+
+  What about a problem solving engine - prompts to lead the end user to provide insights into how you can provide the solution
+Tabs at the top providing static, dynamic, or generative experiences for viewing the services
+start with static
+
+Icon displaying the service - title, what is the issue, why should it be solved, how can it be solved .. click to learn more
+
+</p>
+-->

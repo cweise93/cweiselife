@@ -1,0 +1,39 @@
+<div class="project-section">
+    <div class="section-title-button">
+        <mat-icon>construction</mat-icon>
+    Projects
+    </div>
+    <div class="intro-blurb">
+      <p>
+        Explore cutting-edge initiatives — from AI-driven corporate tools to transformational habit programs.<br>
+        Click on a project below to dive into the innovation, goals, and real-world impact behind each one.
+      </p>
+    </div>
+      <div class="project-list">
+        @for (project of projects; let idx = $index; track project.id) {
+          <div class="project-card" @cardAnimation>
+            <div class="project-card-header">
+              <div class="header-icon-container">
+                <mat-icon>{{project.icon}}</mat-icon>
+              </div>
+              <div class="header-title">
+                {{project.title}}
+              </div>
+            </div>
+            <div class="project-card-image">
+              <img [src]="project.imageUrl">
+            </div>
+            <div class="project-card-description">
+              <div class="description-text">
+                {{project.description}}
+              </div>
+            </div>
+            <div class="project-card-footer">
+              <div class="call-to-action" (click)="scrollToSection('contact')">
+                Tap to Learn More
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+</div>

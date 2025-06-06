@@ -1,0 +1,45 @@
+<div class="contact-section">
+    <div class="section-panel panel-left">
+        <div class="section-title-button">
+            <mat-icon>mail</mat-icon>
+            Contact
+        </div>
+        <div class="contact-intro">
+            <p>
+            Have a project in mind or just want to connect?<br>
+            Reach out using the form below or through the links provided.
+            </p>
+        </div>
+    </div>
+    <div class="section-panel panel-right">
+        <mat-card appearance="outlined" class="contact-card">
+            <mat-card-content>
+            <form class="contact-form" (ngSubmit)="submitContactForm()">
+                <mat-form-field appearance="outline">
+                <mat-label>Name</mat-label>
+                <input matInput placeholder="Your full name" [(ngModel)]="contact.name" name="name" required>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="Your email address" [(ngModel)]="contact.email" name="email" required email>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                <mat-label>Message</mat-label>
+                <textarea matInput placeholder="Tell us how we can help" [(ngModel)]="contact.message" name="message" rows="5" required></textarea>
+                </mat-form-field>
+
+                <button mat-raised-button color="primary" type="submit">
+                Send Message
+                </button>
+            </form>
+            </mat-card-content>
+        </mat-card>
+
+        <div class="contact-links">
+            <p>Prefer email? <a href="mailto:cweise93@hotmail.com">cweise93&#64;hotmail.com</a></p>
+            <p>Connect on LinkedIn: <a href="https://www.linkedin.com/in/cweise" target="_blank">cweise</a></p>
+        </div>
+    </div>
+</div>

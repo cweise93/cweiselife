@@ -1,0 +1,31 @@
+<div class="home-section">
+    <div class="section-panel panel-left">
+        <h1 class="home-title">
+            Hi, I’m <span class="highlight">Charles Weise</span>
+          </h1>
+          <h2 class="home-subtitle">
+              I'm <span class="typed-text">{{ displayedText }}</span>
+          </h2>
+          <p class="home-description">
+            Strategic technology leader blending deep software engineering expertise and business acumen to drive innovation, growth, and enterprise transformation.          </p>
+          <div class="home-buttons">
+            <button mat-fab extended routerLink=".">
+                <mat-icon>description</mat-icon>
+                Download CV
+            </button>
+            <button mat-fab extended (click)="openDialog()" class="outlined">
+                <mat-icon>work_history</mat-icon>
+                Professional Experience
+            </button>
+            <button mat-fab extended (click)="scrollToSection('contact')">
+                <mat-icon>business_center</mat-icon>
+                Let's Collaborate
+            </button>
+        </div>
+    </div>
+    <div class="section-panel panel-right">
+        <div class="profile-image">
+            <img [src]="'/headshot.png'" alt="Professional Tech Portrait" class="hero-img">
+        </div>
+    </div>
+</div>

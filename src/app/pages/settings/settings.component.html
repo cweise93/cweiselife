@@ -1,0 +1,26 @@
+<mat-sidenav-container>
+    <mat-sidenav opened mode="side">
+        <mat-nav-list class="main-nav">
+            @for (navItem of navItems; track navItem){
+                <mat-list-item [routerLink]="navItem.link">
+                    <!-- <mat-list-item (click)="triggerPanel()"> -->
+                    <mat-icon matListItemIcon>{{navItem.icon}}</mat-icon>
+                    <h3 matListItemTitle>{{navItem.text}}</h3>
+                </mat-list-item>
+            }
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <mat-accordion>
+            @for (navItem of navItems; track navItem){
+                <mat-expansion-panel (opened)="onPanelOpened(navItem.updatedRoute)">
+                        <mat-expansion-panel-header>
+                        <mat-panel-title>{{navItem.text}}</mat-panel-title>
+                        <mat-panel-description>insert panel description here</mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <p>insert reference to corresponding component content here</p>
+                </mat-expansion-panel>
+            }
+        </mat-accordion>
+    </mat-sidenav-content>
+</mat-sidenav-container>

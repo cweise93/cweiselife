@@ -1,0 +1,156 @@
+.hero-section {
+  min-height: 100vh;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  h1 {
+    font-size: 3rem;
+  }
+  p {
+    font-size: 1.5rem;
+    color: gray;
+  }
+}
+.hero-section.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  text-align: center;
+}
+.section-alt {
+  background-color: var(--section-alt-background);
+}
+
+.logo svg {
+  height: 32px;
+  width: auto;
+  margin-right: 16px;
+  transition: filter 0.3s ease;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+/* Navbar and general layout */
+.navbar {
+  font-family: 'Sora', Roboto, "Helvetica Neue", sans-serif;
+  position: fixed;
+  width: 100%;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 84px;
+  padding: 0 28px;
+  box-sizing: border-box;
+  z-index: 10;
+  background: var(--nav-background);
+  overflow: visible;
+  mat-icon {
+    color: var(--nav-color);
+    &:hover {
+      color: var(--nav-active-color);
+    }
+  }
+}
+/* Fancy buttons with glow effect */
+.outer-button {
+  position: relative;
+  display: inline-block;
+  border-radius: 999px;      /* pill shape */
+  padding: 4px;              /* glow thickness */
+  background-color: transparent;
+  overflow: hidden;          /* clip glow inside */
+  z-index: 20;
+}
+.nav-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 2rem;
+  background-color: transparent;    /* always solid black */
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-family: 'Sora', sans-serif;
+  font-weight: 500;
+  z-index: 21;
+  transition: all 0.3s ease;
+  color: var(--nav-color) !important;
+  > * {
+    position: relative;
+    z-index: 3;             /* keep text/icon on top */
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -20px;             /* larger rotating layer, clipped by outer */
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
+    border-radius: 999px;
+    background: conic-gradient(
+      orange,
+      yellow,
+      red,
+      blue,
+      purple,
+      orange
+    );
+    opacity: 0;
+    filter: blur(20px);
+    z-index: 0;
+    transition: opacity 0.3s ease;
+  }
+  /* Solid black pill mask */
+  &:not(.selected):hover {
+    cursor: pointer;
+    color: var(--nav-active-color) !important;
+    font-weight: 600;
+    &::before {
+      opacity: 0.6;
+      animation: rotate-pulse 3s linear infinite;
+    }
+    box-shadow: none;
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--nav-button-background);
+      border-radius: 999px;
+    }
+  }
+  &.selected {
+    color: var(--nav-active-color) !important;
+    font-weight: 600;
+    &::before {
+      opacity: 0;
+      animation: none;
+    }
+    box-shadow: none;
+  }
+}
+@keyframes rotate-pulse {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.05);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}

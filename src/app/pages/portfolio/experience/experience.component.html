@@ -1,0 +1,56 @@
+<h2 mat-dialog-title>
+    Professional Experience
+</h2>
+<mat-dialog-content class="mat-typography">
+    <div class="experience-section">
+        <div class="intro-blurb">
+            <p>
+                Accomplished Solution Architect and Program Director with {{ yearsSince2004 }}+ years leading enterprise tech initiatives across real estate, engineering, and software sectors.
+                <br><br>
+                I bring the rare blend of deep full-stack expertise (Azure, Angular, ESRI, iCIMS, Power Platform, React, ESRI, UKG Pro) and MBA-backed strategy to solve complex problems, align teams, and drive scalable innovation.
+                <br><br>
+                If you need a hands-on leader who bridges business and technology to deliver real results — let's talk.
+            </p>
+            <!--
+            <p>
+                Accomplished Solution Architect and Program Director with over 10 years of experience leading enterprise software initiatives across commercial real estate, engineering, and technology sectors.
+            <br><br>
+                Expert in full-stack development (Angular, React, TypeScript), cloud platforms (Azure), ESRI integrations, and complex API ecosystems.
+            <br><br>
+                Combines deep technical expertise with MBA-backed business acumen to drive innovation, optimize business processes, and deliver scalable, high-impact solutions. Proven leader of cross-functional teams, with a track record of aligning technology strategy to accelerate organizational growth.
+            <br><br>
+                Over two decades of progressive experience blending business strategy, technology leadership, and hands-on software development.
+            <br><br>
+                This timeline highlights a journey through critical real estate, consulting, and technology architecture roles — backed by an academic foundation in engineering and an MBA, enabling delivery of scalable, data-driven solutions across industries.
+            </p>
+        -->
+        </div>
+    @for (milestone of milestones; let idx = $index; track milestone.id){
+        <div class="experience-row" [ngClass]="{'experience-right-side':idx % 2 === 1}">
+            <div class="exp-col experience-content">
+                <div class="exp-line year-title">
+                    <h1>{{milestone.title}}</h1>
+                </div>
+                <div class="exp-line">
+                    <p>{{milestone.blurb}}</p>
+                </div>
+                <div class="exp-line exp-org">
+                    <p>{{milestone.org}}</p>
+                </div>
+                <div class="exp-line exp-location">
+                    <p>{{milestone.location}}</p>
+                </div>
+            </div>
+            <div class="experience-vertical-divider">
+                <div class="divider-line"></div>
+                <div class="divider-dot">
+                    <mat-icon>{{milestone.icon}}</mat-icon>
+                </div>
+            </div>
+            <div class="exp-col experience-open-space">
+                <h3>{{milestone.years}}</h3>
+            </div>
+        </div>
+    }
+</div>
+</mat-dialog-content>

@@ -1,0 +1,18 @@
+.stageButton_container {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: row;
+}
+.stageButton {
+    flex-grow: 1;    
+}
+mat-panel-description {
+    flex: 4;
+    font-style: italic;
+}
+mat-action-row {
+    padding: 10px;
+}
+mat-panel-title mat-icon {
+    margin-right: 5px;
+}
