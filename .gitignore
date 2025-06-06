@@ -8,7 +8,7 @@
 /bazel-out
 
 # Locally stored database details
-/data/*
+/data
 
 # Node
 /node_modules
