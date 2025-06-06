@@ -1,0 +1,5 @@
+{
+  "watch": ["data/portfolio.db"],
+  "ext": "db",
+  "exec": "node scripts/export-projects.js && node scripts/export-services.js"
+}

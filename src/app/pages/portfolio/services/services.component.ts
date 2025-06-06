@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { trigger, transition, style, animate } from '@angular/animations';
-import { Service, ServiceType, services } from '../../../data/portfolio/services';
+import { services } from '../../../data/portfolio/services';
+import { Service, ServiceType } from '../../../data/portfolio/services.model';
 
 @Component({
   selector: 'app-services',

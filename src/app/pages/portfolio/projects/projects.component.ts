@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { trigger, transition, style, animate } from '@angular/animations';
-import { Project, projects } from '../../../data/portfolio/projects';
+import { projects } from '../../../data/portfolio/projects';
+import { Project } from '../../../data/portfolio/projects.model';
 
 @Component({
   selector: 'app-projects',
