@@ -5,7 +5,13 @@
   <title>Cweiselife</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
+  <script>
+    const redirect = sessionStorage.redirect;
+    if (redirect) {
+      sessionStorage.removeItem('redirect');
+      window.location.href = redirect;
+    }
+  </script>
   <link rel="icon" type="image/x-icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="apple-touch-icon" href="favicon-512.png">
