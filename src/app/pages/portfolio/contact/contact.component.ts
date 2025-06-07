@@ -43,7 +43,6 @@ export class ContactComponent implements OnInit {
       return;
     }
     console.info('contact', this.contact);
-
     fetch('https://script.google.com/macros/s/AKfycby4NR5fD28JfNHEcTzy7FZz5uUAb7LkrqCGsm00TlA7Az9jlSy_6p1YFgp0Wo3Da37gRA/exec', {
       method: 'POST',
       headers: {
