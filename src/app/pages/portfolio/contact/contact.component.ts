@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { techPlatforms } from '../../../data/portfolio/techPlatforms';
 import { TechPlatform } from '../../../data/portfolio/techPlatforms.model';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { ContactService } from '../../../services/contact.service';
 
 @Component({
   selector: 'app-contact',
@@ -37,14 +38,26 @@ export class ContactComponent implements OnInit {
     this.email = `${emailParts[0]}${emailParts[1]}@${emailParts[2]}.${emailParts[3]}`;
     this.techPlatforms = techPlatforms;
   }
+  constructor(private contactService: ContactService) {}
+
   submitContactForm() {
     if (!this.contact.name || !this.contact.email || !this.contact.message) {
       alert('Please fill out all fields before submitting.');
       return;
     }
-    alert('Sorry '+ this.contact.name + ', this feature is not functioning properly yet.');
-    console.info('contact', this.contact);
     
+    console.info('contact', this.contact);
+
+    this.contactService.sendMessage(this.contact).subscribe({
+      next: (res) => {
+        alert('Thanks for reaching out!');
+        this.contact = { name: '', email: '', message: '' };
+      },
+      error: (err) => {
+        console.error('Error sending message:', err);
+        alert('Sorry '+ this.contact.name + ', this feature is not functioning properly yet.');
+      }
+    });
     this.contact = {
       name: '',
       email: '',
