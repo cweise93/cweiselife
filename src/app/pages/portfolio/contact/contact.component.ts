@@ -8,6 +8,7 @@ import { techPlatforms } from '../../../data/portfolio/techPlatforms';
 import { TechPlatform } from '../../../data/portfolio/techPlatforms.model';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { ContactService } from '../../../services/contact.service';
+import { ContactMessage } from '../../../data/portfolio/messages.model';
 
 @Component({
   selector: 'app-contact',
@@ -23,7 +24,7 @@ import { ContactService } from '../../../services/contact.service';
   styleUrl: './contact.component.scss'
 })
 export class ContactComponent implements OnInit {
-  contact = {
+  contact: ContactMessage = {
     name: '',
     email: '',
     message: ''
