@@ -42,27 +42,9 @@ export class ContactComponent implements OnInit {
       alert('Please fill out all fields before submitting.');
       return;
     }
+    alert('Sorry '+ this.contact.name + ', this feature is not functioning properly yet.');
     console.info('contact', this.contact);
-    fetch('https://script.google.com/macros/s/AKfycby4NR5fD28JfNHEcTzy7FZz5uUAb7LkrqCGsm00TlA7Az9jlSy_6p1YFgp0Wo3Da37gRA/exec', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(this.contact)
-    })
-    .then(res => res.json())
-    .then(res => {
-      if (res.status === 'success') {
-      alert('Thanks for reaching out! We’ll get back to you shortly.');
-        this.contact = { name: '', email: '', message: '' };
-      } else {
-        alert('Something went wrong. Try again later.');
-      }
-    })
-    .catch(err => {
-      console.error(err);
-      alert('There was an error submitting the form.');
-    });
+    
     this.contact = {
       name: '',
       email: '',
