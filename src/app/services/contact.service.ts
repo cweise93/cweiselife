@@ -9,7 +9,7 @@ import { ContactMessage } from '../data/portfolio/messages.model';
 export class ContactService {
 
 
-  private supabaseUrl = 'https://slsejfnguzbhuuljaxnx.supabase.co';
+  private supabaseUrl = 'https://slsejfnguzbhuuljaxnx.supabase.com';
   private table = 'messages';
   private apiKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNsc2VqZm5ndXpiaHV1bGpheG54Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDkzMjk1MzQsImV4cCI6MjA2NDkwNTUzNH0.NXx_2AN6Yx2CSCBA7azKXEQL9-gMH9vB0UKSp0JMjtM';
 
