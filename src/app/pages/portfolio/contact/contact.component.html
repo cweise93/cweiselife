@@ -1,19 +1,55 @@
 <div class="contact-section">
     <div class="section-panel panel-left">
         <div class="section-title-button">
-            <mat-icon>mail</mat-icon>
-            Contacts
+            <mat-icon>handshake</mat-icon>
+            Let's Collaborate
         </div>
-        <div class="contact-intro">
+        <div class="intro-blurb">
             <p>
             Have a project in mind or just want to connect?<br>
-            Reach out using the form below or through the links provided.
+            Reach out through the links provided or use this form.
             </p>
         </div>
+        <div class="contact-links">
+            @if(phone){
+                <a class="contact-link-item" [href]="'tel:' + phone">
+                    <mat-icon>phone</mat-icon>
+                    {{phone}}
+                </a>
+            }
+            @if(email){
+                <a class="contact-link-item" [href]="'mailto:' + email">
+                    <mat-icon>mail</mat-icon>
+                    {{email}}
+                </a>
+            }
+            <a class="contact-link-item" href="https://linkedin.com/in/cweise" target="_blank" rel="noopener">
+                <mat-icon>linkedin</mat-icon>
+                LinkedIn
+            </a>
+        </div>
+        <!--
+        <div class="tech-bubbles">
+            <mat-grid-list cols="4" gutterSize="12px" rowHeight="100px">
+            @for(techPlatform of techPlatforms; track techPlatform.title){
+                <mat-grid-tile>
+                    <div class="tech-bubble">
+                        @if (techPlatform.imageUrl) {
+                            <img [src]="techPlatform.imageUrl" [alt]="techPlatform.title" />
+                        } @else if (techPlatform.icon) {
+                            <mat-icon>{{ techPlatform.icon }}</mat-icon>
+                        }
+                        <span>{{ techPlatform.title }}</span>
+                    </div>
+                </mat-grid-tile>
+            }
+            </mat-grid-list>
+
+        </div>
+        -->
     </div>
     <div class="section-panel panel-right">
-        <mat-card appearance="outlined" class="contact-card">
-            <mat-card-content>
+        <div class="contact-card">
             <form class="contact-form" (ngSubmit)="submitContactForm()">
                 <mat-form-field appearance="outline">
                 <mat-label>Name</mat-label>
@@ -34,12 +70,6 @@
                 Send Message
                 </button>
             </form>
-            </mat-card-content>
-        </mat-card>
-
-        <div class="contact-links">
-            <p>Prefer email? <a href="mailto:cweise93@hotmail.com">cweise93&#64;hotmail.com</a></p>
-            <p>Connect on LinkedIn: <a href="https://www.linkedin.com/in/cweise" target="_blank">cweise</a></p>
         </div>
     </div>
 </div>
