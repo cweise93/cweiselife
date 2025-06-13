@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';            // <-- THIS must be imported
+import { Component, NgModule } from '@angular/core';            // <-- THIS must be imported
 import { RouterModule, Routes, ExtraOptions } from '@angular/router';
 import { Notfound404Component } from './pages/notfound404/notfound404.component';
 import { GoalsComponent } from './pages/goals/goals.component';
@@ -17,6 +17,8 @@ import { LayoutComponent } from './components/layout/layout.component';
 import { SupportComponent } from './pages/settings/support/support.component';
 import { DocumentationComponent } from './pages/settings/documentation/documentation.component';
 import { PortfolioComponent } from './pages/portfolio/portfolio.component';
+import { DetailsComponent } from './pages/portfolio/details/details.component';
+import { BlogComponent } from './pages/portfolio/blog/blog.component';
 
 export const routes: Routes = [
     {
@@ -126,8 +128,26 @@ export const routes: Routes = [
             { path: 'register', component: RegisterComponent }
         ]
     },
+    {   
+        path: 'details/:type/:year/:month/:day/:slug',
+        component: DetailsComponent
+        /*,
+        children: [
+            { 
+                path: 'blog',
+                component: BlogComponent,
+                children: [
+                    {
+                        path: ':publishYear/:publishMonth/:publishDay/:title',
+                        component: DetailsComponent
+                    }
+                ]
+            }
+        ]
+            */
+    },
     {
-        path: '',
+        path: '', // introduce a new component here
         component: PortfolioComponent,
         children: [
             { path: 'home', component: PortfolioComponent },

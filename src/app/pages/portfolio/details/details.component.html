@@ -1,5 +1,5 @@
 <div [ngClass]="selectedTheme + '-theme'" [attr.data-theme]="selectedTheme">
-    <mat-toolbar class="navbar" [class.scrolled]="scrolled">
+    <mat-toolbar class="navbar">
       <div class="logo" (click)="selectNav(navItems[0])">
         <svg viewBox="188 220 378 243" xmlns="http://www.w3.org/2000/svg">
           <g fill="currentColor" fill-opacity="1" stroke="none" stroke-dasharray="none" stroke-opacity="1">
@@ -19,7 +19,7 @@
         @if (navItem.nav){
           <div class="outer-button">
             <button
-              [class.selected]="selectedNavLink === navItem.link"
+              [ngClass]="{ selected: getActiveLink().includes(navItem.link) }"
               mat-raised-button
               class="nav-link"
               (click)="selectNav(navItem)"
@@ -31,13 +31,70 @@
         <mat-icon>{{ themeIcon }}</mat-icon>
       </button>
     </mat-toolbar>
-    @for (section of navItems; let i = $index; track section.link) {
-      <section [id]="section.link"
-               class="hero-section"
-               [ngClass]="{'section-alt': i % 2 === 1}"
-               [appScrollAnimate]="i !== 0">
-        <ng-container *ngComponentOutlet="loadedComponents[section.link]"></ng-container>
-      </section>
-    }
+
+  <!-- Details Section -->
+  <div class="details-container">
+    <!-- Header -->
+    <div class="details-header">
+      <div class="header-title-block">
+        <h1 class="details-title">{{ content.title }}</h1>
+        <div class="header-author">
+          <span>by {{ content.author }}</span> • 
+          <span>{{ content.date | date }}</span>
+        </div>
+      </div>
+      <div class="header-votes-block">
+
+        <span class="votes" (click)="toggleVote()">
+          <mat-icon>{{ voted ? 'arrow_downward' : 'arrow_upward' }}</mat-icon>
+          {{ voteCount }} votes
+        </span>
+        @if(voted){
+          <a class="retract" (click)="toggleVote()">Retract</a>
+        }
+      </div>
+    </div>
+    <div class="details-banner-image">
+      <!-- Banner Image -->
+      <img [src]="content.bannerImageUrl" alt="Content Details Image" class="banner-image" />
+    </div>
+
+    <!-- Impacted Software + Downloads + Links -->
+    <div class="details-info">
+      <div class="software">
+        <strong>Impacted Software:</strong>
+        <ul>
+          @for (software of content.impactedSoftware; track software) {
+            <li>{{ software }}</li> 
+            <!-- add software icon for added color -->         
+          }
+        </ul>
+      </div>
+
+      <div class="downloads">
+        <button mat-stroked-button (click)="download(content.sourceCodeUrl)">
+          Download Source Code
+        </button>
+        <button mat-stroked-button (click)="download(content.artifactsZipUrl)">
+          Download Artifacts (ZIP)
+        </button>
+        <div class="downloads-row">
+          <a [href]="content.githubUrl" target="_blank">View on GitHub</a>
+          <button mat-button (click)="share()">Share</button>
+      </div>
+    </div>
   </div>
-  
+
+    <!-- Main Content Details HTML Code article -->
+    <div class="details-content" [innerHTML]="content.content"></div>
+
+    <!-- Feedback -->
+    <div class="feedback-section">
+      <h3>Feedback</h3>
+      <!--
+      <textarea [(ngModel)]="feedbackText" rows="4" placeholder="Share your thoughts..."></textarea>
+    -->
+      <button mat-raised-button (click)="submitFeedback()">Submit Feedback</button>
+    </div>
+  </div>
+</div>

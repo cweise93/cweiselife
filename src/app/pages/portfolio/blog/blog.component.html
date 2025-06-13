@@ -1,1 +1,56 @@
-<p>blog works!</p>
+<div class="service-section">
+  <div class="section-title-button">
+    <mat-icon>newspaper</mat-icon>
+    Blog Posts
+  </div>
+  <div class="service-intro">
+    <p>
+      Explore original insights on applied AI, enterprise innovation, and cross-functional leadership.
+      <br>
+      Each blog post offers a real-world lens on emerging technologies and organizational growth.
+    </p>
+    <!--
+    <div class="type-selection">
+    @for (techPlatform of techPlatforms; track techPlatform) {
+      <div class="service-type">
+        <mat-checkbox [checked]="techPlatform.selected" (change)="update($event.checked, techPlatform.title)"></mat-checkbox>
+        {{techPlatform.title}}
+      </div>
+    }
+    </div>
+  -->
+  </div>
+  <div class="services-row">
+<!--    @for (blogPost of getBlogDetailsByCategory(); track blogPost.id) { -->
+    @for (blogPost of blogDetails; track blogPost.id) {
+      <div class="service-box" @cardAnimation>
+        <div class="service-box-header">
+          <div class="header-icon-container">
+            <mat-icon></mat-icon>
+          </div>
+          <div class="header-title">
+            {{blogPost.title}}
+          </div>
+        </div>
+        <div class="service-box-image">
+          <img [src]="blogPost.bannerImageUrl">
+        </div>
+        <div class="service-box-description">
+          <div class="description-text">
+          {{blogPost.content}}
+          </div>
+        </div>
+        <div class="service-box-ul">
+          <ul>
+          'categories? or what you can learn?'
+          </ul>
+        </div>
+        <div class="service-box-footer">
+          <div class="call-to-action" (click)="openBlogDetails(blogPost.id)">
+            Tap to Learn More
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>

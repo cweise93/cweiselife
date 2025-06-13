@@ -23,18 +23,18 @@ export interface NavItem {
     NgClass,
     MatButtonModule,
     CommonModule,
-    ScrollAnimateDirective,
-  ],
+    ScrollAnimateDirective
+],
   templateUrl: './portfolio.component.html',
   styleUrls: ['./portfolio.component.scss']
 })
 export class PortfolioComponent implements OnInit {
   navItems: NavItem[] = [
-    { title: 'Home', nav: true, link: 'home', loadComponent: () => import('./home/home.component').then(m => m.HomeComponent), readyToTrigger: true },
+    { title: 'Home', nav: false, link: 'home', loadComponent: () => import('./home/home.component').then(m => m.HomeComponent), readyToTrigger: true },
     { title: 'Services', nav: true, link: 'services', loadComponent: () => import('./services/services.component').then(m => m.ServicesComponent), readyToTrigger: true },
     { title: 'Projects', nav: true, link: 'projects', loadComponent: () => import('./projects/projects.component').then(m => m.ProjectsComponent), readyToTrigger: true },
 //    { title: 'Testimony', nav: false, link: 'testimony', loadComponent: () => import('./testimony/testimony.component').then(m => m.TestimonyComponent), readyToTrigger: true },
-//    { title: 'Blog', nav: true, link: 'blog', loadComponent: () => import('./blog/blog.component').then(m => m.BlogComponent), readyToTrigger: true },
+    { title: 'Blog', nav: true, link: 'blog', loadComponent: () => import('./blog/blog.component').then(m => m.BlogComponent), readyToTrigger: true },
     { title: 'Contact Me', nav: true, link: 'contact', loadComponent: () => import('./contact/contact.component').then(m => m.ContactComponent), readyToTrigger: true },
   ];
 

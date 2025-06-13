@@ -1,0 +1,7 @@
+<div class="vote-control">
+    <span class="votes" (click)="toggleVote()">
+    <mat-icon>{{ voted ? 'arrow_downward' : 'arrow_upward' }}</mat-icon>
+    {{ count }} votes
+    </span>
+    <a *ngIf="voted" class="retract" (click)="toggleVote()">Retract</a>
+</div>
