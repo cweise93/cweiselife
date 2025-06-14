@@ -4,9 +4,9 @@ const path = require('path');
 
 const db = new sqlite3.Database('./data/portfolio.db');
 
-const getBlogDetails = () => {
+const getContentDetails = () => {
   return new Promise((resolve, reject) => {
-    db.all(`SELECT * FROM blogDetails`, [], (err, rows) => {
+    db.all(`SELECT * FROM contentDetails`, [], (err, rows) => {
       if (err) return reject(err);
       const cleaned = rows.map(row => {
         // Remove buttonLink if null or empty string
@@ -22,14 +22,14 @@ const getBlogDetails = () => {
 };
 
 (async () => {
-  const blogDetails = await getBlogDetails();
+  const contentDetails = await getContentDetails();
 
-  const tsContent = `import { BlogDetails } from "./blog.model";
+  const tsContent = `import { ContentDetails } from "./content.model";
 
-export const blogDetails: BlogDetails[] = ${JSON.stringify(blogDetails, null, 2)};
+export const contentDetails: ContentDetails[] = ${JSON.stringify(contentDetails, null, 2)};
 `;
 
-  const outputPath = path.join('src/app/data/portfolio/blog.ts');
+  const outputPath = path.join('src/app/data/portfolio/content.ts');
   fs.writeFileSync(outputPath, tsContent, 'utf8');
   console.log(`✔ Successfully generated ${outputPath}`);
   db.close();

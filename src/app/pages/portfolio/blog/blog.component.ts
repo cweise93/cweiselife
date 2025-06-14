@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { trigger, transition, style, animate } from '@angular/animations';
-import { blogDetails } from '../../../data/portfolio/blog';
-import { BlogDetails, BlogCategory } from '../../../data/portfolio/blog.model';
+import { contentDetails } from '../../../data/portfolio/content';
+import { ContentDetails, BlogCategory } from '../../../data/portfolio/content.model';
 import { techPlatforms } from '../../../data/portfolio/techPlatforms';
 import { TechPlatform } from '../../../data/portfolio/techPlatforms.model';
 import { Router } from '@angular/router';
@@ -31,11 +31,11 @@ import { Router } from '@angular/router';
 })
 export class BlogComponent implements OnInit {
   ngOnInit(): void {
-    this.blogDetails = blogDetails;
+    this.contentDetails = contentDetails;
     this.techPlatforms = techPlatforms;
   }
   techPlatforms: TechPlatform[] = []
-  blogDetails: BlogDetails[] = [];
+  contentDetails: ContentDetails[] = [];
   constructor(private router: Router) {}
 
 
@@ -49,15 +49,15 @@ export class BlogComponent implements OnInit {
     techPlatform.selected = checked;
   }
 
-  getBlogDetailsByCategory(): BlogDetails[] {
+  getBlogDetailsByCategory(): ContentDetails[] {
     const orderedSelectedLabels = this.techPlatforms
       .filter(type => type.selected)
       .map(type => type.title);
   
-    const orderedBlogDetails: BlogDetails[] = [];
+    const orderedBlogDetails: ContentDetails[] = [];
   
     for (const title of orderedSelectedLabels) {
-      const matching = this.blogDetails;
+      const matching = this.contentDetails;
 //      const matching = this.blogDetails.filter(blogDetails => blogDetails.categories[0].title === title);
       orderedBlogDetails.push(...matching);
     }
@@ -65,10 +65,14 @@ export class BlogComponent implements OnInit {
     return orderedBlogDetails;
   }
   openBlogDetails(blogDetailsId: number): void {
-    const blog = this.blogDetails.find(b => b.id === blogDetailsId);
+    const blog = this.contentDetails.find(b => b.id === blogDetailsId);
     if (!blog) return;
 
-    const { title } = blog;
+    const { title, date } = blog;
+    const blogDate = new Date(date);
+    const year = blogDate.getFullYear();
+    const month = String(blogDate.getMonth() + 1).padStart(2, '0');
+    const day = String(blogDate.getDate()).padStart(2, '0');
 
     const formattedTitle = title
       .toLowerCase()
@@ -77,9 +81,9 @@ export class BlogComponent implements OnInit {
 
     this.router.navigate([
       '/details/blog',
-      blog.publishYear,
-      blog.publishMonth,
-      blog.publishDate,
+      year,
+      month,
+      day,
       formattedTitle
     ]);
   }

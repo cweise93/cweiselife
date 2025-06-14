@@ -6,6 +6,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { VotingService } from '../../../services/voting.service';
 import { DetailsService } from '../../../services/details.service';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 export interface NavItem {
   title: string;
@@ -35,9 +36,13 @@ export class DetailsComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private votingService: VotingService,
-    private detailsService: DetailsService
-  ) {}
-
+    private detailsService: DetailsService,
+    private sanitizer: DomSanitizer
+  ) {
+  }
+  getSafeHtml(html: string): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustHtml(html);
+  }
 
   ngOnInit(): void {
     const savedTheme = localStorage.getItem('selectedTheme') as 'light' | 'dark' | 'custom';

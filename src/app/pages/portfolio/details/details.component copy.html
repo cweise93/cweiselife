@@ -34,57 +34,67 @@
 
   <!-- Details Section -->
   <div class="details-container">
-    <header class="header-image">
-      <div class="image-wrapper">
-        <img
-          [src]="content.bannerImageUrlZoom"
-          class="image-zoom-blur"
-          alt="Sharp Foreground"
-        />
-        <img
-          [src]="content.bannerImageUrl"
-          class="image-zoom-clear"
-          alt="Blurred Background"
-        />
+    <!-- Header -->
+    <div class="details-header">
+      <div class="header-title-block">
+        <h1 class="details-title">{{ content.title }}</h1>
+        <div class="header-author">
+          <span>by {{ content.author }}</span> • 
+          <span>{{ content.date | date }}</span>
+        </div>
+      </div>
+      <div class="header-votes-block">
+
+        <span class="votes" (click)="toggleVote()">
+          <mat-icon>{{ voted ? 'arrow_downward' : 'arrow_upward' }}</mat-icon>
+          {{ voteCount }} votes
+        </span>
+        @if(voted){
+          <a class="retract" (click)="toggleVote()">Retract</a>
+        }
+      </div>
+    </div>
+    <div class="details-banner-image">
+      <!-- Banner Image -->
+      <img [src]="content.bannerImageUrl" alt="Content Details Image" class="banner-image" />
+    </div>
+
+    <!-- Impacted Software + Downloads + Links -->
+    <div class="details-info">
+      <div class="software">
+        <strong>Impacted Software:</strong>
+        <ul>
+          @for (software of content.impactedSoftware; track software) {
+            <li>{{ software }}</li> 
+            <!-- add software icon for added color -->         
+          }
+        </ul>
       </div>
 
-    </header>
-    <div class="content-body">
-      <div class="content-meta">
-        <div class="meta-row">
-          Words: {{content.author}}
-        </div>
-        <div class="meta-row">
-          Published: {{content.date | date:'MM/dd/yyyy'}}
-        </div>
-        <div class="meta-row spread-apart">
-          <div>
-          View on GitHub
-          </div>
-          <div>
-          Share
-          </div>
-        </div>
-        <div class="meta-row">
+      <div class="downloads">
+        <button mat-stroked-button (click)="download(content.sourceCodeUrl)">
           Download Source Code
-        </div>
-        <div class="meta-row">
-          Download Artifacts (zip)
-        </div>
-        <div class="meta-row last">
-          Impacted Platform
-        </div>
+        </button>
+        <button mat-stroked-button (click)="download(content.artifactsZipUrl)">
+          Download Artifacts (ZIP)
+        </button>
+        <div class="downloads-row">
+          <a [href]="content.githubUrl" target="_blank">View on GitHub</a>
+          <button mat-button (click)="share()">Share</button>
       </div>
-      <div class="content-main">
-        <div class="content-title">
-          <h1>{{content.title}}</h1>
-        </div>
-        <div class="content-voting">
-          {{content.voting}}
-        </div>
-        <div class="content-html" [innerHTML]="getSafeHtml(content.content)"></div>
-        
-      </div>
+    </div>
+  </div>
+
+    <!-- Main Content Details HTML Code article -->
+    <div class="details-content" [innerHTML]="content.content"></div>
+
+    <!-- Feedback -->
+    <div class="feedback-section">
+      <h3>Feedback</h3>
+      <!--
+      <textarea [(ngModel)]="feedbackText" rows="4" placeholder="Share your thoughts..."></textarea>
+    -->
+      <button mat-raised-button (click)="submitFeedback()">Submit Feedback</button>
     </div>
   </div>
 </div>
