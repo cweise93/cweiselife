@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { trigger, transition, style, animate } from '@angular/animations';
-import { projects } from '../../../data/portfolio/projects';
-import { Project } from '../../../data/portfolio/projects.model';
+import { content } from '../../../data/portfolio/content';
+import { Content } from '../../../data/portfolio/content.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-projects',
@@ -25,20 +26,32 @@ import { Project } from '../../../data/portfolio/projects.model';
 })
 export class ProjectsComponent implements OnInit {
   ngOnInit(){
-
-    this.projects = projects;
-    
-    this.projects.forEach((project, idx) => {
-      project.id = idx;
-    });
-
+    this.content = content.filter(item => item.contentType === 'project');
   }
-  projects: Project[] = [];
+  content: Content[] = [];
+  constructor(private router: Router){}
+  
+  openProjectDetails(projectDetailsId: number): void {
+    const project = this.content.find(b => b.id === projectDetailsId);
+    if (!project) return;
 
-  scrollToSection(sectionId: string): void {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    const { title, date } = project;
+    const projectDate = new Date(date);
+    const year = projectDate.getFullYear();
+    const month = String(projectDate.getMonth() + 1).padStart(2, '0');
+    const day = String(projectDate.getDate()).padStart(2, '0');
+
+    const formattedTitle = title
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')       // replace spaces/symbols with dashes
+      .replace(/^-+|-+$/g, '');           // remove leading/trailing dashes
+
+    this.router.navigate([
+      '/details/project',
+      year,
+      month,
+      day,
+      formattedTitle
+    ]);
   }
 }

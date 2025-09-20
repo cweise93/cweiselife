@@ -3,9 +3,9 @@
         <h1 class="home-title">
             Hi, I’m <span class="highlight">Charles Weise</span>
           </h1>
-          <h2 class="home-subtitle">
-              I'm <span class="typed-text">{{ displayedText }}</span>
-          </h2>
+          <h2 class="home-subtitle" #subtitleRef [class.subtitle-wrapped]="subtitleWrapped">
+            I'm <span class="typed-text">{{ displayedText }}</span>
+        </h2>
           <p class="home-description">
             Strategic technology leader blending deep software engineering expertise and business acumen to drive innovation, growth, and enterprise transformation.          </p>
           <div class="home-buttons">

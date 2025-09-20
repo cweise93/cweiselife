@@ -11,22 +11,26 @@
             </g>
           </g>
         </svg>
-      </div>
-              
+      </div>    
       <!-- <img src="logo-currentColor.svg" alt="Logo" class="logo" /> -->
       <span class="spacer"></span>
-      @for (navItem of navItems; track navItem.link) {
-        @if (navItem.nav){
-          <div class="outer-button">
-            <button
-              [class.selected]="selectedNavLink === navItem.link"
-              mat-raised-button
-              class="nav-link"
-              (click)="selectNav(navItem)"
-            >{{ navItem.title }}</button>
-          </div>
+      <button class="menu-toggle" mat-icon-button (click)="toggleMenu()" aria-label="Toggle menu">
+        <mat-icon>{{ isMenuOpen ? 'close' : 'menu' }}</mat-icon>
+      </button>
+      <div class="nav-links" [class.open]="isMenuOpen">
+        @for (navItem of navItems; track navItem.link) {
+          @if (navItem.nav){
+            <div class="outer-button">
+              <button
+                [class.selected]="selectedNavLink === navItem.link"
+                mat-raised-button
+                class="nav-link"
+                (click)="selectNav(navItem)"
+              >{{ navItem.title }}</button>
+            </div>
+          }
         }
-      }
+      </div>
       <button mat-icon-button (click)="toggleTheme()" aria-label="Toggle theme">
         <mat-icon>{{ themeIcon }}</mat-icon>
       </button>

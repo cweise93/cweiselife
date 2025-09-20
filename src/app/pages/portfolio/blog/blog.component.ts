@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { trigger, transition, style, animate } from '@angular/animations';
-import { contentDetails } from '../../../data/portfolio/content';
-import { ContentDetails, BlogCategory } from '../../../data/portfolio/content.model';
+import { content } from '../../../data/portfolio/content';
+import { Content } from '../../../data/portfolio/content.model';
 import { techPlatforms } from '../../../data/portfolio/techPlatforms';
 import { TechPlatform } from '../../../data/portfolio/techPlatforms.model';
 import { Router } from '@angular/router';
@@ -31,11 +31,11 @@ import { Router } from '@angular/router';
 })
 export class BlogComponent implements OnInit {
   ngOnInit(): void {
-    this.contentDetails = contentDetails;
+    this.content = content.filter(item => item.contentType === 'blog');
     this.techPlatforms = techPlatforms;
   }
   techPlatforms: TechPlatform[] = []
-  contentDetails: ContentDetails[] = [];
+  content: Content[] = [];
   constructor(private router: Router) {}
 
 
@@ -49,15 +49,15 @@ export class BlogComponent implements OnInit {
     techPlatform.selected = checked;
   }
 
-  getBlogDetailsByCategory(): ContentDetails[] {
+  getBlogDetailsByCategory(): Content[] {
     const orderedSelectedLabels = this.techPlatforms
       .filter(type => type.selected)
       .map(type => type.title);
   
-    const orderedBlogDetails: ContentDetails[] = [];
+    const orderedBlogDetails: Content[] = [];
   
     for (const title of orderedSelectedLabels) {
-      const matching = this.contentDetails;
+      const matching = this.content;
 //      const matching = this.blogDetails.filter(blogDetails => blogDetails.categories[0].title === title);
       orderedBlogDetails.push(...matching);
     }
@@ -65,7 +65,7 @@ export class BlogComponent implements OnInit {
     return orderedBlogDetails;
   }
   openBlogDetails(blogDetailsId: number): void {
-    const blog = this.contentDetails.find(b => b.id === blogDetailsId);
+    const blog = this.content.find(b => b.id === blogDetailsId);
     if (!blog) return;
 
     const { title, date } = blog;

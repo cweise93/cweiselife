@@ -22,11 +22,11 @@
   </div>
   <div class="services-row">
 <!--    @for (blogPost of getBlogDetailsByCategory(); track blogPost.id) { -->
-    @for (blogPost of contentDetails; track blogPost.id) {
+    @for (blogPost of content; track blogPost.id) {
       <div class="service-box" @cardAnimation>
         <div class="service-box-header">
           <div class="header-icon-container">
-            <mat-icon></mat-icon>
+            <mat-icon>{{blogPost.icon}}</mat-icon>
           </div>
           <div class="header-title">
             {{blogPost.title}}
@@ -37,12 +37,12 @@
         </div>
         <div class="service-box-description">
           <div class="description-text">
-          {{blogPost.content}}
+          {{blogPost.description}}
           </div>
         </div>
         <div class="service-box-ul">
           <ul>
-          'categories? or what you can learn?'
+          <li><!-- Insert tags or tech platforms --></li>
           </ul>
         </div>
         <div class="service-box-footer">

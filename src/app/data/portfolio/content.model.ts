@@ -2,26 +2,33 @@ export interface Attachment {
     title: string;
     refUrl: string;
 }
-export interface BlogCategory {
+export interface ImpactedSoftware {
     title: string;
     selected: boolean;
 }
-export interface ContentDetails {
+export interface Content {
+    id: number;
+    contentType: string;
+    selected?: boolean;
     slug: string;
     title: string;
     author: string;
     date: string | Date; // ← fixed type declaration
+    description?: string;
+    content: string;
+    icon?: string;
+    list_items?: string[];
+    // restructure list_item to be more meaningful and consider providing type
+    // does the type get listed in teh same table and then split here 
+    
     bannerImageUrl?: string;
     bannerImageUrlZoom?: string;
-    impactedSoftware?: string[];
+
     sourceCodeUrl?: string;
     artifactsZipUrl?: string;
-    githubUrl?: string;
-    contentType?: string;
-
     attachmentUrls?: Attachment[];
-    content: string;
-    id: number;
+    githubUrl?: string;
+
+    impactedSoftware?: string[];
     votes?: number;
-//    categories?: BlogCategory[];
 }

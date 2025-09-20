@@ -8,17 +8,9 @@
       Learn more about each offering — from AI integration to leadership coaching.<br>
       Select a service below to explore case studies, testimonials, and example projects.
     </p>
-    <div class="type-selection">
-    @for (type of serviceTypes; track type) {
-      <div class="service-type">
-        <mat-checkbox [checked]="type.selected" (change)="update($event.checked, type.label)"></mat-checkbox>
-        {{type.label}}
-      </div>
-    }
-    </div>
   </div>
   <div class="services-row">
-    @for (service of getServicesByCategory(); track service.id) {
+    @for (service of content; track service.id) {
       <div class="service-box" @cardAnimation>
         <div class="service-box-header">
           <div class="header-icon-container">
@@ -29,7 +21,7 @@
           </div>
         </div>
         <div class="service-box-image">
-          <img [src]="service.imageUrl">
+          <img [src]="service.bannerImageUrl">
         </div>
         <div class="service-box-description">
           <div class="description-text">
@@ -44,7 +36,7 @@
           </ul>
         </div>
         <div class="service-box-footer">
-          <div class="call-to-action" (click)="scrollToSection('contact')">
+          <div class="call-to-action" (click)="openServiceDetails(service.id)">
             Tap to Learn More
           </div>
         </div>

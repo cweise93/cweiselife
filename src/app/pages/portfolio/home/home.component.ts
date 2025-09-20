@@ -1,4 +1,11 @@
-import { Component, inject } from '@angular/core';
+import {
+  Component,
+  inject,
+  AfterViewInit,
+  ElementRef,
+  ViewChild,
+  HostListener
+} from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
@@ -6,6 +13,7 @@ import { ExperienceComponent } from '../experience/experience.component';
 
 @Component({
   selector: 'app-home',
+  standalone: true,
   imports: [
     MatButtonModule,
     MatIconModule,
@@ -14,7 +22,7 @@ import { ExperienceComponent } from '../experience/experience.component';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
-export class HomeComponent {
+export class HomeComponent implements AfterViewInit {
   roles = [
     'a Solution Architect',
     'a Program Director',
@@ -37,15 +45,43 @@ export class HomeComponent {
   deletingSpeed = 50;
   pauseTime = 1500;
 
+  subtitleWrapped = false;
+
+  @ViewChild('subtitleRef') subtitleRef!: ElementRef;
+
+  readonly dialog = inject(MatDialog);
+
   ngOnInit() {
     this.typeEffect();
   }
+
+  ngAfterViewInit() {
+    this.checkSubtitleWrap();
+  }
+
+  @HostListener('window:resize')
+  onResize() {
+    this.checkSubtitleWrap();
+  }
+
   scrollToSection(sectionId: string): void {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }
+
+  openDialog() {
+    const experienceDialogRef = this.dialog.open(ExperienceComponent, {
+      width: '90%',
+      maxWidth: 'none'
+    });
+
+    experienceDialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
   typeEffect() {
     const current = this.roles[this.currentRole];
 
@@ -54,6 +90,9 @@ export class HomeComponent {
     } else {
       this.displayedText = current.substring(0, this.displayedText.length + 1);
     }
+
+    // ✅ Delay wrap check until DOM updates
+    setTimeout(() => this.checkSubtitleWrap(), 0);
 
     let delay = this.isDeleting ? this.deletingSpeed : this.typingSpeed;
 
@@ -69,17 +108,16 @@ export class HomeComponent {
     setTimeout(() => this.typeEffect(), delay);
   }
 
-  readonly dialog = inject(MatDialog);
+  checkSubtitleWrap() {
+    const element = this.subtitleRef?.nativeElement;
+    if (!element) return;
 
-  openDialog() {
-    let experienceDialogRef = this.dialog.open(ExperienceComponent,
-      {
-        width: '90%',
-        maxWidth: 'none'
-      }
-    );
-    experienceDialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
+    const isWrapped = element.scrollWidth > element.clientWidth;
+
+    this.subtitleWrapped = isWrapped;
+
+    console.log('Scroll width:', element.scrollWidth);
+    console.log('Client width:', element.clientWidth);
+    console.log('Subtitle wrapped:', isWrapped);
   }
 }

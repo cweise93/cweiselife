@@ -10,7 +10,7 @@
       </p>
     </div>
       <div class="project-list">
-        @for (project of projects; let idx = $index; track project.id) {
+        @for (project of content; let idx = $index; track project.id) {
           <div class="project-card" @cardAnimation>
             <div class="project-card-header">
               <div class="header-icon-container">
@@ -21,7 +21,7 @@
               </div>
             </div>
             <div class="project-card-image">
-              <img [src]="project.imageUrl">
+              <img [src]="project.bannerImageUrl">
             </div>
             <div class="project-card-description">
               <div class="description-text">
@@ -29,7 +29,7 @@
               </div>
             </div>
             <div class="project-card-footer">
-              <div class="call-to-action" (click)="scrollToSection('contact')">
+              <div class="call-to-action" (click)="openProjectDetails(project.id)">
                 Tap to Learn More
               </div>
             </div>

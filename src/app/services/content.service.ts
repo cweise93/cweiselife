@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { contentDetails } from '../data/portfolio/content';
+import { content } from '../data/portfolio/content';
 
 @Injectable({
   providedIn: 'root'
 })
-export class DetailsService {
+export class ContentService {
   constructor() { }
   getDetails(
     type: string,
@@ -13,7 +13,7 @@ export class DetailsService {
     month?: string,
     day?: string
   ): any {
-    return contentDetails.find(item => {
+    return content.find(item => {
       // Must match type and slug
       if (item.contentType !== type || item.slug !== slug) return false;
 

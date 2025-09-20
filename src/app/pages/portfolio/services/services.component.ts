@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { trigger, transition, style, animate } from '@angular/animations';
-import { services } from '../../../data/portfolio/services';
-import { Service, ServiceType } from '../../../data/portfolio/services.model';
+import { content } from '../../../data/portfolio/content';
+import { Content } from '../../../data/portfolio/content.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-services',
@@ -28,52 +29,31 @@ import { Service, ServiceType } from '../../../data/portfolio/services.model';
 })
 export class ServicesComponent implements OnInit {
   ngOnInit() {
-    this.services = services;
+    this.content = content.filter(item => item.contentType == 'service');
+  }
+  content: Content[] = [];
+  constructor(private router: Router){}
+  openServiceDetails(serviceDetailsId: number): void {
+    const service = this.content.find(b => b.id === serviceDetailsId);
+    if (!service) return;
 
-    this.services.forEach((service, idx) => {
-      service.id = idx;
-    });
-  }
-  scrollToSection(sectionId: string): void {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
-  serviceTypes: ServiceType[] = [
-    { label: 'People', selected: true },
-    { label: 'Strategy', selected: true },
-    { label: 'Execution', selected: true },
-  ]
-  services: Service[] = [];
+    const { title, date } = service;
+    const serviceDate = new Date(date);
+    const year = serviceDate.getFullYear();
+    const month = String(serviceDate.getMonth() + 1).padStart(2, '0');
+    const day = String(serviceDate.getDate()).padStart(2, '0');
 
-  getServiceType(label: string): ServiceType {
-    const type = this.serviceTypes.find(t => t.label === label);
-    if (!type) throw new Error(`Invalid category label: ${label}`);
-    return type;
-  }
-  update(checked: boolean, label: string){
-    var type = this.getServiceType(label);
-    type.selected = checked;
-  }
+    const formattedTitle = title
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')       // replace spaces/symbols with dashes
+      .replace(/^-+|-+$/g, '');           // remove leading/trailing dashes
 
-  getServicesByCategory(): Service[] {
-    const orderedSelectedLabels = this.serviceTypes
-      .filter(type => type.selected)
-      .map(type => type.label);
-  
-    const orderedServices: Service[] = [];
-  
-    for (const label of orderedSelectedLabels) {
-      const matching = this.services.filter(service => service.category.label === label);
-      orderedServices.push(...matching);
-    }
-  
-    return orderedServices;
-  }
-  activeService = this.services[0];
-
-  setActive(service: any) {
-    this.activeService = service;
+    this.router.navigate([
+      '/details/service',
+      year,
+      month,
+      day,
+      formattedTitle
+    ]);
   }
 }

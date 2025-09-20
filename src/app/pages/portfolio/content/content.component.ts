@@ -5,7 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { VotingService } from '../../../services/voting.service';
-import { DetailsService } from '../../../services/details.service';
+import { ContentService } from '../../../services/content.service';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 export interface NavItem {
@@ -14,7 +14,7 @@ export interface NavItem {
   link: string;
 }
 @Component({
-  selector: 'app-details',
+  selector: 'app-content',
   imports: [
     CommonModule,
     MatToolbarModule,
@@ -22,10 +22,10 @@ export interface NavItem {
     NgClass,
     MatButtonModule
   ],
-  templateUrl: './details.component.html',
-  styleUrl: './details.component.scss'
+  templateUrl: './content.component.html',
+  styleUrl: './content.component.scss'
 })
-export class DetailsComponent implements OnInit {
+export class ContentComponent implements OnInit {
   content: any = null;
   voteCount = 0;
   voted = false;
@@ -36,7 +36,7 @@ export class DetailsComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private votingService: VotingService,
-    private detailsService: DetailsService,
+    private contentService: ContentService,
     private sanitizer: DomSanitizer
   ) {
   }
@@ -52,7 +52,7 @@ export class DetailsComponent implements OnInit {
     this.route.params.subscribe(params => {
       const { type, slug } = params;
       this.contentId = slug;
-      this.content = this.detailsService.getDetails(type, slug);
+      this.content = this.contentService.getDetails(type, slug);
       this.voteCount = this.content?.votes || 0;
       this.voted = this.votingService.getVoteStatus(slug);
     });
