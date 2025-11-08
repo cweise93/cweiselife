@@ -1,13 +1,12 @@
 <div class="resume-modal" *ngIf="resume as data; else emptyState">
   <div class="modal-header">
-    <div>
-      <p class="eyebrow">Downloadable Profile</p>
+    <div class="title-stack">
       <h1>{{ data.headerTitle }}</h1>
       <div class="hero-tags">
         <span *ngFor="let tag of data.heroTags; trackBy: trackByValue">{{ tag }}</span>
       </div>
     </div>
-    <button mat-icon-button mat-dialog-close aria-label="Close resume dialog">
+    <button mat-icon-button mat-dialog-close class="close-chip" aria-label="Close resume dialog">
       <mat-icon>close</mat-icon>
     </button>
   </div>
@@ -32,50 +31,54 @@
     <p>{{ data.summary }}</p>
   </section>
 
-  <section class="primary-grid">
-    <article class="panel skills-panel">
-      <header class="panel-heading">
-        <span class="panel-index">01</span>
-        <h3>Skills</h3>
-      </header>
-      <ul class="skills-list">
-        <li *ngFor="let skill of data.skills; trackBy: trackByValue">
-          <mat-icon>check_circle</mat-icon>
-          <span>{{ skill }}</span>
-        </li>
-      </ul>
-    </article>
-
-    <article class="panel experience-panel">
-      <header class="panel-heading">
-        <span class="panel-index">02</span>
-        <h3>Experience</h3>
-      </header>
-      <div class="experience-item" *ngFor="let item of data.experiences">
-        <div class="period">{{ item.period }}</div>
-        <div class="role">{{ item.role }}</div>
-        <div class="organization">{{ item.organization }}</div>
-        <ul>
-          <li *ngFor="let point of item.summaryPoints">{{ point }}</li>
+  <section class="resume-layout">
+    <div class="resume-sidebar">
+      <article class="panel skills-panel">
+        <header class="panel-heading">
+          <span class="panel-index">01</span>
+          <h3>Skills</h3>
+        </header>
+        <ul class="skills-list">
+          <li *ngFor="let skill of data.skills; trackBy: trackByValue">
+            <mat-icon>check_circle</mat-icon>
+            <span>{{ skill }}</span>
+          </li>
         </ul>
-      </div>
-    </article>
+      </article>
+
+      <article class="panel education-panel">
+        <header class="panel-heading">
+          <span class="panel-index">03</span>
+          <h3>Education</h3>
+        </header>
+        <div class="education-item" *ngFor="let edu of data.education">
+          <div class="period">{{ edu.period }}</div>
+          <div class="degree">{{ edu.degree }}</div>
+          <div class="institution">{{ edu.institution }}</div>
+          <div class="focus" *ngIf="edu.focus">{{ edu.focus }}</div>
+        </div>
+      </article>
+    </div>
+
+    <div class="resume-main">
+      <article class="panel experience-panel">
+        <header class="panel-heading">
+          <span class="panel-index">02</span>
+          <h3>Experience</h3>
+        </header>
+        <div class="experience-item" *ngFor="let item of data.experiences">
+          <div class="period">{{ item.period }}</div>
+          <div class="role">{{ item.role }}</div>
+          <div class="organization">{{ item.organization }}</div>
+          <ul>
+            <li *ngFor="let point of item.summaryPoints">{{ point }}</li>
+          </ul>
+        </div>
+      </article>
+    </div>
   </section>
 
-  <section class="secondary-grid">
-    <article class="panel education-panel">
-      <header class="panel-heading">
-        <span class="panel-index">03</span>
-        <h3>Education</h3>
-      </header>
-      <div class="education-item" *ngFor="let edu of data.education">
-        <div class="period">{{ edu.period }}</div>
-        <div class="degree">{{ edu.degree }}</div>
-        <div class="institution">{{ edu.institution }}</div>
-        <div class="focus" *ngIf="edu.focus">{{ edu.focus }}</div>
-      </div>
-    </article>
-
+  <section class="tech-grid">
     <article class="panel tech-panel" *ngFor="let stack of data.techStacks; index as idx">
       <header class="panel-heading">
         <span class="panel-index">{{ idx + 4 | number:'2.0-0' }}</span>
