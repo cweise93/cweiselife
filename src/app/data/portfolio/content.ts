@@ -239,12 +239,13 @@ export const content: Content[] = [
           "period": "09.2019 – Present",
           "role": "Principal, Director of Application Development",
           "organization": "Bowman (BWMN)",
-          "summaryPoints": [
-            "Guiding team to develop self-generating, systems agnostic integration mechanisms providing enterprise, scalable knowledge management.",
-            "Guided solution development, deployment, and integration of MS Dynamics CRM, Deltek on-prem Vision, and SQL/C# ERP platforms.",
-            "Iteratively developed and maintained custom application to facilitate successful delivery of over 30,000 recorded easements and 45,000 signed permits in under four years with less than 50 employees."
-          ]
-        },
+      "summaryPoints": [
+        "Supported the team in applying Microsoft’s Cloud Adoption Framework with a prescriptive Azure landing-zone rollout that unified disparate systems and AI models while preserving specialized technical and relationship knowledge.",
+        "Guiding team to develop self-generating, systems agnostic integration mechanisms providing enterprise, scalable knowledge management.",
+        "Guided solution development, deployment, and integration of MS Dynamics CRM, Deltek on-prem Vision, and SQL/C# ERP platforms.",
+        "Iteratively developed and maintained custom application to facilitate successful delivery of over 30,000 recorded easements and 45,000 signed permits in under four years with less than 50 employees."
+      ]
+    },
         {
           "period": "07.2018 – 09.2019",
           "role": "Commercial Real Estate Associate",

@@ -5,14 +5,18 @@
     --secondary-color: #8bc34a;
     --text-color: #222222;
     --background-color: #f5f5f5;
+    --app-background-image: url('assets/imgs/section-alt-background-lr-light.png');
     --nav-color: rgba(255,255,255,.5); // not sure if this should be #fff
     --nav-active-color: #f5f5f5;
     --nav-button-background: radial-gradient(ellipse, #000 0%, rgba(0, 0, 0, 0.6) 80%, rgba(0, 0, 0, 0) 100%);
     --nav-background: rgba(0, 0, 0, 0.6);
     --panel-right-background: linear-gradient(to right, #6a11cb, #2575fc);  /* default or fallback */
-    --section-alt-background: #e0f7fa;  /* light cyan tint to match #284178 */
+    --section-alt-background: #f6fbff;
     --services-nav-background: var(--nav-background);
     --services-card-header: #fff;
+    --section-alt-overlay: rgba(255, 255, 255, 0.25);
+    --section-alt-image: url('assets/imgs/section-alt-background-lr-light.png');
+    --home-hero-background: linear-gradient(135deg, #ffffff 0%, #f6f8ff 100%);
 }
 [data-theme="light"] {
     --primary-color: #284178;
@@ -25,9 +29,14 @@
     --nav-button-background: radial-gradient(ellipse, #000 0%, rgba(0, 0, 0, 0.6) 80%, rgba(0, 0, 0, 0) 100%);
     --nav-background: rgba(0, 0, 0, 0.6);
     --panel-right-background: #284178;  /* light theme solid or gradient */
-    --section-alt-background: #e0f7fa;  /* light cyan tint to match #284178 */
+    --section-alt-background:
+        radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.8), rgba(255,255,255,0.1)),
+        linear-gradient(135deg, #e3f4ff 0%, #d8ecff 45%, #eef9ff 100%);
     --services-nav-background: var(--nav-background);
     --services-card-header: #fff;
+    --section-alt-overlay: rgba(255, 255, 255, 0.8);
+    --section-alt-image: url('assets/imgs/section-alt-background-lr-light.png');
+    --home-hero-background: linear-gradient(135deg, #ffffff 0%, #f6f8ff 100%);
 }
 [data-theme="dark"] {
     --primary-color: #6a11cb;
@@ -42,9 +51,14 @@
         linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
         linear-gradient(to top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 40%, rgba(0, 0, 0, 1) 100%);
     --panel-right-background: rgba(255,255,255,.5);  /* dark theme solid or gradient */
-    --section-alt-background: #2a2a3d;  /* slightly lighter dark shade */
+    --section-alt-background:
+        radial-gradient(circle at 30% 20%, rgba(255,255,255,0.08), transparent 55%),
+        linear-gradient(135deg, rgba(29,41,71,0.95), rgba(33,37,63,0.85));
     --services-nav-background: var(--background-color);
     --services-card-header: var(--background-color);
+    --section-alt-overlay: rgba(5, 8, 20, 0.2);
+    --section-alt-image: url('assets/imgs/section-alt-background-lr-dark.png');
+    --home-hero-background: linear-gradient(135deg, #050c1a 0%, #111a33 100%);
 }
 [data-theme="custom"] {
     --primary-color: #b388ff;
@@ -59,9 +73,14 @@
         linear-gradient(to right, rgba(106, 17, 203, 0.8), rgba(37, 117, 252, 0.8)),
         linear-gradient(to top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 40%, rgba(0, 0, 0, 1) 100%);
     --panel-right-background: radial-gradient(ellipse, rgba(37, 117, 252, 0.8) 0%, rgba(106, 17, 203, 0.8) 100%);
-    --section-alt-background: rgba(179, 136, 255, 0.1);  /* soft violet overlay */
+    --section-alt-background:
+        radial-gradient(circle at 15% 20%, rgba(255,255,255,0.15), transparent 55%),
+        linear-gradient(135deg, rgba(105,39,190,0.35), rgba(88,120,255,0.25));
     --services-nav-background: var(--section-alt-background);
     --services-card-header: var(--background-color);
+    --section-alt-overlay: rgba(33, 18, 63, 0.2);
+    --section-alt-image: url('assets/imgs/section-alt-background-lr-custom.png');
+    --home-hero-background: linear-gradient(135deg, rgba(37, 117, 252, 0.25), rgba(106, 17, 203, 0.35));
 }
 .logo {
     color: var(--primary-color);
@@ -71,10 +90,24 @@ html, body {
     margin: 0;
     padding: 0;
     font-family: 'Sora', Roboto, "Helvetica Neue", sans-serif;
-    background: var(--background-color);
+    background-color: var(--background-color);
     color: var(--text-color);
     transition: background-color 0.3s ease, color 0.3s ease;
     scroll-behavior: smooth;
+}
+
+.parallax-stage {
+    perspective: 1200px;
+    transform-style: preserve-3d;
+}
+
+.parallax-layer {
+    transform: translateZ(-60px) scale(1.05);
+    pointer-events: none;
+}
+
+.parallax-content {
+    transform: translateZ(0);
 }
 .spacer {
     flex: 1 1 auto;
