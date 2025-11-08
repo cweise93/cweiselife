@@ -13,25 +13,37 @@
         <div class="contact-links">
             @if(phone){
                 <a class="contact-link-item" [href]="'tel:' + phone">
-                    <mat-icon>phone</mat-icon>
-                    {{phone}}
+                    <span class="contact-link-button">
+                        <mat-icon>phone</mat-icon>
+                    </span>
+                    <span class="contact-link-label">Phone</span>
+                    <span class="contact-link-value">{{phone}}</span>
                 </a>
             }
             @if(email){
                 <a class="contact-link-item" [href]="'mailto:' + email">
-                    <mat-icon>mail</mat-icon>
-                    {{email}}
+                    <span class="contact-link-button">
+                        <mat-icon>mail</mat-icon>
+                    </span>
+                    <span class="contact-link-label">Email</span>
+                    <span class="contact-link-value">{{email}}</span>
                 </a>
-        }
-        <a class="contact-link-item" href="https://linkedin.com/in/cweise" target="_blank" rel="noopener">
-            <mat-icon>linkedin</mat-icon>
-            LinkedIn
-        </a>
-        <a class="contact-link-item" href="https://github.com/cweise93" target="_blank" rel="noopener">
-            <mat-icon>code</mat-icon>
-            GitHub
-        </a>
-    </div>
+            }
+            <a class="contact-link-item" href="https://linkedin.com/in/cweise" target="_blank" rel="noopener">
+                <span class="contact-link-button">
+                    <mat-icon>share</mat-icon>
+                </span>
+                <span class="contact-link-label">LinkedIn</span>
+                <span class="contact-link-value">in/cweise</span>
+            </a>
+            <a class="contact-link-item" href="https://github.com/cweise93" target="_blank" rel="noopener">
+                <span class="contact-link-button">
+                    <mat-icon>code</mat-icon>
+                </span>
+                <span class="contact-link-label">GitHub</span>
+                <span class="contact-link-value">github.com/cweise93</span>
+            </a>
+        </div>
         <!--
         <div class="tech-bubbles">
             <mat-grid-list cols="4" gutterSize="12px" rowHeight="100px">
