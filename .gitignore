@@ -45,6 +45,9 @@ testem.log
 .DS_Store
 Thumbs.db
 
+# Azure DevOps self-hosted agent artifacts
+/myagent/
+
 # Environment configuration
 .env*
 !.env.example
