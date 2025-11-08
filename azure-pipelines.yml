@@ -54,7 +54,7 @@ stages:
               echo "##vso[task.setvariable variable=SWA_ENVIRONMENT]$environment"
             displayName: Resolve deployment environment
 
-          - script: npm run build -- --configuration $(ANGULAR_CONFIGURATION)
+          - script: npm run build -- --configuration $(ANGULAR_CONFIGURATION) --output-hashing all
             displayName: Build Angular ($(ANGULAR_CONFIGURATION))
 
           - script: |
