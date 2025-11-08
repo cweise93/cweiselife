@@ -18,6 +18,7 @@
     --section-alt-image: url('assets/imgs/section-alt-background-lr-light.png');
     --section-base-background: #ffffff;
     --section-alt-panel: rgba(255, 255, 255, 0.9);
+    --content-body-background: linear-gradient(135deg, rgba(255,255,255,0.97), rgba(247,249,255,0.95));
     --home-hero-background: linear-gradient(135deg, #ffffff 0%, #f6f8ff 100%);
 }
 [data-theme="light"] {
@@ -40,6 +41,7 @@
     --section-alt-image: url('assets/imgs/section-alt-background-lr-light.png');
     --section-base-background: #ffffff;
     --section-alt-panel: rgba(255, 255, 255, 0.9);
+    --content-body-background: linear-gradient(135deg, rgba(255,255,255,0.97), rgba(247,249,255,0.95));
     --home-hero-background: linear-gradient(135deg, #ffffff 0%, #f6f8ff 100%);
 }
 [data-theme="dark"] {
@@ -64,6 +66,7 @@
     --section-alt-image: url('assets/imgs/section-alt-background-lr-dark.png');
     --section-base-background: #0c111f;
     --section-alt-panel: rgba(11, 17, 35, 0.85);
+    --content-body-background: linear-gradient(145deg, rgba(9,12,25,0.97), rgba(5,8,18,0.94));
     --home-hero-background: linear-gradient(135deg, #050c1a 0%, #111a33 100%);
 }
 [data-theme="custom"] {
@@ -88,6 +91,7 @@
     --section-alt-image: url('assets/imgs/section-alt-background-lr-custom.png');
     --section-base-background: rgba(14, 6, 30, 0.95);
     --section-alt-panel: rgba(34, 20, 60, 0.85);
+    --content-body-background: linear-gradient(145deg, rgba(26,12,48,0.96), rgba(15,6,32,0.92));
     --home-hero-background: linear-gradient(135deg, rgba(37, 117, 252, 0.25), rgba(106, 17, 203, 0.35));
 }
 .logo {
@@ -143,3 +147,4 @@ html, body {
       fill: currentColor;     /* ensures fill matches */
     }
 }
+
