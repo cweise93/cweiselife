@@ -9,9 +9,9 @@
           <p class="home-description">
             Strategic technology leader blending deep software engineering expertise and business acumen to drive innovation, growth, and enterprise transformation.          </p>
           <div class="home-buttons">
-            <button mat-fab extended routerLink=".">
+            <button mat-fab extended (click)="openResume()">
                 <mat-icon>description</mat-icon>
-                Download CV
+                View Resume
             </button>
             <button mat-fab extended (click)="openDialog()" class="outlined">
                 <mat-icon>work_history</mat-icon>

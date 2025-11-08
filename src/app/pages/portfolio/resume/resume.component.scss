@@ -1,0 +1,273 @@
+:host {
+  display: block;
+}
+
+.resume-modal {
+  width: min(960px, 95vw);
+  max-height: min(90vh, 1000px);
+  padding: 1.5rem;
+  background: #f7f9fc;
+  color: #1f1f1f;
+  overflow-y: auto;
+  border-radius: 1.25rem;
+  box-shadow: 0 1.25rem 3rem rgba(15, 23, 42, 0.2);
+}
+
+.resume-modal.empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 320px;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.modal-header h1 {
+  margin: 0;
+  letter-spacing: 0.35rem;
+  font-size: clamp(1.4rem, 4vw, 2.25rem);
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  font-size: 0.65rem;
+  letter-spacing: 0.4rem;
+  margin: 0 0 0.25rem;
+  color: #4a5568;
+}
+
+.hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.hero-tags span {
+  border: 1px solid #1f2937;
+  border-radius: 999px;
+  padding: 0.25rem 0.9rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: white;
+}
+
+.contact-row {
+  margin: 1.5rem 0 1.25rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.75rem;
+}
+
+.contact-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: white;
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid #e2e8f0;
+}
+
+.contact-card mat-icon {
+  color: #0d6efd;
+}
+
+.contact-body {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.85rem;
+}
+
+.contact-body .label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #64748b;
+}
+
+.contact-body a {
+  color: inherit;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.summary-section {
+  background: #fff;
+  border-radius: 1rem;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid #dbeafe;
+  margin-bottom: 1.5rem;
+}
+
+.summary-section h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1rem;
+  letter-spacing: 0.3rem;
+  text-transform: uppercase;
+}
+
+.primary-grid,
+.secondary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.panel {
+  background: #fff;
+  border-radius: 1rem;
+  border: 1px solid #e2e8f0;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.panel-index {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.75rem;
+  background: #0d6efd;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.panel-heading h3 {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.25rem;
+  font-size: 0.85rem;
+}
+
+.skills-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.4rem 1rem;
+}
+
+.skills-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.9rem;
+}
+
+.skills-list mat-icon {
+  font-size: 1rem;
+  color: #0d6efd;
+}
+
+.experience-item {
+  padding: 0.75rem 0;
+  border-top: 1px solid #e2e8f0;
+}
+
+.experience-item:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+.experience-item .period {
+  font-weight: 700;
+  color: #0d6efd;
+  margin-bottom: 0.35rem;
+}
+
+.experience-item .role {
+  font-weight: 700;
+}
+
+.experience-item .organization {
+  font-size: 0.85rem;
+  color: #475569;
+  margin-bottom: 0.35rem;
+}
+
+.experience-item ul {
+  padding-left: 1.1rem;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.9rem;
+}
+
+.education-item + .education-item {
+  border-top: 1px solid #e2e8f0;
+  margin-top: 0.85rem;
+  padding-top: 0.85rem;
+}
+
+.education-item .period {
+  font-weight: 700;
+  color: #0d6efd;
+}
+
+.education-item .degree {
+  font-weight: 700;
+}
+
+.education-item .institution {
+  font-size: 0.9rem;
+  color: #475569;
+}
+
+.education-item .focus {
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.tech-panel ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.4rem 1rem;
+  font-size: 0.9rem;
+}
+
+.download-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.5rem;
+}
+
+.download-button {
+  font-weight: 700;
+  gap: 0.4rem;
+}
+
+@media (max-width: 600px) {
+  .panel-heading h3 {
+    letter-spacing: 0.15rem;
+  }
+
+  .panel-index {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .contact-row {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+}

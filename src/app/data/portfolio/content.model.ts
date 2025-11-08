@@ -6,6 +6,39 @@ export interface ImpactedSoftware {
     title: string;
     selected: boolean;
 }
+export interface ResumeContactItem {
+    icon: string;
+    label: string;
+    value: string;
+    href?: string;
+}
+export interface ResumeExperienceItem {
+    period: string;
+    role: string;
+    organization: string;
+    summaryPoints: string[];
+}
+export interface ResumeEducationItem {
+    period: string;
+    degree: string;
+    institution: string;
+    focus?: string;
+}
+export interface ResumeTechStack {
+    title: string;
+    items: string[];
+}
+export interface ResumeDetails {
+    headerTitle: string;
+    heroTags: string[];
+    summary: string;
+    contacts: ResumeContactItem[];
+    skills: string[];
+    experiences: ResumeExperienceItem[];
+    education: ResumeEducationItem[];
+    techStacks: ResumeTechStack[];
+    pdfUrl: string;
+}
 export interface Content {
     id: number;
     contentType: string;
@@ -31,4 +64,5 @@ export interface Content {
 
     impactedSoftware?: string[];
     votes?: number;
+    resumeDetails?: ResumeDetails;
 }

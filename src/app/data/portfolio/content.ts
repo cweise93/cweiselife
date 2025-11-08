@@ -180,5 +180,160 @@ export const content: Content[] = [
       "Workflow Redesign Sprints",
       "Responsible AI Grounding"
     ]
+  },
+  {
+    "title": "Charles Weise – Resume",
+    "id": 12,
+    "slug": "charles-weise-resume",
+    "author": "Charles Weise",
+    "date": "2025-01-01",
+    "content": "Structured resume content used by the modal experience on the home page.",
+    "contentType": "resume",
+    "resumeDetails": {
+      "headerTitle": "CHARLES WEISE",
+      "heroTags": [
+        "Fractional CTO",
+        "Enterprise AI & Systems Architect",
+        "AEC Digital Strategy"
+      ],
+      "summary": "Over two decades of professional experience combined with a formal business education, a history of successfully launched ventures, and program implementation leadership provides an ideal background for delivering solutions to overcome your challenges. Knowledge gained from daily guidance and participation in enterprise architecture modernization focused on preparing for big-data mix-ins, artificial intelligence, and machine learning capabilities can be leveraged by you to unlock answers required to deliver solutions supporting your strategic vision.",
+      "contacts": [
+        {
+          "icon": "location_on",
+          "label": "Location",
+          "value": "Sebastian, FL 32958",
+          "href": "https://www.google.com/maps?q=Sebastian,+FL+32958"
+        },
+        {
+          "icon": "call",
+          "label": "Phone",
+          "value": "772.971.5116",
+          "href": "tel:+17729715116"
+        },
+        {
+          "icon": "mail",
+          "label": "Email",
+          "value": "cweise@cweise.com",
+          "href": "mailto:cweise@cweise.com"
+        },
+        {
+          "icon": "link",
+          "label": "LinkedIn",
+          "value": "in/cweise",
+          "href": "https://www.linkedin.com/in/cweise"
+        }
+      ],
+      "skills": [
+        "Solution Architecture",
+        "Full-stack Development",
+        "Data Modeling",
+        "Program Management",
+        "Partnership Development",
+        "Cost-benefit Analysis",
+        "Public Speaking",
+        "Team Development",
+        "Strategic Leadership"
+      ],
+      "experiences": [
+        {
+          "period": "09.2019 – Present",
+          "role": "Principal, Director of Application Development",
+          "organization": "Bowman (BWMN)",
+          "summaryPoints": [
+            "Guiding team to develop self-generating, systems agnostic integration mechanisms providing enterprise, scalable knowledge management.",
+            "Guided solution development, deployment, and integration of MS Dynamics CRM, Deltek on-prem Vision, and SQL/C# ERP platforms.",
+            "Iteratively developed and maintained custom application to facilitate successful delivery of over 30,000 recorded easements and 45,000 signed permits in under four years with less than 50 employees."
+          ]
+        },
+        {
+          "period": "07.2018 – 09.2019",
+          "role": "Commercial Real Estate Associate",
+          "organization": "Keller Williams",
+          "summaryPoints": [
+            "Used data-mining to identify shovel-ready project appraised at $28M."
+          ]
+        },
+        {
+          "period": "06.2013 – 06.2018",
+          "role": "Technology Consultant",
+          "organization": "W3, LLC",
+          "summaryPoints": [
+            "Provided individualized support for technology challenges."
+          ]
+        },
+        {
+          "period": "06.2004 – 06.2013",
+          "role": "Manager Real Estate Support U.S.",
+          "organization": "Canadian Pacific Railway (CP)",
+          "summaryPoints": [
+            "Assembled geographic information systems steering committee to secure and oversee the management of $21M in project funding.",
+            "Used data modeling techniques to identify and secure $3M in back-owed oil lease rights throughout the state of North Dakota.",
+            "Led program that resulted in a digital repository of over 65,000 original title, easement, license, and lease documents/contracts reducing response time from months to minutes."
+          ]
+        }
+      ],
+      "education": [
+        {
+          "period": "2008 – 2010 MBA",
+          "degree": "Master of Business Administration",
+          "institution": "University of Minnesota, Carlson School of Management",
+          "focus": "Focus: Strategic Initiatives"
+        },
+        {
+          "period": "2006 – 2008 BA",
+          "degree": "Bachelor of Arts, Business Administration",
+          "institution": "Metropolitan State University",
+          "focus": "Focus: Business Administration"
+        },
+        {
+          "period": "1996 – 1998 AA",
+          "degree": "Associate of Arts, Mechanical Engineering",
+          "institution": "Century College",
+          "focus": "Focus: Mechanical Engineering"
+        }
+      ],
+      "techStacks": [
+        {
+          "title": "MICROSOFT",
+          "items": [
+            "Azure ALZ",
+            "Azure Logic Apps",
+            "Power BI",
+            "SharePoint",
+            "Entra ID",
+            "Power Automate",
+            "Power Platform",
+            "Visio"
+          ]
+        },
+        {
+          "title": "PLATFORMS",
+          "items": [
+            "Atlassian Bitbucket",
+            "Deltek Vantagepoint",
+            "ESRI",
+            "Safe / FME",
+            "Atlassian Jira",
+            "Deltek Vision",
+            "iCIMS",
+            "UKG Pro Core + BI"
+          ]
+        },
+        {
+          "title": "FRAMEWORKS",
+          "items": [
+            "Angular",
+            "GraphQL",
+            "Python / FastAPI",
+            "Next.js",
+            "Drupal",
+            "PHP",
+            "React",
+            "WordPress"
+          ]
+        }
+      ],
+      "pdfUrl": "assets/docs/charles-weise-resume.pdf"
+    }
   }
 ];

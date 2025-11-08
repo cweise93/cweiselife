@@ -1,0 +1,102 @@
+<div class="resume-modal" *ngIf="resume as data; else emptyState">
+  <div class="modal-header">
+    <div>
+      <p class="eyebrow">Downloadable Profile</p>
+      <h1>{{ data.headerTitle }}</h1>
+      <div class="hero-tags">
+        <span *ngFor="let tag of data.heroTags; trackBy: trackByValue">{{ tag }}</span>
+      </div>
+    </div>
+    <button mat-icon-button mat-dialog-close aria-label="Close resume dialog">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <div class="contact-row">
+    <div class="contact-card" *ngFor="let contact of data.contacts">
+      <mat-icon>{{ contact.icon }}</mat-icon>
+      <div class="contact-body">
+        <span class="label">{{ contact.label }}</span>
+        <a *ngIf="contact.href; else plainValue" [href]="contact.href" target="_blank" rel="noopener">
+          {{ contact.value }}
+        </a>
+        <ng-template #plainValue>
+          <span>{{ contact.value }}</span>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+
+  <section class="summary-section">
+    <h2>Summary</h2>
+    <p>{{ data.summary }}</p>
+  </section>
+
+  <section class="primary-grid">
+    <article class="panel skills-panel">
+      <header class="panel-heading">
+        <span class="panel-index">01</span>
+        <h3>Skills</h3>
+      </header>
+      <ul class="skills-list">
+        <li *ngFor="let skill of data.skills; trackBy: trackByValue">
+          <mat-icon>check_circle</mat-icon>
+          <span>{{ skill }}</span>
+        </li>
+      </ul>
+    </article>
+
+    <article class="panel experience-panel">
+      <header class="panel-heading">
+        <span class="panel-index">02</span>
+        <h3>Experience</h3>
+      </header>
+      <div class="experience-item" *ngFor="let item of data.experiences">
+        <div class="period">{{ item.period }}</div>
+        <div class="role">{{ item.role }}</div>
+        <div class="organization">{{ item.organization }}</div>
+        <ul>
+          <li *ngFor="let point of item.summaryPoints">{{ point }}</li>
+        </ul>
+      </div>
+    </article>
+  </section>
+
+  <section class="secondary-grid">
+    <article class="panel education-panel">
+      <header class="panel-heading">
+        <span class="panel-index">03</span>
+        <h3>Education</h3>
+      </header>
+      <div class="education-item" *ngFor="let edu of data.education">
+        <div class="period">{{ edu.period }}</div>
+        <div class="degree">{{ edu.degree }}</div>
+        <div class="institution">{{ edu.institution }}</div>
+        <div class="focus" *ngIf="edu.focus">{{ edu.focus }}</div>
+      </div>
+    </article>
+
+    <article class="panel tech-panel" *ngFor="let stack of data.techStacks; index as idx">
+      <header class="panel-heading">
+        <span class="panel-index">{{ idx + 4 | number:'2.0-0' }}</span>
+        <h3>{{ stack.title }}</h3>
+      </header>
+      <ul>
+        <li *ngFor="let tech of stack.items; trackBy: trackByValue">{{ tech }}</li>
+      </ul>
+    </article>
+  </section>
+
+  <div class="download-row" *ngIf="data.pdfUrl">
+    <a mat-flat-button color="primary" class="download-button" [href]="data.pdfUrl" target="_blank" rel="noopener">
+      <mat-icon>download</mat-icon>
+      Download PDF
+    </a>
+  </div>
+</div>
+
+<ng-template #emptyState>
+  <div class="resume-modal empty">
+    <p>Resume content is unavailable right now. Please close this dialog and try again.</p>
+  </div>
+</ng-template>

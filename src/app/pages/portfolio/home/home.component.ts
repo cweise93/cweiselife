@@ -10,6 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { ExperienceComponent } from '../experience/experience.component';
+import { ResumeComponent } from '../resume/resume.component';
 
 @Component({
   selector: 'app-home',
@@ -79,6 +80,19 @@ export class HomeComponent implements AfterViewInit {
 
     experienceDialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
+    });
+  }
+
+  openResume() {
+    const resumeDialogRef = this.dialog.open(ResumeComponent, {
+      width: '100%',
+      maxWidth: '1024px',
+      panelClass: 'resume-dialog-panel',
+      autoFocus: false
+    });
+
+    resumeDialogRef.afterClosed().subscribe(result => {
+      console.log(`Resume dialog closed: ${result}`);
     });
   }
 
