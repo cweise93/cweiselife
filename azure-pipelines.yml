@@ -20,7 +20,7 @@ pool:
 
 variables:
   node_version: '20.x'
-  app_location: '/'
+  app_location: 'dist/cweiselife/browser'
   api_location: ''
   app_artifact_location: 'dist/cweiselife/browser'
 
