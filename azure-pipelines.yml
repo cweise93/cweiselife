@@ -14,7 +14,7 @@ pr:
       - staging
 
 pool:
-  name: myagent
+  name: MacBookPool
 
 variables:
   node_version: '20.x'
