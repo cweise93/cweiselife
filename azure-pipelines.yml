@@ -14,7 +14,9 @@ pr:
       - staging
 
 pool:
-  name: MacBookPool
+  name: Default
+  demands:
+    - Agent.Name -equals home
 
 variables:
   node_version: '20.x'
