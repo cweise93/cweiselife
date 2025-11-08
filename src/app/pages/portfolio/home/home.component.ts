@@ -25,18 +25,18 @@ import { ResumeComponent } from '../resume/resume.component';
 })
 export class HomeComponent implements AfterViewInit {
   roles = [
-    'a Solution Architect',
-    'a Program Director',
-    'an Engineering Team Lead',
-    'a Technical Strategy Advisor',
-    'a Full Stack Developer',
-    'an Innovation Consultant',
-    'an Enterprise Systems Integrator',
-    'a Cloud Solutions Specialist',
-    'a Business Process Optimizer',
-    'a Technology Transformation Leader',
-    'a People Development Champion',
-    'a Cross-Functional Team Leader'
+    'Solution Architect',
+    'Program Director',
+    'Engineering Team Lead',
+    'Technical Strategy Advisor',
+    'Full Stack Developer',
+    'Innovation Consultant',
+    'Enterprise Systems Integrator',
+    'Cloud Solutions Specialist',
+    'Business Process Optimizer',
+    'Technology Transformation Leader',
+    'People Development Champion',
+    'Cross-Functional Team Leader'
   ];
 
   displayedText = '';
