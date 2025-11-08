@@ -29,9 +29,6 @@
       align-self: center;
       font-weight: bold;
       margin: 2rem 0;
-      mat-icon {
-        color: var(--text-color);
-      }
     }
     .intro-blurb {
       max-width: 80%;
@@ -124,12 +121,53 @@
         gap: 1.5rem;
         mat-form-field {
           width: 100%;
+          color: #f4f4f5;
+          --mdc-theme-primary: #f4f4f5;
+
+          .mat-mdc-form-field-flex {
+            background-color: rgba(255, 255, 255, 0.04);
+            border-radius: 12px;
+          }
+
+          .mat-mdc-form-field-label {
+            color: rgba(244, 244, 245, 0.8);
+          }
+
+          .mat-mdc-input-element,
+          textarea.mat-mdc-input-element {
+            color: #f4f4f5;
+            caret-color: #f4f4f5;
+          }
+
+          .mat-mdc-input-element::placeholder,
+          textarea.mat-mdc-input-element::placeholder {
+            color: rgba(244, 244, 245, 0.6);
+          }
+
+          .mdc-notched-outline__leading,
+          .mdc-notched-outline__trailing,
+          .mdc-notched-outline__notch {
+            border-color: rgba(244, 244, 245, 0.4);
+          }
+
+          .mdc-text-field--focused .mdc-notched-outline__leading,
+          .mdc-text-field--focused .mdc-notched-outline__trailing,
+          .mdc-text-field--focused .mdc-notched-outline__notch {
+            border-color: #f4f4f5;
+          }
+
+          .mat-mdc-form-field-subscript-wrapper {
+            color: rgba(244, 244, 245, 0.8);
+          }
+
           input, textarea {
             padding-left: 10px;
           }
         }
         button {
           align-self: center;
+          color: #f4f4f5;
+          border-color: var(--primary-color);
           transition: transform 0.2s ease, background-color 0.3s ease;
           &:hover {
             transform: translateY(-2px);
