@@ -13,8 +13,8 @@ Welcome to my portfolio site, rebuilt around an Angular + Express stack and depl
 - **Backend:** Node.js (Express + Socket.IO)
 - **Data:** Azure SQL Database (serverless)
 - **AI:** Azure OpenAI (planned)
-- **Hosting:** Azure App Service (Linux)
-- **CI/CD:** GitHub Actions → Azure Web Apps Deploy
+- **Hosting:** Azure Static Web Apps (Standard)
+- **CI/CD:** Azure DevOps Pipelines → Azure Static Web Apps
 
 ---
 
@@ -53,31 +53,29 @@ The development server assumes the Express API is available at `http://localhost
 
 ---
 
-## 🚀 Deployment via GitHub Actions
+## 🚀 Deployment via Azure DevOps → Azure Static Web Apps
 
-The workflow at `.github/workflows/azure-static-web-apps.yml` builds the Angular application, packages the Node/Express backend, and deploys the bundle to Azure App Service. Commits to `main` deploy to production; commits to `staging` deploy to the staging slot. You can also trigger manual runs with the **Run workflow** button.
+The pipeline defined in `azure-pipelines.yml` is now the single source of truth. It:
 
-### Required GitHub secrets
+1. Runs on Microsoft-hosted Ubuntu agents (main + staging branches).
+2. Installs Node 20, performs `npm ci`, and builds Angular with the correct configuration (production for `main`, staging profile otherwise).
+3. Uses the `AzureStaticWebApp@0` task to push `dist/cweiselife/browser` to your Static Web App.
 
-- `AZURE_CREDENTIALS` – Service principal JSON for `azure/login` (use `az ad sp create-for-rbac ...`).
-- `AZURE_WEBAPP_NAME_PROD` – App Service name for production deployments.
-- `AZURE_WEBAPP_NAME_STAGING` – App Service name or slot for staging deployments.
-- `AZURE_APP_SETTINGS_PROD` *(optional)* – JSON array of App Settings for production.
-- `AZURE_APP_SETTINGS_STAGING` *(optional)* – JSON array of App Settings for staging.
+### One-time setup
 
-Example value for the app settings secrets:
+1. **Install the Azure Static Web Apps extension** in your Azure DevOps organization (Marketplace → “Azure Static Web Apps”).
+2. **Grab the deployment token** from the Static Web App resource (Azure Portal → Static Web App → Deployment token).
+3. **Create a secret pipeline variable** named `AZURE_STATIC_WEB_APPS_API_TOKEN` and paste the token value.
+4. (Optional) Use variable groups for other shared settings, but the pipeline currently doesn’t require additional secrets.
 
-```json
-[
-  { "name": "NODE_ENV", "value": "production", "slotSetting": false },
-  { "name": "CLIENT_DIST_PATH", "value": "dist/cweiselife/browser", "slotSetting": false },
-  { "name": "AZURE_SQL_CONNECTION_STRING", "value": "<connection-string>", "slotSetting": true },
-  { "name": "AZURE_OPENAI_ENDPOINT", "value": "https://<resource>.openai.azure.com", "slotSetting": false },
-  { "name": "AZURE_OPENAI_KEY", "value": "<api-key>", "slotSetting": true }
-]
-```
+### How environments map
 
-The deployment step zips the repository (excluding `node_modules` and Git metadata). Azure’s build service (Oryx) restores dependencies and executes `npm run build`, so keep the build script aligned with the desired Angular configuration.
+- `main` → Angular `production` build → Static Web Apps **production** environment.
+- `staging` → Angular `staging` build → Static Web Apps environment labeled “staging” (preview slot).
+
+Any other branch can be queued manually and will deploy as a preview environment under the branch name; point custom domains (e.g., `cweise.com`) at the production environment via the Static Web App’s **Custom domains** blade.
+
+> ℹ️ Azure Static Web Apps hosts static assets only. The Express server under `server/` stays available for local development, but production APIs must be implemented as Azure Functions or another backend service.
 
 ---
 
