@@ -40,12 +40,7 @@
                class="hero-section"
                [ngClass]="{'section-alt': i % 2 === 1}"
                [appScrollAnimate]="i !== 0">
-        @if (i % 2 === 1) {
-          <div class="section-alt__bg" aria-hidden="true"></div>
-        }
-        <div class="section-alt__content">
-          <ng-container *ngComponentOutlet="loadedComponents[section.link]"></ng-container>
-        </div>
+        <ng-container *ngComponentOutlet="loadedComponents[section.link]"></ng-container>
       </section>
     }
   </div>

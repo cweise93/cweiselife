@@ -35,8 +35,7 @@ export class ContactComponent implements OnInit {
   ngOnInit() {
     const phoneDigits = ['772', '971', '5116'];
     this.phone = `(${phoneDigits[0]}) ${phoneDigits[1]}-${phoneDigits[2]}`;
-    const emailParts = ['cweise', '93', 'hotmail', 'com'];
-    this.email = `${emailParts[0]}${emailParts[1]}@${emailParts[2]}.${emailParts[3]}`;
+    this.email = 'cweise@cweise.com';
     this.techPlatforms = techPlatforms;
   }
   constructor(private contactService: ContactService) {}

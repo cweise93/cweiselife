@@ -3,6 +3,7 @@
   text-align: center;
   opacity: 0;
   transition: opacity 0.8s ease, transform 0.8s ease;
+  background: var(--section-base-background, #ffffff);
   h1 {
     font-size: 3rem;
   }
@@ -23,28 +24,7 @@ section {
   text-align: center;
 }
 .section-alt {
-  position: relative;
-  overflow: hidden;
-  background: var(--section-alt-background);
-}
-
-.section-alt__bg {
-  position: absolute;
-  inset: 0;
-  background-image: linear-gradient(var(--section-alt-overlay, rgba(255,255,255,0.25)), var(--section-alt-overlay, rgba(255,255,255,0.25))),
-                    var(--section-alt-image, none);
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  opacity: 1;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.section-alt__content {
-  position: relative;
-  z-index: 1;
+  background: var(--section-alt-panel, rgba(255,255,255,0.9));
 }
 
 .logo svg {
