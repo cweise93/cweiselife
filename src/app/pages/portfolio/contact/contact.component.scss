@@ -240,6 +240,7 @@
       width: 100%;
       padding: 0 5% 2rem;
       grid-template-columns: repeat(2, minmax(220px, 1fr));
+      gap: 1.5rem;
     }
 
     .contact-card {
@@ -248,18 +249,31 @@
       .contact-form {
         width: 100%;
         max-width: 500px;
+        margin: 0 auto;
       }
     }
   }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 768px) {
   .contact-section {
     .contact-links {
-      width: 100%;
-      padding: 0 1.5rem 2rem;
-      grid-template-columns: 1fr;
-      gap: 1.25rem;
+      grid-template-columns: 1fr !important;
+    }
+  }
+}
+
+:host-context([data-theme='dark']),
+:host-context([data-theme='custom']) {
+  .contact-links {
+    .contact-link-item {
+      background: rgba(255, 255, 255, 0.95);
+      color: #111827;
+
+      .contact-link-label,
+      .contact-link-value {
+        color: #111827;
+      }
     }
   }
 }

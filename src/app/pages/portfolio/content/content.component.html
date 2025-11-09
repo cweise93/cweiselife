@@ -50,6 +50,9 @@
 
     </header>
     <div class="content-body">
+      <div class="content-title">
+        <h1>{{content.title}}</h1>
+      </div>
       <div class="content-meta">
         <div class="meta-row">
           Words: {{content.author}}
@@ -75,16 +78,10 @@
           Impacted Platform
         </div>
       </div>
-      <div class="content-main">
-        <div class="content-title">
-          <h1>{{content.title}}</h1>
-        </div>
-        <div class="content-voting">
-          {{content.voting}}
-        </div>
-        <div class="content-html" [innerHTML]="getSafeHtml(content.content)"></div>
-        
+      <div class="content-voting">
+        {{content.voting}}
       </div>
+      <div class="content-html" [innerHTML]="getSafeHtml(content.content)"></div>
     </div>
   </div>
 </div>
