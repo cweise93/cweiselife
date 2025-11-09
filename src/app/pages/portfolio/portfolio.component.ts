@@ -5,6 +5,7 @@ import { NgClass, CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { ScrollAnimateDirective } from '../../directives/scroll-animate.directive';
 import { Router } from '@angular/router';
+import { SeoService } from '../../services/seo.service';
 
 export interface NavItem {
   title: string;
@@ -47,7 +48,7 @@ export class PortfolioComponent implements OnInit {
     this.isMenuOpen = !this.isMenuOpen;
   }
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private seo: SeoService) {}
 
   ngOnInit(): void {
     const savedTheme = localStorage.getItem('selectedTheme') as 'light' | 'dark' | 'custom';
@@ -65,6 +66,7 @@ export class PortfolioComponent implements OnInit {
       }, 100);
     }
 
+    this.setHomeSeo();
     this.navItems.forEach(item => this.loadComponent(item.link));
   }
 
@@ -140,5 +142,47 @@ export class PortfolioComponent implements OnInit {
     this.selectedTheme = theme;
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('selectedTheme', theme);
+  }
+
+  private setHomeSeo(): void {
+    const origin = this.getBaseUrl();
+    this.seo.updatePageMeta({
+      title: 'Charles Weise | Technology Strategy & Applied AI Leader',
+      description: 'Technology strategist helping enterprises ship AI copilots, modernize architecture, and coach leaders through transformation.',
+      keywords: [
+        'Charles Weise',
+        'technology strategy',
+        'applied AI',
+        'copilot consulting',
+        'enterprise architecture'
+      ],
+      image: `${origin}/assets/imgs/headshot-960w.png`,
+      url: origin,
+      type: 'website'
+    });
+
+    this.seo.injectJsonLd('home-jsonld', {
+      '@context': 'https://schema.org',
+      '@type': 'Person',
+      name: 'Charles Weise',
+      jobTitle: 'Technology Strategy & Applied AI Leader',
+      url: origin,
+      image: `${origin}/assets/imgs/headshot-960w.png`,
+      sameAs: [
+        'https://linkedin.com/in/cweise',
+        'https://github.com/cweise93'
+      ],
+      worksFor: {
+        '@type': 'Organization',
+        name: 'Weise Industries'
+      }
+    });
+  }
+
+  private getBaseUrl(): string {
+    if (typeof window !== 'undefined' && window.location) {
+      return window.location.origin;
+    }
+    return 'https://cweise.com';
   }
 }

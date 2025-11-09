@@ -12,6 +12,7 @@ import {
   DEFAULT_IMAGE_WIDTHS,
   HERO_IMAGE_WIDTHS
 } from '../../../utils/image-utils';
+import { SeoService } from '../../../services/seo.service';
 
 export interface NavItem {
   title: string;
@@ -49,7 +50,8 @@ export class ContentComponent implements OnInit {
     private route: ActivatedRoute,
     private votingService: VotingService,
     private contentService: ContentService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private seo: SeoService
   ) {
   }
   getSafeHtml(html: string): SafeHtml {
@@ -68,6 +70,7 @@ export class ContentComponent implements OnInit {
       this.voteCount = this.content?.votes || 0;
       this.voted = this.votingService.getVoteStatus(slug);
       this.selectedNavLink = this.getNavLinkFromType(type);
+      this.updateContentSeo(type);
     });
   }
 
@@ -148,5 +151,75 @@ export class ContentComponent implements OnInit {
         return '';
     }
   }
-  
+
+  private updateContentSeo(type: string): void {
+    if (!this.content) return;
+    const origin = this.getBaseUrl();
+    const detailUrl = `${origin}/details/${type}/${this.contentId}`;
+    const title = `${this.content.title} | ${this.getTypeLabel(type)}`;
+    const description = this.content.description || 'Explore Charles Weise’s latest work across services, projects, and blog insights.';
+    const image = this.buildImageUrl(this.content.bannerImageUrl || this.content.bannerImageUrlZoom);
+
+    this.seo.updatePageMeta({
+      title,
+      description,
+      keywords: [this.content.title, this.getTypeLabel(type), 'Charles Weise'],
+      image,
+      url: detailUrl,
+      type: type === 'blog' ? 'article' : 'website'
+    });
+
+    this.seo.injectJsonLd('content-jsonld', {
+      '@context': 'https://schema.org',
+      '@type': this.getSchemaType(type),
+      headline: this.content.title,
+      description,
+      datePublished: new Date(this.content.date).toISOString(),
+      author: {
+        '@type': 'Person',
+        name: this.content.author
+      },
+      image: image ? [image] : undefined,
+      url: detailUrl
+    });
+  }
+
+  private getTypeLabel(type: string): string {
+    switch (type) {
+      case 'service':
+        return 'Service';
+      case 'project':
+        return 'Project';
+      case 'blog':
+        return 'Blog';
+      default:
+        return 'Content';
+    }
+  }
+
+  private getSchemaType(type: string): string {
+    switch (type) {
+      case 'service':
+        return 'Service';
+      case 'project':
+        return 'CreativeWork';
+      case 'blog':
+        return 'Article';
+      default:
+        return 'CreativeWork';
+    }
+  }
+
+  private buildImageUrl(path?: string): string | undefined {
+    if (!path) return undefined;
+    if (/^https?:\/\//i.test(path)) return path;
+    return `${this.getBaseUrl()}/${path}`;
+  }
+
+  private getBaseUrl(): string {
+    if (typeof window !== 'undefined' && window.location) {
+      return window.location.origin;
+    }
+    return 'https://cweise.com';
+  }
 }
