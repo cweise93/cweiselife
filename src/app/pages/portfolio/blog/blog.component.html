@@ -33,7 +33,15 @@
           </div>
         </div>
         <div class="service-box-image">
-          <img [src]="blogPost.bannerImageUrl">
+          @let blogImage = getCardImage(blogPost.bannerImageUrl);
+          <img
+            [attr.src]="blogImage.src"
+            [attr.srcset]="blogImage.srcset"
+            [attr.sizes]="cardImageSizes"
+            [attr.alt]="blogPost.title + ' illustration'"
+            loading="lazy"
+            decoding="async"
+          >
         </div>
         <div class="service-box-description">
           <div class="description-text">

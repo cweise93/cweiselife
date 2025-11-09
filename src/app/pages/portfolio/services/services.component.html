@@ -21,7 +21,15 @@
           </div>
         </div>
         <div class="service-box-image">
-          <img [src]="service.bannerImageUrl">
+          @let serviceImage = getCardImage(service.bannerImageUrl);
+          <img
+            [attr.src]="serviceImage.src"
+            [attr.srcset]="serviceImage.srcset"
+            [attr.sizes]="cardImageSizes"
+            [attr.alt]="service.title + ' illustration'"
+            loading="lazy"
+            decoding="async"
+          >
         </div>
         <div class="service-box-description">
           <div class="description-text">

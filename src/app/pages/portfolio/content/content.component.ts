@@ -7,6 +7,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { VotingService } from '../../../services/voting.service';
 import { ContentService } from '../../../services/content.service';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import {
+  buildResponsiveImageSet,
+  DEFAULT_IMAGE_WIDTHS,
+  HERO_IMAGE_WIDTHS
+} from '../../../utils/image-utils';
 
 export interface NavItem {
   title: string;
@@ -31,6 +36,10 @@ export class ContentComponent implements OnInit {
   voted = false;
   contentId = '';
   selectedTheme: 'light' | 'dark' | 'custom' = 'light';
+  readonly heroImageWidths = HERO_IMAGE_WIDTHS;
+  readonly backgroundImageWidths = DEFAULT_IMAGE_WIDTHS;
+  readonly heroImageSizes = '(max-width: 768px) 90vw, (max-width: 1199px) 70vw, 60vw';
+  readonly heroBackgroundSizes = '100vw';
 
   constructor(
     private router: Router,
@@ -123,5 +132,8 @@ export class ContentComponent implements OnInit {
     this.setTheme(themes[nextIndex]);
   }
 
+  getImageSet(path: string, widths: readonly number[] = this.heroImageWidths) {
+    return buildResponsiveImageSet(path, widths);
+  }
   
 }

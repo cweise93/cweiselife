@@ -21,7 +21,15 @@
               </div>
             </div>
             <div class="project-card-image">
-              <img [src]="project.bannerImageUrl">
+              @let projectImage = getCardImage(project.bannerImageUrl);
+              <img
+                [attr.src]="projectImage.src"
+                [attr.srcset]="projectImage.srcset"
+                [attr.sizes]="cardImageSizes"
+                [attr.alt]="project.title + ' illustration'"
+                loading="lazy"
+                decoding="async"
+              >
             </div>
             <div class="project-card-description">
               <div class="description-text">

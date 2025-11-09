@@ -7,6 +7,7 @@ import { Content } from '../../../data/portfolio/content.model';
 import { techPlatforms } from '../../../data/portfolio/techPlatforms';
 import { TechPlatform } from '../../../data/portfolio/techPlatforms.model';
 import { Router } from '@angular/router';
+import { buildResponsiveImageSet, CARD_IMAGE_WIDTHS } from '../../../utils/image-utils';
 
 @Component({
   selector: 'app-blog',
@@ -30,6 +31,9 @@ import { Router } from '@angular/router';
   ]
 })
 export class BlogComponent implements OnInit {
+  readonly cardImageWidths = CARD_IMAGE_WIDTHS;
+  readonly cardImageSizes = '(max-width: 599px) 90vw, (max-width: 959px) 45vw, 320px';
+
   ngOnInit(): void {
     this.content = content.filter(item => item.contentType === 'blog');
     this.techPlatforms = techPlatforms;
@@ -37,6 +41,10 @@ export class BlogComponent implements OnInit {
   techPlatforms: TechPlatform[] = []
   content: Content[] = [];
   constructor(private router: Router) {}
+
+  getCardImage(path?: string | null) {
+    return buildResponsiveImageSet(path, this.cardImageWidths);
+  }
 
 
   getTechPlatform(title: string): TechPlatform {

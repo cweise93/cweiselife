@@ -4,6 +4,7 @@ import { trigger, transition, style, animate } from '@angular/animations';
 import { content } from '../../../data/portfolio/content';
 import { Content } from '../../../data/portfolio/content.model';
 import { Router } from '@angular/router';
+import { buildResponsiveImageSet, CARD_IMAGE_WIDTHS } from '../../../utils/image-utils';
 
 @Component({
   selector: 'app-projects',
@@ -25,11 +26,18 @@ import { Router } from '@angular/router';
   ]
 })
 export class ProjectsComponent implements OnInit {
+  readonly cardImageWidths = CARD_IMAGE_WIDTHS;
+  readonly cardImageSizes = '(max-width: 599px) 90vw, (max-width: 959px) 45vw, 320px';
+
   ngOnInit(){
     this.content = content.filter(item => item.contentType === 'project');
   }
   content: Content[] = [];
   constructor(private router: Router){}
+
+  getCardImage(path?: string | null) {
+    return buildResponsiveImageSet(path, this.cardImageWidths);
+  }
   
   openProjectDetails(projectDetailsId: number): void {
     const project = this.content.find(b => b.id === projectDetailsId);

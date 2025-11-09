@@ -36,15 +36,25 @@
   <div class="content-container">
     <header class="header-image">
       <div class="image-wrapper">
+        @let blurredImage = getImageSet(content.bannerImageUrlZoom, backgroundImageWidths);
         <img
-          [src]="content.bannerImageUrlZoom"
           class="image-zoom-blur"
-          alt="Sharp Foreground"
+          [attr.src]="blurredImage.src"
+          [attr.srcset]="blurredImage.srcset"
+          [attr.sizes]="heroBackgroundSizes"
+          [attr.alt]="content.title + ' blurred background'"
+          decoding="async"
+          loading="eager"
         />
+        @let foregroundImage = getImageSet(content.bannerImageUrl, heroImageWidths);
         <img
-          [src]="content.bannerImageUrl"
           class="image-zoom-clear"
-          alt="Blurred Background"
+          [attr.src]="foregroundImage.src"
+          [attr.srcset]="foregroundImage.srcset"
+          [attr.sizes]="heroImageSizes"
+          [attr.alt]="content.title + ' hero artwork'"
+          decoding="async"
+          loading="eager"
         />
       </div>
 

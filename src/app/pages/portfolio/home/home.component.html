@@ -25,7 +25,16 @@
     </div>
     <div class="section-panel panel-right">
         <div class="profile-image">
-            <img [src]="'/headshot.png'" alt="Professional Tech Portrait" class="hero-img">
+            <img
+                class="hero-img"
+                [attr.src]="heroPortrait.src"
+                [attr.srcset]="heroPortrait.srcset"
+                [attr.sizes]="heroImageSizes"
+                alt="Professional Tech Portrait"
+                decoding="async"
+                loading="eager"
+                fetchpriority="high"
+            >
         </div>
     </div>
 </div>

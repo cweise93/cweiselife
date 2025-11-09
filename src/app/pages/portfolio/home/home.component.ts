@@ -4,13 +4,15 @@ import {
   AfterViewInit,
   ElementRef,
   ViewChild,
-  HostListener
+  HostListener,
+  OnInit
 } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { ExperienceComponent } from '../experience/experience.component';
 import { ResumeComponent } from '../resume/resume.component';
+import { buildResponsiveImageSet, HERO_IMAGE_WIDTHS } from '../../../utils/image-utils';
 
 @Component({
   selector: 'app-home',
@@ -23,7 +25,7 @@ import { ResumeComponent } from '../resume/resume.component';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
-export class HomeComponent implements AfterViewInit {
+export class HomeComponent implements AfterViewInit, OnInit {
   roles = [
     'Solution Architect',
     'Program Director',
@@ -51,6 +53,8 @@ export class HomeComponent implements AfterViewInit {
   @ViewChild('subtitleRef') subtitleRef!: ElementRef;
 
   readonly dialog = inject(MatDialog);
+  readonly heroPortrait = buildResponsiveImageSet('assets/imgs/headshot.png', HERO_IMAGE_WIDTHS, 'png');
+  readonly heroImageSizes = '(max-width: 768px) 85vw, (max-width: 1199px) 45vw, 520px';
 
   ngOnInit() {
     this.typeEffect();
