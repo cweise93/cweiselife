@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
+import { AnalyticsService } from './services/analytics.service';
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +13,7 @@ import { Router, RouterOutlet } from '@angular/router';
 export class AppComponent {
   title = 'cweiselife';
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private analytics: AnalyticsService) {
     const redirect = sessionStorage['redirect'];
     if (redirect) {
       sessionStorage.removeItem('redirect');
@@ -19,5 +21,7 @@ export class AppComponent {
         console.error('Redirect failed:', err);
       });
     }
+
+    this.analytics.init(environment.gaMeasurementId);
   }
 }
