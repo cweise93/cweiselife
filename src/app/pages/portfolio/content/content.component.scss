@@ -175,12 +175,12 @@
   flex-direction: column;
   justify-content: start;
   text-align: center;
-  padding: 84px 0 0 0;
+  padding: 0;
 
   .header-image {
     position: relative;
     width: 100%;
-    height: calc(100vh - 84px); // subtract navbar height
+    height: 100vh;
     overflow: hidden;
 
     .image-wrapper {
