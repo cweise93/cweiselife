@@ -36,6 +36,9 @@ export class ContentComponent implements OnInit {
   voted = false;
   contentId = '';
   selectedTheme: 'light' | 'dark' | 'custom' = 'light';
+  selectedNavLink = '';
+  isMenuOpen = false;
+  scrolled = false;
   readonly heroImageWidths = HERO_IMAGE_WIDTHS;
   readonly backgroundImageWidths = DEFAULT_IMAGE_WIDTHS;
   readonly heroImageSizes = '(max-width: 768px) 90vw, (max-width: 1199px) 70vw, 60vw';
@@ -64,6 +67,7 @@ export class ContentComponent implements OnInit {
       this.content = this.contentService.getDetails(type, slug);
       this.voteCount = this.content?.votes || 0;
       this.voted = this.votingService.getVoteStatus(slug);
+      this.selectedNavLink = this.getNavLinkFromType(type);
     });
   }
 
@@ -92,11 +96,9 @@ export class ContentComponent implements OnInit {
   feedbackText = '';
 
 
-  getActiveLink(): string {
-    return window.location.pathname.split('/')[1] || '';
-  }
-
   selectNav(navItem: NavItem): void {
+    this.selectedNavLink = navItem.link;
+    this.isMenuOpen = false;
     this.router.navigate([`/${navItem.link}`]);
   }
   navItems: NavItem[] = [
@@ -115,12 +117,6 @@ export class ContentComponent implements OnInit {
       default: return 'brightness_6';
     }
   }
-  /*
-  getActiveLink(): string {
-    return this.router.url.split('?')[0]; // removes query params if present
-  }
-    */
-
   setTheme(theme: 'light' | 'dark' | 'custom'): void {
     this.selectedTheme = theme;
     document.documentElement.setAttribute('data-theme', theme);
@@ -134,6 +130,23 @@ export class ContentComponent implements OnInit {
 
   getImageSet(path: string, widths: readonly number[] = this.heroImageWidths) {
     return buildResponsiveImageSet(path, widths);
+  }
+
+  toggleMenu(): void {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  private getNavLinkFromType(type: string): string {
+    switch (type) {
+      case 'service':
+        return 'services';
+      case 'project':
+        return 'projects';
+      case 'blog':
+        return 'blog';
+      default:
+        return '';
+    }
   }
   
 }

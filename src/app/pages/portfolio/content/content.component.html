@@ -1,5 +1,5 @@
 <div [ngClass]="selectedTheme + '-theme'" [attr.data-theme]="selectedTheme">
-    <mat-toolbar class="navbar">
+    <mat-toolbar class="navbar" [class.scrolled]="scrolled">
       <div class="logo" (click)="selectNav(navItems[0])">
         <svg viewBox="188 220 378 243" xmlns="http://www.w3.org/2000/svg">
           <g fill="currentColor" fill-opacity="1" stroke="none" stroke-dasharray="none" stroke-opacity="1">
@@ -12,21 +12,25 @@
           </g>
         </svg>
       </div>
-              
-      <!-- <img src="logo-currentColor.svg" alt="Logo" class="logo" /> -->
+
       <span class="spacer"></span>
-      @for (navItem of navItems; track navItem.link) {
-        @if (navItem.nav){
-          <div class="outer-button">
-            <button
-              [ngClass]="{ selected: getActiveLink().includes(navItem.link) }"
-              mat-raised-button
-              class="nav-link"
-              (click)="selectNav(navItem)"
-            >{{ navItem.title }}</button>
-          </div>
+      <button class="menu-toggle" mat-icon-button (click)="toggleMenu()" aria-label="Toggle menu">
+        <mat-icon>{{ isMenuOpen ? 'close' : 'menu' }}</mat-icon>
+      </button>
+      <div class="nav-links" [class.open]="isMenuOpen">
+        @for (navItem of navItems; track navItem.link) {
+          @if (navItem.nav){
+            <div class="outer-button">
+              <button
+                [class.selected]="selectedNavLink === navItem.link"
+                mat-raised-button
+                class="nav-link"
+                (click)="selectNav(navItem)"
+              >{{ navItem.title }}</button>
+            </div>
+          }
         }
-      }
+      </div>
       <button mat-icon-button (click)="toggleTheme()" aria-label="Toggle theme">
         <mat-icon>{{ themeIcon }}</mat-icon>
       </button>
