@@ -23,10 +23,10 @@
   <div class="services-row">
 <!--    @for (blogPost of getBlogDetailsByCategory(); track blogPost.id) { -->
     @for (blogPost of content; track blogPost.id) {
-      <div class="service-box" @cardAnimation>
+      <div class="service-box blog-card" @cardAnimation>
         <div class="service-box-header">
           <div class="header-icon-container">
-            <mat-icon>{{blogPost.icon}}</mat-icon>
+            <mat-icon>{{blogPost.icon || 'article'}}</mat-icon>
           </div>
           <div class="header-title">
             {{blogPost.title}}
@@ -43,19 +43,18 @@
             decoding="async"
           >
         </div>
-        <div class="service-box-description">
-          <div class="description-text">
-          {{blogPost.description}}
+        <div class="blog-card-body">
+          <div class="blog-meta">
+            <mat-icon>calendar_today</mat-icon>
+            <span>{{ blogPost.date | date:'MMM d, y' }}</span>
           </div>
-        </div>
-        <div class="service-box-ul">
-          <ul>
-          <li><!-- Insert tags or tech platforms --></li>
-          </ul>
+          <p class="blog-summary">
+            {{ blogPost.description }}
+          </p>
         </div>
         <div class="service-box-footer">
           <div class="call-to-action" (click)="openBlogDetails(blogPost.id)">
-            Tap to Learn More
+            Read Article
           </div>
         </div>
       </div>

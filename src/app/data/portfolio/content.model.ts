@@ -56,6 +56,8 @@ export interface Content {
     
     bannerImageUrl?: string;
     bannerImageUrlZoom?: string;
+    publishOn?: string;
+    expireAt?: string;
 
     sourceCodeUrl?: string;
     artifactsZipUrl?: string;

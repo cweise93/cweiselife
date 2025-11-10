@@ -2,35 +2,66 @@ import { Content } from "./content.model";
 
 export const content: Content[] = [
   {
-    "title": "First Blog Post",
-    "bannerImageUrl": "assets/imgs/ai culture change.png",
-    "content": "This is the greatest article ever.",
+    "title": "Replacing an Excel Form with a Connected Web Experience",
+    "bannerImageUrl": "assets/imgs/custom software.png",
+    "content": "<section>\n  <p>The finance team lived inside a monolithic Excel workbook. Every quarter, plant managers downloaded a copy, filled in tabs, and emailed the file back. Version drift was constant. Totals broke whenever someone added a column. No one knew which assumptions were up to date.</p>\n  <p>Rather than attempt a big-bang rewrite, we introduced a series of baby steps to ease the transition from spreadsheet to platform.</p>\n</section>\n<section>\n  <h2>Step 1: Document the Workbook DNA</h2>\n  <ul>\n    <li>Exported every tab, field, macro, and formula to a schema table using Python + openpyxl.</li>\n    <li>Interviewed the three power users to understand validation rules that only existed in their heads.</li>\n    <li>Tagged each field with a systems-of-record mapping (ERP, data warehouse, or manual entry).</li>\n  </ul>\n</section>\n<section>\n  <h2>Step 2: Ship a Read-Only Web View</h2>\n  <p>We created a Power Pages site that surfaced the same KPIs as the Excel dashboard but sourced directly from Dataverse and Azure SQL. Users could still download the workbook, but they started to trust the web view for answers.</p>\n</section>\n<section>\n  <h2>Step 3: Componentize the Form Inputs</h2>\n  <ol>\n    <li>Rebuilt each Excel tab as a low-code form component with server-side validation.</li>\n    <li>Embedded the components inside Dynamics + Teams so managers stayed in their daily apps.</li>\n    <li>Logged every submission with version metadata so audit trails replaced mystery attachments.</li>\n  </ol>\n</section>\n<section>\n  <h2>Results</h2>\n  <p>Within two releases we eliminated the emailed workbook, dropped cycle time by 40%, and finally had a centralized system feeding analytics without manual consolidation.</p>\n</section>",
     "id": 1,
-    "slug": "first-blog-post",
+    "slug": "replacing-an-excel-form-with-a-connected-web-experience",
     "author": "Charles Weise",
-    "date": "6/9/2025",
-    "bannerImageUrlZoom": "assets/imgs/ai culture change_zoom.png",
+    "date": "6/10/2025",
+    "bannerImageUrlZoom": "assets/imgs/custom software_zoom.png",
     "contentType": "blog",
-    "list_items": []
+    "description": "How to sunset an Excel workbook using a staged Power Platform rollout that keeps stakeholders comfortable.",
+    "list_items": [
+      "Inventory the workbook schema and tribal rules",
+      "Launch a read-only KPI portal before touching inputs",
+      "Componentize form sections with centralized validation",
+      "Log submissions for audit + analytics"
+    ]
   },
   {
-    "title": "Second Blog Post",
-    "bannerImageUrl": "assets/imgs/enterprise system.png",
-    "content": "<h1>Definitely the coolest</h1><p>Happy this is the best <s>EVER</s></p>",
+    "title": "Creating a Copilot Agent for Every Data Store",
+    "bannerImageUrl": "assets/imgs/projects-copilot.png",
+    "content": "<section>\n  <p>Most enterprises don’t have a single source of truth—they have dozens. SharePoint, Confluence, PLM, Jira, SAP, Snowflake. When leaders ask for an “AI copilot,” the pilot almost always fails because it only talks to one of those systems.</p>\n  <p>Here’s the playbook we used to build a federated copilot that respects every data store’s contracts.</p>\n</section>\n<section>\n  <h2>Foundation: Catalog the Sources</h2>\n  <ul>\n    <li>Documented each repository’s API surface, permissions model, and sensitivity tags.</li>\n    <li>Created metadata adapters that normalize titles, owners, and retention policies.</li>\n    <li>Registered every adapter in Azure API Management so the copilot has a consistent broker.</li>\n  </ul>\n</section>\n<section>\n  <h2>Agents per Store</h2>\n  <p>Instead of a single monolithic bot, we spun up lightweight Function-based agents:</p>\n  <ol>\n    <li><strong>SharePoint Agent:</strong> Handles search with Microsoft Graph, enriches results with taxonomy labels.</li>\n    <li><strong>Snowflake Agent:</strong> Executes governed SQL templates, enforces row-level security via OAuth tokens.</li>\n    <li><strong>Jira Agent:</strong> Uses Atlassian APIs to summarize epics, blocked tickets, and due dates.</li>\n  </ol>\n</section>\n<section>\n  <h2>Copilot Orchestration</h2>\n  <p>Azure OpenAI acts as the reasoning layer, but every response cites the agent and record it used. When the user needs to take action, deep links drop them into the native system so ownership stays intact.</p>\n</section>\n<section>\n  <h2>Security + Observability</h2>\n  <p>All calls run through Azure Monitor + App Insights. We log prompt/response pairs with PII redaction and feed adoption metrics into Power BI.</p>\n</section>",
     "id": 2,
-    "slug": "second-blog-post",
+    "slug": "creating-a-copilot-agent-for-every-data-store",
     "author": "Charles Weise",
-    "date": "6/9/2025",
-    "bannerImageUrlZoom": "assets/imgs/enterprise system_zoom.png",
+    "date": "6/12/2025",
+    "bannerImageUrlZoom": "assets/imgs/projects-copilot_zoom.png",
     "contentType": "blog",
-    "list_items": []
+    "description": "Designing a federated copilot that speaks SharePoint, Snowflake, Jira, and more without breaking governance.",
+    "list_items": [
+      "Catalog APIs + metadata for every repository",
+      "Wrap each store with a dedicated adapter agent",
+      "Broker access through Azure API Management",
+      "Log all prompts/responses for auditing"
+    ]
+  },
+  {
+    "title": "From PDF Attachments to Platform-first Best Practices",
+    "bannerImageUrl": "assets/imgs/pdf-to-platform-banner.jpg",
+    "content": "<section>\n  <p>Legacy hiring workflows love a static PDF. SMEs author a guidance doc, attach it to an email, and hope recruiters read past page three. Meanwhile, the actual system of record—iCIMS—is blind to who opened the file, which fields were completed, or whether legal reviewed the latest version.</p>\n  <p>This post documents how we retired a 32-page “best practices” PDF and replaced it with a governed, componentized web form experience that lives inside iCIMS and Azure. The lift was under four weeks, cost less than the annual PDF maintenance budget, and finally gave our talent team telemetry they could act on.</p>\n</section>\n<section>\n  <h2>Why PDFs Fail Hiring Teams</h2>\n  <ul>\n    <li><strong>No context:</strong> Candidates receive static attachments without responsive layouts or tooltips, so completion rates drop on mobile.</li>\n    <li><strong>Zero governance:</strong> Every time compliance tweaks language, someone has to regenerate or rediscover the file version.</li>\n    <li><strong>Hidden data:</strong> Nothing flows into iCIMS, which means reporting, reminders, and automation are impossible.</li>\n  </ul>\n</section>\n<section>\n  <h2>Platform Blueprint</h2>\n  <ol>\n    <li><strong>Catalog the PDF:</strong> We used Azure OpenAI to chunk each section, tag required fields, and export a JSON schema.</li>\n    <li><strong>Build a responsive shell:</strong> The schema drove a Power Pages form embedded in an iCIMS custom tab via secure iframe.</li>\n    <li><strong>Wire governance:</strong> Content authors now edit a Markdown/JSON record inside GitHub. Merges trigger automated deployments plus versioning in Azure Blob Storage.</li>\n    <li><strong>Stream telemetry:</strong> Every submission emits an Event Grid notification that updates Power BI adoption dashboards and sends nudges via Teams.</li>\n  </ol>\n</section>\n<section>\n  <h2>icims vs. PDF Outcomes</h2>\n  <p>Post-launch, recruiters stopped chasing attachments. Hiring managers complete the same guidance inside the ATS, and compliance sees an immutable audit trail. Most importantly, the business gained an evergreen best-practices engine instead of a stale file.</p>\n  <blockquote>\n    <p>“Moving the experience into iCIMS gave us <em>contextual</em> coaching. People complete it because it’s right where the work happens.”</p>\n  </blockquote>\n</section>\n<section>\n  <h2>Rollout Checklist</h2>\n  <ul>\n    <li>Retire PDFs in stages—redirect old SharePoint links to the new form.</li>\n    <li>Add inline tips, validation, and ownership metadata to each section.</li>\n    <li>Enable Azure Monitor alerts for failed submissions so no request goes dark.</li>\n    <li>Socialize change through LinkedIn, Instagram, and GitHub releases for transparency.</li>\n  </ul>\n</section>\n<section>\n  <h2>Next Iteration</h2>\n  <p>With the baseline in place, we’re layering in persona-based branching logic, PDF auto-generation for stakeholders who still need a document, and LLM copilots that draft responses directly from prior submissions.</p>\n</section>",
+    "id": 12,
+    "slug": "from-pdf-attachments-to-platform-first-best-practices",
+    "author": "Charles Weise",
+    "date": "6/15/2025",
+    "bannerImageUrlZoom": "assets/imgs/pdf-to-platform-banner_zoom.jpg",
+    "contentType": "blog",
+    "description": "How we retired a 32-page PDF and moved best-practice guidance straight into iCIMS with Azure + Power Platform telemetry.",
+    "publishOn": "2025-06-15T09:00:00Z",
+    "list_items": [
+      "Chunked PDFs into JSON schema with Azure OpenAI",
+      "Delivered responsive Power Pages form embedded in iCIMS",
+      "Automated governance with GitHub + Azure deployments",
+      "Captured telemetry for adoption dashboards"
+    ]
   },
   {
     "title": "AIA: AI Application in AEC",
     "bannerImageUrl": "assets/imgs/projects-book-cover.png",
-    "content": "<section>\n  <p>AIA: AI Application in AEC is a field guide I'm writing for architects, engineers, contractors, and owners who want to move AI from slideware to site plans. The book chronicles real scenarios—design iteration loops, submittal processing, safety observations—and shows how AI agents fit into the workflows teams already use.</p>\n  <p>This detail page captures the current manuscript snapshot so readers and collaborators can follow progress. As chapters firm up, I publish the working diagrams, prompts, and data models here.</p>\n</section>\n<section>\n  <h2>Chapter Themes</h2>\n  <ul>\n    <li><strong>Design Intelligence:</strong> Generative design companions that evaluate zoning, sustainability, and constructability early.</li>\n    <li><strong>Field Copilots:</strong> Mobile assistants that summarize RFIs, compare as-built photos to BIM, and escalate safety gaps.</li>\n    <li><strong>Document Discipline:</strong> AI services that classify submittals, extract specs, and keep drawings synchronized.</li>\n    <li><strong>Partner Ecosystem:</strong> How to blend Autodesk, Bentley, and custom data lakes without duplicating effort.</li>\n  </ul>\n</section>\n<section>\n  <h2>Artifacts Shared</h2>\n  <p>Readers get access to prompt libraries, workflow swimlanes, system architecture, and adoption scorecards. Each artifact is built from real engagements so you can adapt them to your own projects.</p>\n</section>\n<section>\n  <h2>How to Engage</h2>\n  <p>I'm interviewing owners, designers, GC superintendents, and technology partners throughout the writing process. If you'd like to contribute a case study or review a chapter, you'll find contact links and submission guidelines on this page.</p>\n</section>",
+    "content": "<h1>Gonna put stuff here</h1>",
     "id": 3,
-    "slug": "aia-ai-application-in-aec",
+    "slug": "ai-application-in-aec",
     "author": "Charles Weise",
     "date": "6/14/2025",
     "bannerImageUrlZoom": "assets/imgs/projects-book-cover_zoom.png",
@@ -42,7 +73,7 @@ export const content: Content[] = [
   {
     "title": "Habit Formation for Life Fulfillment",
     "bannerImageUrl": "assets/imgs/projects-app.png",
-    "content": "<section>\n  <p>Habit Formation for Life Fulfillment is a program I built for professionals who feel successful on paper but disconnected from the habits that give their work meaning. It combines guided reflection, AI-assisted journaling, and behavioral science so participants design rituals that match their values instead of copying the latest productivity trend.</p>\n  <p>The project page captures the toolkit as it evolves: prompts, dashboards, and coaching scripts. Participants use it as a workbook, and facilitators use it as a repeatable curriculum.</p>\n</section>\n<section>\n  <h2>Program Flow</h2>\n  <ul>\n    <li><strong>Identity Inventory:</strong> Workshops and journaling exercises that surface personal values, energy drains, and non-negotiables.</li>\n    <li><strong>Habit Blueprint:</strong> A canvas that maps goals to triggers, environment tweaks, and friction-removal tactics.</li>\n    <li><strong>Copilot Companion:</strong> A chat-based guide (built with Azure OpenAI) that checks in daily, nudges alignment, and celebrates streaks.</li>\n  </ul>\n</section>\n<section>\n  <h2>Artifacts</h2>\n  <p>The download includes facilitation decks, playlist suggestions, a Notion template, and a Power BI wellness dashboard that visualizes mood, focus, and time allocation. Everything is modular so you can run it solo or inside a leadership offsite.</p>\n</section>\n<section>\n  <h2>Impact</h2>\n  <p>Participants report clearer priorities, better boundaries, and a renewed sense of ownership over their calendar. Organizations use the framework to reduce burnout and to help high-performers navigate big transitions.</p>\n</section>",
+    "content": "<h1>Gonna put stuff here</h1>",
     "id": 4,
     "slug": "habit-formation-for-life-fulfillment",
     "author": "Charles Weise",
@@ -56,7 +87,7 @@ export const content: Content[] = [
   {
     "title": "Copilot Agent for Corporate Intelligence",
     "bannerImageUrl": "assets/imgs/projects-copilot.png",
-    "content": "<section>\n  <p>Copilot Agent for Corporate Intelligence is a productized integration layer that lets employees chat with their enterprise data even if they don’t have a formal data lake. The agent connects to SharePoint, CRM, email, and file systems, then enforces security trims so responses respect the org chart.</p>\n  <p>The goal is to ship a vendor-agnostic agent that can be deployed in weeks, not months. The detail page shares the reference architecture and the latest deployment playbooks.</p>\n</section>\n<section>\n  <h2>Core Capabilities</h2>\n  <ul>\n    <li><strong>Data Federation:</strong> Connectors for SharePoint, OneDrive, Exchange, CRM, and SQL that normalize metadata and apply retention policies.</li>\n    <li><strong>Contextual Memory:</strong> Prompt orchestration that injects user profile, role, and historical Q&A so the agent feels personal but stays compliant.</li>\n    <li><strong>Safety Rails:</strong> Redaction, citation, and audit logging baked in so legal and InfoSec can approve deployments quickly.</li>\n  </ul>\n</section>\n<section>\n  <h2>Deployment Kit</h2>\n  <p>Clients receive Terraform/Bicep templates, Azure OpenAI orchestration scripts, and a governance dashboard showing usage, satisfaction, and flagged interactions. There are also change-management assets—email templates, training decks, and office hour agendas.</p>\n</section>\n<section>\n  <h2>Why It Matters</h2>\n  <p>By unifying unstructured knowledge under a single copilot, teams answer questions in minutes instead of days, executives make faster decisions, and new hires ramp quicker. It’s the practical step between disconnected departmental bots and a full enterprise knowledge graph.</p>\n</section>",
+    "content": "<h1>Gonna put stuff here</h1>",
     "id": 5,
     "slug": "copilot-agent-for-corporate-intelligence",
     "author": "Charles Weise",
@@ -70,7 +101,7 @@ export const content: Content[] = [
   {
     "title": "Applied AI & Copilot Strategy",
     "bannerImageUrl": "assets/imgs/applied ai.png",
-    "content": "<section>\n  <p>Applied AI & Copilot Strategy is the playbook I use to align C-suites, product teams, and frontline operators around a single goal: implement copilots that actually move the needles leadership cares about. The approach is pragmatic—every workshop, sprint, and proof of concept is tied to an operational KPI, a financial metric, or a compliance requirement.</p>\n  <p>The services page gives you the single-slide summary, but the details matter. This article is what you reach when you tap “Learn more”: a deep dive into how the program runs week by week, what assets clients receive, and the maturity model we use to track adoption across business units.</p>\n</section>\n<section>\n  <h2>Program Pillars</h2>\n  <ul>\n    <li><strong>Opportunity Radar:</strong> A discovery track that maps existing workflows, data exhaust, and employee journeys to shortlist use cases with clear ROI and risk constraints.</li>\n    <li><strong>Pilot Factory:</strong> A two-week sprint that pairs SMEs with engineers to stand up copilots using Microsoft 365, GitHub Copilot, Azure OpenAI, or whatever stack the client already pays for.</li>\n    <li><strong>Governance Layer:</strong> Security, data residency, prompt logging, and feedback capture wired in from day one so legal and InfoSec sign off quickly.</li>\n    <li><strong>Change Playbooks:</strong> Training, comms, and leadership nudges at each phase so adoption isn't left to chance.</li>\n  </ul>\n</section>\n<section>\n  <h2>What the Client Sees</h2>\n  <p>Every engagement includes a Copilot Opportunity Matrix (spider charts for effort vs. impact), architecture diagrams showing how copilots connect to remaining systems, prompt packs for the top five workflows, and an executive dashboard that reports progress in business terms—hours saved, deals accelerated, tickets auto-resolved.</p>\n  <p>The assets live in a shared workspace so departments can self-serve future requests. IT leadership gets reference implementations, compliance gets documentation, and business leaders see the metrics needed to fund the next phase.</p>\n</section>\n<section>\n  <h2>Why This Works</h2>\n  <p>We focus on surfaced friction: the tasks engineers, analysts, account managers, or field teams repeat daily. By coupling those tasks with copilots that live inside Teams, Outlook, Dynamics, or CRM systems people already use, we avoid white-elephant projects. The strategy isn’t to boil the ocean—it’s to land a working copilot in 30 days, learn, and scale responsibly.</p>\n  <p>If you want the full execution details, the link above routes to the live engagement page hosted on the site. I keep it updated with anonymized case studies, templated artifacts, and the current list of accelerators we use to fast-track adoption.</p>\n</section>",
+    "content": "<h1>Gonna put stuff here</h1>",
     "id": 6,
     "slug": "applied-ai-copilot-strategy",
     "author": "Charles Weise",
@@ -89,7 +120,7 @@ export const content: Content[] = [
   {
     "title": "Enterprise Systems & Architecture Design",
     "bannerImageUrl": "assets/imgs/enterprise system.png",
-    "content": "<section>\n  <p>Enterprise Systems & Architecture Design is the framework I use to help organizations align application portfolios, integration patterns, and data contracts with the realities of modern delivery. The service blends hands-on architecture with stakeholder facilitation so engineering and business leaders can make decisions based on traceable models instead of tribal knowledge.</p>\n  <p>Clients use this engagement when they are migrating to cloud-native platforms, rationalizing overlapping CRMs/ERPs, or building a digital foundation for acquisitions. The goal is to leave teams with reference architectures they can evolve, not a shelf-ware blueprint.</p>\n</section>\n<section>\n  <h2>Architecture Tracks</h2>\n  <ul>\n    <li><strong>Current-State Mapping:</strong> Rapid discovery sessions that capture integrations, environments, and dependencies in a living system catalog.</li>\n    <li><strong>Target-State Patterns:</strong> Cloud, hybrid, and edge patterns expressed through layered diagrams, sequence flows, and interface contracts.</li>\n    <li><strong>Transition Waves:</strong> Incremental rollout plans aligned to budget cycles with clearly named owners and success criteria.</li>\n    <li><strong>Governance Kit:</strong> Architecture decision records, backlog hygiene templates, and review cadences so teams keep the design healthy.</li>\n  </ul>\n</section>\n<section>\n  <h2>Deliverables</h2>\n  <p>Engagements include interactive diagrams (C4 and BPMN views), interface catalogs with latency/SLA annotations, reusable Terraform/Bicep scaffolding, and executive-ready scorecards that show risk reduction and ROI. Everything is stored in a shared repo so future projects can fork proven components.</p>\n</section>\n<section>\n  <h2>Impact</h2>\n  <p>The result is a pragmatic architecture runway: product teams know what to build next, infrastructure teams have automation to rely on, and leadership can connect technology investments to the initiatives they sponsor.</p>\n</section>",
+    "content": "<h1>Gonna put stuff here</h1>",
     "id": 7,
     "slug": "enterprise-systems-architecture-design",
     "author": "Charles Weise",
@@ -108,9 +139,9 @@ export const content: Content[] = [
   {
     "title": "Custom Software Design & Development",
     "bannerImageUrl": "assets/imgs/custom software.png",
-    "content": "<section>\n  <p>Custom Software Design & Development is the end-to-end build track for teams that need a modern web application, workflow engine, or internal tool delivered without reinventing their SDLC. I step in as a fractional product+engineering lead, pairing discovery, UX, and development into a single cadence.</p>\n</section>\n<section>\n  <h2>How the Build Cadence Works</h2>\n  <ul>\n    <li><strong>Discovery & Framing:</strong> Workshops that translate business outcomes into user stories, non-functional requirements, and definition of done.</li>\n    <li><strong>Experience Design:</strong> Rapid prototyping in Figma with accessibility baked in, followed by component libraries teams can reuse.</li>\n    <li><strong>Delivery Pods:</strong> Full-stack pods (Angular/React, .NET/Node, Azure) that ship increments every two weeks with automated testing and observability.</li>\n    <li><strong>Adoption & Handoff:</strong> Runbooks, CI/CD pipelines, and enablement sessions so client teams can own the stack on day one.</li>\n  </ul>\n</section>\n<section>\n  <h2>What You Receive</h2>\n  <p>Expect production-grade code, infrastructure as code, telemetry dashboards, and a backlog groomed with technical debt + roadmap items. We measure success through features shipped, defects prevented, and the ability for your team to maintain the platform independently.</p>\n</section>\n<section>\n  <h2>Use Cases</h2>\n  <p>Common builds include partner portals, operations dashboards, quote-to-cash tools, and AI-assisted knowledge apps. Each solution is anchored to the KPIs leadership cares about—cycle time, revenue capture, compliance, or customer experience.</p>\n</section>",
+    "content": "<h1>Gonna put stuff here</h1>",
     "id": 8,
-    "slug": "custom-software-design-development",
+    "slug": "custom-software-design-develop",
     "author": "Charles Weise",
     "date": "4/1/2025",
     "bannerImageUrlZoom": "assets/imgs/custom software_zoom.png",
@@ -127,7 +158,7 @@ export const content: Content[] = [
   {
     "title": "Actionable Analytics & Dashboarding",
     "bannerImageUrl": "assets/imgs/actionable analytics.png",
-    "content": "<section>\n  <p>Actionable Analytics & Dashboarding turns raw operational data into decision-ready insights. Instead of shipping static reports, we design data products that plug into daily standups, exec reviews, and frontline workflows.</p>\n</section>\n<section>\n  <h2>Analytics Playbook</h2>\n  <ul>\n    <li><strong>KPI Design:</strong> Workshops that tie metrics to levers the business can actually pull and document the formula, owner, and refresh cadence.</li>\n    <li><strong>Data Supply Chain:</strong> Source-to-dashboard mapping, semantic modeling, and quality checks baked into pipelines (Fabric, Power BI, Databricks, Snowflake).</li>\n    <li><strong>Visualization System:</strong> Accessible dashboards with drill-downs, alerting rules, and narrative context so leaders know what to do next.</li>\n  </ul>\n</section>\n<section>\n  <h2>Outcomes</h2>\n  <p>Clients walk away with governed datasets, reusable visuals, and a measurement operating model. That means faster close cycles, proactive risk flags, and a single source of truth for revenue, operations, or customer health.</p>\n</section>",
+    "content": "<h1>Gonna put stuff here</h1>",
     "id": 9,
     "slug": "actionable-analytics-dashboarding",
     "author": "Charles Weise",
@@ -146,7 +177,7 @@ export const content: Content[] = [
   {
     "title": "Digital Fluency & Leadership Coaching",
     "bannerImageUrl": "assets/imgs/digital fluency.png",
-    "content": "<section>\n  <p>Digital Fluency & Leadership Coaching equips executives and functional leaders to sponsor technology initiatives with confidence. We mix 1:1 coaching, cohort workshops, and live demos so leaders experience the tools they are funding.</p>\n</section>\n<section>\n  <h2>Coaching Tracks</h2>\n  <ul>\n    <li><strong>Executive Labs:</strong> Hands-on sessions where leaders pilot copilots, automation, or analytics solutions against their own workflows.</li>\n    <li><strong>Story Crafting:</strong> Narrative playbooks that connect technology investments to the mission, complete with slides, talking points, and FAQs.</li>\n    <li><strong>Enablement Kits:</strong> Micro-learnings, office hours, and scorecards so managers can reinforce behaviors and track adoption.</li>\n  </ul>\n</section>\n<section>\n  <h2>Why Leaders Like It</h2>\n  <p>Coaching is rooted in actual deliverables—leaders leave each session with artifacts they can use in steering committees, town halls, or board updates. The result is faster decision making and less resistance from teams asked to change how they work.</p>\n</section>",
+    "content": "<h1>Gonna put stuff here</h1>",
     "id": 10,
     "slug": "digital-fluency-leadership-coaching",
     "author": "Charles Weise",
@@ -165,7 +196,7 @@ export const content: Content[] = [
   {
     "title": "AI Culture Change Workshops",
     "bannerImageUrl": "assets/imgs/ai culture change.png",
-    "content": "<section>\n  <p>AI Culture Change Workshops help teams shift from \"AI will replace us\" to \"AI augments our work.\" The format is experiential: live demos, hands-on labs, and facilitated retros so participants see how copilots impact their actual processes.</p>\n</section>\n<section>\n  <h2>Workshop Flow</h2>\n  <ul>\n    <li><strong>Mindset Reset:</strong> Stories and data showing how similar organizations adopted AI responsibly.</li>\n    <li><strong>Live Roleplay:</strong> Participants bring real tasks; we co-create prompts, build automations, and critique results together.</li>\n    <li><strong>Workflow Sprints:</strong> Small groups redesign a process with AI in mind and present the impact to leadership.</li>\n    <li><strong>Guardrails:</strong> Practical guidance on governance, legal, and change management so teams move forward safely.</li>\n  </ul>\n</section>\n<section>\n  <h2>Lasting Change</h2>\n  <p>After the workshop, teams receive prompt libraries, workflow canvases, and adoption metrics. Leaders see sentiment shift, backlog ideas increase, and most importantly, volunteers eager to champion the next wave of automation.</p>\n</section>",
+    "content": "<h1>Gonna put stuff here</h1>",
     "id": 11,
     "slug": "ai-culture-change-workshops",
     "author": "Charles Weise",
@@ -180,161 +211,5 @@ export const content: Content[] = [
       "Workflow Redesign Sprints",
       "Responsible AI Grounding"
     ]
-  },
-  {
-    "title": "Charles Weise – Resume",
-    "id": 12,
-    "slug": "charles-weise-resume",
-    "author": "Charles Weise",
-    "date": "2025-01-01",
-    "content": "Structured resume content used by the modal experience on the home page.",
-    "contentType": "resume",
-    "resumeDetails": {
-      "headerTitle": "CHARLES WEISE",
-      "heroTags": [
-        "Fractional CTO",
-        "Enterprise AI & Systems Architect",
-        "AEC Digital Strategy"
-      ],
-      "summary": "Over two decades of professional experience combined with a formal business education, a history of successfully launched ventures, and program implementation leadership provides an ideal background for delivering solutions to overcome your challenges. Knowledge gained from daily guidance and participation in enterprise architecture modernization focused on preparing for big-data mix-ins, artificial intelligence, and machine learning capabilities can be leveraged by you to unlock answers required to deliver solutions supporting your strategic vision.",
-      "contacts": [
-        {
-          "icon": "location_on",
-          "label": "Location",
-          "value": "Sebastian, FL 32958",
-          "href": "https://www.google.com/maps?q=Sebastian,+FL+32958"
-        },
-        {
-          "icon": "call",
-          "label": "Phone",
-          "value": "772.971.5116",
-          "href": "tel:+17729715116"
-        },
-        {
-          "icon": "mail",
-          "label": "Email",
-          "value": "cweise@cweise.com",
-          "href": "mailto:cweise@cweise.com"
-        },
-        {
-          "icon": "link",
-          "label": "LinkedIn",
-          "value": "in/cweise",
-          "href": "https://www.linkedin.com/in/cweise"
-        }
-      ],
-      "skills": [
-        "Solution Architecture",
-        "Full-stack Development",
-        "Data Modeling",
-        "Program Management",
-        "Partnership Development",
-        "Cost-benefit Analysis",
-        "Public Speaking",
-        "Team Development",
-        "Strategic Leadership"
-      ],
-      "experiences": [
-        {
-          "period": "09.2019 – Present",
-          "role": "Principal, Director of Application Development",
-          "organization": "Bowman (BWMN)",
-      "summaryPoints": [
-        "Supported the team in applying Microsoft’s Cloud Adoption Framework with a prescriptive Azure landing-zone rollout that unified disparate systems and AI models while preserving specialized technical and relationship knowledge.",
-        "Guiding team to develop self-generating, systems agnostic integration mechanisms providing enterprise, scalable knowledge management.",
-        "Guided solution development, deployment, and integration of MS Dynamics CRM, Deltek on-prem Vision, and SQL/C# ERP platforms.",
-        "Iteratively developed and maintained custom application to facilitate successful delivery of over 30,000 recorded easements and 45,000 signed permits in under four years with less than 50 employees."
-      ]
-    },
-        {
-          "period": "07.2018 – 09.2019",
-          "role": "Commercial Real Estate Associate",
-          "organization": "Keller Williams",
-          "summaryPoints": [
-            "Used data-mining to identify shovel-ready project appraised at $28M."
-          ]
-        },
-        {
-          "period": "06.2013 – 06.2018",
-          "role": "Technology Consultant",
-          "organization": "W3, LLC",
-          "summaryPoints": [
-            "Provided individualized support for technology challenges."
-          ]
-        },
-        {
-          "period": "06.2004 – 06.2013",
-          "role": "Manager Real Estate Support U.S.",
-          "organization": "Canadian Pacific Railway (CP)",
-          "summaryPoints": [
-            "Assembled geographic information systems steering committee to secure and oversee the management of $21M in project funding.",
-            "Used data modeling techniques to identify and secure $3M in back-owed oil lease rights throughout the state of North Dakota.",
-            "Led program that resulted in a digital repository of over 65,000 original title, easement, license, and lease documents/contracts reducing response time from months to minutes."
-          ]
-        }
-      ],
-      "education": [
-        {
-          "period": "2008 – 2010 MBA",
-          "degree": "Master of Business Administration",
-          "institution": "University of Minnesota, Carlson School of Management",
-          "focus": "Focus: Strategic Initiatives"
-        },
-        {
-          "period": "2006 – 2008 BA",
-          "degree": "Bachelor of Arts, Business Administration",
-          "institution": "Metropolitan State University",
-          "focus": "Focus: Business Administration"
-        },
-        {
-          "period": "1996 – 1998 AA",
-          "degree": "Associate of Arts, Mechanical Engineering",
-          "institution": "Century College",
-          "focus": "Focus: Mechanical Engineering"
-        }
-      ],
-      "techStacks": [
-        {
-          "title": "MICROSOFT",
-          "items": [
-            "Azure ALZ",
-            "Azure Logic Apps",
-            "Power BI",
-            "SharePoint",
-            "Entra ID",
-            "Power Automate",
-            "Power Platform",
-            "Visio"
-          ]
-        },
-        {
-          "title": "PLATFORMS",
-          "items": [
-            "Atlassian Bitbucket",
-            "Deltek Vantagepoint",
-            "ESRI",
-            "Safe / FME",
-            "Atlassian Jira",
-            "Deltek Vision",
-            "iCIMS",
-            "UKG Pro Core + BI"
-          ]
-        },
-        {
-          "title": "FRAMEWORKS",
-          "items": [
-            "Angular",
-            "GraphQL",
-            "Python / FastAPI",
-            "Next.js",
-            "Drupal",
-            "PHP",
-            "React",
-            "WordPress"
-          ]
-        }
-      ],
-      "pdfUrl": "assets/docs/charles-weise-resume.pdf"
-    }
   }
 ];

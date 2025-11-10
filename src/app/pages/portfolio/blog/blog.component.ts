@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { trigger, transition, style, animate } from '@angular/animations';
@@ -13,6 +14,7 @@ import { buildResponsiveImageSet, CARD_IMAGE_WIDTHS } from '../../../utils/image
   selector: 'app-blog',
   standalone: true,
   imports: [
+    CommonModule,
     MatIconModule,
     MatCheckboxModule
   ],
