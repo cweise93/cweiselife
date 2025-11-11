@@ -39,6 +39,34 @@ async function attachListItems(contentRows) {
   }));
 }
 
+async function attachResumeDetails(contentRows) {
+  const resumeIds = contentRows
+    .filter(row => row.contentType === 'resume')
+    .map(row => row.id);
+  if (!resumeIds.length) return contentRows;
+
+  const placeholders = resumeIds.map(() => '?').join(', ');
+  const resumeRows = await runQuery(
+    `SELECT content_id, details FROM resume_details WHERE content_id IN (${placeholders})`,
+    resumeIds
+  );
+
+  const resumeMap = resumeRows.reduce((acc, row) => {
+    try {
+      acc[row.content_id] = JSON.parse(row.details);
+    } catch (error) {
+      acc[row.content_id] = null;
+    }
+    return acc;
+  }, {});
+
+  return contentRows.map(row =>
+    resumeMap[row.id]
+      ? { ...row, resumeDetails: resumeMap[row.id] }
+      : row
+  );
+}
+
 function matchesDate(row, year, month, day) {
   if (!row?.date || (!year && !month && !day)) return true;
   const date = new Date(row.date);
@@ -63,7 +91,8 @@ router.get('/', async (req, res, next) => {
     sql += ' ORDER BY date DESC';
     const rows = await runQuery(sql, params);
     const withItems = await attachListItems(rows);
-    res.json(withItems);
+    const withResume = await attachResumeDetails(withItems);
+    res.json(withResume);
   } catch (error) {
     next(error);
   }
@@ -83,7 +112,8 @@ router.get('/:type/:slug', async (req, res, next) => {
     }
 
     const [withItems] = await attachListItems([filtered]);
-    res.json(withItems);
+    const [withResume] = await attachResumeDetails([withItems]);
+    res.json(withResume);
   } catch (error) {
     next(error);
   }

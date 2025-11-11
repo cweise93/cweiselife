@@ -38,7 +38,9 @@ export class ContentService {
   }
 
   private filterLocal(type?: string): Content[] {
-    return type ? localContent.filter(item => item.contentType === type) : localContent;
+    if (!type) return localContent;
+    const filtered = localContent.filter(item => item.contentType === type);
+    return filtered.length ? filtered : localContent;
   }
 
   private findLocal(

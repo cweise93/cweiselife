@@ -12,27 +12,41 @@ const getContentWithListItems = () => {
       db.all(`SELECT * FROM content_list_item`, [], (err, listRows) => {
         if (err) return reject(err);
 
-        // Group list items by content_id
-        const groupedItems = listRows.reduce((acc, row) => {
-          if (!acc[row.content_id]) acc[row.content_id] = [];
-          acc[row.content_id].push(row.item);
-          return acc;
-        }, {});
+        db.all(`SELECT * FROM resume_details`, [], (err, resumeRows) => {
+          if (err) return reject(err);
 
-        // Clean and attach list_items to each content object
-        const result = contentRows.map(row => {
-          const cleanedRow = {};
-          Object.entries(row).forEach(([key, value]) => {
-            if (value !== null && value !== '') {
-              cleanedRow[key] = value;
+          const groupedItems = listRows.reduce((acc, row) => {
+            if (!acc[row.content_id]) acc[row.content_id] = [];
+            acc[row.content_id].push(row.item);
+            return acc;
+          }, {});
+
+          const resumeMap = resumeRows.reduce((acc, row) => {
+            try {
+              acc[row.content_id] = JSON.parse(row.details);
+            } catch (error) {
+              acc[row.content_id] = null;
             }
+            return acc;
+          }, {});
+
+          const result = contentRows.map(row => {
+            const cleanedRow = {};
+            Object.entries(row).forEach(([key, value]) => {
+              if (value !== null && value !== '') {
+                cleanedRow[key] = value;
+              }
+            });
+
+            cleanedRow.list_items = groupedItems[row.id] || [];
+            if (resumeMap[row.id]) {
+              cleanedRow.resumeDetails = resumeMap[row.id];
+            }
+            return cleanedRow;
           });
 
-          cleanedRow.list_items = groupedItems[row.id] || [];
-          return cleanedRow;
+          resolve(result);
         });
-
-        resolve(result);
       });
     });
   });
