@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit, DestroyRef } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, DestroyRef, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
@@ -26,7 +26,8 @@ export class ResumeComponent implements OnInit {
 
   constructor(
     private readonly contentService: ContentService,
-    private readonly destroyRef: DestroyRef
+    private readonly destroyRef: DestroyRef,
+    private readonly cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -38,6 +39,7 @@ export class ResumeComponent implements OnInit {
         if (resumeContent?.title) {
           this.title = resumeContent.title;
         }
+        this.cdr.markForCheck();
       });
   }
 
