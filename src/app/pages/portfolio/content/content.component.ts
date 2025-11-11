@@ -1,5 +1,5 @@
 import { CommonModule, NgClass } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DestroyRef } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -13,6 +13,8 @@ import {
   HERO_IMAGE_WIDTHS
 } from '../../../utils/image-utils';
 import { SeoService } from '../../../services/seo.service';
+import { map, switchMap } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 export interface NavItem {
   title: string;
@@ -51,7 +53,8 @@ export class ContentComponent implements OnInit {
     private votingService: VotingService,
     private contentService: ContentService,
     private sanitizer: DomSanitizer,
-    private seo: SeoService
+    private seo: SeoService,
+    private destroyRef: DestroyRef
   ) {
   }
   getSafeHtml(html: string): SafeHtml {
@@ -63,15 +66,29 @@ export class ContentComponent implements OnInit {
     if (savedTheme) {
       this.setTheme(savedTheme);
     }
-    this.route.params.subscribe(params => {
-      const { type, slug } = params;
-      this.contentId = slug;
-      this.content = this.contentService.getDetails(type, slug);
-      this.voteCount = this.content?.votes || 0;
-      this.voted = this.votingService.getVoteStatus(slug);
-      this.selectedNavLink = this.getNavLinkFromType(type);
-      this.updateContentSeo(type);
-    });
+    this.route.params
+      .pipe(
+        switchMap(params => {
+          const { type, slug, year, month, day } = params as Record<string, string>;
+          this.contentId = slug;
+          this.selectedNavLink = this.getNavLinkFromType(type);
+          return this.contentService
+            .getDetails(type, slug, { year, month, day })
+            .pipe(map(content => ({ content, type, slug })));
+        }),
+        takeUntilDestroyed(this.destroyRef)
+      )
+      .subscribe(({ content, type, slug }) => {
+        this.content = content || null;
+        if (!content) {
+          this.voteCount = 0;
+          this.voted = false;
+          return;
+        }
+        this.voteCount = content.votes || 0;
+        this.voted = this.votingService.getVoteStatus(slug);
+        this.updateContentSeo(type);
+      });
   }
 
   toggleVote(): void {
@@ -86,8 +103,9 @@ export class ContentComponent implements OnInit {
 
   share(): void {
     const shareUrl = window.location.href;
+    const title = this.content?.title ?? 'Charles Weise';
     navigator.share
-      ? navigator.share({ title: this.content.title, url: shareUrl })
+      ? navigator.share({ title, url: shareUrl })
       : alert('Copy and share this URL:\n' + shareUrl);
   }
 

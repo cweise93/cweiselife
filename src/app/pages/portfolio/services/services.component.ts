@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DestroyRef } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { trigger, transition, style, animate } from '@angular/animations';
-import { content } from '../../../data/portfolio/content';
 import { Content } from '../../../data/portfolio/content.model';
 import { Router } from '@angular/router';
 import { buildResponsiveImageSet, CARD_IMAGE_WIDTHS } from '../../../utils/image-utils';
+import { ContentService } from '../../../services/content.service';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-services',
@@ -33,10 +34,17 @@ export class ServicesComponent implements OnInit {
   readonly cardImageSizes = '(max-width: 599px) 90vw, (max-width: 959px) 45vw, 320px';
 
   ngOnInit() {
-    this.content = content.filter(item => item.contentType == 'service');
+    this.contentService
+      .getContent('service')
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe(items => (this.content = items));
   }
   content: Content[] = [];
-  constructor(private router: Router){}
+  constructor(
+    private router: Router,
+    private contentService: ContentService,
+    private destroyRef: DestroyRef
+  ){}
 
   getCardImage(path?: string | null) {
     return buildResponsiveImageSet(path, this.cardImageWidths);
@@ -45,23 +53,24 @@ export class ServicesComponent implements OnInit {
     const service = this.content.find(b => b.id === serviceDetailsId);
     if (!service) return;
 
-    const { title, date } = service;
+    const { title, date, slug } = service;
     const serviceDate = new Date(date);
     const year = serviceDate.getFullYear();
     const month = String(serviceDate.getMonth() + 1).padStart(2, '0');
     const day = String(serviceDate.getDate()).padStart(2, '0');
 
-    const formattedTitle = title
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, '-')       // replace spaces/symbols with dashes
-      .replace(/^-+|-+$/g, '');           // remove leading/trailing dashes
+    const slugOrTitle = slug ||
+      title
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '');
 
     this.router.navigate([
       '/details/service',
       year,
       month,
       day,
-      formattedTitle
+      slugOrTitle
     ]);
   }
 }

@@ -1,10 +1,11 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, DestroyRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { ContentService } from '../../../services/content.service';
 import { ResumeDetails } from '../../../data/portfolio/content.model';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-resume',
@@ -23,14 +24,21 @@ export class ResumeComponent implements OnInit {
   resume: ResumeDetails | null = null;
   title = 'Resume';
 
-  constructor(private readonly contentService: ContentService) {}
+  constructor(
+    private readonly contentService: ContentService,
+    private readonly destroyRef: DestroyRef
+  ) {}
 
   ngOnInit(): void {
-    const resumeContent = this.contentService.getDetails('resume', 'charles-weise-resume');
-    this.resume = resumeContent?.resumeDetails ?? null;
-    if (resumeContent?.title) {
-      this.title = resumeContent.title;
-    }
+    this.contentService
+      .getDetails('resume', 'charles-weise-resume')
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe(resumeContent => {
+        this.resume = resumeContent?.resumeDetails ?? null;
+        if (resumeContent?.title) {
+          this.title = resumeContent.title;
+        }
+      });
   }
 
   trackByValue(_index: number, item: string): string {

@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DestroyRef } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { trigger, transition, style, animate } from '@angular/animations';
-import { content } from '../../../data/portfolio/content';
 import { Content } from '../../../data/portfolio/content.model';
 import { Router } from '@angular/router';
 import { buildResponsiveImageSet, CARD_IMAGE_WIDTHS } from '../../../utils/image-utils';
+import { ContentService } from '../../../services/content.service';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-projects',
@@ -30,10 +31,17 @@ export class ProjectsComponent implements OnInit {
   readonly cardImageSizes = '(max-width: 599px) 90vw, (max-width: 959px) 45vw, 320px';
 
   ngOnInit(){
-    this.content = content.filter(item => item.contentType === 'project');
+    this.contentService
+      .getContent('project')
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe(items => (this.content = items));
   }
   content: Content[] = [];
-  constructor(private router: Router){}
+  constructor(
+    private router: Router,
+    private contentService: ContentService,
+    private destroyRef: DestroyRef
+  ){}
 
   getCardImage(path?: string | null) {
     return buildResponsiveImageSet(path, this.cardImageWidths);
@@ -43,23 +51,24 @@ export class ProjectsComponent implements OnInit {
     const project = this.content.find(b => b.id === projectDetailsId);
     if (!project) return;
 
-    const { title, date } = project;
+    const { title, date, slug } = project;
     const projectDate = new Date(date);
     const year = projectDate.getFullYear();
     const month = String(projectDate.getMonth() + 1).padStart(2, '0');
     const day = String(projectDate.getDate()).padStart(2, '0');
 
-    const formattedTitle = title
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, '-')       // replace spaces/symbols with dashes
-      .replace(/^-+|-+$/g, '');           // remove leading/trailing dashes
+    const slugOrTitle = slug ||
+      title
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '');
 
     this.router.navigate([
       '/details/project',
       year,
       month,
       day,
-      formattedTitle
+      slugOrTitle
     ]);
   }
 }

@@ -37,26 +37,26 @@
     </mat-toolbar>
 
   <!-- Content Section -->
-  <div class="content-container">
+  <div class="content-container" *ngIf="content as data; else emptyState">
     <header class="header-image">
       <div class="image-wrapper">
-        @let blurredImage = getImageSet(content.bannerImageUrlZoom, backgroundImageWidths);
+        @let blurredImage = getImageSet(data.bannerImageUrlZoom, backgroundImageWidths);
         <img
           class="image-zoom-blur"
           [attr.src]="blurredImage.src"
           [attr.srcset]="blurredImage.srcset"
           [attr.sizes]="heroBackgroundSizes"
-          [attr.alt]="content.title + ' blurred background'"
+          [attr.alt]="data.title + ' blurred background'"
           decoding="async"
           loading="eager"
         />
-        @let foregroundImage = getImageSet(content.bannerImageUrl, heroImageWidths);
+        @let foregroundImage = getImageSet(data.bannerImageUrl, heroImageWidths);
         <img
           class="image-zoom-clear"
           [attr.src]="foregroundImage.src"
           [attr.srcset]="foregroundImage.srcset"
           [attr.sizes]="heroImageSizes"
-          [attr.alt]="content.title + ' hero artwork'"
+          [attr.alt]="data.title + ' hero artwork'"
           decoding="async"
           loading="eager"
         />
@@ -65,14 +65,14 @@
     </header>
     <div class="content-body">
       <div class="content-title">
-        <h1>{{content.title}}</h1>
+        <h1>{{data.title}}</h1>
       </div>
       <div class="content-meta">
         <div class="meta-row">
-          Words: {{content.author}}
+          Words: {{data.author}}
         </div>
         <div class="meta-row">
-          Published: {{content.date | date:'MM/dd/yyyy'}}
+          Published: {{data.date | date:'MM/dd/yyyy'}}
         </div>
         <div class="meta-row spread-apart">
           <div>
@@ -93,9 +93,14 @@
         </div>
       </div>
       <div class="content-voting">
-        {{content.voting}}
+        {{data.voting}}
       </div>
-      <div class="content-html" [innerHTML]="getSafeHtml(content.content)"></div>
+      <div class="content-html" [innerHTML]="getSafeHtml(data.content)"></div>
     </div>
   </div>
+  <ng-template #emptyState>
+    <div class="content-container empty">
+      <p>Content is unavailable right now. Please navigate back to select another article.</p>
+    </div>
+  </ng-template>
 </div>

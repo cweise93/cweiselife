@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DestroyRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { trigger, transition, style, animate } from '@angular/animations';
-import { content } from '../../../data/portfolio/content';
 import { Content } from '../../../data/portfolio/content.model';
 import { techPlatforms } from '../../../data/portfolio/techPlatforms';
 import { TechPlatform } from '../../../data/portfolio/techPlatforms.model';
 import { Router } from '@angular/router';
 import { buildResponsiveImageSet, CARD_IMAGE_WIDTHS } from '../../../utils/image-utils';
+import { ContentService } from '../../../services/content.service';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-blog',
@@ -37,12 +38,21 @@ export class BlogComponent implements OnInit {
   readonly cardImageSizes = '(max-width: 599px) 90vw, (max-width: 959px) 45vw, 320px';
 
   ngOnInit(): void {
-    this.content = content.filter(item => item.contentType === 'blog');
+    this.contentService
+      .getContent('blog')
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe(items => {
+        this.content = items;
+      });
     this.techPlatforms = techPlatforms;
   }
   techPlatforms: TechPlatform[] = []
   content: Content[] = [];
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private contentService: ContentService,
+    private destroyRef: DestroyRef
+  ) {}
 
   getCardImage(path?: string | null) {
     return buildResponsiveImageSet(path, this.cardImageWidths);
@@ -78,23 +88,24 @@ export class BlogComponent implements OnInit {
     const blog = this.content.find(b => b.id === blogDetailsId);
     if (!blog) return;
 
-    const { title, date } = blog;
+    const { title, date, slug } = blog;
     const blogDate = new Date(date);
     const year = blogDate.getFullYear();
     const month = String(blogDate.getMonth() + 1).padStart(2, '0');
     const day = String(blogDate.getDate()).padStart(2, '0');
 
-    const formattedTitle = title
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, '-')       // replace spaces/symbols with dashes
-      .replace(/^-+|-+$/g, '');           // remove leading/trailing dashes
+    const slugOrTitle = slug ||
+      title
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '');
 
     this.router.navigate([
       '/details/blog',
       year,
       month,
       day,
-      formattedTitle
+      slugOrTitle
     ]);
   }
 }
