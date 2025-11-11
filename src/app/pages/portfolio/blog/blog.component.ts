@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import { buildResponsiveImageSet, CARD_IMAGE_WIDTHS } from '../../../utils/image-utils';
 import { ContentService } from '../../../services/content.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { TelemetryService } from '../../../services/telemetry.service';
 
 @Component({
   selector: 'app-blog',
@@ -51,7 +52,8 @@ export class BlogComponent implements OnInit {
   constructor(
     private router: Router,
     private contentService: ContentService,
-    private destroyRef: DestroyRef
+    private destroyRef: DestroyRef,
+    private telemetry: TelemetryService
   ) {}
 
   getCardImage(path?: string | null) {
@@ -99,6 +101,12 @@ export class BlogComponent implements OnInit {
         .toLowerCase()
         .replace(/[^a-z0-9]+/g, '-')
         .replace(/^-+|-+$/g, '');
+
+    this.telemetry.trackEvent('blog_read_click', {
+      slug: slugOrTitle,
+      title,
+      date
+    });
 
     this.router.navigate([
       '/details/blog',

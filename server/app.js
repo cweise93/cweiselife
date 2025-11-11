@@ -2,9 +2,21 @@ const fs = require('fs');
 const path = require('path');
 const express = require('express');
 const cors = require('cors');
+const appInsights = require('applicationinsights');
 
 const config = require('./config');
 const apiRoutes = require('./routes');
+
+if (process.env.APPINSIGHTS_CONNECTION_STRING) {
+  appInsights
+    .setup(process.env.APPINSIGHTS_CONNECTION_STRING)
+    .setAutoCollectRequests(true)
+    .setAutoCollectPerformance(true)
+    .setAutoCollectExceptions(true)
+    .setSendLiveMetrics(false)
+    .setUseDiskRetryCaching(true)
+    .start();
+}
 
 const app = express();
 
