@@ -8,40 +8,32 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-
     steps:
-      # 1. Checkout the repository
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # 2. Setup Node.js environment
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20'
+          node-version: 20
 
-      # 3. Install project dependencies
       - name: Install dependencies
         run: npm ci
 
-      # 4. Install Angular CLI globally
       - name: Install Angular CLI
         run: npm install -g @angular/cli@16
 
-      # 5. Build the Angular app
       - name: Build Angular app
         run: ng build cweise-com-authority-hub --configuration production --output-path dist --base-href /cweiselife/
 
-      # 6. Debug build folder contents
-      - name: List build output
-        run: ls -R ./dist
-
-      # 7. Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4.1.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          publish_dir: ./dist/browser          # points directly to dist folder
           user_name: 'Charles Weise'
           user_email: 'YOUR_EMAIL_HERE'
           keep_history: true
+
+      - name: Debug dist folder
+        run: ls -R dist
