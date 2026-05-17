@@ -25,12 +25,12 @@ jobs:
         run: npm install -g @angular/cli
 
       - name: Build Angular app
-        run: ng build cweise-com-authority-hub --configuration production --output-path ./browser --base-href /cweise.com/
+        run: ng build cweise-com-authority-hub --configuration production --output-path ./ --base-href /cweise.com/
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4.1.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: .
+          publish_dir: ./
           user_name: 'Charles Weise'
           user_email: 'charles@example.com'
