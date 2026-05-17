@@ -8,9 +8,6 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./cweise-com-authority-hub  # Angular project folder
 
     steps:
       - name: Checkout repository
@@ -22,18 +19,18 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Install Angular CLI
         run: npm install -g @angular/cli
 
       - name: Build Angular app
-        run: ng build --configuration production --output-path ./browser
+        run: ng build cweise-com-authority-hub --configuration production --output-path ./browser --base-href /cweise.com/
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v5
+        uses: peaceiris/actions-gh-pages@v4.1.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./cweise-com-authority-hub/browser
+          publish_dir: ./browser
           user_name: 'Charles Weise'
-          user_email: 'your_email@example.com'
+          user_email: 'charles@example.com'
