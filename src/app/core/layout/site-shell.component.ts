@@ -19,7 +19,6 @@ const EMPTY_META: SiteMeta = {
   description: '',
   author: 'Charles Weise',
   footerTagline: 'Operational intelligence for complex organizations.',
-  footerBlurb: '',
   contactEmail: 'iweise@me.com'
 };
 

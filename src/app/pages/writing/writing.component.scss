@@ -22,6 +22,9 @@ h1 {
 
 .article-card {
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .article-card img {
@@ -31,7 +34,9 @@ h1 {
 }
 
 .article-card mat-card-content {
-  display: grid;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
   gap: 14px;
   padding: 20px;
 }
@@ -59,6 +64,12 @@ h2 a:hover {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+}
+
+.article-card .cw-link-action {
+  margin-top: auto;
+  padding-top: 10px;
+  align-self: flex-start;
 }
 
 .tag {

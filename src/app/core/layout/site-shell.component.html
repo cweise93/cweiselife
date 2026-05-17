@@ -24,31 +24,36 @@
     <section class="footer-brand">
       <h2>{{ siteMeta().siteName }}</h2>
       <p>{{ siteMeta().footerTagline }}</p>
-      <p>{{ siteMeta().footerBlurb }}</p>
       <p class="footer-copyright">© {{ currentYear }} {{ siteMeta().siteName }}</p>
     </section>
-    <section>
+    <section class="footer-nav">
       <h3>Navigation</h3>
-      @for (item of navigation().primary; track item.path) {
-        <a [routerLink]="item.path">{{ item.label }}</a>
-      }
+      <div class="footer-nav-columns">
+        @for (item of navigation().primary; track item.path) {
+          <a [routerLink]="item.path">{{ item.label }}</a>
+        }
+      </div>
+      <div class="footer-featured-links">
+        @for (item of footer().featuredLinks; track item.path) {
+          <a [routerLink]="item.path">{{ item.label }}</a>
+        }
+      </div>
     </section>
-    <section>
-      <h3>Featured</h3>
-      @for (item of footer().featuredLinks; track item.path) {
-        <a [routerLink]="item.path">{{ item.label }}</a>
-      }
-    </section>
-    <section>
+    <section class="footer-connect">
       <h3>Connect</h3>
-      @for (item of navigation().social; track item.url) {
-        <a [href]="item.url" target="_blank" rel="noreferrer">{{ item.label }}</a>
-      }
+      <div class="footer-connect-links">
+        @for (item of navigation().social; track item.url) {
+          <a [href]="item.url" target="_blank" rel="noreferrer">
+            <mat-icon>{{ item.icon }}</mat-icon>
+            <span>{{ item.label }}</span>
+          </a>
+        }
+      </div>
     </section>
-  </div>
-  <div class="cw-container footer-backtop">
-    <button mat-icon-button type="button" aria-label="Back to top" (click)="scrollToTop()">
-      <mat-icon>north</mat-icon>
-    </button>
+    <aside class="footer-backtop">
+      <button mat-icon-button type="button" aria-label="Back to top" (click)="scrollToTop()">
+        <mat-icon>north</mat-icon>
+      </button>
+    </aside>
   </div>
 </footer>

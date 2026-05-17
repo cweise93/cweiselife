@@ -255,7 +255,6 @@ export function mapSiteFile(value: any): SiteContentFile {
     description: asString(value?.meta?.description),
     author: asString(value?.meta?.author, 'Charles Weise'),
     footerTagline: asString(value?.meta?.footerTagline, 'Operational intelligence for complex organizations.'),
-    footerBlurb: asString(value?.meta?.footerBlurb),
     contactEmail: asString(value?.meta?.contactEmail, 'iweise@me.com')
   };
 
@@ -442,7 +441,6 @@ export const FALLBACK_SITE_CONTENT: SiteContentFile = mapSiteFile({
     description: 'Operational intelligence for engineering and infrastructure organizations.',
     author: 'Charles Weise',
     footerTagline: 'Operational intelligence for complex organizations.',
-    footerBlurb: 'Operational workflows, systems translation, and technology-enabled execution.',
     contactEmail: 'iweise@me.com'
   },
   home: {

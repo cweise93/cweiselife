@@ -23,7 +23,6 @@ export interface SiteMeta extends FileMeta {
   description: string;
   author: string;
   footerTagline: string;
-  footerBlurb: string;
   contactEmail: string;
 }
 

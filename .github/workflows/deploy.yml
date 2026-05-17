@@ -24,13 +24,14 @@ jobs:
         run: npm install -g @angular/cli@16
 
       - name: Build Angular app
-        run: ng build cweise-com-authority-hub --configuration production --output-path dist --base-href /cweiselife/
+        run: ng build cweise-com-authority-hub --configuration production --output-path dist --base-href /
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4.1.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist/browser          # points directly to dist folder
+          publish_dir: ./dist/browser
+          cname: cweise.com
           user_name: 'Charles Weise'
           user_email: 'YOUR_EMAIL_HERE'
           keep_history: true

@@ -274,12 +274,19 @@
     </div>
     <mat-card class="substack-card cw-dark-panel">
       <mat-card-content>
-        <p class="cw-eyebrow">{{ vm.connect.eyebrow }}</p>
-        <h2>{{ vm.connect.headline }}</h2>
-        <p>{{ vm.connect.intro }}</p>
-        <a mat-flat-button [href]="vm.connect.ctaUrl" target="_blank" rel="noreferrer">
-          {{ vm.connect.ctaLabel }} <mat-icon>open_in_new</mat-icon>
-        </a>
+        <div class="substack-card-grid">
+          <div class="substack-copy">
+            <p class="cw-eyebrow">{{ vm.connect.eyebrow }}</p>
+            <h2>{{ vm.connect.headline }}</h2>
+            <p>{{ vm.connect.intro }}</p>
+            <a mat-flat-button [href]="vm.connect.ctaUrl" target="_blank" rel="noreferrer">
+              {{ vm.connect.ctaLabel }} <mat-icon>open_in_new</mat-icon>
+            </a>
+          </div>
+          <div class="substack-visual" aria-hidden="true">
+            <img src="assets/images/stay-connected.png" alt="" />
+          </div>
+        </div>
       </mat-card-content>
     </mat-card>
   </div>

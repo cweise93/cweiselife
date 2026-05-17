@@ -18,7 +18,6 @@ const EMPTY_HOME: HomeContentViewModel = {
     description: '',
     author: 'Charles Weise',
     footerTagline: '',
-    footerBlurb: '',
     contactEmail: 'iweise@me.com'
   },
   navigation: { primary: [], social: [] },
