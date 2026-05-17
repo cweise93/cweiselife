@@ -3,15 +3,14 @@ name: Build and Deploy Angular to GitHub Pages
 on:
   push:
     branches:
-      - main
+      - main  # or your build trigger branch
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -25,19 +24,11 @@ jobs:
         run: npm install -g @angular/cli@16
 
       - name: Build Angular app
-        run: |
-          npx ng build cweise-com-authority-hub \
-            --configuration production \
-            --output-path dist/cweise-com-authority-hub \
-            --base-href /cweise.com/
-
-      - name: Ensure CNAME for custom domain
-        run: |
-          echo "cweise.com" > dist/cweise-com-authority-hub/CNAME
+        run: ng build --configuration production --output-path browser --base-href /cweise.com/
 
       - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
+        uses: peaceiris/actions-gh-pages@v6
         with:
-          branch: gh-pages
-          folder: dist/cweise-com-authority-hub
-          clean: true
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./browser
+          destination_branch: gh-pages
