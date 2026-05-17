@@ -3,36 +3,46 @@ name: Deploy Angular to GitHub Pages
 on:
   push:
     branches:
-      - main  # Trigger deployment from main branch
+      - main
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
+      # 1) Checkout the repository
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
+      # 2) Setup Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '22.x'
+          node-version: '20.x'
 
+      # 3) Install dependencies
       - name: Install dependencies
-        run: npm ci
+        run: |
+          cd cweise
+          npm ci
 
+      # 4) Install Angular CLI globally
       - name: Install Angular CLI
-        run: npm install -g @angular/cli
+        run: npm install -g @angular/cli@15
 
+      # 5) Build Angular project
       - name: Build Angular app
         run: |
-          cd cweiselife
-          ng build cweise-com-authority-hub --configuration production --output-path=dist/browser --base-href "/"
+          cd cweise
+          ng build cweise-com-authority-hub --configuration production --output-path=dist/cweise-com-authority-hub
 
+      # 6) Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./cweiselife/dist/browser
+          publish_dir: ./cweise/dist/cweise-com-authority-hub
           publish_branch: gh-pages
-          cname: cweise.com
+          user_name: 'cweise93'
+          user_email: 'cweise93@hotmail.com'
+          force_orphan: true
