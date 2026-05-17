@@ -1,5 +1,6 @@
 name: Build and Deploy Angular to GitHub Pages
 
+# Trigger workflow on pushes to main
 on:
   push:
     branches:
@@ -8,22 +9,28 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout repo
+      # 1. Checkout the repository
+      - name: Checkout repository
         uses: actions/checkout@v3
 
+      # 2. Setup Node.js environment
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 20
 
+      # 3. Install project dependencies
       - name: Install dependencies
         run: npm install
 
+      # 4. Build Angular app for production
       - name: Build Angular app
         run: |
-          npm run build -- --configuration production --output-path docs --base-href "/"
+          npm run build -- --project cweise-com-authority-hub --configuration production --output-path docs --base-href "/"
 
+      # 5. Deploy the contents of docs/ to gh-pages branch
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
