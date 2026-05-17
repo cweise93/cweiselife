@@ -1,39 +1,31 @@
 name: Build and Deploy Angular to GitHub Pages
-
 on:
   push:
     branches:
-      - main  # or the branch you want to trigger on
+      - main
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 20
+          node-version: '20'
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Install Angular CLI
-        run: npm install -g @angular/cli
-
       - name: Build Angular app
-        run: |
-          # Adjust baseHref if your site is served from a subpath
-          ng build cweise-com-authority-hub --configuration production --output-path browser --base-href /cweise.com/
-      
+        run: npm run build -- --configuration production --output-path dist/browser --base-href /cweise.com/
+
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v6
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./browser
-          publish_branch: gh-pages
-          user_name: "Charles Weise"
-          user_email: "YOUR_EMAIL_HERE@example.com"
+          publish_dir: ./dist/browser
+          user_name: 'Charles Weise'
+          user_email: 'youremail@example.com'
