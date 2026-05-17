@@ -26,13 +26,13 @@ jobs:
 
       - name: Build Angular app
         run: |
-          cd cweise_current
+          cd cweiselife
           ng build cweise-com-authority-hub --configuration production --output-path=dist/browser --base-href "/"
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./cweise_current/dist/browser
+          publish_dir: ./cweiselife/dist/browser
           publish_branch: gh-pages
           cname: cweise.com
