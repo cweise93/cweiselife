@@ -91,53 +91,53 @@
       </a>
     </div>
   </div>
-  <div class="cw-container writing-carousel-shell">
-    <div
-      class="writing-track"
-      [style.transform]="'translateX(-' + (currentWritingSlide() * 100) + '%)'"
-    >
-      @for (slide of writingSlides(); track $index) {
-        <div class="writing-slide" [style.--writing-cards-per-slide]="cardsPerSlide()">
-          @for (article of slide; track article.id) {
-            <mat-card appearance="outlined" class="article-card cw-surface-card">
-              <a class="article-media-link" [routerLink]="getWritingRoute(article)" [attr.aria-label]="'Read ' + article.title">
-                <img [src]="article.heroImage" [alt]="article.title" />
-              </a>
-              <mat-card-content>
-                <a
-                  class="article-icon cw-icon-badge"
-                  [routerLink]="getWritingRoute(article)"
-                  [attr.aria-label]="'Open ' + article.title"
-                >
-                  <mat-icon>article</mat-icon>
+  <div class="writing-carousel-region">
+    <div class="writing-carousel-shell">
+      <div
+        class="writing-track"
+        [style.transform]="'translateX(-' + (currentWritingSlide() * 100) + '%)'"
+      >
+        @for (slide of writingSlides(); track $index) {
+          <div class="writing-slide" [style.--writing-cards-per-slide]="cardsPerSlide()">
+            @for (article of slide; track article.id) {
+              <mat-card appearance="outlined" class="article-card cw-surface-card">
+                <a class="article-media-link" [routerLink]="getWritingRoute(article)" [attr.aria-label]="'Read ' + article.title">
+                  <img [src]="article.heroImage" [alt]="article.title" />
                 </a>
-                <div class="article-copy">
-                  <h3><a [routerLink]="getWritingRoute(article)">{{ article.title }}</a></h3>
-                  <p>{{ article.summary }}</p>
-                </div>
-                <div class="article-footer">
-                  <div class="cw-meta-row">
-                    <span>{{ article.publishedOn | date:'MMM d, y' }}</span>
-                    <span>{{ article.readTimeMinutes }} min read</span>
-                  </div>
+                <mat-card-content>
                   <a
-                    mat-icon-button
-                    class="article-cta"
+                    class="article-icon cw-icon-badge"
                     [routerLink]="getWritingRoute(article)"
-                    [attr.aria-label]="'Read ' + article.title"
+                    [attr.aria-label]="'Open ' + article.title"
                   >
-                    <mat-icon>arrow_forward</mat-icon>
+                    <mat-icon>article</mat-icon>
                   </a>
-                </div>
-              </mat-card-content>
-            </mat-card>
-          }
-        </div>
-      }
+                  <div class="article-copy">
+                    <h3><a [routerLink]="getWritingRoute(article)">{{ article.title }}</a></h3>
+                    <p>{{ article.summary }}</p>
+                  </div>
+                  <div class="article-footer">
+                    <div class="cw-meta-row">
+                      <span>{{ article.publishedOn | date:'MMM d, y' }}</span>
+                      <span>{{ article.readTimeMinutes }} min read</span>
+                    </div>
+                    <a
+                      mat-icon-button
+                      class="article-cta"
+                      [routerLink]="getWritingRoute(article)"
+                      [attr.aria-label]="'Read ' + article.title"
+                    >
+                      <mat-icon>arrow_forward</mat-icon>
+                    </a>
+                  </div>
+                </mat-card-content>
+              </mat-card>
+            }
+          </div>
+        }
+      </div>
     </div>
-  </div>
-  @if (hasWritingCarousel()) {
-    <div class="cw-container">
+    @if (hasWritingCarousel()) {
       <div class="writing-carousel-pagination" aria-label="Featured writing slide selection">
         @for (slide of writingSlides(); track $index; let index = $index) {
           <button
@@ -149,8 +149,8 @@
           ></button>
         }
       </div>
-    </div>
-  }
+    }
+  </div>
 </section>
 
 <section class="cw-section framework-feature">
@@ -208,7 +208,7 @@
       </a>
     </div>
   </div>
-  <div class="cw-container initiative-carousel-shell">
+  <div class="initiative-carousel-region">
     <div
       class="initiative-track"
       [style.transform]="'translateX(-' + (currentInitiativeSlide() * 100) + '%)'"
@@ -240,7 +240,7 @@
     </div>
   </div>
   @if (hasInitiativeCarousel()) {
-    <div class="cw-container">
+    <div class="initiative-carousel-region">
       <div class="initiative-carousel-pagination" aria-label="Initiative slide selection">
         @for (slide of initiativeSlides(); track $index; let index = $index) {
           <button

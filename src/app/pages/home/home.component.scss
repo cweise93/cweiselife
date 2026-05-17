@@ -1,3 +1,8 @@
+:host {
+  display: block;
+  overflow-x: hidden;
+}
+
 .hero {
   border-bottom: 1px solid var(--cw-line);
   background: linear-gradient(135deg, var(--cw-hero-base) 0%, var(--cw-hero-base) 53%, var(--cw-hero-mid) 53%, var(--cw-hero-edge) 100%);
@@ -110,7 +115,17 @@ h1 {
 .theme-card mat-card-content { padding: 28px 24px; }
 .theme-card h3 { margin: 28px 0 12px; line-height: 1.15; font-size: 1.3rem; }
 .theme-card p, .article-card p, .initiative-card p { color: var(--cw-muted); line-height: 1.65; }
-.writing-band { background: var(--cw-page); }
+.writing-band {
+  background:
+    linear-gradient(180deg, var(--cw-page) 0 152px, color-mix(in srgb, var(--cw-soft) 34%, white) 152px, color-mix(in srgb, var(--cw-page) 90%, var(--cw-soft)) 100%);
+}
+.writing-carousel-region {
+  width: 100%;
+  max-width: 100vw;
+  background:
+    linear-gradient(180deg, transparent 0 8px, color-mix(in srgb, var(--cw-soft) 34%, white) 8px, color-mix(in srgb, var(--cw-page) 90%, var(--cw-soft)) 100%);
+  overflow-x: hidden;
+}
 .cw-section-header__actions {
   display: flex;
   align-items: center;
@@ -148,7 +163,9 @@ h1 {
   min-width: 100%;
   display: grid;
   grid-template-columns: repeat(var(--writing-cards-per-slide), minmax(0, 1fr));
-  gap: 22px;
+  gap: clamp(20px, 1.8vw, 28px);
+  padding: 12px clamp(32px, 5vw, 72px) 20px;
+  box-sizing: border-box;
 }
 .article-card {
   overflow: visible;
@@ -236,7 +253,7 @@ h1 {
   display: flex;
   justify-content: center;
   gap: 10px;
-  margin-top: 26px;
+  margin-top: 8px;
 }
 .writing-carousel-dot {
   width: 10px;
@@ -278,6 +295,11 @@ h1 {
 .initiative-carousel-shell {
   overflow: hidden;
 }
+.initiative-carousel-region {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
 .initiative-track {
   display: flex;
   transition: transform .45s ease;
@@ -288,12 +310,15 @@ h1 {
   min-width: 100%;
   display: grid;
   grid-template-columns: repeat(var(--initiative-cards-per-slide), minmax(0, 1fr));
-  gap: 16px;
+  gap: clamp(20px, 1.8vw, 28px);
+  padding: 12px clamp(32px, 5vw, 72px) 20px;
+  box-sizing: border-box;
 }
 .initiative-card mat-card-content {
   padding: 28px 24px 24px;
-  display: grid;
-  grid-template-rows: auto minmax(0, 1fr) 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   gap: 18px;
   min-height: 290px;
   height: 100%;
@@ -327,8 +352,9 @@ h1 {
 }
 .initiative-copy {
   display: flex;
-  min-height: 0;
+  flex: 1 1 100%;
   flex-direction: column;
+  justify-content: center;
   gap: 16px;
 }
 .initiative-copy p {
@@ -336,6 +362,7 @@ h1 {
 }
 .initiative-footer {
   display: flex;
+  margin-top: auto;
   align-items: flex-end;
   justify-content: flex-end;
   min-height: 36px;
@@ -528,6 +555,14 @@ h1 {
   .article-card mat-card-content {
     padding-inline: 18px;
     padding-bottom: 18px;
+  }
+  .writing-slide {
+    gap: 18px;
+    padding-inline: 18px;
+  }
+  .initiative-slide {
+    gap: 18px;
+    padding-inline: 18px;
   }
 }
 @media (max-width: 640px) {

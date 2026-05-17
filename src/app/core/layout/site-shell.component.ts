@@ -37,6 +37,7 @@ export class SiteShellComponent {
   private readonly contentService = inject(ContentService);
   readonly currentYear = new Date().getFullYear();
   readonly isCompact = signal(false);
+  readonly mobileMenuOpen = signal(false);
   readonly themeMode = signal<ThemeMode>(this.readStoredTheme());
   readonly siteMeta = toSignal(this.contentService.getSiteMeta(), { initialValue: EMPTY_META });
   readonly navigation = toSignal(this.contentService.getNavigation(), { initialValue: EMPTY_NAVIGATION });
@@ -57,9 +58,24 @@ export class SiteShellComponent {
     window.localStorage.setItem('cw-theme-mode', nextTheme);
   }
 
+  toggleMobileMenu(): void {
+    this.mobileMenuOpen.update((open) => !open);
+  }
+
+  closeMobileMenu(): void {
+    this.mobileMenuOpen.set(false);
+  }
+
   @HostListener('window:scroll')
   onWindowScroll(): void {
     this.isCompact.set(window.scrollY > 24);
+  }
+
+  @HostListener('window:resize')
+  onWindowResize(): void {
+    if (window.innerWidth > 820 && this.mobileMenuOpen()) {
+      this.mobileMenuOpen.set(false);
+    }
   }
 
   private applyTheme(theme: ThemeMode): void {

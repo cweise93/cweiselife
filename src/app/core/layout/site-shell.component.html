@@ -1,5 +1,10 @@
 <mat-toolbar class="shell-toolbar" [class.shell-toolbar--compact]="isCompact()">
-  <a class="brand" routerLink="/" aria-label="cweise.com home">{{ siteMeta().siteName }}</a>
+  <a class="brand" routerLink="/" aria-label="cweise.com home">
+    <img
+      [src]="themeMode() === 'light' ? 'assets/images/cweise_logo_light_mode.svg' : 'assets/images/cweise_logo_dark_mode.svg'"
+      [alt]="siteMeta().siteName"
+    >
+  </a>
   <nav class="desktop-nav" aria-label="Primary navigation">
     @for (item of navigation().primary; track item.path) {
       <a
@@ -12,10 +17,37 @@
       </a>
     }
   </nav>
+  <button
+    mat-icon-button
+    type="button"
+    class="mobile-menu-toggle"
+    aria-label="Toggle navigation menu"
+    [attr.aria-expanded]="mobileMenuOpen()"
+    (click)="toggleMobileMenu()"
+  >
+    <mat-icon>{{ mobileMenuOpen() ? 'close' : 'menu' }}</mat-icon>
+  </button>
   <button mat-icon-button type="button" aria-label="Toggle color theme" (click)="toggleTheme()">
     <mat-icon>{{ themeMode() === 'light' ? 'dark_mode' : 'light_mode' }}</mat-icon>
   </button>
 </mat-toolbar>
+@if (mobileMenuOpen()) {
+  <div class="mobile-nav-panel" aria-label="Mobile navigation">
+    <nav class="mobile-nav">
+      @for (item of navigation().primary; track item.path) {
+        <a
+          mat-button
+          [routerLink]="item.path"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: item.path === '/' }"
+          (click)="closeMobileMenu()"
+        >
+          {{ item.label }}
+        </a>
+      }
+    </nav>
+  </div>
+}
 <main class="site-main">
   <ng-content />
 </main>
