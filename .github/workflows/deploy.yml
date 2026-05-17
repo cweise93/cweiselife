@@ -1,38 +1,43 @@
-name: Deploy Angular to GitHub Pages
+name: Build and Deploy Angular to GitHub Pages
 
 on:
   push:
     branches:
-      - main  # Trigger deployment when pushing to main
+      - main
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout the repo
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
-      # 2. Setup Node.js
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v3
         with:
           node-version: '20.x'
 
-      # 3. Install dependencies
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
-      # 4. Build Angular app for production
+      - name: Install Angular CLI
+        run: npm install -g @angular/cli@16
+
       - name: Build Angular app
-        run: npm run build -- --configuration production --base-href "/"
+        run: |
+          npx ng build cweise-com-authority-hub \
+            --configuration production \
+            --output-path dist/cweise-com-authority-hub \
+            --base-href /cweise.com/
 
-      # 5. Deploy to GitHub Pages
+      - name: Ensure CNAME for custom domain
+        run: |
+          echo "cweise.com" > dist/cweise-com-authority-hub/CNAME
+
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist/cweise-com-authority-hub
-          # If your angular.json outputPath changes, update this path accordingly
-          # make sure this path exists after 'ng build'
+          branch: gh-pages
+          folder: dist/cweise-com-authority-hub
+          clean: true
