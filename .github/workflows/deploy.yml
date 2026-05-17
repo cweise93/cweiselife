@@ -3,46 +3,36 @@ name: Deploy Angular to GitHub Pages
 on:
   push:
     branches:
-      - main
+      - main  # Trigger deployment when pushing to main
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      # 1) Checkout the repository
+      # 1. Checkout the repo
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2) Setup Node.js
+      # 2. Setup Node.js
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: '20.x'
 
-      # 3) Install dependencies
+      # 3. Install dependencies
       - name: Install dependencies
-        run: |
-          cd cweise
-          npm ci
+        run: npm install
 
-      # 4) Install Angular CLI globally
-      - name: Install Angular CLI
-        run: npm install -g @angular/cli@15
-
-      # 5) Build Angular project
+      # 4. Build Angular app for production
       - name: Build Angular app
-        run: |
-          cd cweise
-          ng build cweise-com-authority-hub --configuration production --output-path=dist/cweise-com-authority-hub
+        run: npm run build -- --configuration production --base-href "/"
 
-      # 6) Deploy to GitHub Pages
+      # 5. Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./cweise/dist/cweise-com-authority-hub
-          publish_branch: gh-pages
-          user_name: 'cweise93'
-          user_email: 'cweise93@hotmail.com'
-          force_orphan: true
+          publish_dir: ./dist/cweise-com-authority-hub
+          # If your angular.json outputPath changes, update this path accordingly
+          # make sure this path exists after 'ng build'
