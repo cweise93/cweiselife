@@ -43,7 +43,7 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist/cweise-homepage-angular
+          publish_dir: ./dist/cweise-com-authority-hub
           cname: cweise.com
           # Force deletion of previous files to avoid stale content
           force_orphan: true
