@@ -15,15 +15,15 @@ jobs:
         shell: bash
 
     steps:
-      # 1️⃣ Checkout repo
+      # 1️⃣ Checkout repository
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2️⃣ Setup Node.js
+      # 2️⃣ Setup Node.js v22 (required for Angular v21)
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 22
           cache: 'npm'
 
       # 3️⃣ Install dependencies
@@ -34,7 +34,7 @@ jobs:
       - name: Install Angular CLI
         run: npm install -g @angular/cli@21
 
-      # 5️⃣ Build Angular app
+      # 5️⃣ Build Angular app for production
       - name: Build Angular app
         run: |
           ng build --configuration production --base-href /
