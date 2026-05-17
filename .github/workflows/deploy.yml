@@ -15,11 +15,11 @@ jobs:
         shell: bash
 
     steps:
-      # 1️⃣ Checkout repository
-      - name: Checkout repo
+      # 1️⃣ Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2️⃣ Setup Node 18
+      # 2️⃣ Setup Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -34,16 +34,15 @@ jobs:
       - name: Install Angular CLI
         run: npm install -g @angular/cli@21
 
-      # 5️⃣ Build Angular app for production
+      # 5️⃣ Build Angular app
       - name: Build Angular app
         run: |
-          ng build --configuration production --base-href "/cweise.com/"
+          ng build --configuration production --base-href /
 
       # 6️⃣ Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v6
+        uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist/cweise-homepage-angular
-          # Optional: custom domain
           cname: cweise.com
