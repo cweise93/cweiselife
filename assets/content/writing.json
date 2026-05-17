@@ -17,7 +17,7 @@
       "readTimeMinutes": 6,
       "featured": true,
       "tags": ["operational intelligence", "execution", "decision systems"],
-      "heroImage": "assets/images/article-geometry.svg",
+      "heroImage": "assets/images/article-geometry.png",
       "seo": {
         "title": "Organizations Rarely Fail From a Lack of Intelligence",
         "description": "Why operational failure usually comes from signal breakdown and fragmented execution instead of a lack of insight."
@@ -60,7 +60,7 @@
       "readTimeMinutes": 7,
       "featured": true,
       "tags": ["translation", "workflow design", "rework"],
-      "heroImage": "assets/images/article-facets.svg",
+      "heroImage": "assets/images/article-facets.png",
       "seo": {
         "title": "Why Operational Friction Hides in Translation Layers",
         "description": "How strategy-to-execution translation layers quietly create friction, rework, and delivery drag."
@@ -102,7 +102,7 @@
       "readTimeMinutes": 5,
       "featured": true,
       "tags": ["signal", "frameworks", "decision quality"],
-      "heroImage": "assets/images/article-ripple.svg",
+      "heroImage": "assets/images/article-ripple.png",
       "seo": {
         "title": "Turn Down the Noise: Improving Signal in Decision Systems",
         "description": "A practical framework for reducing organizational noise and improving decision clarity."
@@ -144,7 +144,7 @@
       "readTimeMinutes": 8,
       "featured": false,
       "tags": ["executive follow-through", "ownership", "governance"],
-      "heroImage": "assets/images/article-geometry.svg",
+      "heroImage": "assets/images/article-geometry.png",
       "seo": {
         "title": "Executive Follow-Through Requires Ownership Architecture",
         "description": "Why leaders need explicit ownership architecture to convert strategy into follow-through."
@@ -179,7 +179,7 @@
       "readTimeMinutes": 6,
       "featured": false,
       "tags": ["draft"],
-      "heroImage": "assets/images/article-facets.svg",
+      "heroImage": "assets/images/article-facets.png",
       "seo": {
         "title": "Draft: Work Queues as an Executive Operating Surface",
         "description": "Draft essay."

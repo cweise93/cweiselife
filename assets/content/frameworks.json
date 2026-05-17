@@ -17,7 +17,7 @@
       "featured": true,
       "category": "Decision Quality",
       "tags": ["signal", "noise", "decision systems"],
-      "diagramImage": "assets/images/noise-framework.svg",
+      "diagramImage": "assets/images/noise-framework.png",
       "seo": {
         "title": "Turn Down the Noise Framework",
         "description": "A framework for reducing organizational noise and improving signal quality."
@@ -58,7 +58,7 @@
       "featured": true,
       "category": "Workflow Translation",
       "tags": ["systems translation", "strategy", "workflow design"],
-      "diagramImage": "assets/images/hero-architecture.svg",
+      "diagramImage": "assets/images/hero-architecture.png",
       "seo": {
         "title": "Systems Translation Loop",
         "description": "A framework for translating strategic intent into operational and technical execution."
