@@ -1,0 +1,138 @@
+{
+  "meta": {
+    "version": 1,
+    "updatedOn": "2026-05-16",
+    "eyebrow": "Initiatives",
+    "headline": "Proof of Execution",
+    "intro": "Representative initiative themes that show how operational intelligence, workflow design, and executive translation turn into practical execution work."
+  },
+  "items": [
+    {
+      "id": "initiative-001",
+      "slug": "operational-alignment-delivery-coordination",
+      "title": "Operational Alignment & Delivery Coordination",
+      "summary": "Cross-functional workflow and execution coordination across large, complex organizational environments.",
+      "status": "published",
+      "featured": true,
+      "domain": "Delivery Coordination",
+      "icon": "groups",
+      "tags": ["alignment", "coordination", "delivery"],
+      "thumbnail": "assets/images/hero-architecture.svg",
+      "seo": {
+        "title": "Operational Alignment & Delivery Coordination",
+        "description": "Cross-functional coordination initiatives for large delivery environments."
+      },
+      "body": {
+        "context": "Large organizations often carry strategy, program execution, and technical delivery on different operational rhythms.",
+        "challenge": "Without a coordinating operating layer, important work degrades into local optimization and escalation churn.",
+        "approach": "Build alignment structures that clarify ownership, sequence decisions, and reduce handoff ambiguity across teams.",
+        "outcome": "Leaders gain cleaner visibility into risk, teams work against clearer expectations, and delivery friction declines.",
+        "notes": [
+          "Best applied where cross-functional dependencies are frequent.",
+          "Most useful when teams need durable cadence rather than one-time rescue."
+        ]
+      }
+    },
+    {
+      "id": "initiative-002",
+      "slug": "systems-and-workflow-architecture",
+      "title": "Systems & Workflow Architecture",
+      "summary": "Designing operating models that reduce fragmentation between operational and technical teams.",
+      "status": "published",
+      "featured": true,
+      "domain": "Workflow Architecture",
+      "icon": "hub",
+      "tags": ["systems", "workflow", "architecture"],
+      "thumbnail": "assets/images/hero-architecture.svg",
+      "seo": {
+        "title": "Systems & Workflow Architecture",
+        "description": "Workflow and systems architecture initiatives for cleaner execution."
+      },
+      "body": {
+        "context": "Workflow problems often appear as system issues because the system is where process ambiguity becomes durable.",
+        "challenge": "Organizations patch symptoms inside tools while leaving the operating path itself underdesigned.",
+        "approach": "Treat systems and workflow as one design problem. Define the path, then encode it deliberately into the tools.",
+        "outcome": "Execution becomes easier to inspect, improve, and scale without relying on heroic coordination.",
+        "notes": [
+          "Good fit for organizations modernizing a legacy operating model.",
+          "Pairs well with architecture and delivery transformation work."
+        ]
+      }
+    },
+    {
+      "id": "initiative-003",
+      "slug": "executive-communication-and-operational-translation",
+      "title": "Executive Communication & Operational Translation",
+      "summary": "Structuring operational clarity across leadership, technical teams, and delivery stakeholders.",
+      "status": "published",
+      "featured": true,
+      "domain": "Executive Translation",
+      "icon": "forum",
+      "tags": ["communication", "leadership", "translation"],
+      "thumbnail": "assets/images/article-geometry.svg",
+      "seo": {
+        "title": "Executive Communication & Operational Translation",
+        "description": "Executive communication structures that improve operational clarity and follow-through."
+      },
+      "body": {
+        "context": "Leadership often sees summary without mechanism while delivery teams see mechanism without strategic context.",
+        "challenge": "That mismatch produces avoidable ambiguity, weak escalation, and delayed correction.",
+        "approach": "Design communication surfaces that preserve signal from the executive level through workflow execution.",
+        "outcome": "Decisions become easier to interpret and operational reality becomes easier to discuss honestly.",
+        "notes": [
+          "Useful during high-change periods or cross-functional initiatives.",
+          "Reduces the need for repeated interpretation meetings."
+        ]
+      }
+    },
+    {
+      "id": "initiative-004",
+      "slug": "operational-intelligence-exploration",
+      "title": "Operational Intelligence Exploration",
+      "summary": "Developing frameworks and tooling concepts around workflow visibility, organizational signal, and execution systems.",
+      "status": "published",
+      "featured": true,
+      "domain": "Operational Intelligence",
+      "icon": "insights",
+      "tags": ["operational intelligence", "signal", "tooling"],
+      "thumbnail": "assets/images/article-ripple.svg",
+      "seo": {
+        "title": "Operational Intelligence Exploration",
+        "description": "Exploration work around workflow visibility, signal, and execution systems."
+      },
+      "body": {
+        "context": "Operational intelligence is still underdeveloped as a practical discipline in many organizations.",
+        "challenge": "Teams need better ways to observe workflow health, detect friction, and translate findings into action.",
+        "approach": "Explore the models, evidence packages, and tooling patterns that make workflow intelligence more actionable.",
+        "outcome": "The result is a more explicit operating model for how organizations detect and correct execution breakdowns.",
+        "notes": [
+          "This work often feeds both thought leadership and practical operating design.",
+          "It is a proving ground for future frameworks."
+        ]
+      }
+    },
+    {
+      "id": "initiative-005",
+      "slug": "draft-client-signal-lab",
+      "title": "Draft: Client Signal Lab",
+      "summary": "Draft initiative concept.",
+      "status": "draft",
+      "featured": false,
+      "domain": "Draft",
+      "icon": "draft",
+      "tags": ["draft"],
+      "thumbnail": "assets/images/article-ripple.svg",
+      "seo": {
+        "title": "Draft: Client Signal Lab",
+        "description": "Draft initiative."
+      },
+      "body": {
+        "context": "Draft content.",
+        "challenge": "Draft content.",
+        "approach": "Draft content.",
+        "outcome": "Draft content.",
+        "notes": []
+      }
+    }
+  ]
+}

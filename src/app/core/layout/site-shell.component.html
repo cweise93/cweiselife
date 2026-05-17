@@ -1,0 +1,54 @@
+<mat-toolbar class="shell-toolbar" [class.shell-toolbar--compact]="isCompact()">
+  <a class="brand" routerLink="/" aria-label="cweise.com home">{{ siteMeta().siteName }}</a>
+  <nav class="desktop-nav" aria-label="Primary navigation">
+    @for (item of navigation().primary; track item.path) {
+      <a
+        mat-button
+        [routerLink]="item.path"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: item.path === '/' }"
+      >
+        {{ item.label }}
+      </a>
+    }
+  </nav>
+  <button mat-icon-button type="button" aria-label="Toggle color theme" (click)="toggleTheme()">
+    <mat-icon>{{ themeMode() === 'light' ? 'dark_mode' : 'light_mode' }}</mat-icon>
+  </button>
+</mat-toolbar>
+<main class="site-main">
+  <ng-content />
+</main>
+<footer class="site-footer">
+  <div class="cw-container footer-grid">
+    <section class="footer-brand">
+      <h2>{{ siteMeta().siteName }}</h2>
+      <p>{{ siteMeta().footerTagline }}</p>
+      <p>{{ siteMeta().footerBlurb }}</p>
+      <p class="footer-copyright">© {{ currentYear }} {{ siteMeta().siteName }}</p>
+    </section>
+    <section>
+      <h3>Navigation</h3>
+      @for (item of navigation().primary; track item.path) {
+        <a [routerLink]="item.path">{{ item.label }}</a>
+      }
+    </section>
+    <section>
+      <h3>Featured</h3>
+      @for (item of footer().featuredLinks; track item.path) {
+        <a [routerLink]="item.path">{{ item.label }}</a>
+      }
+    </section>
+    <section>
+      <h3>Connect</h3>
+      @for (item of navigation().social; track item.url) {
+        <a [href]="item.url" target="_blank" rel="noreferrer">{{ item.label }}</a>
+      }
+    </section>
+  </div>
+  <div class="cw-container footer-backtop">
+    <button mat-icon-button type="button" aria-label="Back to top" (click)="scrollToTop()">
+      <mat-icon>north</mat-icon>
+    </button>
+  </div>
+</footer>

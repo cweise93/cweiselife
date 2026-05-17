@@ -1,0 +1,123 @@
+{
+  "meta": {
+    "version": 1,
+    "updatedOn": "2026-05-16",
+    "siteName": "cweise.com",
+    "siteUrl": "https://cweise.com",
+    "title": "Operational Intelligence for Complex Organizations",
+    "description": "Operational intelligence, workflow design, and execution frameworks for engineering and infrastructure organizations.",
+    "author": "Charles Weise",
+    "footerTagline": "Operational intelligence for complex organizations.",
+    "footerBlurb": "Operational workflow design, systems translation, and executive follow-through for teams reducing rework, risk, and delivery gaps.",
+    "contactEmail": "iweise@me.com"
+  },
+  "home": {
+    "eyebrow": "Engineering & Infrastructure",
+    "headline": "Operational Intelligence for Complex Organizations",
+    "subheadline": "Reducing Rework, Risk, and Delivery Gaps",
+    "intro": [
+      "I study how complex organizations translate strategy into operational reality and why so many execution problems originate in workflow fragmentation, ownership ambiguity, disconnected systems, and signal loss.",
+      "My work focuses on operational intelligence: the intersection of systems thinking, delivery execution, organizational workflows, and technology-enabled operating models."
+    ],
+    "heroImage": "assets/images/hero-architecture.png",
+    "featuredWritingSlugs": [
+      "organizations-rarely-fail-from-a-lack-of-intelligence",
+      "why-operational-friction-hides-in-translation-layers",
+      "turn-down-the-noise-improving-signal-in-decision-systems"
+    ],
+    "featuredFrameworkSlugs": [
+      "turn-down-the-noise",
+      "systems-translation-loop"
+    ],
+    "featuredInitiativeSlugs": [
+      "operational-alignment-delivery-coordination",
+      "systems-and-workflow-architecture",
+      "executive-communication-and-operational-translation",
+      "operational-intelligence-exploration"
+    ],
+    "themes": [
+      {
+        "id": "operational-intelligence",
+        "icon": "center_focus_strong",
+        "title": "Operational Intelligence",
+        "description": "Understanding how information, workflows, systems, and decisions interact across delivery organizations."
+      },
+      {
+        "id": "delivery-friction",
+        "icon": "troubleshoot",
+        "title": "Delivery Friction",
+        "description": "Reducing rework, ambiguity, and execution gaps across complex operating environments."
+      },
+      {
+        "id": "systems-translation",
+        "icon": "sync_alt",
+        "title": "Systems Translation",
+        "description": "Bridging executive strategy, operational reality, and technical implementation."
+      },
+      {
+        "id": "workflow-design",
+        "icon": "account_tree",
+        "title": "Workflow Design",
+        "description": "Designing clearer operational paths across people, process, systems, and accountability."
+      },
+      {
+        "id": "technology-enabled-operations",
+        "icon": "layers",
+        "title": "Technology-Enabled Operations",
+        "description": "Using technology to support operating clarity rather than create additional complexity."
+      }
+    ],
+    "themesSection": {
+      "eyebrow": "Core Themes",
+      "headline": "Where I Focus",
+      "support": "The domains where operational intelligence creates the most value in complex engineering and infrastructure organizations."
+    },
+    "writingSection": {
+      "eyebrow": "Featured Writing",
+      "headline": "Recent Essays"
+    },
+    "frameworkSection": {
+      "eyebrow": "Featured Framework",
+      "headline": "Turn Down the Noise",
+      "support": "A simple but powerful model for improving decision quality and operational clarity."
+    },
+    "initiativesSection": {
+      "eyebrow": "Selected Initiatives",
+      "headline": "Proof of Execution"
+    },
+    "aboutSection": {
+      "eyebrow": "About",
+      "headline": "How I Think. What I Do."
+    }
+  },
+  "navigation": {
+    "primary": [
+      { "label": "Home", "path": "/" },
+      { "label": "Writing", "path": "/writing" },
+      { "label": "Frameworks", "path": "/frameworks" },
+      { "label": "Initiatives", "path": "/initiatives" },
+      { "label": "About", "path": "/about" },
+      { "label": "Connect", "path": "/connect" }
+    ],
+    "social": [
+      { "label": "LinkedIn", "url": "https://www.linkedin.com/in/cweise/", "icon": "work" },
+      { "label": "Substack", "url": "https://substack.com/@opsiq", "icon": "article" },
+      { "label": "Email", "url": "mailto:iweise@me.com", "icon": "mail" }
+    ]
+  },
+  "footer": {
+    "featuredLinks": [
+      { "label": "Operational Alignment & Delivery Coordination", "path": "/initiatives/operational-alignment-delivery-coordination" },
+      { "label": "Turn Down the Noise", "path": "/frameworks/turn-down-the-noise" },
+      { "label": "How I Think. What I Do.", "path": "/about" }
+    ]
+  },
+  "connect": {
+    "eyebrow": "Stay Connected",
+    "headline": "Thoughts on operations, systems, and execution.",
+    "intro": "Subscribe for essays and observations on operational intelligence, workflow design, and executive follow-through.",
+    "note": "The best fit for this site is practical operating insight: fewer slogans, more durable execution clarity.",
+    "ctaLabel": "Read on Substack",
+    "ctaUrl": "https://substack.com/@opsiq"
+  }
+}
