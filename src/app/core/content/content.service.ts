@@ -124,8 +124,11 @@ export class ContentService {
   }
 
   getFeaturedFrameworks(limit?: number): Observable<FrameworkItem[]> {
-    return combineLatest([this.siteFile$, this.getFrameworksIndex()]).pipe(
-      map(([site, items]) => resolveFeaturedItems(site.home.featuredFrameworkSlugs, items, limit))
+    return this.getFrameworksIndex().pipe(
+      map((items) => {
+        const maxItems = limit ?? 1;
+        return items.slice(0, maxItems);
+      })
     );
   }
 
