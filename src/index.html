@@ -12,6 +12,18 @@
   <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var redirectTarget = params.get('redirect');
+
+      if (!redirectTarget) {
+        return;
+      }
+
+      history.replaceState(null, '', redirectTarget);
+    })();
+  </script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
 </head>

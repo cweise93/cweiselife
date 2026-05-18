@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>cweise.com</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+    (function () {
+      var locationRef = window.location;
+      var redirectTarget = locationRef.pathname + locationRef.search + locationRef.hash;
+      var rootUrl =
+        locationRef.protocol +
+        '//' +
+        locationRef.hostname +
+        (locationRef.port ? ':' + locationRef.port : '') +
+        '/?redirect=' +
+        encodeURIComponent(redirectTarget);
+
+      window.location.replace(rootUrl);
+    })();
+  </script>
+</head>
+<body></body>
+</html>
