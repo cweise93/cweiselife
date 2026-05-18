@@ -142,7 +142,9 @@ function normalizeSectionBlocks(value: any): ContentSectionBlock[] {
           blocks.push({
             type: 'component',
             component,
-            fallback: asString(block?.fallback) || undefined
+            fallback: asString(block?.fallback) || undefined,
+            title: asString(block?.title) || undefined,
+            description: asString(block?.description) || undefined
           });
         }
         break;
@@ -185,6 +187,8 @@ function normalizeSections(value: any): ContentSection[] {
       paragraphs,
       image,
       component,
+      componentTitle: asString(section?.componentTitle) || undefined,
+      componentDescription: asString(section?.componentDescription) || undefined,
       fallback,
       callout
     });

@@ -1,0 +1,125 @@
+<section class="explorer-shell">
+  <header class="explorer-header">
+    <div class="explorer-copy">
+      <p class="explorer-eyebrow">Interactive Artifact</p>
+      <h3>{{ title() }}</h3>
+      <p class="explorer-description">{{ description() }}</p>
+    </div>
+    <button mat-stroked-button type="button" (click)="resetSelection()">Reset selection</button>
+  </header>
+
+  <div class="explorer-toolbar">
+    <div class="filter-chips" aria-label="Graph filters">
+      @for (item of filters; track item.key) {
+        <button
+          type="button"
+          class="filter-chip"
+          [class.filter-chip--active]="activeFilter() === item.key"
+          (click)="activeFilter.set(item.key)"
+        >
+          {{ item.label }}
+        </button>
+      }
+    </div>
+
+    <div class="legend">
+      @for (item of legendItems; track item.label) {
+        <div class="legend-item">
+          <span class="legend-swatch" [class]="'legend-swatch legend-swatch--' + item.className"></span>
+          <span>{{ item.label }}</span>
+        </div>
+      }
+    </div>
+  </div>
+
+  <div class="explorer-layout">
+    <section class="graph-card">
+      <div class="graph-stage" #graphSurface>
+        <svg #svgHost class="graph-svg" aria-label="Relationship value explorer graph"></svg>
+        @if (tooltip(); as tooltipState) {
+          <div
+            class="graph-tooltip"
+            [style.left.px]="tooltipState.x"
+            [style.top.px]="tooltipState.y"
+          >
+            <strong>{{ tooltipState.label }}</strong>
+            <span>{{ tooltipState.detail }}</span>
+          </div>
+        }
+      </div>
+      <p class="graph-note">
+        Select a client or opportunity to inspect current value, relationship ownership, and next-best connection.
+      </p>
+    </section>
+
+    <aside class="insight-card">
+      <p class="explorer-eyebrow">Executive Insight</p>
+
+      @if (selectedInsight(); as insight) {
+        <div class="insight-stack">
+          <section class="insight-block">
+            <h4>{{ insight.title }}</h4>
+            <p class="insight-type">{{ insight.typeLabel }}</p>
+            <p>{{ insight.summary }}</p>
+          </section>
+
+          @if (insight.currentServices?.length) {
+            <section class="insight-block">
+              <h5>Current services</h5>
+              <ul>
+                @for (item of insight.currentServices; track item) {
+                  <li>{{ item }}</li>
+                }
+              </ul>
+            </section>
+          }
+
+          @if (insight.whiteSpaceOpportunities?.length) {
+            <section class="insight-block">
+              <h5>White-space opportunities</h5>
+              <ul>
+                @for (item of insight.whiteSpaceOpportunities; track item) {
+                  <li>{{ item }}</li>
+                }
+              </ul>
+            </section>
+          }
+
+          @if (insight.relationshipOwner) {
+            <section class="insight-block">
+              <h5>Relationship owner</h5>
+              <p>{{ insight.relationshipOwner }}</p>
+            </section>
+          }
+
+          @if (insight.recommendedNextConnection) {
+            <section class="insight-block">
+              <h5>Recommended next-best connection</h5>
+              <p>{{ insight.recommendedNextConnection }}</p>
+            </section>
+          }
+
+          @if (insight.proofPoint) {
+            <section class="insight-block">
+              <h5>Relevant proof point</h5>
+              <p>{{ insight.proofPoint }}</p>
+            </section>
+          }
+
+          @if (insight.estimatedPotentialValue) {
+            <section class="insight-block">
+              <h5>Estimated potential value</h5>
+              <p>{{ insight.estimatedPotentialValue }}</p>
+            </section>
+          }
+        </div>
+      } @else {
+        <div class="insight-empty">
+          <p>
+            Select a client or opportunity to inspect current value, relationship ownership, and next-best connection.
+          </p>
+        </div>
+      }
+    </aside>
+  </div>
+</section>

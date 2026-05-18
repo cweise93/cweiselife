@@ -35,10 +35,14 @@ export interface ContentListBlock {
   items: string[];
 }
 
+export type InteractiveComponentKey = 'relationship-value-explorer';
+
 export interface ContentComponentBlock {
   type: 'component';
-  component: string;
+  component: InteractiveComponentKey | string;
   fallback?: string;
+  title?: string;
+  description?: string;
 }
 
 export type ContentSectionBlock =
@@ -61,7 +65,9 @@ export interface ContentSection {
   blocks?: ContentSectionBlock[];
   paragraphs?: string[];
   image?: ContentImage;
-  component?: string;
+  component?: InteractiveComponentKey | string;
+  componentTitle?: string;
+  componentDescription?: string;
   fallback?: string;
   callout?: string;
 }

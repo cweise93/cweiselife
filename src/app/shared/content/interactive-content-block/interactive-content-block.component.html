@@ -1,0 +1,14 @@
+@switch (registeredComponent()?.key) {
+  @case ('relationship-value-explorer') {
+    <app-relationship-value-explorer
+      [title]="title() || 'Relationship-Value Explorer'"
+      [description]="description() || 'Explore how client relationships, delivered services, employee expertise, and white-space opportunities connect into an actionable revenue intelligence graph.'"
+    />
+  }
+  @default {
+    <aside class="interactive-fallback">
+      <h3>{{ fallbackTitle() }}</h3>
+      <p>{{ fallbackDescription() }}</p>
+    </aside>
+  }
+}

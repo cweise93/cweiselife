@@ -1,0 +1,259 @@
+:host {
+  display: block;
+}
+
+.explorer-shell {
+  display: grid;
+  gap: 20px;
+  border: 1px solid var(--cw-line);
+  border-radius: 22px;
+  background: var(--cw-panel);
+  padding: 24px;
+}
+
+.explorer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.explorer-copy {
+  display: grid;
+  gap: 10px;
+}
+
+.explorer-eyebrow {
+  margin: 0;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cw-accent);
+}
+
+h3,
+h4,
+h5 {
+  margin: 0;
+  color: var(--cw-ink);
+}
+
+h3 {
+  font-size: clamp(1.45rem, 2vw, 1.85rem);
+  letter-spacing: -0.03em;
+}
+
+h4 {
+  font-size: 1.2rem;
+}
+
+h5 {
+  font-size: 0.92rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--cw-muted);
+}
+
+.explorer-description,
+.graph-note,
+.insight-card p,
+.insight-card li,
+.insight-type,
+.legend-item span {
+  margin: 0;
+  color: var(--cw-muted);
+  line-height: 1.65;
+}
+
+.explorer-toolbar {
+  display: grid;
+  gap: 16px;
+}
+
+.filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.filter-chip {
+  appearance: none;
+  border: 1px solid var(--cw-line);
+  background: transparent;
+  color: var(--cw-muted);
+  border-radius: 999px;
+  padding: 8px 12px;
+  font: inherit;
+  cursor: pointer;
+  transition: background-color 120ms ease, color 120ms ease, border-color 120ms ease;
+}
+
+.filter-chip--active {
+  border-color: color-mix(in srgb, var(--cw-accent) 40%, var(--cw-line));
+  background: color-mix(in srgb, var(--cw-accent) 10%, var(--cw-panel));
+  color: var(--cw-ink);
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 18px;
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.legend-swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  display: inline-block;
+  border: 1px solid rgba(12, 22, 34, 0.08);
+}
+
+.legend-swatch--client {
+  background: #173b66;
+}
+
+.legend-swatch--service {
+  background: #1f7c72;
+}
+
+.legend-swatch--employee {
+  background: #6d5fd1;
+}
+
+.legend-swatch--relationship-owner {
+  background: #b88c21;
+}
+
+.legend-swatch--opportunity {
+  background: #2c8d5a;
+}
+
+.legend-swatch--current-link,
+.legend-swatch--value-link {
+  background: #7d93b4;
+  border-radius: 3px;
+}
+
+.legend-swatch--opportunity-link {
+  background:
+    repeating-linear-gradient(
+      90deg,
+      #2c8d5a 0,
+      #2c8d5a 5px,
+      transparent 5px,
+      transparent 8px
+    );
+  border-radius: 3px;
+}
+
+.explorer-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
+  gap: 20px;
+}
+
+.graph-card,
+.insight-card {
+  border: 1px solid var(--cw-line);
+  border-radius: 18px;
+  background: color-mix(in srgb, var(--cw-panel) 88%, white);
+  padding: 18px;
+  display: grid;
+  gap: 14px;
+}
+
+.graph-stage {
+  position: relative;
+  min-height: 360px;
+  border-radius: 16px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(30, 60, 110, 0.08), transparent 32%),
+    linear-gradient(180deg, rgba(244, 248, 252, 0.92), rgba(236, 243, 249, 0.92));
+}
+
+.graph-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.graph-tooltip {
+  position: absolute;
+  z-index: 3;
+  pointer-events: none;
+  transform: translate(12px, 12px);
+  border: 1px solid var(--cw-line);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 14px 28px rgba(12, 22, 34, 0.12);
+  padding: 10px 12px;
+  display: grid;
+  gap: 4px;
+}
+
+.graph-tooltip strong,
+.graph-tooltip span {
+  color: var(--cw-ink);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.graph-tooltip span {
+  color: var(--cw-muted);
+}
+
+.insight-stack {
+  display: grid;
+  gap: 16px;
+}
+
+.insight-block {
+  display: grid;
+  gap: 8px;
+}
+
+.insight-block ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 6px;
+}
+
+.insight-type {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.insight-empty {
+  min-height: 160px;
+  display: grid;
+  align-content: start;
+}
+
+@media (max-width: 980px) {
+  .explorer-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .explorer-shell {
+    padding: 18px;
+  }
+
+  .explorer-header {
+    flex-direction: column;
+  }
+
+  .graph-stage {
+    min-height: 320px;
+  }
+}

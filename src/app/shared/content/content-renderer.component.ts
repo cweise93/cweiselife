@@ -1,7 +1,8 @@
-import { ChangeDetectionStrategy, Component, computed, input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { ContentSection, ContentSectionBlock } from '../../core/content/content.models';
+import { InteractiveContentBlockComponent } from './interactive-content-block/interactive-content-block.component';
 
 interface LightboxImage {
   src: string;
@@ -11,7 +12,7 @@ interface LightboxImage {
 
 @Component({
   selector: 'cw-content-renderer',
-  imports: [MatButtonModule, MatIconModule],
+  imports: [MatButtonModule, MatIconModule, InteractiveContentBlockComponent],
   template: `
     @for (section of sections(); track trackSection(section, $index)) {
       <section class="content-section" [id]="sectionId(section)">
@@ -47,13 +48,12 @@ interface LightboxImage {
         }
 
         @if (section.component) {
-          <div class="component-fallback">
-            @if (section.fallback) {
-              <p>{{ section.fallback }}</p>
-            } @else {
-              <p>{{ componentFallbackText(section.component) }}</p>
-            }
-          </div>
+          <app-interactive-content-block
+            [componentKey]="section.component"
+            [fallback]="section.fallback"
+            [title]="section.componentTitle"
+            [description]="section.componentDescription"
+          />
         }
 
         @if (section.blocks?.length) {
@@ -98,13 +98,12 @@ interface LightboxImage {
                 </div>
               }
               @case ('component') {
-                <div class="component-fallback">
-                  @if (block.fallback) {
-                    <p>{{ block.fallback }}</p>
-                  } @else {
-                    <p>{{ componentFallbackText(block.component) }}</p>
-                  }
-                </div>
+                <app-interactive-content-block
+                  [componentKey]="block.component"
+                  [fallback]="block.fallback"
+                  [title]="block.title"
+                  [description]="block.description"
+                />
               }
             }
           }
@@ -371,8 +370,6 @@ interface LightboxImage {
 })
 export class ContentRendererComponent {
   readonly sections = input.required<ContentSection[]>();
-
-  readonly normalizedSections = computed(() => this.sections());
   readonly activeImage = signal<LightboxImage | null>(null);
 
   trackSection(section: ContentSection, index: number): string {
@@ -399,14 +396,6 @@ export class ContentRendererComponent {
       .toLowerCase()
       .replace(/[^a-z0-9]+/g, '-')
       .replace(/^-+|-+$/g, '');
-  }
-
-  componentFallbackText(componentName: string): string {
-    if (componentName === 'relationship-value-explorer') {
-      return 'Interactive relationship-value explorer will render here.';
-    }
-
-    return `Component placeholder: ${componentName}`;
   }
 
   openImage(image: LightboxImage): void {
