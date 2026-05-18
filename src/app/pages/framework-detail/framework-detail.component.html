@@ -16,9 +16,30 @@
     }
   </section>
 
+  @if (coreQuestion()) {
+    <section class="framework-core-question-wrap">
+      <div class="cw-container">
+        <div class="framework-core-question">
+          <span class="framework-core-question__label">Core question</span>
+          <p>{{ coreQuestion() }}</p>
+        </div>
+      </div>
+    </section>
+  }
+
+  @if (snapshotItems().length || tocItems().length || fallbackSnapshotItems().length) {
+    <app-framework-sticky-context-bar
+      [snapshot]="snapshotItems().length ? snapshotItems() : fallbackSnapshotItems()"
+      [toc]="tocItems()"
+      [activeAnchor]="activeSectionAnchor()"
+      [activeLabel]="activeSectionLabel()"
+      (sectionSelected)="scrollToSection($event)"
+    />
+  }
+
   <section class="cw-section">
-    <div class="cw-container detail-grid">
-      <article class="prose">
+    <div class="cw-container framework-content-shell">
+      <article class="framework-main-content">
         <section class="body-section">
           <h2>Premise</h2>
           <p>{{ framework.body.premise }}</p>
@@ -44,15 +65,78 @@
 
         <cw-content-renderer [sections]="framework.body.sections" />
       </article>
-
-      <cw-companion-rail
-        [companion]="framework.companion ?? {}"
-        [category]="framework.category"
-        [publishedOn]="framework.publishedOn"
-        [tags]="framework.tags"
-      />
     </div>
   </section>
+
+  @if (callToActionItems().length || assetItems().length || relatedItems().length) {
+    <section class="cw-section framework-resources-wrap">
+      <div class="cw-container framework-resource-grid">
+        @if (callToActionItems().length) {
+          <section class="framework-resource-card">
+            <p class="resource-eyebrow">Live artifact</p>
+            @for (item of callToActionItems(); track item.title) {
+              <div class="resource-stack">
+                <h2>{{ item.title }}</h2>
+                <p>{{ item.description }}</p>
+                @if (item.href || item.anchor) {
+                  @if (item.anchor && !item.href) {
+                    <a mat-stroked-button [routerLink]="[]" [fragment]="item.anchor">
+                      {{ item.buttonLabel || 'Open' }}
+                    </a>
+                  } @else {
+                    <a mat-stroked-button [href]="item.href">
+                      {{ item.buttonLabel || 'Open' }}
+                    </a>
+                  }
+                }
+              </div>
+            }
+          </section>
+        }
+
+        @if (assetItems().length) {
+          <section class="framework-resource-card">
+            <p class="resource-eyebrow">Framework assets</p>
+            <div class="resource-link-list">
+              @for (item of assetItems(); track item.label) {
+                @if (isLocalAnchor(item.href)) {
+                  <a class="resource-link" [routerLink]="[]" [fragment]="anchorFromHref(item.href)">
+                    <span class="resource-link__label">{{ item.label }}</span>
+                    @if (item.description) {
+                      <span class="resource-link__description">{{ item.description }}</span>
+                    }
+                  </a>
+                } @else {
+                  <a class="resource-link" [href]="item.href">
+                    <span class="resource-link__label">{{ item.label }}</span>
+                    @if (item.description) {
+                      <span class="resource-link__description">{{ item.description }}</span>
+                    }
+                  </a>
+                }
+              }
+            </div>
+          </section>
+        }
+
+        @if (relatedItems().length) {
+          <section class="framework-resource-card">
+            <p class="resource-eyebrow">Related frameworks</p>
+            <div class="resource-link-list">
+              @for (item of relatedItems(); track item.slug) {
+                <a class="resource-link" [routerLink]="slugToRoute(item.slug)">
+                  <span class="resource-link__label">{{ item.title }}</span>
+                  @if (item.description) {
+                    <span class="resource-link__description">{{ item.description }}</span>
+                  }
+                </a>
+              }
+            </div>
+          </section>
+        }
+      </div>
+    </section>
+  }
 } @else {
   <section class="cw-section missing-state">
     <div class="cw-container">

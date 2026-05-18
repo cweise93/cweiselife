@@ -1,28 +1,36 @@
-<section class="explorer-shell">
-  <header class="explorer-header">
-    <div class="explorer-copy">
-      <p class="explorer-eyebrow">Interactive Artifact</p>
-      <h3>{{ title() }}</h3>
-      <p class="explorer-description">{{ description() }}</p>
+<section class="relationship-explorer">
+  <header class="relationship-explorer__header">
+    <div class="relationship-explorer__copy">
+      <p class="relationship-explorer__eyebrow">Interactive artifact</p>
+      <h3 class="relationship-explorer__title">{{ title() }}</h3>
+      <p class="relationship-explorer__subtitle">{{ description() }}</p>
     </div>
-    <button mat-stroked-button type="button" (click)="resetSelection()">Reset selection</button>
+
+    <div class="relationship-explorer__actions">
+      <button mat-stroked-button type="button" (click)="resetSelection()">
+        <mat-icon>restart_alt</mat-icon>
+        Reset
+      </button>
+      <button mat-stroked-button type="button" (click)="fitGraphToView()">
+        <mat-icon>center_focus_strong</mat-icon>
+        Fit graph
+      </button>
+    </div>
   </header>
 
-  <div class="explorer-toolbar">
-    <div class="filter-chips" aria-label="Graph filters">
+  <div class="relationship-explorer__controls">
+    <mat-button-toggle-group
+      class="relationship-explorer__filters"
+      [value]="activeFilter()"
+      (change)="onFilterChange($event)"
+      aria-label="Filter graph entities"
+    >
       @for (item of filters; track item.key) {
-        <button
-          type="button"
-          class="filter-chip"
-          [class.filter-chip--active]="activeFilter() === item.key"
-          (click)="activeFilter.set(item.key)"
-        >
-          {{ item.label }}
-        </button>
+        <mat-button-toggle [value]="item.key">{{ item.label }}</mat-button-toggle>
       }
-    </div>
+    </mat-button-toggle-group>
 
-    <div class="legend">
+    <div class="relationship-explorer__legend" aria-label="Graph legend">
       @for (item of legendItems; track item.label) {
         <div class="legend-item">
           <span class="legend-swatch" [class]="'legend-swatch legend-swatch--' + item.className"></span>
@@ -32,10 +40,30 @@
     </div>
   </div>
 
-  <div class="explorer-layout">
+  <div class="relationship-explorer__hint">
+    Scroll page normally. Hold Ctrl/⌘ + scroll to zoom the map.
+  </div>
+
+  <div class="relationship-explorer__body">
     <section class="graph-card">
-      <div class="graph-stage" #graphSurface>
+      <div class="graph-canvas" #graphSurface>
+        <div class="graph-canvas__controls" aria-label="Graph controls">
+          <button mat-icon-button type="button" aria-label="Zoom in" (click)="zoomIn()">
+            <mat-icon>add</mat-icon>
+          </button>
+          <button mat-icon-button type="button" aria-label="Zoom out" (click)="zoomOut()">
+            <mat-icon>remove</mat-icon>
+          </button>
+          <button mat-icon-button type="button" aria-label="Fit graph" (click)="fitGraphToView()">
+            <mat-icon>center_focus_strong</mat-icon>
+          </button>
+          <button mat-icon-button type="button" aria-label="Reset selection" (click)="resetSelection()">
+            <mat-icon>restart_alt</mat-icon>
+          </button>
+        </div>
+
         <svg #svgHost class="graph-svg" aria-label="Relationship value explorer graph"></svg>
+
         @if (tooltip(); as tooltipState) {
           <div
             class="graph-tooltip"
@@ -47,13 +75,10 @@
           </div>
         }
       </div>
-      <p class="graph-note">
-        Select a client or opportunity to inspect current value, relationship ownership, and next-best connection.
-      </p>
     </section>
 
     <aside class="insight-card">
-      <p class="explorer-eyebrow">Executive Insight</p>
+      <p class="relationship-explorer__eyebrow">Executive insight</p>
 
       @if (selectedInsight(); as insight) {
         <div class="insight-stack">
@@ -63,61 +88,59 @@
             <p>{{ insight.summary }}</p>
           </section>
 
-          @if (insight.currentServices?.length) {
+          @if (insight.contextItems.length) {
             <section class="insight-block">
-              <h5>Current services</h5>
+              <h5>Context</h5>
               <ul>
-                @for (item of insight.currentServices; track item) {
+                @for (item of insight.contextItems; track item) {
                   <li>{{ item }}</li>
                 }
               </ul>
             </section>
           }
 
-          @if (insight.whiteSpaceOpportunities?.length) {
+          @if (insight.currentStateItems.length) {
             <section class="insight-block">
-              <h5>White-space opportunities</h5>
+              <h5>Current state</h5>
               <ul>
-                @for (item of insight.whiteSpaceOpportunities; track item) {
+                @for (item of insight.currentStateItems; track item) {
                   <li>{{ item }}</li>
                 }
               </ul>
             </section>
           }
 
-          @if (insight.relationshipOwner) {
+          @if (insight.opportunityItems.length) {
             <section class="insight-block">
-              <h5>Relationship owner</h5>
-              <p>{{ insight.relationshipOwner }}</p>
+              <h5>Opportunity</h5>
+              <ul>
+                @for (item of insight.opportunityItems; track item) {
+                  <li>{{ item }}</li>
+                }
+              </ul>
             </section>
           }
 
-          @if (insight.recommendedNextConnection) {
+          @if (insight.nextActionItems.length) {
             <section class="insight-block">
-              <h5>Recommended next-best connection</h5>
-              <p>{{ insight.recommendedNextConnection }}</p>
-            </section>
-          }
-
-          @if (insight.proofPoint) {
-            <section class="insight-block">
-              <h5>Relevant proof point</h5>
-              <p>{{ insight.proofPoint }}</p>
-            </section>
-          }
-
-          @if (insight.estimatedPotentialValue) {
-            <section class="insight-block">
-              <h5>Estimated potential value</h5>
-              <p>{{ insight.estimatedPotentialValue }}</p>
+              <h5>Next action</h5>
+              <ul>
+                @for (item of insight.nextActionItems; track item) {
+                  <li>{{ item }}</li>
+                }
+              </ul>
             </section>
           }
         </div>
       } @else {
         <div class="insight-empty">
-          <p>
-            Select a client or opportunity to inspect current value, relationship ownership, and next-best connection.
-          </p>
+          <p>Select a client, service, person, or opportunity.</p>
+          <ul>
+            <li>Clients reveal current services, owners, and white-space paths.</li>
+            <li>Services reveal connected clients and delivery expertise.</li>
+            <li>People reveal delivery capability and relationship gaps.</li>
+            <li>Opportunities reveal proof point, connector, and next action.</li>
+          </ul>
         </div>
       }
     </aside>

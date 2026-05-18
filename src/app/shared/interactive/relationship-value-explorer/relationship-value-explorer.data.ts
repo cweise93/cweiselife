@@ -41,6 +41,19 @@ export interface RelationshipGraphData {
   links: RelationshipLink[];
 }
 
+export const RELATIONSHIP_VALUE_COLORS = {
+  client: '#174A7C',
+  service: '#16877A',
+  employee: '#6D5BD0',
+  relationshipOwner: '#C28A17',
+  opportunity: '#2E8F55',
+  valueSignal: '#D94A38',
+  currentLink: '#7F93AD',
+  whiteSpaceLink: '#2E8F55',
+  nextBestConnection: '#C28A17',
+  muted: '#CBD5E1'
+} as const;
+
 export const RELATIONSHIP_VALUE_DEMO_DATA: RelationshipGraphData = {
   nodes: [
     {

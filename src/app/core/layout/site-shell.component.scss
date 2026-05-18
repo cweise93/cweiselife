@@ -89,7 +89,7 @@
 
 .mobile-nav-panel {
   position: fixed;
-  top: var(--cw-toolbar-height);
+  top: var(--cw-toolbar-current-height, var(--cw-toolbar-height));
   left: 0;
   right: 0;
   z-index: 19;

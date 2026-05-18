@@ -152,7 +152,7 @@ interface LightboxImage {
     .content-section {
       display: grid;
       gap: 16px;
-      scroll-margin-top: calc(var(--cw-toolbar-height) + 24px);
+      scroll-margin-top: calc(var(--cw-toolbar-current-height, var(--cw-toolbar-height)) + var(--framework-context-bar-height, 0px) + 24px);
     }
 
     .content-section-eyebrow {
@@ -192,6 +192,7 @@ interface LightboxImage {
       margin: 4px 0 0;
       display: grid;
       gap: 10px;
+      width: min(100%, 1120px);
     }
 
     .content-image-button {
@@ -230,6 +231,18 @@ interface LightboxImage {
       padding: 20px 22px;
       display: grid;
       gap: 10px;
+      max-width: 860px;
+    }
+
+    app-interactive-content-block {
+      display: block;
+      width: min(100%, 1120px);
+    }
+
+    .content-section > p,
+    .content-section > .section-intro,
+    .content-section > blockquote {
+      max-width: 860px;
     }
 
     .content-callout[data-tone='executive'] {

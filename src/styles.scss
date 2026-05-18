@@ -62,6 +62,7 @@ $brand-theme: mat.m2-define-light-theme((
   --cw-shadow: 0 18px 40px rgba(7, 24, 39, 0.06);
   --cw-radius: 18px;
   --cw-toolbar-height: 72px;
+  --cw-toolbar-current-height: 72px;
   --cw-content-max: 1280px;
   --cw-reading-max: 72ch;
   --cw-toolbar-surface: rgba(255, 255, 255, .92);
@@ -229,6 +230,7 @@ body.cw-theme-dusk .cw-dark-panel {
 @media (max-width: 820px) {
   :root {
     --cw-toolbar-height: 116px;
+    --cw-toolbar-current-height: 116px;
   }
 
   .cw-container {

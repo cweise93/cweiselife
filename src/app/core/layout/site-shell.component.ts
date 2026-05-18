@@ -45,6 +45,7 @@ export class SiteShellComponent {
 
   constructor() {
     this.applyTheme(this.themeMode());
+    this.updateToolbarHeightVariable();
   }
 
   scrollToTop(): void {
@@ -69,6 +70,7 @@ export class SiteShellComponent {
   @HostListener('window:scroll')
   onWindowScroll(): void {
     this.isCompact.set(window.scrollY > 24);
+    this.updateToolbarHeightVariable();
   }
 
   @HostListener('window:resize')
@@ -76,6 +78,8 @@ export class SiteShellComponent {
     if (window.innerWidth > 820 && this.mobileMenuOpen()) {
       this.mobileMenuOpen.set(false);
     }
+
+    this.updateToolbarHeightVariable();
   }
 
   private applyTheme(theme: ThemeMode): void {
@@ -87,5 +91,12 @@ export class SiteShellComponent {
   private readStoredTheme(): ThemeMode {
     const stored = window.localStorage.getItem('cw-theme-mode');
     return stored === 'dusk' ? 'dusk' : 'light';
+  }
+
+  private updateToolbarHeightVariable(): void {
+    const root = this.document.documentElement;
+    const isMobile = window.innerWidth <= 820;
+    const height = this.isCompact() ? 58 : isMobile ? 116 : 72;
+    root.style.setProperty('--cw-toolbar-current-height', `${height}px`);
   }
 }

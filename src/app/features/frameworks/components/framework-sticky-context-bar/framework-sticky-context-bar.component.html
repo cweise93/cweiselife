@@ -1,0 +1,53 @@
+<div class="framework-context-bar" aria-label="Framework context and section navigation">
+  <div class="cw-container framework-context-bar__inner">
+    <div class="context-cell">
+      <span class="context-cell__label">Category</span>
+      <span class="context-cell__value">{{ category() }}</span>
+    </div>
+
+    <div class="context-cell">
+      <span class="context-cell__label">Best for</span>
+      <span class="context-cell__value">{{ bestFor() }}</span>
+    </div>
+
+    <button
+      type="button"
+      class="context-cell context-cell--section"
+      [matMenuTriggerFor]="sectionMenu"
+      aria-label="Choose framework section"
+    >
+      <span class="context-cell__label">Current section</span>
+      <span class="context-cell__value">
+        <span class="context-cell__value-text">{{ currentSectionLabel() }}</span>
+        <mat-icon aria-hidden="true">expand_more</mat-icon>
+      </span>
+    </button>
+
+    <mat-menu #sectionMenu="matMenu" class="framework-section-menu">
+      @for (item of toc(); track item.anchor) {
+        <button
+          mat-menu-item
+          type="button"
+          [class.is-active]="item.anchor === activeAnchor()"
+          [attr.aria-current]="item.anchor === activeAnchor() ? 'true' : null"
+          (click)="selectSection(item)"
+        >
+          <span>{{ item.label }}</span>
+          @if (item.anchor === activeAnchor()) {
+            <mat-icon aria-hidden="true">check</mat-icon>
+          }
+        </button>
+      }
+    </mat-menu>
+
+    <div class="context-cell">
+      <span class="context-cell__label">Primary artifact</span>
+      <span class="context-cell__value">{{ primaryArtifact() }}</span>
+    </div>
+
+    <div class="context-cell">
+      <span class="context-cell__label">Method</span>
+      <span class="context-cell__value">{{ method() }}</span>
+    </div>
+  </div>
+</div>

@@ -12,8 +12,11 @@ import {
   viewChild
 } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatButtonToggleChange, MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatIconModule } from '@angular/material/icon';
 import * as d3 from 'd3';
 import {
+  RELATIONSHIP_VALUE_COLORS,
   RELATIONSHIP_VALUE_DEMO_DATA,
   RelationshipGraphData,
   RelationshipLink,
@@ -34,17 +37,15 @@ interface InsightViewModel {
   title: string;
   typeLabel: string;
   summary: string;
-  currentServices?: string[];
-  whiteSpaceOpportunities?: string[];
-  relationshipOwner?: string;
-  recommendedNextConnection?: string;
-  proofPoint?: string;
-  estimatedPotentialValue?: string;
+  contextItems: string[];
+  currentStateItems: string[];
+  opportunityItems: string[];
+  nextActionItems: string[];
 }
 
 @Component({
   selector: 'app-relationship-value-explorer',
-  imports: [MatButtonModule],
+  imports: [MatButtonModule, MatButtonToggleModule, MatIconModule],
   templateUrl: './relationship-value-explorer.component.html',
   styleUrl: './relationship-value-explorer.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -56,13 +57,15 @@ export class RelationshipValueExplorerComponent {
   );
 
   private readonly destroyRef = inject(DestroyRef);
+  private readonly hostRef = inject(ElementRef<HTMLElement>);
   private readonly svgRef = viewChild.required<ElementRef<SVGSVGElement>>('svgHost');
   private readonly graphSurfaceRef = viewChild.required<ElementRef<HTMLDivElement>>('graphSurface');
   private readonly data = this.cloneGraphData(RELATIONSHIP_VALUE_DEMO_DATA);
   private readonly nodeMap = new Map(this.data.nodes.map((node) => [node.id, node]));
-  private resizeObserver?: ResizeObserver;
 
+  private resizeObserver?: ResizeObserver;
   private svg?: d3.Selection<SVGSVGElement, unknown, null, undefined>;
+  private graphGroup?: d3.Selection<SVGGElement, unknown, null, undefined>;
   private linksLayer?: d3.Selection<SVGGElement, unknown, null, undefined>;
   private nodesLayer?: d3.Selection<SVGGElement, unknown, null, undefined>;
   private labelsLayer?: d3.Selection<SVGGElement, unknown, null, undefined>;
@@ -70,7 +73,10 @@ export class RelationshipValueExplorerComponent {
   private linkSelection?: d3.Selection<SVGLineElement, RelationshipLink, SVGGElement, unknown>;
   private nodeSelection?: d3.Selection<SVGCircleElement, RelationshipNode, SVGGElement, unknown>;
   private labelSelection?: d3.Selection<SVGTextElement, RelationshipNode, SVGGElement, unknown>;
-  private dimensions = signal({ width: 920, height: 560 });
+  private zoomBehavior?: d3.ZoomBehavior<SVGSVGElement, unknown>;
+  private currentTransform = d3.zoomIdentity;
+  private initialFitComplete = false;
+  private dimensions = signal({ width: 920, height: 620 });
 
   readonly activeFilter = signal<FilterKey>('all');
   readonly selectedNodeId = signal<string | null>(null);
@@ -82,9 +88,9 @@ export class RelationshipValueExplorerComponent {
     { label: 'Employee', className: 'employee' },
     { label: 'Relationship owner', className: 'relationship-owner' },
     { label: 'Opportunity', className: 'opportunity' },
-    { label: 'Solid line = current relationship/service', className: 'current-link' },
-    { label: 'Dotted line = white-space opportunity', className: 'opportunity-link' },
-    { label: 'Thick line = higher value', className: 'value-link' }
+    { label: 'Solid = current', className: 'current-link' },
+    { label: 'Dotted = white space', className: 'opportunity-link' },
+    { label: 'Thick = higher value', className: 'value-link' }
   ];
 
   readonly filters: { key: FilterKey; label: string }[] = [
@@ -118,6 +124,79 @@ export class RelationshipValueExplorerComponent {
   resetSelection(): void {
     this.selectedNodeId.set(null);
     this.activeFilter.set('all');
+    this.applySelectionState();
+  }
+
+  setFilter(filter: FilterKey): void {
+    this.activeFilter.set(filter);
+  }
+
+  onFilterChange(event: MatButtonToggleChange): void {
+    const value = event.value as FilterKey | undefined;
+    if (value) {
+      this.setFilter(value);
+    }
+  }
+
+  zoomIn(): void {
+    if (!this.svg || !this.zoomBehavior) {
+      return;
+    }
+
+    this.svg
+      .transition()
+      .duration(180)
+      .call(this.zoomBehavior.scaleBy, 1.15);
+  }
+
+  zoomOut(): void {
+    if (!this.svg || !this.zoomBehavior) {
+      return;
+    }
+
+    this.svg
+      .transition()
+      .duration(180)
+      .call(this.zoomBehavior.scaleBy, 1 / 1.15);
+  }
+
+  fitGraphToView(animate = true): void {
+    if (!this.svg || !this.zoomBehavior || !this.graphGroup) {
+      return;
+    }
+
+    const nodes = this.data.nodes.filter(
+      (node): node is RelationshipNode & { x: number; y: number } =>
+        typeof node.x === 'number' && typeof node.y === 'number'
+    );
+
+    if (!nodes.length) {
+      return;
+    }
+
+    const minX = d3.min(nodes, (node) => node.x) ?? 0;
+    const maxX = d3.max(nodes, (node) => node.x) ?? 0;
+    const minY = d3.min(nodes, (node) => node.y) ?? 0;
+    const maxY = d3.max(nodes, (node) => node.y) ?? 0;
+
+    const width = this.dimensions().width;
+    const height = this.dimensions().height;
+    const contentWidth = Math.max(maxX - minX, 1);
+    const contentHeight = Math.max(maxY - minY, 1);
+    const padding = 72;
+    const scale = Math.max(
+      0.5,
+      Math.min(
+        1.75,
+        Math.min((width - padding * 2) / contentWidth, (height - padding * 2) / contentHeight)
+      )
+    );
+    const translateX = width / 2 - scale * (minX + contentWidth / 2);
+    const translateY = height / 2 - scale * (minY + contentHeight / 2);
+    const transform = d3.zoomIdentity.translate(translateX, translateY).scale(scale);
+
+    const selection = animate ? this.svg.transition().duration(220) : this.svg;
+    selection.call(this.zoomBehavior.transform, transform);
   }
 
   private cloneGraphData(data: RelationshipGraphData): RelationshipGraphData {
@@ -131,11 +210,18 @@ export class RelationshipValueExplorerComponent {
     const svgElement = this.svgRef().nativeElement;
     this.svg = d3.select(svgElement);
     this.svg.selectAll('*').remove();
-    this.svg.on('click', () => this.selectedNodeId.set(null));
+    this.svg.on('click', (event) => {
+      if (event.target === svgElement) {
+        this.selectedNodeId.set(null);
+      }
+    });
 
-    this.linksLayer = this.svg.append('g').attr('class', 'links-layer');
-    this.nodesLayer = this.svg.append('g').attr('class', 'nodes-layer');
-    this.labelsLayer = this.svg.append('g').attr('class', 'labels-layer');
+    this.graphGroup = this.svg.append('g').attr('class', 'graph-root');
+    this.linksLayer = this.graphGroup.append('g').attr('class', 'links-layer');
+    this.nodesLayer = this.graphGroup.append('g').attr('class', 'nodes-layer');
+    this.labelsLayer = this.graphGroup.append('g').attr('class', 'labels-layer');
+
+    this.setupZoomBehavior();
 
     this.linkSelection = this.linksLayer
       .selectAll<SVGLineElement, RelationshipLink>('line')
@@ -145,7 +231,7 @@ export class RelationshipValueExplorerComponent {
       .attr('stroke', (link) => this.linkColor(link))
       .attr('stroke-width', (link) => this.linkWidth(link))
       .attr('stroke-dasharray', (link) => this.linkDashArray(link))
-      .attr('opacity', 0.7);
+      .attr('opacity', 0.72);
 
     this.nodeSelection = this.nodesLayer
       .selectAll<SVGCircleElement, RelationshipNode>('circle')
@@ -167,8 +253,8 @@ export class RelationshipValueExplorerComponent {
         event.stopPropagation();
         this.selectedNodeId.set(node.id);
       })
-      .on('mouseenter', (event, node) => this.onNodeEnter(event, node))
-      .on('mousemove', (event, node) => this.onNodeMove(event, node))
+      .on('mouseenter', (event, node) => this.updateTooltip(event, node))
+      .on('mousemove', (event, node) => this.updateTooltip(event, node))
       .on('mouseleave', () => this.tooltip.set(null));
 
     this.labelSelection = this.labelsLayer
@@ -177,10 +263,10 @@ export class RelationshipValueExplorerComponent {
       .join('text')
       .text((node) => this.shortLabel(node.label))
       .attr('font-size', 12)
-      .attr('font-weight', 600)
+      .attr('font-weight', 700)
       .attr('fill', 'var(--cw-ink)')
       .attr('paint-order', 'stroke')
-      .attr('stroke', 'rgba(255, 255, 255, 0.9)')
+      .attr('stroke', 'rgba(255, 255, 255, 0.95)')
       .attr('stroke-width', 4)
       .attr('stroke-linejoin', 'round')
       .attr('pointer-events', 'none');
@@ -197,11 +283,52 @@ export class RelationshipValueExplorerComponent {
       )
       .force('charge', d3.forceManyBody<RelationshipNode>().strength(-380))
       .force('center', d3.forceCenter(this.dimensions().width / 2, this.dimensions().height / 2))
-      .force('collision', d3.forceCollide<RelationshipNode>().radius((node) => this.nodeRadius(node) + 22))
+      .force('collision', d3.forceCollide<RelationshipNode>().radius((node) => this.nodeRadius(node) + 24))
       .on('tick', () => this.onTick());
 
     this.updateDimensions();
     this.applySelectionState();
+    setTimeout(() => {
+      if (!this.initialFitComplete) {
+        this.fitGraphToView(false);
+        this.initialFitComplete = true;
+      }
+    }, 140);
+  }
+
+  private setupZoomBehavior(): void {
+    if (!this.svg || !this.graphGroup) {
+      return;
+    }
+
+    const svgElement = this.svgRef().nativeElement;
+
+    this.zoomBehavior = d3
+      .zoom<SVGSVGElement, unknown>()
+      .scaleExtent([0.5, 2.5])
+      .filter((event: Event) => {
+        if (event.type === 'dblclick') {
+          return false;
+        }
+
+        if (event.type === 'wheel') {
+          const wheelEvent = event as WheelEvent;
+          return wheelEvent.ctrlKey || wheelEvent.metaKey;
+        }
+
+        if (event.type === 'mousedown') {
+          const mouseEvent = event as MouseEvent;
+          return mouseEvent.target === svgElement;
+        }
+
+        return true;
+      })
+      .on('zoom', (event) => {
+        this.currentTransform = event.transform;
+        this.graphGroup?.attr('transform', event.transform.toString());
+      });
+
+    this.svg.call(this.zoomBehavior).on('dblclick.zoom', null);
   }
 
   private observeGraphSurface(): void {
@@ -214,13 +341,13 @@ export class RelationshipValueExplorerComponent {
   private updateDimensions(): void {
     const element = this.graphSurfaceRef().nativeElement;
     const width = Math.max(320, element.clientWidth || 920);
-    const height = Math.max(360, Math.min(620, Math.round(width * 0.62)));
+    const height = Math.max(420, element.clientHeight || Math.min(720, Math.round(width * 0.62)));
 
     this.dimensions.set({ width, height });
     this.svg?.attr('viewBox', `0 0 ${width} ${height}`).attr('width', width).attr('height', height);
     this.simulation
       ?.force('center', d3.forceCenter(width / 2, height / 2))
-      .alpha(0.55)
+      .alpha(0.3)
       .restart();
   }
 
@@ -231,9 +358,7 @@ export class RelationshipValueExplorerComponent {
       .attr('x2', (link) => (link.target as RelationshipNode).x ?? 0)
       .attr('y2', (link) => (link.target as RelationshipNode).y ?? 0);
 
-    this.nodeSelection
-      ?.attr('cx', (node) => node.x ?? 0)
-      .attr('cy', (node) => node.y ?? 0);
+    this.nodeSelection?.attr('cx', (node) => node.x ?? 0).attr('cy', (node) => node.y ?? 0);
 
     this.labelSelection
       ?.attr('x', (node) => (node.x ?? 0) + this.nodeRadius(node) + 8)
@@ -263,26 +388,12 @@ export class RelationshipValueExplorerComponent {
     node.fy = null;
   }
 
-  private onNodeEnter(
-    event: MouseEvent,
-    node: RelationshipNode
-  ): void {
-    this.updateTooltip(event, node);
-  }
-
-  private onNodeMove(
-    event: MouseEvent,
-    node: RelationshipNode
-  ): void {
-    this.updateTooltip(event, node);
-  }
-
   private updateTooltip(event: MouseEvent, node: RelationshipNode): void {
     const container = this.graphSurfaceRef().nativeElement;
     const rect = container.getBoundingClientRect();
     this.tooltip.set({
-      x: event.clientX - rect.left + 14,
-      y: event.clientY - rect.top + 14,
+      x: event.clientX - rect.left,
+      y: event.clientY - rect.top,
       label: node.label,
       detail: this.typeLabel(node.type)
     });
@@ -307,32 +418,31 @@ export class RelationshipValueExplorerComponent {
   private nodeOpacity(node: RelationshipNode, selectedId: string | null, connectedIds: Set<string>): number {
     const filterMatch = this.matchesFilter(node);
     if (!filterMatch) {
-      return 0.1;
+      return 0.12;
     }
 
     if (!selectedId) {
       return 1;
     }
 
-    return selectedId === node.id || connectedIds.has(node.id) ? 1 : 0.2;
+    return selectedId === node.id || connectedIds.has(node.id) ? 1 : 0.24;
   }
 
   private linkOpacity(link: RelationshipLink, selectedId: string | null): number {
     const sourceId = this.linkNodeId(link.source);
     const targetId = this.linkNodeId(link.target);
-
     const sourceNode = this.nodeMap.get(sourceId);
     const targetNode = this.nodeMap.get(targetId);
 
     if (!sourceNode || !targetNode || !this.matchesFilter(sourceNode) || !this.matchesFilter(targetNode)) {
-      return 0.08;
+      return 0.1;
     }
 
     if (!selectedId) {
       return 0.72;
     }
 
-    return sourceId === selectedId || targetId === selectedId ? 0.95 : 0.12;
+    return sourceId === selectedId || targetId === selectedId ? 0.95 : 0.14;
   }
 
   private selectedLinkWidth(link: RelationshipLink, selectedId: string | null): number {
@@ -403,31 +513,30 @@ export class RelationshipValueExplorerComponent {
   private nodeColor(node: RelationshipNode): string {
     switch (node.type) {
       case 'client':
-        return '#173b66';
+        return this.cssColor('--relationship-client', RELATIONSHIP_VALUE_COLORS.client);
       case 'service':
-        return '#1f7c72';
+        return this.cssColor('--relationship-service', RELATIONSHIP_VALUE_COLORS.service);
       case 'employee':
-        return '#6d5fd1';
+        return this.cssColor('--relationship-employee', RELATIONSHIP_VALUE_COLORS.employee);
       case 'relationshipOwner':
-        return '#b88c21';
+        return this.cssColor('--relationship-owner', RELATIONSHIP_VALUE_COLORS.relationshipOwner);
       case 'opportunity':
-        return '#2c8d5a';
+        return this.cssColor('--relationship-opportunity', RELATIONSHIP_VALUE_COLORS.opportunity);
     }
   }
 
   private linkColor(link: RelationshipLink): string {
     switch (link.type) {
       case 'white-space-opportunity':
-        return '#2c8d5a';
+        return this.cssColor('--relationship-white-space-link', RELATIONSHIP_VALUE_COLORS.whiteSpaceLink);
       case 'next-best-connection':
-        return '#1f7c72';
       case 'owns-relationship':
-        return '#b88c21';
+        return this.cssColor('--relationship-next-best', RELATIONSHIP_VALUE_COLORS.nextBestConnection);
       case 'delivers-service':
-        return '#856fd6';
+        return this.cssColor('--relationship-employee', RELATIONSHIP_VALUE_COLORS.employee);
       case 'current-service':
       default:
-        return '#7d93b4';
+        return this.cssColor('--relationship-current-link', RELATIONSHIP_VALUE_COLORS.currentLink);
     }
   }
 
@@ -436,26 +545,25 @@ export class RelationshipValueExplorerComponent {
       case 'white-space-opportunity':
         return '7 7';
       case 'next-best-connection':
-        return '3 6';
+        return '4 6';
       default:
         return null;
     }
   }
 
   private linkWidth(link: RelationshipLink): number {
-    const maxValue = 1800000;
-    const scale = d3.scaleLinear().domain([0, maxValue]).range([1.5, 6]).clamp(true);
+    const scale = d3.scaleLinear().domain([0, 1800000]).range([1.5, 6]).clamp(true);
     return scale(link.value ?? 220000);
   }
 
   private linkDistance(link: RelationshipLink): number {
     switch (link.type) {
       case 'owns-relationship':
-        return 120;
+        return 126;
       case 'delivers-service':
         return 96;
       case 'next-best-connection':
-        return 90;
+        return 92;
       case 'white-space-opportunity':
         return 112;
       case 'current-service':
@@ -504,45 +612,116 @@ export class RelationshipValueExplorerComponent {
         title: selectedNode.label,
         typeLabel: 'Selected client',
         summary: selectedNode.description ?? 'Client selected.',
-        currentServices,
-        whiteSpaceOpportunities: opportunities.map((node) => node.label),
-        relationshipOwner: relationshipOwner?.label,
-        recommendedNextConnection: firstOpportunity?.recommendedConnection,
-        proofPoint: firstOpportunity?.proofPoint,
-        estimatedPotentialValue: opportunities.length
-          ? this.formatCurrency(opportunities.reduce((total, item) => total + (item.value ?? 0), 0))
-          : undefined
+        contextItems: [
+          this.strategicValueLabel(selectedNode),
+          relationshipOwner ? `Relationship owner: ${relationshipOwner.label}` : ''
+        ].filter(Boolean),
+        currentStateItems: [
+          ...currentServices.map((service) => `Current service: ${service}`),
+          selectedNode.value ? `Current portfolio value: ${this.formatCurrency(selectedNode.value)}` : ''
+        ].filter(Boolean),
+        opportunityItems: [
+          ...opportunities.map((node) => `White-space opportunity: ${node.label}`),
+          opportunities.length
+            ? `Estimated potential value: ${this.formatCurrency(opportunities.reduce((total, item) => total + (item.value ?? 0), 0))}`
+            : ''
+        ].filter(Boolean),
+        nextActionItems: [
+          firstOpportunity?.recommendedConnection ? `Next-best connection: ${firstOpportunity.recommendedConnection}` : '',
+          firstOpportunity?.proofPoint ? `Proof point: ${firstOpportunity.proofPoint}` : ''
+        ].filter(Boolean)
+      };
+    }
+
+    if (selectedNode.type === 'service') {
+      const currentClients = this.connectedNodesByType(selectedId, 'client', 'current-service').map((node) => node.label);
+      const deliveryExperts = this.connectedNodesByType(selectedId, 'employee', 'delivers-service').map((node) => node.label);
+      const expansionPaths = this.opportunitiesForService(selectedId);
+
+      return {
+        title: selectedNode.label,
+        typeLabel: 'Selected service',
+        summary: selectedNode.description ?? 'Service selected.',
+        contextItems: deliveryExperts.map((employee) => `Delivery expert: ${employee}`),
+        currentStateItems: currentClients.map((client) => `Currently serving: ${client}`),
+        opportunityItems: expansionPaths.map((item) => `Adjacent client path: ${item.label}`),
+        nextActionItems: expansionPaths[0]?.recommendedConnection ? [`Next action: ${expansionPaths[0].recommendedConnection}`] : []
+      };
+    }
+
+    if (selectedNode.type === 'employee') {
+      const services = this.connectedNodesByType(selectedId, 'service', 'delivers-service').map((node) => node.label);
+      const relevantOpportunities = this.opportunitiesForEmployee(selectedId);
+
+      return {
+        title: selectedNode.label,
+        typeLabel: 'Selected employee',
+        summary: selectedNode.description ?? 'Employee selected.',
+        contextItems: services.map((service) => `Expertise: ${service}`),
+        currentStateItems: relevantOpportunities.length
+          ? [`Connected opportunity paths: ${relevantOpportunities.map((item) => item.label).join(' · ')}`]
+          : [],
+        opportunityItems: relevantOpportunities.map((item) => `Could support: ${item.label}`),
+        nextActionItems: relevantOpportunities[0]?.recommendedConnection ? [`Recommended introduction: ${relevantOpportunities[0].recommendedConnection}`] : []
+      };
+    }
+
+    if (selectedNode.type === 'relationshipOwner') {
+      const ownedClients = this.connectedNodesByType(selectedId, 'client', 'owns-relationship');
+      const clientOpportunities = ownedClients.flatMap((client) =>
+        this.connectedNodesByType(client.id, 'opportunity', 'white-space-opportunity')
+      );
+
+      return {
+        title: selectedNode.label,
+        typeLabel: 'Relationship owner',
+        summary: selectedNode.description ?? 'Relationship owner selected.',
+        contextItems: ownedClients.map((client) => `Owns relationship: ${client.label}`),
+        currentStateItems: ownedClients.length
+          ? [`Managed portfolio value: ${this.formatCurrency(ownedClients.reduce((total, client) => total + (client.value ?? 0), 0))}`]
+          : [],
+        opportunityItems: clientOpportunities.map((item) => `Open path: ${item.label}`),
+        nextActionItems: clientOpportunities[0]?.recommendedConnection ? [`Recommended connection: ${clientOpportunities[0].recommendedConnection}`] : []
       };
     }
 
     if (selectedNode.type === 'opportunity') {
       const client = selectedNode.clientId ? this.nodeMap.get(selectedNode.clientId) : undefined;
       const service = selectedNode.targetServiceId ? this.nodeMap.get(selectedNode.targetServiceId) : undefined;
+      const relationshipOwner = client
+        ? this.connectedNodesByType(client.id, 'relationshipOwner', 'owns-relationship')[0]
+        : undefined;
 
       return {
         title: selectedNode.label,
         typeLabel: 'Selected opportunity',
         summary: selectedNode.description ?? 'Opportunity selected.',
-        currentServices: service ? [service.label] : undefined,
-        relationshipOwner: client
-          ? this.connectedNodesByType(client.id, 'relationshipOwner', 'owns-relationship')[0]?.label
-          : undefined,
-        whiteSpaceOpportunities: client ? [client.label] : undefined,
-        recommendedNextConnection: selectedNode.recommendedConnection,
-        proofPoint: selectedNode.proofPoint,
-        estimatedPotentialValue: selectedNode.value ? this.formatCurrency(selectedNode.value) : undefined
+        contextItems: [
+          client ? `Client: ${client.label}` : '',
+          service ? `Target service: ${service.label}` : ''
+        ].filter(Boolean),
+        currentStateItems: [
+          relationshipOwner ? `Relationship owner: ${relationshipOwner.label}` : '',
+          selectedNode.value ? `Estimated potential value: ${this.formatCurrency(selectedNode.value)}` : ''
+        ].filter(Boolean),
+        opportunityItems: [
+          this.strategicValueLabel(selectedNode),
+          selectedNode.proofPoint ? `Proof point: ${selectedNode.proofPoint}` : ''
+        ].filter(Boolean),
+        nextActionItems: selectedNode.recommendedConnection
+          ? [`Suggested next action: ${selectedNode.recommendedConnection}`]
+          : []
       };
     }
-
-    const connectedClients = this.connectedNodesByType(selectedId, 'client').map((node) => node.label);
-    const connectedServices = this.connectedNodesByType(selectedId, 'service').map((node) => node.label);
 
     return {
       title: selectedNode.label,
       typeLabel: `Selected ${this.typeLabel(selectedNode.type).toLowerCase()}`,
       summary: selectedNode.description ?? `${this.typeLabel(selectedNode.type)} selected.`,
-      currentServices: connectedServices.length ? connectedServices : undefined,
-      whiteSpaceOpportunities: connectedClients.length ? connectedClients : undefined
+      contextItems: [],
+      currentStateItems: [],
+      opportunityItems: [],
+      nextActionItems: []
     };
   }
 
@@ -575,11 +754,35 @@ export class RelationshipValueExplorerComponent {
     return nodes;
   }
 
+  private opportunitiesForService(serviceId: string): RelationshipNode[] {
+    return this.data.nodes.filter(
+      (node): node is RelationshipNode =>
+        node.type === 'opportunity' && node.targetServiceId === serviceId
+    );
+  }
+
+  private opportunitiesForEmployee(employeeId: string): RelationshipNode[] {
+    const deliveredServices = this.connectedNodesByType(employeeId, 'service', 'delivers-service').map((node) => node.id);
+    return this.data.nodes.filter(
+      (node): node is RelationshipNode =>
+        node.type === 'opportunity' && !!node.targetServiceId && deliveredServices.includes(node.targetServiceId)
+    );
+  }
+
+  private strategicValueLabel(node: RelationshipNode): string {
+    return node.strategicValue ? `Strategic value: ${node.strategicValue}` : '';
+  }
+
   private formatCurrency(value: number): string {
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'USD',
       maximumFractionDigits: 0
     }).format(value);
+  }
+
+  private cssColor(variableName: string, fallback: string): string {
+    const value = getComputedStyle(this.hostRef.nativeElement).getPropertyValue(variableName).trim();
+    return value || fallback;
   }
 }

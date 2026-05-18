@@ -221,7 +221,7 @@
             "blocks": [
               {
                 "type": "paragraph",
-                "text": "D3 becomes useful when the model can be explored, not merely viewed. The executive should be able to filter by client, market, region, service line, employee, relationship owner, revenue range, margin, opportunity score, relationship strength, delivery history, and strategic priority."
+                "text": "The static model explains the structure. The interactive explorer below demonstrates the behavior: selecting a client reveals the current relationship map, the white-space opportunity, and the employee connection required to act."
               },
               {
                 "type": "component",
