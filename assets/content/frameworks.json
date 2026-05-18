@@ -226,6 +226,8 @@
               {
                 "type": "component",
                 "component": "relationship-value-explorer",
+                "title": "Relationship-Value Explorer",
+                "description": "Explore how client relationships, delivered services, employee expertise, and white-space opportunities connect into an actionable revenue intelligence graph.",
                 "fallback": "D3 interface to be inserted here."
               },
               {
