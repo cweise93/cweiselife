@@ -7,7 +7,7 @@
 }
 
 .framework-context-bar {
-  background: rgba(255, 255, 255, 0.94);
+  background: var(--cw-toolbar-surface);
   backdrop-filter: blur(14px);
   border-top: 1px solid var(--cw-line);
   border-bottom: 1px solid var(--cw-line);
@@ -82,6 +82,30 @@ button.context-cell {
 
 :host ::ng-deep .framework-section-menu .mat-mdc-menu-item.is-active {
   font-weight: 700;
+}
+
+:host-context(body.cw-theme-dusk) .framework-context-bar {
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--cw-toolbar-surface) 92%, var(--cw-panel)),
+      color-mix(in srgb, var(--cw-toolbar-surface) 84%, var(--cw-deep))
+    );
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.22);
+}
+
+:host-context(body.cw-theme-dusk) .context-cell {
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--cw-panel) 92%, #17324a),
+      color-mix(in srgb, var(--cw-panel) 96%, #0b1724)
+    );
+}
+
+:host-context(body.cw-theme-dusk) .context-cell--section .context-cell__value,
+:host-context(body.cw-theme-dusk) .context-cell--section mat-icon {
+  color: color-mix(in srgb, var(--cw-accent) 88%, white);
 }
 
 @media (max-width: 980px) {

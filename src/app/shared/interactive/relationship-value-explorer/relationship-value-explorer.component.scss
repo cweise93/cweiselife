@@ -8,6 +8,15 @@
   --relationship-current-link: #7F93AD;
   --relationship-white-space-link: #2E8F55;
   --relationship-next-best: #C28A17;
+  --relationship-node-ring: #ffffff;
+  --relationship-label-fill: var(--cw-ink);
+  --relationship-label-stroke: rgba(255, 255, 255, 0.95);
+  --relationship-control-surface: rgba(255, 255, 255, 0.94);
+  --relationship-tooltip-surface: rgba(255, 255, 255, 0.96);
+  --relationship-insight-surface: color-mix(in srgb, var(--cw-panel) 88%, white);
+  --relationship-canvas-base:
+    radial-gradient(circle at top left, rgba(37, 99, 235, 0.07), transparent 32rem),
+    var(--cw-soft, #f8fbff);
   display: block;
 }
 
@@ -167,9 +176,7 @@
   border: 1px solid var(--cw-line);
   border-radius: 1.25rem;
   overflow: hidden;
-  background:
-    radial-gradient(circle at top left, rgba(37, 99, 235, 0.07), transparent 32rem),
-    var(--cw-soft, #f8fbff);
+  background: var(--relationship-canvas-base);
 }
 
 .graph-canvas svg {
@@ -188,7 +195,7 @@
   padding: 0.35rem;
   border: 1px solid var(--cw-line);
   border-radius: 1rem;
-  background: rgba(255, 255, 255, 0.94);
+  background: var(--relationship-control-surface);
   backdrop-filter: blur(10px);
 }
 
@@ -199,7 +206,7 @@
   transform: translate(12px, 12px);
   border: 1px solid var(--cw-line);
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.96);
+  background: var(--relationship-tooltip-surface);
   box-shadow: 0 14px 28px rgba(12, 22, 34, 0.12);
   padding: 10px 12px;
   display: grid;
@@ -220,11 +227,68 @@
 .insight-card {
   border: 1px solid var(--cw-line);
   border-radius: 1.25rem;
-  background: color-mix(in srgb, var(--cw-panel) 88%, white);
+  background: var(--relationship-insight-surface);
   padding: 1.1rem 1.15rem;
   display: grid;
   gap: 0.95rem;
   align-content: start;
+}
+
+:host-context(body.cw-theme-dusk) {
+  --relationship-client: #5ea2ea;
+  --relationship-service: #2bb7a5;
+  --relationship-employee: #8f7cf0;
+  --relationship-owner: #e1ae3c;
+  --relationship-opportunity: #43b86a;
+  --relationship-value-signal: #ee6958;
+  --relationship-current-link: #8aa0bc;
+  --relationship-white-space-link: #43b86a;
+  --relationship-next-best: #e1ae3c;
+  --relationship-node-ring: #dce8f5;
+  --relationship-label-fill: #eef4fb;
+  --relationship-label-stroke: rgba(7, 18, 30, 0.92);
+  --relationship-control-surface: rgba(11, 24, 38, 0.9);
+  --relationship-tooltip-surface: rgba(10, 20, 32, 0.96);
+  --relationship-insight-surface:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--cw-panel) 90%, #21364a),
+      color-mix(in srgb, var(--cw-panel) 96%, #0b1826)
+    );
+  --relationship-canvas-base:
+    radial-gradient(circle at top left, rgba(140, 192, 255, 0.12), transparent 32rem),
+    linear-gradient(180deg, #102235 0%, #0e1d2d 100%);
+}
+
+:host-context(body.cw-theme-dusk) .relationship-explorer {
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--cw-panel) 92%, #17324a),
+      color-mix(in srgb, var(--cw-panel) 98%, #0a1623)
+    );
+}
+
+:host-context(body.cw-theme-dusk) .relationship-explorer__controls {
+  border-top-color: color-mix(in srgb, var(--cw-line) 85%, #385474);
+  border-bottom-color: color-mix(in srgb, var(--cw-line) 85%, #385474);
+}
+
+:host-context(body.cw-theme-dusk) .graph-canvas__controls {
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.32);
+}
+
+:host-context(body.cw-theme-dusk) .graph-tooltip {
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.4);
+}
+
+:host-context(body.cw-theme-dusk) .graph-tooltip strong {
+  color: #eef4fb;
+}
+
+:host-context(body.cw-theme-dusk) .graph-tooltip span,
+:host-context(body.cw-theme-dusk) .legend-item {
+  color: #bfd0e2;
 }
 
 .insight-stack {

@@ -264,9 +264,9 @@ export class RelationshipValueExplorerComponent {
       .text((node) => this.shortLabel(node.label))
       .attr('font-size', 12)
       .attr('font-weight', 700)
-      .attr('fill', 'var(--cw-ink)')
+      .attr('fill', 'var(--relationship-label-fill)')
       .attr('paint-order', 'stroke')
-      .attr('stroke', 'rgba(255, 255, 255, 0.95)')
+      .attr('stroke', 'var(--relationship-label-stroke)')
       .attr('stroke-width', 4)
       .attr('stroke-linejoin', 'round')
       .attr('pointer-events', 'none');
@@ -406,7 +406,7 @@ export class RelationshipValueExplorerComponent {
     this.nodeSelection
       ?.attr('opacity', (node) => this.nodeOpacity(node, selectedId, connectedIds))
       .attr('stroke-width', (node) => (selectedId === node.id ? 4 : 2))
-      .attr('stroke', (node) => (selectedId === node.id ? 'var(--cw-accent)' : '#ffffff'));
+      .attr('stroke', (node) => (selectedId === node.id ? 'var(--cw-accent)' : 'var(--relationship-node-ring)'));
 
     this.labelSelection?.attr('opacity', (node) => this.nodeOpacity(node, selectedId, connectedIds));
 
