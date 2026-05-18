@@ -14,13 +14,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <script>
     (function () {
-      var params = new URLSearchParams(window.location.search);
-      var redirectTarget = params.get('redirect');
+      var redirectTarget = window.sessionStorage.getItem('cw-spa-redirect');
 
       if (!redirectTarget) {
         return;
       }
 
+      window.sessionStorage.removeItem('cw-spa-redirect');
       history.replaceState(null, '', redirectTarget);
     })();
   </script>

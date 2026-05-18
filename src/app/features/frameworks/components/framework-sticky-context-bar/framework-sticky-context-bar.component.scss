@@ -3,7 +3,7 @@
   display: block;
   position: sticky;
   top: var(--cw-toolbar-current-height, var(--cw-toolbar-height));
-  z-index: 30;
+  z-index: 15;
 }
 
 .framework-context-bar {

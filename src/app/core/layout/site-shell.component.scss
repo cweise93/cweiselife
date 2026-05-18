@@ -3,7 +3,7 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: 20;
+  z-index: 50;
   min-height: var(--cw-toolbar-height);
   height: var(--cw-toolbar-height);
   padding-inline: max(24px, calc((100vw - 1280px) / 2));
@@ -92,7 +92,7 @@
   top: var(--cw-toolbar-current-height, var(--cw-toolbar-height));
   left: 0;
   right: 0;
-  z-index: 19;
+  z-index: 49;
   padding: 12px 16px 16px;
   background: var(--cw-toolbar-surface);
   border-bottom: 1px solid var(--cw-line);

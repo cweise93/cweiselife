@@ -20,17 +20,18 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Install Angular CLI
-        run: npm install -g @angular/cli@16
-
       - name: Build Angular app
-        run: ng build cweise-com-authority-hub --configuration production --output-path dist --base-href /
+        run: npm run build
+
+      - name: Flatten browser output into publish root
+        run: |
+          cp -R dist/browser/. dist/
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4.1.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist/browser
+          publish_dir: ./dist
           cname: cweise.com
           user_name: 'Charles Weise'
           user_email: 'YOUR_EMAIL_HERE'

@@ -13,9 +13,9 @@
         '//' +
         locationRef.hostname +
         (locationRef.port ? ':' + locationRef.port : '') +
-        '/?redirect=' +
-        encodeURIComponent(redirectTarget);
+        '/';
 
+      window.sessionStorage.setItem('cw-spa-redirect', redirectTarget);
       window.location.replace(rootUrl);
     })();
   </script>
