@@ -23,4 +23,8 @@ const EMPTY_FRAMEWORKS_PAGE: ContentCollectionViewModel<FrameworkItem> = {
 export class FrameworksComponent {
   private readonly contentService = inject(ContentService);
   readonly page = toSignal(this.contentService.getFrameworksPage(), { initialValue: EMPTY_FRAMEWORKS_PAGE });
+
+  getFrameworkRoute(slug: string): string[] {
+    return ['/', ...slug.split('/').filter(Boolean)];
+  }
 }

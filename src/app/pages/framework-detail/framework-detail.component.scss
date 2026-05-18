@@ -71,6 +71,34 @@ p {
   line-height: 1.8;
 }
 
+.prose-block {
+  color: var(--cw-muted);
+  line-height: 1.8;
+}
+
+.prose-block :where(p) {
+  margin: 0;
+}
+
+.prose-block :where(h3) {
+  margin: 8px 0 0;
+  font-size: 1.05rem;
+  color: var(--cw-ink);
+}
+
+.prose-block :where(figure) {
+  margin: 8px 0 12px;
+}
+
+.prose-block :where(img) {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  border: 1px solid var(--cw-line);
+  background: var(--cw-panel);
+}
+
 .component-card {
   border: 1px solid var(--cw-line);
   border-radius: 16px;

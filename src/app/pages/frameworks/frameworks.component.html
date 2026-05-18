@@ -18,9 +18,9 @@
             <span>{{ framework.category }}</span>
             <span>{{ framework.publishedOn | date:'MMM d, y' }}</span>
           </div>
-          <h2><a [routerLink]="['/frameworks', framework.slug]">{{ framework.title }}</a></h2>
+          <h2><a [routerLink]="getFrameworkRoute(framework.slug)">{{ framework.title }}</a></h2>
           <p>{{ framework.summary }}</p>
-          <a mat-button color="primary" [routerLink]="['/frameworks', framework.slug]" class="cw-link-action">
+          <a mat-button color="primary" [routerLink]="getFrameworkRoute(framework.slug)" class="cw-link-action">
             View framework
             <mat-icon>arrow_forward</mat-icon>
           </a>

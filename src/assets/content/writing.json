@@ -9,7 +9,7 @@
   "items": [
     {
       "id": "writing-001",
-      "slug": "organizations-rarely-fail-from-a-lack-of-intelligence",
+      "slug": "writing/2026/05/12/organizations-rarely-fail-from-a-lack-of-intelligence",
       "title": "Organizations Rarely Fail From a Lack of Intelligence",
       "summary": "Execution breaks down long before strategy does. A look at the hidden mechanics behind organizational underperformance.",
       "status": "published",
@@ -52,7 +52,7 @@
     },
     {
       "id": "writing-002",
-      "slug": "why-operational-friction-hides-in-translation-layers",
+      "slug": "writing/2026/04/28/why-operational-friction-hides-in-translation-layers",
       "title": "Why Operational Friction Hides in Translation Layers",
       "summary": "The cost of misalignment between strategy, systems, and the people doing the work.",
       "status": "published",
@@ -94,7 +94,7 @@
     },
     {
       "id": "writing-003",
-      "slug": "turn-down-the-noise-improving-signal-in-decision-systems",
+      "slug": "writing/2026/04/14/turn-down-the-noise-improving-signal-in-decision-systems",
       "title": "Turn Down the Noise: Improving Signal in Decision Systems",
       "summary": "A framework for reducing noise, surfacing signal, and improving leadership clarity.",
       "status": "published",
@@ -136,7 +136,7 @@
     },
     {
       "id": "writing-004",
-      "slug": "executive-follow-through-requires-ownership-architecture",
+      "slug": "writing/2026/03/31/executive-follow-through-requires-ownership-architecture",
       "title": "Executive Follow-Through Requires Ownership Architecture",
       "summary": "A strategy does not become durable until the organization encodes ownership, escalation, and execution paths around it.",
       "status": "published",
@@ -171,7 +171,7 @@
     },
     {
       "id": "writing-005",
-      "slug": "draft-future-essay-on-work-queues",
+      "slug": "writing/2026/06/01/draft-future-essay-on-work-queues",
       "title": "Draft: Work Queues as an Executive Operating Surface",
       "summary": "A draft essay on how work queues expose organizational constraints.",
       "status": "draft",

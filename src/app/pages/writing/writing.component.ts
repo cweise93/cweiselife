@@ -23,4 +23,8 @@ const EMPTY_WRITING_PAGE: ContentCollectionViewModel<WritingItem> = {
 export class WritingComponent {
   private readonly contentService = inject(ContentService);
   readonly page = toSignal(this.contentService.getWritingPage(), { initialValue: EMPTY_WRITING_PAGE });
+
+  getWritingRoute(slug: string): string[] {
+    return ['/', ...slug.split('/').filter(Boolean)];
+  }
 }

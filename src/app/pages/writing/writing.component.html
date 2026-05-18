@@ -18,14 +18,14 @@
             <span>{{ article.publishedOn | date:'MMM d, y' }}</span>
             <span>{{ article.readTimeMinutes }} min read</span>
           </div>
-          <h2><a [routerLink]="['/writing', article.slug]">{{ article.title }}</a></h2>
+          <h2><a [routerLink]="getWritingRoute(article.slug)">{{ article.title }}</a></h2>
           <p>{{ article.summary }}</p>
           <div class="tag-row">
             @for (tag of article.tags; track tag) {
               <span class="tag">{{ tag }}</span>
             }
           </div>
-          <a mat-button color="primary" [routerLink]="['/writing', article.slug]" class="cw-link-action">
+          <a mat-button color="primary" [routerLink]="getWritingRoute(article.slug)" class="cw-link-action">
             Read essay
             <mat-icon>arrow_forward</mat-icon>
           </a>

@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": 1,
-    "updatedOn": "2026-05-16",
+    "updatedOn": "2026-05-17",
     "eyebrow": "Frameworks",
     "headline": "Operational Frameworks",
     "intro": "Frameworks for reducing noise, improving systems translation, and designing cleaner execution paths inside complex organizations."
@@ -9,14 +9,18 @@
   "items": [
     {
       "id": "framework-001",
-      "slug": "turn-down-the-noise",
+      "slug": "frameworks/2026/04/14/turn-down-the-noise",
       "title": "Turn Down the Noise",
       "summary": "A model for reducing operational noise, surfacing signal, and improving decision quality.",
       "status": "published",
       "publishedOn": "2026-04-14",
       "featured": true,
       "category": "Decision Quality",
-      "tags": ["signal", "noise", "decision systems"],
+      "tags": [
+        "signal",
+        "noise",
+        "decision systems"
+      ],
       "diagramImage": "assets/images/noise-framework.png",
       "seo": {
         "title": "Turn Down the Noise Framework",
@@ -25,9 +29,18 @@
       "body": {
         "premise": "Most execution problems get worse when organizations cannot distinguish relevant signal from operational noise.",
         "components": [
-          { "title": "Noise Sources", "description": "Interruptions, ambiguity, duplicate effort, and status theater that obscure the true state of work." },
-          { "title": "Signal Conditions", "description": "Relevant, timely, actionable information that makes progress and risk visible." },
-          { "title": "Volume Control", "description": "Workflow choices that suppress non-essential activity while preserving decision-critical evidence." }
+          {
+            "title": "Noise Sources",
+            "description": "Interruptions, ambiguity, duplicate effort, and status theater that obscure the true state of work."
+          },
+          {
+            "title": "Signal Conditions",
+            "description": "Relevant, timely, actionable information that makes progress and risk visible."
+          },
+          {
+            "title": "Volume Control",
+            "description": "Workflow choices that suppress non-essential activity while preserving decision-critical evidence."
+          }
         ],
         "application": "Use this framework when leaders are over-briefed but under-informed, or when teams are active but decision quality remains low.",
         "sections": [
@@ -50,14 +63,18 @@
     },
     {
       "id": "framework-002",
-      "slug": "systems-translation-loop",
+      "slug": "frameworks/2026/03/18/systems-translation-loop",
       "title": "Systems Translation Loop",
       "summary": "A framework for bridging executive intent, workflow reality, and technical implementation without losing signal.",
       "status": "published",
       "publishedOn": "2026-03-18",
       "featured": true,
       "category": "Workflow Translation",
-      "tags": ["systems translation", "strategy", "workflow design"],
+      "tags": [
+        "systems translation",
+        "strategy",
+        "workflow design"
+      ],
       "diagramImage": "assets/images/hero-architecture.png",
       "seo": {
         "title": "Systems Translation Loop",
@@ -66,9 +83,18 @@
       "body": {
         "premise": "Organizations lose execution fidelity when intent, workflow, and implementation are treated as separate conversations instead of one governed loop.",
         "components": [
-          { "title": "Intent Layer", "description": "The decision, priority, or strategic shift that must be preserved." },
-          { "title": "Workflow Layer", "description": "The operational path where ownership, inputs, and handoffs are defined." },
-          { "title": "Implementation Layer", "description": "The systems, tools, and teams that encode the workflow into durable execution." }
+          {
+            "title": "Intent Layer",
+            "description": "The decision, priority, or strategic shift that must be preserved."
+          },
+          {
+            "title": "Workflow Layer",
+            "description": "The operational path where ownership, inputs, and handoffs are defined."
+          },
+          {
+            "title": "Implementation Layer",
+            "description": "The systems, tools, and teams that encode the workflow into durable execution."
+          }
         ],
         "application": "Use the loop when teams agree on goals but still produce mismatched plans, conflicting tickets, or inconsistent delivery behavior.",
         "sections": [
@@ -84,24 +110,150 @@
     },
     {
       "id": "framework-003",
-      "slug": "draft-execution-governance-map",
-      "title": "Draft: Execution Governance Map",
-      "summary": "A draft framework for mapping governance surfaces across delivery.",
-      "status": "draft",
-      "publishedOn": "2026-06-07",
-      "featured": false,
-      "category": "Draft",
-      "tags": ["draft"],
-      "diagramImage": "assets/images/noise-framework.svg",
+      "slug": "frameworks/2026/05/17/relationship-capital-revenue-intelligence",
+      "title": "Relationship Capital → Revenue Intelligence",
+      "summary": "A D3-powered executive framework for mapping clients, services, employees, relationship ownership, delivered value, and white-space growth opportunities.",
+      "status": "published",
+      "publishedOn": "2026-05-17",
+      "featured": true,
+      "category": "Revenue Intelligence",
+      "tags": [
+        "d3",
+        "relationship intelligence",
+        "client growth",
+        "service expansion",
+        "executive frameworks",
+        "white space"
+      ],
+      "diagramImage": "assets/images/frameworks/2026-05-17_d3_executive_framework/01_d3_knowledge_framework_header.png",
       "seo": {
-        "title": "Draft: Execution Governance Map",
-        "description": "Draft framework."
+        "title": "Relationship Capital to Revenue Intelligence",
+        "description": "A D3-powered executive framework for mapping client relationships, service value, employee expertise, and hidden growth opportunities."
       },
       "body": {
-        "premise": "Draft content.",
-        "components": [],
-        "application": "Draft content.",
-        "sections": []
+        "premise": "Most firms already know who their clients are, which services they provide, who owns the relationships, and which employees deliver the work. The problem is that this knowledge usually lives in fragments. A relationship-value graph connects those fragments into an executive intelligence model that reveals current value, white-space opportunity, next-best connections, and accountable growth paths.",
+        "components": [
+          {
+            "title": "Client Portfolio",
+            "description": "Clients become nodes that can be sized by total revenue, strategic importance, relationship strength, active pipeline, or growth potential."
+          },
+          {
+            "title": "Service Penetration",
+            "description": "Services become nodes connected to clients by current delivery, value generated, and adjacent opportunity."
+          },
+          {
+            "title": "Employee Expertise",
+            "description": "Employees become visible as relationship owners, service experts, delivery leads, and internal connectors."
+          },
+          {
+            "title": "Relationship Routing",
+            "description": "The model distinguishes who owns client trust from who holds the expertise needed to solve the next problem."
+          },
+          {
+            "title": "Opportunity Signal",
+            "description": "Potential service expansion is scored, routed, acted on, and improved through outcome feedback."
+          }
+        ],
+        "application": "Use this framework when an organization has strong client relationships and broad service capabilities, but lacks a clear way to see where trust, expertise, service history, and unmet client need should be connected into measurable growth.",
+        "sections": [
+          {
+            "heading": "Executive thesis",
+            "paragraphs": [
+              "<figure><img src=\"assets/images/frameworks/2026-05-17_d3_executive_framework/01_d3_knowledge_framework_header.png\" alt=\"Relationship Capital to Revenue Intelligence header\" /></figure>",
+              "The executive question is simple: where do we already have trust, capability, and unmet client need, but have not yet connected them into revenue?",
+              "That question breaks into operating questions. Which clients already buy which services? Which employees provide those services? Who owns the client relationship? What value has already been delivered? What additional services could reasonably be offered? Which employee has the credibility, expertise, or relationship access to make the introduction?",
+              "The goal is not to create a decorative visualization. The goal is to expose hidden growth pathways that already exist inside the organization but remain invisible because relationship, service, value, and employee knowledge are not connected."
+            ]
+          },
+          {
+            "heading": "The hidden value problem",
+            "paragraphs": [
+              "<figure><img src=\"assets/images/frameworks/2026-05-17_d3_executive_framework/02_hidden_value_problem.png\" alt=\"The Hidden Value Problem\" /></figure>",
+              "Most organizations do not suffer from a lack of information. They suffer from disconnected information. CRM notes, project history, billing data, proposal outcomes, employee expertise, relationship memory, and service catalogs may all exist, but they usually sit in separate systems or in the minds of experienced operators.",
+              "When those fragments remain disconnected, executives can see revenue after the fact but cannot easily see the relationship pathways that could create the next wave of growth. The organization may know the client, know the service, know the expert, and know the value story, but still fail to connect them at the right moment.",
+              "This reframes the challenge as an enterprise intelligence problem, not merely a data visualization problem."
+            ]
+          },
+          {
+            "heading": "The Relationship-Value Graph Model",
+            "paragraphs": [
+              "<figure><img src=\"assets/images/frameworks/2026-05-17_d3_executive_framework/03_relationship_value_graph_model.png\" alt=\"The Relationship-Value Graph Model\" /></figure>",
+              "The core model treats business development as a graph of trust, expertise, service history, delivered value, and potential value. The primary node types are Client, Service, Employee, Relationship Owner, Engagement, Opportunity, and Value Signal.",
+              "The important edges are not generic connections. They carry business meaning: an employee owns a relationship with a client; an employee delivers a service; a client currently receives a service; an engagement generated value for a client; a service could solve a client need; an opportunity requires a connector; and a signal validates or rejects an opportunity.",
+              "This is not merely a visualization model. It is the underlying knowledge model. D3 is the presentation layer. The real value comes from structuring the entities and relationships underneath it."
+            ]
+          },
+          {
+            "heading": "Interactive D3 insertion point",
+            "paragraphs": [
+              "<h3>d3 interface to be inserted here</h3>",
+              "The live component should function as a Relationship-Value Explorer. A reader should be able to select a client, inspect current services, reveal white-space services, see relationship ownership, identify the internal service expert, and understand the next-best connection.",
+              "The component should use D3 for the graph behavior: force layout, node dragging, edge highlighting, hover tooltips, click-to-focus behavior, dynamic link thickness, dotted opportunity lines, and animated filter transitions. Angular Material should own the surrounding executive interface: filters, chips, cards, tabs, labels, and the insight panel.",
+              "The purpose of the component is to prove that the framework can become an applied executive artifact, not merely a conceptual essay."
+            ]
+          },
+          {
+            "heading": "Current value and white space",
+            "paragraphs": [
+              "<figure><img src=\"assets/images/frameworks/2026-05-17_d3_executive_framework/04_current_value_and_white_space.png\" alt=\"Current Value and White Space\" /></figure>",
+              "The first operational use case is to compare current service penetration with relevant adjacent services. Solid lines show services already provided. Dotted lines show services that are relevant but not yet purchased. Link thickness can represent revenue, margin, value delivered, or strategic importance.",
+              "This gives leaders a white-space view that is more useful than a generic cross-sell report. It shows where a client already trusts the firm, what the firm already delivers, and which adjacent services may solve additional problems.",
+              "Growth opportunity becomes visible when current service penetration is compared against relevant adjacent services."
+            ]
+          },
+          {
+            "heading": "The next-best connection",
+            "paragraphs": [
+              "<figure><img src=\"assets/images/frameworks/2026-05-17_d3_executive_framework/05_next_best_connection.png\" alt=\"The Next Best Connection\" /></figure>",
+              "The relationship owner is not always the service expert. The service expert is not always the person with client access. The person who delivered a similar solution elsewhere may not know that a relationship owner is sitting on the right opening.",
+              "That is why cross-selling should be treated as relationship routing. The question is not merely which service could be sold. The question is who has the trust, who has the expertise, who has the proof point, and who should make the next connection.",
+              "Cross-selling is not a slogan. It is a relationship-routing workflow that should protect trust while multiplying value."
+            ]
+          },
+          {
+            "heading": "From raw data to relationship intelligence",
+            "paragraphs": [
+              "<figure><img src=\"assets/images/frameworks/2026-05-17_d3_executive_framework/06_raw_data_to_intelligence.png\" alt=\"From Raw Data to Relationship Intelligence\" /></figure>",
+              "D3 is not the data strategy. D3 is the executive interface on top of a structured intelligence model.",
+              "The architecture begins with source systems such as CRM, ERP and billing, project management, proposals, employee directories, service catalogs, and meeting history. Those inputs pass through a normalization layer that resolves entities, matches clients, standardizes services, maps employee roles, attributes revenue and value, and scores relationships.",
+              "The graph intelligence layer then models nodes, edges, weights, relationship strength, opportunity scoring, and signal feedback. Only after those layers exist does the D3 experience layer become useful: executive map, white-space view, relationship-routing view, service penetration view, and opportunity pipeline view.",
+              "This architecture matters because it proves the framework can be built. The visualization is only the visible surface of a governed relationship intelligence system."
+            ]
+          },
+          {
+            "heading": "Implementation roadmap",
+            "paragraphs": [
+              "The practical rollout should happen in stages. Stage one is a static relationship map showing clients, services, employees, and current service relationships. The first win is visibility.",
+              "Stage two adds the value overlay: revenue, margin, delivered value, value type, and strategic importance. Stage three adds the opportunity layer: potential services based on similarity, known client needs, service adjacency, and strategic priorities.",
+              "Stage four adds relationship routing by identifying the client owner, service expert, delivery proof point, and next-best connector. Stage five adds the signal loop so leaders can learn what happened after the opportunity was surfaced."
+            ]
+          },
+          {
+            "heading": "The revenue intelligence operating loop",
+            "paragraphs": [
+              "<figure><img src=\"assets/images/frameworks/2026-05-17_d3_executive_framework/07_revenue_intelligence_operating_loop.png\" alt=\"The Revenue Intelligence Operating Loop\" /></figure>",
+              "The framework becomes valuable when it becomes a management rhythm.",
+              "The loop is straightforward: capture relationship, service, and client data; structure it into a graph model; visualize current state and white space; route next-best connections; act through client conversations; observe outcomes; and improve opportunity scoring.",
+              "The map is not the outcome. The outcome is a repeatable operating loop that turns relationship knowledge into action, signal, and growth."
+            ]
+          },
+          {
+            "heading": "Executive operating view",
+            "paragraphs": [
+              "<figure><img src=\"assets/images/frameworks/2026-05-17_d3_executive_framework/08_executive_dashboard.png\" alt=\"Executive Revenue Intelligence Dashboard\" /></figure>",
+              "A mature version of the framework should produce an executive dashboard showing top underpenetrated clients, highest-value adjacent services, relationship concentration risk, next-best introductions, opportunity value by market, services with expansion momentum, and relationship owners needing support.",
+              "This is where the framework becomes directly applicable to business operations. Leaders can move from conceptual agreement to portfolio review, relationship stewardship, next-action routing, and measurable growth accountability."
+            ]
+          },
+          {
+            "heading": "Leadership discipline",
+            "paragraphs": [
+              "The technology is not the hard part. The hard part is organizational discipline.",
+              "Leaders must agree that relationship ownership is not the same as relationship hoarding. Service expertise must become discoverable. Client value must be defined in business terms. Cross-selling must be treated as a routed workflow, not an inspirational slogan.",
+              "Done well, this becomes more than a visualization. It becomes a revenue intelligence framework that shows where the firm is strong, where it is exposed, where services are underused, where employees are disconnected from opportunity, and where clients are ready for more value."
+            ]
+          }
+        ]
       }
     }
   ]

@@ -15,9 +15,9 @@
         <mat-card-content>
           <span class="cw-icon-badge"><mat-icon>{{ initiative.icon || 'north_east' }}</mat-icon></span>
           <p class="initiative-domain">{{ initiative.domain }}</p>
-          <h2><a [routerLink]="['/initiatives', initiative.slug]">{{ initiative.title }}</a></h2>
+          <h2><a [routerLink]="getInitiativeRoute(initiative.slug)">{{ initiative.title }}</a></h2>
           <p>{{ initiative.summary }}</p>
-          <a mat-button color="primary" [routerLink]="['/initiatives', initiative.slug]" class="cw-link-action">
+          <a mat-button color="primary" [routerLink]="getInitiativeRoute(initiative.slug)" class="cw-link-action">
             View initiative
             <mat-icon>arrow_forward</mat-icon>
           </a>

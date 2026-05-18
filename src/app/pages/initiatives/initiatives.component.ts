@@ -22,4 +22,8 @@ const EMPTY_INITIATIVES_PAGE: ContentCollectionViewModel<InitiativeItem> = {
 export class InitiativesComponent {
   private readonly contentService = inject(ContentService);
   readonly page = toSignal(this.contentService.getInitiativesPage(), { initialValue: EMPTY_INITIATIVES_PAGE });
+
+  getInitiativeRoute(slug: string): string[] {
+    return ['/', ...slug.split('/').filter(Boolean)];
+  }
 }

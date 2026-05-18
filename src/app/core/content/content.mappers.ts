@@ -395,6 +395,7 @@ export function mapInitiativeItem(value: any): InitiativeItem | null {
     title,
     summary,
     status: normalizeStatus(value?.status),
+    publishedOn: normalizeDate(value?.publishedOn),
     featured: asBoolean(value?.featured),
     domain: asString(value?.domain),
     icon: asString(value?.icon) || undefined,

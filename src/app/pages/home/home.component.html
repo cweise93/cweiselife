@@ -164,7 +164,7 @@
         <h2>{{ framework.title }}</h2>
         <p class="cw-muted">{{ vm.home.frameworkSection.support }}</p>
         <p class="cw-muted">{{ framework.body.application }}</p>
-        <a mat-button color="primary" [routerLink]="['/frameworks', framework.slug]" class="cw-link-action">
+        <a mat-button color="primary" [routerLink]="getFrameworkRoute(framework.slug)" class="cw-link-action">
           Explore the framework
           <mat-icon>arrow_forward</mat-icon>
         </a>

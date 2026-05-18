@@ -128,7 +128,7 @@ export class HomeComponent {
   }
 
   getWritingRoute(article: WritingItem): string[] {
-    return ['/writing', article.slug];
+    return this.slugToRoute(article.slug);
   }
 
   previousInitiativeSlide(): void {
@@ -160,7 +160,11 @@ export class HomeComponent {
   }
 
   getInitiativeRoute(item: InitiativeItem): string[] {
-    return ['/initiatives', item.slug];
+    return this.slugToRoute(item.slug);
+  }
+
+  getFrameworkRoute(slug: string): string[] {
+    return this.slugToRoute(slug);
   }
 
   private getWritingCardsPerSlide(): number {
@@ -223,5 +227,9 @@ export class HomeComponent {
     }
 
     return slides;
+  }
+
+  private slugToRoute(slug: string): string[] {
+    return ['/', ...slug.split('/').filter(Boolean)];
   }
 }

@@ -31,7 +31,7 @@
           <section class="body-section">
             <h2>{{ section.heading }}</h2>
             @for (paragraph of section.paragraphs; track paragraph) {
-              <p>{{ paragraph }}</p>
+              <div class="prose-block" [innerHTML]="paragraph"></div>
             }
             @if (section.callout) {
               <blockquote>{{ section.callout }}</blockquote>

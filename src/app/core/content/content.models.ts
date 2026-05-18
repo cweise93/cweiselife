@@ -175,6 +175,7 @@ export interface InitiativeItem {
   title: string;
   summary: string;
   status: ContentStatus;
+  publishedOn: string;
   featured: boolean;
   domain: string;
   icon?: string;

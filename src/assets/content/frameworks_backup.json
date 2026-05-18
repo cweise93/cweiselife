@@ -1,0 +1,108 @@
+{
+  "meta": {
+    "version": 1,
+    "updatedOn": "2026-05-16",
+    "eyebrow": "Frameworks",
+    "headline": "Operational Frameworks",
+    "intro": "Frameworks for reducing noise, improving systems translation, and designing cleaner execution paths inside complex organizations."
+  },
+  "items": [
+    {
+      "id": "framework-001",
+      "slug": "frameworks/2026/04/14/turn-down-the-noise",
+      "title": "Turn Down the Noise",
+      "summary": "A model for reducing operational noise, surfacing signal, and improving decision quality.",
+      "status": "published",
+      "publishedOn": "2026-04-14",
+      "featured": true,
+      "category": "Decision Quality",
+      "tags": ["signal", "noise", "decision systems"],
+      "diagramImage": "assets/images/noise-framework.png",
+      "seo": {
+        "title": "Turn Down the Noise Framework",
+        "description": "A framework for reducing organizational noise and improving signal quality."
+      },
+      "body": {
+        "premise": "Most execution problems get worse when organizations cannot distinguish relevant signal from operational noise.",
+        "components": [
+          { "title": "Noise Sources", "description": "Interruptions, ambiguity, duplicate effort, and status theater that obscure the true state of work." },
+          { "title": "Signal Conditions", "description": "Relevant, timely, actionable information that makes progress and risk visible." },
+          { "title": "Volume Control", "description": "Workflow choices that suppress non-essential activity while preserving decision-critical evidence." }
+        ],
+        "application": "Use this framework when leaders are over-briefed but under-informed, or when teams are active but decision quality remains low.",
+        "sections": [
+          {
+            "heading": "When to apply it",
+            "paragraphs": [
+              "Apply the framework when the organization is producing more coordination than clarity.",
+              "It is especially useful in environments where reporting burden grows faster than decision quality."
+            ]
+          },
+          {
+            "heading": "What to inspect first",
+            "paragraphs": [
+              "Start with the operating surfaces where work is translated, summarized, escalated, and reported.",
+              "Those surfaces usually determine whether signal survives contact with execution."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "framework-002",
+      "slug": "frameworks/2026/03/18/systems-translation-loop",
+      "title": "Systems Translation Loop",
+      "summary": "A framework for bridging executive intent, workflow reality, and technical implementation without losing signal.",
+      "status": "published",
+      "publishedOn": "2026-03-18",
+      "featured": true,
+      "category": "Workflow Translation",
+      "tags": ["systems translation", "strategy", "workflow design"],
+      "diagramImage": "assets/images/hero-architecture.png",
+      "seo": {
+        "title": "Systems Translation Loop",
+        "description": "A framework for translating strategic intent into operational and technical execution."
+      },
+      "body": {
+        "premise": "Organizations lose execution fidelity when intent, workflow, and implementation are treated as separate conversations instead of one governed loop.",
+        "components": [
+          { "title": "Intent Layer", "description": "The decision, priority, or strategic shift that must be preserved." },
+          { "title": "Workflow Layer", "description": "The operational path where ownership, inputs, and handoffs are defined." },
+          { "title": "Implementation Layer", "description": "The systems, tools, and teams that encode the workflow into durable execution." }
+        ],
+        "application": "Use the loop when teams agree on goals but still produce mismatched plans, conflicting tickets, or inconsistent delivery behavior.",
+        "sections": [
+          {
+            "heading": "The loop matters because translation is never neutral",
+            "paragraphs": [
+              "Every translation layer adds assumptions. Without active design, those assumptions become silent failure points.",
+              "A durable loop preserves the decision signal while tightening operational fit."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "framework-003",
+      "slug": "frameworks/2026/06/07/draft-execution-governance-map",
+      "title": "Draft: Execution Governance Map",
+      "summary": "A draft framework for mapping governance surfaces across delivery.",
+      "status": "draft",
+      "publishedOn": "2026-06-07",
+      "featured": false,
+      "category": "Draft",
+      "tags": ["draft"],
+      "diagramImage": "assets/images/noise-framework.svg",
+      "seo": {
+        "title": "Draft: Execution Governance Map",
+        "description": "Draft framework."
+      },
+      "body": {
+        "premise": "Draft content.",
+        "components": [],
+        "application": "Draft content.",
+        "sections": []
+      }
+    }
+  ]
+}
