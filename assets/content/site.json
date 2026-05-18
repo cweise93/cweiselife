@@ -20,19 +20,19 @@
     ],
     "heroImage": "assets/images/hero-architecture.png",
     "featuredWritingSlugs": [
-      "organizations-rarely-fail-from-a-lack-of-intelligence",
-      "why-operational-friction-hides-in-translation-layers",
-      "turn-down-the-noise-improving-signal-in-decision-systems"
+      "writing/2026/05/12/organizations-rarely-fail-from-a-lack-of-intelligence",
+      "writing/2026/04/28/why-operational-friction-hides-in-translation-layers",
+      "writing/2026/04/14/turn-down-the-noise-improving-signal-in-decision-systems"
     ],
     "featuredFrameworkSlugs": [
-      "turn-down-the-noise",
-      "systems-translation-loop"
+      "frameworks/2026/04/14/turn-down-the-noise",
+      "frameworks/2026/03/18/systems-translation-loop"
     ],
     "featuredInitiativeSlugs": [
-      "operational-alignment-delivery-coordination",
-      "systems-and-workflow-architecture",
-      "executive-communication-and-operational-translation",
-      "operational-intelligence-exploration"
+      "initiatives/2026/05/16/operational-alignment-delivery-coordination",
+      "initiatives/2026/05/16/systems-and-workflow-architecture",
+      "initiatives/2026/05/16/executive-communication-and-operational-translation",
+      "initiatives/2026/05/16/operational-intelligence-exploration"
     ],
     "themes": [
       {
@@ -106,8 +106,8 @@
   },
   "footer": {
     "featuredLinks": [
-      { "label": "Operational Alignment & Delivery Coordination", "path": "/initiatives/operational-alignment-delivery-coordination" },
-      { "label": "Turn Down the Noise", "path": "/frameworks/turn-down-the-noise" },
+      { "label": "Operational Alignment & Delivery Coordination", "path": "/initiatives/2026/05/16/operational-alignment-delivery-coordination" },
+      { "label": "Turn Down the Noise", "path": "/frameworks/2026/04/14/turn-down-the-noise" },
       { "label": "How I Think. What I Do.", "path": "/about" }
     ]
   },
