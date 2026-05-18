@@ -40,18 +40,17 @@ h1 {
 .detail-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.25fr) minmax(280px, .75fr);
-  gap: 28px;
+  gap: 32px;
 }
 
-.prose,
-.components-panel {
+.prose {
   display: grid;
-  gap: 22px;
+  gap: 28px;
 }
 
 .body-section {
   display: grid;
-  gap: 12px;
+  gap: 16px;
 }
 
 h2 {
@@ -71,34 +70,6 @@ p {
   line-height: 1.8;
 }
 
-.prose-block {
-  color: var(--cw-muted);
-  line-height: 1.8;
-}
-
-.prose-block :where(p) {
-  margin: 0;
-}
-
-.prose-block :where(h3) {
-  margin: 8px 0 0;
-  font-size: 1.05rem;
-  color: var(--cw-ink);
-}
-
-.prose-block :where(figure) {
-  margin: 8px 0 12px;
-}
-
-.prose-block :where(img) {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: 16px;
-  border: 1px solid var(--cw-line);
-  background: var(--cw-panel);
-}
-
 .component-card {
   border: 1px solid var(--cw-line);
   border-radius: 16px;
@@ -108,13 +79,10 @@ p {
   gap: 10px;
 }
 
-blockquote {
-  margin: 8px 0 0;
-  padding: 18px 20px;
-  border-left: 4px solid var(--cw-accent);
-  background: color-mix(in srgb, var(--cw-accent) 6%, var(--cw-panel));
-  color: var(--cw-ink);
-  border-radius: 12px;
+.component-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
 }
 
 .missing-state {
@@ -125,6 +93,10 @@ blockquote {
 
 @media (max-width: 980px) {
   .detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .component-summary-grid {
     grid-template-columns: 1fr;
   }
 }

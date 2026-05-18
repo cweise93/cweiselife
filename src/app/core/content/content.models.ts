@@ -10,10 +10,99 @@ export interface SeoContent {
   description: string;
 }
 
-export interface BodySection {
+export interface ContentParagraphBlock {
+  type: 'paragraph';
+  text: string;
+}
+
+export interface ContentImageBlock {
+  type: 'image';
+  src: string;
+  alt: string;
+  caption?: string;
+}
+
+export interface ContentCalloutBlock {
+  type: 'callout';
+  title?: string;
+  text: string;
+  tone?: 'neutral' | 'executive' | 'technical' | 'warning';
+}
+
+export interface ContentListBlock {
+  type: 'list';
+  title?: string;
+  items: string[];
+}
+
+export interface ContentComponentBlock {
+  type: 'component';
+  component: string;
+  fallback?: string;
+}
+
+export type ContentSectionBlock =
+  | ContentParagraphBlock
+  | ContentImageBlock
+  | ContentCalloutBlock
+  | ContentListBlock
+  | ContentComponentBlock;
+
+export interface ContentImage {
+  src: string;
+  alt: string;
+  caption?: string;
+}
+
+export interface ContentSection {
   heading: string;
-  paragraphs: string[];
+  eyebrow?: string;
+  intro?: string;
+  blocks?: ContentSectionBlock[];
+  paragraphs?: string[];
+  image?: ContentImage;
+  component?: string;
+  fallback?: string;
   callout?: string;
+}
+
+export interface CompanionSnapshotItem {
+  label: string;
+  value: string;
+}
+
+export interface CompanionTocItem {
+  label: string;
+  anchor: string;
+}
+
+export interface CompanionAsset {
+  label: string;
+  href: string;
+  description?: string;
+  type?: 'image' | 'pdf' | 'data' | 'schema' | 'checklist' | 'link';
+}
+
+export interface CompanionRelatedItem {
+  title: string;
+  slug: string;
+  description?: string;
+}
+
+export interface CompanionCallToAction {
+  title: string;
+  description: string;
+  href?: string;
+  anchor?: string;
+  buttonLabel?: string;
+}
+
+export interface ContentCompanion {
+  snapshot?: CompanionSnapshotItem[];
+  toc?: CompanionTocItem[];
+  assets?: CompanionAsset[];
+  related?: CompanionRelatedItem[];
+  callsToAction?: CompanionCallToAction[];
 }
 
 export interface SiteMeta extends FileMeta {
@@ -106,7 +195,7 @@ export interface CollectionMeta extends FileMeta {
 
 export interface WritingBody {
   intro: string;
-  sections: BodySection[];
+  sections: ContentSection[];
 }
 
 export interface WritingItem {
@@ -122,6 +211,7 @@ export interface WritingItem {
   heroImage?: string;
   seo: SeoContent;
   body: WritingBody;
+  companion?: ContentCompanion;
 }
 
 export interface WritingContentFile {
@@ -138,7 +228,7 @@ export interface FrameworkBody {
   premise: string;
   components: FrameworkComponent[];
   application: string;
-  sections: BodySection[];
+  sections: ContentSection[];
 }
 
 export interface FrameworkItem {
@@ -154,6 +244,7 @@ export interface FrameworkItem {
   diagramImage?: string;
   seo: SeoContent;
   body: FrameworkBody;
+  companion?: ContentCompanion;
 }
 
 export interface FrameworkContentFile {
@@ -183,6 +274,7 @@ export interface InitiativeItem {
   thumbnail?: string;
   seo: SeoContent;
   body: InitiativeBody;
+  companion?: ContentCompanion;
 }
 
 export interface InitiativeContentFile {

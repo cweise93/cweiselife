@@ -1,10 +1,18 @@
 import {
   AboutContent,
   AboutContentFile,
-  BodySection,
   CollectionMeta,
+  CompanionAsset,
+  CompanionCallToAction,
+  CompanionRelatedItem,
+  CompanionSnapshotItem,
+  CompanionTocItem,
   ConnectContent,
+  ContentCompanion,
   ContentCollectionViewModel,
+  ContentImage,
+  ContentSection,
+  ContentSectionBlock,
   ContentStatus,
   FileMeta,
   FooterContent,
@@ -61,30 +69,251 @@ function normalizeTags(value: unknown): string[] {
   return asStringArray(value).map((tag) => tag.toLowerCase());
 }
 
-function normalizeSections(value: any): BodySection[] {
+function normalizeContentImage(value: any): ContentImage | undefined {
+  const src = asString(value?.src);
+  const alt = asString(value?.alt);
+
+  if (!src || !alt) {
+    return undefined;
+  }
+
+  return {
+    src,
+    alt,
+    caption: asString(value?.caption) || undefined
+  };
+}
+
+function normalizeSectionBlocks(value: any): ContentSectionBlock[] {
   if (!Array.isArray(value)) {
     return [];
   }
 
-  const sections: BodySection[] = [];
+  const blocks: ContentSectionBlock[] = [];
+
+  for (const block of value) {
+    const type = asString(block?.type);
+
+    switch (type) {
+      case 'paragraph': {
+        const text = asString(block?.text);
+        if (text) {
+          blocks.push({ type: 'paragraph', text });
+        }
+        break;
+      }
+      case 'image': {
+        const image = normalizeContentImage(block);
+        if (image) {
+          blocks.push({ type: 'image', ...image });
+        }
+        break;
+      }
+      case 'callout': {
+        const text = asString(block?.text);
+        if (text) {
+          const tone = asString(block?.tone);
+          blocks.push({
+            type: 'callout',
+            title: asString(block?.title) || undefined,
+            text,
+            tone:
+              tone === 'neutral' || tone === 'executive' || tone === 'technical' || tone === 'warning'
+                ? tone
+                : undefined
+          });
+        }
+        break;
+      }
+      case 'list': {
+        const items = asStringArray(block?.items);
+        if (items.length) {
+          blocks.push({
+            type: 'list',
+            title: asString(block?.title) || undefined,
+            items
+          });
+        }
+        break;
+      }
+      case 'component': {
+        const component = asString(block?.component);
+        if (component) {
+          blocks.push({
+            type: 'component',
+            component,
+            fallback: asString(block?.fallback) || undefined
+          });
+        }
+        break;
+      }
+      default:
+        break;
+    }
+  }
+
+  return blocks;
+}
+
+function normalizeSections(value: any): ContentSection[] {
+  if (!Array.isArray(value)) {
+    return [];
+  }
+
+  const sections: ContentSection[] = [];
 
   for (const section of value) {
     const heading = asString(section?.heading);
     const paragraphs = asStringArray(section?.paragraphs);
+    const intro = asString(section?.intro) || undefined;
+    const eyebrow = asString(section?.eyebrow) || undefined;
+    const blocks = normalizeSectionBlocks(section?.blocks);
+    const image = normalizeContentImage(section?.image);
+    const component = asString(section?.component) || undefined;
+    const fallback = asString(section?.fallback) || undefined;
     const callout = asString(section?.callout) || undefined;
 
-    if (!heading && paragraphs.length === 0 && !callout) {
+    if (!heading && paragraphs.length === 0 && !intro && !image && !component && !callout && blocks.length === 0) {
       continue;
     }
 
     sections.push({
       heading: heading || 'Section',
+      eyebrow,
+      intro,
+      blocks,
       paragraphs,
+      image,
+      component,
+      fallback,
       callout
     });
   }
 
   return sections;
+}
+
+function normalizeCompanionSnapshot(value: any): CompanionSnapshotItem[] {
+  if (!Array.isArray(value)) {
+    return [];
+  }
+
+  return value
+    .map((item) => {
+      const label = asString(item?.label);
+      const result = asString(item?.value);
+      return label && result ? { label, value: result } : null;
+    })
+    .filter((item): item is CompanionSnapshotItem => item !== null);
+}
+
+function normalizeCompanionToc(value: any): CompanionTocItem[] {
+  if (!Array.isArray(value)) {
+    return [];
+  }
+
+  return value
+    .map((item) => {
+      const label = asString(item?.label);
+      const anchor = asString(item?.anchor);
+      return label && anchor ? { label, anchor } : null;
+    })
+    .filter((item): item is CompanionTocItem => item !== null);
+}
+
+function normalizeCompanionAssets(value: any): CompanionAsset[] {
+  if (!Array.isArray(value)) {
+    return [];
+  }
+
+  return value
+    .map((item): CompanionAsset | null => {
+      const label = asString(item?.label);
+      const href = asString(item?.href);
+      const type = asString(item?.type);
+
+      if (!label || !href) {
+        return null;
+      }
+
+      return {
+        label,
+        href,
+        description: asString(item?.description) || undefined,
+        type:
+          type === 'image' ||
+          type === 'pdf' ||
+          type === 'data' ||
+          type === 'schema' ||
+          type === 'checklist' ||
+          type === 'link'
+            ? type
+            : undefined
+      };
+    })
+    .filter((item): item is CompanionAsset => item !== null);
+}
+
+function normalizeCompanionRelated(value: any): CompanionRelatedItem[] {
+  if (!Array.isArray(value)) {
+    return [];
+  }
+
+  return value
+    .map((item): CompanionRelatedItem | null => {
+      const title = asString(item?.title);
+      const slug = asString(item?.slug);
+      return title && slug
+        ? {
+            title,
+            slug,
+            description: asString(item?.description) || undefined
+          }
+        : null;
+    })
+    .filter((item): item is CompanionRelatedItem => item !== null);
+}
+
+function normalizeCompanionCallsToAction(value: any): CompanionCallToAction[] {
+  if (!Array.isArray(value)) {
+    return [];
+  }
+
+  return value
+    .map((item): CompanionCallToAction | null => {
+      const title = asString(item?.title);
+      const description = asString(item?.description);
+      const href = asString(item?.href) || undefined;
+      const anchor = asString(item?.anchor) || undefined;
+      const buttonLabel = asString(item?.buttonLabel) || undefined;
+
+      return title && description ? { title, description, href, anchor, buttonLabel } : null;
+    })
+    .filter((item): item is CompanionCallToAction => item !== null);
+}
+
+function normalizeCompanion(value: any): ContentCompanion | undefined {
+  if (!value || typeof value !== 'object') {
+    return undefined;
+  }
+
+  const snapshot = normalizeCompanionSnapshot(value?.snapshot);
+  const toc = normalizeCompanionToc(value?.toc);
+  const assets = normalizeCompanionAssets(value?.assets);
+  const related = normalizeCompanionRelated(value?.related);
+  const callsToAction = normalizeCompanionCallsToAction(value?.callsToAction);
+
+  if (!snapshot.length && !toc.length && !assets.length && !related.length && !callsToAction.length) {
+    return undefined;
+  }
+
+  return {
+    snapshot: snapshot.length ? snapshot : undefined,
+    toc: toc.length ? toc : undefined,
+    assets: assets.length ? assets : undefined,
+    related: related.length ? related : undefined,
+    callsToAction: callsToAction.length ? callsToAction : undefined
+  };
 }
 
 function normalizeSeo(value: any, fallbackTitle: string, fallbackDescription: string): SeoContent {
@@ -293,7 +522,8 @@ export function mapWritingItem(value: any): WritingItem | null {
     body: {
       intro: asString(value?.body?.intro),
       sections: normalizeSections(value?.body?.sections)
-    }
+    },
+    companion: normalizeCompanion(value?.companion)
   };
 }
 
@@ -356,7 +586,8 @@ export function mapFrameworkItem(value: any): FrameworkItem | null {
     tags: normalizeTags(value?.tags),
     diagramImage: asString(value?.diagramImage) || undefined,
     seo: normalizeSeo(value?.seo, title, summary),
-    body
+    body,
+    companion: normalizeCompanion(value?.companion)
   };
 }
 
@@ -402,7 +633,8 @@ export function mapInitiativeItem(value: any): InitiativeItem | null {
     tags: normalizeTags(value?.tags),
     thumbnail: asString(value?.thumbnail) || undefined,
     seo: normalizeSeo(value?.seo, title, summary),
-    body
+    body,
+    companion: normalizeCompanion(value?.companion)
   };
 }
 

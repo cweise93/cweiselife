@@ -27,27 +27,30 @@
           <h2>Application</h2>
           <p>{{ framework.body.application }}</p>
         </section>
-        @for (section of framework.body.sections; track section.heading) {
+
+        @if (frameworkComponents().length) {
           <section class="body-section">
-            <h2>{{ section.heading }}</h2>
-            @for (paragraph of section.paragraphs; track paragraph) {
-              <div class="prose-block" [innerHTML]="paragraph"></div>
-            }
-            @if (section.callout) {
-              <blockquote>{{ section.callout }}</blockquote>
-            }
+            <h2>Framework Components</h2>
+            <div class="component-summary-grid">
+              @for (component of frameworkComponents(); track component.title) {
+                <section class="component-card">
+                  <h3>{{ component.title }}</h3>
+                  <p>{{ component.description }}</p>
+                </section>
+              }
+            </div>
           </section>
         }
+
+        <cw-content-renderer [sections]="framework.body.sections" />
       </article>
-      <aside class="components-panel">
-        <h2>Components</h2>
-        @for (component of framework.body.components; track component.title) {
-          <section class="component-card">
-            <h3>{{ component.title }}</h3>
-            <p>{{ component.description }}</p>
-          </section>
-        }
-      </aside>
+
+      <cw-companion-rail
+        [companion]="framework.companion ?? {}"
+        [category]="framework.category"
+        [publishedOn]="framework.publishedOn"
+        [tags]="framework.tags"
+      />
     </div>
   </section>
 } @else {
