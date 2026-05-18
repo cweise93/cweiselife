@@ -103,7 +103,7 @@ h3 {
 }
 
 .framework-main-content > .body-section > p {
-  max-width: 860px;
+  max-width: 980px;
 }
 
 p {
@@ -114,7 +114,7 @@ p {
 
 .component-summary-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
   max-width: 1120px;
 }

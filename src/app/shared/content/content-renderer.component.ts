@@ -1,7 +1,12 @@
 import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { ContentSection, ContentSectionBlock } from '../../core/content/content.models';
+import {
+  ContentImage,
+  ContentImageBlock,
+  ContentSection,
+  ContentSectionBlock
+} from '../../core/content/content.models';
 import { InteractiveContentBlockComponent } from './interactive-content-block/interactive-content-block.component';
 
 interface LightboxImage {
@@ -15,7 +20,12 @@ interface LightboxImage {
   imports: [MatButtonModule, MatIconModule, InteractiveContentBlockComponent],
   template: `
     @for (section of sections(); track trackSection(section, $index)) {
-      <section class="content-section" [id]="sectionId(section)">
+      <section
+        class="content-section"
+        [class.content-section--split]="isSplitSection(section)"
+        [class.content-section--split-left]="section.layout === 'split-image-left'"
+        [id]="sectionId(section)"
+      >
         @if (section.eyebrow) {
           <p class="content-section-eyebrow">{{ section.eyebrow }}</p>
         }
@@ -25,85 +35,160 @@ interface LightboxImage {
           <p class="section-intro">{{ section.intro }}</p>
         }
 
-        @if (section.paragraphs?.length) {
-          @for (paragraph of section.paragraphs; track paragraph) {
-            <p>{{ paragraph }}</p>
-          }
-        }
+        @if (isSplitSection(section)) {
+          <div class="content-section__split">
+            <div class="content-section__prose">
+              @if (section.paragraphs?.length) {
+                @for (paragraph of section.paragraphs; track paragraph) {
+                  <p>{{ paragraph }}</p>
+                }
+              }
 
-        @if (section.image; as image) {
-          <figure class="content-image">
-            <button
-              type="button"
-              class="content-image-button"
-              [attr.aria-label]="'Open image: ' + image.alt"
-              (click)="openImage(image)"
-            >
-              <img [src]="image.src" [alt]="image.alt" />
-            </button>
-            @if (image.caption) {
-              <figcaption>{{ image.caption }}</figcaption>
-            }
-          </figure>
-        }
-
-        @if (section.component) {
-          <app-interactive-content-block
-            [componentKey]="section.component"
-            [fallback]="section.fallback"
-            [title]="section.componentTitle"
-            [description]="section.componentDescription"
-          />
-        }
-
-        @if (section.blocks?.length) {
-          @for (block of section.blocks; track trackBlock(block, $index)) {
-            @switch (block.type) {
-              @case ('paragraph') {
-                <p>{{ block.text }}</p>
-              }
-              @case ('image') {
-                <figure class="content-image">
-                  <button
-                    type="button"
-                    class="content-image-button"
-                    [attr.aria-label]="'Open image: ' + block.alt"
-                    (click)="openImage(block)"
-                  >
-                    <img [src]="block.src" [alt]="block.alt" />
-                  </button>
-                  @if (block.caption) {
-                    <figcaption>{{ block.caption }}</figcaption>
-                  }
-                </figure>
-              }
-              @case ('callout') {
-                <aside class="content-callout" [attr.data-tone]="block.tone ?? 'neutral'">
-                  @if (block.title) {
-                    <h3>{{ block.title }}</h3>
-                  }
-                  <p>{{ block.text }}</p>
-                </aside>
-              }
-              @case ('list') {
-                <div class="content-list">
-                  @if (block.title) {
-                    <h3>{{ block.title }}</h3>
-                  }
-                  <ul>
-                    @for (item of block.items; track item) {
-                      <li>{{ item }}</li>
-                    }
-                  </ul>
-                </div>
-              }
-              @case ('component') {
+              @if (section.component) {
                 <app-interactive-content-block
-                  [componentKey]="block.component"
-                  [fallback]="block.fallback"
-                  [title]="block.title"
-                  [description]="block.description"
+                  [componentKey]="section.component"
+                  [fallback]="section.fallback"
+                  [title]="section.componentTitle"
+                  [description]="section.componentDescription"
                 />
+              }
+
+              @if (sectionTextBlocks(section).length) {
+                @for (block of sectionTextBlocks(section); track trackBlock(block, $index)) {
+                  @switch (block.type) {
+                    @case ('paragraph') {
+                      <p>{{ block.text }}</p>
+                    }
+                    @case ('callout') {
+                      <aside class="content-callout" [attr.data-tone]="block.tone ?? 'neutral'">
+                        @if (block.title) {
+                          <h3>{{ block.title }}</h3>
+                        }
+                        <p>{{ block.text }}</p>
+                      </aside>
+                    }
+                    @case ('list') {
+                      <div class="content-list">
+                        @if (block.title) {
+                          <h3>{{ block.title }}</h3>
+                        }
+                        <ul>
+                          @for (item of block.items; track item) {
+                            <li>{{ item }}</li>
+                          }
+                        </ul>
+                      </div>
+                    }
+                    @case ('component') {
+                      <app-interactive-content-block
+                        [componentKey]="block.component"
+                        [fallback]="block.fallback"
+                        [title]="block.title"
+                        [description]="block.description"
+                      />
+                    }
+                  }
+                }
+              }
+            </div>
+
+            @if (sectionImage(section); as image) {
+              <figure class="content-image content-image--split">
+                <button
+                  type="button"
+                  class="content-image-button"
+                  [attr.aria-label]="'Open image: ' + image.alt"
+                  (click)="openImage(image)"
+                >
+                  <img [src]="image.src" [alt]="image.alt" />
+                </button>
+                @if (image.caption) {
+                  <figcaption>{{ image.caption }}</figcaption>
+                }
+              </figure>
+            }
+          </div>
+        } @else {
+          @if (section.paragraphs?.length) {
+            @for (paragraph of section.paragraphs; track paragraph) {
+              <p>{{ paragraph }}</p>
+            }
+          }
+
+          @if (section.image; as image) {
+            <figure class="content-image">
+              <button
+                type="button"
+                class="content-image-button"
+                [attr.aria-label]="'Open image: ' + image.alt"
+                (click)="openImage(image)"
+              >
+                <img [src]="image.src" [alt]="image.alt" />
+              </button>
+              @if (image.caption) {
+                <figcaption>{{ image.caption }}</figcaption>
+              }
+            </figure>
+          }
+
+          @if (section.component) {
+            <app-interactive-content-block
+              [componentKey]="section.component"
+              [fallback]="section.fallback"
+              [title]="section.componentTitle"
+              [description]="section.componentDescription"
+            />
+          }
+
+          @if (section.blocks?.length) {
+            @for (block of section.blocks; track trackBlock(block, $index)) {
+              @switch (block.type) {
+                @case ('paragraph') {
+                  <p>{{ block.text }}</p>
+                }
+                @case ('image') {
+                  <figure class="content-image">
+                    <button
+                      type="button"
+                      class="content-image-button"
+                      [attr.aria-label]="'Open image: ' + block.alt"
+                      (click)="openImage(block)"
+                    >
+                      <img [src]="block.src" [alt]="block.alt" />
+                    </button>
+                    @if (block.caption) {
+                      <figcaption>{{ block.caption }}</figcaption>
+                    }
+                  </figure>
+                }
+                @case ('callout') {
+                  <aside class="content-callout" [attr.data-tone]="block.tone ?? 'neutral'">
+                    @if (block.title) {
+                      <h3>{{ block.title }}</h3>
+                    }
+                    <p>{{ block.text }}</p>
+                  </aside>
+                }
+                @case ('list') {
+                  <div class="content-list">
+                    @if (block.title) {
+                      <h3>{{ block.title }}</h3>
+                    }
+                    <ul>
+                      @for (item of block.items; track item) {
+                        <li>{{ item }}</li>
+                      }
+                    </ul>
+                  </div>
+                }
+                @case ('component') {
+                  <app-interactive-content-block
+                    [componentKey]="block.component"
+                    [fallback]="block.fallback"
+                    [title]="block.title"
+                    [description]="block.description"
+                  />
+                }
               }
             }
           }
@@ -155,6 +240,27 @@ interface LightboxImage {
       scroll-margin-top: calc(var(--cw-toolbar-current-height, var(--cw-toolbar-height)) + var(--framework-context-bar-height, 0px) + 24px);
     }
 
+    .content-section__split {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(360px, 0.95fr);
+      gap: 28px;
+      align-items: start;
+    }
+
+    .content-section--split-left .content-section__prose {
+      order: 2;
+    }
+
+    .content-section--split-left .content-image--split {
+      order: 1;
+    }
+
+    .content-section__prose {
+      display: grid;
+      gap: 16px;
+      min-width: 0;
+    }
+
     .content-section-eyebrow {
       margin: 0;
       font-size: 0.78rem;
@@ -195,6 +301,13 @@ interface LightboxImage {
       width: min(100%, 1120px);
     }
 
+    .content-image--split {
+      width: 100%;
+      margin-top: 0;
+      position: sticky;
+      top: calc(var(--cw-toolbar-current-height, var(--cw-toolbar-height)) + var(--framework-context-bar-height, 0px) + 28px);
+    }
+
     .content-image-button {
       appearance: none;
       border: 0;
@@ -231,7 +344,7 @@ interface LightboxImage {
       padding: 20px 22px;
       display: grid;
       gap: 10px;
-      max-width: 860px;
+      max-width: 980px;
     }
 
     app-interactive-content-block {
@@ -242,7 +355,15 @@ interface LightboxImage {
     .content-section > p,
     .content-section > .section-intro,
     .content-section > blockquote {
-      max-width: 860px;
+      max-width: 980px;
+    }
+
+    .content-section__prose > p,
+    .content-section__prose > .section-intro,
+    .content-section__prose > blockquote,
+    .content-section__prose > .content-callout,
+    .content-section__prose > .content-list {
+      max-width: none;
     }
 
     .content-callout[data-tone='executive'] {
@@ -359,6 +480,21 @@ interface LightboxImage {
       color: rgba(255, 255, 255, 0.72);
     }
 
+    @media (max-width: 860px) {
+      .content-section__split {
+        grid-template-columns: 1fr;
+      }
+
+      .content-section--split-left .content-section__prose,
+      .content-section--split-left .content-image--split {
+        order: initial;
+      }
+
+      .content-image--split {
+        position: static;
+      }
+    }
+
     @media (max-width: 720px) {
       .lightbox-backdrop {
         padding: 12px;
@@ -417,5 +553,38 @@ export class ContentRendererComponent {
 
   closeImage(): void {
     this.activeImage.set(null);
+  }
+
+  isSplitSection(section: ContentSection): boolean {
+    return (
+      (section.layout === 'split-image-right' || section.layout === 'split-image-left') &&
+      !!this.sectionImage(section)
+    );
+  }
+
+  sectionImage(section: ContentSection): ContentImage | ContentImageBlock | null {
+    if (section.image) {
+      return section.image;
+    }
+
+    const imageBlock = section.blocks?.find((block): block is ContentImageBlock => block.type === 'image');
+    return imageBlock ?? null;
+  }
+
+  sectionTextBlocks(section: ContentSection): ContentSectionBlock[] {
+    if (!section.blocks?.length) {
+      return [];
+    }
+
+    let imageConsumed = false;
+
+    return section.blocks.filter((block) => {
+      if (!imageConsumed && block.type === 'image') {
+        imageConsumed = true;
+        return false;
+      }
+
+      return true;
+    });
   }
 }

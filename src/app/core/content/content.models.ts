@@ -62,6 +62,7 @@ export interface ContentSection {
   heading: string;
   eyebrow?: string;
   intro?: string;
+  layout?: 'default' | 'split-image-right' | 'split-image-left';
   blocks?: ContentSectionBlock[];
   paragraphs?: string[];
   image?: ContentImage;
