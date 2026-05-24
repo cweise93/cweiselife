@@ -14,6 +14,10 @@
   --relationship-control-surface: rgba(255, 255, 255, 0.94);
   --relationship-tooltip-surface: rgba(255, 255, 255, 0.96);
   --relationship-insight-surface: color-mix(in srgb, var(--cw-panel) 88%, white);
+  --relationship-toggle-surface: rgba(255, 255, 255, 0.96);
+  --relationship-toggle-text: var(--cw-ink);
+  --relationship-toggle-selected-surface: color-mix(in srgb, var(--cw-accent) 14%, var(--cw-panel));
+  --relationship-toggle-selected-text: var(--cw-accent-strong);
   --relationship-canvas-base:
     radial-gradient(circle at top left, rgba(37, 99, 235, 0.07), transparent 32rem),
     var(--cw-soft, #f8fbff);
@@ -87,6 +91,22 @@
 
 .relationship-explorer__filters {
   flex: 0 1 auto;
+}
+
+:host ::ng-deep .relationship-explorer__filters .mat-button-toggle-appearance-standard {
+  border: 1px solid var(--cw-line);
+  background: var(--relationship-toggle-surface);
+  color: var(--relationship-toggle-text);
+}
+
+:host ::ng-deep .relationship-explorer__filters .mat-button-toggle-checked {
+  background: var(--relationship-toggle-selected-surface);
+  color: var(--relationship-toggle-selected-text);
+}
+
+:host ::ng-deep .relationship-explorer__filters .mat-button-toggle-focus-overlay,
+:host ::ng-deep .relationship-explorer__filters .mat-button-toggle-button::before {
+  background: transparent;
 }
 
 .relationship-explorer__legend {
@@ -199,6 +219,10 @@
   backdrop-filter: blur(10px);
 }
 
+.graph-canvas__controls button {
+  color: var(--cw-ink);
+}
+
 .graph-tooltip {
   position: absolute;
   z-index: 3;
@@ -252,20 +276,25 @@
   --relationship-insight-surface:
     linear-gradient(
       180deg,
-      color-mix(in srgb, var(--cw-panel) 90%, #21364a),
-      color-mix(in srgb, var(--cw-panel) 96%, #0b1826)
+      color-mix(in srgb, var(--cw-panel) 92%, #24384d),
+      color-mix(in srgb, var(--cw-panel) 98%, #0a1623)
     );
+  --relationship-toggle-surface: rgba(15, 31, 47, 0.96);
+  --relationship-toggle-text: #dfe9f5;
+  --relationship-toggle-selected-surface: color-mix(in srgb, var(--cw-accent) 18%, #11273b);
+  --relationship-toggle-selected-text: #cfe3ff;
   --relationship-canvas-base:
     radial-gradient(circle at top left, rgba(140, 192, 255, 0.12), transparent 32rem),
-    linear-gradient(180deg, #102235 0%, #0e1d2d 100%);
+    radial-gradient(circle at bottom right, rgba(45, 135, 113, 0.08), transparent 28rem),
+    linear-gradient(180deg, #0d1f31 0%, #0a1826 100%);
 }
 
 :host-context(body.cw-theme-dusk) .relationship-explorer {
   background:
     linear-gradient(
       180deg,
-      color-mix(in srgb, var(--cw-panel) 92%, #17324a),
-      color-mix(in srgb, var(--cw-panel) 98%, #0a1623)
+      color-mix(in srgb, var(--cw-panel) 94%, #17324a),
+      color-mix(in srgb, var(--cw-panel) 99%, #08131e)
     );
 }
 
@@ -274,11 +303,21 @@
   border-bottom-color: color-mix(in srgb, var(--cw-line) 85%, #385474);
 }
 
+:host-context(body.cw-theme-dusk) .relationship-explorer__hint {
+  color: #bfd0e2;
+}
+
 :host-context(body.cw-theme-dusk) .graph-canvas__controls {
+  border-color: color-mix(in srgb, var(--cw-line) 78%, #4c6d8f);
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.32);
 }
 
+:host-context(body.cw-theme-dusk) .graph-canvas__controls button {
+  color: #edf4fb;
+}
+
 :host-context(body.cw-theme-dusk) .graph-tooltip {
+  border-color: color-mix(in srgb, var(--cw-line) 78%, #4c6d8f);
   box-shadow: 0 14px 30px rgba(0, 0, 0, 0.4);
 }
 
@@ -288,6 +327,28 @@
 
 :host-context(body.cw-theme-dusk) .graph-tooltip span,
 :host-context(body.cw-theme-dusk) .legend-item {
+  color: #bfd0e2;
+}
+
+:host-context(body.cw-theme-dusk) .graph-card,
+:host-context(body.cw-theme-dusk) .graph-canvas,
+:host-context(body.cw-theme-dusk) .insight-card {
+  border-color: color-mix(in srgb, var(--cw-line) 78%, #3f5e80);
+}
+
+:host-context(body.cw-theme-dusk) .insight-card {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+:host-context(body.cw-theme-dusk) .insight-block h4,
+:host-context(body.cw-theme-dusk) .insight-block h5 {
+  color: #eef4fb;
+}
+
+:host-context(body.cw-theme-dusk) .insight-empty p,
+:host-context(body.cw-theme-dusk) .insight-card p,
+:host-context(body.cw-theme-dusk) .insight-card li,
+:host-context(body.cw-theme-dusk) .insight-type {
   color: #bfd0e2;
 }
 
