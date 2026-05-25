@@ -17,20 +17,107 @@
   </section>
 
   <section class="cw-section">
-    <article class="cw-container prose">
-      <p class="intro">{{ article.body.intro }}</p>
-      @for (section of article.body.sections; track section.heading) {
-        <section class="body-section">
-          <h2>{{ section.heading }}</h2>
-          @for (paragraph of section.paragraphs; track paragraph) {
-            <p>{{ paragraph }}</p>
+    <div class="cw-container writing-content-shell">
+      <article class="writing-main-content">
+        <p class="intro">{{ article.body.intro }}</p>
+        <cw-content-renderer [sections]="article.body.sections" />
+      </article>
+
+      @if (snapshotItems().length || tocItems().length || assetItems().length || relatedItems().length || callToActionItems().length) {
+        <aside class="writing-rail">
+          @if (snapshotItems().length) {
+            <section class="writing-rail-card">
+              <p class="rail-eyebrow">Essay Snapshot</p>
+              <dl class="rail-list">
+                @for (item of snapshotItems(); track item.label) {
+                  <div>
+                    <dt>{{ item.label }}</dt>
+                    <dd>{{ item.value }}</dd>
+                  </div>
+                }
+              </dl>
+            </section>
           }
-          @if (section.callout) {
-            <blockquote>{{ section.callout }}</blockquote>
+
+          @if (tocItems().length) {
+            <section class="writing-rail-card">
+              <p class="rail-eyebrow">In This Essay</p>
+              <nav class="rail-link-list" aria-label="Essay section navigation">
+                @for (item of tocItems(); track item.anchor) {
+                  <a [routerLink]="[]" [fragment]="item.anchor">{{ item.label }}</a>
+                }
+              </nav>
+            </section>
           }
-        </section>
+
+          @if (assetItems().length) {
+            <section class="writing-rail-card">
+              <p class="rail-eyebrow">Visible In This Article</p>
+              <div class="rail-stack">
+                @for (item of assetItems(); track item.label) {
+                  @if (isLocalAnchor(item.href)) {
+                    <a class="rail-asset" [routerLink]="[]" [fragment]="anchorFromHref(item.href)">
+                      <span class="asset-label">{{ item.label }}</span>
+                      @if (item.description) {
+                        <span class="asset-description">{{ item.description }}</span>
+                      }
+                    </a>
+                  } @else {
+                    <a class="rail-asset" [href]="item.href">
+                      <span class="asset-label">{{ item.label }}</span>
+                      @if (item.description) {
+                        <span class="asset-description">{{ item.description }}</span>
+                      }
+                    </a>
+                  }
+                }
+              </div>
+            </section>
+          }
+
+          @if (relatedItems().length) {
+            <section class="writing-rail-card">
+              <p class="rail-eyebrow">Related Essays</p>
+              <div class="rail-stack">
+                @for (item of relatedItems(); track item.slug) {
+                  <a class="rail-asset" [routerLink]="slugToRoute(item.slug)">
+                    <span class="asset-label">{{ item.title }}</span>
+                    @if (item.description) {
+                      <span class="asset-description">{{ item.description }}</span>
+                    }
+                  </a>
+                }
+              </div>
+            </section>
+          }
+
+          @if (callToActionItems().length) {
+            <section class="writing-rail-card">
+              <p class="rail-eyebrow">Next Step</p>
+              <div class="rail-stack">
+                @for (item of callToActionItems(); track item.title) {
+                  <section class="rail-cta">
+                    <h3>{{ item.title }}</h3>
+                    <p>{{ item.description }}</p>
+                    @if (item.href || item.anchor) {
+                      @if (item.anchor && !item.href) {
+                        <a mat-stroked-button [routerLink]="[]" [fragment]="item.anchor">
+                          {{ item.buttonLabel || 'Open' }}
+                        </a>
+                      } @else {
+                        <a mat-stroked-button [href]="item.href">
+                          {{ item.buttonLabel || 'Open' }}
+                        </a>
+                      }
+                    }
+                  </section>
+                }
+              </div>
+            </section>
+          }
+        </aside>
       }
-    </article>
+    </div>
   </section>
 } @else {
   <section class="cw-section missing-state">

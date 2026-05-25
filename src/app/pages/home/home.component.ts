@@ -69,10 +69,10 @@ export class HomeComponent {
   private readonly contentService = inject(ContentService);
 
   readonly homeContent = toSignal(this.contentService.getHomeContent(), { initialValue: EMPTY_HOME });
-  readonly writingItems = toSignal(this.contentService.getWritingIndex(), { initialValue: [] as WritingItem[] });
+  readonly featuredWritingItems = computed<WritingItem[]>(() => this.homeContent().featuredWriting ?? []);
   readonly cardsPerSlide = signal(this.getWritingCardsPerSlide());
   readonly currentWritingSlide = signal(0);
-  readonly writingSlides = computed(() => this.chunkWritingItems(this.writingItems(), this.cardsPerSlide()));
+  readonly writingSlides = computed(() => this.chunkWritingItems(this.featuredWritingItems(), this.cardsPerSlide()));
   readonly hasWritingCarousel = computed(() => this.writingSlides().length > 1);
   readonly initiativeCardsPerSlide = signal(this.getInitiativeCardsPerSlide());
   readonly currentInitiativeSlide = signal(0);
