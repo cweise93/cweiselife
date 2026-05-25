@@ -1,12 +1,310 @@
 {
   "meta": {
     "version": 1,
-    "updatedOn": "2026-05-16",
+    "updatedOn": "2026-05-24",
     "eyebrow": "Writing",
     "headline": "Essays on Operational Intelligence",
     "intro": "Thought-leadership essays for engineering and infrastructure organizations trying to reduce rework, improve workflow design, and translate strategy into operational follow-through."
   },
   "items": [
+    {
+      "id": "writing-006",
+      "slug": "writing/2026/05/24/what-kind-of-leader-does-the-moment-require",
+      "title": "What Kind of Leader Does the Moment Require?",
+      "summary": "A leadership essay on why crisis, scale, and innovation demand different instincts, and why recurring problems sometimes point to missing operating design instead of individual failure.",
+      "status": "published",
+      "publishedOn": "2026-05-24",
+      "readTimeMinutes": 8,
+      "featured": true,
+      "tags": [
+        "leadership",
+        "systems thinking",
+        "growth",
+        "operating models"
+      ],
+      "heroImage": "assets/images/writing/carousel/leader-moment-cover.png",
+      "seo": {
+        "title": "What Kind of Leader Does the Moment Require?",
+        "description": "A leadership essay on matching leadership instinct to the moment, and why growing organizations need both problem-solving and systems-building judgment."
+      },
+      "body": {
+        "intro": "Not every business moment needs the same kind of leader. That sounds obvious, but it is easy to forget once leadership conversations become personality-driven. We label leaders decisive, visionary, operational, strategic, or transformational, then act as if the label answers the problem. It does not. The more useful question is what the company needs this leader to make true right now.",
+        "sections": [
+          {
+            "heading": "Start with the moment, not the personality",
+            "layout": "split-image-right",
+            "paragraphs": [
+              "A company in crisis may need someone who can stabilize the moment. A company growing quickly may need someone who can turn informal coordination into repeatable execution. A company trying to innovate may need someone who can help expertise travel farther than the individual who holds it.",
+              "Those are three different leadership moments. Each may require intelligence, courage, and judgment. But they may not require the same primary instinct.",
+              "That is the distinction worth protecting. Not because one kind of leader is inherently better, but because different moments create different kinds of leadership work."
+            ],
+            "image": {
+              "src": "assets/images/writing/carousel/leader-moment-three-moments.png",
+              "alt": "A visual showing three leadership moments: crisis, scaling, and innovation, each with a distinct operating need.",
+              "caption": "Different moments create different leadership work: stabilize, structure, or help expertise compound."
+            },
+            "callout": "The better question is not what style sounds impressive. The better question is what the moment requires."
+          },
+          {
+            "heading": "The crisis moment: when the work is stabilization",
+            "layout": "split-image-left",
+            "paragraphs": [
+              "In a crisis moment, the problem is visible. Something has gone wrong, and the organization needs clarity quickly. The issue may involve safety, trust, delivery, reputation, finances, or operational continuity.",
+              "This is where problem-solving leadership is not a lesser form of leadership. It may be exactly what the organization needs. The leader's job is to reduce ambiguity, clarify the priority, contain risk, and help people act responsibly.",
+              "The 1982 Tylenol crisis remains a useful example. That moment did not call first for an elegant operating model. It called for judgment, speed, courage, and moral clarity.",
+              "For employees, the felt need is simple: tell us what matters first, reduce the noise, and help us act responsibly."
+            ],
+            "image": {
+              "src": "assets/images/writing/carousel/leader-moment-crisis.png",
+              "alt": "A crisis-moment visual showing that visible risk needs clear action and a leader who can stabilize the moment.",
+              "caption": "In a crisis, the work is stabilization: reduce ambiguity, contain risk, and make the next move clear."
+            },
+            "callout": "Problem-solving leadership protects the organization from immediate failure."
+          },
+          {
+            "heading": "The scaling moment: when growth outruns the operating system",
+            "layout": "split-image-right",
+            "paragraphs": [
+              "A different kind of moment appears when a company is healthy but starting to strain. At thirty employees, the business can often run on direct communication. At three hundred to five hundred employees, that changes.",
+              "The company may still feel entrepreneurial, but the informal operating system begins to show limits. Reports need manual cleanup. Department-specific tools describe the business differently. Managers spend more time chasing status than improving outcomes.",
+              "This is not necessarily dysfunction. Often, it is simply growth outrunning the way work used to move.",
+              "That is when leadership has to ask a harder question: are these isolated problems, or has the company reached the point where it needs a more mature operating system?"
+            ],
+            "image": {
+              "src": "assets/images/writing/carousel/leader-moment-scaling.png",
+              "alt": "A scaling-moment visual showing growth outpacing informal coordination and creating recurring operating strain.",
+              "caption": "Scaling pain is often growth outrunning the old operating path, not a sudden collapse in effort."
+            },
+            "callout": "The goal is not to make the company more corporate. The goal is to make it more capable."
+          },
+          {
+            "heading": "The innovation moment: when expertise needs a path to scale",
+            "layout": "split-image-left",
+            "paragraphs": [
+              "A third kind of moment appears when the organization has expertise, ideas, and talent, but struggles to turn them into repeatable capability. Smart people are doing good work, but the value does not compound.",
+              "Lessons stay local. Expertise stays trapped in individuals. Good ideas depend on the person who had them. Experiments do not become reusable platforms. The organization keeps rediscovering what someone already learned.",
+              "In this moment, the leadership requirement is not simply to solve more problems. It is to create a path for expertise to travel.",
+              "Innovation is not only a talent question. It is also a system question: does structure help judgment move farther as the company grows?"
+            ],
+            "image": {
+              "src": "assets/images/writing/carousel/leader-moment-innovation.png",
+              "alt": "An innovation-moment visual contrasting trapped expertise with an operating path that helps expertise scale across the organization.",
+              "caption": "Innovation compounds when expertise has a path to travel beyond the person who first created it."
+            },
+            "callout": "In innovation environments, leadership has to build a path for expertise, not just celebrate talent."
+          },
+          {
+            "heading": "The wrong instinct can feel right at first",
+            "layout": "split-image-right",
+            "paragraphs": [
+              "Each of these moments can be misread. In a crisis, too much systems thinking too early can feel slow. People need containment before redesign.",
+              "In a scaling company, too much problem solving can feel productive while quietly preserving the conditions that keep creating the same issues.",
+              "In an innovation environment, too little structure can feel freeing at first, then frustrating when ideas fail to compound.",
+              "This is why leadership style cannot be judged in the abstract. The board-level question is not whether problem solvers or systems builders are better. The better question is what kind of leadership this moment requires."
+            ],
+            "image": {
+              "src": "assets/images/writing/carousel/leader-moment-wrong-instinct.png",
+              "alt": "A visual showing how the wrong leadership instinct can feel right initially in crisis, scaling, and innovation moments.",
+              "caption": "The wrong instinct often looks productive at first because it matches the visible symptom, not the deeper requirement."
+            },
+            "callout": "Problem-solving leadership protects the organization from immediate failure. Systems-building leadership protects it from repeating the same failure."
+          },
+          {
+            "heading": "What leaders should learn to notice",
+            "layout": "split-image-left",
+            "paragraphs": [
+              "A problem-solving win is usually visible. The issue was fixed. The client was answered. The risk was contained. The project moved forward.",
+              "A systems-building win is often quieter. The escalation never happened. The rework declined. The handoff became clear. The report became trusted. The team no longer needed heroic effort to produce ordinary results.",
+              "That quieter value can be harder to recognize, which is why recurring friction deserves attention. A repeated problem is often the first visible sign of a missing operating path.",
+              "As organizations grow, leadership becomes less about personally solving every problem and more about building the conditions where better work can happen repeatedly."
+            ],
+            "image": {
+              "src": "assets/images/writing/carousel/leader-moment-value-visibility.png",
+              "alt": "A visual contrasting the visible wins of problem-solving with the quieter wins of systems-building work.",
+              "caption": "Visible wins earn fast trust. Quieter wins often determine whether growth becomes scalable or exhausting."
+            },
+            "callout": "Recurring problems are often signals. They are the organization's way of revealing where the operating path is missing."
+          },
+          {
+            "heading": "The better leadership question",
+            "layout": "split-image-right",
+            "paragraphs": [
+              "The best leaders are not only problem solvers or systems builders. They know when each instinct is needed.",
+              "In a crisis, they stabilize. In a scaling moment, they structure. In an innovation moment, they help expertise compound.",
+              "They know when the problem is just a problem. They also know when the problem is trying to teach the organization something.",
+              "That may be the leadership distinction worth watching. Not because one style is universally better, but because different moments demand different kinds of leadership."
+            ],
+            "image": {
+              "src": "assets/images/writing/carousel/leader-moment-close.png",
+              "alt": "A closing visual reinforcing that the core leadership skill is recognizing what the moment actually requires.",
+              "caption": "The strongest leaders understand both modes and know when the moment is asking for stabilization, structure, or a path for expertise to scale."
+            },
+            "callout": "Companies that grow well learn to tell the difference before the moment chooses for them."
+          }
+        ]
+      },
+      "companion": {
+        "snapshot": [
+          {
+            "label": "Core question",
+            "value": "What does the company need this leader to make true right now?"
+          },
+          {
+            "label": "Crisis work",
+            "value": "Stabilize the moment, reduce ambiguity, and contain visible risk"
+          },
+          {
+            "label": "Scaling work",
+            "value": "Turn informal coordination into a more capable operating system"
+          },
+          {
+            "label": "Innovation work",
+            "value": "Create a path for expertise, ideas, and judgment to travel farther"
+          }
+        ],
+        "toc": [
+          {
+            "label": "Start with the moment, not the personality",
+            "anchor": "start-with-the-moment-not-the-personality"
+          },
+          {
+            "label": "The crisis moment: when the work is stabilization",
+            "anchor": "the-crisis-moment-when-the-work-is-stabilization"
+          },
+          {
+            "label": "The scaling moment: when growth outruns the operating system",
+            "anchor": "the-scaling-moment-when-growth-outruns-the-operating-system"
+          },
+          {
+            "label": "The innovation moment: when expertise needs a path to scale",
+            "anchor": "the-innovation-moment-when-expertise-needs-a-path-to-scale"
+          },
+          {
+            "label": "The wrong instinct can feel right at first",
+            "anchor": "the-wrong-instinct-can-feel-right-at-first"
+          },
+          {
+            "label": "What leaders should learn to notice",
+            "anchor": "what-leaders-should-learn-to-notice"
+          },
+          {
+            "label": "The better leadership question",
+            "anchor": "the-better-leadership-question"
+          }
+        ],
+        "assets": [
+          {
+            "label": "Article hero image",
+            "href": "assets/images/writing/carousel/leader-moment-cover.png",
+            "description": "Primary article cover introducing the leadership-moment framing for crisis, scaling, and innovation.",
+            "type": "image"
+          },
+          {
+            "label": "Three moments overview",
+            "href": "assets/images/writing/carousel/leader-moment-three-moments.png",
+            "description": "Inline visual introducing the three leadership moments: crisis, scaling, and innovation.",
+            "type": "image"
+          },
+          {
+            "label": "Crisis moment visual",
+            "href": "assets/images/writing/carousel/leader-moment-crisis.png",
+            "description": "Inline visual reinforcing the crisis requirement for stabilization, clarity, and visible action.",
+            "type": "image"
+          },
+          {
+            "label": "Scaling moment visual",
+            "href": "assets/images/writing/carousel/leader-moment-scaling.png",
+            "description": "Inline visual showing how growth creates operating strain once informal coordination stops being enough.",
+            "type": "image"
+          },
+          {
+            "label": "Innovation moment visual",
+            "href": "assets/images/writing/carousel/leader-moment-innovation.png",
+            "description": "Inline visual showing how organizations need a path for expertise to scale beyond individuals.",
+            "type": "image"
+          },
+          {
+            "label": "Wrong-instinct visual",
+            "href": "assets/images/writing/carousel/leader-moment-wrong-instinct.png",
+            "description": "Inline visual showing how the wrong leadership instinct can look productive before it starts compounding the wrong outcome.",
+            "type": "image"
+          },
+          {
+            "label": "Value-visibility visual",
+            "href": "assets/images/writing/carousel/leader-moment-value-visibility.png",
+            "description": "Inline visual contrasting visible problem-solving wins with quieter systems-building value.",
+            "type": "image"
+          },
+          {
+            "label": "Closing leadership visual",
+            "href": "assets/images/writing/carousel/leader-moment-close.png",
+            "description": "Inline visual closing the essay on the core judgment of matching leadership instinct to the moment.",
+            "type": "image"
+          }
+        ],
+        "related": [
+          {
+            "title": "Organizations Rarely Fail From a Lack of Intelligence",
+            "slug": "writing/2026/05/12/organizations-rarely-fail-from-a-lack-of-intelligence",
+            "description": "A complementary essay on how execution issues usually reflect operating-path failures rather than intelligence gaps."
+          },
+          {
+            "title": "Why Operational Friction Hides in Translation Layers",
+            "slug": "writing/2026/04/28/why-operational-friction-hides-in-translation-layers",
+            "description": "A deeper look at where organizational friction accumulates once growth outruns informal coordination."
+          }
+        ]
+      },
+      "productionAssets": {
+        "socialImage": {
+          "label": "Companion social image",
+          "href": "assets/images/writing/what-kind-of-leader-linkedin-comment.png",
+          "description": "Square social image for a companion post or comment thread."
+        },
+        "carousel": [
+          {
+            "label": "Carousel cover",
+            "href": "assets/images/writing/carousel/leader-moment-cover.png",
+            "description": "Campaign cover asset for slide-based packaging and social reuse."
+          },
+          {
+            "label": "Carousel slide 2",
+            "href": "assets/images/writing/carousel/leader-moment-three-moments.png",
+            "description": "Overview of the three leadership moments: crisis, scaling, and innovation."
+          },
+          {
+            "label": "Carousel slide 3",
+            "href": "assets/images/writing/carousel/leader-moment-crisis.png",
+            "description": "Crisis-moment visual focused on stabilization and visible action."
+          },
+          {
+            "label": "Carousel slide 4",
+            "href": "assets/images/writing/carousel/leader-moment-scaling.png",
+            "description": "Scaling-moment visual focused on growth outrunning informal coordination."
+          },
+          {
+            "label": "Carousel slide 5",
+            "href": "assets/images/writing/carousel/leader-moment-innovation.png",
+            "description": "Innovation-moment visual focused on creating a path for expertise to travel."
+          },
+          {
+            "label": "Carousel slide 6",
+            "href": "assets/images/writing/carousel/leader-moment-wrong-instinct.png",
+            "description": "Visual showing how the wrong leadership instinct can feel right at first."
+          },
+          {
+            "label": "Carousel slide 7",
+            "href": "assets/images/writing/carousel/leader-moment-value-visibility.png",
+            "description": "Visual contrasting visible problem-solving wins with quieter systems-building value."
+          },
+          {
+            "label": "Carousel slide 8",
+            "href": "assets/images/writing/carousel/leader-moment-close.png",
+            "description": "Closing visual for the leadership judgment about what the moment requires."
+          }
+        ]
+      }
+    },
     {
       "id": "writing-001",
       "slug": "writing/2026/05/12/organizations-rarely-fail-from-a-lack-of-intelligence",
@@ -16,7 +314,11 @@
       "publishedOn": "2026-05-12",
       "readTimeMinutes": 6,
       "featured": true,
-      "tags": ["operational intelligence", "execution", "decision systems"],
+      "tags": [
+        "operational intelligence",
+        "execution",
+        "decision systems"
+      ],
       "heroImage": "assets/images/article-geometry.png",
       "seo": {
         "title": "Organizations Rarely Fail From a Lack of Intelligence",
@@ -59,7 +361,11 @@
       "publishedOn": "2026-04-28",
       "readTimeMinutes": 7,
       "featured": true,
-      "tags": ["translation", "workflow design", "rework"],
+      "tags": [
+        "translation",
+        "workflow design",
+        "rework"
+      ],
       "heroImage": "assets/images/article-facets.png",
       "seo": {
         "title": "Why Operational Friction Hides in Translation Layers",
@@ -101,7 +407,11 @@
       "publishedOn": "2026-04-14",
       "readTimeMinutes": 5,
       "featured": true,
-      "tags": ["signal", "frameworks", "decision quality"],
+      "tags": [
+        "signal",
+        "frameworks",
+        "decision quality"
+      ],
       "heroImage": "assets/images/article-ripple.png",
       "seo": {
         "title": "Turn Down the Noise: Improving Signal in Decision Systems",
@@ -143,7 +453,11 @@
       "publishedOn": "2026-03-31",
       "readTimeMinutes": 8,
       "featured": false,
-      "tags": ["executive follow-through", "ownership", "governance"],
+      "tags": [
+        "executive follow-through",
+        "ownership",
+        "governance"
+      ],
       "heroImage": "assets/images/article-geometry.png",
       "seo": {
         "title": "Executive Follow-Through Requires Ownership Architecture",
@@ -178,7 +492,9 @@
       "publishedOn": "2026-06-01",
       "readTimeMinutes": 6,
       "featured": false,
-      "tags": ["draft"],
+      "tags": [
+        "draft"
+      ],
       "heroImage": "assets/images/article-facets.png",
       "seo": {
         "title": "Draft: Work Queues as an Executive Operating Surface",
