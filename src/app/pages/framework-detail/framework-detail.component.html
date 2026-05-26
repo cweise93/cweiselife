@@ -68,85 +68,125 @@
     </div>
   </section>
 
-  @if (callToActionItems().length || assetItems().length || relatedItems().length) {
-    <section class="cw-section framework-resources-wrap">
-      <div class="cw-container framework-resource-grid">
-        @if (callToActionItems().length) {
-          <section class="framework-resource-card">
-            <p class="resource-eyebrow">Live artifact</p>
-            @for (item of callToActionItems(); track item.title) {
+  @if (templateItems().length || frameworkAssetItems().length || relatedItems().length) {
+    <section class="cw-section framework-resources-wrap" id="download-templates">
+      <div class="cw-container">
+        <div class="cw-section-header cw-section-header--split framework-resources-header">
+          <div>
+            <p class="cw-eyebrow">Supplementary materials</p>
+            <h2 class="cw-section-title">Download Templates</h2>
+          </div>
+          <p class="cw-muted">
+            Take the working artifacts with you, inspect the reference visuals in place, and keep the framework
+            context intact while you prepare governance, accounting, and operating evidence.
+          </p>
+        </div>
+
+        <div class="framework-resource-grid">
+          @if (templateItems().length) {
+            <mat-card appearance="outlined" class="framework-resource-card framework-resource-card--templates cw-surface-card">
+              <p class="resource-eyebrow">Template library</p>
               <div class="resource-stack">
-                <h2>{{ item.title }}</h2>
-                <p>{{ item.description }}</p>
-                @if (item.action === 'open-templates') {
-                  <button mat-stroked-button type="button" (click)="openTemplateLibrary()">
-                    {{ item.buttonLabel || 'Open' }}
-                  </button>
-                } @else if (item.href || item.anchor) {
-                  @if (item.anchor && !item.href) {
-                    <a mat-stroked-button [routerLink]="[]" [fragment]="item.anchor">
-                      {{ item.buttonLabel || 'Open' }}
-                    </a>
-                  } @else {
-                    <a mat-stroked-button [href]="item.href">
-                      {{ item.buttonLabel || 'Open' }}
-                    </a>
-                  }
+                <h3>Operationalize the framework</h3>
+                <p>
+                  Use the worksheet, charter, accounting memo, control matrix, and cost ledger to move from scoring
+                  to accountable execution.
+                </p>
+              </div>
+
+              <div class="template-preview-list">
+                @for (item of templateItems(); track item.href) {
+                  <div class="template-preview">
+                    <span class="cw-icon-badge template-preview__icon">
+                      <mat-icon>{{ templateIcon(item) }}</mat-icon>
+                    </span>
+                    <div class="template-preview__copy">
+                      <span class="resource-link__label">{{ item.label }}</span>
+                      @if (item.description) {
+                        <span class="resource-link__description">{{ item.description }}</span>
+                      }
+                    </div>
+                  </div>
                 }
               </div>
-            }
-          </section>
-        }
 
-        @if (frameworkAssetItems().length) {
-          <section class="framework-resource-card">
-            <p class="resource-eyebrow">Framework assets</p>
-            <div class="resource-asset-list">
-              @for (item of frameworkAssetItems(); track item.href) {
-                <article class="resource-asset">
-                  <button class="resource-link resource-link--asset" type="button" (click)="openAsset(item)">
-                    <span class="resource-link__meta">
-                      @if (item.number) {
-                        <span class="resource-link__number">{{ item.number }}</span>
+              <div class="resource-primary-actions">
+                <button mat-flat-button color="primary" type="button" (click)="openTemplateLibrary()">
+                  <mat-icon>folder_open</mat-icon>
+                  {{ templateActionItem()?.buttonLabel || 'View templates' }}
+                </button>
+                @if (worksheetTemplate(); as worksheet) {
+                  <button mat-stroked-button color="primary" type="button" (click)="downloadAsset(worksheet, $event)">
+                    <mat-icon>download</mat-icon>
+                    Download worksheet
+                  </button>
+                }
+              </div>
+            </mat-card>
+          }
+
+          @if (frameworkAssetItems().length) {
+            <mat-card appearance="outlined" class="framework-resource-card cw-surface-card">
+              <p class="resource-eyebrow">Framework assets</p>
+              <div class="resource-asset-list">
+                @for (item of frameworkAssetItems(); track item.href) {
+                  <article class="resource-asset">
+                    <button class="resource-link resource-link--asset" type="button" (click)="openAsset(item)">
+                      <span class="resource-link__meta">
+                        @if (item.number) {
+                          <span class="resource-link__number">{{ item.number }}</span>
+                        } @else {
+                          <span class="cw-icon-badge resource-link__asset-icon">
+                            <mat-icon>image</mat-icon>
+                          </span>
+                        }
+                        <span class="resource-link__label">{{ item.label }}</span>
+                      </span>
+                      @if (item.description) {
+                        <span class="resource-link__description">{{ item.description }}</span>
                       }
-                      <span class="resource-link__label">{{ item.label }}</span>
-                    </span>
+                    </button>
+                    <div class="resource-asset__actions">
+                      <button mat-stroked-button color="primary" type="button" (click)="openAsset(item)">
+                        <mat-icon>pageview</mat-icon>
+                        Inspect
+                      </button>
+                      <button
+                        mat-icon-button
+                        color="primary"
+                        type="button"
+                        aria-label="Download {{ item.label }}"
+                        (click)="downloadAsset(item, $event)"
+                      >
+                        <mat-icon>download</mat-icon>
+                      </button>
+                    </div>
+                  </article>
+                }
+              </div>
+            </mat-card>
+          }
+
+          @if (relatedItems().length) {
+            <mat-card appearance="outlined" class="framework-resource-card cw-surface-card">
+              <p class="resource-eyebrow">Related frameworks</p>
+              <div class="resource-link-list">
+                @for (item of relatedItems(); track item.slug) {
+                  <a class="resource-link" [routerLink]="slugToRoute(item.slug)">
+                    <span class="resource-link__label">{{ item.title }}</span>
                     @if (item.description) {
                       <span class="resource-link__description">{{ item.description }}</span>
                     }
-                  </button>
-                  <div class="resource-asset__actions">
-                    <button mat-button type="button" (click)="openAsset(item)">Inspect</button>
-                    <button
-                      mat-icon-button
-                      type="button"
-                      aria-label="Download {{ item.label }}"
-                      (click)="downloadAsset(item, $event)"
-                    >
-                      <mat-icon>download</mat-icon>
-                    </button>
-                  </div>
-                </article>
-              }
-            </div>
-          </section>
-        }
-
-        @if (relatedItems().length) {
-          <section class="framework-resource-card">
-            <p class="resource-eyebrow">Related frameworks</p>
-            <div class="resource-link-list">
-              @for (item of relatedItems(); track item.slug) {
-                <a class="resource-link" [routerLink]="slugToRoute(item.slug)">
-                  <span class="resource-link__label">{{ item.title }}</span>
-                  @if (item.description) {
-                    <span class="resource-link__description">{{ item.description }}</span>
-                  }
-                </a>
-              }
-            </div>
-          </section>
-        }
+                    <span class="resource-link__action">
+                      Explore
+                      <mat-icon>arrow_forward</mat-icon>
+                    </span>
+                  </a>
+                }
+              </div>
+            </mat-card>
+          }
+        </div>
       </div>
     </section>
   }

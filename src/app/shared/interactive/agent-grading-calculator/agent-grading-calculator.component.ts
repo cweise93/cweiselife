@@ -1,11 +1,12 @@
 import { ChangeDetectionStrategy, Component, computed, input, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatSliderModule } from '@angular/material/slider';
 
 interface CalculatorDimension {
   key: string;
@@ -56,12 +57,13 @@ const EMPTY_CONFIG: CalculatorConfig = {
   selector: 'app-agent-grading-calculator',
   imports: [
     MatButtonModule,
-    MatButtonToggleModule,
     MatCardModule,
     MatCheckboxModule,
     MatChipsModule,
+    MatDividerModule,
     MatIconModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatSliderModule
   ],
   templateUrl: './agent-grading-calculator.component.html',
   styleUrl: './agent-grading-calculator.component.scss',
@@ -132,6 +134,25 @@ export class AgentGradingCalculatorComponent {
 
     return `All ${total} dimensions scored`;
   });
+  readonly gradeCode = computed(() => (this.scoreBand()?.grade.split('—')[0] ?? 'G0').trim());
+  readonly gradeTitle = computed(() => {
+    const grade = this.scoreBand()?.grade ?? 'Not classified';
+    const parts = grade.split('—');
+    return (parts[1] ?? parts[0]).trim();
+  });
+  readonly statusTone = computed(() => {
+    const gradeCode = this.gradeCode();
+    if (gradeCode.startsWith('G3')) {
+      return 'agent-calculator--g3';
+    }
+    if (gradeCode.startsWith('G2')) {
+      return 'agent-calculator--g2';
+    }
+    if (gradeCode.startsWith('G1')) {
+      return 'agent-calculator--g1';
+    }
+    return 'agent-calculator--g0';
+  });
   readonly exportPayload = computed<ExportPayload>(() => ({
     generatedAt: new Date().toISOString(),
     totalScore: this.totalScore(),
@@ -155,6 +176,47 @@ export class AgentGradingCalculatorComponent {
 
   setScore(key: string, score: number): void {
     this.scores.update((current) => ({ ...current, [key]: score }));
+  }
+
+  dimensionIcon(key: string): string {
+    const icons: Record<string, string> = {
+      operationalMateriality: 'account_tree',
+      institutionalKnowledge: 'psychology',
+      controlAuditability: 'fact_check',
+      costTraceability: 'receipt_long',
+      businessValue: 'diamond',
+      reliabilityModelRisk: 'verified_user',
+      usefulLife: 'update'
+    };
+
+    return icons[key] ?? 'insights';
+  }
+
+  primaryEvidenceAction(): string {
+    if (this.blockersPresent()) {
+      return 'Resolve classification blockers before asset-level review.';
+    }
+
+    if (this.overridesPresent()) {
+      return 'Escalate for finance, audit, security, or executive review.';
+    }
+
+    const lowestDimension = [...this.dimensions()].sort((left, right) => this.scoreFor(left.key) - this.scoreFor(right.key))[0];
+    if (!lowestDimension) {
+      return 'Begin scoring the seven dimensions to identify the next artifact.';
+    }
+
+    const nextArtifactMap: Record<string, string> = {
+      operationalMateriality: 'Update the agent charter with intended use, owner, and business scope.',
+      institutionalKnowledge: 'Document the reusable logic and expert reasoning captured by the agent.',
+      controlAuditability: 'Strengthen the control matrix and evidence trail for reviewability.',
+      costTraceability: 'Complete the cost ledger and accounting memo before classification.',
+      businessValue: 'Quantify the business outcome the agent changes before advancing the grade.',
+      reliabilityModelRisk: 'Define monitored thresholds, fallback controls, and review checkpoints.',
+      usefulLife: 'Establish useful-life assumptions, review cadence, and retirement triggers.'
+    };
+
+    return nextArtifactMap[lowestDimension.key] ?? 'Review the lowest-scoring dimension and add evidence.';
   }
 
   toggleOverride(label: string, checked: boolean): void {

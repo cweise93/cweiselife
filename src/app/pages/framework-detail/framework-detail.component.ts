@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, Component, DestroyRef, computed, effect, injec
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { map, switchMap } from 'rxjs';
@@ -14,7 +15,16 @@ import { FrameworkResourceDialogComponent } from './framework-resource-dialog.co
 
 @Component({
   selector: 'cw-framework-detail',
-  imports: [RouterLink, DatePipe, MatButtonModule, MatDialogModule, MatIconModule, ContentRendererComponent, FrameworkStickyContextBarComponent],
+  imports: [
+    RouterLink,
+    DatePipe,
+    MatButtonModule,
+    MatCardModule,
+    MatDialogModule,
+    MatIconModule,
+    ContentRendererComponent,
+    FrameworkStickyContextBarComponent
+  ],
   templateUrl: './framework-detail.component.html',
   styleUrl: './framework-detail.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -37,13 +47,26 @@ export class FrameworkDetailComponent {
   );
 
   readonly frameworkComponents = computed(() => this.item()?.body.components ?? []);
-  readonly tocItems = computed<CompanionTocItem[]>(() => this.item()?.companion?.toc ?? []);
+  readonly tocItems = computed<CompanionTocItem[]>(() => {
+    const base = this.item()?.companion?.toc ?? [];
+    if (!this.templateItems().length || base.some((item) => item.anchor === 'download-templates')) {
+      return base;
+    }
+
+    return [...base, { label: 'Download Templates', anchor: 'download-templates' }];
+  });
   readonly snapshotItems = computed<CompanionSnapshotItem[]>(() => this.item()?.companion?.snapshot ?? []);
   readonly assetItems = computed<CompanionAsset[]>(() => this.item()?.companion?.assets ?? []);
   readonly frameworkAssetItems = computed<CompanionAsset[]>(() => this.assetItems().filter((item) => item.type === 'image'));
   readonly templateItems = computed<CompanionAsset[]>(() => this.assetItems().filter((item) => item.type === 'template'));
   readonly relatedItems = computed<CompanionRelatedItem[]>(() => this.item()?.companion?.related ?? []);
   readonly callToActionItems = computed<CompanionCallToAction[]>(() => this.item()?.companion?.callsToAction ?? []);
+  readonly templateActionItem = computed(
+    () => this.callToActionItems().find((item) => item.action === 'open-templates') ?? null
+  );
+  readonly worksheetTemplate = computed(
+    () => this.templateItems().find((item) => item.label.toLowerCase().includes('worksheet')) ?? null
+  );
   readonly coreQuestion = computed(() => this.snapshotValue('Core question'));
   readonly fallbackSnapshotItems = computed<CompanionSnapshotItem[]>(() => {
     const framework = this.item();
@@ -164,6 +187,27 @@ export class FrameworkDetailComponent {
     this.document.body.appendChild(link);
     link.click();
     this.document.body.removeChild(link);
+  }
+
+  templateIcon(item: CompanionAsset): string {
+    const label = item.label.toLowerCase();
+    if (label.includes('worksheet')) {
+      return 'table_chart';
+    }
+    if (label.includes('charter')) {
+      return 'assignment';
+    }
+    if (label.includes('accounting')) {
+      return 'account_balance';
+    }
+    if (label.includes('control')) {
+      return 'fact_check';
+    }
+    if (label.includes('cost')) {
+      return 'receipt_long';
+    }
+
+    return 'description';
   }
 
   private setupObservedSections(tocItems: CompanionTocItem[]): void {
