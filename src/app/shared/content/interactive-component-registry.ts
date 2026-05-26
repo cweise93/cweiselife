@@ -15,6 +15,12 @@ export const INTERACTIVE_COMPONENT_REGISTRY: Record<
     label: 'Relationship-Value Explorer',
     description:
       'Interactive D3 graph for exploring clients, services, employees, and revenue opportunities.'
+  },
+  'agent-grading-calculator': {
+    key: 'agent-grading-calculator',
+    label: 'Agent Grading Calculator',
+    description:
+      'Interactive scoring tool for classifying enterprise AI agents by materiality, evidence, and governance posture.'
   }
 };
 

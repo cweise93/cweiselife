@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
 import { INTERACTIVE_COMPONENT_REGISTRY, isRegisteredInteractiveComponent } from '../interactive-component-registry';
 import { RelationshipValueExplorerComponent } from '../../interactive/relationship-value-explorer/relationship-value-explorer.component';
+import { AgentGradingCalculatorComponent } from '../../interactive/agent-grading-calculator/agent-grading-calculator.component';
 
 @Component({
   selector: 'app-interactive-content-block',
-  imports: [RelationshipValueExplorerComponent],
+  imports: [RelationshipValueExplorerComponent, AgentGradingCalculatorComponent],
   templateUrl: './interactive-content-block.component.html',
   styleUrl: './interactive-content-block.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -14,6 +15,7 @@ export class InteractiveContentBlockComponent {
   readonly fallback = input<string | undefined>();
   readonly title = input<string | undefined>();
   readonly description = input<string | undefined>();
+  readonly config = input<Record<string, unknown> | undefined>();
 
   readonly registeredComponent = computed(() => {
     const key = this.componentKey();

@@ -1,12 +1,1165 @@
 {
   "meta": {
     "version": 1,
-    "updatedOn": "2026-05-18",
+    "updatedOn": "2026-05-26",
     "eyebrow": "Frameworks",
     "headline": "Operational Frameworks",
     "intro": "Frameworks for reducing noise, improving systems translation, and designing cleaner execution paths inside complex organizations."
   },
   "items": [
+    {
+      "id": "framework-004",
+      "slug": "frameworks/2026/05/27/agent-asset-grading-framework",
+      "title": "Agent Asset Grading Framework",
+      "summary": "A tactical framework for classifying enterprise AI agents by operational materiality, institutional knowledge capture, control evidence, cost traceability, business value, model risk, and useful life so leaders can distinguish disposable experiments from governed operational asset candidates.",
+      "status": "published",
+      "publishedOn": "2026-05-27",
+      "featured": true,
+      "category": "AI Governance",
+      "tags": [
+        "AI governance",
+        "agent grading",
+        "operational capital",
+        "internal-use software",
+        "control evidence",
+        "asset governance",
+        "CIO",
+        "CFO",
+        "SOX",
+        "NIST AI RMF",
+        "COSO"
+      ],
+      "diagramImage": "assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/01.png",
+      "seo": {
+        "title": "Agent Asset Grading Framework",
+        "description": "A tactical framework for grading enterprise AI agents by maturity, materiality, governance, accounting-readiness, value, risk, and useful life."
+      },
+      "body": {
+        "premise": "Most enterprises can count AI tools, pilots, subscriptions, and users. Far fewer can classify which agents are becoming durable operating capabilities. The Agent Asset Grading Framework gives leaders a way to separate disposable experimentation from governed operational assets that may deserve accounting review, board visibility, and lifecycle discipline.",
+        "components": [
+          {
+            "title": "Classification",
+            "description": "A four-grade model that separates disposable agents, assisted workflow agents, governed process agents, and operational asset candidates."
+          },
+          {
+            "title": "Evidence",
+            "description": "A structured evidence package for ownership, controls, cost traceability, useful life, model lineage, auditability, and business value."
+          },
+          {
+            "title": "Calculator",
+            "description": "An inline grading instrument that scores existing agents across seven dimensions and produces a recommended governance posture."
+          }
+        ],
+        "application": "Use this framework when an enterprise is moving from AI experimentation toward production deployment and needs to decide which agents should remain lightweight tools, which should become governed process agents, and which may be mature enough to enter accounting, control, and board-level asset review.",
+        "sections": [
+          {
+            "heading": "Why this framework exists",
+            "layout": "split-image-right",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "text": "The first wave of enterprise AI adoption was mostly about access: which tools are approved, which models are allowed, which users can experiment, and which data should never be pasted into a public interface. Access still matters, but it is no longer the whole governance problem."
+              },
+              {
+                "type": "paragraph",
+                "text": "Once an agent begins to encode judgment, preserve institutional knowledge, route workflow, invoke systems, produce evidence, influence cost, or support revenue, the enterprise has created something more consequential than a productivity aid. The agent may still be software. It may still be evaluated through internal-use software, cloud implementation, or development-cost policy. But operationally, it has started to behave like an asset."
+              },
+              {
+                "type": "image",
+                "src": "assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/01.png",
+                "alt": "The Agent Asset Grading Framework overview",
+                "caption": "The framework separates experiments, workflow assistants, governed process agents, and operational asset candidates before accounting or control conclusions are made.",
+                "title": "Agent Asset Grading Framework Overview"
+              },
+              {
+                "type": "paragraph",
+                "text": "The purpose of this framework is not to claim that every AI agent is automatically a formal accounting asset. It is to create the governance, cost-tracking, control, and evidence discipline required to evaluate whether an AI-enabled capability may deserve asset-level treatment, capitalization review, lifecycle management, impairment-style review, or board-level reporting."
+              },
+              {
+                "type": "callout",
+                "tone": "executive",
+                "title": "Core question",
+                "text": "The question is not only whether the agent exists. The question is what grade of operational asset the agent is becoming, and what evidence supports that classification."
+              }
+            ]
+          },
+          {
+            "heading": "The five agents used throughout the framework",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "text": "The framework is easiest to apply when the grading logic is tested against agents with very different levels of maturity. The five example agents below will be referenced throughout the framework, moving from disposable experimentation to sophisticated revenue-impacting orchestration."
+              },
+              {
+                "type": "image",
+                "src": "assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/04.png",
+                "alt": "Five example agents across increasing sophistication",
+                "caption": "The same grading model is applied to each example; the required evidence and controls rise with business impact.",
+                "title": "Five Example Agents in Progression"
+              },
+              {
+                "type": "table",
+                "title": "Running examples",
+                "columns": [
+                  "Example",
+                  "Agent",
+                  "Likely grade",
+                  "Why it matters"
+                ],
+                "rows": [
+                  [
+                    "A",
+                    "Proposal Rewrite Agent",
+                    "G0 \u2014 Disposable",
+                    "A lightweight productivity aid that improves wording but does not create durable enterprise capability."
+                  ],
+                  [
+                    "B",
+                    "PM Meeting Summary Agent",
+                    "G1 \u2014 Assisted",
+                    "A team workflow helper that summarizes meetings and drafts actions, but leaves accountability with the PM."
+                  ],
+                  [
+                    "C",
+                    "Invoice Exception Triage Agent",
+                    "G2 \u2014 Governed",
+                    "A finance process agent that routes exceptions with evidence and may intersect with SOX-relevant control design."
+                  ],
+                  [
+                    "D",
+                    "Margin Protection Agent",
+                    "G3 \u2014 Operational Asset Candidate",
+                    "A production agent that detects project margin risk using financial, contract, staffing, and delivery signals."
+                  ],
+                  [
+                    "E",
+                    "Revenue Intelligence Orchestration",
+                    "G3+ \u2014 Enterprise Asset Candidate",
+                    "A multi-agent system that converts relationship capital, service adjacency, pursuit signals, and outcome feedback into governed revenue expansion recommendations."
+                  ]
+                ]
+              },
+              {
+                "type": "callout",
+                "tone": "technical",
+                "title": "Implementation note",
+                "text": "The examples are intentionally not all capitalizable. Their purpose is to show how the same grading model prevents over-governing trivial agents and under-governing agents that become material to enterprise execution."
+              }
+            ]
+          },
+          {
+            "heading": "Accounting-readiness is evidence, not enthusiasm",
+            "layout": "split-image-left",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "text": "The phrase operational asset must be handled with discipline. A useful agent is not automatically a capitalizable asset. Accounting treatment depends on the organization\u2019s applicable accounting policies, the nature of costs incurred, whether the work is research or implementation, whether there is management authorization and funding, whether probable completion and intended use can be established, and whether costs can be traced reliably."
+              },
+              {
+                "type": "paragraph",
+                "text": "The framework therefore treats accounting-readiness as a discipline, not a slogan. The goal is to produce a defensible evidence package that finance, the controller, internal audit, external auditors, legal, IT, and business owners can inspect."
+              },
+              {
+                "type": "image",
+                "src": "assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/06.png",
+                "alt": "Accounting-readiness evidence package for agent asset evaluation",
+                "caption": "Accounting-readiness depends on reviewing cost, control, intended use, and value evidence together.",
+                "title": "Accounting-Readiness Evidence Package"
+              },
+              {
+                "type": "paragraph",
+                "text": "Applied to Example A, the Proposal Rewrite Agent almost certainly remains an expense because it is temporary, low-dependency, and lacks cost traceability or controlled deployment. Applied to Example C, the Invoice Exception Triage Agent may require accounting and control review because it is embedded in a finance process and produces structured evidence. Applied to Example E, the Revenue Intelligence Orchestration may justify asset-level governance if it becomes a controlled platform capability with traceable cost, useful-life assumptions, integration architecture, and measurable business benefit."
+              },
+              {
+                "type": "callout",
+                "tone": "warning",
+                "title": "Boundary condition",
+                "text": "This framework does not replace accounting judgment. It gives the CIO and AI team the operating evidence finance needs to evaluate whether an agent-enabled capability should remain expensed, enter capitalization review, or receive asset-level governance."
+              }
+            ]
+          },
+          {
+            "heading": "The four agent grades",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "text": "The grading model begins with four classes. The goal is not to make every agent more bureaucratic. The goal is to match governance to consequence."
+              },
+              {
+                "type": "image",
+                "src": "assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/02.png",
+                "alt": "The four agent grades from disposable to operational asset",
+                "caption": "Not every agent deserves asset-level treatment. The point of grading is to match governance, evidence, and accounting review to impact.",
+                "title": "The Four Agent Grades"
+              },
+              {
+                "type": "cards",
+                "items": [
+                  {
+                    "title": "G0 \u2014 Disposable Agent",
+                    "description": "A prompt, prototype, or temporary productivity agent with no durable operational dependency. Example A belongs here unless it is formalized into an enterprise workflow."
+                  },
+                  {
+                    "title": "G1 \u2014 Assisted Workflow Agent",
+                    "description": "An agent that helps a defined team process but remains subordinate to human judgment. Example B belongs here when the PM reviews actions before commitments are created."
+                  },
+                  {
+                    "title": "G2 \u2014 Governed Process Agent",
+                    "description": "A controlled agent with ownership, logging, workflow boundaries, and evidence. Example C belongs here because it routes finance exceptions and produces review evidence."
+                  },
+                  {
+                    "title": "G3 \u2014 Operational Asset Candidate",
+                    "description": "A production-grade capability with lifecycle discipline, measurable impact, control evidence, cost tracking, and useful-life thinking. Examples D and E may belong here if the evidence package supports the classification."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "text": "The most important practical move is to prevent grade confusion. A G0 agent should not receive the same governance burden as a G3 candidate. A G3 candidate should not be allowed to operate with G0 evidence."
+              }
+            ]
+          },
+          {
+            "heading": "The inline agent grading calculator",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "text": "The framework should include an interactive calculator so leaders can score an existing agent and see the likely governance posture. The calculator is not an accounting determination. It is a classification instrument that produces a recommended grade, identifies evidence gaps, and flags whether finance, SOX, security, or board-level review may be required."
+              },
+              {
+                "type": "image",
+                "src": "assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/08.png",
+                "alt": "Inline agent grading calculator UI concept",
+                "caption": "The calculator concept lets a reviewer score an agent, apply hard overrides, identify the grade, and move directly into the next evidence artifact.",
+                "title": "Inline Agent Grading Calculator"
+              },
+              {
+                "type": "component",
+                "component": "agent-grading-calculator",
+                "title": "Agent Grading Calculator",
+                "description": "Score an enterprise AI agent across seven dimensions: operational materiality, institutional knowledge capture, control and auditability, cost traceability, business value, reliability/model risk, and useful-life control.",
+                "fallback": "Interactive calculator unavailable. Use the scoring table and downloadable worksheet to grade the agent manually.",
+                "config": {
+                  "dimensions": [
+                    {
+                      "key": "operationalMateriality",
+                      "label": "Operational materiality",
+                      "question": "Does the agent influence cost, revenue, risk, compliance, client delivery, financial reporting, or operational continuity?",
+                      "scale": [
+                        "Personal productivity only",
+                        "Team support",
+                        "Workflow support",
+                        "Business-critical process support",
+                        "Material enterprise execution dependency"
+                      ]
+                    },
+                    {
+                      "key": "institutionalKnowledge",
+                      "label": "Institutional knowledge capture",
+                      "question": "Does the agent encode reusable judgment, institutional memory, decision logic, or expert reasoning?",
+                      "scale": [
+                        "No institutional knowledge",
+                        "Basic reusable prompt",
+                        "Reusable workflow guidance",
+                        "Captured expert decision logic",
+                        "Multi-domain institutional reasoning"
+                      ]
+                    },
+                    {
+                      "key": "controlAuditability",
+                      "label": "Control and auditability",
+                      "question": "Can the organization explain, reproduce, review, and audit what the agent did?",
+                      "scale": [
+                        "No logs",
+                        "Basic usage logs",
+                        "Input/output retention",
+                        "Versioned decisions and approvals",
+                        "Full evidence package mapped to controls"
+                      ]
+                    },
+                    {
+                      "key": "costTraceability",
+                      "label": "Cost traceability",
+                      "question": "Can the organization identify what it spent to create, deploy, operate, maintain, and enhance the agent?",
+                      "scale": [
+                        "No tracking",
+                        "Vendor/license cost only",
+                        "Project-level cost tracking",
+                        "Development, integration, testing, deployment, and operating cost separated",
+                        "Accounting-ready capitalization and expense classification evidence"
+                      ]
+                    },
+                    {
+                      "key": "businessValue",
+                      "label": "Business value and cost displacement",
+                      "question": "What expensive production pattern does the agent change?",
+                      "scale": [
+                        "Convenience only",
+                        "Individual productivity",
+                        "Team cycle-time reduction",
+                        "Measurable cost/risk/rework reduction",
+                        "Revenue, margin, or scalable execution impact"
+                      ]
+                    },
+                    {
+                      "key": "reliabilityModelRisk",
+                      "label": "Reliability and model risk",
+                      "question": "Can the enterprise rely on the agent within defined boundaries?",
+                      "scale": [
+                        "Untested",
+                        "Informally reviewed",
+                        "Test cases and human review",
+                        "Monitored reliability thresholds",
+                        "Validated, monitored, controlled, and replaced under policy"
+                      ]
+                    },
+                    {
+                      "key": "usefulLife",
+                      "label": "Useful life and lifecycle control",
+                      "question": "Does the agent have an expected useful life, update cadence, retirement trigger, and replacement model?",
+                      "scale": [
+                        "Temporary",
+                        "Unknown useful life",
+                        "Release-cycle managed",
+                        "Useful-life estimate and review cadence",
+                        "Asset lifecycle governance with impairment-style indicators"
+                      ]
+                    }
+                  ],
+                  "scoreBands": [
+                    {
+                      "min": 0,
+                      "max": 6,
+                      "grade": "G0 \u2014 Disposable Agent",
+                      "posture": "Lightweight policy controls"
+                    },
+                    {
+                      "min": 7,
+                      "max": 13,
+                      "grade": "G1 \u2014 Assisted Workflow Agent",
+                      "posture": "Team-level governance"
+                    },
+                    {
+                      "min": 14,
+                      "max": 21,
+                      "grade": "G2 \u2014 Governed Process Agent",
+                      "posture": "Production-readiness controls"
+                    },
+                    {
+                      "min": 22,
+                      "max": 28,
+                      "grade": "G3 \u2014 Operational Asset Candidate",
+                      "posture": "Enterprise asset governance and accounting review"
+                    }
+                  ],
+                  "hardOverrides": [
+                    "Financial reporting impact",
+                    "SOX-relevant workflow",
+                    "Autonomous transaction execution",
+                    "Pricing or margin influence",
+                    "Revenue forecasting or pursuit prioritization",
+                    "Client-facing deliverables",
+                    "Regulated or restricted data",
+                    "Material cybersecurity exposure"
+                  ],
+                  "classificationBlockers": [
+                    "No owner",
+                    "No cost traceability",
+                    "No defined intended use",
+                    "No production controls",
+                    "No evidence trail",
+                    "No useful-life assumption",
+                    "Unresolved development uncertainty",
+                    "No accounting review for capitalization claim"
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "heading": "Dimension 1: operational materiality",
+            "blocks": [
+              {
+                "type": "image",
+                "src": "assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/03.png",
+                "alt": "The seven grading dimensions and score bands",
+                "caption": "The seven dimensions convert agent classification into a repeatable 0\u201328 scoring model with hard override triggers.",
+                "title": "The Seven Grading Dimensions"
+              },
+              {
+                "type": "paragraph",
+                "text": "Operational materiality asks whether the agent influences work that matters to cost, revenue, risk, compliance, client delivery, financial reporting, or operational continuity. It is the first serious boundary between a useful tool and a capability that management should govern."
+              },
+              {
+                "type": "paragraph",
+                "text": "Example A scores low because rewriting boilerplate does not usually create operational dependency. Example B scores slightly higher because meeting summaries can influence project follow-through but remain human-reviewed. Example C scores higher because invoice exceptions can influence financial process control. Example D scores high because margin protection affects project economics. Example E may score at the top because revenue orchestration can influence pursuit priority, relationship routing, and growth strategy."
+              },
+              {
+                "type": "list",
+                "title": "Evidence to collect",
+                "items": [
+                  "Workflow map showing where the agent participates.",
+                  "Business process owner signoff.",
+                  "Failure impact assessment.",
+                  "Systems touched and decisions influenced.",
+                  "Materiality screen for finance, client delivery, risk, and compliance impact."
+                ]
+              }
+            ]
+          },
+          {
+            "heading": "Dimension 2: institutional knowledge capture",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "text": "An agent becomes more strategically significant when it captures how the organization thinks, not merely what the organization says. This includes expert judgment, decision patterns, escalation logic, relationship memory, pricing intuition, risk signals, and process exceptions."
+              },
+              {
+                "type": "paragraph",
+                "text": "The Proposal Rewrite Agent may capture tone preferences but little durable institutional knowledge. The PM Meeting Summary Agent may begin capturing project follow-through patterns. The Invoice Exception Triage Agent captures finance exception logic. The Margin Protection Agent captures senior operator judgment about project economics. The Revenue Intelligence Orchestration captures relationship memory, service adjacency, pursuit judgment, and outcome feedback."
+              },
+              {
+                "type": "list",
+                "title": "Evidence to collect",
+                "items": [
+                  "SME interview notes and validation records.",
+                  "Decision rules and escalation patterns.",
+                  "Prompt library or policy instructions.",
+                  "Knowledge graph or retrieval source map.",
+                  "Expert review results showing whether the agent preserved judgment correctly."
+                ]
+              }
+            ]
+          },
+          {
+            "heading": "Dimension 3: control and auditability",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "text": "Control and auditability ask whether the enterprise can explain, reproduce, review, and audit what the agent did. This dimension matters because AI systems often produce output faster than traditional review processes can evaluate. The higher the business consequence, the stronger the evidence trail must become."
+              },
+              {
+                "type": "paragraph",
+                "text": "Example C should retain invoice exception evidence, routing rationale, reviewer action, override history, and control IDs. Example D should retain project-risk signals, source records, model/prompt versions, explanation narratives, escalation history, and intervention outcomes. Example E should retain graph lineage, opportunity scoring rationale, conflict checks, recommended connector path, human approval, and post-action signal."
+              },
+              {
+                "type": "list",
+                "title": "Evidence to collect",
+                "items": [
+                  "Event logs and run IDs.",
+                  "Input and output retention rules.",
+                  "Model, prompt, and retrieval-source versions.",
+                  "Human approval, rejection, and override records.",
+                  "Control mapping and evidence URIs.",
+                  "Exception and incident logs."
+                ]
+              }
+            ]
+          },
+          {
+            "heading": "Dimension 4: cost traceability",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "text": "Cost traceability is where many agent programs will fail accounting-readiness. If the enterprise cannot separate research, development, implementation, testing, maintenance, enhancement, training, and operations, it cannot support a serious asset treatment conversation."
+              },
+              {
+                "type": "paragraph",
+                "text": "Example A may only require ordinary expense tracking. Example C should have project-level labor and implementation cost tracking if it becomes a formal finance workflow capability. Example D should track integration work across ERP, contract repositories, staffing data, and project systems. Example E should track orchestration development, graph modeling, CRM/ERP integrations, evaluation harnesses, security work, data normalization, and operating costs separately."
+              },
+              {
+                "type": "list",
+                "title": "Evidence to collect",
+                "items": [
+                  "Project code and cost objective.",
+                  "Internal labor by work type.",
+                  "Vendor invoices and cloud/model costs.",
+                  "Development versus maintenance/enhancement separation.",
+                  "Training and change-management costs separated from build costs.",
+                  "Accounting position memo prepared with finance."
+                ]
+              }
+            ]
+          },
+          {
+            "heading": "Dimension 5: business value and cost displacement",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "text": "The value question is not only what the agent costs. It is what expensive production pattern the agent structurally changes. The most asset-like agents reduce recurring labor intensity, preserve scarce expertise, prevent costly failures, improve margin protection, accelerate cycle time, or improve revenue conversion."
+              },
+              {
+                "type": "paragraph",
+                "text": "Example A may improve writing speed, but the value is convenience. Example B may reduce PM administrative drag. Example C may reduce finance rework and exception handling cycle time. Example D may prevent margin leakage or accelerate intervention. Example E may influence revenue expansion by routing the right expertise toward the right client opportunity at the right time."
+              },
+              {
+                "type": "list",
+                "title": "Evidence to collect",
+                "items": [
+                  "Baseline process cost and cycle time.",
+                  "Rework, exception, or defect reduction.",
+                  "Avoided senior labor or improved leverage.",
+                  "Margin preservation or revenue influence.",
+                  "Benefit realization dashboard and post-deployment measurement."
+                ]
+              }
+            ]
+          },
+          {
+            "heading": "Dimension 6: reliability and model risk",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "text": "Reliability and model risk ask whether the agent can be trusted inside defined boundaries. This is not a generic model-quality question. It is a workflow-specific question: can the agent perform the role assigned to it, within the risk tolerance of the workflow, with known failure modes and monitoring?"
+              },
+              {
+                "type": "paragraph",
+                "text": "Example B may only need sampling and PM feedback. Example C needs test cases for invoice exception types and reviewer validation. Example D needs backtesting against historical margin-risk cases, false-positive tracking, and drift monitoring. Example E needs evaluation of graph recommendations, pursuit-quality scoring, connector routing, and conflict-check reliability."
+              },
+              {
+                "type": "list",
+                "title": "Evidence to collect",
+                "items": [
+                  "Evaluation dataset and pass/fail criteria.",
+                  "Red-team or failure-mode testing.",
+                  "Human override rate.",
+                  "Output acceptance rate.",
+                  "Confidence thresholds and fallback logic.",
+                  "Drift monitoring and incident review."
+                ]
+              }
+            ]
+          },
+          {
+            "heading": "Dimension 7: useful life and lifecycle control",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "text": "Useful life is what separates a durable operating capability from a temporary workflow hack. A serious agent needs a release cadence, review cycle, model dependency analysis, retirement trigger, and replacement plan. Without lifecycle discipline, the enterprise cannot responsibly treat the capability as an asset-class candidate."
+              },
+              {
+                "type": "paragraph",
+                "text": "Example A may have no useful life because it is disposable. Example C may have a useful life tied to the finance platform and invoice workflow. Example D may depend on ERP data quality, project management practices, and contract taxonomy. Example E may require periodic review as service lines, client relationships, market strategy, and CRM data structures change."
+              },
+              {
+                "type": "list",
+                "title": "Evidence to collect",
+                "items": [
+                  "Useful-life estimate or lifecycle rationale.",
+                  "Release notes and version history.",
+                  "Retirement and replacement triggers.",
+                  "Dependency map for models, vendors, data sources, and systems.",
+                  "Quarterly lifecycle review record."
+                ]
+              }
+            ]
+          },
+          {
+            "heading": "The evidence package",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "text": "The grading score is not enough. An agent that reaches G2 or G3 should have an evidence package that can be inspected by the CIO, CFO, controller, internal audit, CISO, legal, enterprise architecture, and the business owner."
+              },
+              {
+                "type": "image",
+                "src": "assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/06.png",
+                "alt": "Accounting-readiness evidence package for agent asset evaluation",
+                "caption": "The evidence package gives finance, audit, technical, and business reviewers a shared basis for classification.",
+                "title": "Accounting-Readiness Evidence Package"
+              },
+              {
+                "type": "list",
+                "title": "Required artifacts",
+                "items": [
+                  "Agent Charter: purpose, owner, sponsor, intended use, workflow, users, systems touched, and grade target.",
+                  "Accounting Position Memo: capitalization assessment, expense/capital split, useful-life assumption, amortization trigger, maintenance/enhancement policy, impairment indicators, and audit considerations.",
+                  "Cost Ledger: labor, vendor, cloud, model/API, testing, integration, maintenance, enhancement, training, and operations costs.",
+                  "Control Matrix: COSO/SOX control mapping, ownership, review activities, escalation path, retention rule, and evidence location.",
+                  "Technical Architecture Record: orchestration layer, model providers, retrieval sources, data flows, identity model, system integrations, logging, and rollback.",
+                  "Model/Prompt/Data Lineage: prompt versions, model versions, retrieval corpus, knowledge graph versions, evaluation sets, and SME validation records.",
+                  "Business Value Baseline: baseline cost, cycle time, rework rate, margin impact, revenue influence, risk reduction, and benefit target.",
+                  "Lifecycle Review Record: useful-life review, dependency changes, incidents, improvement plan, retirement trigger, and replacement decision."
+                ]
+              },
+              {
+                "type": "paragraph",
+                "text": "For Example D, the evidence package should prove that the Margin Protection Agent is not simply generating interesting risk narratives. It should show what data sources it uses, how risk signals are calculated, how false positives are managed, who reviews escalations, what project economics are affected, and whether interventions improve margin outcomes."
+              }
+            ]
+          },
+          {
+            "heading": "Technical instrumentation required",
+            "layout": "split-image-right",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "text": "Agent grading only works if the enterprise can observe agent behavior. Production-grade agents should emit structured telemetry that connects the agent run to the workflow, user, model, prompt, retrieval source, cost, decision type, human review, control evidence, and exception state."
+              },
+              {
+                "type": "code",
+                "language": "json",
+                "title": "Minimum event schema",
+                "code": "{\n  \"event_id\": \"uuid\",\n  \"agent_id\": \"string\",\n  \"agent_version\": \"string\",\n  \"workflow_id\": \"string\",\n  \"run_id\": \"uuid\",\n  \"user_id\": \"string\",\n  \"role\": \"string\",\n  \"business_unit\": \"string\",\n  \"environment\": \"sandbox|pilot|production\",\n  \"input_classification\": \"public|internal|confidential|restricted\",\n  \"model_provider\": \"string\",\n  \"model_id\": \"string\",\n  \"prompt_version\": \"string\",\n  \"retrieval_sources\": [\"string\"],\n  \"tools_invoked\": [\"string\"],\n  \"systems_touched\": [\"string\"],\n  \"cost_estimate\": {\n    \"tokens_in\": 0,\n    \"tokens_out\": 0,\n    \"api_cost\": 0,\n    \"compute_cost\": 0\n  },\n  \"decision_type\": \"assist|recommend|route|execute|approve\",\n  \"human_review_required\": true,\n  \"approval_status\": \"pending|approved|rejected|overridden\",\n  \"output_hash\": \"string\",\n  \"evidence_uri\": \"string\",\n  \"exception_flag\": false,\n  \"control_ids\": [\"string\"],\n  \"created_at\": \"timestamp\"\n}"
+              },
+              {
+                "type": "paragraph",
+                "text": "Example E requires the strongest instrumentation. A revenue recommendation should be traceable back to the relationship graph, service adjacency logic, source data, conflict checks, prompt/model versions, human approvals, and outcome signal after the recommendation is acted upon."
+              }
+            ]
+          },
+          {
+            "heading": "CIO implementation model",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "text": "The CIO should not delegate this as a generic AI-build backlog. The correct mandate is an Agent Asset Governance Program that separates agent inventory, accounting-readiness, control evidence, technical reliability, business value, and lifecycle management into clear workstreams."
+              },
+              {
+                "type": "image",
+                "src": "assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/07.png",
+                "alt": "CIO deployment model for agent asset governance",
+                "caption": "The CIO deployment model turns the framework into assigned workstreams with clear owners and outputs.",
+                "title": "CIO Deployment Model"
+              },
+              {
+                "type": "table",
+                "title": "CIO workstreams",
+                "columns": [
+                  "Workstream",
+                  "Primary owner",
+                  "Deliverable"
+                ],
+                "rows": [
+                  [
+                    "Agent Inventory",
+                    "AI platform lead / enterprise architecture",
+                    "Enterprise agent registry with grade, owner, workflow, systems touched, and environment."
+                  ],
+                  [
+                    "Accounting and Cost Traceability",
+                    "Finance technology lead / controller",
+                    "Agent accounting-readiness playbook and cost-coding model."
+                  ],
+                  [
+                    "Control and Audit Evidence",
+                    "Internal audit / GRC / SOX lead",
+                    "Agent control matrix and evidence-retention standard."
+                  ],
+                  [
+                    "Reliability and Model Risk",
+                    "AI engineering / MLOps / security",
+                    "Evaluation harness, model-risk standard, monitoring thresholds, and fallback policy."
+                  ],
+                  [
+                    "Business Value Measurement",
+                    "Business owner / finance business partner",
+                    "Benefit realization scorecard and value baseline."
+                  ],
+                  [
+                    "Release and Lifecycle",
+                    "Product owner / platform operations",
+                    "Production-readiness checklist, incident process, lifecycle review, and retirement policy."
+                  ]
+                ]
+              },
+              {
+                "type": "callout",
+                "tone": "executive",
+                "title": "CIO takeaway",
+                "text": "The framework gives the CIO a way to turn board concern into delegated operating work: inventory the agents, classify them, instrument them, cost them, control them, measure them, and review them over time."
+              }
+            ]
+          },
+          {
+            "heading": "Stage gates for production deployment",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "text": "A stage-gate model prevents experimentation from being mistaken for production capability. It also prevents production capability from slipping into the enterprise without accounting, control, and lifecycle evidence."
+              },
+              {
+                "type": "image",
+                "src": "assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/05.png",
+                "alt": "Stage-gate lifecycle for agent asset review",
+                "caption": "The stage-gate lifecycle creates accounting checkpoints before production deployment and asset classification review.",
+                "title": "Stage-Gate Lifecycle"
+              },
+              {
+                "type": "cards",
+                "items": [
+                  {
+                    "title": "Gate 0 \u2014 Idea Intake",
+                    "description": "Capture business problem, owner, expected impact, data classification, and initial risk screen. Decide whether the idea belongs in sandbox, prototype, controlled build, or rejection."
+                  },
+                  {
+                    "title": "Gate 1 \u2014 Experiment Approval",
+                    "description": "Bound the experiment with restricted data, user group, cost cap, retention rule, model/vendor approval, and stop/continue criteria."
+                  },
+                  {
+                    "title": "Gate 2 \u2014 Development Authorization",
+                    "description": "Establish management authorization, funding, intended use, probable completion, architecture approval, accounting review, and cost coding."
+                  },
+                  {
+                    "title": "Gate 3 \u2014 Production Readiness",
+                    "description": "Confirm owner, control matrix, security approval, test results, evidence logging, fallback path, human review rules, and monitoring dashboard."
+                  },
+                  {
+                    "title": "Gate 4 \u2014 Asset Classification Review",
+                    "description": "Review score, cost ledger, business value baseline, useful-life memo, accounting memo, control evidence, and production metrics."
+                  },
+                  {
+                    "title": "Gate 5 \u2014 Lifecycle Review",
+                    "description": "Review usage, performance, cost, incidents, dependency changes, useful life, enhancement needs, retirement criteria, and replacement options."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "heading": "How the five examples grade",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "text": "The calculator should not merely produce a number. It should teach the user why each agent lands where it lands."
+              },
+              {
+                "type": "image",
+                "src": "assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/04.png",
+                "alt": "Five example agents across increasing sophistication",
+                "caption": "The examples show how the same model handles disposable tools, assisted workflows, governed process agents, and operational asset candidates.",
+                "title": "Five Example Agents in Progression"
+              },
+              {
+                "type": "table",
+                "title": "Example scoring snapshot",
+                "columns": [
+                  "Agent",
+                  "Likely score",
+                  "Likely grade",
+                  "Primary reason",
+                  "Primary gap"
+                ],
+                "rows": [
+                  [
+                    "Proposal Rewrite Agent",
+                    "2\u20135",
+                    "G0 \u2014 Disposable",
+                    "Useful productivity but little durable operating capability.",
+                    "No owner, cost traceability, intended use, or lifecycle evidence."
+                  ],
+                  [
+                    "PM Meeting Summary Agent",
+                    "7\u201311",
+                    "G1 \u2014 Assisted",
+                    "Supports follow-through but PM remains accountable for commitments.",
+                    "Needs workflow owner, retention rules, and review evidence."
+                  ],
+                  [
+                    "Invoice Exception Triage Agent",
+                    "15\u201320",
+                    "G2 \u2014 Governed",
+                    "Embedded in finance process with evidence and reviewer routing.",
+                    "Needs SOX screen, control matrix, and cost ledger."
+                  ],
+                  [
+                    "Margin Protection Agent",
+                    "22\u201325",
+                    "G3 \u2014 Operational Asset Candidate",
+                    "Influences project economics and preserves senior operator judgment.",
+                    "Needs useful-life memo, benefit realization, and model-risk monitoring."
+                  ],
+                  [
+                    "Revenue Intelligence Orchestration",
+                    "24\u201328",
+                    "G3+ \u2014 Enterprise Asset Candidate",
+                    "Connects relationship capital, service adjacency, pursuit logic, and outcome signal into governed revenue execution.",
+                    "Needs graph lineage, conflict controls, value attribution, and executive operating rhythm."
+                  ]
+                ]
+              },
+              {
+                "type": "paragraph",
+                "text": "This example set is intentionally broad. The same framework should let a team quickly dismiss a disposable prompt, responsibly govern a team assistant, production-harden a finance agent, and prepare sophisticated orchestration for asset-level review."
+              }
+            ]
+          },
+          {
+            "heading": "Final standard",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "text": "A workable industry standard should treat agent grading as a governance discipline: the more an agent influences enterprise execution, the more transparency, evidence, and accountable review the organization should require."
+              },
+              {
+                "type": "paragraph",
+                "text": "That is not only a technology question. It is a capital-discipline question. Enterprises need a consistent way to distinguish lightweight productivity aids from durable operating capabilities that affect cost structure, control posture, decision quality, and long-term shareholder value."
+              },
+              {
+                "type": "paragraph",
+                "text": "The goal is not to force every agent into asset treatment. The goal is to make investment decisions, governance expectations, and organizational accountability more explicit, more comparable, and more defensible as AI-enabled capabilities become embedded in how the enterprise operates."
+              }
+            ]
+          }
+        ]
+      },
+      "companion": {
+        "snapshot": [
+          {
+            "label": "Category",
+            "value": "AI Governance"
+          },
+          {
+            "label": "Best for",
+            "value": "CIOs, CFOs, controllers, internal audit, enterprise architects, AI platform leads"
+          },
+          {
+            "label": "Core question",
+            "value": "What grade of operational asset is this agent becoming, and what evidence supports that classification?"
+          },
+          {
+            "label": "Primary artifact",
+            "value": "Agent Grading Calculator"
+          },
+          {
+            "label": "Method",
+            "value": "Seven-dimension scoring + hard overrides + accounting-readiness evidence package"
+          }
+        ],
+        "toc": [
+          {
+            "label": "Why this framework exists",
+            "anchor": "why-this-framework-exists"
+          },
+          {
+            "label": "Five running examples",
+            "anchor": "the-five-agents-used-throughout-the-framework"
+          },
+          {
+            "label": "Accounting-readiness",
+            "anchor": "accounting-readiness-is-evidence-not-enthusiasm"
+          },
+          {
+            "label": "Four agent grades",
+            "anchor": "the-four-agent-grades"
+          },
+          {
+            "label": "Grading calculator",
+            "anchor": "the-inline-agent-grading-calculator"
+          },
+          {
+            "label": "Seven dimensions",
+            "anchor": "dimension-1-operational-materiality"
+          },
+          {
+            "label": "Evidence package",
+            "anchor": "the-evidence-package"
+          },
+          {
+            "label": "Technical instrumentation",
+            "anchor": "technical-instrumentation-required"
+          },
+          {
+            "label": "CIO implementation model",
+            "anchor": "cio-implementation-model"
+          },
+          {
+            "label": "Stage gates",
+            "anchor": "stage-gates-for-production-deployment"
+          },
+          {
+            "label": "Example scoring",
+            "anchor": "how-the-five-examples-grade"
+          }
+        ],
+        "callsToAction": [
+          {
+            "title": "Use the calculator",
+            "description": "Score an existing enterprise AI agent across seven dimensions and identify governance, accounting, and evidence gaps.",
+            "anchor": "the-inline-agent-grading-calculator",
+            "buttonLabel": "Open grading calculator"
+          },
+          {
+            "title": "Download templates",
+            "description": "Open the template library for the worksheet, charter, accounting memo, control matrix, and cost ledger used to operationalize the framework.",
+            "action": "open-templates",
+            "buttonLabel": "View templates"
+          }
+        ],
+        "assets": [
+          {
+            "label": "Agent Asset Grading Framework Overview",
+            "href": "assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/01.png",
+            "description": "Overview diagram showing the five-step flow from classify to improve and the four agent asset grades.",
+            "type": "image",
+            "number": "01"
+          },
+          {
+            "label": "The Four Agent Grades",
+            "href": "assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/02.png",
+            "description": "Comparison diagram for G0 Disposable, G1 Assisted, G2 Governed, and G3 Operational Asset.",
+            "type": "image",
+            "number": "02"
+          },
+          {
+            "label": "The Seven Grading Dimensions",
+            "href": "assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/03.png",
+            "description": "Scoring diagram showing the seven dimensions, 0 to 28 total score, grade bands, and hard override note.",
+            "type": "image",
+            "number": "03"
+          },
+          {
+            "label": "Five Example Agents in Progression",
+            "href": "assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/04.png",
+            "description": "Progression diagram applying the grading framework to five example agents from proposal rewrite to revenue intelligence orchestration.",
+            "type": "image",
+            "number": "04"
+          },
+          {
+            "label": "Stage-Gate Lifecycle",
+            "href": "assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/05.png",
+            "description": "Lifecycle diagram showing how an agent moves from idea intake to experiment approval, development authorization, production readiness, asset classification, and lifecycle review.",
+            "type": "image",
+            "number": "05"
+          },
+          {
+            "label": "Accounting-Readiness Evidence Package",
+            "href": "assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/06.png",
+            "description": "Evidence package diagram grouping the artifacts needed for business, accounting, technical, and control review.",
+            "type": "image",
+            "number": "06"
+          },
+          {
+            "label": "CIO Deployment Model",
+            "href": "assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/07.png",
+            "description": "Operating model diagram for delegating the agent asset program across inventory, accounting, controls, reliability, business value, and lifecycle workstreams.",
+            "type": "image",
+            "number": "07"
+          },
+          {
+            "label": "Inline Agent Grading Calculator",
+            "href": "assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/08.png",
+            "description": "Calculator concept showing seven dimension scoring, hard overrides, total score, grade result, and recommended next artifacts.",
+            "type": "image",
+            "number": "08"
+          },
+          {
+            "label": "Agent grading calculator",
+            "href": "#the-inline-agent-grading-calculator",
+            "description": "Interactive calculator for scoring an agent across seven dimensions.",
+            "type": "component"
+          },
+          {
+            "label": "Agent grading worksheet",
+            "href": "assets/templates/agent-grading-worksheet.csv",
+            "description": "Spreadsheet-friendly worksheet for scoring enterprise AI agents.",
+            "type": "template"
+          },
+          {
+            "label": "Agent charter template",
+            "href": "assets/templates/agent-charter-template.md",
+            "description": "Template for defining the agent owner, sponsor, workflow scope, intended use, systems touched, and target grade.",
+            "type": "template"
+          },
+          {
+            "label": "Accounting position memo template",
+            "href": "assets/templates/agent-accounting-position-memo.md",
+            "description": "Template for documenting accounting-readiness, cost treatment, useful life, and evidence assumptions.",
+            "type": "template"
+          },
+          {
+            "label": "Control matrix template",
+            "href": "assets/templates/agent-control-matrix.csv",
+            "description": "Spreadsheet-friendly template for mapping agent risks, controls, owners, frequency, and evidence.",
+            "type": "template"
+          },
+          {
+            "label": "Cost ledger template",
+            "href": "assets/templates/agent-cost-ledger.csv",
+            "description": "Spreadsheet-friendly template for tracing labor, platform, cloud, integration, and maintenance costs.",
+            "type": "template"
+          }
+        ],
+        "related": [
+          {
+            "title": "Relationship Capital \u2192 Revenue Intelligence",
+            "slug": "frameworks/2026/05/17/relationship-capital-revenue-intelligence",
+            "description": "A related framework for converting relationship capital, service adjacency, and delivery history into measurable revenue intelligence."
+          },
+          {
+            "title": "Systems Translation Loop",
+            "slug": "frameworks/2026/03/18/systems-translation-loop",
+            "description": "A framework for preserving signal across executive intent, workflow reality, and technical implementation."
+          }
+        ]
+      },
+      "productionAssets": {
+        "frameworkImages": [
+          {
+            "label": "Agent Asset Grading Framework Overview",
+            "href": "assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/01.png",
+            "description": "Overview diagram showing the five-step flow from classify to improve and the four agent asset grades.",
+            "type": "image",
+            "number": "01"
+          },
+          {
+            "label": "The Four Agent Grades",
+            "href": "assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/02.png",
+            "description": "Comparison diagram for G0 Disposable, G1 Assisted, G2 Governed, and G3 Operational Asset.",
+            "type": "image",
+            "number": "02"
+          },
+          {
+            "label": "The Seven Grading Dimensions",
+            "href": "assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/03.png",
+            "description": "Scoring diagram showing the seven dimensions, 0 to 28 total score, grade bands, and hard override note.",
+            "type": "image",
+            "number": "03"
+          },
+          {
+            "label": "Five Example Agents in Progression",
+            "href": "assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/04.png",
+            "description": "Progression diagram applying the grading framework to five example agents from proposal rewrite to revenue intelligence orchestration.",
+            "type": "image",
+            "number": "04"
+          },
+          {
+            "label": "Stage-Gate Lifecycle",
+            "href": "assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/05.png",
+            "description": "Lifecycle diagram showing how an agent moves from idea intake to experiment approval, development authorization, production readiness, asset classification, and lifecycle review.",
+            "type": "image",
+            "number": "05"
+          },
+          {
+            "label": "Accounting-Readiness Evidence Package",
+            "href": "assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/06.png",
+            "description": "Evidence package diagram grouping the artifacts needed for business, accounting, technical, and control review.",
+            "type": "image",
+            "number": "06"
+          },
+          {
+            "label": "CIO Deployment Model",
+            "href": "assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/07.png",
+            "description": "Operating model diagram for delegating the agent asset program across inventory, accounting, controls, reliability, business value, and lifecycle workstreams.",
+            "type": "image",
+            "number": "07"
+          },
+          {
+            "label": "Inline Agent Grading Calculator",
+            "href": "assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/08.png",
+            "description": "Calculator concept showing seven dimension scoring, hard overrides, total score, grade result, and recommended next artifacts.",
+            "type": "image",
+            "number": "08"
+          }
+        ],
+        "imageRenamePlan": [
+          {
+            "current": "assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/1.png",
+            "recommended": "assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/01_agent_asset_grading_framework_overview.png",
+            "title": "Agent Asset Grading Framework Overview"
+          },
+          {
+            "current": "assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/2.png",
+            "recommended": "assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/02_the_four_agent_grades.png",
+            "title": "The Four Agent Grades"
+          },
+          {
+            "current": "assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/3.png",
+            "recommended": "assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/03_the_seven_grading_dimensions.png",
+            "title": "The Seven Grading Dimensions"
+          },
+          {
+            "current": "assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/4.png",
+            "recommended": "assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/04_five_example_agents_in_progression.png",
+            "title": "Five Example Agents in Progression"
+          },
+          {
+            "current": "assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/5.png",
+            "recommended": "assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/05_stage_gate_lifecycle.png",
+            "title": "Stage-Gate Lifecycle"
+          },
+          {
+            "current": "assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/6.png",
+            "recommended": "assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/06_accounting_readiness_evidence_package.png",
+            "title": "Accounting-Readiness Evidence Package"
+          },
+          {
+            "current": "assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/7.png",
+            "recommended": "assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/07_cio_deployment_model.png",
+            "title": "CIO Deployment Model"
+          },
+          {
+            "current": "assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/8.png",
+            "recommended": "assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/08_inline_agent_grading_calculator.png",
+            "title": "Inline Agent Grading Calculator"
+          }
+        ],
+        "socialImage": {
+          "label": "Framework social image",
+          "href": "assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/01.png",
+          "description": "Use the framework overview image as the default Open Graph/social preview until a separate social image is created."
+        }
+      },
+      "heroImage": "assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/01.png",
+      "imageIndex": [
+        {
+          "number": "01",
+          "title": "Agent Asset Grading Framework Overview",
+          "href": "assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/01.png",
+          "alt": "The Agent Asset Grading Framework overview",
+          "description": "Overview diagram showing the five-step flow from classify to improve and the four agent asset grades."
+        },
+        {
+          "number": "02",
+          "title": "The Four Agent Grades",
+          "href": "assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/02.png",
+          "alt": "The four agent grades from disposable to operational asset",
+          "description": "Comparison diagram for G0 Disposable, G1 Assisted, G2 Governed, and G3 Operational Asset."
+        },
+        {
+          "number": "03",
+          "title": "The Seven Grading Dimensions",
+          "href": "assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/03.png",
+          "alt": "The seven grading dimensions and score bands",
+          "description": "Scoring diagram showing the seven dimensions, 0 to 28 total score, grade bands, and hard override note."
+        },
+        {
+          "number": "04",
+          "title": "Five Example Agents in Progression",
+          "href": "assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/04.png",
+          "alt": "Five example agents across increasing sophistication",
+          "description": "Progression diagram applying the grading framework to five example agents from proposal rewrite to revenue intelligence orchestration."
+        },
+        {
+          "number": "05",
+          "title": "Stage-Gate Lifecycle",
+          "href": "assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/05.png",
+          "alt": "Stage-gate lifecycle for agent asset review",
+          "description": "Lifecycle diagram showing how an agent moves from idea intake to experiment approval, development authorization, production readiness, asset classification, and lifecycle review."
+        },
+        {
+          "number": "06",
+          "title": "Accounting-Readiness Evidence Package",
+          "href": "assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/06.png",
+          "alt": "Accounting-readiness evidence package for agent asset evaluation",
+          "description": "Evidence package diagram grouping the artifacts needed for business, accounting, technical, and control review."
+        },
+        {
+          "number": "07",
+          "title": "CIO Deployment Model",
+          "href": "assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/07.png",
+          "alt": "CIO deployment model for agent asset governance",
+          "description": "Operating model diagram for delegating the agent asset program across inventory, accounting, controls, reliability, business value, and lifecycle workstreams."
+        },
+        {
+          "number": "08",
+          "title": "Inline Agent Grading Calculator",
+          "href": "assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/08.png",
+          "alt": "Inline agent grading calculator UI concept",
+          "description": "Calculator concept showing seven dimension scoring, hard overrides, total score, grade result, and recommended next artifacts."
+        }
+      ]
+    },
     {
       "id": "framework-001",
       "slug": "frameworks/2026/04/14/turn-down-the-noise",
@@ -111,7 +1264,7 @@
     {
       "id": "framework-003",
       "slug": "frameworks/2026/05/17/relationship-capital-revenue-intelligence",
-      "title": "Relationship Capital → Revenue Intelligence",
+      "title": "Relationship Capital \u2192 Revenue Intelligence",
       "summary": "An executive framework for using D3 to map client relationships, service delivery, employee expertise, current value, white-space opportunity, and the next-best connections that turn relationship capital into measurable growth.",
       "status": "published",
       "publishedOn": "2026-05-17",

@@ -1,11 +1,17 @@
 import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
+import { MatTableModule } from '@angular/material/table';
 import {
+  ContentCardsBlock,
+  ContentCodeBlock,
   ContentImage,
   ContentImageBlock,
   ContentSection,
-  ContentSectionBlock
+  ContentSectionBlock,
+  ContentTableBlock
 } from '../../core/content/content.models';
 import { InteractiveContentBlockComponent } from './interactive-content-block/interactive-content-block.component';
 
@@ -17,7 +23,7 @@ interface LightboxImage {
 
 @Component({
   selector: 'cw-content-renderer',
-  imports: [MatButtonModule, MatIconModule, InteractiveContentBlockComponent],
+  imports: [MatButtonModule, MatCardModule, MatChipsModule, MatIconModule, MatTableModule, InteractiveContentBlockComponent],
   template: `
     @for (section of sections(); track trackSection(section, $index)) {
       <section
@@ -50,6 +56,7 @@ interface LightboxImage {
                   [fallback]="section.fallback"
                   [title]="section.componentTitle"
                   [description]="section.componentDescription"
+                  [config]="section.componentConfig"
                 />
               }
 
@@ -85,7 +92,51 @@ interface LightboxImage {
                         [fallback]="block.fallback"
                         [title]="block.title"
                         [description]="block.description"
+                        [config]="block.config"
                       />
+                    }
+                    @case ('table') {
+                      <mat-card appearance="outlined" class="content-table">
+                        @if (block.title) {
+                          <h3>{{ block.title }}</h3>
+                        }
+                        <div class="content-table__scroll">
+                          <table mat-table [dataSource]="block.rows" class="content-material-table">
+                            @for (column of block.columns; track column; let index = $index) {
+                              <ng-container [matColumnDef]="tableColumnId(index)">
+                                <th mat-header-cell *matHeaderCellDef>{{ column }}</th>
+                                <td mat-cell *matCellDef="let row">{{ tableCellAt(row, index) }}</td>
+                              </ng-container>
+                            }
+
+                            <tr mat-header-row *matHeaderRowDef="tableColumnIds(block)"></tr>
+                            <tr mat-row *matRowDef="let row; columns: tableColumnIds(block)"></tr>
+                          </table>
+                        </div>
+                      </mat-card>
+                    }
+                    @case ('cards') {
+                      <div class="content-card-grid">
+                        @for (item of block.items; track item.title) {
+                          <mat-card appearance="outlined" class="content-card">
+                            <h3>{{ item.title }}</h3>
+                            <p>{{ item.description }}</p>
+                          </mat-card>
+                        }
+                      </div>
+                    }
+                    @case ('code') {
+                      <mat-card appearance="outlined" class="content-code-block">
+                        @if (block.title) {
+                          <h3>{{ block.title }}</h3>
+                        }
+                        @if (block.language) {
+                          <mat-chip-set>
+                            <mat-chip>{{ block.language }}</mat-chip>
+                          </mat-chip-set>
+                        }
+                        <pre><code>{{ block.code }}</code></pre>
+                      </mat-card>
                     }
                   }
                 }
@@ -137,6 +188,7 @@ interface LightboxImage {
               [fallback]="section.fallback"
               [title]="section.componentTitle"
               [description]="section.componentDescription"
+              [config]="section.componentConfig"
             />
           }
 
@@ -187,7 +239,51 @@ interface LightboxImage {
                     [fallback]="block.fallback"
                     [title]="block.title"
                     [description]="block.description"
+                    [config]="block.config"
                   />
+                }
+                @case ('table') {
+                  <mat-card appearance="outlined" class="content-table">
+                    @if (block.title) {
+                      <h3>{{ block.title }}</h3>
+                    }
+                    <div class="content-table__scroll">
+                      <table mat-table [dataSource]="block.rows" class="content-material-table">
+                        @for (column of block.columns; track column; let index = $index) {
+                          <ng-container [matColumnDef]="tableColumnId(index)">
+                            <th mat-header-cell *matHeaderCellDef>{{ column }}</th>
+                            <td mat-cell *matCellDef="let row">{{ tableCellAt(row, index) }}</td>
+                          </ng-container>
+                        }
+
+                        <tr mat-header-row *matHeaderRowDef="tableColumnIds(block)"></tr>
+                        <tr mat-row *matRowDef="let row; columns: tableColumnIds(block)"></tr>
+                      </table>
+                    </div>
+                  </mat-card>
+                }
+                @case ('cards') {
+                  <div class="content-card-grid">
+                    @for (item of block.items; track item.title) {
+                      <mat-card appearance="outlined" class="content-card">
+                        <h3>{{ item.title }}</h3>
+                        <p>{{ item.description }}</p>
+                      </mat-card>
+                    }
+                  </div>
+                }
+                @case ('code') {
+                  <mat-card appearance="outlined" class="content-code-block">
+                    @if (block.title) {
+                      <h3>{{ block.title }}</h3>
+                    }
+                    @if (block.language) {
+                      <mat-chip-set>
+                        <mat-chip>{{ block.language }}</mat-chip>
+                      </mat-chip-set>
+                    }
+                    <pre><code>{{ block.code }}</code></pre>
+                  </mat-card>
                 }
               }
             }
@@ -362,7 +458,10 @@ interface LightboxImage {
     .content-section__prose > .section-intro,
     .content-section__prose > blockquote,
     .content-section__prose > .content-callout,
-    .content-section__prose > .content-list {
+    .content-section__prose > .content-list,
+    .content-section__prose > .content-table,
+    .content-section__prose > .content-card-grid,
+    .content-section__prose > .content-code-block {
       max-width: none;
     }
 
@@ -383,6 +482,96 @@ interface LightboxImage {
       padding-left: 1.15rem;
       display: grid;
       gap: 8px;
+    }
+
+    .content-table__scroll {
+      overflow-x: auto;
+    }
+
+    .content-table {
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .content-table h3,
+    .content-code-block h3 {
+      padding: 20px 22px 0;
+    }
+
+    .content-material-table {
+      width: 100%;
+      min-width: 640px;
+      background: transparent;
+    }
+
+    .content-material-table .mat-mdc-header-cell,
+    .content-material-table .mat-mdc-cell {
+      padding: 12px 14px;
+      vertical-align: top;
+      color: var(--cw-muted);
+      line-height: 1.6;
+      border-bottom-color: var(--cw-line);
+    }
+
+    .content-material-table .mat-mdc-header-cell {
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--cw-ink);
+    }
+
+    .content-card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      width: min(100%, 1120px);
+    }
+
+    .content-card {
+      display: grid;
+      gap: 8px;
+      padding: 18px 20px;
+      border: 1px solid var(--cw-line);
+      border-radius: 16px;
+      background: var(--cw-panel);
+    }
+
+    .content-code-block {
+      position: relative;
+      width: min(100%, 1120px);
+      padding: 0 0 20px;
+      background: linear-gradient(180deg, #13263a 0%, #0d1d2e 100%);
+      border-color: color-mix(in srgb, var(--cw-line) 40%, #18324a);
+    }
+
+    .content-code-block h3 {
+      color: rgba(248, 250, 252, 0.96);
+    }
+
+    .content-code-block mat-chip-set {
+      padding: 0 22px;
+    }
+
+    .content-code-block mat-chip {
+      background: rgba(255, 255, 255, 0.14);
+      color: rgba(241, 245, 249, 0.92);
+    }
+
+    .content-code-block pre {
+      margin: 0 22px;
+      padding: 18px;
+      border-radius: 14px;
+      background: rgba(8, 17, 29, 0.72);
+      color: rgba(241, 245, 249, 0.96);
+      overflow-x: auto;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .content-code-block code {
+      font-family: 'SFMono-Regular', 'SF Mono', Consolas, monospace;
+      font-size: 0.9rem;
+      color: rgba(241, 245, 249, 0.96);
+      white-space: pre;
     }
 
     blockquote {
@@ -485,6 +674,10 @@ interface LightboxImage {
         grid-template-columns: 1fr;
       }
 
+      .content-card-grid {
+        grid-template-columns: 1fr;
+      }
+
       .content-section--split-left .content-section__prose,
       .content-section--split-left .content-image--split {
         order: initial;
@@ -535,9 +728,27 @@ export class ContentRendererComponent {
         return `callout-${index}-${block.title ?? block.text}`;
       case 'list':
         return `list-${index}-${block.title ?? 'items'}`;
+      case 'table':
+        return `table-${index}-${block.title ?? block.columns.join('-')}`;
+      case 'cards':
+        return `cards-${index}-${block.items.map((item) => item.title).join('-')}`;
+      case 'code':
+        return `code-${index}-${block.title ?? block.language ?? 'block'}`;
       case 'component':
         return `component-${index}-${block.component}`;
     }
+  }
+
+  tableColumnIds(block: ContentTableBlock): string[] {
+    return block.columns.map((_, index) => this.tableColumnId(index));
+  }
+
+  tableColumnId(index: number): string {
+    return `column-${index}`;
+  }
+
+  tableCellAt(row: string[], index: number): string {
+    return row[index] ?? '';
   }
 
   sectionId(section: ContentSection): string {

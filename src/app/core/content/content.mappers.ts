@@ -136,6 +136,57 @@ function normalizeSectionBlocks(value: any): ContentSectionBlock[] {
         }
         break;
       }
+      case 'table': {
+        const columns = asStringArray(block?.columns);
+        const rows = Array.isArray(block?.rows)
+          ? block.rows
+              .map((row: unknown) => (Array.isArray(row) ? asStringArray(row) : []))
+              .filter((row: string[]) => row.length > 0)
+          : [];
+
+        if (columns.length && rows.length) {
+          blocks.push({
+            type: 'table',
+            title: asString(block?.title) || undefined,
+            columns,
+            rows
+          });
+        }
+        break;
+      }
+      case 'cards': {
+        const items = Array.isArray(block?.items)
+          ? block.items
+              .map((item: unknown) => ({
+                title: asString((item as any)?.title),
+                description: asString((item as any)?.description)
+              }))
+              .filter(
+                (item: { title: string; description: string }): item is { title: string; description: string } =>
+                  !!item.title && !!item.description
+              )
+          : [];
+
+        if (items.length) {
+          blocks.push({
+            type: 'cards',
+            items
+          });
+        }
+        break;
+      }
+      case 'code': {
+        const code = asString(block?.code);
+        if (code) {
+          blocks.push({
+            type: 'code',
+            title: asString(block?.title) || undefined,
+            language: asString(block?.language) || undefined,
+            code
+          });
+        }
+        break;
+      }
       case 'component': {
         const component = asString(block?.component);
         if (component) {
@@ -144,7 +195,11 @@ function normalizeSectionBlocks(value: any): ContentSectionBlock[] {
             component,
             fallback: asString(block?.fallback) || undefined,
             title: asString(block?.title) || undefined,
-            description: asString(block?.description) || undefined
+            description: asString(block?.description) || undefined,
+            config:
+              block?.config && typeof block.config === 'object' && !Array.isArray(block.config)
+                ? (block.config as Record<string, unknown>)
+                : undefined
           });
         }
         break;
@@ -169,6 +224,7 @@ function normalizeSections(value: any): ContentSection[] {
     const paragraphs = asStringArray(section?.paragraphs);
     const intro = asString(section?.intro) || undefined;
     const eyebrow = asString(section?.eyebrow) || undefined;
+    const layout = asString(section?.layout);
     const blocks = normalizeSectionBlocks(section?.blocks);
     const image = normalizeContentImage(section?.image);
     const component = asString(section?.component) || undefined;
@@ -183,12 +239,20 @@ function normalizeSections(value: any): ContentSection[] {
       heading: heading || 'Section',
       eyebrow,
       intro,
+      layout:
+        layout === 'split-image-left' || layout === 'split-image-right' || layout === 'default'
+          ? layout
+          : undefined,
       blocks,
       paragraphs,
       image,
       component,
       componentTitle: asString(section?.componentTitle) || undefined,
       componentDescription: asString(section?.componentDescription) || undefined,
+      componentConfig:
+        section?.componentConfig && typeof section.componentConfig === 'object' && !Array.isArray(section.componentConfig)
+          ? (section.componentConfig as Record<string, unknown>)
+          : undefined,
       fallback,
       callout
     });
@@ -244,13 +308,16 @@ function normalizeCompanionAssets(value: any): CompanionAsset[] {
         label,
         href,
         description: asString(item?.description) || undefined,
+        number: asString(item?.number) || undefined,
         type:
           type === 'image' ||
           type === 'pdf' ||
           type === 'data' ||
           type === 'schema' ||
           type === 'checklist' ||
-          type === 'link'
+          type === 'link' ||
+          type === 'component' ||
+          type === 'template'
             ? type
             : undefined
       };
@@ -290,8 +357,18 @@ function normalizeCompanionCallsToAction(value: any): CompanionCallToAction[] {
       const href = asString(item?.href) || undefined;
       const anchor = asString(item?.anchor) || undefined;
       const buttonLabel = asString(item?.buttonLabel) || undefined;
+      const action = asString(item?.action);
 
-      return title && description ? { title, description, href, anchor, buttonLabel } : null;
+      return title && description
+        ? {
+            title,
+            description,
+            href,
+            anchor,
+            buttonLabel,
+            action: action === 'open-templates' ? 'open-templates' : undefined
+          }
+        : null;
     })
     .filter((item): item is CompanionCallToAction => item !== null);
 }

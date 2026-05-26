@@ -1,0 +1,62 @@
+@if (data.mode === 'asset-preview' && data.asset; as asset) {
+  <h2 mat-dialog-title>{{ asset.label }}</h2>
+  <mat-dialog-content class="resource-dialog-content resource-dialog-content--asset">
+    <div class="resource-dialog-meta">
+      @if (asset.number) {
+        <mat-chip>Asset {{ asset.number }}</mat-chip>
+      }
+      <mat-chip>{{ fileTypeLabel(asset) }}</mat-chip>
+    </div>
+
+    @if (isImageAsset(asset)) {
+      <div class="asset-preview-shell">
+        <img [src]="asset.href" [alt]="asset.label" />
+      </div>
+    }
+
+    @if (asset.description) {
+      <p class="resource-dialog-description">{{ asset.description }}</p>
+    }
+
+    <p class="resource-dialog-file">{{ fileName(asset.href) }}</p>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Close</button>
+    <button mat-flat-button color="primary" (click)="downloadAsset(asset)">
+      <mat-icon>download</mat-icon>
+      Download
+    </button>
+  </mat-dialog-actions>
+} @else {
+  <h2 mat-dialog-title>{{ data.title }}</h2>
+  <mat-dialog-content class="resource-dialog-content">
+    @if (data.description) {
+      <p class="resource-dialog-description">{{ data.description }}</p>
+    }
+
+    <div class="template-list">
+      @for (asset of data.assets ?? []; track asset.href) {
+        <section class="template-card">
+          <div class="template-card__header">
+            <div>
+              <h3>{{ asset.label }}</h3>
+              <p>{{ asset.description }}</p>
+            </div>
+            <mat-chip>{{ fileTypeLabel(asset) }}</mat-chip>
+          </div>
+
+          <div class="template-card__footer">
+            <span class="template-card__file">{{ fileName(asset.href) }}</span>
+            <button mat-stroked-button (click)="downloadAsset(asset)">
+              <mat-icon>download</mat-icon>
+              Download
+            </button>
+          </div>
+        </section>
+      }
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Close</button>
+  </mat-dialog-actions>
+}

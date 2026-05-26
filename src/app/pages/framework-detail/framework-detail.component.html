@@ -78,7 +78,11 @@
               <div class="resource-stack">
                 <h2>{{ item.title }}</h2>
                 <p>{{ item.description }}</p>
-                @if (item.href || item.anchor) {
+                @if (item.action === 'open-templates') {
+                  <button mat-stroked-button type="button" (click)="openTemplateLibrary()">
+                    {{ item.buttonLabel || 'Open' }}
+                  </button>
+                } @else if (item.href || item.anchor) {
                   @if (item.anchor && !item.href) {
                     <a mat-stroked-button [routerLink]="[]" [fragment]="item.anchor">
                       {{ item.buttonLabel || 'Open' }}
@@ -94,26 +98,35 @@
           </section>
         }
 
-        @if (assetItems().length) {
+        @if (frameworkAssetItems().length) {
           <section class="framework-resource-card">
             <p class="resource-eyebrow">Framework assets</p>
-            <div class="resource-link-list">
-              @for (item of assetItems(); track item.label) {
-                @if (isLocalAnchor(item.href)) {
-                  <a class="resource-link" [routerLink]="[]" [fragment]="anchorFromHref(item.href)">
-                    <span class="resource-link__label">{{ item.label }}</span>
+            <div class="resource-asset-list">
+              @for (item of frameworkAssetItems(); track item.href) {
+                <article class="resource-asset">
+                  <button class="resource-link resource-link--asset" type="button" (click)="openAsset(item)">
+                    <span class="resource-link__meta">
+                      @if (item.number) {
+                        <span class="resource-link__number">{{ item.number }}</span>
+                      }
+                      <span class="resource-link__label">{{ item.label }}</span>
+                    </span>
                     @if (item.description) {
                       <span class="resource-link__description">{{ item.description }}</span>
                     }
-                  </a>
-                } @else {
-                  <a class="resource-link" [href]="item.href">
-                    <span class="resource-link__label">{{ item.label }}</span>
-                    @if (item.description) {
-                      <span class="resource-link__description">{{ item.description }}</span>
-                    }
-                  </a>
-                }
+                  </button>
+                  <div class="resource-asset__actions">
+                    <button mat-button type="button" (click)="openAsset(item)">Inspect</button>
+                    <button
+                      mat-icon-button
+                      type="button"
+                      aria-label="Download {{ item.label }}"
+                      (click)="downloadAsset(item, $event)"
+                    >
+                      <mat-icon>download</mat-icon>
+                    </button>
+                  </div>
+                </article>
               }
             </div>
           </section>

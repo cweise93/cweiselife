@@ -35,7 +35,31 @@ export interface ContentListBlock {
   items: string[];
 }
 
-export type InteractiveComponentKey = 'relationship-value-explorer';
+export interface ContentTableBlock {
+  type: 'table';
+  title?: string;
+  columns: string[];
+  rows: string[][];
+}
+
+export interface ContentCardItem {
+  title: string;
+  description: string;
+}
+
+export interface ContentCardsBlock {
+  type: 'cards';
+  items: ContentCardItem[];
+}
+
+export interface ContentCodeBlock {
+  type: 'code';
+  title?: string;
+  language?: string;
+  code: string;
+}
+
+export type InteractiveComponentKey = 'relationship-value-explorer' | 'agent-grading-calculator';
 
 export interface ContentComponentBlock {
   type: 'component';
@@ -43,6 +67,7 @@ export interface ContentComponentBlock {
   fallback?: string;
   title?: string;
   description?: string;
+  config?: Record<string, unknown>;
 }
 
 export type ContentSectionBlock =
@@ -50,6 +75,9 @@ export type ContentSectionBlock =
   | ContentImageBlock
   | ContentCalloutBlock
   | ContentListBlock
+  | ContentTableBlock
+  | ContentCardsBlock
+  | ContentCodeBlock
   | ContentComponentBlock;
 
 export interface ContentImage {
@@ -69,6 +97,7 @@ export interface ContentSection {
   component?: InteractiveComponentKey | string;
   componentTitle?: string;
   componentDescription?: string;
+  componentConfig?: Record<string, unknown>;
   fallback?: string;
   callout?: string;
 }
@@ -87,7 +116,8 @@ export interface CompanionAsset {
   label: string;
   href: string;
   description?: string;
-  type?: 'image' | 'pdf' | 'data' | 'schema' | 'checklist' | 'link';
+  type?: 'image' | 'pdf' | 'data' | 'schema' | 'checklist' | 'link' | 'component' | 'template';
+  number?: string;
 }
 
 export interface CompanionRelatedItem {
@@ -102,6 +132,7 @@ export interface CompanionCallToAction {
   href?: string;
   anchor?: string;
   buttonLabel?: string;
+  action?: 'open-templates';
 }
 
 export interface ContentCompanion {

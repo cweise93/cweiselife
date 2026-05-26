@@ -1,0 +1,150 @@
+<section class="agent-calculator">
+  <header class="agent-calculator__header">
+    <div class="agent-calculator__copy">
+      <p class="agent-calculator__eyebrow">Interactive artifact</p>
+      <h3>{{ title() }}</h3>
+      <p>{{ description() }}</p>
+    </div>
+
+    <div class="agent-calculator__exports">
+      <button mat-stroked-button type="button" (click)="exportJson()">
+        <mat-icon>download</mat-icon>
+        Export JSON
+      </button>
+      <button mat-stroked-button type="button" (click)="exportCsv()">
+        <mat-icon>table_view</mat-icon>
+        Export CSV
+      </button>
+    </div>
+  </header>
+
+  <mat-card appearance="outlined" class="agent-calculator__live-score" aria-live="polite">
+    <div class="live-score__main">
+      <div class="live-score__copy">
+        <p class="summary-card__eyebrow">Live score</p>
+        <div class="live-score__headline">
+          <span class="live-score__value">{{ totalScore() }}</span>
+          <span class="live-score__max">/ {{ maxScore() }}</span>
+        </div>
+        <p class="live-score__grade">{{ scoreBand()?.grade || 'Not classified yet' }}</p>
+        <p class="live-score__status">{{ liveStatusText() }}</p>
+      </div>
+
+      <div class="live-score__signals">
+        <mat-chip-set>
+          <mat-chip>{{ scoreBand()?.posture || 'Choose scores to classify the agent' }}</mat-chip>
+          @if (overridesPresent()) {
+            <mat-chip>Overrides: {{ activeOverrideLabels().length }}</mat-chip>
+          }
+          @if (blockersPresent()) {
+            <mat-chip>Blockers: {{ activeBlockerLabels().length }}</mat-chip>
+          }
+        </mat-chip-set>
+      </div>
+    </div>
+
+    <mat-progress-bar mode="determinate" [value]="scorePercent()"></mat-progress-bar>
+  </mat-card>
+
+  <div class="agent-calculator__body">
+    <section class="agent-calculator__dimensions">
+      @for (dimension of dimensions(); track dimension.key) {
+        <mat-card appearance="outlined" class="dimension-card">
+          <div class="dimension-card__head">
+            <div>
+              <p class="dimension-card__label">{{ dimension.label }}</p>
+              <h4>{{ dimension.question }}</h4>
+            </div>
+            <span class="dimension-card__score">{{ scoreFor(dimension.key) }}/4</span>
+          </div>
+
+          <mat-button-toggle-group
+            class="dimension-card__scale"
+            [value]="scoreFor(dimension.key)"
+            (change)="setScore(dimension.key, $event.value)"
+            [hideSingleSelectionIndicator]="true"
+            aria-label="{{ dimension.label }}"
+          >
+            @for (option of dimension.scale; track option; let index = $index) {
+              <mat-button-toggle [value]="index">{{ index }}</mat-button-toggle>
+            }
+          </mat-button-toggle-group>
+
+          <div class="dimension-card__legend">
+            @for (option of dimension.scale; track option; let index = $index) {
+              <div class="dimension-card__legend-item" [class.dimension-card__legend-item--active]="scoreFor(dimension.key) === index">
+                <span class="dimension-card__legend-index">{{ index }}</span>
+                <span>{{ option }}</span>
+              </div>
+            }
+          </div>
+        </mat-card>
+      }
+    </section>
+
+    <aside class="agent-calculator__summary">
+      <mat-card appearance="outlined" class="summary-card">
+        <p class="summary-card__eyebrow">Recommended classification</p>
+        <div class="summary-card__score-row">
+          <span class="summary-card__score">{{ totalScore() }} / {{ maxScore() }}</span>
+          <div>
+            <h4>{{ scoreBand()?.grade || 'Not classified' }}</h4>
+            <p>{{ scoreBand()?.posture || 'Select dimension scores to classify the agent.' }}</p>
+          </div>
+        </div>
+      </mat-card>
+
+      <mat-card appearance="outlined" class="summary-card">
+        <p class="summary-card__eyebrow">Hard override flags</p>
+        <div class="summary-checklist">
+          @for (item of hardOverrides(); track item) {
+            <mat-checkbox
+              [checked]="selectedOverrides()[item]"
+              (change)="toggleOverride(item, $event.checked)"
+            >
+              {{ item }}
+            </mat-checkbox>
+          }
+        </div>
+      </mat-card>
+
+      <mat-card appearance="outlined" class="summary-card">
+        <p class="summary-card__eyebrow">Classification blockers</p>
+        <div class="summary-checklist">
+          @for (item of classificationBlockers(); track item) {
+            <mat-checkbox
+              [checked]="selectedBlockers()[item]"
+              (change)="toggleBlocker(item, $event.checked)"
+            >
+              {{ item }}
+            </mat-checkbox>
+          }
+        </div>
+      </mat-card>
+
+      @if (blockersPresent()) {
+        <mat-card appearance="outlined" class="summary-card summary-card--warning">
+          <p>Asset-level classification blocked until evidence gaps are resolved.</p>
+        </mat-card>
+      }
+
+      @if (overridesPresent()) {
+        <mat-card appearance="outlined" class="summary-card summary-card--alert">
+          <p>Escalate for finance, audit, security, or board-level review.</p>
+        </mat-card>
+      }
+
+      <mat-card appearance="outlined" class="summary-card">
+        <p class="summary-card__eyebrow">Required evidence focus</p>
+        <ul class="summary-list">
+          @for (item of requiredEvidence(); track item) {
+            <li>{{ item }}</li>
+          }
+          @if (!requiredEvidence().length) {
+            <li>All dimensions are scoring at a governance-ready level.</li>
+          }
+        </ul>
+      </mat-card>
+    </aside>
+  </div>
+</section>

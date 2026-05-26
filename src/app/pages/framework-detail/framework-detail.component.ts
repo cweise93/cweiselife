@@ -3,15 +3,18 @@ import { ChangeDetectionStrategy, Component, DestroyRef, computed, effect, injec
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
 import { map, switchMap } from 'rxjs';
 import { ContentService } from '../../core/content/content.service';
 import { CompanionAsset, CompanionCallToAction, CompanionRelatedItem, CompanionSnapshotItem, CompanionTocItem, FrameworkItem } from '../../core/content/content.models';
 import { ContentRendererComponent } from '../../shared/content/content-renderer.component';
 import { FrameworkStickyContextBarComponent } from '../../features/frameworks/components/framework-sticky-context-bar/framework-sticky-context-bar.component';
+import { FrameworkResourceDialogComponent } from './framework-resource-dialog.component';
 
 @Component({
   selector: 'cw-framework-detail',
-  imports: [RouterLink, DatePipe, MatButtonModule, ContentRendererComponent, FrameworkStickyContextBarComponent],
+  imports: [RouterLink, DatePipe, MatButtonModule, MatDialogModule, MatIconModule, ContentRendererComponent, FrameworkStickyContextBarComponent],
   templateUrl: './framework-detail.component.html',
   styleUrl: './framework-detail.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -21,6 +24,7 @@ export class FrameworkDetailComponent {
   private readonly contentService = inject(ContentService);
   private readonly document = inject(DOCUMENT);
   private readonly destroyRef = inject(DestroyRef);
+  private readonly dialog = inject(MatDialog);
   private observedSections: Array<{ anchor: string; element: HTMLElement }> = [];
   private readonly viewportListener = () => this.updateActiveSectionFromScroll();
 
@@ -36,6 +40,8 @@ export class FrameworkDetailComponent {
   readonly tocItems = computed<CompanionTocItem[]>(() => this.item()?.companion?.toc ?? []);
   readonly snapshotItems = computed<CompanionSnapshotItem[]>(() => this.item()?.companion?.snapshot ?? []);
   readonly assetItems = computed<CompanionAsset[]>(() => this.item()?.companion?.assets ?? []);
+  readonly frameworkAssetItems = computed<CompanionAsset[]>(() => this.assetItems().filter((item) => item.type === 'image'));
+  readonly templateItems = computed<CompanionAsset[]>(() => this.assetItems().filter((item) => item.type === 'template'));
   readonly relatedItems = computed<CompanionRelatedItem[]>(() => this.item()?.companion?.related ?? []);
   readonly callToActionItems = computed<CompanionCallToAction[]>(() => this.item()?.companion?.callsToAction ?? []);
   readonly coreQuestion = computed(() => this.snapshotValue('Core question'));
@@ -102,14 +108,6 @@ export class FrameworkDetailComponent {
     return ['/', ...slug.split('/').filter(Boolean)];
   }
 
-  isLocalAnchor(href: string): boolean {
-    return href.startsWith('#');
-  }
-
-  anchorFromHref(href: string): string {
-    return href.replace(/^#/, '');
-  }
-
   scrollToSection(item: CompanionTocItem): void {
     const target = this.document.getElementById(item.anchor);
     if (!target) {
@@ -122,6 +120,50 @@ export class FrameworkDetailComponent {
     });
 
     this.activeSectionAnchor.set(item.anchor);
+  }
+
+  openTemplateLibrary(): void {
+    if (!this.templateItems().length) {
+      return;
+    }
+
+    this.dialog.open(FrameworkResourceDialogComponent, {
+      data: {
+        mode: 'template-library',
+        title: 'Download templates',
+        description: 'Choose the implementation artifact you want to take with you. Downloads stay direct and the framework stays in view.',
+        assets: this.templateItems()
+      },
+      autoFocus: false,
+      maxWidth: '96vw',
+      panelClass: 'cw-framework-dialog'
+    });
+  }
+
+  openAsset(item: CompanionAsset): void {
+    this.dialog.open(FrameworkResourceDialogComponent, {
+      data: {
+        mode: 'asset-preview',
+        title: item.label,
+        asset: item
+      },
+      autoFocus: false,
+      maxWidth: '96vw',
+      panelClass: 'cw-framework-dialog'
+    });
+  }
+
+  downloadAsset(item: CompanionAsset, event?: Event): void {
+    event?.preventDefault();
+    event?.stopPropagation();
+
+    const link = this.document.createElement('a');
+    link.href = item.href;
+    link.download = item.href.split('/').pop() ?? item.label;
+    link.rel = 'noopener';
+    this.document.body.appendChild(link);
+    link.click();
+    this.document.body.removeChild(link);
   }
 
   private setupObservedSections(tocItems: CompanionTocItem[]): void {

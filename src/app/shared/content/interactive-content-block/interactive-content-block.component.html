@@ -5,6 +5,13 @@
       [description]="description() || 'Explore how client relationships, delivered services, employee expertise, and white-space opportunities connect into an actionable revenue intelligence graph.'"
     />
   }
+  @case ('agent-grading-calculator') {
+    <app-agent-grading-calculator
+      [title]="title() || 'Agent Grading Calculator'"
+      [description]="description() || 'Score an enterprise AI agent across seven dimensions and review the resulting governance posture.'"
+      [config]="config()"
+    />
+  }
   @default {
     <aside class="interactive-fallback">
       <h3>{{ fallbackTitle() }}</h3>
