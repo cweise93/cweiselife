@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": 1,
-    "updatedOn": "2026-05-24",
+    "updatedOn": "2026-05-26",
     "siteName": "cweise.com",
     "siteUrl": "https://cweise.com",
     "title": "Operational Intelligence for Complex Organizations",
@@ -20,6 +20,7 @@
     ],
     "heroImage": "assets/images/hero-architecture.png",
     "featuredWritingSlugs": [
+      "writing/2026/05/25/ai-agents-are-becoming-operational-capital",
       "writing/2026/05/24/what-kind-of-leader-does-the-moment-require",
       "writing/2026/05/12/organizations-rarely-fail-from-a-lack-of-intelligence",
       "writing/2026/04/28/why-operational-friction-hides-in-translation-layers"
