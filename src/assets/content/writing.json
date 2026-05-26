@@ -1,12 +1,279 @@
 {
   "meta": {
     "version": 1,
-    "updatedOn": "2026-05-24",
+    "updatedOn": "2026-05-26",
     "eyebrow": "Writing",
     "headline": "Essays on Operational Intelligence",
     "intro": "Thought-leadership essays for engineering and infrastructure organizations trying to reduce rework, improve workflow design, and translate strategy into operational follow-through."
   },
   "items": [
+    {
+      "id": "writing-007",
+      "slug": "writing/2026/05/25/ai-agents-are-becoming-operational-capital",
+      "title": "AI Agents Are Becoming Operational Capital",
+      "summary": "A board-level essay arguing that AI agents which encode judgment, process logic, institutional knowledge, and repeatable execution should not be treated merely as tools. Some agents will need to be governed as operational assets, graded by maturity, reliability, risk, value, useful life, and cost displacement.",
+      "status": "published",
+      "publishedOn": "2026-05-25",
+      "readTimeMinutes": 9,
+      "featured": true,
+      "tags": [
+        "AI governance",
+        "operational intelligence",
+        "enterprise assets",
+        "agent governance",
+        "board strategy"
+      ],
+      "heroImage": "assets/images/writing/articles/2026-05-25_ai_agents_operational_capital/01_agent_operational_capital_hero.png",
+      "seo": {
+        "title": "AI Agents Are Becoming Operational Capital",
+        "description": "Why boards should stop treating every AI agent like a tool and begin governing mature agents as operational assets that encode institutional expertise, process logic, and repeatable execution."
+      },
+      "body": {
+        "intro": "Most firms are still asking whether they should deploy AI agents. That is quickly becoming the less interesting question. The more important question is what kind of enterprise object an agent becomes once it starts encoding judgment, process logic, institutional knowledge, and repeatable execution. At that point, the agent is no longer merely a tool someone uses. It is beginning to behave like operational capital.",
+        "sections": [
+          {
+            "heading": "The language is behind the reality",
+            "layout": "split-image-right",
+            "paragraphs": [
+              "Enterprise language has not caught up with what AI agents are becoming. Many firms still describe agents as tools, copilots, assistants, automations, bots, or productivity features. That language may be accurate for lightweight use cases, but it becomes too small once agents begin to influence how work actually moves through the business.",
+              "A simple writing assistant is a tool. A workflow agent that routes work, applies policy, generates recommendations, preserves institutional reasoning, checks exceptions, and produces evidence for review is something more serious.",
+              "The distinction matters because governance follows language. If leaders describe every agent as a tool, they will govern agents like software features. If leaders understand that some agents encode repeatable execution capacity, they will start asking a different class of question.",
+              "The board-level issue is not whether the enterprise has AI. The issue is whether the enterprise can tell which agents are operationally material and how those agents are governed."
+            ],
+            "image": {
+              "src": "assets/images/writing/articles/2026-05-25_ai_agents_operational_capital/02_tool_to_asset_boundary.png",
+              "alt": "A diagram showing the boundary between a simple AI tool and a governed operational asset.",
+              "caption": "The governance question changes when an agent moves from assisting a task to encoding repeatable operational execution."
+            },
+            "callout": "The next question is not whether the agent exists. The next question is what grade of asset it is."
+          },
+          {
+            "heading": "Not every agent deserves asset-level treatment",
+            "paragraphs": [
+              "The argument is not that every chatbot, prompt, workflow, or automation should be treated as an enterprise asset. That would create noise instead of discipline.",
+              "Some agents will remain disposable. Some will be experimental. Some will be personal productivity aids. Some will be narrow automations with limited risk and limited useful life. Those agents may need controls, but they do not necessarily require board-level attention.",
+              "But other agents will cross a threshold. They will become embedded in recurring workflows. They will preserve expert judgment. They will affect cost, quality, compliance, client experience, margin, staffing, or revenue. They will reduce dependence on scarce human memory. They will become part of how the organization performs.",
+              "That is the boundary worth naming. Once an agent becomes operationally material, the enterprise needs more than access control and acceptable-use language. It needs classification, ownership, evidence, telemetry, review, and useful-life assumptions."
+            ],
+            "callout": "The mistake is not treating agents differently. The mistake is failing to know which agents have become material enough to deserve different treatment."
+          },
+          {
+            "heading": "Operational capital is not the same as accounting capitalization",
+            "layout": "split-image-left",
+            "paragraphs": [
+              "This argument needs precision. Saying that AI agents are becoming operational capital is not the same as saying every agent belongs on a formal balance sheet today.",
+              "Accounting treatment has rules. Boards, CFOs, auditors, and controllers will rightly care about whether a cost is expensed, capitalized, amortized, impaired, or disclosed. That is a separate discipline and should not be handled casually.",
+              "The strategic point is different: some AI agents will become durable enterprise capabilities. They may encode institutional expertise, reduce future production cost, increase execution consistency, preserve organizational memory, and create reusable operating leverage.",
+              "Even before formal accounting treatment changes, boards should begin governing mature agents with the seriousness applied to enterprise assets. The firm may not book the agent as an asset in the accounting system, but operationally, the agent may behave like one."
+            ],
+            "image": {
+              "src": "assets/images/writing/articles/2026-05-25_ai_agents_operational_capital/03_agent_grading_seed.png",
+              "alt": "A visual showing early agent grading dimensions including maturity, reliability, governance, risk, value, useful life, and cost displacement.",
+              "caption": "Future AI governance will require grading. Not every agent deserves asset-level treatment, but material agents need a way to be classified."
+            },
+            "callout": "This is not a claim that current accounting standards automatically recognize agents as assets. It is a governance claim: boards should understand which agents are becoming durable operational capabilities."
+          },
+          {
+            "heading": "The real asset may be the process the agent preserves",
+            "paragraphs": [
+              "The agent itself may not be the most valuable object. The more important asset may be the institutional process it captures.",
+              "In many firms, the highest-value work does not live cleanly in systems. It lives in the judgment of experienced people. A project manager knows when a scope assumption is dangerous. A seller-doer knows when a client is giving polite but weak buying signals. A technical lead knows which exception matters and which one is noise. A finance operator knows which stage gate looks approved but feels economically wrong.",
+              "That judgment is valuable, but it is often fragile. It lives in people, meetings, inboxes, side conversations, and memory. The enterprise benefits from it, but rarely owns it in a durable form.",
+              "A mature AI agent can begin to change that equation. Not because the model is magical, and not because the human expert disappears, but because the firm can start converting repeated judgment into governed execution logic.",
+              "That is where the strategic value lives: not in replacing expertise, but in preserving and scaling the parts of expertise that can be made explicit, governed, measured, and improved."
+            ],
+            "callout": "The firms that win will not merely deploy AI. They will convert institutional expertise into governed operational assets."
+          },
+          {
+            "heading": "Why this matters to boards",
+            "layout": "split-image-right",
+            "paragraphs": [
+              "Boards already understand that unmanaged assets create risk. They understand useful life, impairment, control environments, stewardship, ownership, investment discipline, and return expectations.",
+              "AI agents are beginning to touch those same questions. What did the firm spend to create the agent? What work does it perform? What cost does it displace? What risk does it introduce? What human expertise does it encode? Who owns it? How is it tested? How is it retired? What evidence proves that it performs within acceptable boundaries?",
+              "Those are not novelty questions. They are governance questions.",
+              "If an agent influences project economics, proposal strategy, staffing recommendations, financial workflow, client communication, pricing support, risk review, procurement, or operational routing, then the board has a legitimate interest in how that agent is classified and controlled.",
+              "The agent may sit inside IT, but its consequences will not stay there."
+            ],
+            "image": {
+              "src": "assets/images/writing/articles/2026-05-25_ai_agents_operational_capital/04_board_disciplines.png",
+              "alt": "A board-level operating model showing cost, security, governance, execution, training model, useful life, and risk as disciplines around AI agents.",
+              "caption": "If agents become operationally material, cost, security, governance, execution, training, useful life, and risk all become board-level disciplines."
+            },
+            "callout": "The board does not need to manage every agent. But it does need assurance that the enterprise knows which agents are material."
+          },
+          {
+            "heading": "The cost question is bigger than licensing",
+            "paragraphs": [
+              "Many AI cost conversations begin with subscriptions, tokens, usage tiers, and cloud consumption. Those costs matter, but they are not the full economic picture.",
+              "The more important cost question is displacement. What expensive production pattern does the agent reduce, replace, compress, or standardize? Does it reduce rework? Does it shorten review cycles? Does it preserve expertise that would otherwise require senior labor every time? Does it lower the cost of producing a recurring deliverable? Does it help route work to the right person earlier?",
+              "If the answer is no, the agent may still be useful, but it is probably not yet operational capital. It may be a productivity tool, an experiment, or a convenience layer.",
+              "If the answer is yes, the enterprise needs to understand the value of what has been created. The agent is not just consuming cost. It may be changing the cost structure of the work.",
+              "That is where grading becomes necessary. An agent that occasionally helps an employee write faster should not be evaluated the same way as an agent that reliably preserves a review process, prevents margin leakage, routes exceptions, and produces auditable evidence."
+            ],
+            "callout": "The serious economic question is not only what the agent costs. It is what cost of production the agent structurally changes."
+          },
+          {
+            "heading": "Future AI governance will require agent grading",
+            "paragraphs": [
+              "The next stage of AI governance will not be satisfied by a list of approved tools. Approved-tool lists are necessary, but they do not answer whether an agent has become operationally material.",
+              "Enterprises will need a way to grade agents by maturity, reliability, governance, value, risk, useful life, and cost displacement.",
+              "A low-grade agent may assist a person but produce no durable enterprise capability. A higher-grade agent may support a bounded workflow with clear human review. A more mature agent may encode reusable process logic, produce evidence, and operate within defined policy limits. The highest-grade agents may become part of the operating model itself.",
+              "That grading discipline matters because it prevents two opposite errors. It keeps leaders from over-governing trivial tools. It also keeps them from under-governing agents that quietly become critical infrastructure.",
+              "This is where boards should press management for a better answer. Not how many agents exist. Not how many employees have access. Not how many pilots are active. The better question is: what grades of agents are emerging, and what governance corresponds to each grade?"
+            ],
+            "callout": "Future AI governance will not be only tool approval. It will be agent classification."
+          },
+          {
+            "heading": "The firms that learn to classify agents will move faster safely",
+            "paragraphs": [
+              "There is a practical reason to get this right. Classification is not bureaucracy when it is designed well. It is what allows speed without pretending every use case carries the same risk.",
+              "If every agent is treated as dangerous, innovation slows and employees route around governance. If every agent is treated as harmless, operational risk compounds quietly until something breaks. Neither posture is serious.",
+              "A grading model creates a middle path. It lets the enterprise distinguish disposable experiments from material operating assets. It lets leaders match controls to consequence. It gives finance, IT, legal, security, operations, and business leadership a shared language for deciding what deserves investment, monitoring, evidence, or retirement.",
+              "That shared language may become one of the most important AI capabilities a firm develops.",
+              "The firms that win will not be the firms with the most agents. They will be the firms that know which agents matter, why they matter, how they are governed, and what enterprise capability they preserve."
+            ],
+            "callout": "The advantage will not come from agent count. It will come from agent discipline."
+          },
+          {
+            "heading": "The board question",
+            "paragraphs": [
+              "The board does not need to approve every workflow or inspect every prompt. That would miss the point.",
+              "But boards should expect management to explain how the firm distinguishes AI experimentation from AI operating capability.",
+              "They should expect clarity on which agents influence material workflows, which agents encode institutional expertise, which agents affect cost or risk, and which agents are becoming part of how the enterprise executes.",
+              "They should expect a path toward classification. They should expect ownership. They should expect evidence. They should expect useful-life thinking. They should expect a serious answer to what happens when an agent becomes too important to remain informal.",
+              "The first generation of AI adoption was about access. The next generation will be about disciplined conversion: turning expertise, judgment, and process logic into governed operational assets.",
+              "That is the shift boards should be watching."
+            ],
+            "callout": "The next question is not whether the agent exists. The next question is what grade of asset it is."
+          }
+        ]
+      },
+      "companion": {
+        "snapshot": [
+          {
+            "label": "Core argument",
+            "value": "AI agents that encode judgment, process logic, institutional knowledge, and repeatable execution should be managed as a new class of operational asset."
+          },
+          {
+            "label": "Board-level question",
+            "value": "Which agents are becoming operationally material, and how are they classified, governed, measured, and retired?"
+          },
+          {
+            "label": "Important distinction",
+            "value": "Operational capital is not the same as current formal accounting capitalization."
+          },
+          {
+            "label": "Seed planted",
+            "value": "Future AI governance will require agent grading by maturity, reliability, governance, value, risk, useful life, and cost displacement."
+          }
+        ],
+        "toc": [
+          {
+            "label": "The language is behind the reality",
+            "anchor": "the-language-is-behind-the-reality"
+          },
+          {
+            "label": "Not every agent deserves asset-level treatment",
+            "anchor": "not-every-agent-deserves-asset-level-treatment"
+          },
+          {
+            "label": "Operational capital is not the same as accounting capitalization",
+            "anchor": "operational-capital-is-not-the-same-as-accounting-capitalization"
+          },
+          {
+            "label": "The real asset may be the process the agent preserves",
+            "anchor": "the-real-asset-may-be-the-process-the-agent-preserves"
+          },
+          {
+            "label": "Why this matters to boards",
+            "anchor": "why-this-matters-to-boards"
+          },
+          {
+            "label": "The cost question is bigger than licensing",
+            "anchor": "the-cost-question-is-bigger-than-licensing"
+          },
+          {
+            "label": "Future AI governance will require agent grading",
+            "anchor": "future-ai-governance-will-require-agent-grading"
+          },
+          {
+            "label": "The firms that learn to classify agents will move faster safely",
+            "anchor": "the-firms-that-learn-to-classify-agents-will-move-faster-safely"
+          },
+          {
+            "label": "The board question",
+            "anchor": "the-board-question"
+          }
+        ],
+        "assets": [
+          {
+            "label": "Article hero image",
+            "href": "assets/images/writing/articles/2026-05-25_ai_agents_operational_capital/01_agent_operational_capital_hero.png",
+            "description": "Primary article visual introducing AI agents as operational capital.",
+            "type": "image"
+          },
+          {
+            "label": "Tool-to-asset boundary",
+            "href": "assets/images/writing/articles/2026-05-25_ai_agents_operational_capital/02_tool_to_asset_boundary.png",
+            "description": "Inline visual showing where an AI agent moves from task assistance to operationally material capability.",
+            "type": "image"
+          },
+          {
+            "label": "Agent grading seed",
+            "href": "assets/images/writing/articles/2026-05-25_ai_agents_operational_capital/03_agent_grading_seed.png",
+            "description": "Inline visual introducing the need to grade agents by maturity, reliability, governance, risk, value, useful life, and cost displacement.",
+            "type": "image"
+          },
+          {
+            "label": "Board disciplines",
+            "href": "assets/images/writing/articles/2026-05-25_ai_agents_operational_capital/04_board_disciplines.png",
+            "description": "Inline visual connecting agent governance to cost, security, execution, training, useful life, and risk disciplines.",
+            "type": "image"
+          }
+        ],
+        "related": [
+          {
+            "title": "What Kind of Leader Does the Moment Require?",
+            "slug": "writing/2026/05/24/what-kind-of-leader-does-the-moment-require",
+            "description": "A leadership essay on why different organizational moments require different instincts."
+          },
+          {
+            "title": "Organizations Rarely Fail From a Lack of Intelligence",
+            "slug": "writing/2026/05/12/organizations-rarely-fail-from-a-lack-of-intelligence",
+            "description": "A companion essay on why execution problems often come from missing operating paths rather than lack of intelligence."
+          }
+        ]
+      },
+      "productionAssets": {
+        "socialImage": {
+          "label": "Companion social image",
+          "href": "assets/images/writing/articles/2026-05-25_ai_agents_operational_capital/og_agent_operational_capital.png",
+          "description": "Open graph and social preview image for the article."
+        },
+        "articleImages": [
+          {
+            "label": "Hero",
+            "href": "assets/images/writing/articles/2026-05-25_ai_agents_operational_capital/01_agent_operational_capital_hero.png",
+            "description": "Primary visual for the article header."
+          },
+          {
+            "label": "Tool-to-asset boundary",
+            "href": "assets/images/writing/articles/2026-05-25_ai_agents_operational_capital/02_tool_to_asset_boundary.png",
+            "description": "Inline visual for the section on where agent governance changes."
+          },
+          {
+            "label": "Agent grading seed",
+            "href": "assets/images/writing/articles/2026-05-25_ai_agents_operational_capital/03_agent_grading_seed.png",
+            "description": "Inline visual planting the agent grading concept for later campaign development."
+          },
+          {
+            "label": "Board disciplines",
+            "href": "assets/images/writing/articles/2026-05-25_ai_agents_operational_capital/04_board_disciplines.png",
+            "description": "Inline visual tying agent governance to board-level disciplines."
+          }
+        ]
+      }
+    },
     {
       "id": "writing-006",
       "slug": "writing/2026/05/24/what-kind-of-leader-does-the-moment-require",
