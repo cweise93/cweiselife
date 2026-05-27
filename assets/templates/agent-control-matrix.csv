@@ -1,0 +1,5 @@
+Control ID,Risk,Control Objective,Control Activity,Owner,Frequency,Evidence,SOX Relevant?,COSO Mapping,NIST AI RMF Mapping
+AGC-001,Unauthorized or unmanaged agent use,Ensure every production agent has an owner and approved use case,Agent must be registered before production release,AI Governance Lead,Per release,Agent registry record,,Control Activities,Govern
+AGC-002,Unreviewed model output influencing material workflow,Ensure human review occurs where required,Human approval required for specified decision types,Business Process Owner,Per run,Approval record / evidence URI,,Control Activities,Manage
+AGC-003,Untraceable output or decision rationale,Ensure agent actions can be reviewed and reproduced,Log prompt/model/retrieval versions and output hash,AI Platform Lead,Per run,Event log,,Information and Communication,Measure
+AGC-004,Cost cannot be separated for accounting review,Ensure build/operate/maintain/enhance costs are traceable,Tag labor/vendor/cloud/model costs by cost category,Finance Tech Lead,Monthly,Cost ledger,,Monitoring Activities,Govern

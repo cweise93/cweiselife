@@ -1,0 +1,9 @@
+Date,Agent ID,Cost Category,Subcategory,Vendor/Internal,Amount,Capitalization Candidate?,Expense/Capital Recommendation,Evidence URI,Notes
+,,Research / experimentation,,,,No,,,
+,,Development / build,,,,Review,,,
+,,Integration / implementation,,,,Review,,,
+,,Testing / evaluation,,,,Review,,,
+,,Training / change management,,,,No,,,
+,,Maintenance,,,,No,,,
+,,Enhancement,,,,Review,,,
+,,Operations / run cost,,,,No,,,
