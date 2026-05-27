@@ -272,23 +272,22 @@ h1 {
 }
 
 :host-context(body.cw-theme-dusk) .writing-band {
-  background:
-    linear-gradient(
-      180deg,
-      var(--cw-page) 0 152px,
-      color-mix(in srgb, var(--cw-panel) 84%, var(--cw-hero-base)) 152px,
-      color-mix(in srgb, var(--cw-page) 88%, var(--cw-panel)) 100%
-    );
+  padding-top: 36px;
+  padding-bottom: 48px;
+  background: linear-gradient(
+    180deg,
+    var(--cw-page) 0%,
+    color-mix(in srgb, var(--cw-page) 72%, var(--cw-panel)) 34%,
+    color-mix(in srgb, var(--cw-page) 86%, var(--cw-panel)) 100%
+  );
 }
 
 :host-context(body.cw-theme-dusk) .writing-carousel-region {
-  background:
-    linear-gradient(
-      180deg,
-      transparent 0 8px,
-      color-mix(in srgb, var(--cw-panel) 84%, var(--cw-hero-base)) 8px,
-      color-mix(in srgb, var(--cw-page) 88%, var(--cw-panel)) 100%
-    );
+  background: transparent;
+}
+
+:host-context(body.cw-theme-dusk) .writing-band .cw-section-header {
+  margin-bottom: 18px;
 }
 
 :host-context(body.cw-theme-dusk) .article-media-link {
