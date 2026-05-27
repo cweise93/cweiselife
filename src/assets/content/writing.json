@@ -810,11 +810,6 @@
             "title": "Systems Translation Loop",
             "slug": "frameworks/2026/03/18/systems-translation-loop",
             "description": "A framework for preserving business intent as it moves into workflow and technology."
-          },
-          {
-            "title": "Turn Down the Noise: Improving Signal in Decision Systems",
-            "slug": "writing/2026/04/14/turn-down-the-noise-improving-signal-in-decision-systems",
-            "description": "A companion essay on reducing operational noise and improving decision clarity."
           }
         ]
       },
@@ -857,90 +852,279 @@
       "id": "writing-002",
       "slug": "writing/2026/04/28/why-operational-friction-hides-in-translation-layers",
       "title": "Why Operational Friction Hides in Translation Layers",
-      "summary": "The cost of misalignment between strategy, systems, and the people doing the work.",
+      "summary": "A deeper essay on why friction usually hides between strategy, workflow, systems, and reporting layers \u2014 and why organizations reduce rework by owning the interfaces where meaning changes hands.",
       "status": "published",
       "publishedOn": "2026-04-28",
-      "readTimeMinutes": 7,
+      "readTimeMinutes": 9,
       "featured": true,
       "tags": [
         "translation",
         "workflow design",
-        "rework"
+        "rework",
+        "operational intelligence",
+        "systems thinking",
+        "execution"
       ],
-      "heroImage": "assets/images/article-facets.png",
+      "heroImage": "assets/images/writing/articles/2026-04-28_operational_friction_translation_layers/images/01_translation_layers_hero.png",
       "seo": {
         "title": "Why Operational Friction Hides in Translation Layers",
-        "description": "How strategy-to-execution translation layers quietly create friction, rework, and delivery drag."
+        "description": "How strategy-to-execution translation layers quietly create friction, rework, ambiguity, and delivery drag \u2014 and how leaders can engineer cleaner operating paths."
       },
       "body": {
-        "intro": "Operational friction often hides in the spaces between teams, tools, and planning layers. It feels small in isolation, but it compounds everywhere.",
+        "intro": "Operational friction often hides in the spaces between teams, tools, and planning layers. It feels small in isolation: one unclear handoff, one extra status meeting, one missing definition, one dashboard that requires interpretation, one ticket that does not preserve the original intent. But those small translation failures compound everywhere. By the time the organization feels the drag, the source is hard to see because every team looks reasonable inside its own boundary.",
         "sections": [
           {
-            "heading": "Translation layers are often unmanaged systems",
+            "heading": "The problem usually sits between the boxes",
+            "layout": "split-image-right",
             "paragraphs": [
-              "Every cross-functional organization uses translation layers: executive summaries, planning artifacts, ticket structures, workflow handoffs, and reporting cadences.",
-              "Most organizations depend on them but very few design them deliberately."
-            ]
+              "Most organizations are comfortable naming departments, systems, tools, roles, and initiatives. They are less comfortable naming the interfaces between them. That is where friction usually lives.",
+              "A strategy team may define the priority clearly at the executive level. An operations team may convert that priority into a workflow. A technology team may translate the workflow into tickets, screens, automations, integrations, or reports. A reporting team may summarize the result for leadership. Each team can do its part with reasonable competence and still weaken the original signal.",
+              "The reason is simple: every translation layer changes meaning. Strategy becomes planning. Planning becomes workflow. Workflow becomes system behavior. System behavior becomes reporting. Reporting becomes a leadership interpretation of reality. Unless those interfaces are deliberately owned, assumptions accumulate quietly."
+            ],
+            "image": {
+              "src": "assets/images/writing/articles/2026-04-28_operational_friction_translation_layers/images/01_translation_layers_hero.png",
+              "alt": "A clean executive infographic showing strategy moving through translation layers into execution.",
+              "caption": "Operational friction often hides between the boxes, where strategy, workflow, systems, and reporting change shape."
+            },
+            "callout": "The organization may not have a strategy problem or a technology problem. It may have an unmanaged translation problem."
+          },
+          {
+            "heading": "Translation layers are often unmanaged systems",
+            "layout": "split-image-left",
+            "paragraphs": [
+              "Every cross-functional organization depends on translation layers. Executive summaries, planning artifacts, intake forms, requirements documents, ticket structures, meeting notes, workflow handoffs, dashboards, and status reports all translate one version of reality into another.",
+              "That translation work is unavoidable. A board-level priority cannot travel directly into a field workflow, a product backlog, or an operational report without changing form. The issue is not that translation happens. The issue is that it often happens informally, inconsistently, and without a clear owner.",
+              "When translation layers are unmanaged, people fill the gaps with interpretation. The strongest operator, the most experienced project manager, the loudest stakeholder, or the most available analyst becomes the unofficial translator. That may work for a while, but it does not scale."
+            ],
+            "image": {
+              "src": "assets/images/writing/articles/2026-04-28_operational_friction_translation_layers/images/02_unmanaged_translation_layers.png",
+              "alt": "A visual showing common translation layers such as summaries, requirements, tickets, handoffs, dashboards, and status reports.",
+              "caption": "Translation layers are systems whether leaders design them or not."
+            },
+            "callout": "A translation layer that no one owns still governs the work. It just governs the work invisibly."
           },
           {
             "heading": "Friction compounds when no one owns the interface",
+            "layout": "split-image-right",
             "paragraphs": [
-              "A workflow can degrade for months while every team believes it is performing reasonably inside its own boundary.",
-              "The interface itself is the missing owner: how information gets handed over, normalized, clarified, and validated."
-            ]
+              "The interface is the moment where one team\u2019s output becomes another team\u2019s input. That is where ambiguity becomes expensive.",
+              "A workflow can degrade for months while every team believes it is performing reasonably inside its own boundary. The business team says the requirement was clear. The technical team says it built what was requested. The operator says the system does not fit the real work. The reporting team says the data is incomplete. Leadership sees delay, rework, and confusion but not the exact place where the meaning changed.",
+              "That is what makes translation-layer friction difficult to diagnose. The failure does not belong neatly to one box. It belongs to the seam between boxes."
+            ],
+            "image": {
+              "src": "assets/images/writing/articles/2026-04-28_operational_friction_translation_layers/images/03_interface_ownership_gap.png",
+              "alt": "A diagram showing friction accumulating at the seam between teams when no one owns the interface.",
+              "caption": "The interface is where meaning changes hands. If no one owns it, ambiguity compounds."
+            },
+            "callout": "Friction is often the cost of an unowned interface."
+          },
+          {
+            "heading": "The visible symptom is usually rework",
+            "paragraphs": [
+              "The organization eventually feels translation failure as rework. Requirements are rewritten. Dashboards are rebuilt. Tickets are reopened. Teams add another meeting to clarify what the last meeting meant. Reports grow longer because leaders do not trust the summary. Operators build side spreadsheets because the system does not quite match the work.",
+              "Rework is not always bad. Sometimes it reflects healthy learning. But repeated rework in the same area usually means the organization has not engineered the translation path. It keeps asking people to compensate manually for a design problem.",
+              "This is why operational friction can masquerade as a people issue. The people may be doing exactly what the system requires: interpreting, patching, clarifying, and rescuing weak handoffs."
+            ],
+            "callout": "When the same work keeps returning for clarification, the issue is rarely effort. The issue is usually translation design."
+          },
+          {
+            "heading": "Dashboards do not solve translation by themselves",
+            "paragraphs": [
+              "Organizations often respond to friction by creating more visibility. More dashboards. More status updates. More reports. More metrics. That response makes sense, but visibility is not the same as translation.",
+              "A dashboard can show what happened without clarifying what should happen next. A report can summarize activity without preserving decision context. A metric can become a target while losing the business intent behind it. More information can actually increase friction if it gives each layer more material to reinterpret.",
+              "Better translation requires decision context, definitions, ownership, and feedback. Leaders need to know what the signal means, who owns the next move, and whether the system is producing the behavior the strategy requires."
+            ],
+            "callout": "Visibility shows the organization more. Translation helps the organization act on what it sees."
+          },
+          {
+            "heading": "Translation failure is a growth tax",
+            "layout": "split-image-left",
+            "paragraphs": [
+              "Small organizations can survive weak translation because people are close enough to repair meaning in conversation. Someone remembers what the founder meant. Someone knows who to call. Someone can walk the hallway and resolve the ambiguity.",
+              "As the organization grows, that informal repair model becomes expensive. More teams touch the work. More tools encode partial versions of the process. More managers interpret status. More handoffs separate intent from execution. The same translation weakness that felt manageable at one size becomes a growth tax at another.",
+              "This is why leaders often feel that the organization has become slower even though it has more people, better tools, and more formal processes. The formal system expanded, but the translation architecture did not mature with it."
+            ],
+            "image": {
+              "src": "assets/images/writing/articles/2026-04-28_operational_friction_translation_layers/images/04_translation_friction_growth_tax.png",
+              "alt": "A visual showing translation friction increasing as an organization scales across teams, tools, and process layers.",
+              "caption": "As organizations scale, informal translation becomes a tax on speed, clarity, and follow-through."
+            },
+            "callout": "Growth does not automatically create maturity. It exposes the translation work that was previously hidden."
           },
           {
             "heading": "Reducing friction means engineering the path",
+            "layout": "split-image-right",
             "paragraphs": [
-              "Better execution requires better path design: cleaner expectations, narrower ambiguity windows, and tighter feedback loops across systems and stakeholders.",
-              "That is where operational intelligence becomes practical rather than philosophical."
-            ]
+              "Better execution requires better path design. Leaders should inspect how intent becomes work, how work becomes system behavior, how system behavior becomes evidence, and how evidence becomes decision-making.",
+              "That means narrowing ambiguity windows. It means defining ownership at handoffs. It means preserving the why behind the request, not just the task. It means designing requirements and reports around decisions, not around the convenience of the tool. It means validating that the workflow still reflects the business intent after it moves through systems and teams.",
+              "This is where operational intelligence becomes practical rather than philosophical. The goal is not to admire complexity. The goal is to make the path clear enough that smart people do not have to keep reinventing it."
+            ],
+            "image": {
+              "src": "assets/images/writing/articles/2026-04-28_operational_friction_translation_layers/images/05_engineering_the_path.png",
+              "alt": "A clean diagram showing a deliberate operating path from intent to workflow, systems, evidence, and feedback.",
+              "caption": "Reducing friction means engineering the path from intent to workflow, system behavior, evidence, and feedback."
+            },
+            "callout": "The best operating paths reduce the amount of interpretation required for good work to happen."
+          },
+          {
+            "heading": "What leaders should inspect first",
+            "paragraphs": [
+              "Start where the work changes language. Where does strategy become a plan? Where does a plan become a workflow? Where does workflow become a ticket? Where does a ticket become system behavior? Where does system behavior become a report? Where does a report become an executive decision?",
+              "Then look for the friction signatures: repeated clarification, inconsistent definitions, duplicate documentation, manual reconciliation, unclear handoffs, reporting that requires too much interpretation, and work that depends on one or two people who simply know how everything really works.",
+              "Those signatures are not background noise. They are evidence that the organization has outgrown an informal translation path."
+            ],
+            "callout": "Inspect the places where meaning changes hands. That is where friction usually hides."
+          },
+          {
+            "heading": "The leadership shift",
+            "paragraphs": [
+              "Leaders do not need to personally resolve every translation problem. They need to make translation visible as a design responsibility.",
+              "That shift changes the conversation. Instead of asking why teams cannot communicate better, leaders can ask which interface is weak. Instead of demanding more status, they can ask which decision the report is supposed to support. Instead of blaming rework on carelessness, they can ask where the original intent was lost.",
+              "Operational friction hides in translation layers because the layers feel ordinary. They look like meetings, tickets, summaries, dashboards, and handoffs. But those ordinary surfaces shape how strategy becomes reality.",
+              "If leaders want less rework and cleaner execution, they have to engineer the translation path."
+            ],
+            "callout": "The work is not to add more coordination. The work is to design the places where coordination becomes unnecessary."
           }
         ]
-      }
-    },
-    {
-      "id": "writing-003",
-      "slug": "writing/2026/04/14/turn-down-the-noise-improving-signal-in-decision-systems",
-      "title": "Turn Down the Noise: Improving Signal in Decision Systems",
-      "summary": "A framework for reducing noise, surfacing signal, and improving leadership clarity.",
-      "status": "published",
-      "publishedOn": "2026-04-14",
-      "readTimeMinutes": 5,
-      "featured": true,
-      "tags": [
-        "signal",
-        "frameworks",
-        "decision quality"
-      ],
-      "heroImage": "assets/images/article-ripple.png",
-      "seo": {
-        "title": "Turn Down the Noise: Improving Signal in Decision Systems",
-        "description": "A practical framework for reducing organizational noise and improving decision clarity."
       },
-      "body": {
-        "intro": "Noise is not just distraction. In organizations, noise is any condition that obscures the real state of work, risk, or progress.",
-        "sections": [
+      "companion": {
+        "snapshot": [
           {
-            "heading": "Noise accumulates faster than teams notice",
-            "paragraphs": [
-              "Duplicated reporting, unclear definitions of done, and fragmented tools all increase the volume of noise long before leaders recognize what is happening.",
-              "Teams then compensate with more meetings, more updates, and more interpretation layers."
-            ]
+            "label": "Core argument",
+            "value": "Operational friction usually hides in the interfaces where strategy, workflow, systems, and reporting change meaning."
           },
           {
-            "heading": "Signal requires design discipline",
-            "paragraphs": [
-              "Clear signal depends on a smaller set of trusted measures, explicit ownership, and operating paths that make reality visible.",
-              "This is why signal improvement is a workflow problem as much as an analytics problem."
-            ]
+            "label": "Primary failure mode",
+            "value": "Translation layers are treated as informal communication instead of designed operating systems."
           },
           {
-            "heading": "Use the framework to inspect operating clarity",
-            "paragraphs": [
-              "Ask where interruption, ambiguity, and status theater are masking the true state of work.",
-              "Then redesign the path so decisions are informed by relevant, timely, actionable information."
-            ]
+            "label": "Leadership task",
+            "value": "Own the interfaces where meaning changes hands and engineer the path from intent to evidence."
+          },
+          {
+            "label": "Inspection question",
+            "value": "Where does the original signal weaken as work moves from one layer to the next?"
+          }
+        ],
+        "toc": [
+          {
+            "label": "The problem usually sits between the boxes",
+            "anchor": "the-problem-usually-sits-between-the-boxes"
+          },
+          {
+            "label": "Translation layers are often unmanaged systems",
+            "anchor": "translation-layers-are-often-unmanaged-systems"
+          },
+          {
+            "label": "Friction compounds when no one owns the interface",
+            "anchor": "friction-compounds-when-no-one-owns-the-interface"
+          },
+          {
+            "label": "The visible symptom is usually rework",
+            "anchor": "the-visible-symptom-is-usually-rework"
+          },
+          {
+            "label": "Dashboards do not solve translation by themselves",
+            "anchor": "dashboards-do-not-solve-translation-by-themselves"
+          },
+          {
+            "label": "Translation failure is a growth tax",
+            "anchor": "translation-failure-is-a-growth-tax"
+          },
+          {
+            "label": "Reducing friction means engineering the path",
+            "anchor": "reducing-friction-means-engineering-the-path"
+          },
+          {
+            "label": "What leaders should inspect first",
+            "anchor": "what-leaders-should-inspect-first"
+          },
+          {
+            "label": "The leadership shift",
+            "anchor": "the-leadership-shift"
+          }
+        ],
+        "assets": [
+          {
+            "label": "Article hero image",
+            "href": "assets/images/writing/articles/2026-04-28_operational_friction_translation_layers/images/01_translation_layers_hero.png",
+            "description": "Primary article visual showing strategy moving through translation layers into execution.",
+            "type": "image",
+            "number": "01"
+          },
+          {
+            "label": "Unmanaged translation layers",
+            "href": "assets/images/writing/articles/2026-04-28_operational_friction_translation_layers/images/02_unmanaged_translation_layers.png",
+            "description": "Inline visual showing common translation layers that organizations depend on but rarely design deliberately.",
+            "type": "image",
+            "number": "02"
+          },
+          {
+            "label": "Interface ownership gap",
+            "href": "assets/images/writing/articles/2026-04-28_operational_friction_translation_layers/images/03_interface_ownership_gap.png",
+            "description": "Inline visual showing friction accumulating in the seam between teams.",
+            "type": "image",
+            "number": "03"
+          },
+          {
+            "label": "Translation friction as growth tax",
+            "href": "assets/images/writing/articles/2026-04-28_operational_friction_translation_layers/images/04_translation_friction_growth_tax.png",
+            "description": "Inline visual showing translation friction increasing as organizations scale.",
+            "type": "image",
+            "number": "04"
+          },
+          {
+            "label": "Engineering the path",
+            "href": "assets/images/writing/articles/2026-04-28_operational_friction_translation_layers/images/05_engineering_the_path.png",
+            "description": "Inline visual showing a deliberate path from intent to workflow, systems, evidence, and feedback.",
+            "type": "image",
+            "number": "05"
+          }
+        ],
+        "related": [
+          {
+            "title": "Systems Translation Loop",
+            "slug": "frameworks/2026/03/18/systems-translation-loop",
+            "description": "A framework for preserving business intent as it moves into workflow and technology."
+          },
+          {
+            "title": "Organizations Rarely Fail From a Lack of Intelligence",
+            "slug": "writing/2026/05/12/organizations-rarely-fail-from-a-lack-of-intelligence",
+            "description": "A companion essay on why execution problems often come from missing operating paths rather than lack of intelligence."
+          }
+        ]
+      },
+      "productionAssets": {
+        "socialImage": {
+          "label": "Companion social image",
+          "href": "assets/images/writing/articles/2026-04-28_operational_friction_translation_layers/images/01_translation_layers_hero.png",
+          "description": "Use the hero image as the default Open Graph/social preview until a separate square social image is created."
+        },
+        "articleImages": [
+          {
+            "label": "Hero",
+            "href": "assets/images/writing/articles/2026-04-28_operational_friction_translation_layers/images/01_translation_layers_hero.png",
+            "description": "Primary visual for the article header."
+          },
+          {
+            "label": "Unmanaged translation layers",
+            "href": "assets/images/writing/articles/2026-04-28_operational_friction_translation_layers/images/02_unmanaged_translation_layers.png",
+            "description": "Inline visual for the section on translation layers as unmanaged systems."
+          },
+          {
+            "label": "Interface ownership gap",
+            "href": "assets/images/writing/articles/2026-04-28_operational_friction_translation_layers/images/03_interface_ownership_gap.png",
+            "description": "Inline visual for the section on unowned interfaces."
+          },
+          {
+            "label": "Translation friction as growth tax",
+            "href": "assets/images/writing/articles/2026-04-28_operational_friction_translation_layers/images/04_translation_friction_growth_tax.png",
+            "description": "Inline visual for the section on scale and growth tax."
+          },
+          {
+            "label": "Engineering the path",
+            "href": "assets/images/writing/articles/2026-04-28_operational_friction_translation_layers/images/05_engineering_the_path.png",
+            "description": "Inline visual for the section on reducing friction through path design."
           }
         ]
       }
