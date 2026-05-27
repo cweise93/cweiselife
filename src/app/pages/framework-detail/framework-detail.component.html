@@ -1,93 +1,89 @@
 @if (item(); as framework) {
   <section class="detail-hero">
     <div class="cw-container detail-head">
-      <p class="cw-eyebrow">Frameworks</p>
-      <h1>{{ framework.title }}</h1>
-      <div class="detail-meta">
-        <span>{{ framework.category }}</span>
-        <span>{{ framework.publishedOn | date:'MMMM d, y' }}</span>
-      </div>
-      <p class="lead">{{ framework.summary }}</p>
-    </div>
-    @if (framework.diagramImage) {
-      <div class="cw-container">
-        <img class="hero-image" [src]="framework.diagramImage" [alt]="framework.title + ' diagram'" />
-      </div>
-    }
-  </section>
-
-  @if (coreQuestion()) {
-    <section class="framework-core-question-wrap">
-      <div class="cw-container">
-        <div class="framework-core-question">
-          <span class="framework-core-question__label">Core question</span>
-          <p>{{ coreQuestion() }}</p>
+      <div class="detail-head__intro">
+        <p class="cw-eyebrow">Framework workspace</p>
+        <h1>{{ framework.title }}</h1>
+        <div class="detail-meta">
+          <span>{{ framework.category }}</span>
+          <span>{{ framework.publishedOn | date:'MMMM d, y' }}</span>
         </div>
+        <p class="lead">{{ framework.summary }}</p>
       </div>
-    </section>
-  }
+
+      @if (framework.diagramImage) {
+        <div class="detail-head__diagram">
+          <img class="hero-image" [src]="framework.diagramImage" [alt]="framework.title + ' diagram'" />
+        </div>
+      }
+    </div>
+  </section>
 
   @if (snapshotItems().length || tocItems().length || fallbackSnapshotItems().length) {
     <app-framework-sticky-context-bar
       [snapshot]="snapshotItems().length ? snapshotItems() : fallbackSnapshotItems()"
       [toc]="tocItems()"
       [activeAnchor]="activeSectionAnchor()"
-      [activeLabel]="activeSectionLabel()"
-      (sectionSelected)="scrollToSection($event)"
+      (sectionSelected)="selectSectionByAnchor($event)"
     />
   }
 
-  <section class="cw-section">
-    <div class="cw-container framework-content-shell">
-      <article class="framework-main-content">
-        <section class="body-section">
-          <h2>Premise</h2>
-          <p>{{ framework.body.premise }}</p>
-        </section>
-        <section class="body-section">
-          <h2>Application</h2>
-          <p>{{ framework.body.application }}</p>
-        </section>
-
-        @if (frameworkComponents().length) {
-          <section class="body-section">
-            <h2>Framework Components</h2>
-            <div class="component-summary-grid">
-              @for (component of frameworkComponents(); track component.title) {
-                <section class="component-card">
-                  <h3>{{ component.title }}</h3>
-                  <p>{{ component.description }}</p>
-                </section>
-              }
+  <section class="framework-workspace">
+    <div class="cw-container framework-workspace-grid">
+      <section class="framework-content-column">
+        @if (coreQuestion()) {
+          <section class="framework-core-question-wrap">
+            <div class="framework-core-question">
+              <span class="framework-core-question__label">Core question</span>
+              <p>{{ coreQuestion() }}</p>
             </div>
           </section>
         }
 
-        <cw-content-renderer [sections]="framework.body.sections" />
-      </article>
-    </div>
-  </section>
+        <article class="framework-main-content">
+          <section class="body-section">
+            <h2>Premise</h2>
+            <p>{{ framework.body.premise }}</p>
+          </section>
 
-  @if (templateItems().length || frameworkAssetItems().length || relatedItems().length) {
-    <section class="cw-section framework-resources-wrap" id="download-templates">
-      <div class="cw-container">
-        <div class="cw-section-header cw-section-header--split framework-resources-header">
-          <div>
-            <p class="cw-eyebrow">Supplementary materials</p>
-            <h2 class="cw-section-title">Download Templates</h2>
-          </div>
-          <p class="cw-muted">
-            Take the working artifacts with you, inspect the reference visuals in place, and keep the framework
-            context intact while you prepare governance, accounting, and operating evidence.
-          </p>
-        </div>
+          <section class="body-section">
+            <h2>Application</h2>
+            <p>{{ framework.body.application }}</p>
+          </section>
 
-        <div class="framework-resource-grid">
-          @if (templateItems().length) {
+          @if (frameworkComponents().length) {
+            <section class="body-section">
+              <h2>Framework components</h2>
+              <div class="component-summary-grid">
+                @for (component of frameworkComponents(); track component.title) {
+                  <section class="component-card cw-surface-card">
+                    <h3>{{ component.title }}</h3>
+                    <p>{{ component.description }}</p>
+                  </section>
+                }
+              </div>
+            </section>
+          }
+
+          <cw-content-renderer [sections]="framework.body.sections" />
+        </article>
+
+        @if (templateItems().length) {
+          <section class="cw-section framework-resources-wrap" id="download-templates">
+            <div class="framework-resources-header">
+              <div>
+                <p class="cw-eyebrow">Supplementary materials</p>
+                <h2 class="cw-section-title">Download Templates</h2>
+              </div>
+              <p class="cw-muted">
+                Download the working artifacts used to operationalize the framework and take the scoring output into
+                governance, accounting, and delivery review.
+              </p>
+            </div>
+
             <mat-card appearance="outlined" class="framework-resource-card framework-resource-card--templates cw-surface-card">
-              <p class="resource-eyebrow">Template library</p>
               <div class="resource-stack">
-                <h3>Operationalize the framework</h3>
+                <h3>Template library</h3>
                 <p>
                   Use the worksheet, charter, accounting memo, control matrix, and cost ledger to move from scoring
                   to accountable execution.
@@ -123,10 +119,134 @@
                 }
               </div>
             </mat-card>
+          </section>
+        }
+      </section>
+
+      <aside class="framework-tool-rail">
+        @if (hasLiveCalculator()) {
+          <div
+            class="tool-rail-segment tool-rail-segment--calculator"
+            [style.marginTop.px]="calculatorRailOffset()"
+            [style.minHeight.px]="calculatorRailBoundaryHeight()"
+          >
+            <mat-card appearance="outlined" class="tool-rail-card tool-rail-card--score cw-surface-card">
+              <div class="tool-rail-card__header">
+                <p class="resource-eyebrow">Live score summary</p>
+                <span class="tool-rail-live">
+                  <span class="tool-rail-live__dot"></span>
+                  Updates live
+                </span>
+              </div>
+
+              <div class="tool-score-main">
+                <div class="tool-score-visuals">
+                  <div class="tool-score-ring" [style.--score-percent]="workspaceScore().maxScore ? ((workspaceScore().totalScore / workspaceScore().maxScore) * 100) + '%' : '0%'">
+                    <div class="tool-score-ring__core">
+                      <strong>{{ workspaceScore().totalScore }}</strong>
+                      <span>/ {{ workspaceScore().maxScore }}</span>
+                    </div>
+                  </div>
+
+                  <div class="tool-score-grade">
+                    <span class="tool-score-grade__badge" [attr.data-grade]="workspaceScore().gradeCode">{{ workspaceScore().gradeCode }}</span>
+                  </div>
+                </div>
+
+                <div class="tool-score-copy">
+                  <h3>{{ workspaceScore().gradeTitle }}</h3>
+                  <p>{{ workspaceScore().posture }}</p>
+                </div>
+              </div>
+
+              <div class="tool-score-metrics">
+                <div class="tool-metric">
+                  <span class="tool-metric__label">Dimensions scored</span>
+                  <strong>{{ workspaceScore().completedDimensions }} / {{ workspaceScore().totalDimensions }}</strong>
+                </div>
+                <div class="tool-metric">
+                  <span class="tool-metric__label">Overrides</span>
+                  <strong>{{ workspaceScore().overrideCount }}</strong>
+                </div>
+              </div>
+
+              <mat-progress-bar
+                mode="determinate"
+                [value]="workspaceScore().maxScore ? (workspaceScore().totalScore / workspaceScore().maxScore) * 100 : 0"
+              ></mat-progress-bar>
+
+              @if (activeWorkspaceFlags().length) {
+                <div class="tool-score-flags">
+                  @for (flag of activeWorkspaceFlags(); track flag.kind + flag.label) {
+                    <div class="tool-flag" [class]="'tool-flag tool-flag--' + workspaceFlagTone(flag)">
+                      <span class="cw-icon-badge tool-flag__icon">
+                        <mat-icon>{{ workspaceFlagIcon(flag) }}</mat-icon>
+                      </span>
+                      <div class="tool-flag__copy">
+                        <span class="tool-flag__kind">{{ flag.kind === 'blocker' ? 'Blocker' : 'Override' }}</span>
+                        <span class="tool-flag__label">{{ flag.label }}</span>
+                      </div>
+                    </div>
+                  }
+                </div>
+              }
+
+              @if (workspaceScore().overrideCount > 0) {
+                <div class="tool-inline-alert tool-inline-alert--escalation">
+                  <mat-icon>verified_user</mat-icon>
+                  <div>
+                    <strong>Escalate for elevated review</strong>
+                    <span>Finance, audit, security, or executive review is required before classification.</span>
+                  </div>
+                </div>
+              }
+
+              <div class="tool-export-actions">
+                <button mat-stroked-button color="primary" type="button" (click)="exportWorkspaceJson()">
+                  <mat-icon>download</mat-icon>
+                  Export JSON
+                </button>
+                <button mat-flat-button color="primary" type="button" (click)="exportWorkspaceCsv()">
+                  <mat-icon>table_view</mat-icon>
+                  Export CSV
+                </button>
+              </div>
+
+              <p class="tool-note">
+                These scores reflect the current slider values. Save or export to capture the evaluation.
+              </p>
+            </mat-card>
+          </div>
+        }
+
+        <div class="framework-tool-rail__body">
+          @if (callToActionItems().length) {
+            <mat-card appearance="outlined" class="tool-rail-card cw-surface-card">
+              <p class="resource-eyebrow">Workspace actions</p>
+              <div class="resource-stack">
+                @for (item of callToActionItems(); track item.title) {
+                  <div class="tool-action">
+                    <div>
+                      <h3>{{ item.title }}</h3>
+                      <p>{{ item.description }}</p>
+                    </div>
+                    @if (item.action === 'open-templates') {
+                      <button mat-stroked-button color="primary" type="button" (click)="openTemplateLibrary()">
+                        {{ item.buttonLabel || 'Open' }}
+                      </button>
+                    } @else if (item.anchor) {
+                      <button mat-stroked-button color="primary" type="button" (click)="scrollToSection({label: item.title, anchor: item.anchor})">
+                        {{ item.buttonLabel || 'Open' }}
+                      </button>
+                    }
+                  </div>
+                }
+              </div>
+            </mat-card>
           }
 
           @if (frameworkAssetItems().length) {
-            <mat-card appearance="outlined" class="framework-resource-card cw-surface-card">
+            <mat-card appearance="outlined" class="tool-rail-card cw-surface-card">
               <p class="resource-eyebrow">Framework assets</p>
               <div class="resource-asset-list">
                 @for (item of frameworkAssetItems(); track item.href) {
@@ -147,10 +267,7 @@
                       }
                     </button>
                     <div class="resource-asset__actions">
-                      <button mat-stroked-button color="primary" type="button" (click)="openAsset(item)">
-                        <mat-icon>pageview</mat-icon>
-                        Inspect
-                      </button>
+                      <button mat-button color="primary" type="button" (click)="openAsset(item)">Inspect</button>
                       <button
                         mat-icon-button
                         color="primary"
@@ -168,7 +285,7 @@
           }
 
           @if (relatedItems().length) {
-            <mat-card appearance="outlined" class="framework-resource-card cw-surface-card">
+            <mat-card appearance="outlined" class="tool-rail-card cw-surface-card">
               <p class="resource-eyebrow">Related frameworks</p>
               <div class="resource-link-list">
                 @for (item of relatedItems(); track item.slug) {
@@ -187,9 +304,9 @@
             </mat-card>
           }
         </div>
-      </div>
-    </section>
-  }
+      </aside>
+    </div>
+  </section>
 } @else {
   <section class="cw-section missing-state">
     <div class="cw-container">

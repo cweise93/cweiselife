@@ -235,26 +235,6 @@ p {
 
 .dimension-card__slider {
   display: grid;
-  gap: 4px;
-}
-
-.dimension-card__slider-labels {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  align-items: end;
-  padding: 0 10px;
-  color: var(--cw-muted);
-  font-size: 0.98rem;
-  font-weight: 700;
-}
-
-.dimension-card__slider-labels span {
-  text-align: center;
-  transition: color 160ms ease;
-}
-
-.dimension-card__slider-label--active {
-  color: var(--cw-accent);
 }
 
 .dimension-card__scale {
@@ -336,6 +316,13 @@ p {
 
 .summary-card {
   padding: 18px;
+  width: 100%;
+  justify-self: stretch;
+}
+
+.summary-card--evidence {
+  width: 100%;
+  grid-column: 1 / -1;
 }
 
 .summary-card__score-row {
@@ -449,6 +436,22 @@ p {
 
   .agent-calculator__summary {
     position: static;
+  }
+}
+
+@media (min-width: 1200px) {
+  :host-context(cw-site-shell.site-shell--framework-workspace) .agent-calculator__hero {
+    display: none;
+  }
+
+  :host-context(cw-site-shell.site-shell--framework-workspace) .agent-calculator__body {
+    grid-template-columns: 1fr;
+  }
+
+  :host-context(cw-site-shell.site-shell--framework-workspace) .agent-calculator__summary {
+    position: static;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
   }
 }
 

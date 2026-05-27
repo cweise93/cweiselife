@@ -1,36 +1,39 @@
-<mat-toolbar class="shell-toolbar" [class.shell-toolbar--compact]="isCompact()">
-  <a class="brand" routerLink="/" aria-label="cweise.com home">
-    <img
-      [src]="themeMode() === 'light' ? 'assets/images/cweise_logo_light_mode.svg' : 'assets/images/cweise_logo_dark_mode.svg'"
-      [alt]="siteMeta().siteName"
-    >
-  </a>
-  <nav class="desktop-nav" aria-label="Primary navigation">
-    @for (item of navigation().primary; track item.path) {
-      <a
-        mat-button
-        [routerLink]="item.path"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: item.path === '/' }"
+@if (showTopToolbar()) {
+  <mat-toolbar class="shell-toolbar" [class.shell-toolbar--compact]="isCompact()">
+    <a class="brand" routerLink="/" aria-label="cweise.com home">
+      <img
+        [src]="themeMode() === 'light' ? 'assets/images/cweise_logo_light_mode.svg' : 'assets/images/cweise_logo_dark_mode.svg'"
+        [alt]="siteMeta().siteName"
       >
-        {{ item.label }}
-      </a>
-    }
-  </nav>
-  <button
-    mat-icon-button
-    type="button"
-    class="mobile-menu-toggle"
-    aria-label="Toggle navigation menu"
-    [attr.aria-expanded]="mobileMenuOpen()"
-    (click)="toggleMobileMenu()"
-  >
-    <mat-icon>{{ mobileMenuOpen() ? 'close' : 'menu' }}</mat-icon>
-  </button>
-  <button mat-icon-button type="button" aria-label="Toggle color theme" (click)="toggleTheme()">
-    <mat-icon>{{ themeMode() === 'light' ? 'dark_mode' : 'light_mode' }}</mat-icon>
-  </button>
-</mat-toolbar>
+    </a>
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      @for (item of navigation().primary; track item.path) {
+        <a
+          mat-button
+          [routerLink]="item.path"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: item.path === '/' }"
+        >
+          {{ item.label }}
+        </a>
+      }
+    </nav>
+    <button
+      mat-icon-button
+      type="button"
+      class="mobile-menu-toggle"
+      aria-label="Toggle navigation menu"
+      [attr.aria-expanded]="mobileMenuOpen()"
+      (click)="toggleMobileMenu()"
+    >
+      <mat-icon>{{ mobileMenuOpen() ? 'close' : 'menu' }}</mat-icon>
+    </button>
+    <button mat-icon-button type="button" aria-label="Toggle color theme" (click)="toggleTheme()">
+      <mat-icon>{{ themeMode() === 'light' ? 'dark_mode' : 'light_mode' }}</mat-icon>
+    </button>
+  </mat-toolbar>
+}
+
 @if (mobileMenuOpen()) {
   <div class="mobile-nav-panel" aria-label="Mobile navigation">
     <nav class="mobile-nav">
@@ -48,44 +51,79 @@
     </nav>
   </div>
 }
-<main class="site-main">
+
+@if (showFrameworkRail()) {
+  <aside class="framework-global-rail" aria-label="Framework workspace navigation">
+    <a class="framework-global-rail__brand" routerLink="/" aria-label="cweise.com home">
+      <img
+        [src]="themeMode() === 'light' ? 'assets/images/cweise_logo_light_mode.svg' : 'assets/images/cweise_logo_dark_mode.svg'"
+        [alt]="siteMeta().siteName"
+      >
+    </a>
+
+    <nav class="framework-global-rail__nav" aria-label="Primary navigation">
+      @for (item of navigation().primary; track item.path) {
+        <a
+          class="framework-global-rail__link"
+          [routerLink]="item.path"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: item.path === '/' }"
+        >
+          <mat-icon>{{ navIcon(item.path) }}</mat-icon>
+          <span>{{ item.label }}</span>
+        </a>
+      }
+    </nav>
+
+    <div class="framework-global-rail__footer">
+      <button mat-icon-button type="button" aria-label="Toggle color theme" (click)="toggleTheme()">
+        <mat-icon>{{ themeMode() === 'light' ? 'dark_mode' : 'light_mode' }}</mat-icon>
+      </button>
+    </div>
+  </aside>
+}
+
+<main class="site-main" [class.site-main--framework-workspace]="showFrameworkRail()">
   <ng-content />
 </main>
-<footer class="site-footer">
-  <div class="cw-container footer-grid">
-    <section class="footer-brand">
-      <h2>{{ siteMeta().siteName }}</h2>
-      <p>{{ siteMeta().footerTagline }}</p>
-      <p class="footer-copyright">© {{ currentYear }} {{ siteMeta().siteName }}</p>
-    </section>
-    <section class="footer-nav">
-      <h3>Navigation</h3>
-      <div class="footer-nav-columns">
-        @for (item of navigation().primary; track item.path) {
-          <a [routerLink]="item.path">{{ item.label }}</a>
-        }
-      </div>
-      <div class="footer-featured-links">
-        @for (item of footer().featuredLinks; track item.path) {
-          <a [routerLink]="item.path">{{ item.label }}</a>
-        }
-      </div>
-    </section>
-    <section class="footer-connect">
-      <h3>Connect</h3>
-      <div class="footer-connect-links">
-        @for (item of navigation().social; track item.url) {
-          <a [href]="item.url" target="_blank" rel="noreferrer">
-            <mat-icon>{{ item.icon }}</mat-icon>
-            <span>{{ item.label }}</span>
-          </a>
-        }
-      </div>
-    </section>
-    <aside class="footer-backtop">
-      <button mat-icon-button type="button" aria-label="Back to top" (click)="scrollToTop()">
-        <mat-icon>north</mat-icon>
-      </button>
-    </aside>
-  </div>
-</footer>
+
+@if (showFooter()) {
+  <footer class="site-footer">
+    <div class="cw-container footer-grid">
+      <section class="footer-brand">
+        <h2>{{ siteMeta().siteName }}</h2>
+        <p>{{ siteMeta().footerTagline }}</p>
+        <p class="footer-copyright">© {{ currentYear }} {{ siteMeta().siteName }}</p>
+      </section>
+      <section class="footer-nav">
+        <h3>Navigation</h3>
+        <div class="footer-nav-columns">
+          @for (item of navigation().primary; track item.path) {
+            <a [routerLink]="item.path">{{ item.label }}</a>
+          }
+        </div>
+        <div class="footer-featured-links">
+          @for (item of footer().featuredLinks; track item.path) {
+            <a [routerLink]="item.path">{{ item.label }}</a>
+          }
+        </div>
+      </section>
+      <section class="footer-connect">
+        <h3>Connect</h3>
+        <div class="footer-connect-links">
+          @for (item of navigation().social; track item.url) {
+            <a [href]="item.url" target="_blank" rel="noreferrer">
+              <mat-icon>{{ item.icon }}</mat-icon>
+              <span>{{ item.label }}</span>
+            </a>
+          }
+        </div>
+      </section>
+      <aside class="footer-backtop">
+        <button mat-icon-button type="button" aria-label="Back to top" (click)="scrollToTop()">
+          <mat-icon>north</mat-icon>
+        </button>
+      </aside>
+    </div>
+  </footer>
+}

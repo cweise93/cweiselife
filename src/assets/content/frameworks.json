@@ -800,6 +800,102 @@
                 "text": "The goal is not to force every agent into asset treatment. The goal is to make investment decisions, governance expectations, and organizational accountability more explicit, more comparable, and more defensible as AI-enabled capabilities become embedded in how the enterprise operates."
               }
             ]
+          },
+          {
+            "heading": "Built to align with existing governance and accounting disciplines",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "text": "This framework is designed to complement existing accounting, audit, risk, internal-control, and AI governance frameworks. It is not a replacement for GAAP, IFRS, COSO, NIST, ISO, SOX, internal audit, external auditor judgment, or professional accounting policy. Its purpose is to create a practical classification and evidence layer between AI experimentation and formal asset, control, and investment review."
+              },
+              {
+                "type": "paragraph",
+                "text": "The accounting side of the framework is intended to sit adjacent to internal-use software and software-development cost analysis. In the United States, organizations evaluating internally developed software-enabled capabilities should consider applicable guidance such as FASB ASU 2025-06 and ASC 350-40, along with their own capitalization, maintenance, enhancement, cloud implementation, amortization, useful-life, and impairment policies."
+              },
+              {
+                "type": "paragraph",
+                "text": "The governance side of the framework is intended to align conceptually with NIST AI RMF, the NIST Generative AI Profile, ISO/IEC 42001, COSO internal-control guidance, COSO's GenAI internal-control roadmap, and SOX/internal-audit expectations where applicable. Those frameworks answer important questions about AI risk management, management systems, internal control, trustworthiness, oversight, and auditability. The Agent Asset Grading Framework adds a practical operating question: what grade of enterprise capability is this agent becoming, and what evidence should exist before leadership treats it like a governed asset candidate?"
+              },
+              {
+                "type": "table",
+                "title": "How this framework relates to existing standards",
+                "columns": [
+                  "Reference discipline",
+                  "What it provides",
+                  "How the Agent Asset Grading Framework uses it"
+                ],
+                "rows": [
+                  [
+                    "FASB internal-use software guidance / ASC 350-40",
+                    "Accounting guidance for evaluating certain software development and internal-use software costs.",
+                    "Provides the accounting-readiness boundary for cost traceability, intended use, useful life, and capitalization review."
+                  ],
+                  [
+                    "NIST AI RMF and NIST Generative AI Profile",
+                    "Voluntary AI risk-management functions and GenAI-specific risk guidance.",
+                    "Provides the risk-management backbone for governing, mapping, measuring, and managing AI agents across the lifecycle."
+                  ],
+                  [
+                    "ISO/IEC 42001",
+                    "A management-system approach for establishing, implementing, maintaining, and continually improving AI governance.",
+                    "Provides a management-system lens for treating agent governance as a repeatable operating discipline rather than an ad hoc review."
+                  ],
+                  [
+                    "COSO Internal Control and COSO GenAI guidance",
+                    "Internal-control principles and practical guidance for governing GenAI risks and controls.",
+                    "Provides the control and auditability foundation for evidence trails, ownership, monitoring, and review activities."
+                  ],
+                  [
+                    "SOX, internal audit, and external audit expectations",
+                    "Controls, evidence, review, and assurance expectations for processes that affect financial reporting or material business risk.",
+                    "Provides the escalation boundary for agents that touch finance, reporting, approvals, transactions, margin, revenue, or regulated workflows."
+                  ]
+                ]
+              },
+              {
+                "type": "callout",
+                "tone": "technical",
+                "title": "Positioning note",
+                "text": "The Agent Asset Grading Framework should be presented as a bridge, not a substitute. It helps technical and business teams create the evidence finance, audit, security, and executive reviewers need before they make formal accounting, compliance, or governance conclusions."
+              }
+            ]
+          },
+          {
+            "heading": "Professional Use Notice",
+            "blocks": [
+              {
+                "type": "callout",
+                "tone": "warning",
+                "title": "Educational framework only",
+                "text": "This framework is for educational, strategic planning, governance design, and operational classification purposes only. It is not accounting, legal, tax, audit, investment, cybersecurity, financial reporting, or regulatory advice."
+              },
+              {
+                "type": "paragraph",
+                "text": "AI-agent costs, capitalization, amortization, impairment, internal-control treatment, SOX relevance, financial-statement presentation, cybersecurity disclosure implications, and regulatory obligations must be evaluated under the organization's applicable accounting policies, reporting standards, legal obligations, internal controls, and professional advisor guidance."
+              },
+              {
+                "type": "paragraph",
+                "text": "This framework does not determine whether any AI agent, software system, implementation effort, development cost, data asset, model, workflow, or related investment qualifies as an asset under GAAP, IFRS, tax rules, securities laws, or any other accounting, regulatory, or reporting standard. Organizations should consult qualified accounting, legal, audit, tax, cybersecurity, risk, and financial-reporting professionals before relying on this framework for compliance, capitalization, disclosure, investment, or financial-reporting decisions."
+              }
+            ]
+          },
+          {
+            "heading": "Reference sources",
+            "blocks": [
+              {
+                "type": "list",
+                "title": "Primary standards and guidance referenced in this framework",
+                "items": [
+                  "FASB ASU 2025-06 \u2014 Internal-Use Software: FASB project page for targeted improvements to internal-use software cost guidance under Subtopic 350-40.",
+                  "NIST AI Risk Management Framework: NIST AI RMF resources for voluntary AI risk management.",
+                  "NIST Generative AI Profile: NIST AI 600-1 profile that helps organizations identify and manage GenAI-specific risks.",
+                  "ISO/IEC 42001:2023 \u2014 AI Management Systems: ISO standard for establishing, implementing, maintaining, and improving an AI management system.",
+                  "COSO Internal Control \u2014 Integrated Framework: COSO internal-control framework resources.",
+                  "COSO Generative AI Internal Control Guidance: COSO guidance translating internal-control principles into practical GenAI risk and control guidance.",
+                  "SEC Cybersecurity Risk Management, Strategy, Governance, and Incident Disclosure Rule: SEC rule requiring public companies to disclose material cybersecurity incidents and material information about cybersecurity risk management, strategy, and governance."
+                ]
+              }
+            ]
           }
         ]
       },
@@ -870,6 +966,18 @@
           {
             "label": "Example scoring",
             "anchor": "how-the-five-examples-grade"
+          },
+          {
+            "label": "Built to align with governance and accounting disciplines",
+            "anchor": "built-to-align-with-existing-governance-and-accounting-disciplines"
+          },
+          {
+            "label": "Professional Use Notice",
+            "anchor": "professional-use-notice"
+          },
+          {
+            "label": "Reference sources",
+            "anchor": "reference-sources"
           }
         ],
         "callsToAction": [
@@ -1157,6 +1265,50 @@
           "href": "assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/08.png",
           "alt": "Inline agent grading calculator UI concept",
           "description": "Calculator concept showing seven dimension scoring, hard overrides, total score, grade result, and recommended next artifacts."
+        }
+      ],
+      "sourceReferences": [
+        {
+          "label": "FASB ASU 2025-06 \u2014 Internal-Use Software",
+          "href": "https://www.fasb.org/page/PageContent?pageId=%2Fprojects%2Frecently-completed-projects%2Faccounting-for-and-disclosure-of-software-costs.html",
+          "description": "FASB project page for targeted improvements to internal-use software cost guidance under Subtopic 350-40.",
+          "type": "external-reference"
+        },
+        {
+          "label": "NIST AI Risk Management Framework",
+          "href": "https://www.nist.gov/itl/ai-risk-management-framework",
+          "description": "NIST AI RMF resources for voluntary AI risk management.",
+          "type": "external-reference"
+        },
+        {
+          "label": "NIST Generative AI Profile",
+          "href": "https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence",
+          "description": "NIST AI 600-1 profile that helps organizations identify and manage GenAI-specific risks.",
+          "type": "external-reference"
+        },
+        {
+          "label": "ISO/IEC 42001:2023 \u2014 AI Management Systems",
+          "href": "https://www.iso.org/standard/42001",
+          "description": "ISO standard for establishing, implementing, maintaining, and improving an AI management system.",
+          "type": "external-reference"
+        },
+        {
+          "label": "COSO Internal Control \u2014 Integrated Framework",
+          "href": "https://www.coso.org/guidance-on-ic",
+          "description": "COSO internal-control framework resources.",
+          "type": "external-reference"
+        },
+        {
+          "label": "COSO Generative AI Internal Control Guidance",
+          "href": "https://www.coso.org/generative-ai",
+          "description": "COSO guidance translating internal-control principles into practical GenAI risk and control guidance.",
+          "type": "external-reference"
+        },
+        {
+          "label": "SEC Cybersecurity Risk Management, Strategy, Governance, and Incident Disclosure Rule",
+          "href": "https://www.sec.gov/newsroom/press-releases/2023-139",
+          "description": "SEC rule requiring public companies to disclose material cybersecurity incidents and material information about cybersecurity risk management, strategy, and governance.",
+          "type": "external-reference"
         }
       ]
     },

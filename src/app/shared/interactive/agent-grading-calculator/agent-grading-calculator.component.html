@@ -78,12 +78,6 @@
           </div>
 
           <div class="dimension-card__slider">
-            <div class="dimension-card__slider-labels" aria-hidden="true">
-              @for (option of dimension.scale; track option; let index = $index) {
-                <span [class.dimension-card__slider-label--active]="scoreFor(dimension.key) === index">{{ index }}</span>
-              }
-            </div>
-
             <mat-slider class="dimension-card__scale" min="0" max="4" step="1" discrete>
               <input
                 matSliderThumb
@@ -113,28 +107,6 @@
     </section>
 
     <aside class="agent-calculator__summary">
-      <mat-card appearance="outlined" class="summary-card cw-surface-card">
-        <p class="summary-card__eyebrow">Decision signal</p>
-        <div class="summary-card__score-row">
-          <span class="summary-card__score">{{ gradeCode() }}</span>
-          <div>
-            <h4>{{ gradeTitle() }}</h4>
-            <p>{{ primaryEvidenceAction() }}</p>
-          </div>
-        </div>
-        <mat-divider></mat-divider>
-        <div class="summary-card__meta-list">
-          <div>
-            <span class="summary-card__meta-label">Score</span>
-            <strong>{{ totalScore() }} / {{ maxScore() }}</strong>
-          </div>
-          <div>
-            <span class="summary-card__meta-label">Dimensions scored</span>
-            <strong>{{ completedDimensions() }} / {{ dimensions().length }}</strong>
-          </div>
-        </div>
-      </mat-card>
-
       <mat-card appearance="outlined" class="summary-card cw-surface-card">
         <p class="summary-card__eyebrow">Hard override flags</p>
         <p class="summary-card__support">Enable any condition that forces elevated review before classification.</p>
@@ -182,12 +154,12 @@
             <span class="cw-icon-badge summary-callout__icon">
               <mat-icon>verified_user</mat-icon>
             </span>
-            <p>Escalate for finance, audit, security, or board-level review.</p>
+            <p>Escalate for finance, audit, security, or executive review.</p>
           </div>
         </mat-card>
       }
 
-      <mat-card appearance="outlined" class="summary-card cw-surface-card">
+      <mat-card appearance="outlined" class="summary-card summary-card--evidence cw-surface-card">
         <p class="summary-card__eyebrow">Required evidence focus</p>
         <ul class="summary-list">
           @for (item of requiredEvidence(); track item) {

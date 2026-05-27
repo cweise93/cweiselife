@@ -1,11 +1,12 @@
 import { DOCUMENT } from '@angular/common';
-import { Component, HostListener, inject, signal } from '@angular/core';
+import { Component, HostBinding, HostListener, computed, effect, inject, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { filter, map, startWith } from 'rxjs';
 import { ContentService } from '../content/content.service';
 import { FooterContent, SiteMeta, SiteNavigation } from '../content/content.models';
 type ThemeMode = 'light' | 'dusk';
@@ -35,17 +36,41 @@ const EMPTY_FOOTER: FooterContent = { featuredLinks: [] };
 export class SiteShellComponent {
   private readonly document = inject(DOCUMENT);
   private readonly contentService = inject(ContentService);
+  private readonly router = inject(Router);
   readonly currentYear = new Date().getFullYear();
   readonly isCompact = signal(false);
   readonly mobileMenuOpen = signal(false);
+  readonly viewportWidth = signal(typeof window !== 'undefined' ? window.innerWidth : 1440);
   readonly themeMode = signal<ThemeMode>(this.readStoredTheme());
   readonly siteMeta = toSignal(this.contentService.getSiteMeta(), { initialValue: EMPTY_META });
   readonly navigation = toSignal(this.contentService.getNavigation(), { initialValue: EMPTY_NAVIGATION });
   readonly footer = toSignal(this.contentService.getFooterContent(), { initialValue: EMPTY_FOOTER });
+  readonly activeLayout = toSignal(
+    this.router.events.pipe(
+      filter((event): event is NavigationEnd => event instanceof NavigationEnd),
+      startWith(null),
+      map(() => this.deepestLayout())
+    ),
+    { initialValue: this.deepestLayout() }
+  );
+  readonly isFrameworkWorkspace = computed(() => this.activeLayout() === 'framework-workspace');
+  readonly showFrameworkRail = computed(() => this.isFrameworkWorkspace() && this.viewportWidth() >= 1200);
+  readonly showTopToolbar = computed(() => !this.showFrameworkRail());
+  readonly showFooter = computed(() => !this.isFrameworkWorkspace());
+
+  @HostBinding('class.site-shell--framework-workspace')
+  get isFrameworkWorkspaceClass(): boolean {
+    return this.isFrameworkWorkspace();
+  }
 
   constructor() {
     this.applyTheme(this.themeMode());
-    this.updateToolbarHeightVariable();
+    effect(() => {
+      this.showFrameworkRail();
+      this.viewportWidth();
+      this.isCompact();
+      this.updateToolbarHeightVariable();
+    });
   }
 
   scrollToTop(): void {
@@ -75,6 +100,7 @@ export class SiteShellComponent {
 
   @HostListener('window:resize')
   onWindowResize(): void {
+    this.viewportWidth.set(window.innerWidth);
     if (window.innerWidth > 820 && this.mobileMenuOpen()) {
       this.mobileMenuOpen.set(false);
     }
@@ -95,8 +121,31 @@ export class SiteShellComponent {
 
   private updateToolbarHeightVariable(): void {
     const root = this.document.documentElement;
-    const isMobile = window.innerWidth <= 820;
-    const height = this.isCompact() ? 58 : isMobile ? 116 : 72;
+    const isMobile = this.viewportWidth() <= 820;
+    const height = this.showFrameworkRail() ? 0 : this.isCompact() ? 58 : isMobile ? 116 : 72;
     root.style.setProperty('--cw-toolbar-current-height', `${height}px`);
+  }
+
+  navIcon(path: string): string {
+    const icons: Record<string, string> = {
+      '/': 'home',
+      '/writing': 'edit_note',
+      '/frameworks': 'dashboard_customize',
+      '/initiatives': 'flag',
+      '/about': 'info',
+      '/connect': 'alternate_email'
+    };
+
+    return icons[path] ?? 'link';
+  }
+
+  private deepestLayout(): string {
+    let snapshot = this.router.routerState.snapshot.root;
+
+    while (snapshot.firstChild) {
+      snapshot = snapshot.firstChild;
+    }
+
+    return typeof snapshot.data['layout'] === 'string' ? snapshot.data['layout'] : 'standard';
   }
 }

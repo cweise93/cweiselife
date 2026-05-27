@@ -1,53 +1,50 @@
 <div class="framework-context-bar" aria-label="Framework context and section navigation">
   <div class="cw-container framework-context-bar__inner">
-    <div class="context-cell">
-      <span class="context-cell__label">Category</span>
-      <span class="context-cell__value">{{ category() }}</span>
-    </div>
+    <div class="framework-context-bar__summary">
+      <div class="context-group">
+        <span class="context-group__label">Category</span>
+        <span class="context-group__value">{{ category() }}</span>
+      </div>
 
-    <div class="context-cell">
-      <span class="context-cell__label">Best for</span>
-      <span class="context-cell__value">{{ bestFor() }}</span>
-    </div>
+      <div class="context-group context-group--best-for">
+        <span class="context-group__label">Best for</span>
+        <span class="context-group__value">{{ bestFor() }}</span>
+      </div>
 
-    <button
-      type="button"
-      class="context-cell context-cell--section"
-      [matMenuTriggerFor]="sectionMenu"
-      aria-label="Choose framework section"
-    >
-      <span class="context-cell__label">Current section</span>
-      <span class="context-cell__value">
-        <span class="context-cell__value-text">{{ currentSectionLabel() }}</span>
-        <mat-icon aria-hidden="true">expand_more</mat-icon>
-      </span>
-    </button>
-
-    <mat-menu #sectionMenu="matMenu" class="framework-section-menu">
-      @for (item of toc(); track item.anchor) {
-        <button
-          mat-menu-item
-          type="button"
-          [class.is-active]="item.anchor === activeAnchor()"
-          [attr.aria-current]="item.anchor === activeAnchor() ? 'true' : null"
-          (click)="selectSection(item)"
-        >
-          <span>{{ item.label }}</span>
-          @if (item.anchor === activeAnchor()) {
-            <mat-icon aria-hidden="true">check</mat-icon>
-          }
-        </button>
+      @if (toc().length) {
+        <mat-form-field appearance="outline" subscriptSizing="dynamic" class="context-group context-group--section-picker">
+          <mat-label>Active section</mat-label>
+          <mat-select [value]="activeAnchor()" (selectionChange)="selectSection($event.value)">
+            @for (item of toc(); track item.anchor; let index = $index) {
+              <mat-option [value]="item.anchor">
+                {{ index + 1 }}. {{ item.label }}
+              </mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
       }
-    </mat-menu>
 
-    <div class="context-cell">
-      <span class="context-cell__label">Primary artifact</span>
-      <span class="context-cell__value">{{ primaryArtifact() }}</span>
+      <div class="context-group context-group--progress">
+        <div class="context-group__progress-head">
+          <span class="context-group__label">Progress</span>
+          <span class="context-group__progress-text">{{ progressLabel() }}</span>
+        </div>
+        <mat-progress-bar mode="determinate" [value]="progressValue()"></mat-progress-bar>
+      </div>
+
+      <button mat-stroked-button color="primary" type="button" (click)="toggleExpanded()">
+        {{ contextExpanded() ? 'Hide context' : 'Expand context' }}
+      </button>
     </div>
 
-    <div class="context-cell">
-      <span class="context-cell__label">Method</span>
-      <span class="context-cell__value">{{ method() }}</span>
-    </div>
+    @if (contextExpanded()) {
+      <div class="framework-context-bar__expanded">
+        <mat-chip-set>
+          <mat-chip>{{ category() }}</mat-chip>
+          <mat-chip>{{ primaryArtifact() }}</mat-chip>
+          <mat-chip>{{ method() }}</mat-chip>
+        </mat-chip-set>
+      </div>
+    }
   </div>
 </div>

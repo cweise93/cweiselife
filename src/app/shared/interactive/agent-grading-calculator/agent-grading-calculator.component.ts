@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, computed, effect, inject, input, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -7,6 +7,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSliderModule } from '@angular/material/slider';
+import { AgentGradingWorkspaceService } from './agent-grading-workspace.service';
 
 interface CalculatorDimension {
   key: string;
@@ -70,6 +71,8 @@ const EMPTY_CONFIG: CalculatorConfig = {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AgentGradingCalculatorComponent {
+  private readonly workspace = inject(AgentGradingWorkspaceService);
+  private readonly destroyRef = inject(DestroyRef);
   readonly title = input('Agent Grading Calculator');
   readonly description = input(
     'Score an enterprise AI agent across seven dimensions and review the resulting governance posture.'
@@ -169,6 +172,29 @@ export class AgentGradingCalculatorComponent {
       selectedMeaning: dimension.scale[this.scoreFor(dimension.key)] ?? ''
     }))
   }));
+
+  constructor() {
+    effect(() => {
+      this.workspace.update({
+        totalScore: this.totalScore(),
+        maxScore: this.maxScore(),
+        completedDimensions: this.completedDimensions(),
+        totalDimensions: this.dimensions().length,
+        grade: this.scoreBand()?.grade ?? 'Not classified',
+        gradeCode: this.gradeCode(),
+        gradeTitle: this.gradeTitle(),
+        posture: this.scoreBand()?.posture ?? 'Choose scores to classify the agent',
+        overrideCount: this.activeOverrideLabels().length,
+        blockerCount: this.activeBlockerLabels().length,
+        overrideLabels: this.activeOverrideLabels(),
+        blockerLabels: this.activeBlockerLabels(),
+        requiredEvidence: this.requiredEvidence()
+      });
+      this.workspace.registerExports(() => this.exportJson(), () => this.exportCsv());
+    });
+
+    this.destroyRef.onDestroy(() => this.workspace.reset());
+  }
 
   scoreFor(key: string): number {
     return this.scores()[key] ?? 0;

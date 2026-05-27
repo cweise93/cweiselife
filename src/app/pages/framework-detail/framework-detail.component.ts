@@ -6,12 +6,21 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { map, switchMap } from 'rxjs';
 import { ContentService } from '../../core/content/content.service';
 import { CompanionAsset, CompanionCallToAction, CompanionRelatedItem, CompanionSnapshotItem, CompanionTocItem, FrameworkItem } from '../../core/content/content.models';
 import { ContentRendererComponent } from '../../shared/content/content-renderer.component';
 import { FrameworkStickyContextBarComponent } from '../../features/frameworks/components/framework-sticky-context-bar/framework-sticky-context-bar.component';
 import { FrameworkResourceDialogComponent } from './framework-resource-dialog.component';
+import { AgentGradingWorkspaceService } from '../../shared/interactive/agent-grading-calculator/agent-grading-workspace.service';
+
+type WorkspaceFlagKind = 'override' | 'blocker';
+
+interface WorkspaceFlag {
+  label: string;
+  kind: WorkspaceFlagKind;
+}
 
 @Component({
   selector: 'cw-framework-detail',
@@ -22,6 +31,7 @@ import { FrameworkResourceDialogComponent } from './framework-resource-dialog.co
     MatCardModule,
     MatDialogModule,
     MatIconModule,
+    MatProgressBarModule,
     ContentRendererComponent,
     FrameworkStickyContextBarComponent
   ],
@@ -35,6 +45,7 @@ export class FrameworkDetailComponent {
   private readonly document = inject(DOCUMENT);
   private readonly destroyRef = inject(DestroyRef);
   private readonly dialog = inject(MatDialog);
+  private readonly gradingWorkspace = inject(AgentGradingWorkspaceService);
   private observedSections: Array<{ anchor: string; element: HTMLElement }> = [];
   private readonly viewportListener = () => this.updateActiveSectionFromScroll();
 
@@ -68,6 +79,14 @@ export class FrameworkDetailComponent {
     () => this.templateItems().find((item) => item.label.toLowerCase().includes('worksheet')) ?? null
   );
   readonly coreQuestion = computed(() => this.snapshotValue('Core question'));
+  readonly workspaceScore = this.gradingWorkspace.snapshot;
+  readonly hasLiveCalculator = computed(() => this.workspaceScore().totalDimensions > 0);
+  readonly calculatorRailOffset = signal(0);
+  readonly calculatorRailBoundaryHeight = signal(0);
+  readonly activeWorkspaceFlags = computed<WorkspaceFlag[]>(() => [
+    ...this.workspaceScore().blockerLabels.map((label) => ({ label, kind: 'blocker' as const })),
+    ...this.workspaceScore().overrideLabels.map((label) => ({ label, kind: 'override' as const }))
+  ]);
   readonly fallbackSnapshotItems = computed<CompanionSnapshotItem[]>(() => {
     const framework = this.item();
     if (!framework || this.snapshotItems().length) {
@@ -81,14 +100,6 @@ export class FrameworkDetailComponent {
     ].filter((item) => !!item.value);
   });
   readonly activeSectionAnchor = signal<string | null>(null);
-  readonly activeSectionLabel = computed(() => {
-    const anchor = this.activeSectionAnchor();
-    if (!anchor) {
-      return this.tocItems()[0]?.label ?? null;
-    }
-
-    return this.tocItems().find((item) => item.anchor === anchor)?.label ?? this.tocItems()[0]?.label ?? null;
-  });
 
   constructor() {
     effect(() => {
@@ -98,6 +109,8 @@ export class FrameworkDetailComponent {
       if (!framework || !tocItems.length) {
         this.observedSections = [];
         this.activeSectionAnchor.set(null);
+        this.calculatorRailOffset.set(0);
+        this.calculatorRailBoundaryHeight.set(0);
         return;
       }
 
@@ -143,6 +156,13 @@ export class FrameworkDetailComponent {
     });
 
     this.activeSectionAnchor.set(item.anchor);
+  }
+
+  selectSectionByAnchor(anchor: string): void {
+    const item = this.tocItems().find((tocItem) => tocItem.anchor === anchor);
+    if (item) {
+      this.scrollToSection(item);
+    }
   }
 
   openTemplateLibrary(): void {
@@ -210,6 +230,75 @@ export class FrameworkDetailComponent {
     return 'description';
   }
 
+  exportWorkspaceJson(): void {
+    this.gradingWorkspace.exportJson();
+  }
+
+  exportWorkspaceCsv(): void {
+    this.gradingWorkspace.exportCsv();
+  }
+
+  workspaceFlagIcon(flag: WorkspaceFlag): string {
+    const label = flag.label.toLowerCase();
+
+    if (flag.kind === 'blocker') {
+      if (label.includes('owner')) {
+        return 'person_off';
+      }
+      if (label.includes('cost')) {
+        return 'receipt_long';
+      }
+      if (label.includes('logging') || label.includes('evidence')) {
+        return 'fact_check';
+      }
+      if (label.includes('security')) {
+        return 'gpp_bad';
+      }
+
+      return 'report_problem';
+    }
+
+    if (label.includes('financial') || label.includes('margin') || label.includes('revenue')) {
+      return 'account_balance';
+    }
+    if (label.includes('sox') || label.includes('regulated')) {
+      return 'gavel';
+    }
+    if (label.includes('cybersecurity') || label.includes('restricted')) {
+      return 'shield';
+    }
+    if (label.includes('client')) {
+      return 'handshake';
+    }
+    if (label.includes('autonomous')) {
+      return 'smart_toy';
+    }
+
+    return 'verified_user';
+  }
+
+  workspaceFlagTone(flag: WorkspaceFlag): string {
+    const label = flag.label.toLowerCase();
+
+    if (flag.kind === 'blocker') {
+      return 'warning';
+    }
+    if (label.includes('financial') || label.includes('margin') || label.includes('revenue')) {
+      return 'finance';
+    }
+    if (label.includes('sox') || label.includes('regulated')) {
+      return 'audit';
+    }
+    if (label.includes('cybersecurity') || label.includes('restricted')) {
+      return 'security';
+    }
+    if (label.includes('client')) {
+      return 'client';
+    }
+
+    return 'governance';
+  }
+
   private setupObservedSections(tocItems: CompanionTocItem[]): void {
     this.observedSections = tocItems
       .map((item) => {
@@ -223,6 +312,8 @@ export class FrameworkDetailComponent {
 
   private updateActiveSectionFromScroll(): void {
     if (!this.observedSections.length) {
+      this.calculatorRailOffset.set(0);
+      this.calculatorRailBoundaryHeight.set(0);
       return;
     }
 
@@ -243,6 +334,19 @@ export class FrameworkDetailComponent {
 
     if (currentAnchor) {
       this.activeSectionAnchor.set(currentAnchor);
+    }
+
+    const calculatorSection = this.document.getElementById('the-inline-agent-grading-calculator');
+    const workspaceGrid = this.document.querySelector('.framework-workspace-grid') as HTMLElement | null;
+
+    if (calculatorSection && workspaceGrid) {
+      const calculatorRect = calculatorSection.getBoundingClientRect();
+      const gridRect = workspaceGrid.getBoundingClientRect();
+      this.calculatorRailOffset.set(Math.max(0, calculatorRect.top - gridRect.top));
+      this.calculatorRailBoundaryHeight.set(Math.max(calculatorRect.height, 1));
+    } else {
+      this.calculatorRailOffset.set(0);
+      this.calculatorRailBoundaryHeight.set(0);
     }
   }
 
