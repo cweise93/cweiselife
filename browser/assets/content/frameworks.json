@@ -1316,7 +1316,7 @@
       "id": "framework-001",
       "slug": "frameworks/2026/04/14/turn-down-the-noise",
       "title": "Turn Down the Noise",
-      "summary": "A model for reducing operational noise, surfacing signal, and improving decision quality.",
+      "summary": "An operating framework for reducing coordination churn, separating signal from noise, and improving decision quality without losing critical evidence.",
       "status": "published",
       "publishedOn": "2026-04-14",
       "featured": true,
@@ -1324,47 +1324,576 @@
       "tags": [
         "signal",
         "noise",
-        "decision systems"
+        "decision systems",
+        "operational clarity",
+        "execution quality",
+        "workflow design",
+        "leadership systems",
+        "organizational effectiveness"
       ],
-      "diagramImage": "assets/images/noise-framework.png",
+      "diagramImage": "assets/images/frameworks/2026-04-14_turn_down_the_noise/images/01_turn_down_the_noise_overview.png",
+      "heroImage": "assets/images/frameworks/2026-04-14_turn_down_the_noise/images/01_turn_down_the_noise_overview.png",
       "seo": {
         "title": "Turn Down the Noise Framework",
-        "description": "A framework for reducing organizational noise and improving signal quality."
+        "description": "A practical operating framework for reducing organizational noise, protecting decision-critical signal, and improving execution quality."
       },
       "body": {
-        "premise": "Most execution problems get worse when organizations cannot distinguish relevant signal from operational noise.",
+        "premise": "Most execution problems get worse when organizations cannot distinguish relevant signal from operational noise. The issue is not always that leaders lack information. More often, they are surrounded by activity, updates, meetings, dashboards, escalations, and status language that make the true state of work harder to see.",
         "components": [
           {
             "title": "Noise Sources",
-            "description": "Interruptions, ambiguity, duplicate effort, and status theater that obscure the true state of work."
+            "description": "Interruptions, ambiguity, duplicate effort, status theater, tool sprawl, and escalation churn that obscure what is actually happening."
           },
           {
             "title": "Signal Conditions",
-            "description": "Relevant, timely, actionable information that makes progress and risk visible."
+            "description": "Relevant, timely, actionable, evidence-backed, and decision-linked information that changes action, clarifies risk, or supports a choice."
           },
           {
             "title": "Volume Control",
-            "description": "Workflow choices that suppress non-essential activity while preserving decision-critical evidence."
+            "description": "Workflow choices that reduce non-essential communication while preserving the evidence leaders need to make confident decisions."
           }
         ],
-        "application": "Use this framework when leaders are over-briefed but under-informed, or when teams are active but decision quality remains low.",
+        "application": "Use this framework when leaders are over-briefed but under-informed, when teams are active but decision quality remains low, or when the organization produces more coordination than clarity.",
         "sections": [
           {
-            "heading": "When to apply it",
-            "paragraphs": [
-              "Apply the framework when the organization is producing more coordination than clarity.",
-              "It is especially useful in environments where reporting burden grows faster than decision quality."
+            "heading": "Why this framework exists",
+            "layout": "split-image-right",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "text": "Modern organizations often mistake communication volume for operating clarity. A team can have more meetings, more updates, more dashboards, more chat threads, more reports, and more escalation paths while becoming less able to answer the basic leadership question: what is true, what matters, who owns it, and what should happen next?"
+              },
+              {
+                "type": "paragraph",
+                "text": "Turn Down the Noise is a practical framework for reducing the amount of organizational activity that looks productive but does not improve decisions. It does not argue for less communication in every context. It argues for better information design: fewer low-value updates, clearer ownership, sharper signals, and more durable evidence."
+              },
+              {
+                "type": "image",
+                "src": "assets/images/frameworks/2026-04-14_turn_down_the_noise/images/01_turn_down_the_noise_overview.png",
+                "alt": "Turn Down the Noise framework overview",
+                "caption": "The framework separates noise sources, signal conditions, and volume-control moves so leaders can reduce churn without losing decision-critical evidence.",
+                "title": "Turn Down the Noise Overview"
+              },
+              {
+                "type": "callout",
+                "tone": "executive",
+                "title": "Core premise",
+                "text": "The goal is not to communicate more. The goal is to communicate what changes action, clarifies risk, or supports a decision."
+              }
             ]
           },
           {
-            "heading": "What to inspect first",
-            "paragraphs": [
-              "Start with the operating surfaces where work is translated, summarized, escalated, and reported.",
-              "Those surfaces usually determine whether signal survives contact with execution."
+            "heading": "The operating problem: over-briefed but under-informed",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "text": "When a leadership team is over-briefed but under-informed, the organization is usually not silent. It is loud. The problem is that the sound is poorly shaped. Leaders receive status narratives, partial updates, repeated summaries, escalation fragments, and context-free metrics. Each item may be defensible on its own, but together they create a fog around the real state of execution."
+              },
+              {
+                "type": "paragraph",
+                "text": "The result is a decision-quality gap. Teams appear busy. Meetings multiply. Work is discussed repeatedly. Risk is escalated late or everywhere at once. Important details are buried inside messages, slide decks, spreadsheets, or disconnected tools. People spend more time proving that work is happening than making the work easier to see, route, complete, and improve."
+              },
+              {
+                "type": "list",
+                "title": "Symptoms that the noise level is too high",
+                "items": [
+                  "Leaders ask for repeated status updates because they do not trust the available picture.",
+                  "Teams spend more time translating work than advancing it.",
+                  "Different groups maintain separate versions of the same truth.",
+                  "Escalations feel urgent but lack context, ownership, or decision paths.",
+                  "Meetings create more follow-up meetings instead of clearer action.",
+                  "Reporting burden grows faster than decision quality."
+                ]
+              }
+            ]
+          },
+          {
+            "heading": "Noise Sources",
+            "layout": "split-image-left",
+            "blocks": [
+              {
+                "type": "image",
+                "src": "assets/images/frameworks/2026-04-14_turn_down_the_noise/images/02_turn_down_the_noise_noise_sources_audit.png",
+                "alt": "Noise Sources Audit infographic",
+                "caption": "Noise usually enters through ordinary operating surfaces: interruptions, ambiguity, duplicate effort, status theater, tool sprawl, and escalation churn.",
+                "title": "Noise Sources Audit"
+              },
+              {
+                "type": "paragraph",
+                "text": "Noise is not merely unnecessary chatter. In an operating system, noise is any activity, artifact, meeting, message, or workflow behavior that consumes attention without improving the next decision. Some noise is obvious; much of it is disguised as responsible management."
+              },
+              {
+                "type": "cards",
+                "items": [
+                  {
+                    "title": "Interruptions",
+                    "description": "Unplanned pings and context switching break momentum, fragment attention, and force people to reassemble context repeatedly."
+                  },
+                  {
+                    "title": "Ambiguity",
+                    "description": "Unclear asks create rework, delay, conflicting assumptions, and defensive clarification loops."
+                  },
+                  {
+                    "title": "Duplicate effort",
+                    "description": "The same update, analysis, or work product is recreated because ownership, visibility, or source-of-truth discipline is weak."
+                  },
+                  {
+                    "title": "Status theater",
+                    "description": "Activity is performed for optics: polished updates, elaborate reporting, or meeting behavior that reassures leadership without improving outcomes."
+                  },
+                  {
+                    "title": "Tool sprawl",
+                    "description": "Too many systems fragment context and make the true state of work harder to reconstruct."
+                  },
+                  {
+                    "title": "Escalation noise",
+                    "description": "Everything becomes urgent, which makes material risk harder to distinguish from routine friction."
+                  }
+                ]
+              },
+              {
+                "type": "callout",
+                "tone": "warning",
+                "title": "Audit test",
+                "text": "Ask four questions: What is repeated? What is unclear? What is performative? What can be removed without reducing decision quality?"
+              }
+            ]
+          },
+          {
+            "heading": "Signal Conditions",
+            "layout": "split-image-right",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "text": "Signal is not simply data. Signal is information with decision value. It helps someone understand what changed, what matters, what risk is present, what owner is accountable, and what action should happen next."
+              },
+              {
+                "type": "image",
+                "src": "assets/images/frameworks/2026-04-14_turn_down_the_noise/images/03_turn_down_the_noise_signal_conditions.png",
+                "alt": "Signal Conditions infographic",
+                "caption": "Good operating signal is relevant, timely, actionable, evidence-backed, and decision-linked.",
+                "title": "Signal Conditions"
+              },
+              {
+                "type": "table",
+                "title": "What good information looks like",
+                "columns": [
+                  "Condition",
+                  "Meaning",
+                  "Leadership test"
+                ],
+                "rows": [
+                  [
+                    "Relevant",
+                    "Tied to the decision that must be made.",
+                    "Does this help someone choose, prioritize, intervene, or wait?"
+                  ],
+                  [
+                    "Timely",
+                    "Arrives early enough to change action.",
+                    "Is this information early enough to matter?"
+                  ],
+                  [
+                    "Actionable",
+                    "Points to a next move, not just a data point.",
+                    "Can an accountable owner do something with it?"
+                  ],
+                  [
+                    "Evidence-backed",
+                    "Grounded in observable work, risk, or results.",
+                    "Can we inspect the source behind the claim?"
+                  ],
+                  [
+                    "Decision-linked",
+                    "Connected to an owner, a choice, and a time horizon.",
+                    "Who decides, by when, and with what evidence?"
+                  ]
+                ]
+              },
+              {
+                "type": "callout",
+                "tone": "technical",
+                "title": "Signal test",
+                "text": "If information does not change action, clarify risk, or support a decision, it may be noise."
+              }
+            ]
+          },
+          {
+            "heading": "Volume Control",
+            "layout": "split-image-left",
+            "blocks": [
+              {
+                "type": "image",
+                "src": "assets/images/frameworks/2026-04-14_turn_down_the_noise/images/04_turn_down_the_noise_volume_control.png",
+                "alt": "Volume Control infographic",
+                "caption": "Volume control reduces reporting churn while protecting the context and evidence required for confident decisions.",
+                "title": "Volume Control"
+              },
+              {
+                "type": "paragraph",
+                "text": "Volume control is the discipline of lowering communication burden without hiding reality. It is not silence. It is information design. The organization should remove duplicate updates, standardize handoffs, route escalation by risk, and preserve evidence at the source."
+              },
+              {
+                "type": "cards",
+                "items": [
+                  {
+                    "title": "Observe",
+                    "description": "Map where work is translated, summarized, escalated, and reported. Most noise enters when work changes format or audience."
+                  },
+                  {
+                    "title": "Filter",
+                    "description": "Remove duplicate status requests, unclear update loops, and non-essential coordination that does not improve action."
+                  },
+                  {
+                    "title": "Route",
+                    "description": "Assign a clear owner, decision path, escalation rule, and time horizon so signals do not bounce between audiences."
+                  },
+                  {
+                    "title": "Preserve",
+                    "description": "Keep decision-critical evidence visible, current, and easy to retrieve so leaders do not need repeated narrative reconstruction."
+                  }
+                ]
+              },
+              {
+                "type": "list",
+                "title": "Practical moves",
+                "items": [
+                  "Reduce reporting churn by eliminating duplicate updates and replacing them with shared source-of-truth views.",
+                  "Standardize handoffs so work does not need to be retranslated at every boundary.",
+                  "Escalate by risk instead of urgency theater.",
+                  "Protect context at the source rather than burying evidence in status summaries."
+                ]
+              }
+            ]
+          },
+          {
+            "heading": "Where to apply it",
+            "layout": "split-image-right",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "text": "The framework is most useful where signal is most likely to get lost: intake, handoffs, work translation, summaries, escalations, and reporting surfaces. These are the places where real work is converted into language for another audience. Every conversion creates the possibility of distortion."
+              },
+              {
+                "type": "image",
+                "src": "assets/images/frameworks/2026-04-14_turn_down_the_noise/images/05_turn_down_the_noise_where_to_apply_it.png",
+                "alt": "Where to Apply It infographic",
+                "caption": "Start with the operating surfaces where signal is most likely to be lost in translation.",
+                "title": "Where to Apply It"
+              },
+              {
+                "type": "table",
+                "title": "Operating surfaces to inspect first",
+                "columns": [
+                  "Surface",
+                  "What to inspect",
+                  "What better looks like"
+                ],
+                "rows": [
+                  [
+                    "Intake",
+                    "How requests enter the system and how scope is clarified.",
+                    "Clear ask, owner, value, urgency, risk, and acceptance criteria."
+                  ],
+                  [
+                    "Handoffs",
+                    "Where work crosses team, role, or system boundaries.",
+                    "Defined transfer points, no hidden assumptions, no duplicate translation."
+                  ],
+                  [
+                    "Work translation",
+                    "How technical or operational reality is converted for leadership review.",
+                    "Context preserved with concise decision framing."
+                  ],
+                  [
+                    "Summaries",
+                    "Whether summaries clarify decisions or flatten important nuance.",
+                    "Shorter narratives with stronger evidence links."
+                  ],
+                  [
+                    "Escalations",
+                    "Whether risk is being routed or merely amplified.",
+                    "Escalation rules based on materiality, timing, owner, and decision need."
+                  ],
+                  [
+                    "Reporting surfaces",
+                    "Whether reports reduce uncertainty or create reporting theater.",
+                    "Shared views that make the true state of work easier to inspect."
+                  ]
+                ]
+              }
+            ]
+          },
+          {
+            "heading": "The implementation pattern",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "text": "Turn Down the Noise can be implemented as a light operating review rather than a heavy transformation program. The sequence is simple: pick a noisy workflow, map the operating surfaces, identify noise sources, define signal conditions, remove duplicate volume, and preserve the evidence that matters."
+              },
+              {
+                "type": "list",
+                "title": "Five-step implementation sequence",
+                "items": [
+                  "Select one workflow where coordination outpaces clarity.",
+                  "Map every translation surface: intake, handoff, summary, escalation, and report.",
+                  "Label noise sources: interruption, ambiguity, duplication, status theater, tool sprawl, escalation noise.",
+                  "Define the signal conditions required for better decisions.",
+                  "Change the workflow so decision-critical evidence is preserved and non-essential volume is reduced."
+                ]
+              },
+              {
+                "type": "callout",
+                "tone": "executive",
+                "title": "Leadership standard",
+                "text": "Do not ask teams for more updates until the organization has fixed the surfaces where updates become noisy."
+              }
+            ]
+          },
+          {
+            "heading": "Final standard",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "text": "A healthier operating system does not require everyone to know everything. It requires the right people to see the right signal at the right time, with enough evidence to act confidently."
+              },
+              {
+                "type": "paragraph",
+                "text": "Turning down the noise means designing the organization so real work is easier to see, risk is easier to route, ownership is easier to inspect, and decisions are easier to make. That is not a communication preference. It is an execution discipline."
+              }
             ]
           }
         ]
-      }
+      },
+      "companion": {
+        "snapshot": [
+          {
+            "label": "Category",
+            "value": "Decision Quality"
+          },
+          {
+            "label": "Best for",
+            "value": "Executives, operators, PMO leaders, transformation teams, workflow owners"
+          },
+          {
+            "label": "Core question",
+            "value": "What can we remove, clarify, route, or preserve so decisions improve?"
+          },
+          {
+            "label": "Primary artifact",
+            "value": "Noise Sources Audit"
+          },
+          {
+            "label": "Method",
+            "value": "Noise audit + signal conditions + volume-control workflow design"
+          }
+        ],
+        "toc": [
+          {
+            "label": "Why this framework exists",
+            "anchor": "why-this-framework-exists"
+          },
+          {
+            "label": "Over-briefed but under-informed",
+            "anchor": "the-operating-problem-over-briefed-but-under-informed"
+          },
+          {
+            "label": "Noise Sources",
+            "anchor": "noise-sources"
+          },
+          {
+            "label": "Signal Conditions",
+            "anchor": "signal-conditions"
+          },
+          {
+            "label": "Volume Control",
+            "anchor": "volume-control"
+          },
+          {
+            "label": "Where to apply it",
+            "anchor": "where-to-apply-it"
+          },
+          {
+            "label": "Implementation pattern",
+            "anchor": "the-implementation-pattern"
+          },
+          {
+            "label": "Final standard",
+            "anchor": "final-standard"
+          }
+        ],
+        "callsToAction": [
+          {
+            "title": "Run a noise audit",
+            "description": "Identify interruptions, ambiguity, duplicate effort, status theater, tool sprawl, and escalation noise in a current workflow.",
+            "anchor": "noise-sources",
+            "buttonLabel": "Start with noise sources"
+          },
+          {
+            "title": "Define signal conditions",
+            "description": "Clarify what information must be relevant, timely, actionable, evidence-backed, and decision-linked before the next leadership review.",
+            "anchor": "signal-conditions",
+            "buttonLabel": "Define signal"
+          }
+        ],
+        "assets": [
+          {
+            "label": "Turn Down the Noise Overview",
+            "href": "assets/images/frameworks/2026-04-14_turn_down_the_noise/images/01_turn_down_the_noise_overview.png",
+            "description": "Three-part overview of the Turn Down the Noise framework: Noise Sources, Signal Conditions, and Volume Control.",
+            "type": "image",
+            "number": "01"
+          },
+          {
+            "label": "Noise Sources Audit",
+            "href": "assets/images/frameworks/2026-04-14_turn_down_the_noise/images/02_turn_down_the_noise_noise_sources_audit.png",
+            "description": "Audit diagram showing the common sources of operational noise that obscure real work.",
+            "type": "image",
+            "number": "02"
+          },
+          {
+            "label": "Signal Conditions",
+            "href": "assets/images/frameworks/2026-04-14_turn_down_the_noise/images/03_turn_down_the_noise_signal_conditions.png",
+            "description": "Signal-quality diagram showing what useful, decision-linked information looks like.",
+            "type": "image",
+            "number": "03"
+          },
+          {
+            "label": "Volume Control",
+            "href": "assets/images/frameworks/2026-04-14_turn_down_the_noise/images/04_turn_down_the_noise_volume_control.png",
+            "description": "Workflow diagram showing how to lower noise without losing decision-critical evidence.",
+            "type": "image",
+            "number": "04"
+          },
+          {
+            "label": "Where to Apply It",
+            "href": "assets/images/frameworks/2026-04-14_turn_down_the_noise/images/05_turn_down_the_noise_where_to_apply_it.png",
+            "description": "Application diagram showing where the framework should be used and which operating surfaces to inspect first.",
+            "type": "image",
+            "number": "05"
+          }
+        ],
+        "related": [
+          {
+            "title": "Systems Translation Loop",
+            "slug": "frameworks/2026/03/18/systems-translation-loop",
+            "description": "A framework for preserving signal across executive intent, workflow reality, and technical implementation."
+          },
+          {
+            "title": "Relationship Capital \u2192 Revenue Intelligence",
+            "slug": "frameworks/2026/05/17/relationship-capital-revenue-intelligence",
+            "description": "A framework for converting relationship capital, service adjacency, and delivery history into measurable revenue intelligence."
+          }
+        ]
+      },
+      "productionAssets": {
+        "frameworkImages": [
+          {
+            "label": "Turn Down the Noise Overview",
+            "href": "assets/images/frameworks/2026-04-14_turn_down_the_noise/images/01_turn_down_the_noise_overview.png",
+            "description": "Three-part overview of the Turn Down the Noise framework: Noise Sources, Signal Conditions, and Volume Control.",
+            "type": "image",
+            "number": "01"
+          },
+          {
+            "label": "Noise Sources Audit",
+            "href": "assets/images/frameworks/2026-04-14_turn_down_the_noise/images/02_turn_down_the_noise_noise_sources_audit.png",
+            "description": "Audit diagram showing the common sources of operational noise that obscure real work.",
+            "type": "image",
+            "number": "02"
+          },
+          {
+            "label": "Signal Conditions",
+            "href": "assets/images/frameworks/2026-04-14_turn_down_the_noise/images/03_turn_down_the_noise_signal_conditions.png",
+            "description": "Signal-quality diagram showing what useful, decision-linked information looks like.",
+            "type": "image",
+            "number": "03"
+          },
+          {
+            "label": "Volume Control",
+            "href": "assets/images/frameworks/2026-04-14_turn_down_the_noise/images/04_turn_down_the_noise_volume_control.png",
+            "description": "Workflow diagram showing how to lower noise without losing decision-critical evidence.",
+            "type": "image",
+            "number": "04"
+          },
+          {
+            "label": "Where to Apply It",
+            "href": "assets/images/frameworks/2026-04-14_turn_down_the_noise/images/05_turn_down_the_noise_where_to_apply_it.png",
+            "description": "Application diagram showing where the framework should be used and which operating surfaces to inspect first.",
+            "type": "image",
+            "number": "05"
+          }
+        ],
+        "imageRenamePlan": [
+          {
+            "current": "/mnt/data/ghostwriter_images/generated/01_turn_down_the_noise_overview.png",
+            "recommended": "assets/images/frameworks/2026-04-14_turn_down_the_noise/images/01_turn_down_the_noise_overview.png",
+            "title": "Turn Down the Noise Overview"
+          },
+          {
+            "current": "/mnt/data/ghostwriter_images/generated/02_turn_down_the_noise_noise_sources_audit.png",
+            "recommended": "assets/images/frameworks/2026-04-14_turn_down_the_noise/images/02_turn_down_the_noise_noise_sources_audit.png",
+            "title": "Noise Sources Audit"
+          },
+          {
+            "current": "/mnt/data/ghostwriter_images/generated/03_turn_down_the_noise_signal_conditions.png",
+            "recommended": "assets/images/frameworks/2026-04-14_turn_down_the_noise/images/03_turn_down_the_noise_signal_conditions.png",
+            "title": "Signal Conditions"
+          },
+          {
+            "current": "/mnt/data/ghostwriter_images/generated/04_turn_down_the_noise_volume_control.png",
+            "recommended": "assets/images/frameworks/2026-04-14_turn_down_the_noise/images/04_turn_down_the_noise_volume_control.png",
+            "title": "Volume Control"
+          },
+          {
+            "current": "/mnt/data/ghostwriter_images/generated/05_turn_down_the_noise_where_to_apply_it.png",
+            "recommended": "assets/images/frameworks/2026-04-14_turn_down_the_noise/images/05_turn_down_the_noise_where_to_apply_it.png",
+            "title": "Where to Apply It"
+          }
+        ],
+        "socialImage": {
+          "label": "Framework social image",
+          "href": "assets/images/frameworks/2026-04-14_turn_down_the_noise/images/01_turn_down_the_noise_overview.png",
+          "description": "Use the overview image as the default Open Graph/social preview for the framework."
+        }
+      },
+      "imageIndex": [
+        {
+          "number": "01",
+          "title": "Turn Down the Noise Overview",
+          "href": "assets/images/frameworks/2026-04-14_turn_down_the_noise/images/01_turn_down_the_noise_overview.png",
+          "alt": "Turn Down the Noise Overview infographic for the Turn Down the Noise framework",
+          "description": "Three-part overview of the Turn Down the Noise framework: Noise Sources, Signal Conditions, and Volume Control."
+        },
+        {
+          "number": "02",
+          "title": "Noise Sources Audit",
+          "href": "assets/images/frameworks/2026-04-14_turn_down_the_noise/images/02_turn_down_the_noise_noise_sources_audit.png",
+          "alt": "Noise Sources Audit infographic for the Turn Down the Noise framework",
+          "description": "Audit diagram showing the common sources of operational noise that obscure real work."
+        },
+        {
+          "number": "03",
+          "title": "Signal Conditions",
+          "href": "assets/images/frameworks/2026-04-14_turn_down_the_noise/images/03_turn_down_the_noise_signal_conditions.png",
+          "alt": "Signal Conditions infographic for the Turn Down the Noise framework",
+          "description": "Signal-quality diagram showing what useful, decision-linked information looks like."
+        },
+        {
+          "number": "04",
+          "title": "Volume Control",
+          "href": "assets/images/frameworks/2026-04-14_turn_down_the_noise/images/04_turn_down_the_noise_volume_control.png",
+          "alt": "Volume Control infographic for the Turn Down the Noise framework",
+          "description": "Workflow diagram showing how to lower noise without losing decision-critical evidence."
+        },
+        {
+          "number": "05",
+          "title": "Where to Apply It",
+          "href": "assets/images/frameworks/2026-04-14_turn_down_the_noise/images/05_turn_down_the_noise_where_to_apply_it.png",
+          "alt": "Where to Apply It infographic for the Turn Down the Noise framework",
+          "description": "Application diagram showing where the framework should be used and which operating surfaces to inspect first."
+        }
+      ]
     },
     {
       "id": "framework-002",
