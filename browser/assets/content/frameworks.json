@@ -1907,9 +1907,12 @@
       "tags": [
         "systems translation",
         "strategy",
-        "workflow design"
+        "workflow design",
+        "requirements",
+        "operating model",
+        "execution alignment"
       ],
-      "diagramImage": "assets/images/hero-architecture.png",
+      "diagramImage": "assets/images/frameworks/2026-03-18_systems_translation_loop/images/01_systems_translation_loop_overview.png",
       "seo": {
         "title": "Systems Translation Loop",
         "description": "A framework for translating strategic intent into operational and technical execution."
@@ -1918,29 +1921,509 @@
         "premise": "Organizations lose execution fidelity when intent, workflow, and implementation are treated as separate conversations instead of one governed loop.",
         "components": [
           {
-            "title": "Intent Layer",
-            "description": "The decision, priority, or strategic shift that must be preserved."
+            "title": "Capture Intent",
+            "description": "Clarify the business goal, success criteria, and constraints before solution design begins."
           },
           {
-            "title": "Workflow Layer",
-            "description": "The operational path where ownership, inputs, and handoffs are defined."
+            "title": "Translate",
+            "description": "Convert intent into explicit functional needs, data and rule requirements, ownership, and acceptance criteria."
           },
           {
-            "title": "Implementation Layer",
-            "description": "The systems, tools, and teams that encode the workflow into durable execution."
+            "title": "Align Options",
+            "description": "Match the need to the right workflow, capability stack, and trade-off profile instead of defaulting to the fanciest option."
+          },
+          {
+            "title": "Validate in Practice",
+            "description": "Test the proposed approach in a bounded environment and observe how real users and real work behave."
+          },
+          {
+            "title": "Close the Loop",
+            "description": "Measure results, capture learnings, and feed evidence back into the next round of design and execution."
           }
         ],
-        "application": "Use the loop when teams agree on goals but still produce mismatched plans, conflicting tickets, or inconsistent delivery behavior.",
+        "application": "Use the loop when teams agree on goals but still produce mismatched plans, conflicting tickets, inconsistent delivery behavior, or solutions that look right in theory but fail in real operating conditions.",
         "sections": [
           {
-            "heading": "The loop matters because translation is never neutral",
-            "paragraphs": [
-              "Every translation layer adds assumptions. Without active design, those assumptions become silent failure points.",
-              "A durable loop preserves the decision signal while tightening operational fit."
+            "heading": "Why this framework exists",
+            "layout": "split-image-right",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "text": "Most execution failure is not caused by a lack of effort. It appears when intent is translated poorly from one layer of the organization to another. Leaders describe the outcome they want. Operators interpret what that means for workflow. Technical teams encode a version of that workflow into systems. At each handoff, assumptions creep in."
+              },
+              {
+                "type": "paragraph",
+                "text": "The Systems Translation Loop exists to preserve the original decision signal while making each translation step explicit. It gives executives, operators, and technical teams a shared operating model for moving from business need to validated execution without silently changing the problem along the way."
+              },
+              {
+                "type": "image",
+                "src": "assets/images/frameworks/2026-03-18_systems_translation_loop/images/01_systems_translation_loop_overview.png",
+                "alt": "Systems Translation Loop overview",
+                "caption": "The full loop shows the five operating moves required to preserve intent from business need through validated execution and learning.",
+                "title": "Systems Translation Loop Overview"
+              },
+              {
+                "type": "callout",
+                "tone": "executive",
+                "title": "Core premise",
+                "text": "Translation is never neutral. Every handoff adds assumptions unless the loop is designed on purpose."
+              }
+            ]
+          },
+          {
+            "heading": "The five-step operating loop",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "text": "The loop is intentionally simple. Capture intent first. Translate it into operational requirements. Align the available options. Validate the chosen approach in practice. Then close the loop by measuring outcomes and feeding learning back into the next iteration."
+              },
+              {
+                "type": "cards",
+                "items": [
+                  {
+                    "title": "1. Capture Intent",
+                    "description": "Identify the business goal, how success will be judged, and what constraints shape the work."
+                  },
+                  {
+                    "title": "2. Translate",
+                    "description": "Make needs explicit through requirements, rules, ownership, handoffs, and acceptance criteria."
+                  },
+                  {
+                    "title": "3. Align Options",
+                    "description": "Compare solution patterns, required capabilities, and trade-offs before committing."
+                  },
+                  {
+                    "title": "4. Validate in Practice",
+                    "description": "Use pilots and user feedback to prove the approach under real conditions."
+                  },
+                  {
+                    "title": "5. Close the Loop",
+                    "description": "Measure results, capture learnings, and improve the next cycle."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "text": "This is not just a project-delivery aid. It is a discipline for preserving business meaning while work moves across organizational boundaries."
+              }
+            ]
+          },
+          {
+            "heading": "Step 1: capture intent",
+            "layout": "split-image-left",
+            "blocks": [
+              {
+                "type": "image",
+                "src": "assets/images/frameworks/2026-03-18_systems_translation_loop/images/02_systems_translation_loop_capture_intent.png",
+                "alt": "Capture Intent stage of the Systems Translation Loop",
+                "caption": "The first step is to agree on the actual business goal, the success criteria, and the constraints shaping the work.",
+                "title": "Capture Intent"
+              },
+              {
+                "type": "paragraph",
+                "text": "Teams often skip intent because they believe everyone already understands the goal. In practice, that assumption is usually false. One stakeholder is optimizing for speed, another for compliance, another for user experience, and another for budget. If intent is not captured explicitly, those conflicting priorities will surface later as rework."
+              },
+              {
+                "type": "list",
+                "title": "What to capture",
+                "items": [
+                  "Business goals: what decision, priority, or change matters?",
+                  "Success criteria: how will the organization know the outcome is right?",
+                  "Constraints: what rules, deadlines, budget limits, or dependencies shape the work?"
+                ]
+              },
+              {
+                "type": "callout",
+                "tone": "technical",
+                "title": "Intent test",
+                "text": "If two teams describe the goal differently, intent has not been captured clearly enough."
+              }
+            ]
+          },
+          {
+            "heading": "Step 2: translate intent into operational requirements",
+            "layout": "split-image-right",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "text": "Translation is where broad intent becomes operationally usable. This is the point where vague language must be replaced with explicit statements about what the workflow must do, what data and rules govern it, who owns each handoff, and what counts as done."
+              },
+              {
+                "type": "paragraph",
+                "text": "A good translation layer prevents ambiguity from compounding. It protects the business from solutions that technically function but operationally fail because the workflow was underspecified."
+              },
+              {
+                "type": "image",
+                "src": "assets/images/frameworks/2026-03-18_systems_translation_loop/images/03_systems_translation_loop_translate.png",
+                "alt": "Translate stage of the Systems Translation Loop",
+                "caption": "Translated requirements turn business intent into functional needs, data and rule definitions, ownership, and acceptance criteria.",
+                "title": "Translate"
+              },
+              {
+                "type": "list",
+                "title": "Translation checklist",
+                "items": [
+                  "Functional needs: what must the workflow do?",
+                  "Data and rules: what information, policies, and conditions govern it?",
+                  "Ownership and handoffs: who acts, approves, and receives the work?",
+                  "Acceptance criteria: what counts as done, usable, and correct?"
+                ]
+              },
+              {
+                "type": "callout",
+                "tone": "warning",
+                "title": "Translation risk",
+                "text": "Ambiguity compounds when requirements are implied instead of made explicit."
+              }
+            ]
+          },
+          {
+            "heading": "Step 3: align options before you build",
+            "layout": "split-image-left",
+            "blocks": [
+              {
+                "type": "image",
+                "src": "assets/images/frameworks/2026-03-18_systems_translation_loop/images/04_systems_translation_loop_align_options.png",
+                "alt": "Align Options stage of the Systems Translation Loop",
+                "caption": "The best solution is not automatically the most advanced one; it is the one that best fits the workflow, capabilities, and trade-offs.",
+                "title": "Align Options"
+              },
+              {
+                "type": "paragraph",
+                "text": "Once requirements are translated, the team must decide how the work should actually be supported. This is where many organizations over-rotate toward the most sophisticated technology choice even when a simpler workflow pattern would fit better."
+              },
+              {
+                "type": "list",
+                "title": "Alignment framework",
+                "items": [
+                  "Solution patterns: should the work be manual, assisted, automated, or platform-driven?",
+                  "Capabilities: what tools, systems, integrations, skills, and operating roles are required?",
+                  "Trade-offs: what are we gaining, risking, or deferring across speed, value, control, and durability?"
+                ]
+              },
+              {
+                "type": "list",
+                "title": "Alignment questions",
+                "items": [
+                  "Does the approach fit the workflow?",
+                  "Can the team support it?",
+                  "Is the added complexity justified?",
+                  "Will it scale cleanly?"
+                ]
+              },
+              {
+                "type": "callout",
+                "tone": "executive",
+                "title": "Alignment principle",
+                "text": "Good design is not the most advanced option. It is the best fit for the operating reality."
+              }
+            ]
+          },
+          {
+            "heading": "Steps 4 and 5: validate in practice and close the loop",
+            "layout": "split-image-right",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "text": "The framework should not end with a design decision. Real value appears when the proposed workflow is tested against reality. Validation is where the organization learns whether the translated need, aligned solution, and actual user behavior still match."
+              },
+              {
+                "type": "image",
+                "src": "assets/images/frameworks/2026-03-18_systems_translation_loop/images/05_systems_translation_loop_validate_and_close_loop.png",
+                "alt": "Validate in Practice and Close the Loop stages of the Systems Translation Loop",
+                "caption": "Validation and learning convert a one-time design exercise into a repeatable improvement loop.",
+                "title": "Validate in Practice and Close the Loop"
+              },
+              {
+                "type": "cards",
+                "items": [
+                  {
+                    "title": "Validate in Practice",
+                    "description": "Prototype or pilot the approach, observe user feedback, and refine the workflow before broader commitment."
+                  },
+                  {
+                    "title": "Close the Loop",
+                    "description": "Measure outcomes against the original success criteria, capture learnings, and improve the next round of intent and design."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "text": "Closing the loop matters because successful execution depends on evidence returning to the start. If learnings never travel back to the intent layer, the organization keeps solving the same translation problems repeatedly."
+              },
+              {
+                "type": "callout",
+                "tone": "technical",
+                "title": "Loop discipline",
+                "text": "The framework only works when evidence travels back to the start."
+              }
+            ]
+          },
+          {
+            "heading": "What the framework delivers",
+            "blocks": [
+              {
+                "type": "list",
+                "title": "Primary outcomes",
+                "items": [
+                  "Clarity: everyone works from the same intent.",
+                  "Alignment: business, IT, and stakeholders stay in sync.",
+                  "Confidence: solutions are validated before full commitment.",
+                  "Results: outcomes are measurable and continuously improved."
+                ]
+              },
+              {
+                "type": "paragraph",
+                "text": "That combination is why the framework works across strategy, operations, workflow design, and technology delivery. It is not tied to one department. It is a portable method for preserving signal in complex organizations."
+              }
+            ]
+          },
+          {
+            "heading": "When to apply it",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "text": "Use the Systems Translation Loop when organizations keep producing work but the work still feels misaligned. It is especially useful when executives believe a priority is clear, yet downstream teams interpret it in different ways and technical delivery begins to drift from the business need."
+              },
+              {
+                "type": "list",
+                "title": "Good fit scenarios",
+                "items": [
+                  "Teams agree on goals but create mismatched plans.",
+                  "Requirements documents exist, but acceptance is still fuzzy.",
+                  "A process redesign or technology rollout needs stakeholder alignment.",
+                  "Operators and technical teams keep blaming each other for failed handoffs.",
+                  "A solution looks good in design reviews but struggles in practical use."
+                ]
+              }
             ]
           }
         ]
-      }
+      },
+      "companion": {
+        "snapshot": [
+          {
+            "label": "Category",
+            "value": "Workflow Translation"
+          },
+          {
+            "label": "Best for",
+            "value": "Executives, operators, product owners, workflow designers, architects"
+          },
+          {
+            "label": "Core question",
+            "value": "How do we preserve business intent as work moves into workflow and technology?"
+          },
+          {
+            "label": "Primary artifact",
+            "value": "Systems Translation Loop overview"
+          },
+          {
+            "label": "Method",
+            "value": "Capture intent \u2192 translate \u2192 align options \u2192 validate \u2192 close the loop"
+          }
+        ],
+        "toc": [
+          {
+            "label": "Why this framework exists",
+            "anchor": "why-this-framework-exists"
+          },
+          {
+            "label": "The five-step operating loop",
+            "anchor": "the-five-step-operating-loop"
+          },
+          {
+            "label": "Capture intent",
+            "anchor": "step-1-capture-intent"
+          },
+          {
+            "label": "Translate",
+            "anchor": "step-2-translate-intent-into-operational-requirements"
+          },
+          {
+            "label": "Align options",
+            "anchor": "step-3-align-options-before-you-build"
+          },
+          {
+            "label": "Validate and close the loop",
+            "anchor": "steps-4-and-5-validate-in-practice-and-close-the-loop"
+          },
+          {
+            "label": "What it delivers",
+            "anchor": "what-the-framework-delivers"
+          },
+          {
+            "label": "When to apply it",
+            "anchor": "when-to-apply-it"
+          }
+        ],
+        "callsToAction": [
+          {
+            "title": "Review the loop overview",
+            "description": "Start with the full Systems Translation Loop diagram and use it as the frame for stakeholder discussion.",
+            "href": "assets/images/frameworks/2026-03-18_systems_translation_loop/images/01_systems_translation_loop_overview.png",
+            "buttonLabel": "Open overview"
+          }
+        ],
+        "assets": [
+          {
+            "label": "Systems Translation Loop Overview",
+            "href": "assets/images/frameworks/2026-03-18_systems_translation_loop/images/01_systems_translation_loop_overview.png",
+            "description": "Overview graphic showing the five-step loop and primary outcomes.",
+            "type": "image",
+            "number": "01"
+          },
+          {
+            "label": "Capture Intent",
+            "href": "assets/images/frameworks/2026-03-18_systems_translation_loop/images/02_systems_translation_loop_capture_intent.png",
+            "description": "Graphic explaining business goals, success criteria, and constraints.",
+            "type": "image",
+            "number": "02"
+          },
+          {
+            "label": "Translate",
+            "href": "assets/images/frameworks/2026-03-18_systems_translation_loop/images/03_systems_translation_loop_translate.png",
+            "description": "Graphic showing how intent becomes requirements, rules, ownership, and acceptance criteria.",
+            "type": "image",
+            "number": "03"
+          },
+          {
+            "label": "Align Options",
+            "href": "assets/images/frameworks/2026-03-18_systems_translation_loop/images/04_systems_translation_loop_align_options.png",
+            "description": "Graphic covering solution patterns, capabilities, trade-offs, and alignment questions.",
+            "type": "image",
+            "number": "04"
+          },
+          {
+            "label": "Validate in Practice and Close the Loop",
+            "href": "assets/images/frameworks/2026-03-18_systems_translation_loop/images/05_systems_translation_loop_validate_and_close_loop.png",
+            "description": "Graphic showing pilots, user feedback, measurement, and learning loops.",
+            "type": "image",
+            "number": "05"
+          }
+        ],
+        "related": [
+          {
+            "title": "Turn Down the Noise",
+            "slug": "frameworks/2026/04/14/turn-down-the-noise",
+            "description": "A model for reducing operational noise and improving decision quality."
+          },
+          {
+            "title": "Relationship Capital \u2192 Revenue Intelligence",
+            "slug": "frameworks/2026/05/17/relationship-capital-revenue-intelligence",
+            "description": "A framework for turning relationship knowledge into measurable growth."
+          }
+        ]
+      },
+      "productionAssets": {
+        "frameworkImages": [
+          {
+            "label": "Systems Translation Loop Overview",
+            "href": "assets/images/frameworks/2026-03-18_systems_translation_loop/images/01_systems_translation_loop_overview.png",
+            "description": "Overview graphic showing the five-step loop and primary outcomes.",
+            "type": "image",
+            "number": "01"
+          },
+          {
+            "label": "Capture Intent",
+            "href": "assets/images/frameworks/2026-03-18_systems_translation_loop/images/02_systems_translation_loop_capture_intent.png",
+            "description": "Graphic explaining business goals, success criteria, and constraints.",
+            "type": "image",
+            "number": "02"
+          },
+          {
+            "label": "Translate",
+            "href": "assets/images/frameworks/2026-03-18_systems_translation_loop/images/03_systems_translation_loop_translate.png",
+            "description": "Graphic showing how intent becomes requirements, rules, ownership, and acceptance criteria.",
+            "type": "image",
+            "number": "03"
+          },
+          {
+            "label": "Align Options",
+            "href": "assets/images/frameworks/2026-03-18_systems_translation_loop/images/04_systems_translation_loop_align_options.png",
+            "description": "Graphic covering solution patterns, capabilities, trade-offs, and alignment questions.",
+            "type": "image",
+            "number": "04"
+          },
+          {
+            "label": "Validate in Practice and Close the Loop",
+            "href": "assets/images/frameworks/2026-03-18_systems_translation_loop/images/05_systems_translation_loop_validate_and_close_loop.png",
+            "description": "Graphic showing pilots, user feedback, measurement, and learning loops.",
+            "type": "image",
+            "number": "05"
+          }
+        ],
+        "imageRenamePlan": [
+          {
+            "current": "assets/images/frameworks/2026-03-18_systems_translation_loop/images/1.png",
+            "recommended": "assets/images/frameworks/2026-03-18_systems_translation_loop/images/01_systems_translation_loop_overview.png",
+            "title": "Systems Translation Loop Overview"
+          },
+          {
+            "current": "assets/images/frameworks/2026-03-18_systems_translation_loop/images/2.png",
+            "recommended": "assets/images/frameworks/2026-03-18_systems_translation_loop/images/02_systems_translation_loop_capture_intent.png",
+            "title": "Capture Intent"
+          },
+          {
+            "current": "assets/images/frameworks/2026-03-18_systems_translation_loop/images/3.png",
+            "recommended": "assets/images/frameworks/2026-03-18_systems_translation_loop/images/03_systems_translation_loop_translate.png",
+            "title": "Translate"
+          },
+          {
+            "current": "assets/images/frameworks/2026-03-18_systems_translation_loop/images/4.png",
+            "recommended": "assets/images/frameworks/2026-03-18_systems_translation_loop/images/04_systems_translation_loop_align_options.png",
+            "title": "Align Options"
+          },
+          {
+            "current": "assets/images/frameworks/2026-03-18_systems_translation_loop/images/5.png",
+            "recommended": "assets/images/frameworks/2026-03-18_systems_translation_loop/images/05_systems_translation_loop_validate_and_close_loop.png",
+            "title": "Validate in Practice and Close the Loop"
+          }
+        ],
+        "socialImage": {
+          "label": "Framework social image",
+          "href": "assets/images/frameworks/2026-03-18_systems_translation_loop/images/01_systems_translation_loop_overview.png",
+          "description": "Use the overview image as the default Open Graph/social preview until a separate social image is created."
+        }
+      },
+      "heroImage": "assets/images/frameworks/2026-03-18_systems_translation_loop/images/01_systems_translation_loop_overview.png",
+      "imageIndex": [
+        {
+          "number": "01",
+          "title": "Systems Translation Loop Overview",
+          "href": "assets/images/frameworks/2026-03-18_systems_translation_loop/images/01_systems_translation_loop_overview.png",
+          "alt": "Systems Translation Loop overview",
+          "description": "Overview graphic showing the five-step loop and primary outcomes."
+        },
+        {
+          "number": "02",
+          "title": "Capture Intent",
+          "href": "assets/images/frameworks/2026-03-18_systems_translation_loop/images/02_systems_translation_loop_capture_intent.png",
+          "alt": "Capture Intent stage of the Systems Translation Loop",
+          "description": "Graphic explaining business goals, success criteria, and constraints."
+        },
+        {
+          "number": "03",
+          "title": "Translate",
+          "href": "assets/images/frameworks/2026-03-18_systems_translation_loop/images/03_systems_translation_loop_translate.png",
+          "alt": "Translate stage of the Systems Translation Loop",
+          "description": "Graphic showing how intent becomes requirements, rules, ownership, and acceptance criteria."
+        },
+        {
+          "number": "04",
+          "title": "Align Options",
+          "href": "assets/images/frameworks/2026-03-18_systems_translation_loop/images/04_systems_translation_loop_align_options.png",
+          "alt": "Align Options stage of the Systems Translation Loop",
+          "description": "Graphic covering solution patterns, capabilities, trade-offs, and alignment questions."
+        },
+        {
+          "number": "05",
+          "title": "Validate in Practice and Close the Loop",
+          "href": "assets/images/frameworks/2026-03-18_systems_translation_loop/images/05_systems_translation_loop_validate_and_close_loop.png",
+          "alt": "Validate in Practice and Close the Loop stages of the Systems Translation Loop",
+          "description": "Graphic showing pilots, user feedback, measurement, and learning loops."
+        }
+      ]
     },
     {
       "id": "framework-003",
