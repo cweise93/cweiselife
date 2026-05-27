@@ -576,45 +576,279 @@
       "id": "writing-001",
       "slug": "writing/2026/05/12/organizations-rarely-fail-from-a-lack-of-intelligence",
       "title": "Organizations Rarely Fail From a Lack of Intelligence",
-      "summary": "Execution breaks down long before strategy does. A look at the hidden mechanics behind organizational underperformance.",
+      "summary": "An essay on why organizations usually do not fail because they lack smart people, data, strategy, or ideas. They fail when intelligence cannot move through clear priorities, translation layers, operating paths, accountability, and follow-through.",
       "status": "published",
       "publishedOn": "2026-05-12",
-      "readTimeMinutes": 6,
+      "readTimeMinutes": 9,
       "featured": true,
       "tags": [
         "operational intelligence",
         "execution",
-        "decision systems"
+        "decision systems",
+        "systems translation",
+        "follow-through",
+        "operating models"
       ],
-      "heroImage": "assets/images/article-geometry.png",
+      "heroImage": "assets/images/writing/articles/2026-05-12_organizations_rarely_fail_lack_intelligence/images/01_organizations_rarely_fail_hero.png",
       "seo": {
         "title": "Organizations Rarely Fail From a Lack of Intelligence",
-        "description": "Why operational failure usually comes from signal breakdown and fragmented execution instead of a lack of insight."
+        "description": "Why operational failure usually comes from unmanaged complexity, weak translation layers, unclear priorities, and missing follow-through rather than lack of insight."
       },
       "body": {
-        "intro": "Most organizations already know more than enough to improve. The problem is rarely insight scarcity. The problem is the operating path between knowing and doing.",
+        "intro": "It is tempting to believe organizations struggle because leaders do not see the right answer. In reality, most organizations have more intelligence than they can use. They have research, dashboards, consultants, strategy documents, roadmaps, subject-matter experts, lessons learned, and enough smart people to see the problem from twelve angles. The gap is usually not intelligence. The gap is the operating path between knowing and doing.",
         "sections": [
           {
-            "heading": "Signal loss happens in the handoff layers",
+            "heading": "The real problem is not intelligence scarcity",
+            "layout": "split-image-right",
             "paragraphs": [
-              "The first point of failure is translation. Strategy gets interpreted into planning language, then converted into workflow, then split across systems and teams. By the time it reaches the people doing the work, the original signal is thin.",
-              "This is why organizations can sound aligned in meetings and still behave incoherently in delivery."
-            ]
+              "Most organizations are not starving for insight. They are drowning in unconverted insight. The organization knows what the client said, what the project needs, what the team noticed, what the dashboard implies, what the strategy intends, and what the last initiative taught. But knowing something inside an organization is not the same as making it operationally usable.",
+              "Intelligence becomes valuable only when it can move. It has to be translated into priorities, decisions, workflows, ownership, evidence, and follow-through. Without that path, the organization can be highly informed and still underperform.",
+              "This is why teams can sound aligned in meetings and behave incoherently in delivery. The intelligence was present. The operating system failed to convert it into coordinated action."
+            ],
+            "image": {
+              "src": "assets/images/writing/articles/2026-05-12_organizations_rarely_fail_lack_intelligence/images/01_organizations_rarely_fail_hero.png",
+              "alt": "A clean executive infographic showing intelligence moving into complexity when no operating path exists.",
+              "caption": "The problem is rarely a lack of intelligence. It is the inability to translate, prioritize, and execute."
+            },
+            "callout": "The gap is not what the organization knows. The gap is whether knowledge can become coordinated action."
+          },
+          {
+            "heading": "Where organizations actually struggle",
+            "layout": "split-image-left",
+            "paragraphs": [
+              "When execution breaks down, the visible symptoms often look personal. A team missed a handoff. A manager failed to follow up. A dashboard did not create the right behavior. A project drifted. A priority was misunderstood. A decision was reopened after everyone thought it was settled.",
+              "Those things matter, but they are often symptoms of a deeper operating problem. The organization may not have a reliable way to clarify priorities, translate strategy into executable work, design workflows that match reality, reinforce ownership, or sustain follow-through long enough for results to appear.",
+              "The failure is usually not stupidity. It is friction in the path."
+            ],
+            "image": {
+              "src": "assets/images/writing/articles/2026-05-12_organizations_rarely_fail_lack_intelligence/images/02_where_organizations_struggle.png",
+              "alt": "A visual showing five common organizational struggle points: clarity, translation, systems, accountability, and follow-through.",
+              "caption": "Organizational underperformance often hides in five places: clarity, translation, systems, accountability, and follow-through."
+            },
+            "callout": "A smart organization can still fail if the path from insight to action is unclear."
+          },
+          {
+            "heading": "Signal loss happens in the handoff layers",
+            "layout": "split-image-right",
+            "paragraphs": [
+              "The first serious point of failure is translation. Strategy gets interpreted into planning language. Planning language becomes workflow. Workflow becomes tickets, templates, dashboards, meetings, intake forms, work queues, and reporting cadences. Each layer changes the original signal.",
+              "Some translation is necessary. The problem is unmanaged translation. When no one owns the interface between layers, assumptions quietly accumulate. A strategic priority becomes a vague initiative. A vague initiative becomes a set of tasks. The tasks look complete, but the original business need is only partially served.",
+              "This is how organizations can work hard and still miss the point. They did not ignore the signal. They slowly diluted it."
+            ],
+            "image": {
+              "src": "assets/images/writing/articles/2026-05-12_organizations_rarely_fail_lack_intelligence/images/03_signal_loss_in_handoffs.png",
+              "alt": "A clean diagram showing strategy signal weakening as it moves through planning, workflow, systems, and reporting handoffs.",
+              "caption": "Every handoff changes the signal unless the translation layer is designed and owned."
+            },
+            "callout": "Handoffs do not merely pass information. They reshape it."
           },
           {
             "heading": "Execution quality depends on operating design",
+            "layout": "split-image-left",
             "paragraphs": [
-              "If ownership is ambiguous, if systems encode contradictory expectations, or if reporting measures theater instead of progress, intelligence never becomes throughput.",
-              "Operational intelligence matters because it treats workflow design as a first-class decision surface, not an afterthought."
+              "Execution is often discussed as if it were mainly a discipline problem. Sometimes it is. But recurring execution failure usually points to operating design. If ownership is ambiguous, if definitions of done shift across teams, if systems encode contradictory expectations, or if reporting measures theater instead of progress, intelligence never becomes throughput.",
+              "This is where operational intelligence becomes practical. It treats workflow design as a first-class decision surface. It asks how priorities travel, where decisions are made, how evidence is preserved, how exceptions are handled, and how work becomes visible enough for leaders to act.",
+              "The organization does not need louder urgency. It needs a cleaner path."
             ],
+            "image": {
+              "src": "assets/images/writing/articles/2026-05-12_organizations_rarely_fail_lack_intelligence/images/04_operating_path_gap.png",
+              "alt": "A visual showing knowledge failing to become action because of missing ownership, weak workflow, scattered systems, and unclear feedback.",
+              "caption": "Execution quality improves when the operating path is made explicit: priority, workflow, ownership, evidence, and feedback."
+            },
             "callout": "The real question is not whether the organization knows enough. It is whether the organization can reliably convert knowledge into action."
           },
           {
-            "heading": "What leaders should inspect",
+            "heading": "Why more information often makes the problem worse",
             "paragraphs": [
-              "Look for recurring rework, decision churn, and status reporting that produces more reassurance than clarity.",
-              "Those are usually signs that the system is consuming signal instead of amplifying it."
-            ]
+              "When leaders cannot see reliable execution, the default response is often to ask for more information. More updates. More dashboards. More meetings. More slides. More status. More explanation.",
+              "That response is understandable, but it can make the problem worse. If the operating path is weak, more information creates more interpretive burden. People spend more time explaining work than improving it. Leaders receive more material but not more clarity. Teams become busier, but the decision system does not get sharper.",
+              "Information does not automatically become signal. Signal is information that is relevant, timely, actionable, evidence-backed, and connected to a decision. Everything else may be noise, even if it is technically accurate."
+            ],
+            "callout": "A reporting system can produce more visibility and less understanding at the same time."
+          },
+          {
+            "heading": "The hidden cost is coordination debt",
+            "paragraphs": [
+              "Coordination debt accumulates when the organization relies on memory, heroics, informal relationships, and repeated clarification to make ordinary work happen. At first, the cost is manageable. A few people know whom to call. A few managers remember the exception. A few experts carry the history.",
+              "As the organization grows, that model becomes expensive. Work slows down because every decision requires reconstruction. New employees cannot see the path. Leaders receive polished summaries that hide the operational mess underneath. The firm keeps paying interest on unclear interfaces.",
+              "This is why mature organizations need more than smart people. They need mechanisms that allow smart people to create durable paths for others."
+            ],
+            "callout": "Coordination debt is what happens when intelligence depends too heavily on the people who happen to remember the path."
+          },
+          {
+            "heading": "What strong organizations do differently",
+            "layout": "split-image-right",
+            "paragraphs": [
+              "Strong organizations do not simply hire intelligent people and hope alignment emerges. They design the conditions that allow intelligence to compound. They focus on fewer, clearer priorities. They translate strategy into executable work. They create systems that make the right behavior easier to repeat. They make ownership visible. They review outcomes and adapt.",
+              "The strongest operating systems do not eliminate judgment. They protect it. They give human intelligence a cleaner path through the organization so it does not have to fight ambiguity at every step.",
+              "That is the shift from intelligence as talent to intelligence as capability."
+            ],
+            "image": {
+              "src": "assets/images/writing/articles/2026-05-12_organizations_rarely_fail_lack_intelligence/images/05_strong_organizations_do_differently.png",
+              "alt": "A checklist-style executive infographic showing what strong organizations do differently to convert intelligence into action.",
+              "caption": "Strong organizations design the path from intelligence to action instead of assuming smart people will create alignment informally."
+            },
+            "callout": "The advantage is not having the most intelligence. The advantage is converting intelligence into repeatable execution."
+          },
+          {
+            "heading": "What leaders should inspect first",
+            "paragraphs": [
+              "Leaders should inspect the places where intelligence loses force: priority setting, translation layers, ownership boundaries, decision rights, work queues, reporting surfaces, escalation paths, and feedback loops.",
+              "Look for recurring rework, decision churn, vague ownership, duplicate reporting, status theater, stalled initiatives, and work that depends on the same few people to interpret what should happen next. Those are not merely annoyances. They are evidence that the operating path is consuming signal instead of amplifying it.",
+              "The inspection should be practical. Where is the priority unclear? Where is the handoff weak? Where does the system ask people to interpret what should have been designed? Where does reporting reassure leadership without changing action? Where does the same question keep returning because no durable answer was built?"
+            ],
+            "callout": "Recurring friction is not background noise. It is the organization showing you where the path is missing."
+          },
+          {
+            "heading": "The leadership implication",
+            "paragraphs": [
+              "The leadership task is not merely to be the smartest person in the room or to collect more intelligence than competitors. The task is to create an organization where intelligence can travel, survive translation, become action, and improve through feedback.",
+              "That requires operating design. It requires fewer vague priorities, stronger translation layers, clearer ownership, better systems, and more honest follow-through. It also requires leaders to stop mistaking activity for execution and reporting for understanding.",
+              "Organizations rarely fail from a lack of intelligence. They fail when intelligence has no reliable path to become coordinated action.",
+              "The work is to build the path."
+            ],
+            "callout": "Intelligence is not the operating model. It is the raw material the operating model must convert."
+          }
+        ]
+      },
+      "companion": {
+        "snapshot": [
+          {
+            "label": "Core argument",
+            "value": "Most organizations have enough intelligence. They struggle because intelligence does not reliably become coordinated action."
+          },
+          {
+            "label": "Primary failure mode",
+            "value": "Signal is lost in unclear priorities, unmanaged translation layers, weak operating paths, ambiguous ownership, and poor follow-through."
+          },
+          {
+            "label": "Leadership task",
+            "value": "Design the path from insight to action so intelligence can travel, survive translation, and improve through feedback."
+          },
+          {
+            "label": "Operating question",
+            "value": "Where is the system consuming signal instead of amplifying it?"
+          }
+        ],
+        "toc": [
+          {
+            "label": "The real problem is not intelligence scarcity",
+            "anchor": "the-real-problem-is-not-intelligence-scarcity"
+          },
+          {
+            "label": "Where organizations actually struggle",
+            "anchor": "where-organizations-actually-struggle"
+          },
+          {
+            "label": "Signal loss happens in the handoff layers",
+            "anchor": "signal-loss-happens-in-the-handoff-layers"
+          },
+          {
+            "label": "Execution quality depends on operating design",
+            "anchor": "execution-quality-depends-on-operating-design"
+          },
+          {
+            "label": "Why more information often makes the problem worse",
+            "anchor": "why-more-information-often-makes-the-problem-worse"
+          },
+          {
+            "label": "The hidden cost is coordination debt",
+            "anchor": "the-hidden-cost-is-coordination-debt"
+          },
+          {
+            "label": "What strong organizations do differently",
+            "anchor": "what-strong-organizations-do-differently"
+          },
+          {
+            "label": "What leaders should inspect first",
+            "anchor": "what-leaders-should-inspect-first"
+          },
+          {
+            "label": "The leadership implication",
+            "anchor": "the-leadership-implication"
+          }
+        ],
+        "assets": [
+          {
+            "label": "Article hero image",
+            "href": "assets/images/writing/articles/2026-05-12_organizations_rarely_fail_lack_intelligence/images/01_organizations_rarely_fail_hero.png",
+            "description": "Primary article visual introducing the gap between intelligence and action.",
+            "type": "image",
+            "number": "01"
+          },
+          {
+            "label": "Where organizations struggle",
+            "href": "assets/images/writing/articles/2026-05-12_organizations_rarely_fail_lack_intelligence/images/02_where_organizations_struggle.png",
+            "description": "Inline visual showing the five struggle points: clarity, translation, systems, accountability, and follow-through.",
+            "type": "image",
+            "number": "02"
+          },
+          {
+            "label": "Signal loss in handoffs",
+            "href": "assets/images/writing/articles/2026-05-12_organizations_rarely_fail_lack_intelligence/images/03_signal_loss_in_handoffs.png",
+            "description": "Inline visual showing how signal weakens across strategy, planning, workflow, systems, and reporting layers.",
+            "type": "image",
+            "number": "03"
+          },
+          {
+            "label": "Operating path gap",
+            "href": "assets/images/writing/articles/2026-05-12_organizations_rarely_fail_lack_intelligence/images/04_operating_path_gap.png",
+            "description": "Inline visual showing the missing path between knowledge and coordinated action.",
+            "type": "image",
+            "number": "04"
+          },
+          {
+            "label": "Strong organizations do differently",
+            "href": "assets/images/writing/articles/2026-05-12_organizations_rarely_fail_lack_intelligence/images/05_strong_organizations_do_differently.png",
+            "description": "Inline checklist visual showing what strong organizations do to convert intelligence into execution.",
+            "type": "image",
+            "number": "05"
+          }
+        ],
+        "related": [
+          {
+            "title": "Systems Translation Loop",
+            "slug": "frameworks/2026/03/18/systems-translation-loop",
+            "description": "A framework for preserving business intent as it moves into workflow and technology."
+          },
+          {
+            "title": "Turn Down the Noise: Improving Signal in Decision Systems",
+            "slug": "writing/2026/04/14/turn-down-the-noise-improving-signal-in-decision-systems",
+            "description": "A companion essay on reducing operational noise and improving decision clarity."
+          }
+        ]
+      },
+      "productionAssets": {
+        "socialImage": {
+          "label": "Companion social image",
+          "href": "assets/images/writing/articles/2026-05-12_organizations_rarely_fail_lack_intelligence/images/01_organizations_rarely_fail_hero.png",
+          "description": "Use the hero image as the default Open Graph/social preview until a separate square social image is created."
+        },
+        "articleImages": [
+          {
+            "label": "Hero",
+            "href": "assets/images/writing/articles/2026-05-12_organizations_rarely_fail_lack_intelligence/images/01_organizations_rarely_fail_hero.png",
+            "description": "Primary visual for the article header."
+          },
+          {
+            "label": "Where organizations struggle",
+            "href": "assets/images/writing/articles/2026-05-12_organizations_rarely_fail_lack_intelligence/images/02_where_organizations_struggle.png",
+            "description": "Inline visual for the section on where organizations actually struggle."
+          },
+          {
+            "label": "Signal loss in handoffs",
+            "href": "assets/images/writing/articles/2026-05-12_organizations_rarely_fail_lack_intelligence/images/03_signal_loss_in_handoffs.png",
+            "description": "Inline visual for the section on translation and handoff layers."
+          },
+          {
+            "label": "Operating path gap",
+            "href": "assets/images/writing/articles/2026-05-12_organizations_rarely_fail_lack_intelligence/images/04_operating_path_gap.png",
+            "description": "Inline visual for the operating-design section."
+          },
+          {
+            "label": "Strong organizations do differently",
+            "href": "assets/images/writing/articles/2026-05-12_organizations_rarely_fail_lack_intelligence/images/05_strong_organizations_do_differently.png",
+            "description": "Inline visual for the section on stronger operating systems."
           }
         ]
       }
