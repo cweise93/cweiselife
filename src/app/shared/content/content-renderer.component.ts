@@ -491,6 +491,8 @@ interface LightboxImage {
     .content-table {
       padding: 0;
       overflow: hidden;
+      background: var(--cw-panel) !important;
+      border-color: var(--cw-line) !important;
     }
 
     .content-table h3,
@@ -508,16 +510,17 @@ interface LightboxImage {
     .content-material-table .mat-mdc-cell {
       padding: 12px 14px;
       vertical-align: top;
-      color: var(--cw-muted);
+      color: var(--cw-muted) !important;
       line-height: 1.6;
       border-bottom-color: var(--cw-line);
+      background: transparent;
     }
 
     .content-material-table .mat-mdc-header-cell {
       font-size: 0.82rem;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      color: var(--cw-ink);
+      color: var(--cw-ink) !important;
     }
 
     .content-card-grid {
@@ -533,7 +536,7 @@ interface LightboxImage {
       padding: 18px 20px;
       border: 1px solid var(--cw-line);
       border-radius: 16px;
-      background: var(--cw-panel);
+      background: var(--cw-panel) !important;
     }
 
     .content-code-block {
@@ -667,6 +670,27 @@ interface LightboxImage {
     .lightbox-caption {
       max-width: min(80ch, 100%);
       color: rgba(255, 255, 255, 0.72);
+    }
+
+    :host-context(body.cw-theme-dusk) .content-table,
+    :host-context(body.cw-theme-dusk) .content-card,
+    :host-context(body.cw-theme-dusk) .content-code-block,
+    :host-context(body.cw-theme-dusk) .content-callout,
+    :host-context(body.cw-theme-dusk) .content-list {
+      background: var(--cw-panel) !important;
+      border-color: var(--cw-line) !important;
+    }
+
+    :host-context(body.cw-theme-dusk) .content-material-table .mat-mdc-header-cell {
+      color: var(--cw-ink) !important;
+    }
+
+    :host-context(body.cw-theme-dusk) .content-material-table .mat-mdc-cell,
+    :host-context(body.cw-theme-dusk) .content-card p,
+    :host-context(body.cw-theme-dusk) .content-code-block p,
+    :host-context(body.cw-theme-dusk) .content-callout p,
+    :host-context(body.cw-theme-dusk) .content-list li {
+      color: var(--cw-muted) !important;
     }
 
     @media (max-width: 860px) {
