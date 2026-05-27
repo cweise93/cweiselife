@@ -307,6 +307,11 @@
 }
 
 @media (max-width: 820px) {
+  .site-main--framework-workspace {
+    padding-top: var(--cw-toolbar-current-height, var(--cw-toolbar-height));
+    padding-left: 0;
+  }
+
   .shell-toolbar {
     min-height: var(--cw-toolbar-height);
     height: var(--cw-toolbar-height);
