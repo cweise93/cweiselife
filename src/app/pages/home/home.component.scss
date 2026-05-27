@@ -270,6 +270,35 @@ h1 {
 .writing-carousel-dot.is-active {
   background: var(--cw-accent);
 }
+
+:host-context(body.cw-theme-dusk) .writing-band {
+  background:
+    linear-gradient(
+      180deg,
+      var(--cw-page) 0 152px,
+      color-mix(in srgb, var(--cw-panel) 84%, var(--cw-hero-base)) 152px,
+      color-mix(in srgb, var(--cw-page) 88%, var(--cw-panel)) 100%
+    );
+}
+
+:host-context(body.cw-theme-dusk) .writing-carousel-region {
+  background:
+    linear-gradient(
+      180deg,
+      transparent 0 8px,
+      color-mix(in srgb, var(--cw-panel) 84%, var(--cw-hero-base)) 8px,
+      color-mix(in srgb, var(--cw-page) 88%, var(--cw-panel)) 100%
+    );
+}
+
+:host-context(body.cw-theme-dusk) .article-media-link {
+  background: color-mix(in srgb, var(--cw-panel) 82%, var(--cw-hero-base));
+}
+
+:host-context(body.cw-theme-dusk) .article-icon {
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.32);
+}
+
 .feature-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 72px; align-items: center; }
 .framework-visual {
   padding: 20px;

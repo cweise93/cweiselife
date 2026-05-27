@@ -1133,37 +1133,304 @@
       "id": "writing-004",
       "slug": "writing/2026/03/31/executive-follow-through-requires-ownership-architecture",
       "title": "Executive Follow-Through Requires Ownership Architecture",
-      "summary": "A strategy does not become durable until the organization encodes ownership, escalation, and execution paths around it.",
+      "summary": "A strategy does not become durable because leaders care about it. It becomes durable when ownership, decision rights, escalation paths, evidence, and review rhythms are designed into the operating system.",
       "status": "published",
       "publishedOn": "2026-03-31",
-      "readTimeMinutes": 8,
+      "readTimeMinutes": 9,
       "featured": false,
       "tags": [
         "executive follow-through",
         "ownership",
-        "governance"
+        "governance",
+        "operational intelligence",
+        "operating models",
+        "execution"
       ],
-      "heroImage": "assets/images/article-geometry.png",
+      "heroImage": "assets/images/writing/articles/2026-03-31_executive_follow_through_ownership_architecture/images/01_ownership_architecture_hero.png",
       "seo": {
         "title": "Executive Follow-Through Requires Ownership Architecture",
-        "description": "Why leaders need explicit ownership architecture to convert strategy into follow-through."
+        "description": "Why executive follow-through depends on ownership architecture: clear decision rights, escalation paths, evidence, review rhythms, and operational accountability."
       },
       "body": {
-        "intro": "Follow-through is rarely a motivation issue. It is usually an architecture issue.",
+        "intro": "Follow-through is rarely a motivation issue. It is usually an architecture issue. Leaders can care deeply about a priority, repeat it in every meeting, and still watch it drift. The problem is not always lack of commitment. It is that the organization never encoded the priority into ownership, decision rights, escalation paths, evidence, and review rhythms strong enough to survive competing work.",
         "sections": [
           {
-            "heading": "Ownership must be operational, not implied",
+            "heading": "Follow-through is not a personality trait",
+            "layout": "split-image-right",
             "paragraphs": [
-              "If accountability exists only in language, execution will drift the moment priorities compete.",
-              "Ownership architecture makes escalation, dependencies, and decision rights visible in the workflow."
-            ]
+              "Organizations often talk about follow-through as if it depends mainly on individual discipline. Someone needs to care more, push harder, respond faster, or remember the commitment. Sometimes that is true. But when the same priorities keep stalling, the issue is usually bigger than personal effort.",
+              "A leader can announce a priority. A team can agree it matters. A project can launch with energy. None of that guarantees the work will survive the normal pressure of the business. Priorities compete. Schedules change. New requests arrive. Dependencies surface. People interpret the work differently. Without architecture around ownership, the priority becomes vulnerable to drift.",
+              "That drift can look like poor follow-through, but the deeper issue is often that the organization never made the path operational."
+            ],
+            "image": {
+              "src": "assets/images/writing/articles/2026-03-31_executive_follow_through_ownership_architecture/images/01_ownership_architecture_hero.png",
+              "alt": "Executive follow-through illustrated as strategy moving into an ownership architecture.",
+              "caption": "Follow-through becomes durable when ownership is designed into the operating path."
+            },
+            "callout": "A priority does not become real because it was announced. It becomes real when the organization knows who owns what, by when, with what evidence, and through which path."
           },
           {
-            "heading": "Leaders need fewer abstract directives",
+            "heading": "Ownership must be operational, not implied",
+            "layout": "split-image-left",
             "paragraphs": [
-              "Execution improves when leaders ask for clearer paths instead of louder urgency.",
+              "Implied ownership is one of the quietest execution risks in a growing organization. Everyone knows a priority matters, but no one can clearly answer who owns the outcome, who owns the next action, who owns the decision, who owns the dependency, and who owns the evidence that proves progress.",
+              "This distinction matters because executive ownership and task ownership are not the same thing. An executive may sponsor a priority, but someone must own the operating path. Someone must translate the priority into work, coordinate the dependencies, surface risks, resolve ambiguity, and make progress visible before the initiative begins to stall.",
+              "When ownership is only implied, accountability becomes theatrical. People discuss the work, report on the work, and express support for the work, but the system does not force clarity about who is responsible for moving it."
+            ],
+            "image": {
+              "src": "assets/images/writing/articles/2026-03-31_executive_follow_through_ownership_architecture/images/02_operational_ownership_model.png",
+              "alt": "A model showing executive sponsor, outcome owner, work owner, dependency owner, and evidence owner.",
+              "caption": "Ownership architecture separates sponsorship, outcome accountability, work execution, dependency management, and evidence."
+            },
+            "callout": "If ownership exists only in language, execution will drift the moment priorities compete."
+          },
+          {
+            "heading": "The missing layer is ownership architecture",
+            "paragraphs": [
+              "Ownership architecture is the designed structure that tells the organization how a priority will move from intention to action to evidence. It defines roles, decision rights, handoffs, escalation paths, evidence expectations, and review cadence.",
+              "This architecture does not need to be bureaucratic. In fact, the best version reduces bureaucracy because it eliminates repeated clarification. People do not need three meetings to rediscover who is responsible, which decision is needed, what evidence matters, or when the issue should escalate.",
+              "The purpose is to make follow-through easier to execute and harder to fake."
+            ],
+            "callout": "Ownership architecture turns executive intent into an accountable operating path."
+          },
+          {
+            "heading": "Decision rights are part of follow-through",
+            "layout": "split-image-right",
+            "paragraphs": [
+              "Many initiatives stall because ownership is assigned without decision rights. Someone is accountable for progress, but cannot approve the trade-off, resolve the conflict, redirect resources, or say no to competing work. The initiative then becomes dependent on informal influence instead of designed authority.",
+              "A serious ownership model clarifies which decisions belong to the sponsor, which belong to the outcome owner, which belong to the workstream lead, and which require escalation. It also clarifies what decisions should not be reopened once they are made.",
+              "Without decision-right clarity, follow-through becomes a negotiation every time the work meets resistance."
+            ],
+            "image": {
+              "src": "assets/images/writing/articles/2026-03-31_executive_follow_through_ownership_architecture/images/03_decision_rights_and_escalation.png",
+              "alt": "A diagram showing decision rights, escalation thresholds, and executive review points.",
+              "caption": "Follow-through requires decision rights, not just responsibility."
+            },
+            "callout": "Accountability without decision rights is not ownership. It is exposure."
+          },
+          {
+            "heading": "Escalation paths prevent silent drift",
+            "paragraphs": [
+              "Escalation is often treated as a failure. It should be treated as part of the design. A healthy escalation path does not mean the team is weak. It means the organization has decided which problems should not be allowed to decay quietly.",
+              "Silent drift is expensive because it preserves the appearance of motion while the outcome weakens. The project is still active. The updates still sound reasonable. People are still busy. But the decision needed to unblock progress is missing, the dependency is unresolved, or the priority has lost executive protection.",
+              "An escalation path creates a clean route for surfacing risk before it becomes rework."
+            ],
+            "callout": "Good escalation is not noise. It is an early-warning system for priorities that matter."
+          },
+          {
+            "heading": "Evidence beats reassurance",
+            "layout": "split-image-left",
+            "paragraphs": [
+              "Executive follow-through weakens when updates become reassurance. A team reports activity, meetings, effort, or intent, but the leader still cannot see whether the outcome is becoming more real.",
+              "Evidence changes the conversation. Instead of asking whether people are working on the priority, leaders can ask what has changed in the operating system. What decision was made? What dependency was resolved? What risk moved? What workflow changed? What client or employee behavior improved? What metric indicates progress? What artifact now exists that did not exist before?",
+              "The more important the initiative, the more evidence matters. Not because leaders distrust teams, but because serious priorities deserve more than optimistic interpretation."
+            ],
+            "image": {
+              "src": "assets/images/writing/articles/2026-03-31_executive_follow_through_ownership_architecture/images/04_evidence_over_reassurance.png",
+              "alt": "A visual contrasting reassurance-based status updates with evidence-based follow-through.",
+              "caption": "Evidence-based follow-through distinguishes visible motion from actual progress."
+            },
+            "callout": "Status tells leaders what people say is happening. Evidence shows what has actually changed."
+          },
+          {
+            "heading": "Review rhythms keep ownership alive",
+            "paragraphs": [
+              "Ownership decays when it is not reviewed. That does not mean every priority needs a heavy governance meeting. It means the organization needs a rhythm that keeps the right questions alive long enough for the work to become durable.",
+              "A useful review rhythm asks whether the original intent is still clear, whether the owner still has authority, whether the next action is visible, whether blockers are being escalated, whether evidence is improving, and whether the outcome still matters compared with competing priorities.",
+              "The cadence can be light. The questions cannot be vague."
+            ],
+            "callout": "A review rhythm is not there to admire activity. It is there to preserve ownership until the outcome is real."
+          },
+          {
+            "heading": "Why leaders need fewer abstract directives",
+            "layout": "split-image-right",
+            "paragraphs": [
+              "When follow-through weakens, leaders often respond with louder directives: We need more urgency. We need better accountability. We need people to own this. We need to stop dropping the ball.",
+              "Those statements may be emotionally true, but they rarely improve execution by themselves. Abstract directives create pressure without path. People understand that leadership wants movement, but they still may not know which decision matters, who can make it, what evidence counts, or how to resolve conflict with other priorities.",
               "The more operationally explicit the path, the less coordination debt the organization carries."
-            ]
+            ],
+            "image": {
+              "src": "assets/images/writing/articles/2026-03-31_executive_follow_through_ownership_architecture/images/05_from_directive_to_operating_path.png",
+              "alt": "A diagram showing abstract executive directives becoming an explicit operating path.",
+              "caption": "Leaders improve follow-through by converting directives into ownership, decisions, evidence, escalation, and rhythm."
+            },
+            "callout": "Urgency without architecture creates heat. Ownership architecture creates movement."
+          },
+          {
+            "heading": "Ownership architecture is not bureaucracy",
+            "paragraphs": [
+              "The fear is that ownership architecture will slow the organization down. Poorly designed governance can do that. But clear ownership architecture should have the opposite effect.",
+              "It reduces the need for repeated interpretation. It makes the next step visible. It gives owners authority. It tells teams when to escalate. It makes evidence easier to inspect. It prevents leaders from chasing status through side channels. It allows the organization to move faster because fewer people have to guess what the priority requires.",
+              "Bureaucracy asks for more coordination. Good ownership architecture removes unnecessary coordination by making the path clearer."
+            ],
+            "callout": "The point is not to add process. The point is to remove avoidable ambiguity."
+          },
+          {
+            "heading": "What leaders should design first",
+            "paragraphs": [
+              "Start with the priorities that repeatedly stall. For each one, ask a short set of questions. Who owns the outcome? Who owns the next action? Who owns each dependency? Who has decision rights? What requires escalation? What evidence proves progress? What review rhythm will keep the work alive?",
+              "Then test whether the answers are visible to the people doing the work. If ownership is clear only to senior leadership, it is not operational yet. If decision rights are understood only after a conflict, they were not designed early enough. If evidence appears only at the end, leaders have no way to protect the initiative while it is still fragile.",
+              "Ownership architecture should be built before the priority needs rescue."
+            ],
+            "callout": "The best time to design ownership is before the work starts drifting."
+          },
+          {
+            "heading": "The executive standard",
+            "paragraphs": [
+              "Executive follow-through requires more than commitment. It requires a designed path for commitment to survive contact with the organization.",
+              "That path includes ownership, decision rights, escalation, evidence, and rhythm. Without those pieces, priorities depend too much on memory, personality, and heroic coordination. With them, the organization can turn executive intent into durable execution.",
+              "The leadership standard is not simply to care about the priority. The standard is to make the priority operationally real."
+            ],
+            "callout": "A strategy becomes durable when the organization knows how to carry it without constant executive force."
+          }
+        ]
+      },
+      "companion": {
+        "snapshot": [
+          {
+            "label": "Core argument",
+            "value": "Follow-through is usually an architecture issue, not merely a motivation issue."
+          },
+          {
+            "label": "Primary failure mode",
+            "value": "Ownership is implied in language but not encoded into decision rights, dependencies, evidence, escalation, and review rhythms."
+          },
+          {
+            "label": "Leadership task",
+            "value": "Convert executive intent into an accountable operating path that survives competing priorities."
+          },
+          {
+            "label": "Operating question",
+            "value": "Who owns the outcome, the next action, the dependency, the decision, and the evidence?"
+          }
+        ],
+        "toc": [
+          {
+            "label": "Follow-through is not a personality trait",
+            "anchor": "follow-through-is-not-a-personality-trait"
+          },
+          {
+            "label": "Ownership must be operational, not implied",
+            "anchor": "ownership-must-be-operational-not-implied"
+          },
+          {
+            "label": "The missing layer is ownership architecture",
+            "anchor": "the-missing-layer-is-ownership-architecture"
+          },
+          {
+            "label": "Decision rights are part of follow-through",
+            "anchor": "decision-rights-are-part-of-follow-through"
+          },
+          {
+            "label": "Escalation paths prevent silent drift",
+            "anchor": "escalation-paths-prevent-silent-drift"
+          },
+          {
+            "label": "Evidence beats reassurance",
+            "anchor": "evidence-beats-reassurance"
+          },
+          {
+            "label": "Review rhythms keep ownership alive",
+            "anchor": "review-rhythms-keep-ownership-alive"
+          },
+          {
+            "label": "Why leaders need fewer abstract directives",
+            "anchor": "why-leaders-need-fewer-abstract-directives"
+          },
+          {
+            "label": "Ownership architecture is not bureaucracy",
+            "anchor": "ownership-architecture-is-not-bureaucracy"
+          },
+          {
+            "label": "What leaders should design first",
+            "anchor": "what-leaders-should-design-first"
+          },
+          {
+            "label": "The executive standard",
+            "anchor": "the-executive-standard"
+          }
+        ],
+        "assets": [
+          {
+            "label": "Article hero image",
+            "href": "assets/images/writing/articles/2026-03-31_executive_follow_through_ownership_architecture/images/01_ownership_architecture_hero.png",
+            "description": "Primary article visual introducing ownership architecture as the path from executive intent to follow-through.",
+            "type": "image",
+            "number": "01"
+          },
+          {
+            "label": "Operational ownership model",
+            "href": "assets/images/writing/articles/2026-03-31_executive_follow_through_ownership_architecture/images/02_operational_ownership_model.png",
+            "description": "Inline visual showing sponsor, outcome owner, work owner, dependency owner, and evidence owner.",
+            "type": "image",
+            "number": "02"
+          },
+          {
+            "label": "Decision rights and escalation",
+            "href": "assets/images/writing/articles/2026-03-31_executive_follow_through_ownership_architecture/images/03_decision_rights_and_escalation.png",
+            "description": "Inline visual showing decision rights, escalation thresholds, and executive review points.",
+            "type": "image",
+            "number": "03"
+          },
+          {
+            "label": "Evidence over reassurance",
+            "href": "assets/images/writing/articles/2026-03-31_executive_follow_through_ownership_architecture/images/04_evidence_over_reassurance.png",
+            "description": "Inline visual contrasting reassurance-based status with evidence-based progress.",
+            "type": "image",
+            "number": "04"
+          },
+          {
+            "label": "From directive to operating path",
+            "href": "assets/images/writing/articles/2026-03-31_executive_follow_through_ownership_architecture/images/05_from_directive_to_operating_path.png",
+            "description": "Inline visual showing executive directives converted into ownership, decisions, evidence, escalation, and rhythm.",
+            "type": "image",
+            "number": "05"
+          }
+        ],
+        "related": [
+          {
+            "title": "Why Operational Friction Hides in Translation Layers",
+            "slug": "writing/2026/04/28/why-operational-friction-hides-in-translation-layers",
+            "description": "A related essay on the translation layers where operational friction accumulates."
+          },
+          {
+            "title": "Organizations Rarely Fail From a Lack of Intelligence",
+            "slug": "writing/2026/05/12/organizations-rarely-fail-from-a-lack-of-intelligence",
+            "description": "A companion essay on why the operating path between knowing and doing matters."
+          }
+        ]
+      },
+      "productionAssets": {
+        "socialImage": {
+          "label": "Companion social image",
+          "href": "assets/images/writing/articles/2026-03-31_executive_follow_through_ownership_architecture/images/01_ownership_architecture_hero.png",
+          "description": "Use the hero image as the default Open Graph/social preview until a separate square social image is created."
+        },
+        "articleImages": [
+          {
+            "label": "Hero",
+            "href": "assets/images/writing/articles/2026-03-31_executive_follow_through_ownership_architecture/images/01_ownership_architecture_hero.png",
+            "description": "Primary visual for the article header."
+          },
+          {
+            "label": "Operational ownership model",
+            "href": "assets/images/writing/articles/2026-03-31_executive_follow_through_ownership_architecture/images/02_operational_ownership_model.png",
+            "description": "Inline visual for the section on operational ownership."
+          },
+          {
+            "label": "Decision rights and escalation",
+            "href": "assets/images/writing/articles/2026-03-31_executive_follow_through_ownership_architecture/images/03_decision_rights_and_escalation.png",
+            "description": "Inline visual for the section on decision rights and escalation."
+          },
+          {
+            "label": "Evidence over reassurance",
+            "href": "assets/images/writing/articles/2026-03-31_executive_follow_through_ownership_architecture/images/04_evidence_over_reassurance.png",
+            "description": "Inline visual for the section on evidence-based follow-through."
+          },
+          {
+            "label": "From directive to operating path",
+            "href": "assets/images/writing/articles/2026-03-31_executive_follow_through_ownership_architecture/images/05_from_directive_to_operating_path.png",
+            "description": "Inline visual for the section on converting abstract directives into operating paths."
           }
         ]
       }
