@@ -17,6 +17,7 @@ export class AnalyticsService {
   private readonly router = inject(Router);
   private readonly destroyRef = inject(DestroyRef);
   private initialized = false;
+  private lastTrackedPath = '';
 
   initialize(): void {
     if (this.initialized || !environment.analytics.enabled || !this.isBrowser()) {
@@ -30,18 +31,20 @@ export class AnalyticsService {
 
   private installGtag(): void {
     const measurementId = environment.analytics.measurementId;
+    const inlineScript = this.document.createElement('script');
+    inlineScript.text = `
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      window.gtag = window.gtag || gtag;
+      gtag('js', new Date());
+      gtag('config', '${measurementId}', { send_page_view: false });
+    `;
+    this.document.head.appendChild(inlineScript);
+
     const script = this.document.createElement('script');
     script.async = true;
     script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
     this.document.head.appendChild(script);
-
-    window.dataLayer = window.dataLayer ?? [];
-    window.gtag = window.gtag ?? function gtag(...args: unknown[]) {
-      window.dataLayer?.push(args);
-    };
-
-    window.gtag('js', new Date());
-    window.gtag('config', measurementId, { send_page_view: false });
   }
 
   private trackRouteChanges(): void {
@@ -50,6 +53,8 @@ export class AnalyticsService {
       .subscribe(() => this.sendPageView());
 
     this.destroyRef.onDestroy(() => subscription.unsubscribe());
+
+    queueMicrotask(() => this.sendPageView());
   }
 
   private sendPageView(): void {
@@ -57,6 +62,12 @@ export class AnalyticsService {
     const location = this.document.location?.href ?? '';
     const path = `${this.document.location?.pathname ?? ''}${this.document.location?.search ?? ''}`;
     const title = this.document.title;
+
+    if (!path || this.lastTrackedPath === path) {
+      return;
+    }
+
+    this.lastTrackedPath = path;
 
     window.gtag?.('event', 'page_view', {
       send_to: measurementId,
