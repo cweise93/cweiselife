@@ -1,0 +1,441 @@
+.detail-hero {
+  padding: 80px 0 32px;
+  background: linear-gradient(135deg, var(--cw-hero-base), var(--cw-hero-mid));
+}
+
+.detail-head {
+  display: grid;
+  gap: 16px;
+  max-width: 56rem;
+}
+
+.detail-head__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.detail-head__chip {
+  --mat-chip-container-height: 46px;
+  --mat-chip-container-shape-radius: 999px;
+  --mat-chip-outline-width: 1px;
+  --mat-chip-outline-color: color-mix(in srgb, var(--cw-accent) 28%, var(--cw-line));
+  --mat-chip-elevated-container-color: color-mix(in srgb, var(--cw-panel) 76%, var(--cw-accent-soft));
+  --mat-chip-label-text-color: color-mix(in srgb, var(--cw-ink) 90%, var(--cw-accent) 10%);
+  --mat-chip-hover-state-layer-color: color-mix(in srgb, var(--cw-accent) 68%, white 10%);
+  --mat-chip-hover-state-layer-opacity: 0.08;
+  --mat-chip-focus-state-layer-color: color-mix(in srgb, var(--cw-accent) 82%, white 10%);
+  --mat-chip-focus-state-layer-opacity: 0.14;
+  --mat-chip-label-text-size: 0.94rem;
+  --mat-chip-label-text-weight: 500;
+  --mat-chip-label-text-tracking: 0;
+  background: var(--mat-chip-elevated-container-color);
+  backdrop-filter: blur(12px);
+  color: var(--mat-chip-label-text-color);
+}
+
+.detail-head__chip.mat-mdc-standard-chip {
+  border-radius: 999px;
+}
+
+.detail-head__chip .mdc-evolution-chip__text-label {
+  color: var(--mat-chip-label-text-color);
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2.8rem, 5vw, 4.6rem);
+  line-height: 0.95;
+  letter-spacing: -0.06em;
+}
+
+.lead {
+  margin: 0;
+  font-size: 1.15rem;
+  color: var(--cw-muted);
+  line-height: 1.8;
+}
+
+.guide-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(320px, 420px);
+  gap: 28px;
+  align-items: start;
+}
+
+.guide-main-column {
+  display: grid;
+  gap: 24px;
+  min-width: 0;
+}
+
+.guide-artifact-rail {
+  position: sticky;
+  top: calc(var(--cw-toolbar-current-height, var(--cw-toolbar-height)) + 24px);
+  align-self: start;
+}
+
+.guide-artifact-card {
+  display: grid;
+  gap: 18px;
+  padding: 18px;
+}
+
+.guide-artifact-card__header {
+  display: grid;
+  gap: 8px;
+}
+
+.guide-artifact-card__header h2 {
+  margin: 0;
+  font-size: clamp(1.4rem, 2vw, 1.8rem);
+  letter-spacing: -0.04em;
+}
+
+.guide-artifact-card__header p {
+  margin: 0;
+}
+
+.guide-artifact-trigger {
+  position: relative;
+  display: block;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.guide-artifact-trigger img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  border: 1px solid var(--cw-line);
+  background: white;
+  box-shadow: 0 20px 40px rgba(5, 12, 24, 0.28);
+}
+
+.guide-artifact-trigger__overlay {
+  position: absolute;
+  inset: auto 14px 14px 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 14px;
+  background: rgba(8, 18, 32, 0.78);
+  color: rgba(245, 248, 252, 0.96);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.guide-artifact-trigger:hover .guide-artifact-trigger__overlay,
+.guide-artifact-trigger:focus-visible .guide-artifact-trigger__overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.guide-artifact-trigger:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--cw-accent) 68%, white 18%);
+  outline-offset: 4px;
+}
+
+.guide-artifact-card__footer {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.guide-intro-card mat-card-content {
+  padding: 22px 24px;
+}
+
+.guide-intro-card p {
+  margin: 0;
+  color: var(--cw-ink);
+  line-height: 1.8;
+  font-size: 1.04rem;
+}
+
+.guide-sections {
+  display: grid;
+  gap: 24px;
+}
+
+.guide-section {
+  display: grid;
+  gap: 16px;
+  max-width: 52rem;
+}
+
+.guide-section h2,
+.more-guides h2,
+.artifact-modal h2 {
+  margin: 0;
+  font-size: clamp(1.7rem, 3vw, 2.2rem);
+  letter-spacing: -0.04em;
+}
+
+.guide-section p {
+  margin: 0;
+  color: var(--cw-muted);
+  line-height: 1.78;
+}
+
+.guide-image {
+  margin: 2px 0 0;
+  display: grid;
+  gap: 10px;
+  width: min(100%, 980px);
+}
+
+.guide-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 18px;
+  border: 1px solid var(--cw-line);
+  background: white;
+}
+
+.guide-image figcaption {
+  margin: 0;
+  color: var(--cw-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.guide-callout mat-card-content {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 18px 20px;
+}
+
+.guide-callout mat-icon {
+  color: var(--cw-accent);
+}
+
+.more-guides {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: 20px;
+  padding-top: 16px;
+}
+
+.more-guides__header {
+  display: grid;
+  gap: 10px;
+}
+
+.more-guides__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.guide-avatar {
+  display: grid;
+  place-items: center;
+  background: color-mix(in srgb, var(--cw-accent) 10%, var(--cw-panel));
+  color: var(--cw-accent);
+}
+
+.related-guide-card mat-card-title,
+.related-guide-card mat-card-subtitle {
+  white-space: normal;
+}
+
+.related-guide-card mat-card-subtitle {
+  color: var(--cw-muted);
+}
+
+.artifact-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(6, 12, 22, 0.9);
+  backdrop-filter: blur(10px);
+}
+
+.artifact-modal {
+  width: min(96vw, 1480px);
+  max-height: calc(100vh - 48px);
+  display: grid;
+  gap: 16px;
+}
+
+.artifact-modal__toolbar {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.artifact-modal__copy {
+  display: grid;
+  gap: 6px;
+}
+
+.artifact-modal__copy h2,
+.artifact-modal__eyebrow {
+  color: rgba(248, 250, 252, 0.96);
+}
+
+.artifact-modal__eyebrow {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.artifact-modal__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.artifact-modal__close {
+  color: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.artifact-modal__stage {
+  position: relative;
+  min-height: 0;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  border-radius: 24px;
+  background: linear-gradient(180deg, rgba(13, 25, 42, 0.96), rgba(8, 17, 30, 0.96));
+  overflow: hidden;
+}
+
+.artifact-modal__watermark {
+  position: absolute;
+  inset: 0;
+  width: min(44vw, 520px);
+  max-width: 70%;
+  height: auto;
+  margin: auto;
+  opacity: 0.08;
+  pointer-events: none;
+  filter: brightness(1.2);
+}
+
+.artifact-modal__image {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: auto;
+  max-width: 100%;
+  max-height: calc(100vh - 220px);
+  height: auto;
+  object-fit: contain;
+  border-radius: 18px;
+  background: white;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+}
+
+.artifact-modal__caption {
+  margin: 0;
+  max-width: 80ch;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.7;
+}
+
+.missing-state {
+  min-height: calc(100svh - var(--cw-toolbar-height) - 220px);
+  display: grid;
+  align-items: center;
+}
+
+:host-context(body.cw-theme-dusk) {
+  .guide-intro-card,
+  .guide-callout,
+  .guide-artifact-card,
+  .related-guide-card {
+    background: var(--cw-panel) !important;
+    border-color: var(--cw-line) !important;
+  }
+
+  .guide-intro-card p {
+    color: var(--cw-ink);
+  }
+
+  .guide-artifact-card__header h2 {
+    color: var(--cw-text);
+  }
+}
+
+@media (max-width: 1080px) {
+  .guide-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .guide-artifact-rail {
+    position: static;
+  }
+
+  .guide-artifact-card {
+    max-width: 44rem;
+  }
+}
+
+@media (max-width: 720px) {
+  .detail-hero {
+    padding: 64px 0 24px;
+  }
+
+  .guide-shell,
+  .guide-main-column,
+  .guide-sections {
+    gap: 20px;
+  }
+
+  .guide-intro-card mat-card-content {
+    padding: 18px 18px 20px;
+  }
+
+  .guide-artifact-card {
+    padding: 14px;
+  }
+
+  .artifact-modal-backdrop {
+    padding: 12px;
+  }
+
+  .artifact-modal {
+    width: 100%;
+    max-height: calc(100vh - 24px);
+  }
+
+  .artifact-modal__toolbar {
+    display: grid;
+    gap: 12px;
+  }
+
+  .artifact-modal__actions {
+    justify-content: flex-start;
+  }
+
+  .artifact-modal__stage {
+    padding: 12px;
+    border-radius: 18px;
+  }
+
+  .artifact-modal__image {
+    max-height: calc(100vh - 240px);
+  }
+}

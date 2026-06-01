@@ -1,0 +1,167 @@
+@if (item(); as guide) {
+  <article class="guide-detail">
+    <section class="detail-hero">
+      <div class="cw-container detail-head">
+        <p class="cw-eyebrow">Operating Tool</p>
+        <h1>{{ guide.title }}</h1>
+        <p class="lead">{{ guide.summary }}</p>
+        <mat-chip-set aria-label="Guide tags" class="detail-head__chips">
+          @for (tag of guide.tags; track tag) {
+            <mat-chip class="detail-head__chip">{{ tag }}</mat-chip>
+          }
+        </mat-chip-set>
+      </div>
+    </section>
+
+    <section class="cw-section">
+      <div class="cw-container guide-shell">
+        <div class="guide-main-column">
+          <mat-card appearance="outlined" class="guide-intro-card cw-surface-card">
+            <mat-card-content>
+              <p>{{ guide.body.intro }}</p>
+            </mat-card-content>
+          </mat-card>
+
+          <div class="guide-sections">
+            @for (section of guide.body.sections; track section.heading; let last = $last) {
+              <section class="guide-section">
+                <h2>{{ section.heading }}</h2>
+
+                @for (paragraph of section.paragraphs || []; track paragraph) {
+                  <p>{{ paragraph }}</p>
+                }
+
+                @if (section.image) {
+                  <figure class="guide-image">
+                    <img [src]="section.image.src" [alt]="section.image.alt" />
+                    @if (section.image.caption) {
+                      <figcaption>{{ section.image.caption }}</figcaption>
+                    }
+                  </figure>
+                }
+
+                @if (section.callout) {
+                  <mat-card appearance="outlined" class="guide-callout cw-surface-card">
+                    <mat-card-content>
+                      <mat-icon>lightbulb</mat-icon>
+                      <p>{{ section.callout }}</p>
+                    </mat-card-content>
+                  </mat-card>
+                }
+              </section>
+
+              @if (!last) {
+                <mat-divider></mat-divider>
+              }
+            }
+          </div>
+        </div>
+
+        @if (guide.heroImage) {
+          <aside class="guide-artifact-rail">
+            <section class="guide-artifact-card cw-surface-card">
+              <div class="guide-artifact-card__header">
+                <p class="cw-eyebrow">Guide Artifact</p>
+                <h2>Reference while you read.</h2>
+                <p class="cw-muted">Open the full visual, print it, or keep it pinned beside the guide as you read.</p>
+              </div>
+
+              <button
+                type="button"
+                class="guide-artifact-trigger"
+                (click)="openArtifact(guide)"
+                [attr.aria-label]="'Open artifact for ' + guide.title"
+              >
+                <img [src]="guide.heroImage" [alt]="guide.title" />
+                <span class="guide-artifact-trigger__overlay">
+                  <span>Open full view</span>
+                  <mat-icon>open_in_full</mat-icon>
+                </span>
+              </button>
+
+              <div class="guide-artifact-card__footer">
+                <button mat-stroked-button color="primary" type="button" (click)="openArtifact(guide)">
+                  Open artifact
+                  <mat-icon>open_in_new</mat-icon>
+                </button>
+              </div>
+            </section>
+          </aside>
+        }
+      </div>
+
+      @if (relatedGuides().length) {
+        <section class="more-guides">
+          <div class="more-guides__header">
+            <p class="cw-eyebrow">More Operating Tools</p>
+            <h2>Keep the operating path moving.</h2>
+          </div>
+          <div class="more-guides__grid">
+            @for (related of relatedGuides(); track related.id) {
+              <mat-card appearance="outlined" class="related-guide-card cw-surface-card">
+                <mat-card-header>
+                  <div mat-card-avatar class="guide-avatar">
+                    <mat-icon>{{ related.icon }}</mat-icon>
+                  </div>
+                  <mat-card-title>{{ related.title }}</mat-card-title>
+                  <mat-card-subtitle>{{ related.summary }}</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-actions align="end">
+                  <a mat-button color="primary" [routerLink]="getGuideRoute(related.slug)">
+                    Open guide
+                    <mat-icon>arrow_forward</mat-icon>
+                  </a>
+                </mat-card-actions>
+              </mat-card>
+            }
+          </div>
+        </section>
+      }
+    </section>
+
+    @if (activeArtifact(); as artifact) {
+      <div class="artifact-modal-backdrop" (click)="closeArtifact()">
+        <div class="artifact-modal" (click)="$event.stopPropagation()">
+          <div class="artifact-modal__toolbar">
+            <div class="artifact-modal__copy">
+              <p class="artifact-modal__eyebrow">Artifact Viewer</p>
+              <h2>{{ artifact.title }}</h2>
+            </div>
+
+            <div class="artifact-modal__actions">
+              <button mat-stroked-button color="primary" type="button" (click)="printArtifact()">
+                Print
+                <mat-icon>print</mat-icon>
+              </button>
+              <button mat-stroked-button color="primary" type="button" (click)="openArtifactFullscreen()">
+                Full screen
+                <mat-icon>open_in_full</mat-icon>
+              </button>
+              <button mat-icon-button type="button" class="artifact-modal__close" (click)="closeArtifact()" aria-label="Close artifact viewer">
+                <mat-icon>close</mat-icon>
+              </button>
+            </div>
+          </div>
+
+          <div class="artifact-modal__stage" id="guide-artifact-stage">
+            <img class="artifact-modal__watermark" src="assets/images/cweise_logo_dark_mode.svg" alt="" aria-hidden="true" />
+            <img class="artifact-modal__image" [src]="artifact.src" [alt]="artifact.alt" />
+          </div>
+
+          @if (artifact.caption) {
+            <p class="artifact-modal__caption">{{ artifact.caption }}</p>
+          }
+        </div>
+      </div>
+    }
+  </article>
+} @else {
+  <section class="cw-section missing-state">
+    <div class="cw-container">
+      <p class="cw-eyebrow">Operating Tool</p>
+      <h1>Guide not found</h1>
+      <p class="cw-muted">This guide slug does not resolve to a published operating tool.</p>
+      <a mat-flat-button color="primary" routerLink="/guides">Back to guides</a>
+    </div>
+  </section>
+}

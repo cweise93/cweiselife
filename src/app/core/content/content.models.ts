@@ -203,12 +203,12 @@ export interface HomeContentConfig {
   heroImage: string;
   featuredWritingSlugs: string[];
   featuredFrameworkSlugs: string[];
-  featuredInitiativeSlugs: string[];
+  featuredGuideSlugs: string[];
   themes: HomeTheme[];
   themesSection: HomeSectionContent;
   writingSection: HomeSectionContent;
   frameworkSection: HomeSectionContent;
-  initiativesSection: HomeSectionContent;
+  guidesSection: HomeSectionContent;
   aboutSection: HomeSectionContent;
 }
 
@@ -290,6 +290,31 @@ export interface FrameworkContentFile {
   items: FrameworkItem[];
 }
 
+export interface GuideBody {
+  intro: string;
+  sections: ContentSection[];
+}
+
+export interface GuideItem {
+  id: string;
+  slug: string;
+  title: string;
+  summary: string;
+  status: ContentStatus;
+  featured: boolean;
+  icon: string;
+  tags: string[];
+  heroImage?: string;
+  seo: SeoContent;
+  body: GuideBody;
+  companion?: ContentCompanion;
+}
+
+export interface GuideContentFile {
+  meta: CollectionMeta;
+  items: GuideItem[];
+}
+
 export interface InitiativeBody {
   context: string;
   challenge: string;
@@ -346,6 +371,6 @@ export interface HomeContentViewModel {
   home: HomeContentConfig;
   featuredWriting: WritingItem[];
   featuredFrameworks: FrameworkItem[];
-  featuredInitiatives: InitiativeItem[];
+  featuredGuides: GuideItem[];
   about: AboutContent;
 }

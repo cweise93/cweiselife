@@ -7,6 +7,7 @@ import {
   ContentCollectionViewModel,
   FooterContent,
   FrameworkItem,
+  GuideItem,
   HomeContentViewModel,
   InitiativeItem,
   SiteMeta,
@@ -16,12 +17,14 @@ import {
 import {
   FALLBACK_ABOUT_CONTENT,
   FALLBACK_FRAMEWORK_CONTENT,
+  FALLBACK_GUIDE_CONTENT,
   FALLBACK_INITIATIVE_CONTENT,
   FALLBACK_SITE_CONTENT,
   FALLBACK_WRITING_CONTENT,
   isPublicContent,
   mapAboutFile,
   mapFrameworkFile,
+  mapGuideFile,
   mapInitiativeFile,
   mapSiteFile,
   mapWritingFile,
@@ -36,6 +39,7 @@ export class ContentService {
   private readonly siteFile$ = this.loadFile('assets/content/site.json', FALLBACK_SITE_CONTENT, mapSiteFile);
   private readonly writingFile$ = this.loadFile('assets/content/writing.json', FALLBACK_WRITING_CONTENT, mapWritingFile);
   private readonly frameworksFile$ = this.loadFile('assets/content/frameworks.json', FALLBACK_FRAMEWORK_CONTENT, mapFrameworkFile);
+  private readonly guidesFile$ = this.loadFile('assets/content/guides.json', FALLBACK_GUIDE_CONTENT, mapGuideFile);
   private readonly initiativesFile$ = this.loadFile('assets/content/initiatives.json', FALLBACK_INITIATIVE_CONTENT, mapInitiativeFile);
   private readonly aboutFile$ = this.loadFile('assets/content/about.json', FALLBACK_ABOUT_CONTENT, mapAboutFile);
 
@@ -60,10 +64,10 @@ export class ContentService {
       site: this.siteFile$,
       featuredWriting: this.getFeaturedWriting(),
       featuredFrameworks: this.getFeaturedFrameworks(),
-      featuredInitiatives: this.getFeaturedInitiatives(),
+      featuredGuides: this.getFeaturedGuides(),
       about: this.getAboutContent()
     }).pipe(
-      map(({ site, featuredWriting, featuredFrameworks, featuredInitiatives, about }) => ({
+      map(({ site, featuredWriting, featuredFrameworks, featuredGuides, about }) => ({
         meta: site.meta,
         navigation: site.navigation,
         footer: site.footer,
@@ -71,7 +75,7 @@ export class ContentService {
         home: site.home,
         featuredWriting,
         featuredFrameworks,
-        featuredInitiatives,
+        featuredGuides,
         about
       }))
     );
@@ -132,6 +136,36 @@ export class ContentService {
     );
   }
 
+  getGuidesPage(): Observable<ContentCollectionViewModel<GuideItem>> {
+    return combineLatest({
+      meta: this.guidesFile$.pipe(map((file) => file.meta)),
+      items: this.getGuidesIndex()
+    }).pipe(map(({ meta, items }) => ({ meta, items })));
+  }
+
+  getGuidesIndex(): Observable<GuideItem[]> {
+    return this.guidesFile$.pipe(
+      map((file) => file.items.filter((item) => isPublicContent(item.status)))
+    );
+  }
+
+  getGuideBySlug(slug: string): Observable<GuideItem | null> {
+    const normalized = slug.trim();
+
+    return this.getGuidesIndex().pipe(
+      map(
+        (items) =>
+          items.find((item) => item.slug === normalized || item.slug === `guides/${normalized}`) ?? null
+      )
+    );
+  }
+
+  getFeaturedGuides(limit?: number): Observable<GuideItem[]> {
+    return combineLatest([this.siteFile$, this.getGuidesIndex()]).pipe(
+      map(([site, items]) => resolveFeaturedItems(site.home.featuredGuideSlugs, items, limit))
+    );
+  }
+
   getInitiativesPage(): Observable<ContentCollectionViewModel<InitiativeItem>> {
     return combineLatest({
       meta: this.initiativesFile$.pipe(map((file) => file.meta)),
@@ -152,8 +186,9 @@ export class ContentService {
   }
 
   getFeaturedInitiatives(limit?: number): Observable<InitiativeItem[]> {
-    return combineLatest([this.siteFile$, this.getInitiativesIndex()]).pipe(
-      map(([site, items]) => resolveFeaturedItems(site.home.featuredInitiativeSlugs, items, limit))
+    return this.getInitiativesIndex().pipe(
+      map((items) => items.filter((item) => item.featured)),
+      map((items) => (typeof limit === 'number' ? items.slice(0, limit) : items))
     );
   }
 

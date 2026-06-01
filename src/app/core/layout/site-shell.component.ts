@@ -131,7 +131,7 @@ export class SiteShellComponent {
       '/': 'home',
       '/writing': 'edit_note',
       '/frameworks': 'dashboard_customize',
-      '/initiatives': 'flag',
+      '/guides': 'handyman',
       '/about': 'info',
       '/connect': 'alternate_email'
     };

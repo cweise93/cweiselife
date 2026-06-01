@@ -1,12 +1,456 @@
 {
   "meta": {
     "version": 1,
-    "updatedOn": "2026-05-26",
+    "updatedOn": "2026-06-01",
     "eyebrow": "Writing",
     "headline": "Essays on Operational Intelligence",
     "intro": "Thought-leadership essays for engineering and infrastructure organizations trying to reduce rework, improve workflow design, and translate strategy into operational follow-through."
   },
   "items": [
+    {
+      "id": "writing-005",
+      "slug": "writing/2026/06/01/draft-future-essay-on-work-queues",
+      "title": "Draft: Work Queues as an Executive Operating Surface",
+      "summary": "A draft essay on how work queues expose organizational constraints.",
+      "status": "draft",
+      "publishedOn": "2026-06-01",
+      "readTimeMinutes": 6,
+      "featured": false,
+      "tags": [
+        "draft"
+      ],
+      "heroImage": "assets/images/article-facets.png",
+      "seo": {
+        "title": "Draft: Work Queues as an Executive Operating Surface",
+        "description": "Draft essay."
+      },
+      "body": {
+        "intro": "Draft content.",
+        "sections": []
+      }
+    },
+    {
+      "id": "writing-008",
+      "slug": "writing/2026/06/01/ai-spend-is-rising-is-ebitda",
+      "title": "AI Spend Is Rising. Is EBITDA?",
+      "summary": "A board-aware essay reframing enterprise AI cost around operating leverage: not whether AI spend is rising, but whether AI consumption is being converted into measurable margin, throughput, decision quality, and enterprise value.",
+      "status": "published",
+      "publishedOn": "2026-06-01",
+      "readTimeMinutes": 11,
+      "featured": true,
+      "tags": [
+        "AI governance",
+        "AI cost management",
+        "operating leverage",
+        "EBITDA",
+        "enterprise AI",
+        "workflow design",
+        "operational intelligence"
+      ],
+      "heroImage": "assets/images/writing/articles/2026-06-01_ai_spend_is_rising_is_ebitda/01_ai_spend_rising_is_ebitda.png",
+      "seo": {
+        "title": "AI Spend Is Rising. Is EBITDA?",
+        "description": "Why the enterprise AI question is not whether spend is increasing, but whether consumption is becoming measurable operating leverage through visibility, routing, workflow design, and disciplined budgeting."
+      },
+      "body": {
+        "intro": "AI spend is rising. That part is not especially controversial. Enterprise adoption is moving from pilots and experimentation toward broader organizational use, and vendor contracts are being signed accordingly. The more useful question is whether that spend is converting into operating leverage. Is AI helping the company improve margin, throughput, decision quality, cycle time, rework, risk posture, or revenue capacity? Or is usage simply becoming another expanding technology cost line with a productivity story attached to it?",
+        "sections": [
+          {
+            "heading": "AI contracts are not the controversy",
+            "layout": "split-image-right",
+            "paragraphs": [
+              "Large AI contracts do not need to be treated as evidence of poor judgment. In many organizations, they are a rational response to a real shift in the market. AI is becoming part of how knowledge work is researched, summarized, drafted, analyzed, reviewed, and executed. Boards and executives are right to take that shift seriously.",
+              "The issue is not whether a board approved a vendor contract. That is the wrong angle. At a certain size, the board is expected to understand the strategic case, evaluate risk, consider capital allocation, and hold management accountable for value. Vendor approval is one decision surface. Value realization is another.",
+              "A contract can be well governed and still leave the organization with a weak consumption model. Procurement may know the vendor, legal may review the terms, security may assess the platform, and finance may approve the spend. But none of that automatically tells the company how daily AI usage will become measurable operating improvement.",
+              "That is the gap this campaign is meant to explore: not whether enterprises should spend on AI, but how management can make sure AI consumption becomes visible enough to manage and useful enough to convert into value."
+            ],
+            "image": {
+              "src": "assets/images/writing/articles/2026-06-01_ai_spend_is_rising_is_ebitda/02_contract_not_value_model.png",
+              "alt": "A clean executive visual contrasting AI vendor approval with operating value realization.",
+              "caption": "Vendor approval is a governance step. It is not the same thing as an operating model for value conversion."
+            },
+            "callout": "The contract is not the controversy. The question is whether consumption becomes operating leverage."
+          },
+          {
+            "heading": "The real question is operating leverage",
+            "paragraphs": [
+              "Operating leverage is the better frame because it speaks the language of enterprise value. The board does not need to inspect token math. It needs confidence that management can turn AI usage into business performance.",
+              "That performance may show up in different ways. In one organization, AI may reduce the cost of recurring production work. In another, it may compress review cycles. In another, it may help senior expertise travel farther across the organization. In another, it may reduce rework, improve decision quality, or increase throughput without requiring equivalent headcount growth.",
+              "Those are operating leverage questions. They connect AI consumption to the business model instead of stopping at the technology bill.",
+              "The distinction matters because AI can create the appearance of productivity before it creates measurable value. People may draft faster, summarize more material, generate more versions, and explore more ideas. That can be useful. But if the work does not reduce cycle time, improve quality, lower cost of delivery, strengthen decision-making, or expand revenue capacity, then consumption may grow faster than value.",
+              "The point is not to discourage use. The point is to create a management surface where use can be understood, shaped, and improved."
+            ],
+            "callout": "The board-level question is not whether people are using AI. It is whether AI usage is changing the economics of the work."
+          },
+          {
+            "heading": "AI usage will expand beyond the obvious users",
+            "layout": "split-image-left",
+            "paragraphs": [
+              "A common mistake is to imagine AI consumption primarily through the lens of developers. Developers matter, especially when AI tools are embedded inside IDEs, code review, testing, documentation, and software delivery. But developer usage is only one part of the future consumption curve.",
+              "The larger consumption story may come from the people who perform high-context knowledge work every day: executives, managers, analysts, engineers, estimators, finance teams, HR, legal, operations, project leaders, proposal teams, and client-facing professionals.",
+              "Executives may use AI for board preparation, strategy memos, market scans, meeting synthesis, competitive research, investor narratives, decision support, and scenario framing. Managers may use it to interpret status, summarize risks, translate goals into action plans, and prepare communications. Analysts may use it to examine data, draft findings, and explore implications. Technical professionals may use it to review specifications, summarize constraints, and accelerate documentation.",
+              "None of that is inherently wasteful. In fact, much of it may be valuable. But the shape of the usage matters. A short answer to a short prompt has one cost profile. A long document review with repeated follow-up questions has another. A multi-step research workflow with connectors, attachments, retries, and long outputs has another still.",
+              "As AI becomes embedded across roles, the enterprise needs a way to understand not only who has access, but how different kinds of work create different consumption patterns."
+            ],
+            "image": {
+              "src": "assets/images/writing/articles/2026-06-01_ai_spend_is_rising_is_ebitda/03_ai_consumers_across_enterprise.png",
+              "alt": "An enterprise operating visual showing executives, managers, analysts, engineers, finance, legal, HR, and operations as AI consumers.",
+              "caption": "The future consumption curve is not only a developer story. It is a knowledge-work story."
+            },
+            "callout": "The newest token consumers may be the people whose work already carries the highest business context."
+          },
+          {
+            "heading": "Consumption matters when it scales faster than value",
+            "paragraphs": [
+              "AI consumption is not automatically a problem. A higher AI bill can be entirely rational if the organization is producing more value, reducing delivery cost, accelerating quality work, or increasing capacity. The wrong goal is to minimize usage for its own sake.",
+              "The management problem appears when consumption scales faster than value. That is when AI spend begins to behave like an operating drag rather than an operating lever.",
+              "This can happen quietly. A team uses AI to draft more material but does not reduce review time. A manager summarizes more information but does not improve decision speed. An executive produces more strategic analysis but does not create better allocation choices. A project team reviews more documents but still carries the same rework pattern. A developer generates more code but also increases review burden, testing friction, or maintenance cost.",
+              "In each case, AI may be active. It may even be impressive. But activity is not leverage. Leverage appears when the organization can connect usage to a better economic or operational result.",
+              "That is why consumption needs to be modeled in relation to value. The question is not simply what the tool costs. The question is what cost of production, decision delay, rework, risk, or capacity constraint the tool changes."
+            ],
+            "callout": "AI cost is not the problem. Unmeasured consumption without value conversion is the problem.",
+            "layout": "split-image-right",
+            "image": {
+              "src": "assets/images/writing/articles/2026-06-01_ai_spend_is_rising_is_ebitda/04_consumption_vs_value_curve.png",
+              "alt": "A chart showing AI consumption rising faster than realized business value, creating a widening operating opportunity gap.",
+              "caption": "Consumption only becomes a management problem when it scales faster than realized value."
+            }
+          },
+          {
+            "heading": "The first management requirement is visibility",
+            "layout": "split-image-right",
+            "paragraphs": [
+              "Visibility comes before optimization. Without visibility, management is left with vendor invoices, anecdotal productivity stories, scattered usage reports, and a general sense that AI is either working or not working.",
+              "That is not enough. Management needs a practical way to see who is using AI, what work they are using it for, which models or providers are involved, what connectors and context sources are used, how often work is retried, and where usage clusters by department, role, workflow, or complexity.",
+              "This does not require immediate overengineering. A useful first version can be simple: estimate user counts, usage hours, task complexity, model selection, and average token shape. Then apply ranges. Then refine only the variables that matter.",
+              "Visibility should not be framed as surveillance. The goal is not to make employees afraid to use AI. The goal is to make the operating system legible enough that management can improve it.",
+              "Once consumption is visible, the enterprise can ask better questions. Which tasks deserve premium model use? Where is context being repeatedly stuffed into prompts? Which workflows should use reusable instructions? Where would caching prevent repeat spend? Which use cases might make sense locally? Which departments need budgets or thresholds before usage expands?"
+            ],
+            "image": {
+              "src": "assets/images/writing/articles/2026-06-01_ai_spend_is_rising_is_ebitda/04_consumption_vs_value_curve.png",
+              "alt": "A visual showing AI consumption becoming visible by role, workflow, model, context, connector, and cost.",
+              "caption": "Visibility turns AI consumption from a vague technology expense into a manageable operating surface."
+            },
+            "callout": "Visibility is not restriction. Visibility is the first condition for responsible scale."
+          },
+          {
+            "heading": "The AI Consumption Leverage Calculator",
+            "paragraphs": [
+              "This is where a calculator becomes useful. Not as a gimmick and not as a scare tool, but as a management conversation starter.",
+              "At the surface level, the calculator should be simple enough for an executive to understand quickly: provider, model, employee count, AI user count, hours of use per day, average complexity, hosted/local/hybrid path, monthly estimate, annual estimate, and growth scenarios.",
+              "Underneath that simple view, each assumption can open into more detail. Average complexity can expand into input tokens, output tokens, turns per session, documents attached, retry rate, context reuse, tool calls, and connector usage. User count can expand by department or role. Usage hours can expand into categories like executive research, VS Code time, proposal work, document review, meeting summaries, and operational analysis.",
+              "For hosted models, the calculator estimates token transfer cost by combining usage volume, task complexity, input/output token shape, and provider/model rates. For local or hybrid paths, it adds a different economic model: hardware cost, tax, setup labor, maintenance labor, power or cooling assumptions, utilization, and depreciation period.",
+              "The point is not to declare local cheaper or hosted wasteful. That would be too simplistic. Local models may be useful for repetitive, low-risk, privacy-sensitive, or first-pass tasks. Hosted models may be preferable for complex reasoning, high-quality synthesis, advanced coding, multimodal work, and tasks where capability matters more than raw unit cost.",
+              "The useful question is not which side wins. The useful question is which work belongs on which path, at what cost, with what expected value."
+            ],
+            "callout": "The calculator is not trying to prove AI is expensive. It is trying to make the economics of usage discussable.",
+            "layout": "split-image-left",
+            "image": {
+              "src": "assets/images/writing/articles/2026-06-01_ai_spend_is_rising_is_ebitda/05_ai_consumption_leverage_calculator.png",
+              "alt": "An executive dashboard mockup for estimating hosted, local, and hybrid AI usage economics.",
+              "caption": "The calculator gives leadership a practical way to compare usage shape, execution path, and estimated cost."
+            },
+            "blocks": [
+              {
+                "type": "list",
+                "title": "Executive surface inputs",
+                "items": [
+                  "Provider and model",
+                  "Employee count and AI user count",
+                  "Hours of use per day and workdays per month",
+                  "Average task complexity",
+                  "Execution path: hosted, local, or hybrid"
+                ]
+              },
+              {
+                "type": "list",
+                "title": "Drill-down variables",
+                "items": [
+                  "Input and output token shape",
+                  "Turns per session, prompts per hour, and retry rate",
+                  "Documents attached, average document size, and connector usage",
+                  "Context reuse, tool calls, and workflow path depth",
+                  "Local hardware, setup labor, maintenance labor, depreciation, and utilization assumptions"
+                ]
+              },
+              {
+                "type": "list",
+                "title": "Decision outputs",
+                "items": [
+                  "Monthly and annual hosted cost",
+                  "Monthly and annual local cost",
+                  "Hybrid cost range",
+                  "Cost per employee, AI user, and usage hour",
+                  "2x, 5x, and 10x adoption scenarios with an estimated leverage range"
+                ]
+              }
+            ]
+          },
+          {
+            "heading": "Seven ways to improve consumption without degrading the user experience",
+            "layout": "split-image-left",
+            "paragraphs": [
+              "The best AI consumption work should not begin by making the user experience worse. If cost control feels like punishment, employees will either stop using useful tools or route around the controls. Neither outcome creates leverage.",
+              "A better approach is to reduce waste in the operating path. The organization can help users get equal or better outcomes with less unnecessary consumption by improving defaults, context, routing, workflow design, caching, hybrid execution choices, and budgeting discipline.",
+              "These seven categories create a practical starting point. They do not require the organization to solve everything at once. They create a map of where consumption reduction can happen without treating adoption as the enemy."
+            ],
+            "image": {
+              "src": "assets/images/writing/articles/2026-06-01_ai_spend_is_rising_is_ebitda/06_seven_consumption_levers.png",
+              "alt": "A seven-category framework for improving AI operating leverage through prompt reuse, context management, model routing, workflow design, caching, hybrid execution, and budgeting.",
+              "caption": "The goal is not less AI. The goal is better consumption design."
+            },
+            "callout": "The first savings may come not from using AI less, but from helping people use it with less waste.",
+            "blocks": [
+              {
+                "type": "cards",
+                "items": [
+                  {
+                    "title": "1. Prompt and instruction reuse",
+                    "description": "Reusable prompts, shared instructions, role templates, and task patterns reduce repeated prompt construction and inconsistent results. This is usually one of the easiest places to start because it improves user experience while reducing avoidable retries."
+                  },
+                  {
+                    "title": "2. Context management",
+                    "description": "Context is one of the most important consumption drivers. Sending entire documents, long threads, large repositories, or repeated background material into every request can become expensive quickly. Better summaries, retrieval scopes, context packages, and document boundaries can preserve usefulness while reducing bloat."
+                  },
+                  {
+                    "title": "3. Model routing",
+                    "description": "Not every task deserves the most capable model. Simple classification, formatting, first-pass summarization, or extraction may not require premium reasoning. At the same time, complex synthesis should not be underpowered. Routing is the discipline of matching the work to the model instead of letting every task take the same path."
+                  },
+                  {
+                    "title": "4. Workflow design",
+                    "description": "AI should not be inserted into every workflow simply because it can be. Some tasks are better handled by templates, rules, deterministic automation, reporting tools, or well-designed forms. Workflow design asks where AI creates leverage and where it creates unnecessary consumption."
+                  },
+                  {
+                    "title": "5. Caching and memory layers",
+                    "description": "Organizations should avoid paying repeatedly for the same summaries, classifications, lookups, reference interpretations, and context preparation. Caching and memory layers can preserve reusable work so the system does not keep reconstructing the same answer from scratch."
+                  },
+                  {
+                    "title": "6. Local and hybrid execution",
+                    "description": "Local execution can be useful for certain low-risk, repetitive, or privacy-sensitive tasks, but it carries its own costs: hardware, tax, setup labor, maintenance, depreciation, support, power, and utilization risk. Hosted execution can offer stronger capability and lower operational burden, but usage can scale quickly. Hybrid design should compare paths without ideology."
+                  },
+                  {
+                    "title": "7. Planning and budgeting",
+                    "description": "Planning and budgeting turn AI consumption from an invoice surprise into a managed operating assumption. Forecast ranges, department budgets, thresholds, approval triggers, monthly reviews, and scenario planning help management understand what happens when adoption doubles, quintuples, or becomes embedded across the enterprise."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "heading": "What the board should expect from management",
+            "paragraphs": [
+              "The board does not need to manage the AI operating model directly. That would violate a healthy separation of concerns. Management owns the operating system. The board reserves its attention for value, risk, strategy, capital allocation, and oversight.",
+              "But the board can reasonably expect management to explain how AI spend is expected to convert into value. Which workflows are being improved? Which costs are being displaced? Which cycle times are changing? Which quality or risk measures are improving? Which usage patterns are expanding? What thresholds trigger review? How does management know whether AI is improving EBITDA or simply increasing consumption?",
+              "That is not micromanagement. It is value oversight.",
+              "A mature answer should connect AI usage to operating leverage. It should show where consumption is growing, where it is governed, where it is creating value, and where the organization is improving the path from usage to measurable result.",
+              "If management can answer those questions clearly, AI spend becomes easier to defend. If management cannot, the organization may still be using AI, but it may not yet be managing it."
+            ],
+            "callout": "The board does not need token math. It needs assurance that management can convert AI usage into enterprise value."
+          },
+          {
+            "heading": "The management standard",
+            "paragraphs": [
+              "AI spend is going to rise in many organizations. That alone does not determine whether the spend is good or bad. The management standard is whether increased AI consumption produces a better economic shape for the business.",
+              "That requires visibility, not panic. It requires routing, not blanket restriction. It requires workflow design, not tool enthusiasm alone. It requires budgeting, not after-the-fact invoice interpretation. It requires a practical way to compare hosted, local, and hybrid paths without turning architecture into ideology.",
+              "The companies that manage AI well may not be the ones that use it least. They may be the ones that understand how consumption becomes operating leverage.",
+              "The first step is making the consumption visible enough to manage."
+            ],
+            "callout": "AI spend is rising. The better question is whether the operating model is turning that spend into EBITDA.",
+            "layout": "split-image-right",
+            "image": {
+              "src": "assets/images/writing/articles/2026-06-01_ai_spend_is_rising_is_ebitda/07_strategic_ai_operating_leverage_roadmap.png",
+              "alt": "A value-versus-complexity roadmap for sequencing AI consumption improvements by expected leverage and implementation difficulty.",
+              "caption": "Consumption strategy becomes practical when leaders can sequence high-value improvements by complexity and expected leverage."
+            }
+          }
+        ]
+      },
+      "companion": {
+        "snapshot": [
+          {
+            "label": "Core argument",
+            "value": "The issue is not whether companies are spending more on AI. The issue is whether AI consumption is being converted into measurable operating leverage."
+          },
+          {
+            "label": "Board-level question",
+            "value": "Can management explain how AI spend improves EBITDA, margin, throughput, decision quality, risk posture, or enterprise value?"
+          },
+          {
+            "label": "Management requirement",
+            "value": "Create visibility into who uses AI, what work it supports, which models and connectors are involved, and how consumption maps to value."
+          },
+          {
+            "label": "Interactive artifact",
+            "value": "The AI Consumption Leverage Calculator estimates hosted, local, and hybrid usage cost and helps compare consumption against value assumptions."
+          }
+        ],
+        "toc": [
+          {
+            "label": "AI contracts are not the controversy",
+            "anchor": "ai-contracts-are-not-the-controversy"
+          },
+          {
+            "label": "The real question is operating leverage",
+            "anchor": "the-real-question-is-operating-leverage"
+          },
+          {
+            "label": "AI usage will expand beyond the obvious users",
+            "anchor": "ai-usage-will-expand-beyond-the-obvious-users"
+          },
+          {
+            "label": "Consumption matters when it scales faster than value",
+            "anchor": "consumption-matters-when-it-scales-faster-than-value"
+          },
+          {
+            "label": "The first management requirement is visibility",
+            "anchor": "the-first-management-requirement-is-visibility"
+          },
+          {
+            "label": "The AI Consumption Leverage Calculator",
+            "anchor": "the-ai-consumption-leverage-calculator"
+          },
+          {
+            "label": "Seven ways to improve consumption without degrading the user experience",
+            "anchor": "seven-ways-to-improve-consumption-without-degrading-the-user-experience"
+          },
+          {
+            "label": "What the board should expect from management",
+            "anchor": "what-the-board-should-expect-from-management"
+          },
+          {
+            "label": "The management standard",
+            "anchor": "the-management-standard"
+          }
+        ],
+        "assets": [
+          {
+            "label": "Article hero image",
+            "href": "assets/images/writing/articles/2026-06-01_ai_spend_is_rising_is_ebitda/01_ai_spend_rising_is_ebitda.png",
+            "description": "Primary article visual introducing the question of AI spend converting into EBITDA.",
+            "type": "image",
+            "number": "01"
+          },
+          {
+            "label": "Contract is not the value model",
+            "href": "assets/images/writing/articles/2026-06-01_ai_spend_is_rising_is_ebitda/02_contract_not_value_model.png",
+            "description": "Inline visual contrasting vendor approval with value realization.",
+            "type": "image",
+            "number": "02"
+          },
+          {
+            "label": "AI consumers across the enterprise",
+            "href": "assets/images/writing/articles/2026-06-01_ai_spend_is_rising_is_ebitda/03_ai_consumers_across_enterprise.png",
+            "description": "Inline visual showing how AI consumption expands across enterprise roles.",
+            "type": "image",
+            "number": "03"
+          },
+          {
+            "label": "Consumption versus value curve",
+            "href": "assets/images/writing/articles/2026-06-01_ai_spend_is_rising_is_ebitda/04_consumption_vs_value_curve.png",
+            "description": "Inline visual showing AI consumption scaling faster than realized value.",
+            "type": "image",
+            "number": "04"
+          },
+          {
+            "label": "AI Consumption Leverage Calculator",
+            "href": "assets/images/writing/articles/2026-06-01_ai_spend_is_rising_is_ebitda/05_ai_consumption_leverage_calculator.png",
+            "description": "Inline calculator dashboard concept for comparing hosted, local, and hybrid usage economics.",
+            "type": "image",
+            "number": "05"
+          },
+          {
+            "label": "Seven consumption levers",
+            "href": "assets/images/writing/articles/2026-06-01_ai_spend_is_rising_is_ebitda/06_seven_consumption_levers.png",
+            "description": "Inline framework previewing seven ways to improve AI operating leverage without degrading experience.",
+            "type": "image",
+            "number": "06"
+          },
+          {
+            "label": "Strategic AI operating leverage roadmap",
+            "href": "assets/images/writing/articles/2026-06-01_ai_spend_is_rising_is_ebitda/07_strategic_ai_operating_leverage_roadmap.png",
+            "description": "Conclusion visual showing a value-versus-complexity roadmap for sequencing leverage improvements.",
+            "type": "image",
+            "number": "07"
+          }
+        ],
+        "related": [
+          {
+            "title": "AI Agents Are Becoming Operational Capital",
+            "slug": "writing/2026/05/25/ai-agents-are-becoming-operational-capital",
+            "description": "A related essay on when AI agents begin behaving like durable operational capabilities."
+          },
+          {
+            "title": "Organizations Rarely Fail From a Lack of Intelligence",
+            "slug": "writing/2026/05/12/organizations-rarely-fail-from-a-lack-of-intelligence",
+            "description": "A companion essay on why the path from intelligence to coordinated action determines execution quality."
+          }
+        ],
+        "references": [
+          {
+            "title": "2025: The State of Generative AI in the Enterprise",
+            "publisher": "Menlo Ventures",
+            "url": "https://menlovc.com/perspective/2025-the-state-of-generative-ai-in-the-enterprise/",
+            "note": "Market estimate that enterprise AI spend reached $37B in 2025."
+          },
+          {
+            "title": "The 2025 AI Index Report",
+            "publisher": "Stanford HAI",
+            "url": "https://hai.stanford.edu/ai-index/2025-ai-index-report",
+            "note": "Reports organizational AI use rose to 78% in 2024 from 55% the year before."
+          },
+          {
+            "title": "The State of AI: Global Survey 2025",
+            "publisher": "McKinsey & Company",
+            "url": "https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai",
+            "note": "Describes workflow redesign and management practices as key factors in capturing AI value."
+          }
+        ]
+      },
+      "productionAssets": {
+        "socialImage": {
+          "label": "Companion social image",
+          "href": "assets/images/writing/articles/2026-06-01_ai_spend_is_rising_is_ebitda/og_ai_spend_rising_is_ebitda.png",
+          "description": "Open graph and social preview image for the article."
+        },
+        "articleImages": [
+          {
+            "label": "Article hero image",
+            "href": "assets/images/writing/articles/2026-06-01_ai_spend_is_rising_is_ebitda/01_ai_spend_rising_is_ebitda.png",
+            "description": "Primary article visual introducing the question of AI spend converting into EBITDA."
+          },
+          {
+            "label": "Contract is not the value model",
+            "href": "assets/images/writing/articles/2026-06-01_ai_spend_is_rising_is_ebitda/02_contract_not_value_model.png",
+            "description": "Inline visual contrasting vendor approval with value realization."
+          },
+          {
+            "label": "AI consumers across the enterprise",
+            "href": "assets/images/writing/articles/2026-06-01_ai_spend_is_rising_is_ebitda/03_ai_consumers_across_enterprise.png",
+            "description": "Inline visual showing how AI consumption expands across enterprise roles."
+          },
+          {
+            "label": "Consumption versus value curve",
+            "href": "assets/images/writing/articles/2026-06-01_ai_spend_is_rising_is_ebitda/04_consumption_vs_value_curve.png",
+            "description": "Inline visual showing AI consumption scaling faster than realized value."
+          },
+          {
+            "label": "AI Consumption Leverage Calculator",
+            "href": "assets/images/writing/articles/2026-06-01_ai_spend_is_rising_is_ebitda/05_ai_consumption_leverage_calculator.png",
+            "description": "Inline calculator dashboard concept for comparing hosted, local, and hybrid usage economics."
+          },
+          {
+            "label": "Seven consumption levers",
+            "href": "assets/images/writing/articles/2026-06-01_ai_spend_is_rising_is_ebitda/06_seven_consumption_levers.png",
+            "description": "Inline framework previewing seven ways to improve AI operating leverage without degrading experience."
+          },
+          {
+            "label": "Strategic AI operating leverage roadmap",
+            "href": "assets/images/writing/articles/2026-06-01_ai_spend_is_rising_is_ebitda/07_strategic_ai_operating_leverage_roadmap.png",
+            "description": "Conclusion visual showing a value-versus-complexity roadmap for sequencing leverage improvements."
+          }
+        ]
+      }
+    },
     {
       "id": "writing-007",
       "slug": "writing/2026/05/25/ai-agents-are-becoming-operational-capital",
@@ -852,7 +1296,7 @@
       "id": "writing-002",
       "slug": "writing/2026/04/28/why-operational-friction-hides-in-translation-layers",
       "title": "Why Operational Friction Hides in Translation Layers",
-      "summary": "A deeper essay on why friction usually hides between strategy, workflow, systems, and reporting layers \u2014 and why organizations reduce rework by owning the interfaces where meaning changes hands.",
+      "summary": "A deeper essay on why friction usually hides between strategy, workflow, systems, and reporting layers — and why organizations reduce rework by owning the interfaces where meaning changes hands.",
       "status": "published",
       "publishedOn": "2026-04-28",
       "readTimeMinutes": 9,
@@ -868,7 +1312,7 @@
       "heroImage": "assets/images/writing/articles/2026-04-28_operational_friction_translation_layers/images/01_translation_layers_hero.png",
       "seo": {
         "title": "Why Operational Friction Hides in Translation Layers",
-        "description": "How strategy-to-execution translation layers quietly create friction, rework, ambiguity, and delivery drag \u2014 and how leaders can engineer cleaner operating paths."
+        "description": "How strategy-to-execution translation layers quietly create friction, rework, ambiguity, and delivery drag — and how leaders can engineer cleaner operating paths."
       },
       "body": {
         "intro": "Operational friction often hides in the spaces between teams, tools, and planning layers. It feels small in isolation: one unclear handoff, one extra status meeting, one missing definition, one dashboard that requires interpretation, one ticket that does not preserve the original intent. But those small translation failures compound everywhere. By the time the organization feels the drag, the source is hard to see because every team looks reasonable inside its own boundary.",
@@ -907,7 +1351,7 @@
             "heading": "Friction compounds when no one owns the interface",
             "layout": "split-image-right",
             "paragraphs": [
-              "The interface is the moment where one team\u2019s output becomes another team\u2019s input. That is where ambiguity becomes expensive.",
+              "The interface is the moment where one team’s output becomes another team’s input. That is where ambiguity becomes expensive.",
               "A workflow can degrade for months while every team believes it is performing reasonably inside its own boundary. The business team says the requirement was clear. The technical team says it built what was requested. The operator says the system does not fit the real work. The reporting team says the data is incomplete. Leadership sees delay, rework, and confusion but not the exact place where the meaning changed.",
               "That is what makes translation-layer friction difficult to diagnose. The failure does not belong neatly to one box. It belongs to the seam between boxes."
             ],
@@ -1433,28 +1877,6 @@
             "description": "Inline visual for the section on converting abstract directives into operating paths."
           }
         ]
-      }
-    },
-    {
-      "id": "writing-005",
-      "slug": "writing/2026/06/01/draft-future-essay-on-work-queues",
-      "title": "Draft: Work Queues as an Executive Operating Surface",
-      "summary": "A draft essay on how work queues expose organizational constraints.",
-      "status": "draft",
-      "publishedOn": "2026-06-01",
-      "readTimeMinutes": 6,
-      "featured": false,
-      "tags": [
-        "draft"
-      ],
-      "heroImage": "assets/images/article-facets.png",
-      "seo": {
-        "title": "Draft: Work Queues as an Executive Operating Surface",
-        "description": "Draft essay."
-      },
-      "body": {
-        "intro": "Draft content.",
-        "sections": []
       }
     }
   ]

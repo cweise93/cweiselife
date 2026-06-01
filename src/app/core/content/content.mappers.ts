@@ -20,6 +20,9 @@ import {
   FrameworkComponent,
   FrameworkContentFile,
   FrameworkItem,
+  GuideBody,
+  GuideContentFile,
+  GuideItem,
   HomeContentConfig,
   HomeTheme,
   InitiativeBody,
@@ -475,7 +478,7 @@ function normalizeHome(value: any): HomeContentConfig {
     heroImage: asString(value?.heroImage, 'assets/images/hero-architecture.png'),
     featuredWritingSlugs: asStringArray(value?.featuredWritingSlugs),
     featuredFrameworkSlugs: asStringArray(value?.featuredFrameworkSlugs),
-    featuredInitiativeSlugs: asStringArray(value?.featuredInitiativeSlugs),
+    featuredGuideSlugs: asStringArray(value?.featuredGuideSlugs),
     themes: Array.isArray(value?.themes)
       ? value.themes
           .map((theme: any) => normalizeTheme(theme))
@@ -496,10 +499,13 @@ function normalizeHome(value: any): HomeContentConfig {
       headline: asString(value?.frameworkSection?.headline, 'Featured Framework'),
       support: asString(value?.frameworkSection?.support)
     },
-    initiativesSection: {
-      eyebrow: asString(value?.initiativesSection?.eyebrow, 'Selected Initiatives'),
-      headline: asString(value?.initiativesSection?.headline, 'Proof of Execution'),
-      support: asString(value?.initiativesSection?.support)
+    guidesSection: {
+      eyebrow: asString(value?.guidesSection?.eyebrow, 'Operating Tools'),
+      headline: asString(value?.guidesSection?.headline, 'Guides for Turning Friction Into Action'),
+      support: asString(
+        value?.guidesSection?.support,
+        'Short, practical tools for converting ambiguity, stuck energy, and recurring friction into clearer next steps.'
+      )
     },
     aboutSection: {
       eyebrow: asString(value?.aboutSection?.eyebrow, 'About'),
@@ -683,6 +689,48 @@ export function mapFrameworkFile(value: any): FrameworkContentFile {
   };
 }
 
+export function mapGuideItem(value: any): GuideItem | null {
+  const id = asString(value?.id);
+  const slug = asString(value?.slug);
+  const title = asString(value?.title);
+
+  if (!id || !slug || !title) {
+    return null;
+  }
+
+  const summary = asString(value?.summary);
+  const body: GuideBody = {
+    intro: asString(value?.body?.intro),
+    sections: normalizeSections(value?.body?.sections)
+  };
+
+  return {
+    id,
+    slug,
+    title,
+    summary,
+    status: normalizeStatus(value?.status),
+    featured: asBoolean(value?.featured),
+    icon: asString(value?.icon, 'handyman'),
+    tags: normalizeTags(value?.tags),
+    heroImage: asString(value?.heroImage) || undefined,
+    seo: normalizeSeo(value?.seo, title, summary),
+    body,
+    companion: normalizeCompanion(value?.companion)
+  };
+}
+
+export function mapGuideFile(value: any): GuideContentFile {
+  return {
+    meta: normalizeCollectionMeta(value?.meta, 'Guides'),
+    items: Array.isArray(value?.items)
+      ? value.items
+          .map((item: any) => mapGuideItem(item))
+          .filter((item: GuideItem | null): item is GuideItem => item !== null)
+      : []
+  };
+}
+
 export function mapInitiativeItem(value: any): InitiativeItem | null {
   const id = asString(value?.id);
   const slug = asString(value?.slug);
@@ -765,12 +813,16 @@ export const FALLBACK_SITE_CONTENT: SiteContentFile = mapSiteFile({
     heroImage: 'assets/images/hero-architecture.png',
     featuredWritingSlugs: [],
     featuredFrameworkSlugs: [],
-    featuredInitiativeSlugs: [],
+    featuredGuideSlugs: [],
     themes: [],
     themesSection: { eyebrow: 'Core Themes', headline: 'Where I Focus', support: '' },
     writingSection: { eyebrow: 'Featured Writing', headline: 'Recent Essays', support: '' },
     frameworkSection: { eyebrow: 'Featured Framework', headline: 'Featured Framework', support: '' },
-    initiativesSection: { eyebrow: 'Selected Initiatives', headline: 'Proof of Execution', support: '' },
+    guidesSection: {
+      eyebrow: 'Operating Tools',
+      headline: 'Guides for Turning Friction Into Action',
+      support: 'Short, practical tools for converting ambiguity, stuck energy, and recurring friction into clearer next steps.'
+    },
     aboutSection: { eyebrow: 'About', headline: 'How I Think. What I Do.', support: '' }
   },
   navigation: { primary: [], social: [] },
@@ -792,6 +844,11 @@ export const FALLBACK_WRITING_CONTENT: WritingContentFile = {
 
 export const FALLBACK_FRAMEWORK_CONTENT: FrameworkContentFile = {
   meta: { version: 1, updatedOn: '2026-05-16', eyebrow: 'Frameworks', headline: 'Frameworks', intro: '' },
+  items: []
+};
+
+export const FALLBACK_GUIDE_CONTENT: GuideContentFile = {
+  meta: { version: 1, updatedOn: '2026-05-27', eyebrow: 'Guides', headline: 'Operating Tools', intro: '' },
   items: []
 };
 

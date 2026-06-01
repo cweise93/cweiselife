@@ -1,0 +1,1046 @@
+{
+  "meta": {
+    "version": 2,
+    "updatedOn": "2026-06-01",
+    "eyebrow": "Guides",
+    "headline": "Operating Tools",
+    "intro": "Practical guides for turning ambiguity, friction, stuck energy, and unclear next steps into useful action."
+  },
+  "items": [
+    {
+      "id": "guide-001",
+      "slug": "guides/a-compass-not-a-map",
+      "title": "A Compass, Not a Map",
+      "summary": "A practical operating tool for moving through ambiguity without over-designing the future.",
+      "status": "published",
+      "featured": true,
+      "icon": "explore",
+      "tags": [
+        "ambiguity",
+        "direction",
+        "momentum",
+        "decision-making"
+      ],
+      "heroImage": "assets/images/guides/a-compass-not-a-map/01_a_compass_not_a_map.png",
+      "seo": {
+        "title": "A Compass, Not a Map",
+        "description": "A practical operating tool for moving through ambiguity without over-designing the future."
+      },
+      "body": {
+        "intro": "When the full path is unclear, the goal is not to force certainty. This guide helps turn ambiguity into grounded direction, right-sized action, and useful momentum.",
+        "sections": [
+          {
+            "heading": "Start with direction",
+            "paragraphs": [
+              "Clarify the situation, the constraint, and the next useful move before trying to design the whole future.",
+              "A compass gives enough orientation to move without pretending the entire map is known."
+            ],
+            "callout": "Progress does not require a complete map. It requires a stable direction and the next useful move."
+          },
+          {
+            "heading": "Use a north star",
+            "paragraphs": [
+              "Anchor choices in reality, usefulness, stewardship, visible artifacts, and momentum.",
+              "These values keep the work grounded when the path is still emerging."
+            ],
+            "callout": "Direction becomes practical when it points toward visible action."
+          },
+          {
+            "heading": "Run the forward loop",
+            "paragraphs": [
+              "Notice what is happening, name it clearly, narrow the scope, build one thing, and review what changed.",
+              "Clarity grows through movement, not rumination."
+            ]
+          },
+          {
+            "heading": "When the path is unclear",
+            "paragraphs": [
+              "Shrink the scale, choose the container, make one useful move, and reset the system when noise gets too loud."
+            ],
+            "callout": "A compass is enough when it keeps you moving."
+          }
+        ]
+      }
+    },
+    {
+      "id": "guide-002",
+      "slug": "guides/avoid-act-loop",
+      "title": "Avoid to Act Loop",
+      "summary": "A short intervention for turning avoidance into immediate motion.",
+      "status": "published",
+      "featured": true,
+      "icon": "bolt",
+      "tags": [
+        "avoidance",
+        "momentum",
+        "first contact",
+        "execution"
+      ],
+      "heroImage": "assets/images/guides/avoid-act-loop/01_avoid_act_loop.png",
+      "seo": {
+        "title": "Avoid to Act Loop",
+        "description": "A short intervention for turning avoidance into immediate motion."
+      },
+      "body": {
+        "intro": "Avoidance often grows when a task feels unknown, too large, or tied to perfection. This guide lowers the entry cost by shifting from outcome pressure to first contact.",
+        "sections": [
+          {
+            "heading": "Catch the avoidance",
+            "paragraphs": [
+              "Notice the stall without turning it into an identity conclusion.",
+              "Unknowns and perfection pressure often create delay before the work even begins."
+            ],
+            "callout": "Avoidance is information, not a verdict."
+          },
+          {
+            "heading": "Flip the target",
+            "paragraphs": [
+              "Stop aiming at the finished outcome. Aim at first contact.",
+              "Open the file, name the question, write the first sentence, or touch the task for ten seconds."
+            ],
+            "callout": "Not outcome. First contact."
+          },
+          {
+            "heading": "Make one move",
+            "paragraphs": [
+              "Choose something small, incomplete, and available now.",
+              "The point is to break the seal, not complete the whole task."
+            ],
+            "callout": "Start every time. Continue optional."
+          },
+          {
+            "heading": "Start now",
+            "paragraphs": [
+              "Use a short countdown and move before overthinking can rebuild the wall."
+            ],
+            "callout": "You do not need to know. Begin."
+          }
+        ]
+      }
+    },
+    {
+      "id": "guide-003",
+      "slug": "guides/becoming-the-solution-provider",
+      "title": "Becoming the Solution Provider",
+      "summary": "A systems-thinking guide for shifting from firefighting to durable problem prevention.",
+      "status": "published",
+      "featured": true,
+      "icon": "construction",
+      "tags": [
+        "systems thinking",
+        "root cause",
+        "problem solving",
+        "execution"
+      ],
+      "heroImage": "assets/images/guides/becoming-the-solution-provider/01_becoming_the_solution_provider.png",
+      "seo": {
+        "title": "Becoming the Solution Provider",
+        "description": "A systems-thinking guide for shifting from firefighting to durable problem prevention."
+      },
+      "body": {
+        "intro": "Recurring problems rarely disappear through heroic fixes alone. This guide reframes problem solving as system design: define reality, map the mechanics, implement the fix, and prevent relapse.",
+        "sections": [
+          {
+            "heading": "Define reality",
+            "paragraphs": [
+              "Trace the friction back to the core mechanics.",
+              "Separate symptoms from system problems and identify the incentives that keep the issue alive."
+            ],
+            "callout": "The first fix is accurate diagnosis."
+          },
+          {
+            "heading": "Map the system",
+            "paragraphs": [
+              "Look upstream of the visible issue.",
+              "Map inputs, dependencies, feedback loops, and ownership boundaries before proposing a change."
+            ]
+          },
+          {
+            "heading": "Implement the fix",
+            "paragraphs": [
+              "Design a well-defined change, remove friction points, and standardize execution so the fix can survive repetition."
+            ],
+            "callout": "A good fix changes the path, not just the moment."
+          },
+          {
+            "heading": "Prevent the relapse",
+            "paragraphs": [
+              "Add safeguards, ownership, and audit points so the old pattern does not quietly return."
+            ],
+            "callout": "Act as the architect of the fix, not just the responder to the fire."
+          }
+        ]
+      }
+    },
+    {
+      "id": "guide-004",
+      "slug": "guides/close-the-loop",
+      "title": "Close the Loop",
+      "summary": "A practical end-of-day review for learning, gratitude, and cleaner next steps.",
+      "status": "published",
+      "featured": false,
+      "icon": "sync",
+      "tags": [
+        "reflection",
+        "learning",
+        "gratitude",
+        "follow-through"
+      ],
+      "heroImage": "assets/images/guides/close-the-loop/01_close_the_loop.png",
+      "seo": {
+        "title": "Close the Loop",
+        "description": "A practical end-of-day review for learning, gratitude, and cleaner next steps."
+      },
+      "body": {
+        "intro": "A day becomes more useful when it is reviewed, not just completed. This guide turns experience into learning by closing open loops and shaping the next attempt.",
+        "sections": [
+          {
+            "heading": "Review the day",
+            "paragraphs": [
+              "Capture what happened, what worked, what missed, and what mattered.",
+              "Keep the review factual enough to learn from and kind enough to repeat."
+            ]
+          },
+          {
+            "heading": "Learn forward",
+            "paragraphs": [
+              "Name the mistake, extract the lesson, define the next-time response, and carry the insight into the next opportunity."
+            ],
+            "callout": "Reflection becomes useful when it changes tomorrow."
+          },
+          {
+            "heading": "Reset through gratitude",
+            "paragraphs": [
+              "Notice who helped, what deserves appreciation, and what strengthened you today."
+            ]
+          },
+          {
+            "heading": "Answer the reflection prompts",
+            "paragraphs": [
+              "What did today teach? What should repeat? What should change? What is the right outcome for next time?"
+            ],
+            "callout": "Reflection turns experience into wisdom only when it shapes tomorrow."
+          }
+        ]
+      }
+    },
+    {
+      "id": "guide-005",
+      "slug": "guides/design-the-dream-state",
+      "title": "Design the Dream State",
+      "summary": "A sensory rehearsal guide for dream recall, lucid dreaming, and intentional sleep.",
+      "status": "published",
+      "featured": false,
+      "icon": "nightlight_round",
+      "tags": [
+        "sleep",
+        "dream recall",
+        "visualization",
+        "state design"
+      ],
+      "heroImage": "assets/images/guides/design-the-dream-state/01_design_the_dream_state.png",
+      "seo": {
+        "title": "Design the Dream State",
+        "description": "A sensory rehearsal guide for dream recall, lucid dreaming, and intentional sleep."
+      },
+      "body": {
+        "intro": "Intentional sleep begins before sleep. This guide uses a simple sensory rehearsal to prepare the mind for dream recall, lucid awareness, and a desired emotional state.",
+        "sections": [
+          {
+            "heading": "Choose the desired scene",
+            "paragraphs": [
+              "Select one simple scene or state you want the mind to revisit.",
+              "Keep it vivid enough to remember and simple enough to rehearse."
+            ]
+          },
+          {
+            "heading": "Build the scene",
+            "paragraphs": [
+              "Layer visual, auditory, kinesthetic, and emotional cues.",
+              "The goal is not fantasy complexity. It is enough sensory detail for the mind to return to."
+            ]
+          },
+          {
+            "heading": "Strengthen the state",
+            "paragraphs": [
+              "Pair the desired scene with a memory anchor, a stated intention, and one reinforcing action during the day."
+            ],
+            "callout": "The clearer the state is rehearsed, the easier it is for the mind to return to it."
+          },
+          {
+            "heading": "Run the state sequence",
+            "paragraphs": [
+              "Notice, imagine, feel, repeat, then release into sleep."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "guide-006",
+      "slug": "guides/meditation-to-lucidity",
+      "title": "Meditation to Lucidity",
+      "summary": "A practice log for awareness, nervous-system regulation, and dream-state preparation.",
+      "status": "published",
+      "featured": false,
+      "icon": "self_improvement",
+      "tags": [
+        "meditation",
+        "awareness",
+        "dream recall",
+        "nervous system"
+      ],
+      "heroImage": "assets/images/guides/meditation-to-lucidity/01_meditation_to_lucidity.png",
+      "seo": {
+        "title": "Meditation to Lucidity",
+        "description": "A practice log for awareness, nervous-system regulation, and dream-state preparation."
+      },
+      "body": {
+        "intro": "Awareness becomes more reliable when it is tracked. This guide links meditation, body awareness, emotional state, imagery, and recall into a simple practice loop.",
+        "sections": [
+          {
+            "heading": "Log the session",
+            "paragraphs": [
+              "Record time, place, method, duration, sound or music, and the objective.",
+              "A small log turns practice into observable data."
+            ]
+          },
+          {
+            "heading": "Notice the response",
+            "paragraphs": [
+              "Track body state, attention, emotion, and imagery without judging them.",
+              "These are signals, not scores."
+            ]
+          },
+          {
+            "heading": "Rate the practice",
+            "paragraphs": [
+              "Use simple ratings for quality, presence, calm, and recall.",
+              "The goal is trend awareness, not perfection."
+            ]
+          },
+          {
+            "heading": "Run the reflection loop",
+            "paragraphs": [
+              "Settle, observe, return, record, and refine."
+            ],
+            "callout": "Consistency trains awareness. Awareness becomes the bridge between waking intention and dream experience."
+          }
+        ]
+      }
+    },
+    {
+      "id": "guide-007",
+      "slug": "guides/prepare-the-night",
+      "title": "Prepare the Night",
+      "summary": "A practical guide for pre-sleep reflection, intention, and dream readiness.",
+      "status": "published",
+      "featured": false,
+      "icon": "bedtime",
+      "tags": [
+        "sleep",
+        "reflection",
+        "intention",
+        "nervous system"
+      ],
+      "heroImage": "assets/images/guides/prepare-the-night/01_prepare_the_night.png",
+      "seo": {
+        "title": "Prepare the Night",
+        "description": "A practical guide for pre-sleep reflection, intention, and dream readiness."
+      },
+      "body": {
+        "intro": "Pre-sleep reflection helps the mind release open loops and enter rest with clearer intention. This guide turns the end of the day into a gentle transition rather than a collapse.",
+        "sections": [
+          {
+            "heading": "Unload the day",
+            "paragraphs": [
+              "Scan the day without judgment, list what remains unresolved, release what does not need to be carried overnight, and name what matters tomorrow."
+            ]
+          },
+          {
+            "heading": "Anchor the mind",
+            "paragraphs": [
+              "Use gratitude, a desired emotional tone, and one clear intention to create a steadier sleep entry."
+            ],
+            "callout": "A calm nervous system remembers more."
+          },
+          {
+            "heading": "Prime for recall",
+            "paragraphs": [
+              "Keep the question simple, notice recurring symbols, set a gentle wake intention, and capture first impressions on waking."
+            ]
+          },
+          {
+            "heading": "Use night questions",
+            "paragraphs": [
+              "What am I carrying? What do I want to remember? What state do I want to enter? What would make sleep restorative?"
+            ],
+            "callout": "Intention before sleep improves awareness after waking."
+          }
+        ]
+      }
+    },
+    {
+      "id": "guide-008",
+      "slug": "guides/prime-the-day",
+      "title": "Prime the Day",
+      "summary": "A morning guide for setting direction before execution begins.",
+      "status": "published",
+      "featured": false,
+      "icon": "play_arrow",
+      "tags": [
+        "morning routine",
+        "intention",
+        "focus",
+        "state design"
+      ],
+      "heroImage": "assets/images/guides/prime-the-day/01_prime_the_day.png",
+      "seo": {
+        "title": "Prime the Day",
+        "description": "A morning guide for setting direction before execution begins."
+      },
+      "body": {
+        "intro": "A better day starts before the to-do list. This guide helps set intention, rehearse the desired state, and support the conditions needed for focused execution.",
+        "sections": [
+          {
+            "heading": "Start with intention",
+            "paragraphs": [
+              "Name gratitude, the desired scene, the state you want to carry, and the day\u2019s stated intention."
+            ]
+          },
+          {
+            "heading": "Use sensory rehearsal",
+            "paragraphs": [
+              "Visualize the setting, hear the useful cues, feel the actions, and anchor the emotional tone that supports the day."
+            ],
+            "callout": "Engaging senses and emotions helps reinforce the day you want to create."
+          },
+          {
+            "heading": "Support the state",
+            "paragraphs": [
+              "Fuel the body, create movement, and shape the environment so the desired state has support."
+            ]
+          },
+          {
+            "heading": "Ask the morning questions",
+            "paragraphs": [
+              "What matters today? What state will help? What support is needed? What would make today feel aligned?"
+            ],
+            "callout": "A better day starts with a deliberate state, not just a to-do list."
+          }
+        ]
+      }
+    },
+    {
+      "id": "guide-009",
+      "slug": "guides/run-the-day-with-structure",
+      "title": "Run the Day with Structure",
+      "summary": "A daily operating board for turning intention into execution.",
+      "status": "published",
+      "featured": false,
+      "icon": "event_available",
+      "tags": [
+        "daily planning",
+        "execution",
+        "focus",
+        "review"
+      ],
+      "heroImage": "assets/images/guides/run-the-day-with-structure/01_run_the_day_with_structure.png",
+      "seo": {
+        "title": "Run the Day with Structure",
+        "description": "A daily operating board for turning intention into execution."
+      },
+      "body": {
+        "intro": "Structure creates evidence. This guide helps compare the day designed with the day actually lived, so planning can become more honest and useful over time.",
+        "sections": [
+          {
+            "heading": "Use a daily framework",
+            "paragraphs": [
+              "Plan the day in blocks and compare planned work against actual behavior.",
+              "The point is not rigid control. The point is honest feedback."
+            ]
+          },
+          {
+            "heading": "Separate the core lanes",
+            "paragraphs": [
+              "Protect focus blocks, move active projects, track tactical goals, handle personal tasks, and capture notes."
+            ]
+          },
+          {
+            "heading": "Run the execution rhythm",
+            "paragraphs": [
+              "Plan, do, check, and adjust based on evidence."
+            ],
+            "callout": "Evidence makes adjustment possible."
+          },
+          {
+            "heading": "Track the right signals",
+            "paragraphs": [
+              "Track time, energy, hydration, progress, and follow-through."
+            ],
+            "callout": "Structure creates evidence. Evidence makes adjustment possible."
+          }
+        ]
+      }
+    },
+    {
+      "id": "guide-010",
+      "slug": "guides/decision-pattern-guide",
+      "title": "The Decision Pattern Guide",
+      "summary": "A practical tool for tracing entry points, evaluating choices, and reshaping habit loops.",
+      "status": "published",
+      "featured": false,
+      "icon": "schema",
+      "tags": [
+        "decision-making",
+        "patterns",
+        "habit loops",
+        "behavior change"
+      ],
+      "heroImage": "assets/images/guides/decision-pattern-guide/01_decision_pattern_guide.png",
+      "seo": {
+        "title": "The Decision Pattern Guide",
+        "description": "A practical tool for tracing entry points, evaluating choices, and reshaping habit loops."
+      },
+      "body": {
+        "intro": "Decisions become easier to improve when the pattern is visible. This guide helps identify where a choice begins, how it repeats, and what better move can be designed.",
+        "sections": [
+          {
+            "heading": "Find the entry point",
+            "paragraphs": [
+              "A pattern can begin with a challenge, an emotional signal, an observed behavior, or a recurring outcome.",
+              "Start wherever the pattern is most visible."
+            ],
+            "callout": "You do not have to start at the beginning. Start where the signal is clearest."
+          },
+          {
+            "heading": "Review the decision pattern",
+            "paragraphs": [
+              "Compare the current pattern against a better choice by naming the challenge, solution, outcome, time horizon, and result grade."
+            ]
+          },
+          {
+            "heading": "Map habit-loop signals",
+            "paragraphs": [
+              "Notice fueling states and paralyzing states. Identify what makes the loop more likely to repeat."
+            ],
+            "callout": "The goal is not to judge the loop. The goal is to notice it early enough to choose differently."
+          },
+          {
+            "heading": "Reinforce the better choice",
+            "paragraphs": [
+              "Better decisions start by naming the pattern, testing the choice, and reinforcing the behavior that creates the desired outcome."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "guide-011",
+      "slug": "guides/decision-tree-guide",
+      "title": "The Decision Tree Guide",
+      "summary": "A practical tool for mapping options, consequences, and the best next move.",
+      "status": "published",
+      "featured": false,
+      "icon": "account_tree",
+      "tags": [
+        "decision tree",
+        "options",
+        "consequences",
+        "risk"
+      ],
+      "heroImage": "assets/images/guides/decision-tree-guide/01_decision_tree_guide.png",
+      "seo": {
+        "title": "The Decision Tree Guide",
+        "description": "A practical tool for mapping options, consequences, and the best next move."
+      },
+      "body": {
+        "intro": "A decision tree turns mental noise into visible branches. This guide helps clarify the real decision, compare paths, and choose the strongest next move.",
+        "sections": [
+          {
+            "heading": "Start with the real decision",
+            "paragraphs": [
+              "Name the challenge, define the constraint, clarify the goal, and set the decision horizon."
+            ],
+            "callout": "A good tree begins with the real problem, not a vague feeling."
+          },
+          {
+            "heading": "Map the main options",
+            "paragraphs": [
+              "Compare repair, replacement, delay, and alternative paths by cost, risk, and fit."
+            ]
+          },
+          {
+            "heading": "Explore branches and outcomes",
+            "paragraphs": [
+              "For each option, map likely approval, viability, cost, stress, opportunity, and fallbacks."
+            ]
+          },
+          {
+            "heading": "Apply decision filters",
+            "paragraphs": [
+              "Ask what must be true, what could go wrong, which branch protects the core goal, and what fallback exists."
+            ],
+            "callout": "Better decisions come from seeing the branches before stepping onto one."
+          }
+        ]
+      }
+    },
+    {
+      "id": "guide-012",
+      "slug": "guides/from-vision-to-measurable-action",
+      "title": "From Vision to Measurable Action",
+      "summary": "A planning canvas for turning goals into structured execution.",
+      "status": "published",
+      "featured": false,
+      "icon": "flag",
+      "tags": [
+        "planning",
+        "goals",
+        "execution",
+        "measurement"
+      ],
+      "heroImage": "assets/images/guides/from-vision-to-measurable-action/01_from_vision_to_measurable_action.png",
+      "seo": {
+        "title": "From Vision to Measurable Action",
+        "description": "A planning canvas for turning goals into structured execution."
+      },
+      "body": {
+        "intro": "Goals become more actionable when direction, meaning, method, friction, and measurement are connected. This guide turns a vague goal into an executable plan.",
+        "sections": [
+          {
+            "heading": "Clarify the vision",
+            "paragraphs": [
+              "Name the outcome you are trying to create and the priority level it deserves."
+            ]
+          },
+          {
+            "heading": "Anchor the values",
+            "paragraphs": [
+              "Clarify why it matters and what must stay true while pursuing it."
+            ]
+          },
+          {
+            "heading": "Choose the methods",
+            "paragraphs": [
+              "Identify the approaches, systems, or habits that will move the goal forward."
+            ]
+          },
+          {
+            "heading": "Name obstacles and measures",
+            "paragraphs": [
+              "Identify friction, constraints, and risks; then define how progress and success will be recognized."
+            ],
+            "callout": "A useful plan connects direction, meaning, method, friction, and measurement."
+          }
+        ]
+      }
+    },
+    {
+      "id": "guide-013",
+      "slug": "guides/map-the-habit-loop",
+      "title": "Map the Habit Loop",
+      "summary": "A guide for turning recurring reactions into visible, actionable patterns.",
+      "status": "published",
+      "featured": false,
+      "icon": "repeat",
+      "tags": [
+        "habits",
+        "behavior change",
+        "triggers",
+        "reward"
+      ],
+      "heroImage": "assets/images/guides/map-the-habit-loop/01_map_the_habit_loop.png",
+      "seo": {
+        "title": "Map the Habit Loop",
+        "description": "A guide for turning recurring reactions into visible, actionable patterns."
+      },
+      "body": {
+        "intro": "A habit becomes easier to change once the loop is visible. This guide separates triggers, behaviors, results, and rewards so the next response can be designed intentionally.",
+        "sections": [
+          {
+            "heading": "Map the core loop",
+            "paragraphs": [
+              "Identify the trigger, the behavior, the result, and the reward that keeps the loop available."
+            ]
+          },
+          {
+            "heading": "Look for signals",
+            "paragraphs": [
+              "Notice external cues, emotional responses, repeated actions, and reinforcing payoffs."
+            ],
+            "callout": "Feelings are signals, not always the root trigger."
+          },
+          {
+            "heading": "Improve the loop",
+            "paragraphs": [
+              "Notice the trigger, interrupt the behavior, design a better response, and keep the reward that matters."
+            ]
+          },
+          {
+            "heading": "Use reward awareness",
+            "paragraphs": [
+              "Track relief, control, comfort, and momentum so the new behavior can satisfy the real need."
+            ],
+            "callout": "Change becomes easier when the loop becomes visible."
+          }
+        ]
+      }
+    },
+    {
+      "id": "guide-014",
+      "slug": "guides/operational-power-system",
+      "title": "Operational Power System",
+      "summary": "A guide for protecting momentum through narrative, authority, access, execution, and reinforcement.",
+      "status": "published",
+      "featured": false,
+      "icon": "hub",
+      "tags": [
+        "leadership",
+        "access",
+        "execution",
+        "systems"
+      ],
+      "heroImage": "assets/images/guides/operational-power-system/01_operational_power_system.png",
+      "seo": {
+        "title": "Operational Power System",
+        "description": "A guide for protecting momentum through narrative, authority, access, execution, and reinforcement."
+      },
+      "body": {
+        "intro": "Work does not move on logic alone. This guide shows how narrative, authority, access, execution, and reinforcement interact to either protect momentum or create a failure loop.",
+        "sections": [
+          {
+            "heading": "Understand the power chain",
+            "paragraphs": [
+              "Narrative shapes perception. Authority creates legitimacy. Access creates permission. Execution creates proof. Reinforcement keeps the system moving."
+            ]
+          },
+          {
+            "heading": "Recognize the failure loop",
+            "paragraphs": [
+              "Unclear narrative creates doubt. Doubt weakens authority. Authority loss restricts access. Reduced access limits execution. No execution collapses the narrative."
+            ],
+            "callout": "A weak narrative can become an execution problem."
+          },
+          {
+            "heading": "Use operating rules",
+            "paragraphs": [
+              "Make structure visible, control the narrative, make authority explicit, secure access early, respond with clarity, and protect speed with structure."
+            ]
+          },
+          {
+            "heading": "Build system defense",
+            "paragraphs": [
+              "Use leadership decisions, IT access, HR pattern tracking, governance approval, and external signal detection as reinforcing supports."
+            ],
+            "callout": "If narrative, authority, and access are not designed, they can be used against the work."
+          }
+        ]
+      }
+    },
+    {
+      "id": "guide-015",
+      "slug": "guides/pattern-to-progress-guide",
+      "title": "The Pattern-to-Progress Guide",
+      "summary": "A tool for turning habit loops into immediate forward action.",
+      "status": "published",
+      "featured": true,
+      "icon": "trending_up",
+      "tags": [
+        "habits",
+        "progress",
+        "behavior change",
+        "momentum"
+      ],
+      "heroImage": "assets/images/guides/pattern-to-progress-guide/01_pattern_to_progress_guide.png",
+      "seo": {
+        "title": "The Pattern-to-Progress Guide",
+        "description": "A tool for turning habit loops into immediate forward action."
+      },
+      "body": {
+        "intro": "A habit does not have to be changed all at once. This guide turns one observed pattern into the next useful action available right now.",
+        "sections": [
+          {
+            "heading": "Notice the pattern",
+            "paragraphs": [
+              "Capture one real moment before trying to change the whole pattern: challenge, response, behavior, and outcome."
+            ]
+          },
+          {
+            "heading": "Map the loop",
+            "paragraphs": [
+              "Loops repeat because the reward remains available. Identify the trigger, behavior, reward, and result."
+            ]
+          },
+          {
+            "heading": "Translate the pattern",
+            "paragraphs": [
+              "Separate what happened from the need, fear, or shortcut that drove it. Then revise the immediate action to fit the real goal."
+            ]
+          },
+          {
+            "heading": "Turn the loop into progress",
+            "paragraphs": [
+              "Pause, shrink the next move, take one useful action, capture the result, and reinforce what worked."
+            ],
+            "callout": "You do not break a habit all at once. You replace the next turn in the loop."
+          }
+        ]
+      }
+    },
+    {
+      "id": "guide-016",
+      "slug": "guides/question-to-action-filter",
+      "title": "The Question-to-Action Filter",
+      "summary": "A practical guide for turning vague problems into useful next steps.",
+      "status": "published",
+      "featured": true,
+      "icon": "filter_alt",
+      "tags": [
+        "questions",
+        "clarity",
+        "action",
+        "problem solving"
+      ],
+      "heroImage": "assets/images/guides/question-to-action-filter/01_question_to_action_filter.png",
+      "seo": {
+        "title": "The Question-to-Action Filter",
+        "description": "A practical guide for turning vague problems into useful next steps."
+      },
+      "body": {
+        "intro": "A better question produces cleaner action. This guide filters vague problems through specificity, framing, attachment, and concrete next steps.",
+        "sections": [
+          {
+            "heading": "Form the question",
+            "paragraphs": [
+              "Start with the problem statement and turn it into a clear question."
+            ]
+          },
+          {
+            "heading": "Check the framing",
+            "paragraphs": [
+              "If the question is negative or distorted, reverse it into a constructive and empowering frame."
+            ],
+            "callout": "Remove self-defeating framing before trying to solve."
+          },
+          {
+            "heading": "Drill down to specifics",
+            "paragraphs": [
+              "If the question is too general, narrow the scope until something actionable appears."
+            ]
+          },
+          {
+            "heading": "Separate identity from behavior",
+            "paragraphs": [
+              "If identity, emotion, or attachment dominates the question, reduce it to observable pattern or behavior."
+            ],
+            "callout": "Better questions produce cleaner action."
+          }
+        ]
+      }
+    },
+    {
+      "id": "guide-017",
+      "slug": "guides/reframe-the-belief-retrain-the-response",
+      "title": "Reframe the Belief, Retrain the Response",
+      "summary": "A guide for updating limiting beliefs through reflection, nervous-system awareness, and a stronger replacement belief.",
+      "status": "published",
+      "featured": true,
+      "icon": "psychology_alt",
+      "tags": [
+        "beliefs",
+        "reframing",
+        "nervous system",
+        "reflection"
+      ],
+      "heroImage": "assets/images/guides/reframe-the-belief-retrain-the-response/01_reframe_the_belief_retrain_the_response.png",
+      "seo": {
+        "title": "Reframe the Belief, Retrain the Response",
+        "description": "A guide for updating limiting beliefs through reflection, nervous-system awareness, and a stronger replacement belief."
+      },
+      "body": {
+        "intro": "A limiting belief can remain active even after the present situation has changed. This guide helps identify the belief, trace its original meaning, and install a more accurate replacement response.",
+        "sections": [
+          {
+            "heading": "Name the limiting belief",
+            "paragraphs": [
+              "Identify what belief keeps repeating, what it predicts, and where it shows up."
+            ]
+          },
+          {
+            "heading": "Trace the original encoding",
+            "paragraphs": [
+              "Look for the earliest memory, what felt true then, and what meaning was assigned."
+            ]
+          },
+          {
+            "heading": "Notice the nervous-system response",
+            "paragraphs": [
+              "Track body sensation, emotion, protective patterns, and what the system does to maintain safety."
+            ],
+            "callout": "The body may still react to an old conclusion, even when the present is different."
+          },
+          {
+            "heading": "Create and reinforce the reframe",
+            "paragraphs": [
+              "Ask what is more true now, what you did not know then, and what belief better fits reality today. Pair the new belief with grounding, evidence, and one aligned action."
+            ],
+            "callout": "The goal is not to deny the past. The goal is to help the nervous system learn what is true now."
+          }
+        ]
+      }
+    },
+    {
+      "id": "guide-018",
+      "slug": "guides/run-the-decision-experiment",
+      "title": "Run the Decision Experiment",
+      "summary": "A practical guide for moving from dilemma to tested action.",
+      "status": "published",
+      "featured": false,
+      "icon": "science",
+      "tags": [
+        "decision-making",
+        "experiments",
+        "options",
+        "risk"
+      ],
+      "heroImage": "assets/images/guides/run-the-decision-experiment/01_run_the_decision_experiment.png",
+      "seo": {
+        "title": "Run the Decision Experiment",
+        "description": "A practical guide for moving from dilemma to tested action."
+      },
+      "body": {
+        "intro": "Not every decision needs certainty before action. This guide uses a small experiment to clarify facts, compare options, and learn from reality.",
+        "sections": [
+          {
+            "heading": "Run the five-step cycle",
+            "paragraphs": [
+              "Define the dilemma, collect facts, generate options, compare approaches, and experiment."
+            ]
+          },
+          {
+            "heading": "Build the decision board",
+            "paragraphs": [
+              "Name the challenge, facts, options, expected outcomes, and probability mix."
+            ]
+          },
+          {
+            "heading": "Compare options",
+            "paragraphs": [
+              "Assess each path by risk, fit, and payoff before selecting a test."
+            ]
+          },
+          {
+            "heading": "Use experiments wisely",
+            "paragraphs": [
+              "A small test can reveal what theory cannot."
+            ],
+            "callout": "Better decisions come from clearer structure, not more mental noise."
+          }
+        ]
+      }
+    },
+    {
+      "id": "guide-019",
+      "slug": "guides/see-the-pattern-choose-the-path",
+      "title": "See the Pattern, Choose the Path",
+      "summary": "A guide for using pattern recognition without getting trapped in the cycle.",
+      "status": "published",
+      "featured": true,
+      "icon": "travel_explore",
+      "tags": [
+        "pattern recognition",
+        "judgment",
+        "agency",
+        "leadership"
+      ],
+      "heroImage": "assets/images/guides/see-the-pattern-choose-the-path/01_see_the_pattern_choose_the_path.png",
+      "seo": {
+        "title": "See the Pattern, Choose the Path",
+        "description": "A guide for using pattern recognition without getting trapped in the cycle."
+      },
+      "body": {
+        "intro": "Seeing a pattern is only useful if it helps choose the right scale, the right response, and the next useful move. This guide turns pattern recognition into agency rather than rumination.",
+        "sections": [
+          {
+            "heading": "Use insight at the right scale",
+            "paragraphs": [
+              "Name the pattern without becoming captive to it. The goal is clarity, judgment, agency, and momentum."
+            ],
+            "callout": "Use pattern recognition to create clarity, not captivity."
+          },
+          {
+            "heading": "Run the pattern filter",
+            "paragraphs": [
+              "Ask whether this is a repeating pattern or a single event, whether it needs action or containment, whether facts are clear, and whether more analysis will help."
+            ]
+          },
+          {
+            "heading": "Make the choice shift",
+            "paragraphs": [
+              "Notice the cycle, name it clearly, narrow the container, decide whether to analyze or contain, and move."
+            ]
+          },
+          {
+            "heading": "Use with care",
+            "paragraphs": [
+              "Do not over-analyze single events, urgent moments, decisions someone else owns, or pattern-mapping that has become rumination."
+            ],
+            "callout": "The goal is not to see more patterns. The goal is to use insight at the right scale."
+          }
+        ]
+      }
+    },
+    {
+      "id": "guide-020",
+      "slug": "guides/start-where-the-signal-appears",
+      "title": "Start Where the Signal Appears",
+      "summary": "A practical guide for choosing the right entry point into a decision.",
+      "status": "published",
+      "featured": false,
+      "icon": "online_prediction",
+      "tags": [
+        "signals",
+        "decisions",
+        "patterns",
+        "entry points"
+      ],
+      "heroImage": "assets/images/guides/start-where-the-signal-appears/01_start_where_the_signal_appears.png",
+      "seo": {
+        "title": "Start Where the Signal Appears",
+        "description": "A practical guide for choosing the right entry point into a decision."
+      },
+      "body": {
+        "intro": "A decision does not always begin with a clean problem statement. This guide helps choose the clearest entry point: challenge, emotional response, behavior, or outcome.",
+        "sections": [
+          {
+            "heading": "Choose an entry point",
+            "paragraphs": [
+              "Start with the challenge, emotional response, behavior, or outcome\u2014whichever is clearest."
+            ],
+            "callout": "You do not need to start at the beginning."
+          },
+          {
+            "heading": "Use the entry point well",
+            "paragraphs": [
+              "Pick the clearest signal, name what is observable, avoid judgment, and move to analysis."
+            ]
+          },
+          {
+            "heading": "Apply the principle",
+            "paragraphs": [
+              "Start where the signal is clearest. A visible signal is enough to begin."
+            ]
+          },
+          {
+            "heading": "Use it when stuck",
+            "paragraphs": [
+              "Best for stuck decisions, repeating problems, behavior change, and confusing reactions."
+            ],
+            "callout": "Clear entry points create clearer decisions."
+          }
+        ]
+      }
+    }
+  ]
+}
