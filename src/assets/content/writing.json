@@ -126,11 +126,6 @@
               "Visibility should not be framed as surveillance. The goal is not to make employees afraid to use AI. The goal is to make the operating system legible enough that management can improve it.",
               "Once consumption is visible, the enterprise can ask better questions. Which tasks deserve premium model use? Where is context being repeatedly stuffed into prompts? Which workflows should use reusable instructions? Where would caching prevent repeat spend? Which use cases might make sense locally? Which departments need budgets or thresholds before usage expands?"
             ],
-            "image": {
-              "src": "assets/images/writing/articles/2026-06-01_ai_spend_is_rising_is_ebitda/04_consumption_vs_value_curve.png",
-              "alt": "A visual showing AI consumption becoming visible by role, workflow, model, context, connector, and cost.",
-              "caption": "Visibility turns AI consumption from a vague technology expense into a manageable operating surface."
-            },
             "callout": "Visibility is not restriction. Visibility is the first condition for responsible scale."
           },
           {
