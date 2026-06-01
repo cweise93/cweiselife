@@ -262,6 +262,61 @@ h1 {
   height: clamp(150px, 32%, 220px);
 }
 
+:host-context(body.cw-theme-light) .guide-tile {
+  border-color: color-mix(in srgb, var(--cw-accent) 18%, var(--cw-line));
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--cw-panel) 94%, var(--cw-accent-soft)) 0%,
+      color-mix(in srgb, var(--cw-panel) 98%, var(--cw-page)) 100%
+    );
+  box-shadow:
+    0 10px 24px rgba(7, 24, 39, 0.05),
+    0 2px 8px rgba(7, 24, 39, 0.03);
+}
+
+:host-context(body.cw-theme-light) .guide-tile:hover,
+:host-context(body.cw-theme-light) .guide-tile:focus-visible {
+  border-color: color-mix(in srgb, var(--cw-accent) 28%, var(--cw-line));
+  box-shadow:
+    0 14px 30px rgba(7, 24, 39, 0.07),
+    0 4px 10px rgba(7, 24, 39, 0.04);
+}
+
+:host-context(body.cw-theme-light) .guide-visual img {
+  opacity: 0.15;
+  transform: rotate(2deg) scale(1.01);
+  filter: saturate(0.9) contrast(0.98);
+  box-shadow: 0 10px 24px rgba(34, 63, 94, 0.08);
+}
+
+:host-context(body.cw-theme-light) .guide-tile--hero .guide-visual img {
+  opacity: 0.17;
+}
+
+:host-context(body.cw-theme-light) .guide-visual__veil {
+  background:
+    radial-gradient(circle at top right, rgba(81, 138, 214, 0.08), transparent 26%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.22) 48%, rgba(248, 251, 255, 0.72) 100%),
+    linear-gradient(120deg, rgba(40, 101, 175, 0.05), transparent 42%, rgba(255, 255, 255, 0.12));
+}
+
+:host-context(body.cw-theme-light) .guide-visual__mesh {
+  opacity: 0.22;
+}
+
+:host-context(body.cw-theme-light) .guide-badge {
+  border-color: color-mix(in srgb, var(--cw-accent) 14%, var(--cw-line));
+  background: rgba(255, 255, 255, 0.72);
+  color: color-mix(in srgb, var(--cw-accent) 74%, var(--cw-ink));
+  box-shadow: 0 8px 18px rgba(34, 63, 94, 0.08);
+}
+
+:host-context(body.cw-theme-light) .guide-tags span {
+  background: color-mix(in srgb, var(--cw-panel) 86%, var(--cw-accent-soft));
+  color: color-mix(in srgb, var(--cw-ink) 72%, var(--cw-accent) 28%);
+}
+
 @media (max-width: 760px) {
   .page-hero {
     padding: 64px 0 20px;
