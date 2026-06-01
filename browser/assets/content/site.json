@@ -20,20 +20,20 @@
     ],
     "heroImage": "assets/images/hero-architecture.png",
     "featuredWritingSlugs": [
+      "writing/2026/06/01/ai-spend-is-rising-is-ebitda",
       "writing/2026/05/25/ai-agents-are-becoming-operational-capital",
       "writing/2026/05/24/what-kind-of-leader-does-the-moment-require",
-      "writing/2026/05/12/organizations-rarely-fail-from-a-lack-of-intelligence",
-      "writing/2026/04/28/why-operational-friction-hides-in-translation-layers"
+      "writing/2026/05/12/organizations-rarely-fail-from-a-lack-of-intelligence"
     ],
     "featuredFrameworkSlugs": [
       "frameworks/2026/04/14/turn-down-the-noise",
       "frameworks/2026/03/18/systems-translation-loop"
     ],
-    "featuredInitiativeSlugs": [
-      "initiatives/2026/05/16/operational-alignment-delivery-coordination",
-      "initiatives/2026/05/16/systems-and-workflow-architecture",
-      "initiatives/2026/05/16/executive-communication-and-operational-translation",
-      "initiatives/2026/05/16/operational-intelligence-exploration"
+    "featuredGuideSlugs": [
+      "guides/a-compass-not-a-map",
+      "guides/avoid-act-loop",
+      "guides/becoming-the-solution-provider",
+      "guides/close-the-loop"
     ],
     "themes": [
       {
@@ -81,9 +81,10 @@
       "headline": "Turn Down the Noise",
       "support": "A simple but powerful model for improving decision quality and operational clarity."
     },
-    "initiativesSection": {
-      "eyebrow": "Selected Initiatives",
-      "headline": "Proof of Execution"
+    "guidesSection": {
+      "eyebrow": "Operating Tools",
+      "headline": "Guides for Turning Friction Into Action",
+      "support": "Short, practical tools for converting ambiguity, stuck energy, and recurring friction into clearer next steps."
     },
     "aboutSection": {
       "eyebrow": "About",
@@ -95,7 +96,7 @@
       { "label": "Home", "path": "/" },
       { "label": "Writing", "path": "/writing" },
       { "label": "Frameworks", "path": "/frameworks" },
-      { "label": "Initiatives", "path": "/initiatives" },
+      { "label": "Guides", "path": "/guides" },
       { "label": "About", "path": "/about" },
       { "label": "Connect", "path": "/connect" }
     ],
@@ -107,7 +108,7 @@
   },
   "footer": {
     "featuredLinks": [
-      { "label": "Operational Alignment & Delivery Coordination", "path": "/initiatives/2026/05/16/operational-alignment-delivery-coordination" },
+      { "label": "Operating Tools", "path": "/guides" },
       { "label": "Turn Down the Noise", "path": "/frameworks/2026/04/14/turn-down-the-noise" },
       { "label": "How I Think. What I Do.", "path": "/about" }
     ]
