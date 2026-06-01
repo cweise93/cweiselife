@@ -1,11 +1,11 @@
 import { ScrollSequenceManifest, SpriteSheetManifest } from '../shared/content/scroll-sprite-sequence';
 
-export type PublishingPathStatus = 'Live' | 'Sequenced' | 'Scheduled';
+export type PublishingPathStatus = 'Recent' | 'Current' | 'Next';
 export type PublishingPathKind = 'Writing' | 'Framework' | 'Guide';
 
 export interface PublishingPathItem {
   id: string;
-  weekLabel: string;
+  sceneLabel: string;
   status: PublishingPathStatus;
   kind: PublishingPathKind;
   progressStart: number;
@@ -27,11 +27,11 @@ export interface HomePublishingPath {
 }
 
 export const HOME_PUBLISHING_PATH: HomePublishingPath = {
-  eyebrow: 'Publishing Arc',
-  headline: 'Trace the route from diagnosis to working tool, one release at a time.',
+  eyebrow: 'Live Operating Story',
+  headline: 'A running release stream in three acts.',
   support:
-    'Each weekly release extends the same route. The story starts with diagnosis, moves through operating structure, and ends with a working guide people can use.',
-  spritePath: 'assets/images/home/story-path/story_path_sprite_sheet.webp',
+    'This is not a static archive. The last few weeks expose the operating problem, the current work turns it into structure, and the next releases push that structure toward governed assets and usable tools.',
+  spritePath: 'assets/images/home/story-path/story_path_sprite_sheet_morph_test.webp',
   sequence: {
     total_frames: 188,
     segments: [
@@ -170,98 +170,98 @@ export const HOME_PUBLISHING_PATH: HomePublishingPath = {
   items: [
     {
       id: 'week-01-signal',
-      weekLabel: 'Week 1',
-      status: 'Live',
+      sceneLabel: 'Act I · Opening diagnosis',
+      status: 'Recent',
       kind: 'Writing',
       progressStart: 0,
       progressEnd: 0.112,
       title: 'Organizations Rarely Fail From a Lack of Intelligence',
-      summary: 'Start with the real diagnosis: organizations break down when intelligence cannot travel through priorities, translation layers, ownership, and execution.',
-      continuity: 'This is the opening index because it names the operating problem the rest of the sequence is solving.',
+      summary: 'The opening act names the real failure mode: intelligence exists, but it dies while crossing priorities, translation layers, ownership boundaries, and execution.',
+      continuity: 'This is the problem statement the rest of the stream keeps working against.',
       slug: 'writing/2026/05/12/organizations-rarely-fail-from-a-lack-of-intelligence'
     },
     {
       id: 'week-02-loop',
-      weekLabel: 'Week 2',
-      status: 'Live',
+      sceneLabel: 'Act I · Building the route',
+      status: 'Recent',
       kind: 'Framework',
       progressStart: 0.112,
       progressEnd: 0.224,
       title: 'Systems Translation Loop',
-      summary: 'Turn the diagnosis into a repeatable operating model that carries executive intent into workflow, systems, and validation.',
-      continuity: 'The second stop gives the path structure so the signal can survive the trip.',
+      summary: 'Once the failure is named, the next move is to give intent a route that can survive the trip from strategy into workflow, systems, and validation.',
+      continuity: 'This is where diagnosis starts becoming an operating path instead of commentary.',
       slug: 'frameworks/2026/03/18/systems-translation-loop'
     },
     {
       id: 'week-03-friction',
-      weekLabel: 'Week 3',
-      status: 'Live',
+      sceneLabel: 'Act I · Exposing the drag',
+      status: 'Recent',
       kind: 'Writing',
       progressStart: 0.224,
       progressEnd: 0.336,
       title: 'Why Operational Friction Hides in Translation Layers',
-      summary: 'Show where the loop breaks in practice: handoffs, interface ownership, duplicated interpretation, and invisible drag.',
-      continuity: 'This stop makes the hidden operating tax visible before the conversation jumps to tooling.',
+      summary: 'The third beat shows where the loop breaks in practice: handoffs, interface ownership, duplicated interpretation, and invisible drag.',
+      continuity: 'This is the point where the hidden operating tax becomes too visible to ignore.',
       slug: 'writing/2026/04/28/why-operational-friction-hides-in-translation-layers'
     },
     {
       id: 'week-04-noise',
-      weekLabel: 'Week 4',
-      status: 'Live',
+      sceneLabel: 'Act II · Clearing the field',
+      status: 'Current',
       kind: 'Framework',
       progressStart: 0.336,
       progressEnd: 0.448,
       title: 'Turn Down the Noise',
-      summary: 'Reduce ambient reporting volume, weak escalation surfaces, and optics-heavy updates so decision-grade signal becomes easier to inspect.',
-      continuity: 'The fourth stop improves the environment around the path instead of merely adding more communication.',
+      summary: 'The current act starts by reducing reporting clutter, weak escalation surfaces, and optics-heavy updates so decision-grade signal can actually be seen.',
+      continuity: 'Before the system can carry stronger decisions, the field around it has to get quieter.',
       slug: 'frameworks/2026/04/14/turn-down-the-noise'
     },
     {
       id: 'week-05-ownership',
-      weekLabel: 'Week 5',
-      status: 'Sequenced',
+      sceneLabel: 'Act II · Installing ownership',
+      status: 'Current',
       kind: 'Writing',
       progressStart: 0.448,
       progressEnd: 0.58,
       title: 'Executive Follow-Through Requires Ownership Architecture',
-      summary: 'Make follow-through legible by clarifying decision rights, escalation lanes, and the evidence path required to sustain execution.',
-      continuity: 'This is where the path stops being conceptual and starts becoming governable.',
+      summary: 'Follow-through becomes legible when decision rights, escalation lanes, and evidence paths are explicit enough to sustain execution.',
+      continuity: 'This is where the stream stops being conceptual and starts becoming governable.',
       slug: 'writing/2026/03/31/executive-follow-through-requires-ownership-architecture'
     },
     {
       id: 'week-06-agents',
-      weekLabel: 'Week 6',
-      status: 'Sequenced',
+      sceneLabel: 'Act II · Reframing the asset',
+      status: 'Current',
       kind: 'Writing',
       progressStart: 0.58,
       progressEnd: 0.72,
       title: 'AI Agents Are Becoming Operational Capital',
-      summary: 'Move from operating clarity into economic materiality: agents that encode judgment need classification, stewardship, and lifecycle treatment.',
-      continuity: 'The sixth stop shifts the path from workflow design into assets that deserve governance.',
+      summary: 'The present focus pushes the path into economic materiality: agents that encode judgment need classification, stewardship, and lifecycle treatment.',
+      continuity: 'This is the turn from workflow design into assets that deserve governance.',
       slug: 'writing/2026/05/25/ai-agents-are-becoming-operational-capital'
     },
     {
       id: 'week-07-grading',
-      weekLabel: 'Week 7',
-      status: 'Scheduled',
+      sceneLabel: 'Act III · Grading the asset',
+      status: 'Next',
       kind: 'Framework',
       progressStart: 0.72,
       progressEnd: 0.86,
       title: 'Agent Asset Grading Framework',
-      summary: 'Grade which agents deserve stronger controls, review depth, operating telemetry, and financial seriousness.',
-      continuity: 'This stop gives leaders a practical decision model for distinguishing experiments from operating assets.',
+      summary: 'The next release gives leaders a decision model for which agents deserve stronger controls, deeper review, tighter telemetry, and more financial seriousness.',
+      continuity: 'This is the bridge from insight into a practical governance standard.',
       slug: 'frameworks/2026/05/27/agent-asset-grading-framework'
     },
     {
       id: 'week-08-tool',
-      weekLabel: 'Week 8',
-      status: 'Scheduled',
+      sceneLabel: 'Act III · Shipping the tool',
+      status: 'Next',
       kind: 'Guide',
       progressStart: 0.86,
       progressEnd: 1,
       title: 'A Compass, Not a Map',
-      summary: 'Close the arc with a practical tool for moving through ambiguity without over-designing the future.',
-      continuity: 'The sequence ends with a working guide that turns uncertainty into a stable direction and the next useful move.',
+      summary: 'The closing release turns the arc into a usable guide for moving through ambiguity without over-designing the future.',
+      continuity: 'This is where the stream lands in a tool people can actually use in the room.',
       slug: 'guides/a-compass-not-a-map'
     }
   ]

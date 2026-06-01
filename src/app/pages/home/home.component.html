@@ -176,154 +176,34 @@
 <section class="cw-section operating-tools section-surface--soft">
   <div class="cw-container cw-section-header">
     <div>
-      <p class="cw-eyebrow">{{ vm.home.guidesSection.eyebrow }}</p>
-      <h2 class="cw-section-title">{{ vm.home.guidesSection.headline }}</h2>
-      @if (vm.home.guidesSection.support) {
-        <p class="cw-muted">{{ vm.home.guidesSection.support }}</p>
-      }
+      <p class="cw-eyebrow">Operating Tools</p>
+      <h2 class="cw-section-title">Choose the right tool for the moment.</h2>
+      <p class="cw-muted">
+        Visual guides for getting unstuck, making decisions, breaking loops, and turning reflection into action.
+      </p>
     </div>
     <div class="cw-section-header__actions">
       <a mat-button color="primary" routerLink="/guides" class="cw-link-action">
-        View all guides
+        Explore all guides
         <mat-icon>arrow_forward</mat-icon>
       </a>
     </div>
   </div>
   <div class="cw-container">
-    <div class="guide-vault-grid-shell">
-      <mat-grid-list [cols]="homeGuideGridCols()" [rowHeight]="homeGuideRowHeight()" gutterSize="18px">
-        <mat-grid-tile [colspan]="getHomeGuideIntroColspan()">
-          <section class="guide-vault-panel guide-vault-panel--intro">
-            <div class="guide-vault-panel__copy">
-              <p class="guide-vault-panel__eyebrow">Tool Vault</p>
-              <h3>Not reading material. Repeatable operating moves.</h3>
-              <p>
-                Each guide condenses a useful management pattern into something small enough to use live:
-                clarify the situation, choose the response, and move the operating path forward.
-              </p>
-              <p class="guide-vault-panel__value-line">
-                Small enough to use live. Visual enough to share. Structured enough to repeat.
-              </p>
-            </div>
-          </section>
-        </mat-grid-tile>
-
-        @if (featuredGuideLead(); as leadGuide) {
-          <mat-grid-tile [colspan]="getHomeGuideLeadColspan()">
-            <a class="guide-vault-panel guide-vault-panel--lead" [routerLink]="getGuideRoute(leadGuide)">
-              <div class="guide-vault-panel__visual">
-                @if (leadGuide.heroImage) {
-                  <img [src]="leadGuide.heroImage" [alt]="leadGuide.title" />
-                }
-                <div class="guide-vault-panel__veil"></div>
-              </div>
-
-              <div class="guide-vault-panel__content">
-                <div class="guide-vault-panel__topline">
-                  <span class="guide-vault-panel__kicker">Featured tool</span>
-                  <span class="guide-vault-panel__icon cw-icon-badge">
-                    <mat-icon>{{ leadGuide.icon }}</mat-icon>
-                  </span>
-                </div>
-
-                <div class="guide-vault-panel__copy">
-                  <h3>{{ leadGuide.title }}</h3>
-                  <p>{{ leadGuide.summary }}</p>
-                </div>
-
-                @if (getGuideTags(leadGuide).length) {
-                  <div class="guide-vault-panel__tags">
-                    @for (tag of getGuideTags(leadGuide); track tag) {
-                      <span>{{ tag }}</span>
-                    }
-                  </div>
-                }
-
-                <div class="guide-vault-panel__cta">
-                  <span>Open guide</span>
-                  <mat-icon>north_east</mat-icon>
-                </div>
-              </div>
-            </a>
-          </mat-grid-tile>
-        }
-
-        @for (guide of featuredGuideGridItems(); track guide.id) {
-          <mat-grid-tile>
-            <a class="guide-vault-panel guide-vault-panel--tool" [routerLink]="getGuideRoute(guide)">
-              <div class="guide-vault-panel__visual">
-                @if (guide.heroImage) {
-                  <img [src]="guide.heroImage" [alt]="guide.title" />
-                }
-                <div class="guide-vault-panel__veil"></div>
-              </div>
-
-              <div class="guide-vault-panel__content">
-                <div class="guide-vault-panel__topline">
-                  <span class="guide-vault-panel__icon cw-icon-badge">
-                    <mat-icon>{{ guide.icon }}</mat-icon>
-                  </span>
-                </div>
-
-                <div class="guide-vault-panel__copy">
-                  <h3>{{ guide.title }}</h3>
-                  <p>{{ guide.summary }}</p>
-                </div>
-
-                @if (getGuideTags(guide, 2).length) {
-                  <div class="guide-vault-panel__tags">
-                    @for (tag of getGuideTags(guide, 2); track tag) {
-                      <span>{{ tag }}</span>
-                    }
-                  </div>
-                }
-
-                <div class="guide-vault-panel__cta">
-                  <span>Open guide</span>
-                  <mat-icon>north_east</mat-icon>
-                </div>
-              </div>
-            </a>
-          </mat-grid-tile>
-        }
-      </mat-grid-list>
-    </div>
+    <cw-home-guide-selector
+      [moments]="homeGuideMoments()"
+      [benefits]="homeGuideBenefits"
+      [selectedIndex]="selectedHomeGuideMomentIndex()"
+      (momentSelected)="selectHomeGuideMoment($event)"
+    />
   </div>
 </section>
 
 <section #publishingPathSection class="publishing-path cw-section">
-  <div
-    class="publishing-path__journey-shell"
-    aria-hidden="true"
-    [class.is-before]="publishingPathBackdropState() === 'before'"
-    [class.is-pinned]="publishingPathBackdropState() === 'pinned'"
-    [class.is-after]="publishingPathBackdropState() === 'after'"
-  >
-    <div class="publishing-path__journey-stage">
-      <div
-        class="publishing-path__backdrop-sprite"
-        [style.background-image]="'url(' + publishingPath.spritePath + ')'"
-        [style.background-position-x]="publishingPathFrameState().backgroundPositionX"
-        [style.background-position-y]="publishingPathFrameState().backgroundPositionY"
-        [style.background-size]="publishingPathFrameState().backgroundSize"
-        [style.opacity]="publishingPathBackdropOpacity()"
-      ></div>
-      <div class="publishing-path__backdrop-dim"></div>
-      <div class="publishing-path__backdrop-vignette"></div>
-      <div class="publishing-path__backdrop-curtain"></div>
-    </div>
-  </div>
-
-  <div class="publishing-path__atmosphere" aria-hidden="true">
-    <span class="publishing-path__glow publishing-path__glow--north"></span>
-    <span class="publishing-path__glow publishing-path__glow--east"></span>
-    <span class="publishing-path__mesh"></span>
-  </div>
-
   <div class="cw-container publishing-path__frame">
     <div class="publishing-path__header">
       <div class="publishing-path__headline-block">
-        <p class="cw-eyebrow">Connected Release Route</p>
+        <p class="cw-eyebrow">{{ publishingPath.eyebrow }}</p>
         <h2 class="cw-section-title">{{ publishingPath.headline }}</h2>
       </div>
 
@@ -332,13 +212,26 @@
       </div>
     </div>
 
-    <div class="publishing-path__layout">
-      <div class="publishing-path__story-column">
-        <div #publishingPathSticky class="publishing-path__sticky">
+    <div #publishingPathLayout class="publishing-path__layout">
+      <div #publishingPathStoryColumn class="publishing-path__story-column">
+        <div
+          #publishingPathSticky
+          class="publishing-path__sticky"
+          [class.is-fixed]="publishingPathStoryPinMode() === 'fixed'"
+          [class.is-released]="publishingPathStoryPinMode() === 'released'"
+          [style.top.px]="publishingPathStoryInlineTop()"
+          [style.left.px]="publishingPathStoryInlineLeft()"
+          [style.width.px]="publishingPathStoryInlineWidth()"
+        >
           <div class="publishing-path__story-card">
             <div class="publishing-path__stage-meta">
-              <span class="publishing-path__week">{{ activePublishingPathItem().weekLabel }}</span>
-              <span class="publishing-path__current-badge">Current</span>
+              <span class="publishing-path__week">{{ activePublishingPathItem().sceneLabel }}</span>
+              <span
+                class="publishing-path__current-badge"
+                [class]="publishingPathStatusClass(activePublishingPathItem())"
+              >
+                {{ activePublishingPathItem().status }}
+              </span>
             </div>
 
             <div class="publishing-path__stage-copy">
@@ -353,7 +246,7 @@
 
             <div class="publishing-path__stage-actions">
               <span class="publishing-path__card-index">
-                Stop {{ activePublishingPathIndex() + 1 }} of {{ publishingPath.items.length }} · {{ publishingPathProgressPercent() }}%
+                Scene {{ activePublishingPathIndex() + 1 }} of {{ publishingPath.items.length }}
               </span>
               <a mat-flat-button [routerLink]="getPublishingPathRoute(activePublishingPathItem())" class="publishing-path__cta">
                 Open current item
@@ -362,7 +255,7 @@
             </div>
 
             <div class="publishing-path__progress" aria-hidden="true">
-              <div class="publishing-path__progress-fill" [style.transform]="'scaleX(' + publishingPathJourneyProgress() + ')'"></div>
+              <div class="publishing-path__progress-fill" [style.transform]="'scaleX(' + publishingPathCompletion() + ')'"></div>
             </div>
           </div>
         </div>
@@ -372,12 +265,12 @@
         <div #publishingPathTimeline class="publishing-path__timeline" aria-label="Connected release route">
           <div class="publishing-path__timeline-spine" aria-hidden="true">
             <span class="publishing-path__timeline-spine-base"></span>
-            <span class="publishing-path__timeline-spine-fill" [style.transform]="'scaleY(' + publishingPathJourneyProgress() + ')'"></span>
-            <span class="publishing-path__timeline-pulse" [style.top.px]="publishingPathPulseOffset()"></span>
+            <span class="publishing-path__timeline-spine-fill" [style.transform]="'scaleY(' + publishingPathLineProgress() + ')'"></span>
           </div>
 
           @for (item of publishingPath.items; track item.id; let index = $index) {
             <a
+              #publishingPathStop
               class="publishing-path__rail-item"
               [routerLink]="getPublishingPathRoute(item)"
               [class.is-active]="activePublishingPathIndex() === index"
@@ -386,10 +279,12 @@
               <span class="publishing-path__rail-node" aria-hidden="true"></span>
               <div class="publishing-path__rail-copy">
                 <div class="publishing-path__rail-topline">
-                  <span>{{ item.weekLabel }}</span>
+                  <span>{{ item.sceneLabel }}</span>
                   <span class="publishing-path__rail-kind">{{ item.kind }}</span>
+                  <span class="publishing-path__rail-status" [class]="publishingPathStatusClass(item)">{{ item.status }}</span>
                 </div>
                 <h3>{{ item.title }}</h3>
+                <p>{{ item.summary }}</p>
               </div>
             </a>
           }
@@ -398,20 +293,6 @@
     </div>
   </div>
 </section>
-
-@if (publishingPathDebugEnabled() && publishingPathDebug(); as debug) {
-  <aside class="publishing-path-debug" aria-label="Publishing path debug">
-    <h3>Publishing Debug</h3>
-    <dl>
-      @for (entry of debug | keyvalue; track entry.key) {
-        <div class="publishing-path-debug__row">
-          <dt>{{ entry.key }}</dt>
-          <dd>{{ entry.value }}</dd>
-        </div>
-      }
-    </dl>
-  </aside>
-}
 
 <section class="cw-section about-connect">
   <div class="cw-container about-grid">
