@@ -1,6 +1,6 @@
 import { DatePipe, KeyValuePipe } from '@angular/common';
-import { AfterViewInit, Component, DestroyRef, ElementRef, HostListener, QueryList, ViewChild, ViewChildren, computed, inject, signal } from '@angular/core';
-import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
+import { AfterViewInit, Component, ElementRef, HostListener, ViewChild, computed, inject, signal } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -70,13 +70,10 @@ const EMPTY_HOME: HomeContentViewModel = {
 })
 export class HomeComponent implements AfterViewInit {
   private readonly contentService = inject(ContentService);
-  private readonly destroyRef = inject(DestroyRef);
 
   @ViewChild('publishingPathSection') private publishingPathSection?: ElementRef<HTMLElement>;
-  @ViewChild('publishingPathStoryColumn') private publishingPathStoryColumn?: ElementRef<HTMLElement>;
   @ViewChild('publishingPathSticky') private publishingPathSticky?: ElementRef<HTMLElement>;
   @ViewChild('publishingPathTimeline') private publishingPathTimeline?: ElementRef<HTMLElement>;
-  @ViewChildren('publishingPathStepCard') private publishingPathStepCards?: QueryList<ElementRef<HTMLElement>>;
 
   readonly homeContent = toSignal(this.contentService.getHomeContent(), { initialValue: EMPTY_HOME });
   readonly featuredWritingItems = computed<WritingItem[]>(() => this.homeContent().featuredWriting ?? []);
@@ -120,34 +117,20 @@ export class HomeComponent implements AfterViewInit {
   readonly publishingPathJourneyProgress = signal(0);
   readonly publishingPathPulseOffset = signal(0);
   readonly publishingPathBackdropState = signal<'before' | 'pinned' | 'after'>('before');
-  readonly publishingPathStoryRunway = signal<number | null>(null);
   readonly activePublishingPathIndex = signal(0);
   readonly publishingPathDebugEnabled = signal(false);
   readonly publishingPathPhase = computed(() => this.phaseForProgress(this.publishingPathProgress()));
   readonly publishingPathDebug = signal<Record<string, string | number> | null>(null);
   readonly activePublishingPathItem = computed(() => this.publishingPath.items[this.activePublishingPathIndex()]!);
+  readonly publishingPathProgressPercent = computed(() => Math.round(this.publishingPathJourneyProgress() * 100));
   readonly publishingPathFrameState = computed(() =>
     scrollSpriteFrameState(this.publishingPathJourneyProgress(), this.publishingPath.sequence, this.publishingPath.sprite)
   );
-  readonly publishingPathBackdropOpacity = computed(() => this.mapProgress(this.publishingPathProgress(), 0.015, 0.08));
-  readonly publishingPathCurtainOpacity = computed(() => 1 - this.mapProgress(this.publishingPathProgress(), 0.01, 0.1));
-  readonly publishingPathIntroEnterProgress = computed(() => this.mapProgress(this.publishingPathProgress(), 0.04, 0.11));
-  readonly publishingPathStoryEnterProgress = computed(() => this.mapProgress(this.publishingPathProgress(), 0.14, 0.24));
-  readonly publishingPathTimelineEnterProgress = computed(() => this.mapProgress(this.publishingPathProgress(), 0.22, 0.32));
-  readonly publishingPathIntroOpacity = computed(() => this.mapProgress(this.publishingPathProgress(), 0.04, 0.11));
-  readonly publishingPathStoryOpacity = computed(() => this.mapProgress(this.publishingPathProgress(), 0.14, 0.24));
-  readonly publishingPathTimelineOpacity = computed(() => this.mapProgress(this.publishingPathProgress(), 0.22, 0.32));
-  readonly publishingPathIntroLift = computed(() => Math.round((1 - this.publishingPathIntroEnterProgress()) * 20));
-  readonly publishingPathStoryLift = computed(() => Math.round((1 - this.publishingPathStoryEnterProgress()) * 28));
-  readonly publishingPathTimelineLift = computed(() => Math.round((1 - this.publishingPathTimelineEnterProgress()) * 22));
+  readonly publishingPathBackdropOpacity = computed(() => 0.18 + this.mapProgress(this.publishingPathProgress(), 0.12, 0.88) * 0.1);
 
   ngAfterViewInit(): void {
-    this.publishingPathDebugEnabled.set(this.isPublishingPathDebugEnabled());
+//    this.publishingPathDebugEnabled.set(this.isPublishingPathDebugEnabled());
     queueMicrotask(() => this.updatePublishingPathState());
-
-    this.publishingPathStepCards?.changes
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe(() => queueMicrotask(() => this.updatePublishingPathState()));
   }
 
   @HostListener('window:resize')
@@ -281,7 +264,7 @@ export class HomeComponent implements AfterViewInit {
     const availableViewport = Math.max(window.innerHeight - toolbarHeight, 1);
     const scrollableDistance = Math.max(sectionRect.height - availableViewport, 1);
     const progress = Math.min(1, Math.max(0, (toolbarHeight - sectionRect.top) / scrollableDistance));
-    const journeyProgress = this.mapProgress(progress, 0.24, 0.96);
+    const journeyProgress = this.mapProgress(progress, 0.1, 0.94);
 
     if (sectionRect.top > toolbarHeight) {
       this.publishingPathBackdropState.set('before');
@@ -295,51 +278,23 @@ export class HomeComponent implements AfterViewInit {
     this.publishingPathJourneyProgress.set(journeyProgress);
 
     const timeline = this.publishingPathTimeline?.nativeElement;
-    const stepCards = this.publishingPathStepCards?.toArray().map((card) => card.nativeElement) ?? [];
-    if (!timeline || !stepCards.length) {
+    const itemCount = this.publishingPath.items.length;
+    if (!timeline || !itemCount) {
       this.activePublishingPathIndex.set(0);
       this.publishingPathPulseOffset.set(0);
-      this.publishingPathStoryRunway.set(null);
       return;
     }
 
-    const targetY = toolbarHeight + availableViewport * (window.innerWidth < 1000 ? 0.28 : 0.4);
-    let activeIndex = 0;
-    let activeDistance = Number.POSITIVE_INFINITY;
-
-    stepCards.forEach((card, index) => {
-      const rect = card.getBoundingClientRect();
-      const center = rect.top + rect.height / 2;
-      const distance = Math.abs(center - targetY);
-      if (distance < activeDistance) {
-        activeDistance = distance;
-        activeIndex = index;
-      }
-    });
-
+    const segments = Math.max(itemCount - 1, 1);
+    const activeIndex = Math.min(itemCount - 1, Math.round(journeyProgress * segments));
     this.activePublishingPathIndex.set(activeIndex);
 
     const timelineRect = timeline.getBoundingClientRect();
-    const stickyRect = this.publishingPathSticky?.nativeElement.getBoundingClientRect();
-    const firstRect = stepCards[0]!.getBoundingClientRect();
-    const lastRect = stepCards[stepCards.length - 1]!.getBoundingClientRect();
-    const firstCenter = firstRect.top - timelineRect.top + firstRect.height / 2;
-    const lastCenter = lastRect.top - timelineRect.top + lastRect.height / 2;
-    const pulseOffset = firstCenter + (lastCenter - firstCenter) * journeyProgress;
+    const railInset = window.innerWidth < 900 ? 18 : 26;
+    const usableRail = Math.max(timelineRect.height - railInset * 2, 1);
+    const pulseOffset = railInset + usableRail * journeyProgress;
 
-    this.publishingPathPulseOffset.set(Math.max(firstCenter, Math.min(lastCenter, pulseOffset)));
-
-    if (window.innerWidth < 1000 || !stickyRect) {
-      this.publishingPathStoryRunway.set(null);
-    } else {
-      const requiredRunway = Math.ceil(
-        Math.max(
-          timelineRect.height,
-          stickyRect.height + lastCenter - targetY + 24
-        )
-      );
-      this.publishingPathStoryRunway.set(requiredRunway);
-    }
+    this.publishingPathPulseOffset.set(pulseOffset);
 
     this.updatePublishingPathDebug({
       toolbarHeight,
@@ -347,10 +302,7 @@ export class HomeComponent implements AfterViewInit {
       sectionRect,
       timelineRect,
       scrollableDistance,
-      targetY,
-      firstCenter,
-      lastCenter,
-      activeDistance
+      pulseOffset
     });
   }
 
@@ -413,17 +365,13 @@ export class HomeComponent implements AfterViewInit {
     sectionRect: DOMRect;
     timelineRect: DOMRect;
     scrollableDistance: number;
-    targetY: number;
-    firstCenter: number;
-    lastCenter: number;
-    activeDistance: number;
+    pulseOffset: number;
   }): void {
     if (!this.publishingPathDebugEnabled() || typeof window === 'undefined') {
       return;
     }
 
     const stickyRect = this.publishingPathSticky?.nativeElement.getBoundingClientRect();
-    const storyColumnRect = this.publishingPathStoryColumn?.nativeElement.getBoundingClientRect();
 
     const debug = {
       phase: this.publishingPathPhase(),
@@ -437,17 +385,11 @@ export class HomeComponent implements AfterViewInit {
       toolbar: Math.round(context.toolbarHeight),
       viewport: Math.round(context.availableViewport),
       backdrop: this.publishingPathBackdropState(),
-      targetY: Math.round(context.targetY),
       stickyTop: stickyRect ? Math.round(stickyRect.top) : 'n/a',
       stickyHeight: stickyRect ? Math.round(stickyRect.height) : 'n/a',
-      storyRunway: this.publishingPathStoryRunway() ?? 'n/a',
-      storyColumnHeight: storyColumnRect ? Math.round(storyColumnRect.height) : 'n/a',
       timelineTop: Math.round(context.timelineRect.top),
       timelineHeight: Math.round(context.timelineRect.height),
-      pulse: Math.round(this.publishingPathPulseOffset()),
-      firstCenter: Math.round(context.firstCenter),
-      lastCenter: Math.round(context.lastCenter),
-      activeDistance: Math.round(context.activeDistance)
+      pulse: Math.round(context.pulseOffset)
     };
 
     this.publishingPathDebug.set(debug);

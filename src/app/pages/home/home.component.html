@@ -310,7 +310,7 @@
       ></div>
       <div class="publishing-path__backdrop-dim"></div>
       <div class="publishing-path__backdrop-vignette"></div>
-      <div class="publishing-path__backdrop-curtain" [style.opacity]="publishingPathCurtainOpacity()"></div>
+      <div class="publishing-path__backdrop-curtain"></div>
     </div>
   </div>
 
@@ -321,42 +321,24 @@
   </div>
 
   <div class="cw-container publishing-path__frame">
-    <div class="publishing-path__header-lane">
-      <div
-        class="publishing-path__header"
-        [style.opacity]="publishingPathIntroOpacity()"
-        [style.transform]="'translateY(' + publishingPathIntroLift() + 'px)'"
-      >
-        <div class="publishing-path__headline-block">
-          <p class="cw-eyebrow">{{ publishingPath.eyebrow }}</p>
-          <h2 class="cw-section-title">{{ publishingPath.headline }}</h2>
-        </div>
+    <div class="publishing-path__header">
+      <div class="publishing-path__headline-block">
+        <p class="cw-eyebrow">Connected Release Route</p>
+        <h2 class="cw-section-title">{{ publishingPath.headline }}</h2>
+      </div>
 
-        <div class="publishing-path__support-block">
-          <p class="cw-muted">{{ publishingPath.support }}</p>
-        </div>
+      <div class="publishing-path__support-block">
+        <p class="cw-muted">{{ publishingPath.support }}</p>
       </div>
     </div>
 
     <div class="publishing-path__layout">
-      <div #publishingPathStoryColumn class="publishing-path__story-column" [style.min-height.px]="publishingPathStoryRunway() ?? null">
-        <div
-          #publishingPathSticky
-          class="publishing-path__sticky"
-          [style.opacity]="publishingPathStoryOpacity()"
-          [style.transform]="'translateY(' + publishingPathStoryLift() + 'px)'"
-        >
-          <div class="publishing-path__signal-tag" aria-hidden="true">
-            <span class="publishing-path__signal-dot"></span>
-            <span>Connected release route</span>
-          </div>
-
+      <div class="publishing-path__story-column">
+        <div #publishingPathSticky class="publishing-path__sticky">
           <div class="publishing-path__story-card">
             <div class="publishing-path__stage-meta">
               <span class="publishing-path__week">{{ activePublishingPathItem().weekLabel }}</span>
-              <span class="publishing-path__status" [class]="publishingPathStatusClass(activePublishingPathItem())">
-                {{ activePublishingPathItem().status }}
-              </span>
+              <span class="publishing-path__current-badge">Current</span>
             </div>
 
             <div class="publishing-path__stage-copy">
@@ -371,10 +353,10 @@
 
             <div class="publishing-path__stage-actions">
               <span class="publishing-path__card-index">
-                Stop {{ activePublishingPathIndex() + 1 }} of {{ publishingPath.items.length }}
+                Stop {{ activePublishingPathIndex() + 1 }} of {{ publishingPath.items.length }} · {{ publishingPathProgressPercent() }}%
               </span>
               <a mat-flat-button [routerLink]="getPublishingPathRoute(activePublishingPathItem())" class="publishing-path__cta">
-                Open index
+                Open current item
                 <mat-icon>arrow_forward</mat-icon>
               </a>
             </div>
@@ -386,41 +368,33 @@
         </div>
       </div>
 
-      <div
-        class="publishing-path__timeline-column"
-        [style.opacity]="publishingPathTimelineOpacity()"
-        [style.transform]="'translateY(' + publishingPathTimelineLift() + 'px)'"
-      >
-        <div #publishingPathTimeline class="publishing-path__timeline" aria-label="Publishing path index">
+      <aside class="publishing-path__timeline-column">
+        <div #publishingPathTimeline class="publishing-path__timeline" aria-label="Connected release route">
           <div class="publishing-path__timeline-spine" aria-hidden="true">
             <span class="publishing-path__timeline-spine-base"></span>
             <span class="publishing-path__timeline-spine-fill" [style.transform]="'scaleY(' + publishingPathJourneyProgress() + ')'"></span>
             <span class="publishing-path__timeline-pulse" [style.top.px]="publishingPathPulseOffset()"></span>
           </div>
 
-          @for (item of publishingPath.items; track item.id; let index = $index; let odd = $odd) {
-            <article
-              #publishingPathStepCard
-              class="publishing-path__step"
+          @for (item of publishingPath.items; track item.id; let index = $index) {
+            <a
+              class="publishing-path__rail-item"
+              [routerLink]="getPublishingPathRoute(item)"
               [class.is-active]="activePublishingPathIndex() === index"
               [class.is-complete]="activePublishingPathIndex() > index"
-              [class.is-shifted]="odd"
             >
-              <div class="publishing-path__step-node" aria-hidden="true"></div>
-
-              <div class="publishing-path__step-shell">
+              <span class="publishing-path__rail-node" aria-hidden="true"></span>
+              <div class="publishing-path__rail-copy">
                 <div class="publishing-path__rail-topline">
                   <span>{{ item.weekLabel }}</span>
-                  <span class="publishing-path__status" [class]="publishingPathStatusClass(item)">{{ item.status }}</span>
+                  <span class="publishing-path__rail-kind">{{ item.kind }}</span>
                 </div>
-                <p class="publishing-path__kind" [class]="publishingPathKindClass(item)">{{ item.kind }}</p>
                 <h3>{{ item.title }}</h3>
-                <p>{{ item.summary }}</p>
               </div>
-            </article>
+            </a>
           }
         </div>
-      </div>
+      </aside>
     </div>
   </div>
 </section>
