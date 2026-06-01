@@ -34,7 +34,7 @@ Files:
 - `site.json`
 - `writing.json`
 - `frameworks.json`
-- `initiatives.json`
+- `guides.json`
 - `about.json`
 
 The Angular UI does not import JSON directly in page components. Page and layout components call the typed content service in `src/app/core/content/content.service.ts`, which keeps the current local-JSON setup simple while preserving a future API migration path.

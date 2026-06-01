@@ -37,10 +37,11 @@ export class SiteShellComponent {
   private readonly document = inject(DOCUMENT);
   private readonly contentService = inject(ContentService);
   private readonly router = inject(Router);
+  private readonly window = this.document.defaultView;
   readonly currentYear = new Date().getFullYear();
   readonly isCompact = signal(false);
   readonly mobileMenuOpen = signal(false);
-  readonly viewportWidth = signal(typeof window !== 'undefined' ? window.innerWidth : 1440);
+  readonly viewportWidth = signal(this.window?.innerWidth ?? 1440);
   readonly themeMode = signal<ThemeMode>(this.readStoredTheme());
   readonly siteMeta = toSignal(this.contentService.getSiteMeta(), { initialValue: EMPTY_META });
   readonly navigation = toSignal(this.contentService.getNavigation(), { initialValue: EMPTY_NAVIGATION });
@@ -74,14 +75,14 @@ export class SiteShellComponent {
   }
 
   scrollToTop(): void {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    this.window?.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   toggleTheme(): void {
     const nextTheme: ThemeMode = this.themeMode() === 'light' ? 'dusk' : 'light';
     this.themeMode.set(nextTheme);
     this.applyTheme(nextTheme);
-    window.localStorage.setItem('cw-theme-mode', nextTheme);
+    this.window?.localStorage?.setItem('cw-theme-mode', nextTheme);
   }
 
   toggleMobileMenu(): void {
@@ -94,14 +95,15 @@ export class SiteShellComponent {
 
   @HostListener('window:scroll')
   onWindowScroll(): void {
-    this.isCompact.set(window.scrollY > 24);
+    this.isCompact.set((this.window?.scrollY ?? 0) > 24);
     this.updateToolbarHeightVariable();
   }
 
   @HostListener('window:resize')
   onWindowResize(): void {
-    this.viewportWidth.set(window.innerWidth);
-    if (window.innerWidth > 820 && this.mobileMenuOpen()) {
+    const viewportWidth = this.window?.innerWidth ?? 1440;
+    this.viewportWidth.set(viewportWidth);
+    if (viewportWidth > 820 && this.mobileMenuOpen()) {
       this.mobileMenuOpen.set(false);
     }
 
@@ -115,7 +117,7 @@ export class SiteShellComponent {
   }
 
   private readStoredTheme(): ThemeMode {
-    const stored = window.localStorage.getItem('cw-theme-mode');
+    const stored = this.window?.localStorage?.getItem('cw-theme-mode');
     return stored === 'dusk' ? 'dusk' : 'light';
   }
 

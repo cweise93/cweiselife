@@ -1,5 +1,5 @@
 import { DOCUMENT } from '@angular/common';
-import { Component, HostListener, inject, signal } from '@angular/core';
+import { Component, effect, HostListener, inject, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
@@ -10,6 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { combineLatest, map, switchMap } from 'rxjs';
 import { ContentService } from '../../core/content/content.service';
 import { GuideItem } from '../../core/content/content.models';
+import { SeoService } from '../../core/seo/seo.service';
 
 interface GuideArtifact {
   src: string;
@@ -29,6 +30,7 @@ export class GuideDetailComponent {
   private readonly document = inject(DOCUMENT);
   private readonly route = inject(ActivatedRoute);
   private readonly contentService = inject(ContentService);
+  private readonly seoService = inject(SeoService);
   readonly activeArtifact = signal<GuideArtifact | null>(null);
 
   readonly item = toSignal(
@@ -52,6 +54,16 @@ export class GuideDetailComponent {
     ),
     { initialValue: [] as GuideItem[] }
   );
+
+  constructor() {
+    effect(() => {
+      const item = this.item();
+
+      if (item) {
+        this.seoService.applyContentMetadata(item);
+      }
+    });
+  }
 
   getGuideRoute(slug: string): string[] {
     return ['/', ...slug.split('/').filter(Boolean)];

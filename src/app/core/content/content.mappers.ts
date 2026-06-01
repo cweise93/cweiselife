@@ -11,6 +11,8 @@ import {
   ContentCompanion,
   ContentCollectionViewModel,
   ContentImage,
+  ProductionAssetReference,
+  ProductionAssets,
   ContentSection,
   ContentSectionBlock,
   ContentStatus,
@@ -25,9 +27,6 @@ import {
   GuideItem,
   HomeContentConfig,
   HomeTheme,
-  InitiativeBody,
-  InitiativeContentFile,
-  InitiativeItem,
   SeoContent,
   SiteContentFile,
   SiteMeta,
@@ -213,6 +212,34 @@ function normalizeSectionBlocks(value: any): ContentSectionBlock[] {
   }
 
   return blocks;
+}
+
+function normalizeProductionAssetReference(value: any): ProductionAssetReference | undefined {
+  const href = asString(value?.href);
+
+  if (!href) {
+    return undefined;
+  }
+
+  return {
+    label: asString(value?.label) || undefined,
+    href,
+    description: asString(value?.description) || undefined
+  };
+}
+
+function normalizeProductionAssets(value: any): ProductionAssets | undefined {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) {
+    return undefined;
+  }
+
+  const socialImage = normalizeProductionAssetReference(value?.socialImage);
+
+  if (!socialImage) {
+    return undefined;
+  }
+
+  return { socialImage };
 }
 
 function normalizeSections(value: any): ContentSection[] {
@@ -605,6 +632,7 @@ export function mapWritingItem(value: any): WritingItem | null {
     featured: asBoolean(value?.featured),
     tags: normalizeTags(value?.tags),
     heroImage: asString(value?.heroImage) || undefined,
+    productionAssets: normalizeProductionAssets(value?.productionAssets),
     seo: normalizeSeo(value?.seo, title, summary),
     body: {
       intro: asString(value?.body?.intro),
@@ -672,6 +700,8 @@ export function mapFrameworkItem(value: any): FrameworkItem | null {
     category: asString(value?.category),
     tags: normalizeTags(value?.tags),
     diagramImage: asString(value?.diagramImage) || undefined,
+    heroImage: asString(value?.heroImage) || undefined,
+    productionAssets: normalizeProductionAssets(value?.productionAssets),
     seo: normalizeSeo(value?.seo, title, summary),
     body,
     companion: normalizeCompanion(value?.companion)
@@ -714,6 +744,7 @@ export function mapGuideItem(value: any): GuideItem | null {
     icon: asString(value?.icon, 'handyman'),
     tags: normalizeTags(value?.tags),
     heroImage: asString(value?.heroImage) || undefined,
+    productionAssets: normalizeProductionAssets(value?.productionAssets),
     seo: normalizeSeo(value?.seo, title, summary),
     body,
     companion: normalizeCompanion(value?.companion)
@@ -727,53 +758,6 @@ export function mapGuideFile(value: any): GuideContentFile {
       ? value.items
           .map((item: any) => mapGuideItem(item))
           .filter((item: GuideItem | null): item is GuideItem => item !== null)
-      : []
-  };
-}
-
-export function mapInitiativeItem(value: any): InitiativeItem | null {
-  const id = asString(value?.id);
-  const slug = asString(value?.slug);
-  const title = asString(value?.title);
-
-  if (!id || !slug || !title) {
-    return null;
-  }
-
-  const summary = asString(value?.summary);
-  const body: InitiativeBody = {
-    context: asString(value?.body?.context),
-    challenge: asString(value?.body?.challenge),
-    approach: asString(value?.body?.approach),
-    outcome: asString(value?.body?.outcome),
-    notes: asStringArray(value?.body?.notes)
-  };
-
-  return {
-    id,
-    slug,
-    title,
-    summary,
-    status: normalizeStatus(value?.status),
-    publishedOn: normalizeDate(value?.publishedOn),
-    featured: asBoolean(value?.featured),
-    domain: asString(value?.domain),
-    icon: asString(value?.icon) || undefined,
-    tags: normalizeTags(value?.tags),
-    thumbnail: asString(value?.thumbnail) || undefined,
-    seo: normalizeSeo(value?.seo, title, summary),
-    body,
-    companion: normalizeCompanion(value?.companion)
-  };
-}
-
-export function mapInitiativeFile(value: any): InitiativeContentFile {
-  return {
-    meta: normalizeCollectionMeta(value?.meta, 'Initiatives'),
-    items: Array.isArray(value?.items)
-      ? value.items
-          .map((item: any) => mapInitiativeItem(item))
-          .filter((item: InitiativeItem | null): item is InitiativeItem => item !== null)
       : []
   };
 }
@@ -849,11 +833,6 @@ export const FALLBACK_FRAMEWORK_CONTENT: FrameworkContentFile = {
 
 export const FALLBACK_GUIDE_CONTENT: GuideContentFile = {
   meta: { version: 1, updatedOn: '2026-05-27', eyebrow: 'Guides', headline: 'Operating Tools', intro: '' },
-  items: []
-};
-
-export const FALLBACK_INITIATIVE_CONTENT: InitiativeContentFile = {
-  meta: { version: 1, updatedOn: '2026-05-16', eyebrow: 'Initiatives', headline: 'Initiatives', intro: '' },
   items: []
 };
 

@@ -26,6 +26,13 @@
         "title": "A Compass, Not a Map",
         "description": "A practical operating tool for moving through ambiguity without over-designing the future."
       },
+      "productionAssets": {
+        "socialImage": {
+          "label": "Guide social image",
+          "href": "assets/images/guides/a-compass-not-a-map/01_a_compass_not_a_map.png",
+          "description": "Use the primary guide artifact as the default Open Graph and social preview image."
+        }
+      },
       "body": {
         "intro": "When the full path is unclear, the goal is not to force certainty. This guide helps turn ambiguity into grounded direction, right-sized action, and useful momentum.",
         "sections": [
@@ -80,6 +87,13 @@
       "seo": {
         "title": "Avoid to Act Loop",
         "description": "A short intervention for turning avoidance into immediate motion."
+      },
+      "productionAssets": {
+        "socialImage": {
+          "label": "Guide social image",
+          "href": "assets/images/guides/avoid-act-loop/01_avoid_act_loop.png",
+          "description": "Use the primary guide artifact as the default Open Graph and social preview image."
+        }
       },
       "body": {
         "intro": "Avoidance often grows when a task feels unknown, too large, or tied to perfection. This guide lowers the entry cost by shifting from outcome pressure to first contact.",
@@ -137,6 +151,13 @@
         "title": "Becoming the Solution Provider",
         "description": "A systems-thinking guide for shifting from firefighting to durable problem prevention."
       },
+      "productionAssets": {
+        "socialImage": {
+          "label": "Guide social image",
+          "href": "assets/images/guides/becoming-the-solution-provider/01_becoming_the_solution_provider.png",
+          "description": "Use the primary guide artifact as the default Open Graph and social preview image."
+        }
+      },
       "body": {
         "intro": "Recurring problems rarely disappear through heroic fixes alone. This guide reframes problem solving as system design: define reality, map the mechanics, implement the fix, and prevent relapse.",
         "sections": [
@@ -191,6 +212,13 @@
         "title": "Close the Loop",
         "description": "A practical end-of-day review for learning, gratitude, and cleaner next steps."
       },
+      "productionAssets": {
+        "socialImage": {
+          "label": "Guide social image",
+          "href": "assets/images/guides/close-the-loop/01_close_the_loop.png",
+          "description": "Use the primary guide artifact as the default Open Graph and social preview image."
+        }
+      },
       "body": {
         "intro": "A day becomes more useful when it is reviewed, not just completed. This guide turns experience into learning by closing open loops and shaping the next attempt.",
         "sections": [
@@ -243,6 +271,13 @@
         "title": "Design the Dream State",
         "description": "A sensory rehearsal guide for dream recall, lucid dreaming, and intentional sleep."
       },
+      "productionAssets": {
+        "socialImage": {
+          "label": "Guide social image",
+          "href": "assets/images/guides/design-the-dream-state/01_design_the_dream_state.png",
+          "description": "Use the primary guide artifact as the default Open Graph and social preview image."
+        }
+      },
       "body": {
         "intro": "Intentional sleep begins before sleep. This guide uses a simple sensory rehearsal to prepare the mind for dream recall, lucid awareness, and a desired emotional state.",
         "sections": [
@@ -294,6 +329,13 @@
       "seo": {
         "title": "Meditation to Lucidity",
         "description": "A practice log for awareness, nervous-system regulation, and dream-state preparation."
+      },
+      "productionAssets": {
+        "socialImage": {
+          "label": "Guide social image",
+          "href": "assets/images/guides/meditation-to-lucidity/01_meditation_to_lucidity.png",
+          "description": "Use the primary guide artifact as the default Open Graph and social preview image."
+        }
       },
       "body": {
         "intro": "Awareness becomes more reliable when it is tracked. This guide links meditation, body awareness, emotional state, imagery, and recall into a simple practice loop.",
@@ -348,6 +390,13 @@
         "title": "Prepare the Night",
         "description": "A practical guide for pre-sleep reflection, intention, and dream readiness."
       },
+      "productionAssets": {
+        "socialImage": {
+          "label": "Guide social image",
+          "href": "assets/images/guides/prepare-the-night/01_prepare_the_night.png",
+          "description": "Use the primary guide artifact as the default Open Graph and social preview image."
+        }
+      },
       "body": {
         "intro": "Pre-sleep reflection helps the mind release open loops and enter rest with clearer intention. This guide turns the end of the day into a gentle transition rather than a collapse.",
         "sections": [
@@ -399,6 +448,13 @@
         "title": "Prime the Day",
         "description": "A morning guide for setting direction before execution begins."
       },
+      "productionAssets": {
+        "socialImage": {
+          "label": "Guide social image",
+          "href": "assets/images/guides/prime-the-day/01_prime_the_day.png",
+          "description": "Use the primary guide artifact as the default Open Graph and social preview image."
+        }
+      },
       "body": {
         "intro": "A better day starts before the to-do list. This guide helps set intention, rehearse the desired state, and support the conditions needed for focused execution.",
         "sections": [
@@ -449,6 +505,13 @@
       "seo": {
         "title": "Run the Day with Structure",
         "description": "A daily operating board for turning intention into execution."
+      },
+      "productionAssets": {
+        "socialImage": {
+          "label": "Guide social image",
+          "href": "assets/images/guides/run-the-day-with-structure/01_run_the_day_with_structure.png",
+          "description": "Use the primary guide artifact as the default Open Graph and social preview image."
+        }
       },
       "body": {
         "intro": "Structure creates evidence. This guide helps compare the day designed with the day actually lived, so planning can become more honest and useful over time.",
@@ -502,6 +565,13 @@
         "title": "The Decision Pattern Guide",
         "description": "A practical tool for tracing entry points, evaluating choices, and reshaping habit loops."
       },
+      "productionAssets": {
+        "socialImage": {
+          "label": "Guide social image",
+          "href": "assets/images/guides/decision-pattern-guide/01_decision_pattern_guide.png",
+          "description": "Use the primary guide artifact as the default Open Graph and social preview image."
+        }
+      },
       "body": {
         "intro": "Decisions become easier to improve when the pattern is visible. This guide helps identify where a choice begins, how it repeats, and what better move can be designed.",
         "sections": [
@@ -554,6 +624,13 @@
         "title": "The Decision Tree Guide",
         "description": "A practical tool for mapping options, consequences, and the best next move."
       },
+      "productionAssets": {
+        "socialImage": {
+          "label": "Guide social image",
+          "href": "assets/images/guides/decision-tree-guide/01_decision_tree_guide.png",
+          "description": "Use the primary guide artifact as the default Open Graph and social preview image."
+        }
+      },
       "body": {
         "intro": "A decision tree turns mental noise into visible branches. This guide helps clarify the real decision, compare paths, and choose the strongest next move.",
         "sections": [
@@ -605,6 +682,13 @@
         "title": "From Vision to Measurable Action",
         "description": "A planning canvas for turning goals into structured execution."
       },
+      "productionAssets": {
+        "socialImage": {
+          "label": "Guide social image",
+          "href": "assets/images/guides/from-vision-to-measurable-action/01_from_vision_to_measurable_action.png",
+          "description": "Use the primary guide artifact as the default Open Graph and social preview image."
+        }
+      },
       "body": {
         "intro": "Goals become more actionable when direction, meaning, method, friction, and measurement are connected. This guide turns a vague goal into an executable plan.",
         "sections": [
@@ -654,6 +738,13 @@
       "seo": {
         "title": "Map the Habit Loop",
         "description": "A guide for turning recurring reactions into visible, actionable patterns."
+      },
+      "productionAssets": {
+        "socialImage": {
+          "label": "Guide social image",
+          "href": "assets/images/guides/map-the-habit-loop/01_map_the_habit_loop.png",
+          "description": "Use the primary guide artifact as the default Open Graph and social preview image."
+        }
       },
       "body": {
         "intro": "A habit becomes easier to change once the loop is visible. This guide separates triggers, behaviors, results, and rewards so the next response can be designed intentionally.",
@@ -706,6 +797,13 @@
         "title": "Operational Power System",
         "description": "A guide for protecting momentum through narrative, authority, access, execution, and reinforcement."
       },
+      "productionAssets": {
+        "socialImage": {
+          "label": "Guide social image",
+          "href": "assets/images/guides/operational-power-system/01_operational_power_system.png",
+          "description": "Use the primary guide artifact as the default Open Graph and social preview image."
+        }
+      },
       "body": {
         "intro": "Work does not move on logic alone. This guide shows how narrative, authority, access, execution, and reinforcement interact to either protect momentum or create a failure loop.",
         "sections": [
@@ -757,6 +855,13 @@
         "title": "The Pattern-to-Progress Guide",
         "description": "A tool for turning habit loops into immediate forward action."
       },
+      "productionAssets": {
+        "socialImage": {
+          "label": "Guide social image",
+          "href": "assets/images/guides/pattern-to-progress-guide/01_pattern_to_progress_guide.png",
+          "description": "Use the primary guide artifact as the default Open Graph and social preview image."
+        }
+      },
       "body": {
         "intro": "A habit does not have to be changed all at once. This guide turns one observed pattern into the next useful action available right now.",
         "sections": [
@@ -806,6 +911,13 @@
       "seo": {
         "title": "The Question-to-Action Filter",
         "description": "A practical guide for turning vague problems into useful next steps."
+      },
+      "productionAssets": {
+        "socialImage": {
+          "label": "Guide social image",
+          "href": "assets/images/guides/question-to-action-filter/01_question_to_action_filter.png",
+          "description": "Use the primary guide artifact as the default Open Graph and social preview image."
+        }
       },
       "body": {
         "intro": "A better question produces cleaner action. This guide filters vague problems through specificity, framing, attachment, and concrete next steps.",
@@ -858,6 +970,13 @@
         "title": "Reframe the Belief, Retrain the Response",
         "description": "A guide for updating limiting beliefs through reflection, nervous-system awareness, and a stronger replacement belief."
       },
+      "productionAssets": {
+        "socialImage": {
+          "label": "Guide social image",
+          "href": "assets/images/guides/reframe-the-belief-retrain-the-response/01_reframe_the_belief_retrain_the_response.png",
+          "description": "Use the primary guide artifact as the default Open Graph and social preview image."
+        }
+      },
       "body": {
         "intro": "A limiting belief can remain active even after the present situation has changed. This guide helps identify the belief, trace its original meaning, and install a more accurate replacement response.",
         "sections": [
@@ -909,6 +1028,13 @@
         "title": "Run the Decision Experiment",
         "description": "A practical guide for moving from dilemma to tested action."
       },
+      "productionAssets": {
+        "socialImage": {
+          "label": "Guide social image",
+          "href": "assets/images/guides/run-the-decision-experiment/01_run_the_decision_experiment.png",
+          "description": "Use the primary guide artifact as the default Open Graph and social preview image."
+        }
+      },
       "body": {
         "intro": "Not every decision needs certainty before action. This guide uses a small experiment to clarify facts, compare options, and learn from reality.",
         "sections": [
@@ -958,6 +1084,13 @@
       "seo": {
         "title": "See the Pattern, Choose the Path",
         "description": "A guide for using pattern recognition without getting trapped in the cycle."
+      },
+      "productionAssets": {
+        "socialImage": {
+          "label": "Guide social image",
+          "href": "assets/images/guides/see-the-pattern-choose-the-path/01_see_the_pattern_choose_the_path.png",
+          "description": "Use the primary guide artifact as the default Open Graph and social preview image."
+        }
       },
       "body": {
         "intro": "Seeing a pattern is only useful if it helps choose the right scale, the right response, and the next useful move. This guide turns pattern recognition into agency rather than rumination.",
@@ -1009,6 +1142,13 @@
       "seo": {
         "title": "Start Where the Signal Appears",
         "description": "A practical guide for choosing the right entry point into a decision."
+      },
+      "productionAssets": {
+        "socialImage": {
+          "label": "Guide social image",
+          "href": "assets/images/guides/start-where-the-signal-appears/01_start_where_the_signal_appears.png",
+          "description": "Use the primary guide artifact as the default Open Graph and social preview image."
+        }
       },
       "body": {
         "intro": "A decision does not always begin with a clean problem statement. This guide helps choose the clearest entry point: challenge, emotional response, behavior, or outcome.",

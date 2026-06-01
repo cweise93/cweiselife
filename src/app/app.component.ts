@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { SiteShellComponent } from './core/layout/site-shell.component';
+import { RouteSeoService } from './core/seo/route-seo.service';
 
 @Component({
   selector: 'cw-root',
@@ -12,4 +13,6 @@ import { SiteShellComponent } from './core/layout/site-shell.component';
     </cw-site-shell>
   `
 })
-export class AppComponent {}
+export class AppComponent {
+  private readonly routeSeoService = inject(RouteSeoService);
+}

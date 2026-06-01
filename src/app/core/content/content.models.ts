@@ -10,6 +10,16 @@ export interface SeoContent {
   description: string;
 }
 
+export interface ProductionAssetReference {
+  label?: string;
+  href: string;
+  description?: string;
+}
+
+export interface ProductionAssets {
+  socialImage?: ProductionAssetReference;
+}
+
 export interface ContentParagraphBlock {
   type: 'paragraph';
   text: string;
@@ -247,6 +257,7 @@ export interface WritingItem {
   featured: boolean;
   tags: string[];
   heroImage?: string;
+  productionAssets?: ProductionAssets;
   seo: SeoContent;
   body: WritingBody;
   companion?: ContentCompanion;
@@ -280,6 +291,8 @@ export interface FrameworkItem {
   category: string;
   tags: string[];
   diagramImage?: string;
+  heroImage?: string;
+  productionAssets?: ProductionAssets;
   seo: SeoContent;
   body: FrameworkBody;
   companion?: ContentCompanion;
@@ -305,6 +318,7 @@ export interface GuideItem {
   icon: string;
   tags: string[];
   heroImage?: string;
+  productionAssets?: ProductionAssets;
   seo: SeoContent;
   body: GuideBody;
   companion?: ContentCompanion;
@@ -313,36 +327,6 @@ export interface GuideItem {
 export interface GuideContentFile {
   meta: CollectionMeta;
   items: GuideItem[];
-}
-
-export interface InitiativeBody {
-  context: string;
-  challenge: string;
-  approach: string;
-  outcome: string;
-  notes: string[];
-}
-
-export interface InitiativeItem {
-  id: string;
-  slug: string;
-  title: string;
-  summary: string;
-  status: ContentStatus;
-  publishedOn: string;
-  featured: boolean;
-  domain: string;
-  icon?: string;
-  tags: string[];
-  thumbnail?: string;
-  seo: SeoContent;
-  body: InitiativeBody;
-  companion?: ContentCompanion;
-}
-
-export interface InitiativeContentFile {
-  meta: CollectionMeta;
-  items: InitiativeItem[];
 }
 
 export interface AboutContent {

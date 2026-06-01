@@ -14,6 +14,7 @@ import { ContentRendererComponent } from '../../shared/content/content-renderer.
 import { FrameworkStickyContextBarComponent } from '../../features/frameworks/components/framework-sticky-context-bar/framework-sticky-context-bar.component';
 import { FrameworkResourceDialogComponent } from './framework-resource-dialog.component';
 import { AgentGradingWorkspaceService } from '../../shared/interactive/agent-grading-calculator/agent-grading-workspace.service';
+import { SeoService } from '../../core/seo/seo.service';
 
 type WorkspaceFlagKind = 'override' | 'blocker';
 
@@ -46,12 +47,20 @@ export class FrameworkDetailComponent {
   private readonly destroyRef = inject(DestroyRef);
   private readonly dialog = inject(MatDialog);
   private readonly gradingWorkspace = inject(AgentGradingWorkspaceService);
+  private readonly seoService = inject(SeoService);
   private observedSections: Array<{ anchor: string; element: HTMLElement }> = [];
   private readonly viewportListener = () => this.updateActiveSectionFromScroll();
 
   readonly item = toSignal(
     this.route.paramMap.pipe(
-      map((params) => params.get('slug') ?? ''),
+      map((params) => {
+        const year = params.get('year');
+        const month = params.get('month');
+        const day = params.get('day');
+        const slug = params.get('slug');
+
+        return year && month && day && slug ? `frameworks/${year}/${month}/${day}/${slug}` : '';
+      }),
       switchMap((slug) => this.contentService.getFrameworkBySlug(slug))
     ),
     { initialValue: null as FrameworkItem | null }
@@ -105,6 +114,10 @@ export class FrameworkDetailComponent {
     effect(() => {
       const framework = this.item();
       const tocItems = this.tocItems();
+
+      if (framework) {
+        this.seoService.applyContentMetadata(framework);
+      }
 
       if (!framework || !tocItems.length) {
         this.observedSections = [];
@@ -300,6 +313,10 @@ export class FrameworkDetailComponent {
   }
 
   private setupObservedSections(tocItems: CompanionTocItem[]): void {
+    if (!this.document.defaultView) {
+      return;
+    }
+
     this.observedSections = tocItems
       .map((item) => {
         const element = this.document.getElementById(item.anchor);
@@ -311,7 +328,7 @@ export class FrameworkDetailComponent {
   }
 
   private updateActiveSectionFromScroll(): void {
-    if (!this.observedSections.length) {
+    if (!this.observedSections.length || !this.document.defaultView || typeof getComputedStyle !== 'function') {
       this.calculatorRailOffset.set(0);
       this.calculatorRailBoundaryHeight.set(0);
       return;
