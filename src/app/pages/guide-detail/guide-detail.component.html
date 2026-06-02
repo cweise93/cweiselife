@@ -91,31 +91,33 @@
       </div>
 
       @if (relatedGuides().length) {
-        <section class="more-guides">
-          <div class="more-guides__header">
-            <p class="cw-eyebrow">More Operating Tools</p>
-            <h2>Keep the operating path moving.</h2>
-          </div>
-          <div class="more-guides__grid">
-            @for (related of relatedGuides(); track related.id) {
-              <mat-card appearance="outlined" class="related-guide-card cw-surface-card">
-                <mat-card-header>
-                  <div mat-card-avatar class="guide-avatar">
-                    <mat-icon>{{ related.icon }}</mat-icon>
-                  </div>
-                  <mat-card-title>{{ related.title }}</mat-card-title>
-                  <mat-card-subtitle>{{ related.summary }}</mat-card-subtitle>
-                </mat-card-header>
-                <mat-card-actions align="end">
-                  <a mat-button color="primary" [routerLink]="getGuideRoute(related.slug)">
-                    Open guide
-                    <mat-icon>arrow_forward</mat-icon>
-                  </a>
-                </mat-card-actions>
-              </mat-card>
-            }
-          </div>
-        </section>
+        <div class="cw-container">
+          <section class="more-guides">
+            <div class="more-guides__header">
+              <p class="cw-eyebrow">More Operating Tools</p>
+              <h2>Keep the operating path moving.</h2>
+            </div>
+            <div class="more-guides__grid">
+              @for (related of relatedGuides(); track related.id) {
+                <mat-card appearance="outlined" class="related-guide-card cw-surface-card">
+                  <mat-card-header>
+                    <div mat-card-avatar class="guide-avatar">
+                      <mat-icon>{{ related.icon }}</mat-icon>
+                    </div>
+                    <mat-card-title>{{ related.title }}</mat-card-title>
+                    <mat-card-subtitle>{{ related.summary }}</mat-card-subtitle>
+                  </mat-card-header>
+                  <mat-card-actions align="end">
+                    <a mat-button color="primary" [routerLink]="getGuideRoute(related.slug)">
+                      Open guide
+                      <mat-icon>arrow_forward</mat-icon>
+                    </a>
+                  </mat-card-actions>
+                </mat-card>
+              }
+            </div>
+          </section>
+        </div>
       }
     </section>
 

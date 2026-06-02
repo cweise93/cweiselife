@@ -225,6 +225,7 @@ h1 {
   display: grid;
   gap: 20px;
   padding-top: 16px;
+  padding-bottom: 56px;
 }
 
 .more-guides__header {
@@ -410,6 +411,10 @@ h1 {
 
   .guide-artifact-card {
     padding: 14px;
+  }
+
+  .more-guides {
+    padding-bottom: 40px;
   }
 
   .artifact-modal-backdrop {
