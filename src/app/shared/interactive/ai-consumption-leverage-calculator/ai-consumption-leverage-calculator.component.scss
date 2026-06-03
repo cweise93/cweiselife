@@ -1,0 +1,212 @@
+:host {
+  display: block;
+}
+
+.calculator-surface {
+  display: grid;
+  gap: 22px;
+  padding: 28px;
+  background:
+    radial-gradient(circle at top right, color-mix(in srgb, var(--cw-accent) 10%, transparent), transparent 28%),
+    linear-gradient(180deg, color-mix(in srgb, var(--cw-panel) 98%, white 2%), var(--cw-panel));
+}
+
+.calculator-surface__header,
+.calculator-surface__title-group,
+.calculator-surface__header-actions,
+.calculator-surface__shell,
+.panel-head,
+.input-grid,
+.negotiation-fields {
+  display: grid;
+  gap: 16px;
+}
+
+.calculator-surface__header {
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 24px;
+}
+
+.calculator-surface__header-actions {
+  justify-items: end;
+}
+
+.calculator-surface__eyebrow,
+.panel-eyebrow,
+.field-label {
+  margin: 0;
+  color: var(--cw-accent);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+.calculator-surface__title-group h3 {
+  font-size: clamp(1.7rem, 2.6vw, 2.35rem);
+  line-height: 1.04;
+  letter-spacing: -0.04em;
+}
+
+.calculator-surface__subtitle {
+  color: var(--cw-muted);
+  line-height: 1.6;
+  max-width: 58ch;
+}
+
+.calculator-surface__shell {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 18px;
+}
+
+.calculator-panel {
+  display: grid;
+  gap: 18px;
+  padding: 22px;
+  border-radius: 22px;
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--cw-panel) 99%, white 1%), color-mix(in srgb, var(--cw-panel) 96%, white 4%));
+}
+
+.panel-head h4 {
+  font-size: 1.12rem;
+  line-height: 1.32;
+  letter-spacing: -0.02em;
+  max-width: 60ch;
+}
+
+.panel-head--split {
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+}
+
+.input-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.input-grid mat-form-field,
+.negotiation-fields mat-form-field {
+  width: 100%;
+}
+
+.input-grid__deployment {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+}
+
+.input-grid__deployment mat-button-toggle-group {
+  width: fit-content;
+}
+
+.capability-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.capability-option {
+  border: 1px solid color-mix(in srgb, var(--cw-line) 80%, transparent);
+  border-radius: 18px;
+  background: color-mix(in srgb, var(--cw-panel) 99%, white 1%);
+  transition: border-color 180ms ease, box-shadow 180ms ease, background 180ms ease;
+}
+
+.capability-option--selected {
+  border-color: color-mix(in srgb, var(--cw-accent) 42%, var(--cw-line));
+  background: color-mix(in srgb, #2563eb 6%, var(--cw-panel));
+  box-shadow: 0 14px 28px color-mix(in srgb, #2563eb 8%, transparent);
+}
+
+.capability-option mat-checkbox {
+  width: 100%;
+  display: block;
+  padding: 14px 16px;
+}
+
+.capability-option__content {
+  display: grid;
+  gap: 6px;
+  padding-left: 6px;
+}
+
+.capability-option__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--cw-ink);
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.capability-option__label mat-icon {
+  color: var(--cw-accent);
+}
+
+.capability-option__description {
+  color: var(--cw-muted);
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+.negotiation-accordion {
+  display: grid;
+  gap: 14px;
+}
+
+.negotiation-accordion .mat-expansion-panel {
+  border-radius: 18px !important;
+  border: 1px solid color-mix(in srgb, var(--cw-line) 78%, transparent);
+  box-shadow: none !important;
+  overflow: hidden;
+}
+
+.negotiation-accordion .mat-expansion-panel-header {
+  min-height: 68px;
+}
+
+.negotiation-accordion .mat-expansion-panel-header mat-icon {
+  margin-right: 10px;
+  color: var(--cw-accent);
+}
+
+.negotiation-fields {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  padding-top: 8px;
+}
+
+@media (max-width: 1180px) {
+  .calculator-surface__header,
+  .panel-head--split {
+    grid-template-columns: 1fr;
+  }
+
+  .calculator-surface__header-actions {
+    justify-items: start;
+  }
+}
+
+@media (max-width: 960px) {
+  .input-grid,
+  .capability-grid,
+  .negotiation-fields {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .calculator-surface {
+    padding: 20px;
+  }
+
+  .calculator-panel {
+    padding: 18px;
+  }
+}

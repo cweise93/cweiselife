@@ -1,0 +1,309 @@
+<mat-card appearance="outlined" class="prioritization-map cw-surface-card">
+  <header class="prioritization-map__header">
+    <div class="prioritization-map__copy">
+      <p class="prioritization-map__eyebrow">Interactive artifact</p>
+      <h3>{{ title() }}</h3>
+      <p>{{ description() }}</p>
+    </div>
+
+    @if (showControls()) {
+      <button mat-stroked-button color="primary" type="button" (click)="resetDefaults()">
+        <mat-icon>restart_alt</mat-icon>
+        Reset defaults
+      </button>
+    }
+  </header>
+
+  <div class="prioritization-map__workspace">
+    @if (showChart()) {
+      <mat-card appearance="outlined" class="prioritization-map__chart-card cw-surface-card">
+        <div class="prioritization-map__chart-header">
+          <div>
+            <p class="prioritization-map__rank-label">Live D3 map</p>
+            <h4>Value vs. complexity</h4>
+          </div>
+          <p>Uses the current rankings to show quick wins, strategic bets, and likely deferrals.</p>
+        </div>
+
+        <div class="prioritization-map__chart-surface">
+          <svg
+            #chartSvg
+            [attr.viewBox]="'0 0 ' + chartGeometry().width + ' ' + chartGeometry().height"
+            role="img"
+            aria-label="AI spend lever prioritization map"
+            preserveAspectRatio="xMidYMid meet"
+          >
+            <rect
+              [attr.x]="chartGeometry().margin.left"
+              [attr.y]="chartGeometry().margin.top"
+              [attr.width]="chartGeometry().plotWidth"
+              [attr.height]="chartGeometry().plotHeight"
+              rx="26"
+              fill="var(--cw-panel)"
+              stroke="var(--cw-line)"
+            />
+
+            @for (quadrant of chartGeometry().quadrants; track quadrant.label) {
+              <rect
+                [attr.x]="quadrant.x"
+                [attr.y]="quadrant.y"
+                [attr.width]="quadrant.width"
+                [attr.height]="quadrant.height"
+                [attr.fill]="quadrant.fill"
+              />
+              <g [attr.transform]="'translate(' + quadrant.tx + ', ' + quadrant.ty + ')'">
+                <text class="prioritization-chart__quadrant-label">{{ quadrant.label }}</text>
+                <text class="prioritization-chart__quadrant-subtitle" y="18">{{ quadrant.subtitle }}</text>
+              </g>
+            }
+
+            <line
+              [attr.x1]="chartGeometry().midX"
+              [attr.y1]="chartGeometry().margin.top"
+              [attr.x2]="chartGeometry().midX"
+              [attr.y2]="chartGeometry().height - chartGeometry().margin.bottom"
+              stroke="color-mix(in srgb, var(--cw-line) 84%, var(--cw-accent) 16%)"
+              stroke-dasharray="7 7"
+            />
+
+            <line
+              [attr.x1]="chartGeometry().margin.left"
+              [attr.y1]="chartGeometry().midY"
+              [attr.x2]="chartGeometry().width - chartGeometry().margin.right"
+              [attr.y2]="chartGeometry().midY"
+              stroke="color-mix(in srgb, var(--cw-line) 84%, var(--cw-accent) 16%)"
+              stroke-dasharray="7 7"
+            />
+
+            <text
+              class="prioritization-chart__axis-label"
+              [attr.x]="chartGeometry().width / 2"
+              [attr.y]="chartGeometry().height - 18"
+              text-anchor="middle"
+            >
+              {{ xAxisLabel() }}
+            </text>
+
+            <text
+              class="prioritization-chart__axis-label"
+              [attr.transform]="'translate(18, ' + chartGeometry().height / 2 + ') rotate(-90)'"
+              text-anchor="middle"
+            >
+              {{ yAxisLabel() }}
+            </text>
+
+            <text
+              class="prioritization-chart__axis-end"
+              [attr.x]="chartGeometry().margin.left"
+              [attr.y]="chartGeometry().height - 36"
+            >
+              Lower difficulty
+            </text>
+
+            <text
+              class="prioritization-chart__axis-end"
+              [attr.x]="chartGeometry().width - chartGeometry().margin.right"
+              [attr.y]="chartGeometry().height - 36"
+              text-anchor="end"
+            >
+              Higher difficulty
+            </text>
+
+            <text
+              class="prioritization-chart__axis-end"
+              [attr.x]="chartGeometry().margin.left - 10"
+              [attr.y]="chartGeometry().height - chartGeometry().margin.bottom"
+              text-anchor="end"
+            >
+              Lower benefit
+            </text>
+
+            <text
+              class="prioritization-chart__axis-end"
+              [attr.x]="chartGeometry().margin.left - 10"
+              [attr.y]="chartGeometry().margin.top + 4"
+              text-anchor="end"
+            >
+              Higher benefit
+            </text>
+
+            @for (point of chartPoints(); track point.id) {
+              <g
+                class="prioritization-chart__point"
+                [attr.transform]="'translate(' + point.x + ', ' + point.y + ')'"
+                [class.is-selected]="selectedLeverId() === point.id"
+                tabindex="0"
+                role="button"
+                [attr.aria-label]="point.title"
+                (mouseenter)="highlightLever(point.id)"
+                (mouseleave)="highlightLever(null)"
+                (focus)="highlightLever(point.id)"
+                (blur)="highlightLever(null)"
+                (pointerdown)="startChartDrag($event, point.id)"
+                (click)="highlightLever(point.id)"
+              >
+                <circle
+                  r="24"
+                  [attr.fill]="point.color"
+                  [attr.stroke]="selectedLeverId() === point.id ? 'var(--cw-ink)' : 'rgba(255,255,255,0.95)'"
+                  [attr.stroke-width]="selectedLeverId() === point.id ? 3 : 2"
+                />
+                <text class="prioritization-chart__point-index" text-anchor="middle" dy="0.34em">
+                  {{ point.sequence }}
+                </text>
+                <text class="prioritization-chart__point-label" text-anchor="middle" [attr.y]="point.labelY">
+                  @for (part of point.labelParts; track $index) {
+                    <tspan x="0" [attr.dy]="part.dy">{{ part.text }}</tspan>
+                  }
+                </text>
+              </g>
+            }
+          </svg>
+        </div>
+
+        <div class="prioritization-map__summary-grid">
+          <div class="prioritization-map__summary">
+            <span class="prioritization-map__summary-label">Quick wins</span>
+            <p>{{ quickWins().length ? quickWins().join(' · ') : 'None currently fall into the top-left quadrant.' }}</p>
+          </div>
+          <div class="prioritization-map__summary">
+            <span class="prioritization-map__summary-label">Strategic bets</span>
+            <p>{{ strategicBets().length ? strategicBets().join(' · ') : 'No current high-benefit / higher-difficulty items.' }}</p>
+          </div>
+          <div class="prioritization-map__summary">
+            <span class="prioritization-map__summary-label">Defer or reassess</span>
+            <p>{{ deferItems().length ? deferItems().join(' · ') : 'No current low-benefit / higher-difficulty items.' }}</p>
+          </div>
+        </div>
+
+        <section class="prioritization-map__mini-controls" aria-label="Condensed prioritization rankings">
+          <mat-card appearance="outlined" class="prioritization-map__mini-card cw-surface-card">
+            <div class="prioritization-map__mini-head">
+              <p class="prioritization-map__rank-label">Implementation difficulty</p>
+              <span class="prioritization-map__guide">High at the top</span>
+            </div>
+            <div
+              cdkDropList
+              class="prioritization-map__mini-list"
+              [cdkDropListData]="difficultyIds()"
+              (cdkDropListDropped)="reorderDifficulty($event)"
+            >
+              @for (lever of difficultyRankedLevers(); track lever.id; let index = $index) {
+                <div
+                  cdkDrag
+                  class="prioritization-map__mini-item"
+                  (mouseenter)="highlightLever(lever.id)"
+                  (mouseleave)="highlightLever(null)"
+                >
+                  <div class="prioritization-map__mini-chip" [style.--lever-color]="lever.color">{{ index + 1 }}</div>
+                  <span>{{ lever.shortLabel }}</span>
+                  <mat-icon class="prioritization-map__drag">drag_indicator</mat-icon>
+                </div>
+              }
+            </div>
+          </mat-card>
+
+          <mat-card appearance="outlined" class="prioritization-map__mini-card cw-surface-card">
+            <div class="prioritization-map__mini-head">
+              <p class="prioritization-map__rank-label">Expected benefit</p>
+              <span class="prioritization-map__guide">High at the top</span>
+            </div>
+            <div
+              cdkDropList
+              class="prioritization-map__mini-list"
+              [cdkDropListData]="benefitIds()"
+              (cdkDropListDropped)="reorderBenefit($event)"
+            >
+              @for (lever of benefitRankedLevers(); track lever.id; let index = $index) {
+                <div
+                  cdkDrag
+                  class="prioritization-map__mini-item"
+                  (mouseenter)="highlightLever(lever.id)"
+                  (mouseleave)="highlightLever(null)"
+                >
+                  <div class="prioritization-map__mini-chip" [style.--lever-color]="lever.color">{{ index + 1 }}</div>
+                  <span>{{ lever.shortLabel }}</span>
+                  <mat-icon class="prioritization-map__drag">drag_indicator</mat-icon>
+                </div>
+              }
+            </div>
+          </mat-card>
+        </section>
+      </mat-card>
+    }
+
+    @if (showControls()) {
+      <section class="prioritization-map__controls">
+        <mat-card appearance="outlined" class="prioritization-map__rank-card cw-surface-card">
+          <div class="prioritization-map__rank-card-head">
+            <div>
+              <p class="prioritization-map__rank-label">Implementation difficulty</p>
+              <h4>What is hardest to implement here?</h4>
+            </div>
+            <span class="prioritization-map__guide">High at the top</span>
+          </div>
+
+          <div
+            cdkDropList
+            class="prioritization-map__rank-list"
+            [cdkDropListData]="difficultyIds()"
+            (cdkDropListDropped)="reorderDifficulty($event)"
+          >
+            @for (lever of difficultyRankedLevers(); track lever.id; let index = $index) {
+              <div
+                cdkDrag
+                class="prioritization-map__rank-item"
+                (mouseenter)="highlightLever(lever.id)"
+                (mouseleave)="highlightLever(null)"
+              >
+                <div class="prioritization-map__rank-chip" [style.--lever-color]="lever.color">
+                  <span class="prioritization-map__rank-index">{{ index + 1 }}</span>
+                </div>
+                <div class="prioritization-map__rank-copy">
+                  <strong>{{ lever.shortLabel }}</strong>
+                  <span>{{ lever.description }}</span>
+                </div>
+                <mat-icon class="prioritization-map__drag">drag_indicator</mat-icon>
+              </div>
+            }
+          </div>
+        </mat-card>
+
+        <mat-card appearance="outlined" class="prioritization-map__rank-card cw-surface-card">
+          <div class="prioritization-map__rank-card-head">
+            <div>
+              <p class="prioritization-map__rank-label">Expected benefit</p>
+              <h4>What pays out the most here?</h4>
+            </div>
+            <span class="prioritization-map__guide">High at the top</span>
+          </div>
+
+          <div
+            cdkDropList
+            class="prioritization-map__rank-list"
+            [cdkDropListData]="benefitIds()"
+            (cdkDropListDropped)="reorderBenefit($event)"
+          >
+            @for (lever of benefitRankedLevers(); track lever.id; let index = $index) {
+              <div
+                cdkDrag
+                class="prioritization-map__rank-item"
+                (mouseenter)="highlightLever(lever.id)"
+                (mouseleave)="highlightLever(null)"
+              >
+                <div class="prioritization-map__rank-chip" [style.--lever-color]="lever.color">
+                  <span class="prioritization-map__rank-index">{{ index + 1 }}</span>
+                </div>
+                <div class="prioritization-map__rank-copy">
+                  <strong>{{ lever.shortLabel }}</strong>
+                  <span>{{ lever.description }}</span>
+                </div>
+                <mat-icon class="prioritization-map__drag">drag_indicator</mat-icon>
+              </div>
+            }
+          </div>
+        </mat-card>
+      </section>
+    }
+  </div>
+</mat-card>

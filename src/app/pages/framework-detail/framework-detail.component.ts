@@ -14,6 +14,7 @@ import { ContentRendererComponent } from '../../shared/content/content-renderer.
 import { FrameworkStickyContextBarComponent } from '../../features/frameworks/components/framework-sticky-context-bar/framework-sticky-context-bar.component';
 import { FrameworkResourceDialogComponent } from './framework-resource-dialog.component';
 import { AgentGradingWorkspaceService } from '../../shared/interactive/agent-grading-calculator/agent-grading-workspace.service';
+import { AiConsumptionLeverageCalculatorService } from '../../shared/interactive/ai-consumption-leverage-calculator/ai-consumption-leverage-calculator.service';
 import { SeoService } from '../../core/seo/seo.service';
 
 type WorkspaceFlagKind = 'override' | 'blocker';
@@ -47,6 +48,7 @@ export class FrameworkDetailComponent {
   private readonly destroyRef = inject(DestroyRef);
   private readonly dialog = inject(MatDialog);
   private readonly gradingWorkspace = inject(AgentGradingWorkspaceService);
+  private readonly aiCostCalculator = inject(AiConsumptionLeverageCalculatorService);
   private readonly seoService = inject(SeoService);
   private observedSections: Array<{ anchor: string; element: HTMLElement }> = [];
   private readonly viewportListener = () => this.updateActiveSectionFromScroll();
@@ -92,10 +94,25 @@ export class FrameworkDetailComponent {
   readonly hasLiveCalculator = computed(() => this.workspaceScore().totalDimensions > 0);
   readonly calculatorRailOffset = signal(0);
   readonly calculatorRailBoundaryHeight = signal(0);
+  readonly calculatorOutcomesRailOffset = signal(0);
+  readonly calculatorOutcomesRailBoundaryHeight = signal(0);
   readonly activeWorkspaceFlags = computed<WorkspaceFlag[]>(() => [
     ...this.workspaceScore().blockerLabels.map((label) => ({ label, kind: 'blocker' as const })),
     ...this.workspaceScore().overrideLabels.map((label) => ({ label, kind: 'override' as const }))
   ]);
+  readonly hasAiCostCalculator = computed(
+    () =>
+      !!this.item()?.body.sections.some((section) =>
+        section.blocks?.some((block) => block.type === 'component' && block.component === 'ai-consumption-leverage-calculator')
+      )
+  );
+  readonly calculatorGutterMetrics = computed(() => {
+    const metrics = this.aiCostCalculator.outputMetrics();
+    return {
+      primary: [metrics[0], metrics[1]].filter(Boolean),
+      supporting: [metrics[4], metrics[2], metrics[3]].filter(Boolean)
+    };
+  });
   readonly fallbackSnapshotItems = computed<CompanionSnapshotItem[]>(() => {
     const framework = this.item();
     if (!framework || this.snapshotItems().length) {
@@ -124,6 +141,8 @@ export class FrameworkDetailComponent {
         this.activeSectionAnchor.set(null);
         this.calculatorRailOffset.set(0);
         this.calculatorRailBoundaryHeight.set(0);
+        this.calculatorOutcomesRailOffset.set(0);
+        this.calculatorOutcomesRailBoundaryHeight.set(0);
         return;
       }
 
@@ -331,6 +350,8 @@ export class FrameworkDetailComponent {
     if (!this.observedSections.length || !this.document.defaultView || typeof getComputedStyle !== 'function') {
       this.calculatorRailOffset.set(0);
       this.calculatorRailBoundaryHeight.set(0);
+      this.calculatorOutcomesRailOffset.set(0);
+      this.calculatorOutcomesRailBoundaryHeight.set(0);
       return;
     }
 
@@ -364,6 +385,17 @@ export class FrameworkDetailComponent {
     } else {
       this.calculatorRailOffset.set(0);
       this.calculatorRailBoundaryHeight.set(0);
+    }
+
+    const aiCostSection = this.document.getElementById('start-with-the-calculator-not-the-guesswork');
+    if (aiCostSection && workspaceGrid) {
+      const calculatorRect = aiCostSection.getBoundingClientRect();
+      const gridRect = workspaceGrid.getBoundingClientRect();
+      this.calculatorOutcomesRailOffset.set(Math.max(0, calculatorRect.top - gridRect.top));
+      this.calculatorOutcomesRailBoundaryHeight.set(Math.max(calculatorRect.height, 1));
+    } else {
+      this.calculatorOutcomesRailOffset.set(0);
+      this.calculatorOutcomesRailBoundaryHeight.set(0);
     }
   }
 

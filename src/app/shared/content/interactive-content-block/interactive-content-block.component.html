@@ -12,6 +12,20 @@
       [config]="config()"
     />
   }
+  @case ('ai-spend-levers-prioritization-map') {
+    <app-ai-spend-levers-prioritization-map
+      [title]="title() || 'AI Spend Levers Prioritization Map'"
+      [description]="description() || 'Rank the seven levers by implementation difficulty and expected benefit, then watch the D3 map update live.'"
+      [config]="config()"
+    />
+  }
+  @case ('ai-consumption-leverage-calculator') {
+    <app-ai-consumption-leverage-calculator
+      [title]="title() || 'AI Consumption Leverage Calculator'"
+      [description]="description() || 'Estimate AI cost through four progressive views, then refine the assumptions that matter most.'"
+      [config]="config()"
+    />
+  }
   @default {
     <aside class="interactive-fallback">
       <h3>{{ fallbackTitle() }}</h3>

@@ -69,7 +69,11 @@ export interface ContentCodeBlock {
   code: string;
 }
 
-export type InteractiveComponentKey = 'relationship-value-explorer' | 'agent-grading-calculator';
+export type InteractiveComponentKey =
+  | 'relationship-value-explorer'
+  | 'agent-grading-calculator'
+  | 'ai-spend-levers-prioritization-map'
+  | 'ai-consumption-leverage-calculator';
 
 export interface ContentComponentBlock {
   type: 'component';

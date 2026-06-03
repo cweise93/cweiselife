@@ -1,4 +1,5 @@
 import { ApplicationConfig, ENVIRONMENT_INITIALIZER, inject } from '@angular/core';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideRouter, withInMemoryScrolling, withViewTransitions } from '@angular/router';
@@ -18,6 +19,7 @@ export const appConfig: ApplicationConfig = {
       withInMemoryScrolling({ anchorScrolling: 'enabled', scrollPositionRestoration: 'enabled' }),
       withViewTransitions()
     ),
+    provideHttpClient(withFetch()),
     provideClientHydration(withEventReplay())
   ]
 };

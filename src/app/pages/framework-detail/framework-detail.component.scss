@@ -165,6 +165,10 @@ p {
   position: relative;
 }
 
+.tool-rail-segment--calculator-outcomes {
+  position: relative;
+}
+
 .framework-tool-rail__body {
   display: grid;
   gap: 16px;
@@ -182,6 +186,11 @@ p {
 }
 
 .tool-rail-card--score {
+  position: sticky;
+  top: calc(var(--cw-toolbar-current-height, var(--cw-toolbar-height)) + var(--framework-context-bar-height) + 22px);
+}
+
+.tool-rail-card--calculator-outcomes {
   position: sticky;
   top: calc(var(--cw-toolbar-current-height, var(--cw-toolbar-height)) + var(--framework-context-bar-height) + 22px);
 }
@@ -444,8 +453,93 @@ p {
   background: color-mix(in srgb, #2563eb 9%, var(--cw-panel));
 }
 
+.tool-outcome-list {
+  display: grid;
+  gap: 12px;
+}
+
+.tool-outcome-list--primary {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.tool-outcome {
+  display: grid;
+  gap: 6px;
+  padding: 14px 16px;
+  border: 1px solid var(--cw-line);
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--cw-panel) 97%, white 3%);
+}
+
+.tool-outcome--primary {
+  padding: 16px 18px;
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--cw-panel) 96%, white 4%), color-mix(in srgb, var(--cw-panel) 99%, white 1%));
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--cw-accent) 8%, transparent);
+}
+
+.tool-outcome--accent {
+  border-color: color-mix(in srgb, #2563eb 26%, var(--cw-line) 74%);
+  background:
+    linear-gradient(180deg, color-mix(in srgb, #2563eb 7%, var(--cw-panel)), color-mix(in srgb, var(--cw-panel) 98%, white 2%));
+}
+
+.tool-outcome__label {
+  color: var(--cw-muted);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.tool-outcome strong {
+  font-size: 1.95rem;
+  line-height: 1.02;
+  letter-spacing: -0.05em;
+}
+
+.tool-outcome--primary .tool-outcome__label {
+  color: color-mix(in srgb, var(--cw-accent) 74%, var(--cw-muted));
+}
+
+.tool-outcome--primary strong {
+  font-size: 2.15rem;
+}
+
+.tool-rail-card--calculator-outcomes {
+  background:
+    radial-gradient(circle at top right, color-mix(in srgb, var(--cw-accent) 10%, transparent), transparent 36%),
+    linear-gradient(180deg, color-mix(in srgb, var(--cw-panel) 98%, white 2%), var(--cw-panel)) !important;
+}
+
+.tool-note-card {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  gap: 10px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: color-mix(in srgb, #7c3aed 9%, var(--cw-panel));
+  border: 1px solid color-mix(in srgb, #7c3aed 20%, var(--cw-line));
+}
+
+.tool-note-card mat-icon {
+  color: #7c3aed;
+  margin-top: 2px;
+}
+
 .tool-note {
+  margin: 0;
   font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+@media (max-width: 1180px) {
+  .tool-outcome-list--primary {
+    grid-template-columns: 1fr;
+  }
 }
 
 .tool-action {

@@ -219,6 +219,50 @@
           </div>
         }
 
+        @if (hasAiCostCalculator()) {
+          <div
+            class="tool-rail-segment tool-rail-segment--calculator-outcomes"
+            [style.marginTop.px]="calculatorOutcomesRailOffset()"
+            [style.minHeight.px]="calculatorOutcomesRailBoundaryHeight()"
+          >
+            <mat-card appearance="outlined" class="tool-rail-card tool-rail-card--calculator-outcomes cw-surface-card">
+              <div class="tool-rail-card__header">
+                <p class="resource-eyebrow">Estimated outcomes</p>
+                <span class="tool-rail-live">
+                  <span class="tool-rail-live__dot"></span>
+                  Updates live
+                </span>
+              </div>
+
+              <div class="tool-outcome-list tool-outcome-list--primary">
+                @for (metric of calculatorGutterMetrics().primary; track metric.label) {
+                  <div class="tool-outcome tool-outcome--primary" [class.tool-outcome--accent]="metric.tone === 'accent'">
+                    <span class="tool-outcome__label">{{ metric.label }}</span>
+                    <strong>{{ metric.value }}</strong>
+                  </div>
+                }
+              </div>
+
+              <div class="tool-outcome-list">
+                @for (metric of calculatorGutterMetrics().supporting; track metric.label) {
+                  <div class="tool-outcome">
+                    <span class="tool-outcome__label">{{ metric.label }}</span>
+                    <strong>{{ metric.value }}</strong>
+                  </div>
+                }
+              </div>
+
+              <div class="tool-note-card">
+                <mat-icon>info</mat-icon>
+                <p class="tool-note">
+                  Vendor defaults establish the first quote. Capability selections in the calculator reveal the
+                  additional pricing inputs your deal actually needs.
+                </p>
+              </div>
+            </mat-card>
+          </div>
+        }
+
         <div class="framework-tool-rail__body">
           @if (callToActionItems().length) {
             <mat-card appearance="outlined" class="tool-rail-card cw-surface-card">

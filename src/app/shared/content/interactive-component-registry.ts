@@ -21,6 +21,18 @@ export const INTERACTIVE_COMPONENT_REGISTRY: Record<
     label: 'Agent Grading Calculator',
     description:
       'Interactive scoring tool for classifying enterprise AI agents by materiality, evidence, and governance posture.'
+  },
+  'ai-spend-levers-prioritization-map': {
+    key: 'ai-spend-levers-prioritization-map',
+    label: 'AI Spend Levers Prioritization Map',
+    description:
+      'Interactive drag-and-drop prioritization surface with a live D3 map for comparing implementation difficulty and expected benefit.'
+  },
+  'ai-consumption-leverage-calculator': {
+    key: 'ai-consumption-leverage-calculator',
+    label: 'AI Consumption Leverage Calculator',
+    description:
+      'Four progressive calculator views for estimating AI cost, refining assumptions, modeling architecture choices, and tuning behavior weights.'
   }
 };
 

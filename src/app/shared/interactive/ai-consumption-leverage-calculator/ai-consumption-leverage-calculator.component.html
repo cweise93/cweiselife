@@ -1,0 +1,142 @@
+<mat-card appearance="outlined" class="calculator-surface cw-surface-card">
+  <header class="calculator-surface__header">
+    <div class="calculator-surface__title-group">
+      <p class="calculator-surface__eyebrow">Interactive artifact</p>
+      <h3>{{ title() }}</h3>
+      <p class="calculator-surface__subtitle">{{ description() }}</p>
+    </div>
+
+    <div class="calculator-surface__header-actions">
+      <button mat-stroked-button color="primary" type="button" (click)="reset()">
+        <mat-icon>restart_alt</mat-icon>
+        Reset
+      </button>
+    </div>
+  </header>
+
+  <section class="calculator-surface__shell" aria-label="Contract cost estimator surface">
+    <mat-card appearance="outlined" class="calculator-panel">
+      <div class="panel-head">
+        <div>
+          <p class="panel-eyebrow">Quick estimate</p>
+          <h4>Get a credible starting point in under a minute. You can refine details in later steps.</h4>
+        </div>
+      </div>
+
+      <div class="input-grid input-grid--minimum">
+        <mat-form-field appearance="outline">
+          <mat-label>Vendor</mat-label>
+          <mat-select [value]="executive().provider" (selectionChange)="updateEnum('provider', $event.value)">
+            @for (provider of providers; track provider.id) {
+              <mat-option [value]="provider.id">{{ provider.label }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Contract structure</mat-label>
+          <mat-select
+            [value]="executive().contractStructure"
+            (selectionChange)="updateEnum('contractStructure', $event.value)"
+          >
+            @for (option of contractStructureOptions; track option.value) {
+              <mat-option [value]="option.value">
+                {{ option.label }}
+              </mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Usage profile</mat-label>
+          <mat-select
+            [value]="executive().usageProfile"
+            (selectionChange)="updateEnum('usageProfile', $event.value)"
+          >
+            @for (option of usageProfileOptions; track option.value) {
+              <mat-option [value]="option.value">
+                {{ option.label }}
+              </mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+    </mat-card>
+
+    <mat-card appearance="outlined" class="calculator-panel">
+      <div class="panel-head panel-head--split">
+        <div>
+          <p class="panel-eyebrow">Included capabilities</p>
+          <h4>Select what is actually included in the deal. Those choices determine which pricing inputs appear next.</h4>
+        </div>
+
+        <mat-chip-set>
+          <mat-chip>{{ capabilityCount() }} selected</mat-chip>
+        </mat-chip-set>
+      </div>
+
+      <div class="capability-grid">
+        @for (capability of capabilities; track capability.key) {
+          <div class="capability-option" [class.capability-option--selected]="executive().includedCapabilities[capability.key]">
+            <mat-checkbox
+              [checked]="executive().includedCapabilities[capability.key]"
+              (change)="toggleCapability(capability.key, $event.checked)"
+              color="primary"
+            >
+              <span class="capability-option__content">
+                <span class="capability-option__label">
+                  <mat-icon>{{ capability.icon }}</mat-icon>
+                  {{ capability.label }}
+                </span>
+                <span class="capability-option__description">{{ capability.description }}</span>
+              </span>
+            </mat-checkbox>
+          </div>
+        }
+      </div>
+    </mat-card>
+
+    @if (selectedCapabilities().length) {
+      <mat-card appearance="outlined" class="calculator-panel">
+        <div class="panel-head">
+          <div>
+            <p class="panel-eyebrow">Pricing drivers</p>
+            <h4>Only the selected capabilities open deeper pricing inputs, so the estimator stays simple until the contract asks for more detail.</h4>
+          </div>
+        </div>
+
+        <mat-accordion class="negotiation-accordion" multi>
+          @for (capability of capabilityFields(); track capability.key) {
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <mat-icon>{{ capability.icon }}</mat-icon>
+                  {{ capability.label }}
+                </mat-panel-title>
+                <mat-panel-description>{{ capability.description }}</mat-panel-description>
+              </mat-expansion-panel-header>
+
+              <div class="negotiation-fields">
+                @for (field of capability.fields; track field.key) {
+                  <mat-form-field appearance="outline">
+                    <mat-label>{{ field.label }}</mat-label>
+                    <input
+                      matInput
+                      type="number"
+                      [value]="$any(executive())[field.key]"
+                      (input)="updateNumber($any(field.key), +$any($event.target).value)"
+                    />
+                    @if (field.suffix) {
+                      <span matTextSuffix>{{ field.suffix }}</span>
+                    }
+                  </mat-form-field>
+                }
+              </div>
+            </mat-expansion-panel>
+          }
+        </mat-accordion>
+      </mat-card>
+    }
+  </section>
+</mat-card>

@@ -2,10 +2,17 @@ import { ChangeDetectionStrategy, Component, computed, input } from '@angular/co
 import { INTERACTIVE_COMPONENT_REGISTRY, isRegisteredInteractiveComponent } from '../interactive-component-registry';
 import { RelationshipValueExplorerComponent } from '../../interactive/relationship-value-explorer/relationship-value-explorer.component';
 import { AgentGradingCalculatorComponent } from '../../interactive/agent-grading-calculator/agent-grading-calculator.component';
+import { AiSpendLeversPrioritizationMapComponent } from '../../interactive/ai-spend-levers-prioritization-map/ai-spend-levers-prioritization-map.component';
+import { AiConsumptionLeverageCalculatorComponent } from '../../interactive/ai-consumption-leverage-calculator/ai-consumption-leverage-calculator.component';
 
 @Component({
   selector: 'app-interactive-content-block',
-  imports: [RelationshipValueExplorerComponent, AgentGradingCalculatorComponent],
+  imports: [
+    RelationshipValueExplorerComponent,
+    AgentGradingCalculatorComponent,
+    AiSpendLeversPrioritizationMapComponent,
+    AiConsumptionLeverageCalculatorComponent
+  ],
   templateUrl: './interactive-content-block.component.html',
   styleUrl: './interactive-content-block.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
