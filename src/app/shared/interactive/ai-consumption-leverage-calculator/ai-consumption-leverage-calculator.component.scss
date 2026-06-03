@@ -17,7 +17,8 @@
 .calculator-surface__shell,
 .panel-head,
 .input-grid,
-.negotiation-fields {
+.step-surface,
+.record-footer {
   display: grid;
   gap: 16px;
 }
@@ -66,9 +67,50 @@ p {
   gap: 18px;
 }
 
+.provider-accordion {
+  display: grid;
+  gap: 14px;
+}
+
+.provider-panel {
+  border: 1px solid color-mix(in srgb, var(--cw-line) 78%, transparent);
+  border-radius: 20px;
+  background: color-mix(in srgb, var(--cw-panel) 99%, white 1%);
+  overflow: hidden;
+}
+
+.provider-panel ::ng-deep .mat-expansion-panel-body {
+  padding: 0 20px 20px;
+}
+
+.provider-panel ::ng-deep .mat-expansion-panel-header {
+  min-height: 76px;
+  padding: 0 20px;
+}
+
+.provider-panel ::ng-deep .mat-expansion-panel-header.mat-expanded {
+  height: 76px;
+}
+
+.provider-panel ::ng-deep .mat-content {
+  align-items: center;
+}
+
+.provider-panel ::ng-deep .mat-expansion-panel-header-title,
+.provider-panel ::ng-deep .mat-expansion-panel-header-description {
+  color: var(--cw-ink);
+}
+
+.provider-panel ::ng-deep .mat-expansion-panel-header-description {
+  justify-content: flex-end;
+  margin-right: 12px;
+  color: var(--cw-accent);
+  font-weight: 700;
+}
+
 .calculator-panel {
   display: grid;
-  gap: 18px;
+  gap: 14px;
   padding: 22px;
   border-radius: 22px;
   background:
@@ -82,13 +124,85 @@ p {
   max-width: 60ch;
 }
 
+.panel-subtitle {
+  color: var(--cw-muted);
+  line-height: 1.55;
+  max-width: 60ch;
+}
+
 .panel-head--split {
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: start;
 }
 
+.contract-stepper {
+  display: grid;
+  gap: 8px;
+}
+
+.contract-stepper ::ng-deep .mat-stepper-horizontal-line {
+  min-width: 48px;
+}
+
+.contract-stepper ::ng-deep .mat-horizontal-content-container {
+  padding: 4px 0 0;
+}
+
+.contract-stepper ::ng-deep .mat-step-header {
+  padding: 0 18px 0 0;
+}
+
+.contract-stepper ::ng-deep .mat-step-header .mat-step-icon,
+.contract-stepper ::ng-deep .mat-step-header .mat-step-icon-selected,
+.contract-stepper ::ng-deep .mat-step-header .mat-step-icon-state-done {
+  display: none;
+}
+
+.step-label {
+  display: inline-grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+}
+
+.step-label__index {
+  display: inline-grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--cw-line) 80%, transparent);
+  background: color-mix(in srgb, var(--cw-panel) 94%, white 6%);
+  color: var(--cw-ink);
+  font-weight: 700;
+}
+
+.contract-stepper ::ng-deep .mat-step-header[aria-selected='true'] .step-label__index {
+  background: var(--cw-accent);
+  border-color: var(--cw-accent);
+  color: white;
+}
+
+.step-label__title {
+  font-weight: 700;
+  color: var(--cw-ink);
+  line-height: 1.2;
+}
+
+.step-surface {
+  gap: 10px;
+}
+
+.step-blank {
+  min-height: 12px;
+}
+
 .input-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.input-grid--balanced {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .input-grid mat-form-field,
@@ -112,10 +226,21 @@ p {
   gap: 14px;
 }
 
+.capability-grid--three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.capability-grid--single {
+  grid-template-columns: minmax(0, 1fr);
+}
+
 .capability-option {
+  display: grid;
+  gap: 10px;
   border: 1px solid color-mix(in srgb, var(--cw-line) 80%, transparent);
   border-radius: 18px;
   background: color-mix(in srgb, var(--cw-panel) 99%, white 1%);
+  padding: 14px 16px;
   transition: border-color 180ms ease, box-shadow 180ms ease, background 180ms ease;
 }
 
@@ -125,16 +250,16 @@ p {
   box-shadow: 0 14px 28px color-mix(in srgb, #2563eb 8%, transparent);
 }
 
-.capability-option mat-checkbox {
-  width: 100%;
-  display: block;
-  padding: 14px 16px;
+.capability-option__header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 10px;
 }
 
-.capability-option__content {
-  display: grid;
-  gap: 6px;
-  padding-left: 6px;
+.capability-option__header mat-checkbox {
+  width: 100%;
+  display: block;
 }
 
 .capability-option__label {
@@ -146,6 +271,10 @@ p {
   line-height: 1.4;
 }
 
+.capability-option__header button {
+  margin-top: -2px;
+}
+
 .capability-option__label mat-icon {
   color: var(--cw-accent);
 }
@@ -154,32 +283,23 @@ p {
   color: var(--cw-muted);
   line-height: 1.5;
   font-size: 0.95rem;
+  padding-left: 34px;
 }
 
-.negotiation-accordion {
-  display: grid;
-  gap: 14px;
-}
-
-.negotiation-accordion .mat-expansion-panel {
-  border-radius: 18px !important;
-  border: 1px solid color-mix(in srgb, var(--cw-line) 78%, transparent);
-  box-shadow: none !important;
-  overflow: hidden;
-}
-
-.negotiation-accordion .mat-expansion-panel-header {
-  min-height: 68px;
-}
-
-.negotiation-accordion .mat-expansion-panel-header mat-icon {
-  margin-right: 10px;
-  color: var(--cw-accent);
-}
-
-.negotiation-fields {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+.step-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
   padding-top: 8px;
+}
+
+.record-footer {
+  padding-top: 8px;
+}
+
+.record-footer__action {
+  width: 100%;
+  min-height: 48px;
 }
 
 @media (max-width: 1180px) {
@@ -195,8 +315,9 @@ p {
 
 @media (max-width: 960px) {
   .input-grid,
+  .input-grid--balanced,
   .capability-grid,
-  .negotiation-fields {
+  .capability-grid--three {
     grid-template-columns: 1fr;
   }
 }
@@ -208,5 +329,13 @@ p {
 
   .calculator-panel {
     padding: 18px;
+  }
+
+  .contract-stepper ::ng-deep .mat-step-header {
+    padding-right: 12px;
+  }
+
+  .step-label {
+    gap: 10px;
   }
 }

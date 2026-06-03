@@ -15,128 +15,169 @@
   </header>
 
   <section class="calculator-surface__shell" aria-label="Contract cost estimator surface">
-    <mat-card appearance="outlined" class="calculator-panel">
-      <div class="panel-head">
-        <div>
-          <p class="panel-eyebrow">Quick estimate</p>
-          <h4>Get a credible starting point in under a minute. You can refine details in later steps.</h4>
-        </div>
-      </div>
-
-      <div class="input-grid input-grid--minimum">
-        <mat-form-field appearance="outline">
-          <mat-label>Vendor</mat-label>
-          <mat-select [value]="executive().provider" (selectionChange)="updateEnum('provider', $event.value)">
-            @for (provider of providers; track provider.id) {
-              <mat-option [value]="provider.id">{{ provider.label }}</mat-option>
-            }
-          </mat-select>
-        </mat-form-field>
-
-        <mat-form-field appearance="outline">
-          <mat-label>Contract structure</mat-label>
-          <mat-select
-            [value]="executive().contractStructure"
-            (selectionChange)="updateEnum('contractStructure', $event.value)"
-          >
-            @for (option of contractStructureOptions; track option.value) {
-              <mat-option [value]="option.value">
-                {{ option.label }}
-              </mat-option>
-            }
-          </mat-select>
-        </mat-form-field>
-
-        <mat-form-field appearance="outline">
-          <mat-label>Usage profile</mat-label>
-          <mat-select
-            [value]="executive().usageProfile"
-            (selectionChange)="updateEnum('usageProfile', $event.value)"
-          >
-            @for (option of usageProfileOptions; track option.value) {
-              <mat-option [value]="option.value">
-                {{ option.label }}
-              </mat-option>
-            }
-          </mat-select>
-        </mat-form-field>
-      </div>
-
-    </mat-card>
-
-    <mat-card appearance="outlined" class="calculator-panel">
-      <div class="panel-head panel-head--split">
-        <div>
-          <p class="panel-eyebrow">Included capabilities</p>
-          <h4>Select what is actually included in the deal. Those choices determine which pricing inputs appear next.</h4>
-        </div>
-
-        <mat-chip-set>
-          <mat-chip>{{ capabilityCount() }} selected</mat-chip>
-        </mat-chip-set>
-      </div>
-
-      <div class="capability-grid">
-        @for (capability of capabilities; track capability.key) {
-          <div class="capability-option" [class.capability-option--selected]="executive().includedCapabilities[capability.key]">
-            <mat-checkbox
-              [checked]="executive().includedCapabilities[capability.key]"
-              (change)="toggleCapability(capability.key, $event.checked)"
-              color="primary"
-            >
-              <span class="capability-option__content">
-                <span class="capability-option__label">
-                  <mat-icon>{{ capability.icon }}</mat-icon>
-                  {{ capability.label }}
-                </span>
-                <span class="capability-option__description">{{ capability.description }}</span>
-              </span>
-            </mat-checkbox>
-          </div>
-        }
-      </div>
-    </mat-card>
-
-    @if (selectedCapabilities().length) {
+    @if (primaryRecord(); as primaryRecord) {
       <mat-card appearance="outlined" class="calculator-panel">
-        <div class="panel-head">
-          <div>
-            <p class="panel-eyebrow">Pricing drivers</p>
-            <h4>Only the selected capabilities open deeper pricing inputs, so the estimator stays simple until the contract asks for more detail.</h4>
-          </div>
-        </div>
+        <ng-container
+          [ngTemplateOutlet]="recordSurface"
+          [ngTemplateOutletContext]="{ recordId: primaryRecord.id, isPrimary: true }"
+        />
+      </mat-card>
+    }
 
-        <mat-accordion class="negotiation-accordion" multi>
-          @for (capability of capabilityFields(); track capability.key) {
-            <mat-expansion-panel>
+    @if (additionalRecords().length) {
+      <mat-accordion class="provider-accordion">
+        @for (record of additionalRecords(); track record.id) {
+          @if (estimateSummary(record.id); as summary) {
+            <mat-expansion-panel class="provider-panel">
               <mat-expansion-panel-header>
-                <mat-panel-title>
-                  <mat-icon>{{ capability.icon }}</mat-icon>
-                  {{ capability.label }}
-                </mat-panel-title>
-                <mat-panel-description>{{ capability.description }}</mat-panel-description>
+                <mat-panel-title>{{ summary.title }}</mat-panel-title>
+                <mat-panel-description>{{ summary.annualEstimate }} / year</mat-panel-description>
               </mat-expansion-panel-header>
 
-              <div class="negotiation-fields">
-                @for (field of capability.fields; track field.key) {
-                  <mat-form-field appearance="outline">
-                    <mat-label>{{ field.label }}</mat-label>
-                    <input
-                      matInput
-                      type="number"
-                      [value]="$any(executive())[field.key]"
-                      (input)="updateNumber($any(field.key), +$any($event.target).value)"
-                    />
-                    @if (field.suffix) {
-                      <span matTextSuffix>{{ field.suffix }}</span>
-                    }
-                  </mat-form-field>
-                }
-              </div>
+              <ng-container
+                [ngTemplateOutlet]="recordSurface"
+                [ngTemplateOutletContext]="{ recordId: record.id, isPrimary: false }"
+              />
             </mat-expansion-panel>
           }
-        </mat-accordion>
-      </mat-card>
+        }
+      </mat-accordion>
     }
   </section>
 </mat-card>
+
+<ng-template #recordSurface let-recordId="recordId" let-isPrimary="isPrimary">
+  @if (recordState(recordId); as state) {
+    <div class="panel-head">
+      <div>
+        <p class="panel-eyebrow">Quick estimate</p>
+        <h4>Get a credible starting point in under a minute. You can refine details in later steps.</h4>
+      </div>
+    </div>
+
+    <div class="input-grid input-grid--minimum">
+      <mat-form-field appearance="outline">
+        <mat-label>Vendor</mat-label>
+        <mat-select [value]="state.provider" (selectionChange)="updateEnum(recordId, 'provider', $event.value)">
+          @for (provider of providers; track provider.id) {
+            <mat-option [value]="provider.id">{{ provider.label }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Contract structure</mat-label>
+        <mat-select [value]="state.contractStructure" (selectionChange)="updateEnum(recordId, 'contractStructure', $event.value)">
+          @for (option of contractStructureOptions; track option.value) {
+            <mat-option [value]="option.value">{{ option.label }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Usage profile</mat-label>
+        <mat-select [value]="state.usageProfile" (selectionChange)="updateEnum(recordId, 'usageProfile', $event.value)">
+          @for (option of usageProfileOptions; track option.value) {
+            <mat-option [value]="option.value">{{ option.label }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <mat-stepper class="contract-stepper" [selectedIndex]="stepIndex(recordId)" (selectionChange)="setStep(recordId, $event.selectedIndex)">
+      @for (step of stepDefinitions; track $index) {
+        <mat-step [completed]="stepIndex(recordId) > $index" [editable]="true">
+          <ng-template matStepLabel>
+            <span class="step-label">
+              <span class="step-label__index">{{ $index + 1 }}</span>
+              <span class="step-label__title">{{ step.label }}</span>
+            </span>
+          </ng-template>
+
+            <div class="step-surface">
+              <div class="panel-head">
+                <div>
+                  <p class="panel-eyebrow">{{ step.label }}</p>
+                  <h4>{{ step.title }}</h4>
+                </div>
+              </div>
+
+            @if ($index === 0) {
+              <div class="capability-grid">
+                @for (capability of capabilities; track capability.key) {
+                  <div class="capability-option" [class.capability-option--selected]="isCapabilitySelected(recordId, capability.key)">
+                    <div class="capability-option__header">
+                      <mat-checkbox
+                        [checked]="isCapabilitySelected(recordId, capability.key)"
+                        (change)="onCapabilityToggle(recordId, capability, $event.checked)"
+                        color="primary"
+                      >
+                        <span class="capability-option__label">
+                          <mat-icon>{{ capability.icon }}</mat-icon>
+                          {{ capability.label }}
+                        </span>
+                      </mat-checkbox>
+
+                      @if (isCapabilitySelected(recordId, capability.key)) {
+                        <button
+                          mat-icon-button
+                          color="primary"
+                          type="button"
+                          aria-label="Configure {{ capability.label }}"
+                          (click)="editCapability(recordId, capability, $event)"
+                        >
+                          <mat-icon>settings</mat-icon>
+                        </button>
+                      }
+                    </div>
+
+                    <span class="capability-option__description">{{ capability.description }}</span>
+                  </div>
+                }
+              </div>
+            }
+
+            @if ($index === 1) {
+              <div class="step-blank" aria-hidden="true"></div>
+            }
+
+            @if ($index === 2) {
+              <div class="step-blank" aria-hidden="true"></div>
+            }
+
+            @if ($index === 3) {
+              <div class="step-blank" aria-hidden="true"></div>
+            }
+
+            <div class="step-actions">
+              <button mat-stroked-button type="button" (click)="previousStep(recordId)" [disabled]="stepIndex(recordId) === 0">
+                Back
+              </button>
+              <button
+                mat-flat-button
+                color="primary"
+                type="button"
+                (click)="nextStep(recordId)"
+                [disabled]="stepIndex(recordId) === stepDefinitions.length - 1"
+              >
+                Next
+              </button>
+            </div>
+          </div>
+        </mat-step>
+      }
+    </mat-stepper>
+
+    <div class="record-footer">
+      @if (isPrimary) {
+        <button mat-stroked-button color="primary" type="button" class="record-footer__action" (click)="addAdditionalProvider(recordId)">
+          Add Additional Provider
+        </button>
+      } @else {
+        <button mat-stroked-button color="warn" type="button" class="record-footer__action" (click)="removeProvider(recordId)">
+          Remove from Estimate
+        </button>
+      }
+    </div>
+  }
+</ng-template>
