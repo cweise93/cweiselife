@@ -200,15 +200,93 @@
 </section>
 
 <section #publishingPathSection class="publishing-path cw-section">
+  @let activeItem = activePublishingPathItem();
+  @let activeAct = activePublishingPathAct();
+  @let graph = publishingPathGraph();
   <div class="cw-container publishing-path__frame">
     <div class="publishing-path__header">
       <div class="publishing-path__headline-block">
         <p class="cw-eyebrow">{{ publishingPath.eyebrow }}</p>
         <h2 class="cw-section-title">{{ publishingPath.headline }}</h2>
+        <p class="publishing-path__spine">{{ publishingPath.spine }}</p>
       </div>
 
       <div class="publishing-path__support-block">
         <p class="cw-muted">{{ publishingPath.support }}</p>
+        <mat-button-toggle-group
+          class="publishing-path__view-toggle"
+          [value]="publishingPathViewMode()"
+          (change)="setPublishingPathViewMode($event.value)"
+          aria-label="Live Operating Story view mode"
+        >
+          <mat-button-toggle value="story-arc">Story arc</mat-button-toggle>
+          <mat-button-toggle value="release-order">Release order</mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+    </div>
+
+    <div class="publishing-path__map-shell">
+      <div class="publishing-path__map-copy">
+        <p class="publishing-path__map-eyebrow">
+          {{ publishingPathViewMode() === 'story-arc' ? 'Narrative spine' : 'Release chronology' }}
+        </p>
+        <h3>{{ activeAct.label }} · {{ activeAct.title }}</h3>
+        <p>{{ activeAct.summary }}</p>
+      </div>
+
+      <div #publishingPathMapSurface class="publishing-path__map-surface" aria-label="Live Operating Story map">
+        <svg
+          class="publishing-path__graph"
+          [attr.viewBox]="'0 0 ' + graph.width + ' ' + graph.height"
+          preserveAspectRatio="none"
+          role="img"
+          aria-label="Narrative arc showing the current operating story sequence"
+        >
+          <defs>
+            <linearGradient id="publishingPathArcGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#72aaff"></stop>
+              <stop offset="56%" stop-color="#47c5a7"></stop>
+              <stop offset="100%" stop-color="#e2a43e"></stop>
+            </linearGradient>
+          </defs>
+
+          @if (publishingPathViewMode() === 'story-arc') {
+            @for (band of graph.bands; track band.id) {
+              <g class="publishing-path__graph-band">
+                <rect
+                  class="publishing-path__graph-band-frame"
+                  [attr.x]="band.x"
+                  y="28"
+                  [attr.width]="band.width"
+                  height="30"
+                  rx="15"
+                ></rect>
+                <text class="publishing-path__graph-band-label" [attr.x]="band.centerX" y="47" text-anchor="middle">
+                  {{ band.label }}
+                </text>
+              </g>
+            }
+          }
+
+          <path class="publishing-path__graph-path publishing-path__graph-path--glow" [attr.d]="graph.path"></path>
+          <path class="publishing-path__graph-path" [attr.d]="graph.path"></path>
+
+          @for (node of graph.nodes; track node.item.id) {
+            <g
+              class="publishing-path__graph-node"
+              [class.is-active]="publishingPathIsActive(node.item)"
+              [class.is-planned]="!publishingPathHasRoute(node.item)"
+              [attr.transform]="'translate(' + node.x + ' ' + node.y + ')'"
+              (click)="selectPublishingPathItem(node.item)"
+            >
+              <circle class="publishing-path__graph-node-halo" r="18"></circle>
+              <circle class="publishing-path__graph-node-core" r="8"></circle>
+              <text class="publishing-path__graph-node-number" y="-24" text-anchor="middle">
+                {{ publishingPathItemNumber(node.item) }}
+              </text>
+            </g>
+          }
+        </svg>
       </div>
     </div>
 
@@ -223,70 +301,136 @@
           [style.left.px]="publishingPathStoryInlineLeft()"
           [style.width.px]="publishingPathStoryInlineWidth()"
         >
-          <div class="publishing-path__story-card">
-            <div class="publishing-path__stage-meta">
-              <span class="publishing-path__week">{{ activePublishingPathItem().sceneLabel }}</span>
-              <span
-                class="publishing-path__current-badge"
-                [class]="publishingPathStatusClass(activePublishingPathItem())"
-              >
-                {{ activePublishingPathItem().status }}
-              </span>
+          <mat-card appearance="outlined" class="publishing-path__story-card">
+            <div class="publishing-path__story-topline">
+              <div class="publishing-path__stage-meta">
+                <span class="publishing-path__week">Now showing</span>
+                <span class="publishing-path__card-index">
+                  Scene {{ activePublishingPathIndex() + 1 }} / {{ orderedPublishingPathItems().length }}
+                </span>
+              </div>
+
+              <mat-chip-set aria-label="Current story metadata">
+                <mat-chip class="publishing-path__meta-chip" [class]="publishingPathStatusClass(activeItem)">
+                  {{ activeItem.status }}
+                </mat-chip>
+                <mat-chip class="publishing-path__meta-chip" [class]="publishingPathKindClass(activeItem)">
+                  {{ activeItem.kind }}
+                </mat-chip>
+                <mat-chip class="publishing-path__meta-chip">{{ activeItem.releaseDateLabel }}</mat-chip>
+              </mat-chip-set>
+            </div>
+
+            <div class="publishing-path__progress publishing-path__progress--inline" aria-hidden="true">
+              <div class="publishing-path__progress-fill" [style.transform]="'scaleX(' + publishingPathCompletion() + ')'"></div>
             </div>
 
             <div class="publishing-path__stage-copy">
-              <p class="publishing-path__kind" [class]="publishingPathKindClass(activePublishingPathItem())">
-                {{ activePublishingPathItem().kind }}
-              </p>
-              <h3>{{ activePublishingPathItem().title }}</h3>
-              <p>{{ activePublishingPathItem().summary }}</p>
+              <p class="publishing-path__scene-label">{{ activeAct.label }} · {{ activeItem.movement }}</p>
+              <h3>{{ activeItem.title }}</h3>
+              <p class="publishing-path__story-summary">{{ activeItem.summary }}</p>
             </div>
 
-            <p class="publishing-path__stage-continuity">{{ activePublishingPathItem().continuity }}</p>
+            <div class="publishing-path__story-insights">
+              <div class="publishing-path__insight-panel">
+                <span class="publishing-path__insight-label">Thesis</span>
+                <p>{{ activeItem.thesis }}</p>
+              </div>
+              <div class="publishing-path__insight-panel">
+                <span class="publishing-path__insight-label">Stakes</span>
+                <p>{{ activeItem.stakes }}</p>
+              </div>
+            </div>
+
+            <div class="publishing-path__story-continuity-block">
+              <span class="publishing-path__insight-label">Continuity</span>
+              <p class="publishing-path__stage-continuity">{{ activeItem.continuity }}</p>
+            </div>
 
             <div class="publishing-path__stage-actions">
-              <span class="publishing-path__card-index">
-                Scene {{ activePublishingPathIndex() + 1 }} of {{ publishingPath.items.length }}
-              </span>
-              <a mat-flat-button [routerLink]="getPublishingPathRoute(activePublishingPathItem())" class="publishing-path__cta">
-                Open current item
-                <mat-icon>arrow_forward</mat-icon>
-              </a>
+              <p class="publishing-path__story-logline">{{ publishingPath.spine }}</p>
+              <div class="publishing-path__stage-action-set">
+                @if (publishingPathHasRoute(activeItem)) {
+                  <a mat-flat-button [routerLink]="getPublishingPathRoute(activeItem)" class="publishing-path__cta">
+                    Open published item
+                    <mat-icon>arrow_forward</mat-icon>
+                  </a>
+                } @else {
+                  <button mat-stroked-button type="button" class="publishing-path__planned-button" disabled>
+                    Planned chapter
+                  </button>
+                }
+              </div>
             </div>
 
-            <div class="publishing-path__progress" aria-hidden="true">
-              <div class="publishing-path__progress-fill" [style.transform]="'scaleX(' + publishingPathCompletion() + ')'"></div>
-            </div>
-          </div>
+          </mat-card>
         </div>
       </div>
 
       <aside class="publishing-path__timeline-column">
-        <div #publishingPathTimeline class="publishing-path__timeline" aria-label="Connected release route">
+        <div #publishingPathTimeline class="publishing-path__timeline" aria-label="Live Operating Story scenes">
           <div class="publishing-path__timeline-spine" aria-hidden="true">
             <span class="publishing-path__timeline-spine-base"></span>
             <span class="publishing-path__timeline-spine-fill" [style.transform]="'scaleY(' + publishingPathLineProgress() + ')'"></span>
           </div>
 
-          @for (item of publishingPath.items; track item.id; let index = $index) {
-            <a
-              #publishingPathStop
-              class="publishing-path__rail-item"
-              [routerLink]="getPublishingPathRoute(item)"
-              [class.is-active]="activePublishingPathIndex() === index"
-              [class.is-complete]="activePublishingPathIndex() > index"
-            >
-              <span class="publishing-path__rail-node" aria-hidden="true"></span>
-              <div class="publishing-path__rail-copy">
-                <div class="publishing-path__rail-topline">
-                  <span>{{ item.sceneLabel }}</span>
-                  <span class="publishing-path__rail-kind">{{ item.kind }}</span>
-                  <span class="publishing-path__rail-status" [class]="publishingPathStatusClass(item)">{{ item.status }}</span>
-                </div>
-                <h3>{{ item.title }}</h3>
-                <p>{{ item.summary }}</p>
+          @for (group of publishingPathRailGroups(); track group.id) {
+            <mat-card appearance="outlined" class="publishing-path__act-group">
+              <div class="publishing-path__act-header">
+                <p class="publishing-path__act-label">{{ group.label }}</p>
+                <h3>{{ group.title }}</h3>
+                <p>{{ group.summary }}</p>
               </div>
-            </a>
+
+              <div class="publishing-path__act-list">
+                @for (item of group.items; track item.id) {
+                  <article
+                    #publishingPathStop
+                    class="publishing-path__rail-item"
+                    [class.is-active]="publishingPathIsActive(item)"
+                    [class.is-complete]="publishingPathIsComplete(item)"
+                  >
+                    <span class="publishing-path__rail-node" aria-hidden="true"></span>
+                    @if (publishingPathHasRoute(item)) {
+                      <a
+                        class="publishing-path__rail-hit"
+                        [routerLink]="getPublishingPathRoute(item)"
+                        (mouseenter)="selectPublishingPathItem(item, false)"
+                        (focus)="selectPublishingPathItem(item, false)"
+                      >
+                        <div class="publishing-path__rail-topline">
+                          <span class="publishing-path__rail-number">{{ publishingPathItemNumber(item) }}</span>
+                          <span class="publishing-path__rail-kind">{{ item.kind }}</span>
+                          <span class="publishing-path__rail-status" [class]="publishingPathStatusClass(item)">
+                            {{ item.status }}
+                          </span>
+                        </div>
+                        <h3>{{ item.title }}</h3>
+                        <p>{{ item.summary }}</p>
+                        <span class="publishing-path__rail-date">{{ item.releaseDateLabel }}</span>
+                      </a>
+                    } @else {
+                      <button
+                        type="button"
+                        class="publishing-path__rail-hit"
+                        (click)="selectPublishingPathItem(item)"
+                      >
+                        <div class="publishing-path__rail-topline">
+                          <span class="publishing-path__rail-number">{{ publishingPathItemNumber(item) }}</span>
+                          <span class="publishing-path__rail-kind">{{ item.kind }}</span>
+                          <span class="publishing-path__rail-status" [class]="publishingPathStatusClass(item)">
+                            {{ item.status }}
+                          </span>
+                        </div>
+                        <h3>{{ item.title }}</h3>
+                        <p>{{ item.summary }}</p>
+                        <span class="publishing-path__rail-date">{{ item.releaseDateLabel }}</span>
+                      </button>
+                    }
+                  </article>
+                }
+              </div>
+            </mat-card>
           }
         </div>
       </aside>

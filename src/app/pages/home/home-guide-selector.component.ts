@@ -5,7 +5,6 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list';
 import { ContentSection } from '../../core/content/content.models';
 import { HomeGuideSelectorBenefit, HomeGuideSelectorMoment } from './home-guide-selector.models';
 import { HomeGuideArtifactDialogComponent } from './home-guide-artifact-dialog.component';
@@ -18,7 +17,7 @@ interface HomeGuideDetailCard {
 
 @Component({
   selector: 'cw-home-guide-selector',
-  imports: [RouterLink, MatButtonModule, MatCardModule, MatDialogModule, MatDividerModule, MatIconModule, MatListModule],
+  imports: [RouterLink, MatButtonModule, MatCardModule, MatDialogModule, MatDividerModule, MatIconModule],
   templateUrl: './home-guide-selector.component.html',
   styleUrl: './home-guide-selector.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
