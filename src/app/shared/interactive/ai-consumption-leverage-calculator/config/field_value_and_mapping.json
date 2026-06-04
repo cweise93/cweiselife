@@ -785,6 +785,17 @@
       "signalrPublish": true
     },
     {
+      "key": "internalAdminResourceCost",
+      "level": "Environment",
+      "defaultValue": 0,
+      "controlType": "currency",
+      "mathematicalImpact": "Direct additive annual internal administration cost for platform operations, provisioning, and support ownership.",
+      "dependsOn": ["securityPackageEnabled"],
+      "feeds": ["securityOverheadAnnual"],
+      "affectsTotals": ["annualEstimate"],
+      "signalrPublish": true
+    },
+    {
       "key": "auditLoggingCost",
       "level": "Environment",
       "defaultValue": 0,
@@ -1758,7 +1769,7 @@
       "apiCostAnnual": "((totalInputTokensPerYear / 1000000) * inputTokenPrice) + ((totalOutputTokensPerYear / 1000000) * outputTokenPrice) - cachingSavingsAnnual",
       "seatCostAnnual": "userCount * seatPricePerUserPerMonth * 12",
       "throughputCostAnnual": "unitsPurchased * throughputUnitCost * reservedHoursPerMonth * 12",
-      "securityOverheadAnnual": "auditLoggingCost + policyGovernanceCost + identityIntegrationCost + (baseApplicableCost * adminOverheadPercent)",
+      "securityOverheadAnnual": "internalAdminResourceCost + auditLoggingCost + policyGovernanceCost + identityIntegrationCost + (baseApplicableCost * adminOverheadPercent)",
       "supportCostAnnual": "supportFixedFee + (baseApplicableCost * supportUpliftPercent)",
       "residencyUpliftAnnual": "baseApplicableCost * residencyUpliftPercent",
       "hybridNetworkCostAnnual": "networkEgressCost + privateConnectivityCost + hybridManagementOverhead",

@@ -9,9 +9,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { MatSliderModule } from '@angular/material/slider';
 import { MatStepperModule } from '@angular/material/stepper';
 import { AiConsumptionLeverageCalculatorService, SurfaceCardViewModel } from './ai-consumption-leverage-calculator.service';
-import { EstimatorLevel, FIELD_DEFINITION_MAP, isWeightedMetricValue } from './ai-consumption-leverage-calculator.data';
+import { EstimatorLevel, EstimatorValue, FIELD_DEFINITION_MAP, isWeightedMetricValue } from './ai-consumption-leverage-calculator.data';
 import {
   EstimatorCapabilityDialogComponent,
   EstimatorCapabilityDialogData
@@ -27,6 +28,12 @@ interface TechnicalPreviewAttribute {
   label: string;
   score: number;
   scoreLabel: string;
+}
+
+interface TechnicalMetricSection {
+  key: TechnicalPreviewKey;
+  title: string;
+  fields: string[];
 }
 
 const TECHNICAL_PREVIEW_FIELDS: Record<TechnicalPreviewKey, string[]> = {
@@ -46,6 +53,13 @@ const TECHNICAL_PREVIEW_FIELDS: Record<TechnicalPreviewKey, string[]> = {
   reliability: ['robustnessReliability', 'stabilityConsistency', 'adaptabilityFineTunability'],
   'governance-risk': ['biasFairnessSafety', 'operationalMaintenanceBurden', 'trainingAdaptationBurden']
 };
+
+const TECHNICAL_METRIC_SECTIONS: TechnicalMetricSection[] = [
+  { key: 'performance', title: 'Performance', fields: TECHNICAL_PREVIEW_FIELDS.performance },
+  { key: 'cost-efficiency', title: 'Cost efficiency', fields: TECHNICAL_PREVIEW_FIELDS['cost-efficiency'] },
+  { key: 'reliability', title: 'Reliability', fields: TECHNICAL_PREVIEW_FIELDS.reliability },
+  { key: 'governance-risk', title: 'Governance & risk', fields: TECHNICAL_PREVIEW_FIELDS['governance-risk'] }
+];
 
 @Component({
   selector: 'app-remove-provider-dialog',
@@ -81,6 +95,7 @@ export class RemoveProviderDialogComponent {
     MatIconModule,
     MatInputModule,
     MatSelectModule,
+    MatSliderModule,
     MatStepperModule,
     NgTemplateOutlet
   ],
@@ -106,6 +121,8 @@ export class AiConsumptionLeverageCalculatorComponent {
   readonly estimateSummaries = this.workspace.estimateSummaries;
   readonly stepIndices = signal<Record<string, number>>({});
   readonly technicalPreviewGroups = signal<Record<string, TechnicalPreviewKey>>({});
+  readonly expandedTechnicalPanels = signal<Record<string, string | null>>({});
+  readonly technicalMetricSections = TECHNICAL_METRIC_SECTIONS;
 
   readonly stepDefinitions: Array<{ label: EstimatorLevel; title: string; description: string }> = [
     {
@@ -182,6 +199,7 @@ export class AiConsumptionLeverageCalculatorComponent {
       (card) =>
         card.kind !== 'model-group' &&
         card.cardKey !== 'add-model' &&
+        card.cardKey !== 'model-usage-allocation' &&
         !['performance', 'cost-efficiency', 'reliability', 'governance-risk'].includes(card.cardKey)
     );
   }
@@ -227,6 +245,17 @@ export class AiConsumptionLeverageCalculatorComponent {
     return this.technicalPreviewCard(recordId)?.title ?? 'Model attributes';
   }
 
+  technicalFocusModel(recordId: string): SurfaceCardViewModel | null {
+    const cards = this.technicalModelCards(recordId);
+
+    return (
+      cards.find((card) => this.technicalRoleTone(recordId, card) === 'primary') ??
+      cards.find((card) => this.technicalRoleTone(recordId, card) === 'secondary') ??
+      cards[0] ??
+      null
+    );
+  }
+
   technicalRoleLabel(recordId: string, card: SurfaceCardViewModel): string {
     const value = this.modelCardValue(recordId, card, 'routingRole');
     const options = this.workspace.getFieldOptions('routingRole', recordId);
@@ -257,6 +286,83 @@ export class AiConsumptionLeverageCalculatorComponent {
 
   technicalScoreTrack(score: number): string {
     return `${Math.min(Math.max(score, 0), 100)}%`;
+  }
+
+  technicalPanelExpanded(recordId: string, card: SurfaceCardViewModel): boolean {
+    const expanded = this.expandedTechnicalPanels()[recordId];
+    return expanded ? expanded === card.modelGroupId : this.technicalModelCards(recordId)[0]?.modelGroupId === card.modelGroupId;
+  }
+
+  setTechnicalPanelExpanded(recordId: string, modelGroupId: string | null): void {
+    this.expandedTechnicalPanels.update((current) => ({ ...current, [recordId]: modelGroupId }));
+  }
+
+  addTechnicalModel(recordId: string): void {
+    const modelGroupId = this.workspace.addModelGroup(recordId);
+    this.setTechnicalPanelExpanded(recordId, modelGroupId);
+  }
+
+  technicalModelFieldOptions(recordId: string, fieldKey: string) {
+    return this.workspace.getFieldOptions(fieldKey, recordId);
+  }
+
+  technicalModelFieldValue(recordId: string, card: SurfaceCardViewModel, fieldKey: string): unknown {
+    return this.modelCardValue(recordId, card, fieldKey);
+  }
+
+  technicalMetricValuePercent(recordId: string, card: SurfaceCardViewModel, fieldKey: string): number {
+    const value = this.technicalModelFieldValue(recordId, card, fieldKey) as EstimatorValue | null;
+    return isWeightedMetricValue(value) ? Math.round(Math.min(Math.max(value.value, 0), 1) * 100) : 50;
+  }
+
+  technicalMetricWeightPercent(recordId: string, card: SurfaceCardViewModel, fieldKey: string): number {
+    const value = this.technicalModelFieldValue(recordId, card, fieldKey) as EstimatorValue | null;
+    return isWeightedMetricValue(value) ? Math.round(Math.min(Math.max(value.weight, 0), 1) * 100) : 50;
+  }
+
+  technicalMetricLabel(fieldKey: string): string {
+    return FIELD_DEFINITION_MAP.get(fieldKey)?.label ?? fieldKey;
+  }
+
+  technicalUsagePercent(recordId: string, card: SurfaceCardViewModel): number {
+    return Math.round(Number(this.technicalModelFieldValue(recordId, card, 'usagePercent') || 0) * 100);
+  }
+
+  technicalUsageSliderValue(recordId: string, card: SurfaceCardViewModel): number {
+    return Number(this.technicalModelFieldValue(recordId, card, 'usagePercent') || 0) * 100;
+  }
+
+  technicalMetricScoreLabel(recordId: string, card: SurfaceCardViewModel, fieldKey: string): string {
+    return this.technicalScoreLabel(this.technicalMetricValuePercent(recordId, card, fieldKey));
+  }
+
+  updateTechnicalModelValue(recordId: string, card: SurfaceCardViewModel, fieldKey: string, value: unknown): void {
+    if (!card.modelGroupId) {
+      return;
+    }
+
+    this.workspace.updateModelGroupValue(recordId, card.modelGroupId, fieldKey, value as never);
+  }
+
+  updateTechnicalModelNumber(recordId: string, card: SurfaceCardViewModel, fieldKey: string, raw: unknown): void {
+    const numeric = Number(raw);
+    this.updateTechnicalModelValue(recordId, card, fieldKey, Number.isFinite(numeric) ? numeric : 0);
+  }
+
+  updateTechnicalMetricValue(recordId: string, card: SurfaceCardViewModel, fieldKey: string, raw: number): void {
+    if (!card.modelGroupId) {
+      return;
+    }
+
+    this.workspace.updateModelGroupMetric(recordId, card.modelGroupId, fieldKey, { value: raw / 100 });
+  }
+
+  updateTechnicalMetricWeight(recordId: string, card: SurfaceCardViewModel, fieldKey: string, raw: number): void {
+    if (!card.modelGroupId) {
+      return;
+    }
+
+    this.workspace.updateModelGroupMetric(recordId, card.modelGroupId, fieldKey, { weight: raw / 100 });
   }
 
   validationIssues(recordId: string, level: EstimatorLevel) {

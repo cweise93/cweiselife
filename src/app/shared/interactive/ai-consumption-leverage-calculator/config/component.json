@@ -136,6 +136,7 @@
       "fields": [
         "securityPackageEnabled",
         "adminOverheadPercent",
+        "internalAdminResourceCost",
         "auditLoggingCost",
         "policyGovernanceCost",
         "identityIntegrationCost",

@@ -183,16 +183,17 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(300px, 360px);
   gap: 1.25rem;
-  align-items: stretch;
+  align-items: start;
 }
 
 .graph-card {
   display: grid;
+  align-self: start;
 }
 
 .graph-canvas {
   position: relative;
-  min-height: clamp(520px, 60vh, 720px);
+  height: clamp(460px, 54vh, 620px);
   border: 1px solid var(--cw-line);
   border-radius: 1.25rem;
   overflow: hidden;
@@ -256,6 +257,7 @@
   display: grid;
   gap: 0.95rem;
   align-content: start;
+  align-self: start;
 }
 
 :host-context(body.cw-theme-dusk) {
@@ -411,7 +413,7 @@
   }
 
   .graph-canvas {
-    min-height: 520px;
+    height: 520px;
   }
 }
 
@@ -439,7 +441,7 @@
   }
 
   .graph-canvas {
-    min-height: 420px;
+    height: 420px;
   }
 
   .graph-canvas__controls {

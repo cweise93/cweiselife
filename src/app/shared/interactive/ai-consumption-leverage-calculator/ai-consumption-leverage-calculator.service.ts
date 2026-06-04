@@ -188,30 +188,6 @@ const USER_GROUP_FIELDS = [
   'notes'
 ];
 
-const MODEL_GROUP_FIELDS = [
-  'modelId',
-  'modelLabel',
-  'deploymentRangeLabel',
-  'deploymentQuantity',
-  'routingRole',
-  'usagePercent',
-  'primaryUseCases',
-  'fallbackTarget',
-  'costSource',
-  'enabled',
-  'inputTokenPrice',
-  'outputTokenPrice',
-  'cachedInputTokenPrice'
-];
-
-const MANUAL_PRICING_FIELDS = new Set([
-  'seatPricePerUserPerMonth',
-  'throughputUnitCost',
-  'inputTokenPrice',
-  'outputTokenPrice',
-  'cachedInputTokenPrice'
-]);
-
 const METRIC_GROUP_FIELDS: Record<string, string[]> = {
   performance: [
     'taskPerformanceUsefulness',
@@ -228,6 +204,33 @@ const METRIC_GROUP_FIELDS: Record<string, string[]> = {
   reliability: ['robustnessReliability', 'stabilityConsistency', 'adaptabilityFineTunability'],
   'governance-risk': ['biasFairnessSafety', 'operationalMaintenanceBurden', 'trainingAdaptationBurden']
 };
+
+const TECHNICAL_METRIC_FIELDS = Array.from(new Set(Object.values(METRIC_GROUP_FIELDS).flat()));
+
+const MODEL_GROUP_FIELDS = [
+  'modelId',
+  'modelLabel',
+  'deploymentRangeLabel',
+  'deploymentQuantity',
+  'routingRole',
+  'usagePercent',
+  'primaryUseCases',
+  'fallbackTarget',
+  'costSource',
+  'enabled',
+  'inputTokenPrice',
+  'outputTokenPrice',
+  'cachedInputTokenPrice',
+  ...TECHNICAL_METRIC_FIELDS
+];
+
+const MANUAL_PRICING_FIELDS = new Set([
+  'seatPricePerUserPerMonth',
+  'throughputUnitCost',
+  'inputTokenPrice',
+  'outputTokenPrice',
+  'cachedInputTokenPrice'
+]);
 
 const SUPPORT_TIER_MULTIPLIER: Record<string, number> = {
   standard: 0,
@@ -557,6 +560,63 @@ export class AiConsumptionLeverageCalculatorService {
       if (this.booleanValue(nextState.values['autoNormalize'])) {
         nextState.modelGroups = this.normalizeModelUsage(nextState.modelGroups);
       }
+      return this.syncVendorDrivenFields(nextState);
+    });
+  }
+
+  updateModelGroupValue(recordId: string, modelGroupId: string, fieldKey: string, value: EstimatorValue | null): void {
+    this.updateRecord(recordId, (current) => {
+      const nextState = this.cloneState(current.state);
+      if (MANUAL_PRICING_FIELDS.has(fieldKey)) {
+        nextState.values['customPricingOverrideEnabled'] = true;
+      }
+
+      nextState.modelGroups = nextState.modelGroups.map((group) =>
+        group.id === modelGroupId
+          ? { ...group, values: { ...group.values, [fieldKey]: this.copyValue(value) } }
+          : group
+      );
+
+      if (fieldKey === 'modelId' || fieldKey === 'modelCatalogSelection') {
+        const selectedModelId = this.stringValue(value);
+        if (selectedModelId) {
+          this.applyCatalogSelectionToModelGroup(nextState, modelGroupId, selectedModelId, true);
+        }
+      }
+
+      return this.syncVendorDrivenFields(nextState);
+    });
+  }
+
+  updateModelGroupMetric(
+    recordId: string,
+    modelGroupId: string,
+    fieldKey: string,
+    patch: Partial<WeightedMetricValue>
+  ): void {
+    this.updateRecord(recordId, (current) => {
+      const nextState = this.cloneState(current.state);
+      nextState.modelGroups = nextState.modelGroups.map((group) => {
+        if (group.id !== modelGroupId) {
+          return group;
+        }
+
+        const currentMetric = this.weightedMetricValue(
+          group.values[fieldKey] ?? getFieldDefinition(fieldKey)?.defaultValue ?? null
+        );
+
+        return {
+          ...group,
+          values: {
+            ...group.values,
+            [fieldKey]: {
+              value: this.clampFraction(patch.value ?? currentMetric.value),
+              weight: this.clampFraction(patch.weight ?? currentMetric.weight)
+            }
+          }
+        };
+      });
+
       return this.syncVendorDrivenFields(nextState);
     });
   }
@@ -1023,9 +1083,11 @@ export class AiConsumptionLeverageCalculatorService {
           ? this.optionLabel('primaryRegion', state.values['primaryRegion'])
           : 'Not required';
       case 'security-admin-overhead':
-        return this.booleanValue(state.values['securityPackageEnabled'])
-          ? `${Math.round(this.percentValue(state.values['adminOverheadPercent']) * 100)}% overhead`
-          : 'Not enabled';
+        if (!this.booleanValue(state.values['securityPackageEnabled'])) {
+          return 'Not enabled';
+        }
+
+        return this.securityAdminSummary(state);
       case 'hybrid-network': {
         const split = this.routingSplitValue(state.values['routingSplit']);
         return `${Math.round(split.hosted * 100)}% hosted`;
@@ -1081,7 +1143,7 @@ export class AiConsumptionLeverageCalculatorService {
       case 'data-residency':
         return 'Affects regional pricing, replication assumptions, and compliance cost.';
       case 'security-admin-overhead':
-        return 'Affects governance effort, control overhead, and annual operating cost.';
+        return 'Affects internal admin staffing, control overhead, and annual operating cost.';
       case 'hybrid-network':
         return 'Affects routing cost, network overhead, and blended deployment math.';
       case 'workspace-seats':
@@ -1276,6 +1338,7 @@ export class AiConsumptionLeverageCalculatorService {
     const cloudCommitmentCredit = Math.max(this.numberValue(state.values['cloudCommitmentCredit']), 0);
     const securityOverheadAnnual = OPTIONAL_CARD_GATES['security-admin-overhead']?.(state)
       ? baseUsageCost * this.percentValue(state.values['adminOverheadPercent']) +
+        Math.max(this.numberValue(state.values['internalAdminResourceCost']), 0) +
         Math.max(this.numberValue(state.values['auditLoggingCost']), 0) +
         Math.max(this.numberValue(state.values['policyGovernanceCost']), 0) +
         Math.max(this.numberValue(state.values['identityIntegrationCost']), 0)
@@ -1329,31 +1392,37 @@ export class AiConsumptionLeverageCalculatorService {
     const monthlyEstimate = annualEstimate / 12;
     const costPerUserPerMonth = totalUsers > 0 ? monthlyEstimate / totalUsers : 0;
 
-    const suitabilityMetrics = [
-      this.metricValue(state.values['taskPerformanceUsefulness']),
-      this.metricValue(state.values['generalizationTaskTransfer']),
-      this.metricValue(state.values['instructionAdherence']),
-      this.metricValue(state.values['transparencyExplainability']),
-      this.metricValue(state.values['robustnessReliability']),
-      this.metricValue(state.values['biasFairnessSafety']),
-      this.metricValue(state.values['adaptabilityFineTunability'])
+    const suitabilityMetricKeys = [
+      'taskPerformanceUsefulness',
+      'generalizationTaskTransfer',
+      'instructionAdherence',
+      'transparencyExplainability',
+      'robustnessReliability',
+      'biasFairnessSafety',
+      'adaptabilityFineTunability'
     ];
-    const realismMetrics = [
-      this.metricValue(state.values['inferenceCostEfficiency']),
-      this.metricValue(state.values['latencyResponsiveness']),
-      this.metricValue(state.values['stabilityConsistency']),
-      this.metricValue(state.values['workflowIntegrationEfficiency']),
-      this.metricValue(state.values['operationalMaintenanceBurden'], true)
+    const realismMetricKeys = [
+      'inferenceCostEfficiency',
+      'latencyResponsiveness',
+      'stabilityConsistency',
+      'workflowIntegrationEfficiency',
+      'operationalMaintenanceBurden'
     ];
+    const suitabilityScore = normalizedModels.length
+      ? this.weightedMetricFieldAverageForModels(normalizedModels, suitabilityMetricKeys)
+      : this.weightedMetricFieldAverageForValues(state.values, suitabilityMetricKeys);
+    const realismScore = normalizedModels.length
+      ? this.weightedMetricFieldAverageForModels(normalizedModels, realismMetricKeys, ['operationalMaintenanceBurden'])
+      : this.weightedMetricFieldAverageForValues(state.values, realismMetricKeys, ['operationalMaintenanceBurden']);
 
     totals['annualEstimate'] = annualEstimate;
     totals['monthlyEstimate'] = monthlyEstimate;
     totals['costPerUserPerMonth'] = costPerUserPerMonth;
     totals['includedCapacity'] = includedCapacityBase;
     totals['overageExposure'] = overageCostAnnual;
-    totals['modeledSuitabilityScore'] = this.average(suitabilityMetrics) * 100;
+    totals['modeledSuitabilityScore'] = suitabilityScore * 100;
     totals['modeledCostRealismFactor'] = Math.max(
-      Math.min((this.average(realismMetrics) * 100 + (modelRealismInput / Math.max(totalUsers, 1)) * 15), 100),
+      Math.min((realismScore * 100 + (modelRealismInput / Math.max(totalUsers, 1)) * 15), 100),
       0
     );
 
@@ -1677,6 +1746,21 @@ export class AiConsumptionLeverageCalculatorService {
     return this.compactNumber(value);
   }
 
+  private securityAdminSummary(state: EstimatorRecordState): string {
+    const overheadPercent = Math.round(this.percentValue(state.values['adminOverheadPercent']) * 100);
+    const internalAdminResourceCost = Math.max(this.numberValue(state.values['internalAdminResourceCost']), 0);
+
+    if (internalAdminResourceCost > 0 && overheadPercent > 0) {
+      return `${overheadPercent}% + ${this.compactCurrency(internalAdminResourceCost)} / yr`;
+    }
+
+    if (internalAdminResourceCost > 0) {
+      return `${this.compactCurrency(internalAdminResourceCost)} / yr`;
+    }
+
+    return `${overheadPercent}% overhead`;
+  }
+
   private compactNumber(value: number): string {
     const absolute = Math.abs(value);
     const sign = value < 0 ? '-' : '';
@@ -1726,16 +1810,81 @@ export class AiConsumptionLeverageCalculatorService {
 
   private metricGroupScore(values: Record<string, EstimatorValue | null>, cardKey: string): number {
     const metrics = METRIC_GROUP_FIELDS[cardKey] ?? [];
-    return this.average(metrics.map((key) => this.metricValue(values[key])));
+    return this.weightedMetricFieldAverageForValues(values, metrics);
+  }
+
+  private weightedModelMetricValue(groups: ModelGroupState[], fieldKey: string, invert = false): number {
+    const totalShare = groups.reduce((sum, group) => sum + this.percentValue(group.values['usagePercent']), 0);
+    if (totalShare <= 0) {
+      return this.average(groups.map((group) => this.metricValue(group.values[fieldKey], invert)));
+    }
+
+    return groups.reduce(
+      (sum, group) =>
+        sum + this.metricValue(group.values[fieldKey], invert) * (this.percentValue(group.values['usagePercent']) / totalShare),
+      0
+    );
+  }
+
+  private weightedModelMetricWeight(groups: ModelGroupState[], fieldKey: string): number {
+    const totalShare = groups.reduce((sum, group) => sum + this.percentValue(group.values['usagePercent']), 0);
+    if (totalShare <= 0) {
+      return this.average(groups.map((group) => this.metricWeight(group.values[fieldKey])));
+    }
+
+    return groups.reduce(
+      (sum, group) =>
+        sum + this.metricWeight(group.values[fieldKey]) * (this.percentValue(group.values['usagePercent']) / totalShare),
+      0
+    );
+  }
+
+  private weightedMetricFieldAverageForModels(
+    groups: ModelGroupState[],
+    fieldKeys: string[],
+    invertedFieldKeys: string[] = []
+  ): number {
+    const inverted = new Set(invertedFieldKeys);
+    const weightedEntries = fieldKeys.map((fieldKey) => ({
+      value: this.weightedModelMetricValue(groups, fieldKey, inverted.has(fieldKey)),
+      weight: this.weightedModelMetricWeight(groups, fieldKey)
+    }));
+
+    return this.weightedAverage(weightedEntries);
+  }
+
+  private weightedMetricFieldAverageForValues(
+    values: Record<string, EstimatorValue | null>,
+    fieldKeys: string[],
+    invertedFieldKeys: string[] = []
+  ): number {
+    const inverted = new Set(invertedFieldKeys);
+    const weightedEntries = fieldKeys.map((fieldKey) => ({
+      value: this.metricValue(values[fieldKey], inverted.has(fieldKey)),
+      weight: this.metricWeight(values[fieldKey])
+    }));
+
+    return this.weightedAverage(weightedEntries);
   }
 
   private metricValue(value: EstimatorValue | null, invert = false): number {
+    const base = this.clampFraction(this.weightedMetricValue(value).value);
+    return invert ? 1 - base : base;
+  }
+
+  private metricWeight(value: EstimatorValue | null): number {
+    return this.clampFraction(this.weightedMetricValue(value).weight);
+  }
+
+  private weightedMetricValue(value: EstimatorValue | null): WeightedMetricValue {
     if (!isWeightedMetricValue(value)) {
-      return 0.5;
+      return { value: 0.5, weight: 0.5 };
     }
 
-    const base = this.clampFraction(value.value);
-    return invert ? 1 - base : base;
+    return {
+      value: this.clampFraction(value.value),
+      weight: this.clampFraction(value.weight)
+    };
   }
 
   private average(values: number[]): number {
@@ -1743,6 +1892,19 @@ export class AiConsumptionLeverageCalculatorService {
       return 0;
     }
     return values.reduce((sum, value) => sum + value, 0) / values.length;
+  }
+
+  private weightedAverage(entries: Array<{ value: number; weight: number }>): number {
+    if (!entries.length) {
+      return 0;
+    }
+
+    const totalWeight = entries.reduce((sum, entry) => sum + Math.max(entry.weight, 0), 0);
+    if (totalWeight <= 0) {
+      return this.average(entries.map((entry) => entry.value));
+    }
+
+    return entries.reduce((sum, entry) => sum + entry.value * (Math.max(entry.weight, 0) / totalWeight), 0);
   }
 
   private overageMultiplier(overageModel: string): number {

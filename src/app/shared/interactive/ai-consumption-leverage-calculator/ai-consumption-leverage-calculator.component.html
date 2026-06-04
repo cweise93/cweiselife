@@ -120,143 +120,272 @@
             @if (step.label === 'Technical') {
               <section class="technical-workbench">
                 <div class="technical-workbench__intro">
-                  <span class="technical-workbench__icon">
-                    <mat-icon>deployed_code</mat-icon>
-                  </span>
-                  <div>
-                    <h5>4. Model catalog &amp; weights</h5>
-                    <p>Select models, set deployment quantities, routing roles, and weighted technical attributes.</p>
-                  </div>
+                  <span class="technical-workbench__eyebrow">Model catalog &amp; weights</span>
+                  <p>Expand a model to tune deployment, pricing, and weighted technical attributes inline.</p>
                 </div>
 
-                <div class="technical-layout">
-                  <div class="technical-model-column">
-                    @for (card of technicalModelCards(recordId); track card.id) {
-                      <div class="technical-model-card">
-                        <button
-                          class="technical-model-card__trigger"
-                          type="button"
-                          (click)="openCard(recordId, card, $event)"
-                        >
-                          <div class="technical-model-card__topline">
+                <mat-accordion class="technical-accordion">
+                  @for (card of technicalModelCards(recordId); track card.id) {
+                    <mat-expansion-panel
+                      class="technical-panel"
+                      [expanded]="technicalPanelExpanded(recordId, card)"
+                      (opened)="setTechnicalPanelExpanded(recordId, card.modelGroupId ?? null)"
+                      (closed)="setTechnicalPanelExpanded(recordId, null)"
+                    >
+                      <mat-expansion-panel-header>
+                        <mat-panel-title>
+                          <div class="technical-panel__title">
                             <span class="technical-model-card__range">{{ technicalDeploymentRange(recordId, card) }}</span>
+                            <strong>{{ card.title }}</strong>
+                          </div>
+                        </mat-panel-title>
+                        <mat-panel-description>
+                          <div class="technical-panel__summary">
                             <span class="technical-model-card__badge" [attr.data-role]="technicalRoleTone(recordId, card)">
                               {{ technicalRoleLabel(recordId, card) }}
                             </span>
+                            <span>{{ technicalDeploymentSummary(recordId, card) }}</span>
+                            <span>{{ technicalModelNote(recordId, card) }}</span>
+                          </div>
+                        </mat-panel-description>
+                      </mat-expansion-panel-header>
+
+                      <div class="technical-panel__body">
+                        <div class="technical-panel__controls">
+                          <mat-form-field appearance="outline">
+                            <mat-label>Model</mat-label>
+                            <mat-select
+                              [value]="technicalModelFieldValue(recordId, card, 'modelId')"
+                              (selectionChange)="updateTechnicalModelValue(recordId, card, 'modelId', $event.value)"
+                            >
+                              @for (option of technicalModelFieldOptions(recordId, 'modelId'); track option.value) {
+                                <mat-option [value]="option.value">{{ option.label }}</mat-option>
+                              }
+                            </mat-select>
+                          </mat-form-field>
+
+                          <mat-form-field appearance="outline">
+                            <mat-label>Routing role</mat-label>
+                            <mat-select
+                              [value]="technicalModelFieldValue(recordId, card, 'routingRole')"
+                              (selectionChange)="updateTechnicalModelValue(recordId, card, 'routingRole', $event.value)"
+                            >
+                              @for (option of technicalModelFieldOptions(recordId, 'routingRole'); track option.value) {
+                                <mat-option [value]="option.value">{{ option.label }}</mat-option>
+                              }
+                            </mat-select>
+                          </mat-form-field>
+
+                          <mat-form-field appearance="outline">
+                            <mat-label>Deployment quantity</mat-label>
+                            <input
+                              matInput
+                              type="number"
+                              [value]="technicalModelFieldValue(recordId, card, 'deploymentQuantity')"
+                              (input)="updateTechnicalModelNumber(recordId, card, 'deploymentQuantity', $any($event.target).value)"
+                            />
+                          </mat-form-field>
+
+                          <mat-form-field appearance="outline">
+                            <mat-label>Deployment range</mat-label>
+                            <input
+                              matInput
+                              [value]="technicalModelFieldValue(recordId, card, 'deploymentRangeLabel')"
+                              (input)="updateTechnicalModelValue(recordId, card, 'deploymentRangeLabel', $any($event.target).value)"
+                            />
+                          </mat-form-field>
+
+                          <mat-form-field appearance="outline">
+                            <mat-label>Cost source</mat-label>
+                            <mat-select
+                              [value]="technicalModelFieldValue(recordId, card, 'costSource')"
+                              (selectionChange)="updateTechnicalModelValue(recordId, card, 'costSource', $event.value)"
+                            >
+                              @for (option of technicalModelFieldOptions(recordId, 'costSource'); track option.value) {
+                                <mat-option [value]="option.value">{{ option.label }}</mat-option>
+                              }
+                            </mat-select>
+                          </mat-form-field>
+
+                          <mat-form-field appearance="outline">
+                            <mat-label>Fallback target</mat-label>
+                            <mat-select
+                              [value]="technicalModelFieldValue(recordId, card, 'fallbackTarget')"
+                              (selectionChange)="updateTechnicalModelValue(recordId, card, 'fallbackTarget', $event.value)"
+                            >
+                              @for (option of technicalModelFieldOptions(recordId, 'fallbackTarget'); track option.value) {
+                                <mat-option [value]="option.value">{{ option.label }}</mat-option>
+                              }
+                            </mat-select>
+                          </mat-form-field>
+                        </div>
+
+                        <div class="technical-panel__inline-bars">
+                          <div class="technical-inline-slider">
+                            <div class="technical-inline-slider__label-row">
+                              <span>Usage allocation</span>
+                              <strong>{{ technicalUsagePercent(recordId, card) }}%</strong>
+                            </div>
+                            <mat-slider min="0" max="100" step="1" discrete>
+                              <input
+                                matSliderThumb
+                                [value]="technicalUsageSliderValue(recordId, card)"
+                                (valueChange)="updateTechnicalModelValue(recordId, card, 'usagePercent', $event / 100)"
+                              />
+                            </mat-slider>
                           </div>
 
-                          <div class="technical-model-card__title-row">
-                            <strong>{{ card.title }}</strong>
-                          </div>
+                          <mat-checkbox
+                            [checked]="!!technicalModelFieldValue(recordId, card, 'enabled')"
+                            (change)="updateTechnicalModelValue(recordId, card, 'enabled', $event.checked)"
+                          >
+                            Include this model in the estimate
+                          </mat-checkbox>
 
-                          <p class="technical-model-card__meta">{{ technicalDeploymentSummary(recordId, card) }}</p>
-                          <p class="technical-model-card__note">{{ technicalModelNote(recordId, card) }}</p>
-                        </button>
-
-                        <div class="technical-model-card__actions">
                           @if (card.removable) {
                             <button
-                              mat-icon-button
+                              mat-stroked-button
                               color="warn"
                               type="button"
-                              aria-label="Remove {{ card.title }}"
                               (click)="removeCardItem(recordId, card, $event)"
                             >
                               <mat-icon>delete</mat-icon>
+                              Remove model
                             </button>
                           }
+                        </div>
 
-                          <button
-                            mat-icon-button
-                            color="primary"
-                            type="button"
-                            aria-label="Configure {{ card.title }}"
-                            (click)="openCard(recordId, card, $event)"
-                          >
-                            <mat-icon>settings</mat-icon>
-                          </button>
+                        <div class="technical-panel__pricing">
+                          <mat-form-field appearance="outline">
+                            <mat-label>Input token price</mat-label>
+                            <input
+                              matInput
+                              type="number"
+                              [value]="technicalModelFieldValue(recordId, card, 'inputTokenPrice')"
+                              (input)="updateTechnicalModelNumber(recordId, card, 'inputTokenPrice', $any($event.target).value)"
+                            />
+                            <span matTextSuffix>$ / 1M</span>
+                          </mat-form-field>
+
+                          <mat-form-field appearance="outline">
+                            <mat-label>Output token price</mat-label>
+                            <input
+                              matInput
+                              type="number"
+                              [value]="technicalModelFieldValue(recordId, card, 'outputTokenPrice')"
+                              (input)="updateTechnicalModelNumber(recordId, card, 'outputTokenPrice', $any($event.target).value)"
+                            />
+                            <span matTextSuffix>$ / 1M</span>
+                          </mat-form-field>
+
+                          <mat-form-field appearance="outline">
+                            <mat-label>Cached input price</mat-label>
+                            <input
+                              matInput
+                              type="number"
+                              [value]="technicalModelFieldValue(recordId, card, 'cachedInputTokenPrice')"
+                              (input)="updateTechnicalModelNumber(recordId, card, 'cachedInputTokenPrice', $any($event.target).value)"
+                            />
+                            <span matTextSuffix>$ / 1M</span>
+                          </mat-form-field>
+                        </div>
+
+                        <mat-form-field appearance="outline" class="technical-panel__notes">
+                          <mat-label>Primary use cases</mat-label>
+                          <textarea
+                            matInput
+                            rows="3"
+                            [value]="technicalModelFieldValue(recordId, card, 'primaryUseCases')"
+                            (input)="updateTechnicalModelValue(recordId, card, 'primaryUseCases', $any($event.target).value)"
+                          ></textarea>
+                        </mat-form-field>
+
+                        <div class="technical-metric-sections">
+                          @for (section of technicalMetricSections; track section.key) {
+                            <section class="technical-metric-section">
+                              <header class="technical-metric-section__header">
+                                <span class="technical-metric-section__eyebrow">{{ section.title }}</span>
+                              </header>
+
+                              <div class="technical-metric-section__rows">
+                                @for (fieldKey of section.fields; track fieldKey) {
+                                  <div class="technical-slider-card">
+                                    <div class="technical-slider-card__header">
+                                      <div>
+                                        <strong>{{ technicalMetricLabel(fieldKey) }}</strong>
+                                        <p>Value and weight update the blended model fit in real time.</p>
+                                      </div>
+                                      <span>{{ technicalMetricScoreLabel(recordId, card, fieldKey) }}</span>
+                                    </div>
+
+                                    <div class="technical-slider-card__track">
+                                      <div class="technical-inline-slider">
+                                        <div class="technical-inline-slider__label-row">
+                                          <span>Value</span>
+                                          <strong>{{ technicalMetricValuePercent(recordId, card, fieldKey) }}%</strong>
+                                        </div>
+                                        <mat-slider min="0" max="100" step="1" discrete>
+                                          <input
+                                            matSliderThumb
+                                            [value]="technicalMetricValuePercent(recordId, card, fieldKey)"
+                                            (valueChange)="updateTechnicalMetricValue(recordId, card, fieldKey, $event)"
+                                          />
+                                        </mat-slider>
+                                      </div>
+
+                                      <div class="technical-inline-slider">
+                                        <div class="technical-inline-slider__label-row">
+                                          <span>Weight</span>
+                                          <strong>{{ technicalMetricWeightPercent(recordId, card, fieldKey) }}%</strong>
+                                        </div>
+                                        <mat-slider min="0" max="100" step="1" discrete>
+                                          <input
+                                            matSliderThumb
+                                            [value]="technicalMetricWeightPercent(recordId, card, fieldKey)"
+                                            (valueChange)="updateTechnicalMetricWeight(recordId, card, fieldKey, $event)"
+                                          />
+                                        </mat-slider>
+                                      </div>
+                                    </div>
+                                  </div>
+                                }
+                              </div>
+                            </section>
+                          }
                         </div>
                       </div>
-                    }
+                    </mat-expansion-panel>
+                  }
+                </mat-accordion>
 
-                    @if (technicalAddModelCard(recordId); as addCard) {
-                      <button class="technical-add-card" type="button" (click)="openCard(recordId, addCard, $event)">
-                        <span class="technical-add-card__icon">
-                          <mat-icon>add</mat-icon>
-                        </span>
-                        <span class="technical-add-card__copy">
-                          <strong>{{ addCard.title }}</strong>
-                          <span>Browse catalog</span>
-                        </span>
-                      </button>
-                    }
-                  </div>
-
-                  <div class="technical-preview">
-                    <div class="technical-preview__header">
-                      <strong>{{ technicalPreviewCardTitle(recordId) }} preview</strong>
-                      @if (technicalPreviewCard(recordId); as previewCard) {
-                        <button
-                          mat-icon-button
-                          color="primary"
-                          type="button"
-                          aria-label="Configure {{ previewCard.title }}"
-                          (click)="openCard(recordId, previewCard, $event)"
-                        >
-                          <mat-icon>settings</mat-icon>
-                        </button>
-                      }
-                    </div>
-
-                    <div class="technical-preview__tabs">
-                      @for (card of technicalPreviewCards(recordId); track card.id) {
-                        <button
-                          class="technical-preview__tab"
-                          type="button"
-                          [class.technical-preview__tab--active]="technicalPreviewGroup(recordId) === card.cardKey"
-                          (click)="setTechnicalPreviewGroup(recordId, $any(card.cardKey))"
-                        >
-                          <mat-icon>{{ card.icon }}</mat-icon>
-                          <span>{{ card.title }}</span>
-                        </button>
-                      }
-                    </div>
-
-                    <div class="technical-preview__metrics">
-                      @for (attribute of technicalPreviewAttributes(recordId); track attribute.label) {
-                        <div class="technical-metric-row">
-                          <span class="technical-metric-row__label">{{ attribute.label }}</span>
-                          <div class="technical-metric-row__track">
-                            <span class="technical-metric-row__line"></span>
-                            <span class="technical-metric-row__fill" [style.width]="technicalScoreTrack(attribute.score)"></span>
-                            <span class="technical-metric-row__dot" [style.left]="technicalScoreTrack(attribute.score)"></span>
-                          </div>
-                          <span class="technical-metric-row__value">{{ attribute.scoreLabel }}</span>
-                        </div>
-                      }
-                    </div>
-
-                    @if (technicalPreviewCard(recordId); as previewCard) {
-                      <button
-                        class="technical-preview__more"
-                        type="button"
-                        (click)="openCard(recordId, previewCard, $event)"
-                      >
-                        + {{ technicalRemainingAttributes(recordId) }} more attributes
-                      </button>
-                    }
-                  </div>
-                </div>
+                @if (technicalAddModelCard(recordId); as addCard) {
+                  <button class="technical-add-card technical-add-card--full" type="button" (click)="addTechnicalModel(recordId)">
+                    <span class="technical-add-card__icon">
+                      <mat-icon>add</mat-icon>
+                    </span>
+                    <span class="technical-add-card__copy">
+                      <strong>{{ addCard.title }}</strong>
+                      <span>Browse catalog and add another deployment group</span>
+                    </span>
+                  </button>
+                }
 
                 @if (technicalSecondaryCards(recordId).length) {
-                  <div class="capability-grid capability-grid--technical-secondary">
-                    @for (card of technicalSecondaryCards(recordId); track card.id) {
-                      <ng-container
-                        [ngTemplateOutlet]="capabilityCard"
-                        [ngTemplateOutletContext]="{ card: card, recordId: recordId }"
-                      />
-                    }
-                  </div>
+                  <section class="technical-secondary">
+                    <div class="technical-secondary__intro">
+                      <span class="technical-secondary__eyebrow">Advanced settings</span>
+                      <p>Keep allocation, fallback, and contract-control assumptions available without letting them rival the active model workbench.</p>
+                    </div>
+
+                    <div class="capability-grid capability-grid--technical-secondary">
+                      @for (card of technicalSecondaryCards(recordId); track card.id) {
+                        <ng-container
+                          [ngTemplateOutlet]="capabilityCard"
+                          [ngTemplateOutletContext]="{ card: card, recordId: recordId }"
+                        />
+                      }
+                    </div>
+                  </section>
                 }
               </section>
             } @else {

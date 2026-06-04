@@ -184,6 +184,7 @@ const FIELD_LABEL_OVERRIDES: Record<string, string> = {
   crossRegionReplicationRequired: 'Cross-region replication',
   securityPackageEnabled: 'Security package enabled',
   adminOverheadPercent: 'Admin overhead',
+  internalAdminResourceCost: 'Internal admin resource cost',
   auditLoggingCost: 'Audit logging cost',
   policyGovernanceCost: 'Policy and governance cost',
   identityIntegrationCost: 'Identity integration cost',
