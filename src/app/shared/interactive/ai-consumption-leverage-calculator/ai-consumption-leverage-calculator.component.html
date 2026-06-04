@@ -58,7 +58,7 @@
     <div class="input-grid input-grid--minimum">
       <mat-form-field appearance="outline">
         <mat-label>Vendor</mat-label>
-        <mat-select [value]="state.provider" (selectionChange)="updateEnum(recordId, 'provider', $event.value)">
+        <mat-select [value]="state.values['vendorId']" (selectionChange)="updateQuickEstimate(recordId, 'vendorId', $event.value)">
           @for (provider of providers; track provider.id) {
             <mat-option [value]="provider.id">{{ provider.label }}</mat-option>
           }
@@ -67,7 +67,10 @@
 
       <mat-form-field appearance="outline">
         <mat-label>Contract structure</mat-label>
-        <mat-select [value]="state.contractStructure" (selectionChange)="updateEnum(recordId, 'contractStructure', $event.value)">
+        <mat-select
+          [value]="state.values['contractStructure']"
+          (selectionChange)="updateQuickEstimate(recordId, 'contractStructure', $event.value)"
+        >
           @for (option of contractStructureOptions; track option.value) {
             <mat-option [value]="option.value">{{ option.label }}</mat-option>
           }
@@ -76,7 +79,7 @@
 
       <mat-form-field appearance="outline">
         <mat-label>Usage profile</mat-label>
-        <mat-select [value]="state.usageProfile" (selectionChange)="updateEnum(recordId, 'usageProfile', $event.value)">
+        <mat-select [value]="state.values['usageProfile']" (selectionChange)="updateQuickEstimate(recordId, 'usageProfile', $event.value)">
           @for (option of usageProfileOptions; track option.value) {
             <mat-option [value]="option.value">{{ option.label }}</mat-option>
           }
@@ -85,68 +88,186 @@
     </div>
 
     <mat-stepper class="contract-stepper" [selectedIndex]="stepIndex(recordId)" (selectionChange)="setStep(recordId, $event.selectedIndex)">
-      @for (step of stepDefinitions; track $index) {
-        <mat-step [completed]="stepIndex(recordId) > $index" [editable]="true">
+      @for (step of stepDefinitions; track step.label; let stepNumber = $index) {
+        <mat-step [completed]="stepIndex(recordId) > stepNumber" [editable]="true">
           <ng-template matStepLabel>
             <span class="step-label">
-              <span class="step-label__index">{{ $index + 1 }}</span>
+              <span class="step-label__index">{{ stepNumber + 1 }}</span>
               <span class="step-label__title">{{ step.label }}</span>
             </span>
           </ng-template>
 
-            <div class="step-surface">
-              <div class="panel-head">
-                <div>
-                  <p class="panel-eyebrow">{{ step.label }}</p>
-                  <h4>{{ step.title }}</h4>
-                </div>
+          <div class="step-surface">
+            <div class="panel-head">
+              <div>
+                <p class="panel-eyebrow">{{ step.label }}</p>
+                <h4>{{ step.title }}</h4>
+                <p class="panel-subtitle">{{ step.description }}</p>
               </div>
+            </div>
 
-            @if ($index === 0) {
-              <div class="capability-grid">
-                @for (capability of capabilities; track capability.key) {
-                  <div class="capability-option" [class.capability-option--selected]="isCapabilitySelected(recordId, capability.key)">
-                    <div class="capability-option__header">
-                      <mat-checkbox
-                        [checked]="isCapabilitySelected(recordId, capability.key)"
-                        (change)="onCapabilityToggle(recordId, capability, $event.checked)"
-                        color="primary"
-                      >
-                        <span class="capability-option__label">
-                          <mat-icon>{{ capability.icon }}</mat-icon>
-                          {{ capability.label }}
+            @if (validationIssues(recordId, step.label).length) {
+              <div class="validation-list" role="status" aria-live="polite">
+                @for (issue of validationIssues(recordId, step.label); track issue.id) {
+                  <p class="validation-item" [class.validation-item--error]="issue.severity === 'error'">
+                    <mat-icon>{{ issue.severity === 'error' ? 'error' : 'warning' }}</mat-icon>
+                    <span>{{ issue.message }}</span>
+                  </p>
+                }
+              </div>
+            }
+
+            @if (step.label === 'Technical') {
+              <section class="technical-workbench">
+                <div class="technical-workbench__intro">
+                  <span class="technical-workbench__icon">
+                    <mat-icon>deployed_code</mat-icon>
+                  </span>
+                  <div>
+                    <h5>4. Model catalog &amp; weights</h5>
+                    <p>Select models, set deployment quantities, routing roles, and weighted technical attributes.</p>
+                  </div>
+                </div>
+
+                <div class="technical-layout">
+                  <div class="technical-model-column">
+                    @for (card of technicalModelCards(recordId); track card.id) {
+                      <div class="technical-model-card">
+                        <button
+                          class="technical-model-card__trigger"
+                          type="button"
+                          (click)="openCard(recordId, card, $event)"
+                        >
+                          <div class="technical-model-card__topline">
+                            <span class="technical-model-card__range">{{ technicalDeploymentRange(recordId, card) }}</span>
+                            <span class="technical-model-card__badge" [attr.data-role]="technicalRoleTone(recordId, card)">
+                              {{ technicalRoleLabel(recordId, card) }}
+                            </span>
+                          </div>
+
+                          <div class="technical-model-card__title-row">
+                            <strong>{{ card.title }}</strong>
+                          </div>
+
+                          <p class="technical-model-card__meta">{{ technicalDeploymentSummary(recordId, card) }}</p>
+                          <p class="technical-model-card__note">{{ technicalModelNote(recordId, card) }}</p>
+                        </button>
+
+                        <div class="technical-model-card__actions">
+                          @if (card.removable) {
+                            <button
+                              mat-icon-button
+                              color="warn"
+                              type="button"
+                              aria-label="Remove {{ card.title }}"
+                              (click)="removeCardItem(recordId, card, $event)"
+                            >
+                              <mat-icon>delete</mat-icon>
+                            </button>
+                          }
+
+                          <button
+                            mat-icon-button
+                            color="primary"
+                            type="button"
+                            aria-label="Configure {{ card.title }}"
+                            (click)="openCard(recordId, card, $event)"
+                          >
+                            <mat-icon>settings</mat-icon>
+                          </button>
+                        </div>
+                      </div>
+                    }
+
+                    @if (technicalAddModelCard(recordId); as addCard) {
+                      <button class="technical-add-card" type="button" (click)="openCard(recordId, addCard, $event)">
+                        <span class="technical-add-card__icon">
+                          <mat-icon>add</mat-icon>
                         </span>
-                      </mat-checkbox>
+                        <span class="technical-add-card__copy">
+                          <strong>{{ addCard.title }}</strong>
+                          <span>Browse catalog</span>
+                        </span>
+                      </button>
+                    }
+                  </div>
 
-                      @if (isCapabilitySelected(recordId, capability.key)) {
+                  <div class="technical-preview">
+                    <div class="technical-preview__header">
+                      <strong>{{ technicalPreviewCardTitle(recordId) }} preview</strong>
+                      @if (technicalPreviewCard(recordId); as previewCard) {
                         <button
                           mat-icon-button
                           color="primary"
                           type="button"
-                          aria-label="Configure {{ capability.label }}"
-                          (click)="editCapability(recordId, capability, $event)"
+                          aria-label="Configure {{ previewCard.title }}"
+                          (click)="openCard(recordId, previewCard, $event)"
                         >
                           <mat-icon>settings</mat-icon>
                         </button>
                       }
                     </div>
 
-                    <span class="capability-option__description">{{ capability.description }}</span>
+                    <div class="technical-preview__tabs">
+                      @for (card of technicalPreviewCards(recordId); track card.id) {
+                        <button
+                          class="technical-preview__tab"
+                          type="button"
+                          [class.technical-preview__tab--active]="technicalPreviewGroup(recordId) === card.cardKey"
+                          (click)="setTechnicalPreviewGroup(recordId, $any(card.cardKey))"
+                        >
+                          <mat-icon>{{ card.icon }}</mat-icon>
+                          <span>{{ card.title }}</span>
+                        </button>
+                      }
+                    </div>
+
+                    <div class="technical-preview__metrics">
+                      @for (attribute of technicalPreviewAttributes(recordId); track attribute.label) {
+                        <div class="technical-metric-row">
+                          <span class="technical-metric-row__label">{{ attribute.label }}</span>
+                          <div class="technical-metric-row__track">
+                            <span class="technical-metric-row__line"></span>
+                            <span class="technical-metric-row__fill" [style.width]="technicalScoreTrack(attribute.score)"></span>
+                            <span class="technical-metric-row__dot" [style.left]="technicalScoreTrack(attribute.score)"></span>
+                          </div>
+                          <span class="technical-metric-row__value">{{ attribute.scoreLabel }}</span>
+                        </div>
+                      }
+                    </div>
+
+                    @if (technicalPreviewCard(recordId); as previewCard) {
+                      <button
+                        class="technical-preview__more"
+                        type="button"
+                        (click)="openCard(recordId, previewCard, $event)"
+                      >
+                        + {{ technicalRemainingAttributes(recordId) }} more attributes
+                      </button>
+                    }
+                  </div>
+                </div>
+
+                @if (technicalSecondaryCards(recordId).length) {
+                  <div class="capability-grid capability-grid--technical-secondary">
+                    @for (card of technicalSecondaryCards(recordId); track card.id) {
+                      <ng-container
+                        [ngTemplateOutlet]="capabilityCard"
+                        [ngTemplateOutletContext]="{ card: card, recordId: recordId }"
+                      />
+                    }
                   </div>
                 }
+              </section>
+            } @else {
+              <div class="capability-grid">
+                @for (card of cardsFor(recordId, step.label); track card.id) {
+                  <ng-container
+                    [ngTemplateOutlet]="capabilityCard"
+                    [ngTemplateOutletContext]="{ card: card, recordId: recordId }"
+                  />
+                }
               </div>
-            }
-
-            @if ($index === 1) {
-              <div class="step-blank" aria-hidden="true"></div>
-            }
-
-            @if ($index === 2) {
-              <div class="step-blank" aria-hidden="true"></div>
-            }
-
-            @if ($index === 3) {
-              <div class="step-blank" aria-hidden="true"></div>
             }
 
             <div class="step-actions">
@@ -180,4 +301,74 @@
       }
     </div>
   }
+</ng-template>
+
+<ng-template #capabilityCard let-card="card" let-recordId="recordId">
+  <div
+    class="capability-option"
+    [class.capability-option--selected]="card.selected"
+    [class.capability-option--action]="card.kind === 'action'"
+  >
+    <div class="capability-option__header">
+      @if (card.optional) {
+        <mat-checkbox
+          [checked]="card.selected"
+          (change)="onCardToggle(recordId, card, $event.checked)"
+          color="primary"
+        >
+          <span class="capability-option__label">
+            <mat-icon>{{ card.icon }}</mat-icon>
+            {{ card.title }}
+          </span>
+        </mat-checkbox>
+      } @else {
+        <button class="card-trigger" type="button" (click)="openCard(recordId, card, $event)">
+          <span class="capability-option__label">
+            <mat-icon>{{ card.icon }}</mat-icon>
+            {{ card.title }}
+          </span>
+        </button>
+      }
+
+      <div class="capability-option__actions">
+        @if (card.removable) {
+          <button
+            mat-icon-button
+            color="warn"
+            type="button"
+            aria-label="Remove {{ card.title }}"
+            (click)="removeCardItem(recordId, card, $event)"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        }
+
+        @if (card.detailAvailable && card.kind !== 'action') {
+          <button
+            mat-icon-button
+            color="primary"
+            type="button"
+            aria-label="Configure {{ card.title }}"
+            (click)="openCard(recordId, card, $event)"
+          >
+            <mat-icon>{{ card.optional && !card.selected ? 'add' : 'settings' }}</mat-icon>
+          </button>
+        } @else if (card.kind === 'action') {
+          <button
+            mat-icon-button
+            color="primary"
+            type="button"
+            aria-label="Open {{ card.title }}"
+            (click)="openCard(recordId, card, $event)"
+          >
+            <mat-icon>add</mat-icon>
+          </button>
+        }
+      </div>
+    </div>
+
+    <p class="capability-option__helper">{{ card.helperLabel }}</p>
+    <p class="capability-option__current">{{ card.currentValueLabel }}</p>
+    <p class="capability-option__impact">{{ card.impactLabel }}</p>
+  </div>
 </ng-template>

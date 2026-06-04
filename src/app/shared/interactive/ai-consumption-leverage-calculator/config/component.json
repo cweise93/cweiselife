@@ -1,0 +1,593 @@
+{
+  "calculatorConfigCards": [
+    {
+      "level": "Core",
+      "title": "Vendor",
+      "subtitle": "Who is providing the commercial offer",
+      "icon": "business",
+      "description": "Establishes provider-specific defaults, supported contract structures, pricing logic, and sourcing metadata.",
+      "fields": [
+        "vendorId",
+        "vendorDisplayName",
+        "pricingSourceUrls",
+        "lastVerifiedDate",
+        "supportedContractStructures",
+        "supportedCapabilities",
+        "defaultRegion",
+        "defaultCurrency",
+        "customPricingOverrideEnabled"
+      ]
+    },
+    {
+      "level": "Core",
+      "title": "Contract structure",
+      "subtitle": "How the deal is commercially shaped",
+      "icon": "description",
+      "description": "Determines whether the estimate behaves like seats, API usage, provisioned throughput, or a hybrid contract.",
+      "fields": [
+        "contractStructure",
+        "billingModel",
+        "termMonths",
+        "annualCommitment",
+        "minimumSpend",
+        "includedCapacity",
+        "overageModel",
+        "renewalAssumption"
+      ]
+    },
+    {
+      "level": "Core",
+      "title": "Usage profile",
+      "subtitle": "Starting workload pattern",
+      "icon": "bar_chart",
+      "description": "Seeds the estimator with a light, standard, heavy, or custom baseline so the first estimate is credible quickly.",
+      "fields": [
+        "usageProfile",
+        "defaultPromptRate",
+        "defaultInputTokensPerPrompt",
+        "defaultOutputTokensPerPrompt",
+        "defaultWorkdaysPerYear",
+        "defaultActiveUserRate",
+        "customProfileEnabled"
+      ]
+    },
+    {
+      "level": "Core",
+      "title": "Deployment mode",
+      "subtitle": "Where the workload primarily runs",
+      "icon": "cloud_queue",
+      "description": "Sets the initial hosting model and influences downstream infrastructure cost assumptions.",
+      "fields": [
+        "deploymentMode",
+        "hostedPercent",
+        "hybridPercent",
+        "localPercent",
+        "fallbackMode",
+        "regionStrategy"
+      ]
+    },
+    {
+      "level": "Environment",
+      "title": "Hosting",
+      "subtitle": "Primary hosting assumption",
+      "icon": "cloud",
+      "description": "Represents whether the workload is vendor-hosted, tenant-isolated, private hosted, or comparable hosted patterns.",
+      "fields": [
+        "hostingType",
+        "singleTenantRequired",
+        "multiTenantAllowed",
+        "managedServiceLevel",
+        "vendorHostedIncluded",
+        "hostedUpliftPercent"
+      ]
+    },
+    {
+      "level": "Environment",
+      "title": "Cloud option",
+      "subtitle": "Cloud provider / managed platform path",
+      "icon": "cloud_sync",
+      "description": "Captures Azure-hosted, vendor-native hosted, GCP-hosted, AWS-hosted, or none, depending on deal shape.",
+      "fields": [
+        "cloudProvider",
+        "cloudSku",
+        "managedPlatformFee",
+        "cloudCommitmentCredit",
+        "region",
+        "cloudSupportTier"
+      ]
+    },
+    {
+      "level": "Environment",
+      "title": "Provisioned throughput",
+      "subtitle": "Reserved performance capacity",
+      "icon": "speed",
+      "description": "Models capacity reservations used for predictable throughput rather than pure elastic pay-as-you-go usage.",
+      "fields": [
+        "throughputEnabled",
+        "throughputUnitType",
+        "unitsPurchased",
+        "unitCost",
+        "reservedHoursPerMonth",
+        "overflowRate",
+        "scalingBufferPercent"
+      ]
+    },
+    {
+      "level": "Environment",
+      "title": "Data residency",
+      "subtitle": "Region and residency constraints",
+      "icon": "public",
+      "description": "Applies regional deployment, sovereignty, and data-location assumptions that may affect pricing.",
+      "fields": [
+        "residencyRequired",
+        "allowedRegions",
+        "primaryRegion",
+        "secondaryRegion",
+        "residencyUpliftPercent",
+        "crossRegionReplicationRequired"
+      ]
+    },
+    {
+      "level": "Environment",
+      "title": "Security / admin overhead",
+      "subtitle": "Governance and policy cost layer",
+      "icon": "shield",
+      "description": "Prices the operational overhead associated with security controls, policy enforcement, logging, and admin management.",
+      "fields": [
+        "securityPackageEnabled",
+        "adminOverheadPercent",
+        "auditLoggingCost",
+        "policyGovernanceCost",
+        "identityIntegrationCost",
+        "securityReviewFrequency"
+      ]
+    },
+    {
+      "level": "Environment",
+      "title": "Hybrid / network",
+      "subtitle": "Connectivity and split execution model",
+      "icon": "hub",
+      "description": "Models the cost and behavior of routing work across hosted, local, on-prem, or cloud-adjacent infrastructure.",
+      "fields": [
+        "hybridEnabled",
+        "networkEgressCost",
+        "privateConnectivityCost",
+        "routingSplit",
+        "latencySensitiveTrafficPercent",
+        "hybridManagementOverhead"
+      ]
+    },
+    {
+      "level": "Users",
+      "title": "Power users group",
+      "subtitle": "Highest-intensity usage cohort",
+      "icon": "person",
+      "description": "Defines a high-consumption user cohort with heavier usage, longer prompts, and stronger model needs.",
+      "fields": [
+        "groupName",
+        "rangeLabel",
+        "userCount",
+        "intensity",
+        "promptsPerUserPerDay",
+        "inputTokensPerPrompt",
+        "outputTokensPerPrompt",
+        "activeDaysPerYear",
+        "modelAssignment",
+        "tokenAllowancePerUser",
+        "toolUseRate"
+      ]
+    },
+    {
+      "level": "Users",
+      "title": "Standard users group",
+      "subtitle": "Mid-range steady usage cohort",
+      "icon": "person_outline",
+      "description": "Defines the mainstream user population with regular but not extreme usage assumptions.",
+      "fields": [
+        "groupName",
+        "rangeLabel",
+        "userCount",
+        "intensity",
+        "promptsPerUserPerDay",
+        "inputTokensPerPrompt",
+        "outputTokensPerPrompt",
+        "activeDaysPerYear",
+        "modelAssignment",
+        "tokenAllowancePerUser",
+        "toolUseRate"
+      ]
+    },
+    {
+      "level": "Users",
+      "title": "Light users group",
+      "subtitle": "Lower-intensity usage cohort",
+      "icon": "groups",
+      "description": "Defines occasional or low-depth users so the estimate is not distorted by averaging everyone together.",
+      "fields": [
+        "groupName",
+        "rangeLabel",
+        "userCount",
+        "intensity",
+        "promptsPerUserPerDay",
+        "inputTokensPerPrompt",
+        "outputTokensPerPrompt",
+        "activeDaysPerYear",
+        "modelAssignment",
+        "tokenAllowancePerUser",
+        "toolUseRate"
+      ]
+    },
+    {
+      "level": "Users",
+      "title": "Add user group",
+      "subtitle": "Create another usage tier",
+      "icon": "add_circle",
+      "description": "Lets the user define additional cohorts such as contractors, analysts, executives, developers, or seasonal users.",
+      "fields": [
+        "groupName",
+        "startIndex",
+        "endIndex",
+        "userCount",
+        "usagePattern",
+        "departmentLabel",
+        "modelAssignment",
+        "tokenAllowanceStrategy",
+        "notes"
+      ]
+    },
+    {
+      "level": "Users",
+      "title": "Token grant policy",
+      "subtitle": "How usage is governed per user or group",
+      "icon": "token",
+      "description": "Defines whether token allowances are unlimited, soft-capped, hard-capped, pooled, or role-based.",
+      "fields": [
+        "grantPolicy",
+        "grantUnit",
+        "grantAmount",
+        "resetCycle",
+        "poolingEnabled",
+        "overageBehavior",
+        "unusedCarryoverPolicy"
+      ]
+    },
+    {
+      "level": "Users",
+      "title": "Activity assumptions",
+      "subtitle": "How often users actually consume",
+      "icon": "schedule",
+      "description": "Separates assigned users from active users and models real consumption cadence.",
+      "fields": [
+        "activeUserPercent",
+        "activeDaysPerMonth",
+        "seasonalityFactor",
+        "peakPeriodMultiplier",
+        "idlePeriodMultiplier",
+        "adoptionRampMonths"
+      ]
+    },
+    {
+      "level": "Technical",
+      "title": "Model deployment group",
+      "subtitle": "A deployed or assigned model group",
+      "icon": "smart_toy",
+      "description": "Represents a model in the contract mix, including quantity, routing role, and share of use.",
+      "fields": [
+        "modelId",
+        "modelLabel",
+        "deploymentRangeLabel",
+        "deploymentQuantity",
+        "routingRole",
+        "usagePercent",
+        "primaryUseCases",
+        "fallbackTarget",
+        "costSource",
+        "enabled"
+      ]
+    },
+    {
+      "level": "Technical",
+      "title": "Add model",
+      "subtitle": "Add another model to the contract mix",
+      "icon": "add_box",
+      "description": "Expands the catalog so multiple models can share traffic, roles, or fallback behavior.",
+      "fields": [
+        "modelCatalogSelection",
+        "deploymentQuantity",
+        "usagePercent",
+        "roleTag",
+        "fallbackOrder",
+        "notes"
+      ]
+    },
+    {
+      "level": "Technical",
+      "title": "Model usage allocation",
+      "subtitle": "Percent of total use assigned to a model",
+      "icon": "pie_chart",
+      "description": "Ensures the usage split across all active models equals 100% for the given contract.",
+      "fields": [
+        "usagePercent",
+        "enforceHundredPercentTotal",
+        "autoNormalize",
+        "overflowAssignment",
+        "manualPriorityOrder"
+      ]
+    },
+    {
+      "level": "Technical",
+      "title": "Fallback / escalation path",
+      "subtitle": "What happens when a model is not sufficient",
+      "icon": "alt_route",
+      "description": "Defines escalation to stronger models or fallback to cheaper models when policy, quality, or complexity requires it.",
+      "fields": [
+        "escalationEnabled",
+        "fallbackModelId",
+        "escalationThreshold",
+        "retryOnFailure",
+        "escalationPercent",
+        "humanReviewTrigger"
+      ]
+    },
+    {
+      "level": "Technical",
+      "title": "Performance",
+      "subtitle": "Quality and usefulness weighting group",
+      "icon": "track_changes",
+      "description": "Parent group for quality and task-fit parameters used to influence modeled cost realism and suitability.",
+      "fields": [
+        "taskPerformanceUsefulness",
+        "generalizationTaskTransfer",
+        "instructionAdherence",
+        "transparencyExplainability"
+      ]
+    },
+    {
+      "level": "Technical",
+      "title": "Cost efficiency",
+      "subtitle": "Efficiency and cost-shape weighting group",
+      "icon": "savings",
+      "description": "Parent group for attributes that materially influence practical cost beyond headline token pricing.",
+      "fields": [
+        "modelComplexitySophistication",
+        "inferenceCostEfficiency",
+        "latencyResponsiveness",
+        "workflowIntegrationEfficiency"
+      ]
+    },
+    {
+      "level": "Technical",
+      "title": "Reliability",
+      "subtitle": "Consistency and operational confidence weighting group",
+      "icon": "verified",
+      "description": "Parent group for the model’s resilience, repeatability, and production confidence profile.",
+      "fields": [
+        "robustnessReliability",
+        "stabilityConsistency",
+        "adaptabilityFineTunability"
+      ]
+    },
+    {
+      "level": "Technical",
+      "title": "Governance & risk",
+      "subtitle": "Compliance, fairness, and ownership weighting group",
+      "icon": "gpp_good",
+      "description": "Parent group for safety, fairness, explainability, and long-term operational responsibility.",
+      "fields": [
+        "biasFairnessSafety",
+        "operationalMaintenanceBurden",
+        "trainingAdaptationBurden"
+      ]
+    },
+    {
+      "level": "Technical",
+      "title": "Task performance / usefulness",
+      "subtitle": "Quality of usable answer",
+      "icon": "check_circle",
+      "description": "Compares whether the model reliably produces useful results for the intended work.",
+      "fields": [
+        "value",
+        "weight",
+        "benchmarkScore",
+        "threshold",
+        "notes"
+      ]
+    },
+    {
+      "level": "Technical",
+      "title": "Generalization / task transfer",
+      "subtitle": "Performance outside narrow examples",
+      "icon": "open_in_new",
+      "description": "Compares how well the model handles adjacent or unseen tasks without collapsing in usefulness.",
+      "fields": [
+        "value",
+        "weight",
+        "benchmarkScore",
+        "threshold",
+        "notes"
+      ]
+    },
+    {
+      "level": "Technical",
+      "title": "Instruction adherence",
+      "subtitle": "How well the model follows directions",
+      "icon": "rule",
+      "description": "Compares reliability in following formatting, tone, constraints, and requested structure.",
+      "fields": [
+        "value",
+        "weight",
+        "benchmarkScore",
+        "threshold",
+        "notes"
+      ]
+    },
+    {
+      "level": "Technical",
+      "title": "Transparency / explainability",
+      "subtitle": "Ability to justify outputs",
+      "icon": "visibility",
+      "description": "Compares how understandable, inspectable, and explainable outputs are in human terms.",
+      "fields": [
+        "value",
+        "weight",
+        "benchmarkScore",
+        "threshold",
+        "notes"
+      ]
+    },
+    {
+      "level": "Technical",
+      "title": "Model complexity / sophistication",
+      "subtitle": "Depth and computational sophistication",
+      "icon": "psychology",
+      "description": "Compares how advanced or computationally heavy the model is, which affects cost and suitability.",
+      "fields": [
+        "value",
+        "weight",
+        "benchmarkScore",
+        "threshold",
+        "notes"
+      ]
+    },
+    {
+      "level": "Technical",
+      "title": "Training / adaptation burden",
+      "subtitle": "Effort to adapt or specialize",
+      "icon": "build_circle",
+      "description": "Compares how much work, data, or expertise is required to tailor the model to the use case.",
+      "fields": [
+        "value",
+        "weight",
+        "benchmarkScore",
+        "threshold",
+        "notes"
+      ]
+    },
+    {
+      "level": "Technical",
+      "title": "Inference cost efficiency",
+      "subtitle": "Practical runtime cost efficiency",
+      "icon": "paid",
+      "description": "Compares cost efficiency during live use, including token efficiency and useful work per dollar.",
+      "fields": [
+        "value",
+        "weight",
+        "benchmarkScore",
+        "threshold",
+        "notes"
+      ]
+    },
+    {
+      "level": "Technical",
+      "title": "Scalability / throughput fit",
+      "subtitle": "Capacity under scale",
+      "icon": "trending_up",
+      "description": "Compares how well the model supports large user counts, traffic spikes, and enterprise throughput needs.",
+      "fields": [
+        "value",
+        "weight",
+        "benchmarkScore",
+        "threshold",
+        "notes"
+      ]
+    },
+    {
+      "level": "Technical",
+      "title": "Robustness / reliability",
+      "subtitle": "Performance under messy inputs",
+      "icon": "security",
+      "description": "Compares how the model behaves with noisy, incomplete, or adversarial inputs.",
+      "fields": [
+        "value",
+        "weight",
+        "benchmarkScore",
+        "threshold",
+        "notes"
+      ]
+    },
+    {
+      "level": "Technical",
+      "title": "Bias / fairness / safety",
+      "subtitle": "Fairness and safe behavior",
+      "icon": "balance",
+      "description": "Compares consistency and safety across contexts, groups, and edge cases.",
+      "fields": [
+        "value",
+        "weight",
+        "benchmarkScore",
+        "threshold",
+        "notes"
+      ]
+    },
+    {
+      "level": "Technical",
+      "title": "Adaptability / fine-tunability",
+      "subtitle": "Ease of evolving the model fit",
+      "icon": "tune",
+      "description": "Compares how easily the model can be tuned, redirected, or reused as requirements change.",
+      "fields": [
+        "value",
+        "weight",
+        "benchmarkScore",
+        "threshold",
+        "notes"
+      ]
+    },
+    {
+      "level": "Technical",
+      "title": "Latency / responsiveness",
+      "subtitle": "Response speed suitability",
+      "icon": "timer",
+      "description": "Compares how quickly the model returns usable results relative to workflow needs.",
+      "fields": [
+        "value",
+        "weight",
+        "benchmarkScore",
+        "threshold",
+        "notes"
+      ]
+    },
+    {
+      "level": "Technical",
+      "title": "Stability / consistency",
+      "subtitle": "Consistency under small changes",
+      "icon": "linear_scale",
+      "description": "Compares whether small input differences create predictable or erratic result changes.",
+      "fields": [
+        "value",
+        "weight",
+        "benchmarkScore",
+        "threshold",
+        "notes"
+      ]
+    },
+    {
+      "level": "Technical",
+      "title": "Operational maintenance burden",
+      "subtitle": "Ongoing ownership cost",
+      "icon": "engineering",
+      "description": "Compares the monitoring, retraining, governance, and support burden required to keep the model useful.",
+      "fields": [
+        "value",
+        "weight",
+        "benchmarkScore",
+        "threshold",
+        "notes"
+      ]
+    },
+    {
+      "level": "Technical",
+      "title": "Workflow integration efficiency",
+      "subtitle": "Fit inside real processes",
+      "icon": "integration_instructions",
+      "description": "Compares how naturally the model fits tools, routing, repeated tasks, and automation patterns.",
+      "fields": [
+        "value",
+        "weight",
+        "benchmarkScore",
+        "threshold",
+        "notes"
+      ]
+    }
+  ]
+}

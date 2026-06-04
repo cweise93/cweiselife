@@ -1,0 +1,1774 @@
+{
+  "version": "1.0.0",
+  "calculatorStateModel": {
+    "totals": [
+      "annualEstimate",
+      "monthlyEstimate",
+      "costPerUserPerMonth",
+      "includedCapacity",
+      "overageExposure",
+      "totalPromptsPerYear",
+      "totalInputTokensPerYear",
+      "totalOutputTokensPerYear",
+      "totalTokensPerYear",
+      "modeledSuitabilityScore",
+      "modeledCostRealismFactor"
+    ],
+    "derivedNodes": [
+      "seatCostAnnual",
+      "apiCostAnnual",
+      "throughputCostAnnual",
+      "cachingSavingsAnnual",
+      "connectorCostAnnual",
+      "securityOverheadAnnual",
+      "supportCostAnnual",
+      "residencyUpliftAnnual",
+      "hybridNetworkCostAnnual",
+      "userTierDemandAnnual",
+      "modelAllocationDemandAnnual",
+      "overageCostAnnual"
+    ]
+  },
+  "signalrWiring": {
+    "hubIntent": "broadcast estimator state deltas and recalculated totals to all subscribed calculator views",
+    "publishOnFieldChange": true,
+    "debounceMs": 200,
+    "messageTypes": [
+      "fieldChanged",
+      "sectionChanged",
+      "derivedNodeChanged",
+      "totalsChanged",
+      "validationChanged"
+    ],
+    "payloadShape": {
+      "fieldChanged": {
+        "fieldKey": "string",
+        "oldValue": "any",
+        "newValue": "any",
+        "level": "Core|Environment|Users|Technical",
+        "timestampUtc": "ISO-8601"
+      },
+      "totalsChanged": {
+        "annualEstimate": "number",
+        "monthlyEstimate": "number",
+        "costPerUserPerMonth": "number",
+        "includedCapacity": "number",
+        "overageExposure": "number",
+        "modeledSuitabilityScore": "number",
+        "modeledCostRealismFactor": "number"
+      }
+    }
+  },
+  "fields": [
+    {
+      "key": "vendorId",
+      "level": "Core",
+      "defaultValue": "openai",
+      "controlType": "select",
+      "mathematicalImpact": "Sets provider pricing defaults, supported contract structures, supported capabilities, and source metadata; no direct arithmetic by itself.",
+      "dependsOn": [],
+      "feeds": [
+        "contractStructure",
+        "supportedCapabilities",
+        "defaultRegion",
+        "defaultCurrency",
+        "pricingSourceUrls",
+        "lastVerifiedDate",
+        "inputTokenPrice",
+        "outputTokenPrice",
+        "cachedInputTokenPrice",
+        "seatPricePerUserPerMonth",
+        "throughputUnitCost"
+      ],
+      "affectsTotals": [
+        "annualEstimate",
+        "monthlyEstimate",
+        "includedCapacity",
+        "overageExposure"
+      ],
+      "signalrPublish": true
+    },
+    {
+      "key": "vendorDisplayName",
+      "level": "Core",
+      "defaultValue": "OpenAI",
+      "controlType": "text",
+      "mathematicalImpact": "Display-only label; no arithmetic impact.",
+      "dependsOn": ["vendorId"],
+      "feeds": [],
+      "affectsTotals": [],
+      "signalrPublish": false
+    },
+    {
+      "key": "pricingSourceUrls",
+      "level": "Core",
+      "defaultValue": [
+        "https://openai.com/api/pricing/"
+      ],
+      "controlType": "array<string>",
+      "mathematicalImpact": "Source metadata only; no arithmetic impact.",
+      "dependsOn": ["vendorId"],
+      "feeds": [],
+      "affectsTotals": [],
+      "signalrPublish": false
+    },
+    {
+      "key": "lastVerifiedDate",
+      "level": "Core",
+      "defaultValue": "2026-06-03",
+      "controlType": "date",
+      "mathematicalImpact": "Display and trust metadata only; no arithmetic impact.",
+      "dependsOn": ["vendorId"],
+      "feeds": [],
+      "affectsTotals": [],
+      "signalrPublish": false
+    },
+    {
+      "key": "supportedContractStructures",
+      "level": "Core",
+      "defaultValue": [
+        "workspaceSeats",
+        "usageBasedApi",
+        "provisionedThroughput",
+        "hybridEnterprise"
+      ],
+      "controlType": "array<string>",
+      "mathematicalImpact": "Visibility gating only; no direct arithmetic.",
+      "dependsOn": ["vendorId"],
+      "feeds": ["contractStructure"],
+      "affectsTotals": [],
+      "signalrPublish": false
+    },
+    {
+      "key": "supportedCapabilities",
+      "level": "Core",
+      "defaultValue": [
+        "workspaceSeats",
+        "apiAccess",
+        "provisionedThroughput",
+        "contextCaching",
+        "connectorsIntegrations",
+        "adminSecurityControls",
+        "prioritySupportSla",
+        "dataResidency"
+      ],
+      "controlType": "array<string>",
+      "mathematicalImpact": "Visibility gating only; determines which cost layers may apply.",
+      "dependsOn": ["vendorId"],
+      "feeds": [
+        "workspaceSeatsEnabled",
+        "apiAccessEnabled",
+        "provisionedThroughputEnabled",
+        "contextCachingEnabled",
+        "connectorsIntegrationsEnabled",
+        "adminSecurityControlsEnabled",
+        "prioritySupportSlaEnabled",
+        "dataResidencyEnabled"
+      ],
+      "affectsTotals": [],
+      "signalrPublish": false
+    },
+    {
+      "key": "defaultRegion",
+      "level": "Core",
+      "defaultValue": "us",
+      "controlType": "select",
+      "mathematicalImpact": "Feeds residency and regional uplift assumptions.",
+      "dependsOn": ["vendorId"],
+      "feeds": ["primaryRegion", "residencyUpliftPercent"],
+      "affectsTotals": ["annualEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "defaultCurrency",
+      "level": "Core",
+      "defaultValue": "USD",
+      "controlType": "select",
+      "mathematicalImpact": "Display/currency conversion layer; arithmetic impact only if FX support is added.",
+      "dependsOn": ["vendorId"],
+      "feeds": [],
+      "affectsTotals": [],
+      "signalrPublish": false
+    },
+    {
+      "key": "customPricingOverrideEnabled",
+      "level": "Core",
+      "defaultValue": false,
+      "controlType": "boolean",
+      "mathematicalImpact": "Switches provider defaults to manual pricing values; indirect arithmetic impact through overridden fields.",
+      "dependsOn": [],
+      "feeds": [
+        "inputTokenPrice",
+        "outputTokenPrice",
+        "cachedInputTokenPrice",
+        "seatPricePerUserPerMonth",
+        "throughputUnitCost"
+      ],
+      "affectsTotals": [
+        "annualEstimate",
+        "monthlyEstimate",
+        "costPerUserPerMonth"
+      ],
+      "signalrPublish": true
+    },
+    {
+      "key": "contractStructure",
+      "level": "Core",
+      "defaultValue": "usageBasedApi",
+      "controlType": "select",
+      "mathematicalImpact": "Selects the main pricing path: seat-based, token-based, provisioned throughput, or hybrid.",
+      "dependsOn": ["vendorId", "supportedContractStructures"],
+      "feeds": [
+        "seatCostAnnual",
+        "apiCostAnnual",
+        "throughputCostAnnual",
+        "overageCostAnnual",
+        "includedCapacity"
+      ],
+      "affectsTotals": [
+        "annualEstimate",
+        "monthlyEstimate",
+        "costPerUserPerMonth",
+        "includedCapacity",
+        "overageExposure"
+      ],
+      "signalrPublish": true
+    },
+    {
+      "key": "billingModel",
+      "level": "Core",
+      "defaultValue": "payg",
+      "controlType": "select",
+      "mathematicalImpact": "Refines contract structure into pay-as-you-go, committed, annualized, or blended billing.",
+      "dependsOn": ["contractStructure"],
+      "feeds": [
+        "annualCommitment",
+        "minimumSpend",
+        "overageModel"
+      ],
+      "affectsTotals": ["annualEstimate", "overageExposure"],
+      "signalrPublish": true
+    },
+    {
+      "key": "termMonths",
+      "level": "Core",
+      "defaultValue": 12,
+      "controlType": "number",
+      "mathematicalImpact": "Annualized cost basis = monthly cost × termMonths when modeling full contract duration.",
+      "dependsOn": [],
+      "feeds": ["annualEstimate"],
+      "affectsTotals": ["annualEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "annualCommitment",
+      "level": "Core",
+      "defaultValue": 0,
+      "controlType": "currency",
+      "mathematicalImpact": "Acts as committed spend floor. annualEstimate = max(calculatedAnnualCost, annualCommitment) when commitment applies.",
+      "dependsOn": ["contractStructure", "billingModel"],
+      "feeds": ["annualEstimate", "monthlyEstimate"],
+      "affectsTotals": ["annualEstimate", "monthlyEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "minimumSpend",
+      "level": "Core",
+      "defaultValue": 0,
+      "controlType": "currency",
+      "mathematicalImpact": "Adds minimum cost floor when usage is below threshold.",
+      "dependsOn": ["billingModel"],
+      "feeds": ["annualEstimate"],
+      "affectsTotals": ["annualEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "includedCapacity",
+      "level": "Core",
+      "defaultValue": 0,
+      "controlType": "number",
+      "mathematicalImpact": "Capacity threshold before overage. overageExposure = max(0, modeledDemand - includedCapacity) × overageRateEquivalent.",
+      "dependsOn": ["contractStructure", "unitsPurchased", "seatIncludedUsagePerMonth"],
+      "feeds": ["overageExposure"],
+      "affectsTotals": ["includedCapacity", "overageExposure"],
+      "signalrPublish": true
+    },
+    {
+      "key": "overageModel",
+      "level": "Core",
+      "defaultValue": "sameUnitRate",
+      "controlType": "select",
+      "mathematicalImpact": "Defines how overage is priced: same rate, uplifted rate, capped rate, or pooled.",
+      "dependsOn": ["contractStructure", "billingModel"],
+      "feeds": ["overageRateMultiplier", "overageExposure"],
+      "affectsTotals": ["overageExposure", "annualEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "renewalAssumption",
+      "level": "Core",
+      "defaultValue": "flat",
+      "controlType": "select",
+      "mathematicalImpact": "Future-period planning only; no immediate arithmetic unless forecasting is enabled.",
+      "dependsOn": [],
+      "feeds": [],
+      "affectsTotals": [],
+      "signalrPublish": false
+    },
+    {
+      "key": "usageProfile",
+      "level": "Core",
+      "defaultValue": "heavy",
+      "controlType": "select",
+      "mathematicalImpact": "Loads seeded defaults for prompt rate, token size, active rate, and model mix.",
+      "dependsOn": [],
+      "feeds": [
+        "defaultPromptRate",
+        "defaultInputTokensPerPrompt",
+        "defaultOutputTokensPerPrompt",
+        "defaultWorkdaysPerYear",
+        "defaultActiveUserRate",
+        "modelAssignment"
+      ],
+      "affectsTotals": [
+        "annualEstimate",
+        "monthlyEstimate",
+        "costPerUserPerMonth",
+        "includedCapacity",
+        "overageExposure"
+      ],
+      "signalrPublish": true
+    },
+    {
+      "key": "defaultPromptRate",
+      "level": "Core",
+      "defaultValue": 20,
+      "controlType": "number",
+      "mathematicalImpact": "totalPromptsPerYear = activeUsers × defaultPromptRate × defaultWorkdaysPerYear",
+      "dependsOn": ["usageProfile", "activeUserPercent", "userCount"],
+      "feeds": ["totalPromptsPerYear"],
+      "affectsTotals": ["totalPromptsPerYear", "annualEstimate", "monthlyEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "defaultInputTokensPerPrompt",
+      "level": "Core",
+      "defaultValue": 1200,
+      "controlType": "number",
+      "mathematicalImpact": "totalInputTokensPerYear = totalPromptsPerYear × defaultInputTokensPerPrompt",
+      "dependsOn": ["usageProfile", "totalPromptsPerYear"],
+      "feeds": ["totalInputTokensPerYear"],
+      "affectsTotals": ["annualEstimate", "includedCapacity", "overageExposure"],
+      "signalrPublish": true
+    },
+    {
+      "key": "defaultOutputTokensPerPrompt",
+      "level": "Core",
+      "defaultValue": 600,
+      "controlType": "number",
+      "mathematicalImpact": "totalOutputTokensPerYear = totalPromptsPerYear × defaultOutputTokensPerPrompt",
+      "dependsOn": ["usageProfile", "totalPromptsPerYear"],
+      "feeds": ["totalOutputTokensPerYear"],
+      "affectsTotals": ["annualEstimate", "overageExposure"],
+      "signalrPublish": true
+    },
+    {
+      "key": "defaultWorkdaysPerYear",
+      "level": "Core",
+      "defaultValue": 240,
+      "controlType": "number",
+      "mathematicalImpact": "Used in annual demand calculation for user activity.",
+      "dependsOn": ["usageProfile"],
+      "feeds": ["totalPromptsPerYear"],
+      "affectsTotals": ["annualEstimate", "monthlyEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "defaultActiveUserRate",
+      "level": "Core",
+      "defaultValue": 1,
+      "controlType": "percent",
+      "mathematicalImpact": "activeUsers = userCount × defaultActiveUserRate",
+      "dependsOn": ["usageProfile", "userCount"],
+      "feeds": ["activeUsers", "totalPromptsPerYear"],
+      "affectsTotals": ["annualEstimate", "costPerUserPerMonth"],
+      "signalrPublish": true
+    },
+    {
+      "key": "customProfileEnabled",
+      "level": "Core",
+      "defaultValue": false,
+      "controlType": "boolean",
+      "mathematicalImpact": "Allows manual override of profile defaults; indirect arithmetic effect.",
+      "dependsOn": [],
+      "feeds": [
+        "defaultPromptRate",
+        "defaultInputTokensPerPrompt",
+        "defaultOutputTokensPerPrompt",
+        "defaultWorkdaysPerYear",
+        "defaultActiveUserRate"
+      ],
+      "affectsTotals": ["annualEstimate", "monthlyEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "deploymentMode",
+      "level": "Core",
+      "defaultValue": "hosted",
+      "controlType": "select",
+      "mathematicalImpact": "Determines whether local/hybrid infrastructure layers contribute to cost.",
+      "dependsOn": [],
+      "feeds": [
+        "hostedPercent",
+        "hybridPercent",
+        "localPercent",
+        "hybridNetworkCostAnnual"
+      ],
+      "affectsTotals": ["annualEstimate", "monthlyEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "hostedPercent",
+      "level": "Core",
+      "defaultValue": 1,
+      "controlType": "percent",
+      "mathematicalImpact": "Share of workload cost assigned to hosted pricing path.",
+      "dependsOn": ["deploymentMode"],
+      "feeds": ["apiCostAnnual", "seatCostAnnual"],
+      "affectsTotals": ["annualEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "hybridPercent",
+      "level": "Core",
+      "defaultValue": 0,
+      "controlType": "percent",
+      "mathematicalImpact": "Share of workload routed through hybrid path.",
+      "dependsOn": ["deploymentMode"],
+      "feeds": ["hybridNetworkCostAnnual", "throughputCostAnnual"],
+      "affectsTotals": ["annualEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "localPercent",
+      "level": "Core",
+      "defaultValue": 0,
+      "controlType": "percent",
+      "mathematicalImpact": "Share of workload routed through local/on-prem path.",
+      "dependsOn": ["deploymentMode"],
+      "feeds": ["hybridNetworkCostAnnual"],
+      "affectsTotals": ["annualEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "fallbackMode",
+      "level": "Core",
+      "defaultValue": "hosted",
+      "controlType": "select",
+      "mathematicalImpact": "Fallback routing affects blended cost when primary mode cannot serve workload.",
+      "dependsOn": ["deploymentMode"],
+      "feeds": ["apiCostAnnual", "hybridNetworkCostAnnual"],
+      "affectsTotals": ["annualEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "regionStrategy",
+      "level": "Core",
+      "defaultValue": "singleRegion",
+      "controlType": "select",
+      "mathematicalImpact": "Feeds regional uplift and cross-region replication cost.",
+      "dependsOn": ["deploymentMode", "dataResidencyEnabled"],
+      "feeds": ["residencyUpliftAnnual"],
+      "affectsTotals": ["annualEstimate"],
+      "signalrPublish": true
+    },
+
+    {
+      "key": "hostingType",
+      "level": "Environment",
+      "defaultValue": "vendorHosted",
+      "controlType": "select",
+      "mathematicalImpact": "Applies hosting-specific fee multipliers or infrastructure cost bypass.",
+      "dependsOn": ["deploymentMode"],
+      "feeds": ["hostedUpliftPercent"],
+      "affectsTotals": ["annualEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "singleTenantRequired",
+      "level": "Environment",
+      "defaultValue": false,
+      "controlType": "boolean",
+      "mathematicalImpact": "May add tenant isolation uplift.",
+      "dependsOn": ["hostingType"],
+      "feeds": ["hostedUpliftPercent"],
+      "affectsTotals": ["annualEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "multiTenantAllowed",
+      "level": "Environment",
+      "defaultValue": true,
+      "controlType": "boolean",
+      "mathematicalImpact": "No direct arithmetic unless used to suppress tenant uplift.",
+      "dependsOn": ["hostingType"],
+      "feeds": ["hostedUpliftPercent"],
+      "affectsTotals": ["annualEstimate"],
+      "signalrPublish": false
+    },
+    {
+      "key": "managedServiceLevel",
+      "level": "Environment",
+      "defaultValue": "standard",
+      "controlType": "select",
+      "mathematicalImpact": "Applies managed service multiplier.",
+      "dependsOn": ["hostingType"],
+      "feeds": ["hostedUpliftPercent"],
+      "affectsTotals": ["annualEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "vendorHostedIncluded",
+      "level": "Environment",
+      "defaultValue": true,
+      "controlType": "boolean",
+      "mathematicalImpact": "If false, hosted platform cost may be added separately.",
+      "dependsOn": ["hostingType"],
+      "feeds": ["apiCostAnnual"],
+      "affectsTotals": ["annualEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "hostedUpliftPercent",
+      "level": "Environment",
+      "defaultValue": 0,
+      "controlType": "percent",
+      "mathematicalImpact": "annual uplift = base hosted cost × hostedUpliftPercent",
+      "dependsOn": ["hostingType", "singleTenantRequired", "managedServiceLevel"],
+      "feeds": ["annualEstimate"],
+      "affectsTotals": ["annualEstimate", "monthlyEstimate"],
+      "signalrPublish": true
+    },
+
+    {
+      "key": "cloudProvider",
+      "level": "Environment",
+      "defaultValue": "none",
+      "controlType": "select",
+      "mathematicalImpact": "Selects cloud fee defaults and region behavior.",
+      "dependsOn": ["deploymentMode", "vendorId"],
+      "feeds": ["managedPlatformFee", "cloudSupportTier"],
+      "affectsTotals": ["annualEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "cloudSku",
+      "level": "Environment",
+      "defaultValue": "standard",
+      "controlType": "select",
+      "mathematicalImpact": "May change cloud platform fee schedule.",
+      "dependsOn": ["cloudProvider"],
+      "feeds": ["managedPlatformFee"],
+      "affectsTotals": ["annualEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "managedPlatformFee",
+      "level": "Environment",
+      "defaultValue": 0,
+      "controlType": "currency",
+      "mathematicalImpact": "Added directly to annual or monthly cost depending on cadence.",
+      "dependsOn": ["cloudProvider", "cloudSku"],
+      "feeds": ["annualEstimate"],
+      "affectsTotals": ["annualEstimate", "monthlyEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "cloudCommitmentCredit",
+      "level": "Environment",
+      "defaultValue": 0,
+      "controlType": "currency",
+      "mathematicalImpact": "Subtracts applicable cloud credit from annual estimate.",
+      "dependsOn": ["cloudProvider"],
+      "feeds": ["annualEstimate"],
+      "affectsTotals": ["annualEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "region",
+      "level": "Environment",
+      "defaultValue": "us-east",
+      "controlType": "select",
+      "mathematicalImpact": "Feeds regional uplift assumptions.",
+      "dependsOn": ["cloudProvider", "dataResidencyEnabled"],
+      "feeds": ["residencyUpliftPercent"],
+      "affectsTotals": ["annualEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "cloudSupportTier",
+      "level": "Environment",
+      "defaultValue": "standard",
+      "controlType": "select",
+      "mathematicalImpact": "Feeds support uplift.",
+      "dependsOn": ["cloudProvider"],
+      "feeds": ["supportFixedFee", "supportUpliftPercent"],
+      "affectsTotals": ["annualEstimate"],
+      "signalrPublish": true
+    },
+
+    {
+      "key": "throughputEnabled",
+      "level": "Environment",
+      "defaultValue": false,
+      "controlType": "boolean",
+      "mathematicalImpact": "Enables reserved throughput pricing path.",
+      "dependsOn": ["contractStructure"],
+      "feeds": ["throughputCostAnnual", "includedCapacity"],
+      "affectsTotals": ["annualEstimate", "includedCapacity", "overageExposure"],
+      "signalrPublish": true
+    },
+    {
+      "key": "throughputUnitType",
+      "level": "Environment",
+      "defaultValue": "tpmUnit",
+      "controlType": "select",
+      "mathematicalImpact": "Defines conversion from purchased units to included capacity.",
+      "dependsOn": ["throughputEnabled"],
+      "feeds": ["includedCapacity"],
+      "affectsTotals": ["includedCapacity", "annualEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "unitsPurchased",
+      "level": "Environment",
+      "defaultValue": 0,
+      "controlType": "number",
+      "mathematicalImpact": "throughputCostAnnual = unitsPurchased × unitCost × reservedHoursPerMonth × 12",
+      "dependsOn": ["throughputEnabled"],
+      "feeds": ["throughputCostAnnual", "includedCapacity"],
+      "affectsTotals": ["annualEstimate", "includedCapacity", "overageExposure"],
+      "signalrPublish": true
+    },
+    {
+      "key": "unitCost",
+      "level": "Environment",
+      "defaultValue": 0,
+      "controlType": "currency",
+      "mathematicalImpact": "throughput reserved cost multiplier.",
+      "dependsOn": ["throughputEnabled", "throughputUnitType"],
+      "feeds": ["throughputCostAnnual"],
+      "affectsTotals": ["annualEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "reservedHoursPerMonth",
+      "level": "Environment",
+      "defaultValue": 730,
+      "controlType": "number",
+      "mathematicalImpact": "Used in annualized reserved capacity cost.",
+      "dependsOn": ["throughputEnabled"],
+      "feeds": ["throughputCostAnnual"],
+      "affectsTotals": ["annualEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "overflowRate",
+      "level": "Environment",
+      "defaultValue": 0,
+      "controlType": "currency",
+      "mathematicalImpact": "overageCostAnnual = overflowUnits × overflowRate",
+      "dependsOn": ["throughputEnabled"],
+      "feeds": ["overageCostAnnual"],
+      "affectsTotals": ["overageExposure", "annualEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "scalingBufferPercent",
+      "level": "Environment",
+      "defaultValue": 0.1,
+      "controlType": "percent",
+      "mathematicalImpact": "includedCapacityAdjusted = includedCapacity × (1 + scalingBufferPercent)",
+      "dependsOn": ["throughputEnabled", "unitsPurchased"],
+      "feeds": ["includedCapacity", "overageExposure"],
+      "affectsTotals": ["includedCapacity", "overageExposure"],
+      "signalrPublish": true
+    },
+
+    {
+      "key": "residencyRequired",
+      "level": "Environment",
+      "defaultValue": false,
+      "controlType": "boolean",
+      "mathematicalImpact": "Enables regional uplift pricing branch.",
+      "dependsOn": [],
+      "feeds": ["residencyUpliftPercent", "residencyUpliftAnnual"],
+      "affectsTotals": ["annualEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "allowedRegions",
+      "level": "Environment",
+      "defaultValue": ["us"],
+      "controlType": "array<string>",
+      "mathematicalImpact": "Gates selectable regions; no direct arithmetic.",
+      "dependsOn": ["residencyRequired", "vendorId"],
+      "feeds": ["primaryRegion", "secondaryRegion"],
+      "affectsTotals": [],
+      "signalrPublish": false
+    },
+    {
+      "key": "primaryRegion",
+      "level": "Environment",
+      "defaultValue": "us",
+      "controlType": "select",
+      "mathematicalImpact": "Selects regional uplift basis.",
+      "dependsOn": ["allowedRegions"],
+      "feeds": ["residencyUpliftPercent"],
+      "affectsTotals": ["annualEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "secondaryRegion",
+      "level": "Environment",
+      "defaultValue": null,
+      "controlType": "select",
+      "mathematicalImpact": "Optional replication/DR uplift.",
+      "dependsOn": ["allowedRegions", "crossRegionReplicationRequired"],
+      "feeds": ["residencyUpliftAnnual"],
+      "affectsTotals": ["annualEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "residencyUpliftPercent",
+      "level": "Environment",
+      "defaultValue": 0,
+      "controlType": "percent",
+      "mathematicalImpact": "residencyUpliftAnnual = applicableBaseCost × residencyUpliftPercent",
+      "dependsOn": ["residencyRequired", "primaryRegion"],
+      "feeds": ["residencyUpliftAnnual"],
+      "affectsTotals": ["annualEstimate", "monthlyEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "crossRegionReplicationRequired",
+      "level": "Environment",
+      "defaultValue": false,
+      "controlType": "boolean",
+      "mathematicalImpact": "May add replication uplift.",
+      "dependsOn": ["residencyRequired"],
+      "feeds": ["residencyUpliftAnnual"],
+      "affectsTotals": ["annualEstimate"],
+      "signalrPublish": true
+    },
+
+    {
+      "key": "securityPackageEnabled",
+      "level": "Environment",
+      "defaultValue": false,
+      "controlType": "boolean",
+      "mathematicalImpact": "Enables admin/security cost layer.",
+      "dependsOn": [],
+      "feeds": ["securityOverheadAnnual"],
+      "affectsTotals": ["annualEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "adminOverheadPercent",
+      "level": "Environment",
+      "defaultValue": 0,
+      "controlType": "percent",
+      "mathematicalImpact": "securityOverheadAnnual += applicableBaseCost × adminOverheadPercent",
+      "dependsOn": ["securityPackageEnabled"],
+      "feeds": ["securityOverheadAnnual"],
+      "affectsTotals": ["annualEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "auditLoggingCost",
+      "level": "Environment",
+      "defaultValue": 0,
+      "controlType": "currency",
+      "mathematicalImpact": "Direct additive annual security/admin cost.",
+      "dependsOn": ["securityPackageEnabled"],
+      "feeds": ["securityOverheadAnnual"],
+      "affectsTotals": ["annualEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "policyGovernanceCost",
+      "level": "Environment",
+      "defaultValue": 0,
+      "controlType": "currency",
+      "mathematicalImpact": "Direct additive annual governance cost.",
+      "dependsOn": ["securityPackageEnabled"],
+      "feeds": ["securityOverheadAnnual"],
+      "affectsTotals": ["annualEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "identityIntegrationCost",
+      "level": "Environment",
+      "defaultValue": 0,
+      "controlType": "currency",
+      "mathematicalImpact": "Direct additive annual identity/admin integration cost.",
+      "dependsOn": ["securityPackageEnabled"],
+      "feeds": ["securityOverheadAnnual"],
+      "affectsTotals": ["annualEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "securityReviewFrequency",
+      "level": "Environment",
+      "defaultValue": "annual",
+      "controlType": "select",
+      "mathematicalImpact": "Can multiply review-related overhead if modeled; not required for base arithmetic.",
+      "dependsOn": ["securityPackageEnabled"],
+      "feeds": ["securityOverheadAnnual"],
+      "affectsTotals": ["annualEstimate"],
+      "signalrPublish": false
+    },
+
+    {
+      "key": "hybridEnabled",
+      "level": "Environment",
+      "defaultValue": false,
+      "controlType": "boolean",
+      "mathematicalImpact": "Enables hybrid network/connectivity cost branch.",
+      "dependsOn": ["deploymentMode"],
+      "feeds": ["hybridNetworkCostAnnual"],
+      "affectsTotals": ["annualEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "networkEgressCost",
+      "level": "Environment",
+      "defaultValue": 0,
+      "controlType": "currency",
+      "mathematicalImpact": "hybridNetworkCostAnnual += egressUnits × networkEgressCost",
+      "dependsOn": ["hybridEnabled"],
+      "feeds": ["hybridNetworkCostAnnual"],
+      "affectsTotals": ["annualEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "privateConnectivityCost",
+      "level": "Environment",
+      "defaultValue": 0,
+      "controlType": "currency",
+      "mathematicalImpact": "Direct additive hybrid/private connection cost.",
+      "dependsOn": ["hybridEnabled"],
+      "feeds": ["hybridNetworkCostAnnual"],
+      "affectsTotals": ["annualEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "routingSplit",
+      "level": "Environment",
+      "defaultValue": {
+        "hosted": 1,
+        "hybrid": 0,
+        "local": 0
+      },
+      "controlType": "object",
+      "mathematicalImpact": "Splits modeled demand across cost paths; shares should total 100%.",
+      "dependsOn": ["deploymentMode"],
+      "feeds": ["apiCostAnnual", "throughputCostAnnual", "hybridNetworkCostAnnual"],
+      "affectsTotals": ["annualEstimate", "includedCapacity", "overageExposure"],
+      "signalrPublish": true
+    },
+    {
+      "key": "latencySensitiveTrafficPercent",
+      "level": "Environment",
+      "defaultValue": 0,
+      "controlType": "percent",
+      "mathematicalImpact": "Can bias more traffic toward premium/closer infrastructure paths.",
+      "dependsOn": ["hybridEnabled", "routingSplit"],
+      "feeds": ["apiCostAnnual", "hybridNetworkCostAnnual"],
+      "affectsTotals": ["annualEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "hybridManagementOverhead",
+      "level": "Environment",
+      "defaultValue": 0,
+      "controlType": "currency",
+      "mathematicalImpact": "Direct additive operational cost for hybrid complexity.",
+      "dependsOn": ["hybridEnabled"],
+      "feeds": ["hybridNetworkCostAnnual"],
+      "affectsTotals": ["annualEstimate"],
+      "signalrPublish": true
+    },
+
+    {
+      "key": "groupName",
+      "level": "Users",
+      "defaultValue": "Standard users",
+      "controlType": "text",
+      "mathematicalImpact": "Display only; no arithmetic.",
+      "dependsOn": [],
+      "feeds": [],
+      "affectsTotals": [],
+      "signalrPublish": false
+    },
+    {
+      "key": "rangeLabel",
+      "level": "Users",
+      "defaultValue": "001-050",
+      "controlType": "text",
+      "mathematicalImpact": "Display only; no arithmetic.",
+      "dependsOn": [],
+      "feeds": [],
+      "affectsTotals": [],
+      "signalrPublish": false
+    },
+    {
+      "key": "userCount",
+      "level": "Users",
+      "defaultValue": 50,
+      "controlType": "number",
+      "mathematicalImpact": "Core driver. activeUsers = userCount × activeUserPercent. Demand scales with count.",
+      "dependsOn": [],
+      "feeds": [
+        "activeUsers",
+        "totalPromptsPerYear",
+        "totalInputTokensPerYear",
+        "totalOutputTokensPerYear",
+        "costPerUserPerMonth"
+      ],
+      "affectsTotals": [
+        "annualEstimate",
+        "monthlyEstimate",
+        "costPerUserPerMonth",
+        "includedCapacity",
+        "overageExposure"
+      ],
+      "signalrPublish": true
+    },
+    {
+      "key": "intensity",
+      "level": "Users",
+      "defaultValue": "medium",
+      "controlType": "select",
+      "mathematicalImpact": "Loads or modifies usage assumptions for this group.",
+      "dependsOn": ["usageProfile"],
+      "feeds": [
+        "promptsPerUserPerDay",
+        "inputTokensPerPrompt",
+        "outputTokensPerPrompt",
+        "toolUseRate"
+      ],
+      "affectsTotals": ["annualEstimate", "overageExposure"],
+      "signalrPublish": true
+    },
+    {
+      "key": "promptsPerUserPerDay",
+      "level": "Users",
+      "defaultValue": 20,
+      "controlType": "number",
+      "mathematicalImpact": "groupPromptsAnnual = userCount × activeDaysPerYear × promptsPerUserPerDay × activeUserPercent",
+      "dependsOn": ["userCount", "activeDaysPerYear", "activeUserPercent"],
+      "feeds": ["totalPromptsPerYear", "totalInputTokensPerYear", "totalOutputTokensPerYear"],
+      "affectsTotals": ["annualEstimate", "monthlyEstimate", "overageExposure"],
+      "signalrPublish": true
+    },
+    {
+      "key": "inputTokensPerPrompt",
+      "level": "Users",
+      "defaultValue": 1200,
+      "controlType": "number",
+      "mathematicalImpact": "groupInputTokensAnnual = groupPromptsAnnual × inputTokensPerPrompt",
+      "dependsOn": ["promptsPerUserPerDay", "userCount", "activeDaysPerYear"],
+      "feeds": ["totalInputTokensPerYear", "totalTokensPerYear"],
+      "affectsTotals": ["annualEstimate", "includedCapacity", "overageExposure"],
+      "signalrPublish": true
+    },
+    {
+      "key": "outputTokensPerPrompt",
+      "level": "Users",
+      "defaultValue": 600,
+      "controlType": "number",
+      "mathematicalImpact": "groupOutputTokensAnnual = groupPromptsAnnual × outputTokensPerPrompt",
+      "dependsOn": ["promptsPerUserPerDay", "userCount", "activeDaysPerYear"],
+      "feeds": ["totalOutputTokensPerYear", "totalTokensPerYear"],
+      "affectsTotals": ["annualEstimate", "overageExposure"],
+      "signalrPublish": true
+    },
+    {
+      "key": "activeDaysPerYear",
+      "level": "Users",
+      "defaultValue": 240,
+      "controlType": "number",
+      "mathematicalImpact": "Scales annual demand for each user group.",
+      "dependsOn": [],
+      "feeds": ["totalPromptsPerYear", "totalTokensPerYear"],
+      "affectsTotals": ["annualEstimate", "monthlyEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "modelAssignment",
+      "level": "Users",
+      "defaultValue": "gpt-4o",
+      "controlType": "select",
+      "mathematicalImpact": "Maps user demand to a model cost profile and model usage allocation.",
+      "dependsOn": ["availableModels"],
+      "feeds": ["modelAllocationDemandAnnual", "apiCostAnnual"],
+      "affectsTotals": ["annualEstimate", "overageExposure"],
+      "signalrPublish": true
+    },
+    {
+      "key": "tokenAllowancePerUser",
+      "level": "Users",
+      "defaultValue": 0,
+      "controlType": "number",
+      "mathematicalImpact": "Optional cap or grant. Can reduce overage or trigger capped usage behavior.",
+      "dependsOn": ["grantPolicy", "grantAmount"],
+      "feeds": ["includedCapacity", "overageExposure"],
+      "affectsTotals": ["includedCapacity", "overageExposure", "annualEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "toolUseRate",
+      "level": "Users",
+      "defaultValue": 0,
+      "controlType": "percent",
+      "mathematicalImpact": "Can add tool-call related cost or increase effective output/input multipliers.",
+      "dependsOn": ["intensity", "modelAssignment"],
+      "feeds": ["apiCostAnnual", "modeledCostRealismFactor"],
+      "affectsTotals": ["annualEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "startIndex",
+      "level": "Users",
+      "defaultValue": 1,
+      "controlType": "number",
+      "mathematicalImpact": "Display/grouping only; no arithmetic unless used to infer count.",
+      "dependsOn": [],
+      "feeds": [],
+      "affectsTotals": [],
+      "signalrPublish": false
+    },
+    {
+      "key": "endIndex",
+      "level": "Users",
+      "defaultValue": 50,
+      "controlType": "number",
+      "mathematicalImpact": "Display/grouping only; no arithmetic unless used to infer count.",
+      "dependsOn": [],
+      "feeds": [],
+      "affectsTotals": [],
+      "signalrPublish": false
+    },
+    {
+      "key": "usagePattern",
+      "level": "Users",
+      "defaultValue": "standard",
+      "controlType": "select",
+      "mathematicalImpact": "Preset alias for usage variables.",
+      "dependsOn": [],
+      "feeds": [
+        "promptsPerUserPerDay",
+        "inputTokensPerPrompt",
+        "outputTokensPerPrompt"
+      ],
+      "affectsTotals": ["annualEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "departmentLabel",
+      "level": "Users",
+      "defaultValue": "General",
+      "controlType": "text",
+      "mathematicalImpact": "Display only; no arithmetic.",
+      "dependsOn": [],
+      "feeds": [],
+      "affectsTotals": [],
+      "signalrPublish": false
+    },
+    {
+      "key": "tokenAllowanceStrategy",
+      "level": "Users",
+      "defaultValue": "none",
+      "controlType": "select",
+      "mathematicalImpact": "Determines how per-user grants are interpreted.",
+      "dependsOn": ["grantPolicy"],
+      "feeds": ["tokenAllowancePerUser", "includedCapacity"],
+      "affectsTotals": ["includedCapacity", "overageExposure"],
+      "signalrPublish": true
+    },
+    {
+      "key": "notes",
+      "level": "Users",
+      "defaultValue": "",
+      "controlType": "textarea",
+      "mathematicalImpact": "No arithmetic impact.",
+      "dependsOn": [],
+      "feeds": [],
+      "affectsTotals": [],
+      "signalrPublish": false
+    },
+    {
+      "key": "grantPolicy",
+      "level": "Users",
+      "defaultValue": "unlimited",
+      "controlType": "select",
+      "mathematicalImpact": "Controls whether user usage is capped, pooled, or budgeted.",
+      "dependsOn": [],
+      "feeds": [
+        "grantUnit",
+        "grantAmount",
+        "tokenAllowancePerUser",
+        "includedCapacity"
+      ],
+      "affectsTotals": ["includedCapacity", "overageExposure", "annualEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "grantUnit",
+      "level": "Users",
+      "defaultValue": "tokensPerMonth",
+      "controlType": "select",
+      "mathematicalImpact": "Defines allowance unit conversion.",
+      "dependsOn": ["grantPolicy"],
+      "feeds": ["grantAmount", "includedCapacity"],
+      "affectsTotals": ["includedCapacity", "overageExposure"],
+      "signalrPublish": true
+    },
+    {
+      "key": "grantAmount",
+      "level": "Users",
+      "defaultValue": 0,
+      "controlType": "number",
+      "mathematicalImpact": "includedCapacity contribution from grants = activeUsers × grantAmount × cyclesPerYearEquivalent",
+      "dependsOn": ["grantPolicy", "grantUnit", "userCount"],
+      "feeds": ["includedCapacity", "overageExposure"],
+      "affectsTotals": ["includedCapacity", "overageExposure", "annualEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "resetCycle",
+      "level": "Users",
+      "defaultValue": "monthly",
+      "controlType": "select",
+      "mathematicalImpact": "Converts grants into annualized capacity basis.",
+      "dependsOn": ["grantPolicy", "grantAmount"],
+      "feeds": ["includedCapacity"],
+      "affectsTotals": ["includedCapacity", "overageExposure"],
+      "signalrPublish": true
+    },
+    {
+      "key": "poolingEnabled",
+      "level": "Users",
+      "defaultValue": false,
+      "controlType": "boolean",
+      "mathematicalImpact": "Pool can reduce overage if underused grants offset heavier users.",
+      "dependsOn": ["grantPolicy"],
+      "feeds": ["overageExposure", "includedCapacity"],
+      "affectsTotals": ["overageExposure", "annualEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "overageBehavior",
+      "level": "Users",
+      "defaultValue": "billOverage",
+      "controlType": "select",
+      "mathematicalImpact": "Determines whether overage is billed, blocked, throttled, or escalated.",
+      "dependsOn": ["grantPolicy"],
+      "feeds": ["overageExposure", "modeledSuitabilityScore"],
+      "affectsTotals": ["overageExposure", "annualEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "unusedCarryoverPolicy",
+      "level": "Users",
+      "defaultValue": "none",
+      "controlType": "select",
+      "mathematicalImpact": "May increase effective included capacity across periods.",
+      "dependsOn": ["grantPolicy"],
+      "feeds": ["includedCapacity"],
+      "affectsTotals": ["includedCapacity", "overageExposure"],
+      "signalrPublish": true
+    },
+    {
+      "key": "activeUserPercent",
+      "level": "Users",
+      "defaultValue": 1,
+      "controlType": "percent",
+      "mathematicalImpact": "activeUsers = userCount × activeUserPercent",
+      "dependsOn": ["userCount"],
+      "feeds": ["activeUsers", "totalPromptsPerYear", "totalTokensPerYear"],
+      "affectsTotals": ["annualEstimate", "costPerUserPerMonth"],
+      "signalrPublish": true
+    },
+    {
+      "key": "activeDaysPerMonth",
+      "level": "Users",
+      "defaultValue": 20,
+      "controlType": "number",
+      "mathematicalImpact": "Used to translate monthly cadence and seasonality.",
+      "dependsOn": [],
+      "feeds": ["activeDaysPerYear"],
+      "affectsTotals": ["annualEstimate", "monthlyEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "seasonalityFactor",
+      "level": "Users",
+      "defaultValue": 1,
+      "controlType": "multiplier",
+      "mathematicalImpact": "DemandAdjusted = baseDemand × seasonalityFactor",
+      "dependsOn": ["usagePattern"],
+      "feeds": ["totalPromptsPerYear", "overageExposure"],
+      "affectsTotals": ["annualEstimate", "overageExposure"],
+      "signalrPublish": true
+    },
+    {
+      "key": "peakPeriodMultiplier",
+      "level": "Users",
+      "defaultValue": 1,
+      "controlType": "multiplier",
+      "mathematicalImpact": "Peak demand may drive throughput sizing and overage.",
+      "dependsOn": ["usagePattern"],
+      "feeds": ["throughputCostAnnual", "overageExposure"],
+      "affectsTotals": ["annualEstimate", "overageExposure"],
+      "signalrPublish": true
+    },
+    {
+      "key": "idlePeriodMultiplier",
+      "level": "Users",
+      "defaultValue": 1,
+      "controlType": "multiplier",
+      "mathematicalImpact": "Can reduce average annual demand.",
+      "dependsOn": ["usagePattern"],
+      "feeds": ["totalPromptsPerYear"],
+      "affectsTotals": ["annualEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "adoptionRampMonths",
+      "level": "Users",
+      "defaultValue": 0,
+      "controlType": "number",
+      "mathematicalImpact": "Reduces first-year effective demand during ramp-up.",
+      "dependsOn": ["userCount", "usagePattern"],
+      "feeds": ["annualEstimate", "totalPromptsPerYear"],
+      "affectsTotals": ["annualEstimate", "monthlyEstimate"],
+      "signalrPublish": true
+    },
+
+    {
+      "key": "modelId",
+      "level": "Technical",
+      "defaultValue": "gpt-4o",
+      "controlType": "select",
+      "mathematicalImpact": "Selects pricing profile and suitability defaults for a model deployment group.",
+      "dependsOn": ["vendorId", "availableModels"],
+      "feeds": [
+        "inputTokenPrice",
+        "outputTokenPrice",
+        "cachedInputTokenPrice",
+        "modelComplexitySophistication"
+      ],
+      "affectsTotals": ["annualEstimate", "modeledSuitabilityScore"],
+      "signalrPublish": true
+    },
+    {
+      "key": "modelLabel",
+      "level": "Technical",
+      "defaultValue": "GPT-4o",
+      "controlType": "text",
+      "mathematicalImpact": "Display only; no arithmetic.",
+      "dependsOn": ["modelId"],
+      "feeds": [],
+      "affectsTotals": [],
+      "signalrPublish": false
+    },
+    {
+      "key": "deploymentRangeLabel",
+      "level": "Technical",
+      "defaultValue": "001-020",
+      "controlType": "text",
+      "mathematicalImpact": "Display only.",
+      "dependsOn": [],
+      "feeds": [],
+      "affectsTotals": [],
+      "signalrPublish": false
+    },
+    {
+      "key": "deploymentQuantity",
+      "level": "Technical",
+      "defaultValue": 20,
+      "controlType": "number",
+      "mathematicalImpact": "Can influence throughput sizing, concurrency assumptions, and infrastructure overhead.",
+      "dependsOn": ["modelId", "deploymentMode"],
+      "feeds": ["throughputCostAnnual", "modeledSuitabilityScore"],
+      "affectsTotals": ["annualEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "routingRole",
+      "level": "Technical",
+      "defaultValue": "primary",
+      "controlType": "select",
+      "mathematicalImpact": "Determines whether usage flows primarily, secondarily, fallback, or niche to this model.",
+      "dependsOn": ["modelId"],
+      "feeds": ["usagePercent", "fallbackTarget"],
+      "affectsTotals": ["annualEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "usagePercent",
+      "level": "Technical",
+      "defaultValue": 1,
+      "controlType": "percent",
+      "mathematicalImpact": "AllocatedDemandForModel = totalDemand × usagePercent. All active model usagePercent values must total 100%.",
+      "dependsOn": ["modelId", "routingRole", "activeModels"],
+      "feeds": ["modelAllocationDemandAnnual", "apiCostAnnual", "includedCapacity"],
+      "affectsTotals": ["annualEstimate", "includedCapacity", "overageExposure"],
+      "signalrPublish": true
+    },
+    {
+      "key": "primaryUseCases",
+      "level": "Technical",
+      "defaultValue": [],
+      "controlType": "array<string>",
+      "mathematicalImpact": "No direct arithmetic unless mapped to usage multipliers.",
+      "dependsOn": ["modelId"],
+      "feeds": ["modeledSuitabilityScore"],
+      "affectsTotals": ["modeledSuitabilityScore"],
+      "signalrPublish": true
+    },
+    {
+      "key": "fallbackTarget",
+      "level": "Technical",
+      "defaultValue": null,
+      "controlType": "select",
+      "mathematicalImpact": "Determines overflow/escalation routing path.",
+      "dependsOn": ["activeModels"],
+      "feeds": ["escalationLikelihood", "apiCostAnnual"],
+      "affectsTotals": ["annualEstimate", "overageExposure"],
+      "signalrPublish": true
+    },
+    {
+      "key": "costSource",
+      "level": "Technical",
+      "defaultValue": "providerDefault",
+      "controlType": "select",
+      "mathematicalImpact": "Determines whether model prices are vendor defaults or manual overrides.",
+      "dependsOn": ["customPricingOverrideEnabled"],
+      "feeds": ["inputTokenPrice", "outputTokenPrice", "cachedInputTokenPrice"],
+      "affectsTotals": ["annualEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "enabled",
+      "level": "Technical",
+      "defaultValue": true,
+      "controlType": "boolean",
+      "mathematicalImpact": "Active models participate in 100% usage allocation validation and cost calculation.",
+      "dependsOn": [],
+      "feeds": ["usagePercent", "apiCostAnnual", "validationModelUsageTotal"],
+      "affectsTotals": ["annualEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "modelCatalogSelection",
+      "level": "Technical",
+      "defaultValue": "gpt-4o-mini",
+      "controlType": "select",
+      "mathematicalImpact": "Used when adding another model deployment group.",
+      "dependsOn": ["vendorId", "availableModels"],
+      "feeds": ["modelId", "inputTokenPrice", "outputTokenPrice"],
+      "affectsTotals": ["annualEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "roleTag",
+      "level": "Technical",
+      "defaultValue": "secondary",
+      "controlType": "select",
+      "mathematicalImpact": "Routing label influences default usagePercent and escalation logic.",
+      "dependsOn": ["routingRole"],
+      "feeds": ["usagePercent", "fallbackTarget"],
+      "affectsTotals": ["annualEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "fallbackOrder",
+      "level": "Technical",
+      "defaultValue": 1,
+      "controlType": "number",
+      "mathematicalImpact": "Ordering only; indirect effect via escalation path logic.",
+      "dependsOn": ["fallbackTarget"],
+      "feeds": [],
+      "affectsTotals": [],
+      "signalrPublish": false
+    },
+    {
+      "key": "enforceHundredPercentTotal",
+      "level": "Technical",
+      "defaultValue": true,
+      "controlType": "boolean",
+      "mathematicalImpact": "Validation rule; if true active usagePercent must total 1.0.",
+      "dependsOn": ["activeModels"],
+      "feeds": ["validationModelUsageTotal"],
+      "affectsTotals": [],
+      "signalrPublish": true
+    },
+    {
+      "key": "autoNormalize",
+      "level": "Technical",
+      "defaultValue": false,
+      "controlType": "boolean",
+      "mathematicalImpact": "If true, usagePercent values are normalized to total 100%.",
+      "dependsOn": ["usagePercent"],
+      "feeds": ["modelAllocationDemandAnnual"],
+      "affectsTotals": ["annualEstimate", "includedCapacity", "overageExposure"],
+      "signalrPublish": true
+    },
+    {
+      "key": "overflowAssignment",
+      "level": "Technical",
+      "defaultValue": "proportional",
+      "controlType": "select",
+      "mathematicalImpact": "Determines where excess demand is assigned when capacity is exceeded.",
+      "dependsOn": ["usagePercent", "fallbackTarget"],
+      "feeds": ["overageCostAnnual", "apiCostAnnual"],
+      "affectsTotals": ["annualEstimate", "overageExposure"],
+      "signalrPublish": true
+    },
+    {
+      "key": "manualPriorityOrder",
+      "level": "Technical",
+      "defaultValue": [],
+      "controlType": "array<string>",
+      "mathematicalImpact": "Routing order only; indirect effect on fallback cost.",
+      "dependsOn": ["activeModels"],
+      "feeds": ["fallbackTarget"],
+      "affectsTotals": ["annualEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "escalationEnabled",
+      "level": "Technical",
+      "defaultValue": false,
+      "controlType": "boolean",
+      "mathematicalImpact": "Enables escalation branch.",
+      "dependsOn": [],
+      "feeds": ["escalationLikelihood", "apiCostAnnual"],
+      "affectsTotals": ["annualEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "fallbackModelId",
+      "level": "Technical",
+      "defaultValue": null,
+      "controlType": "select",
+      "mathematicalImpact": "Selects fallback model cost profile.",
+      "dependsOn": ["escalationEnabled", "activeModels"],
+      "feeds": ["apiCostAnnual"],
+      "affectsTotals": ["annualEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "escalationThreshold",
+      "level": "Technical",
+      "defaultValue": 0.8,
+      "controlType": "percent",
+      "mathematicalImpact": "Threshold for escalation logic; indirect effect on escalationLikelihood.",
+      "dependsOn": ["escalationEnabled"],
+      "feeds": ["escalationLikelihood"],
+      "affectsTotals": ["annualEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "retryOnFailure",
+      "level": "Technical",
+      "defaultValue": true,
+      "controlType": "boolean",
+      "mathematicalImpact": "Increases cost if retry loops are modeled.",
+      "dependsOn": ["escalationEnabled"],
+      "feeds": ["apiCostAnnual", "modeledCostRealismFactor"],
+      "affectsTotals": ["annualEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "escalationPercent",
+      "level": "Technical",
+      "defaultValue": 0,
+      "controlType": "percent",
+      "mathematicalImpact": "additionalEscalationCost = escalatedDemand × fallbackModelUnitCost",
+      "dependsOn": ["escalationEnabled", "fallbackModelId"],
+      "feeds": ["apiCostAnnual"],
+      "affectsTotals": ["annualEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "humanReviewTrigger",
+      "level": "Technical",
+      "defaultValue": "none",
+      "controlType": "select",
+      "mathematicalImpact": "Could add operational overhead if modeled; optional.",
+      "dependsOn": ["escalationEnabled"],
+      "feeds": ["operationalMaintenanceBurden"],
+      "affectsTotals": ["annualEstimate", "modeledSuitabilityScore"],
+      "signalrPublish": true
+    },
+
+    {
+      "key": "taskPerformanceUsefulness",
+      "level": "Technical",
+      "defaultValue": { "value": 0.7, "weight": 0.1 },
+      "controlType": "weightedMetric",
+      "mathematicalImpact": "Contributes to modeledSuitabilityScore and modeledCostRealismFactor; does not replace raw price math.",
+      "dependsOn": ["modelId"],
+      "feeds": ["modeledSuitabilityScore", "modeledCostRealismFactor"],
+      "affectsTotals": ["modeledSuitabilityScore", "annualEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "generalizationTaskTransfer",
+      "level": "Technical",
+      "defaultValue": { "value": 0.7, "weight": 0.05 },
+      "controlType": "weightedMetric",
+      "mathematicalImpact": "Influences suitability score and may influence escalation likelihood.",
+      "dependsOn": ["modelId"],
+      "feeds": ["modeledSuitabilityScore", "escalationLikelihood"],
+      "affectsTotals": ["modeledSuitabilityScore", "annualEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "instructionAdherence",
+      "level": "Technical",
+      "defaultValue": { "value": 0.8, "weight": 0.08 },
+      "controlType": "weightedMetric",
+      "mathematicalImpact": "Lower adherence can increase retries and effective cost.",
+      "dependsOn": ["modelId"],
+      "feeds": ["modeledCostRealismFactor", "retryOnFailure"],
+      "affectsTotals": ["annualEstimate", "modeledSuitabilityScore"],
+      "signalrPublish": true
+    },
+    {
+      "key": "transparencyExplainability",
+      "level": "Technical",
+      "defaultValue": { "value": 0.6, "weight": 0.03 },
+      "controlType": "weightedMetric",
+      "mathematicalImpact": "Suitability/governance only unless review cost model is added.",
+      "dependsOn": ["modelId"],
+      "feeds": ["modeledSuitabilityScore"],
+      "affectsTotals": ["modeledSuitabilityScore"],
+      "signalrPublish": true
+    },
+    {
+      "key": "modelComplexitySophistication",
+      "level": "Technical",
+      "defaultValue": { "value": 0.8, "weight": 0.07 },
+      "controlType": "weightedMetric",
+      "mathematicalImpact": "Can increase infrastructure and runtime assumptions.",
+      "dependsOn": ["modelId"],
+      "feeds": ["throughputCostAnnual", "modeledCostRealismFactor"],
+      "affectsTotals": ["annualEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "trainingAdaptationBurden",
+      "level": "Technical",
+      "defaultValue": { "value": 0.2, "weight": 0.02 },
+      "controlType": "weightedMetric",
+      "mathematicalImpact": "Adds optional adaptation/ownership overhead if modeled.",
+      "dependsOn": ["modelId"],
+      "feeds": ["operationalMaintenanceBurden"],
+      "affectsTotals": ["annualEstimate", "modeledSuitabilityScore"],
+      "signalrPublish": true
+    },
+    {
+      "key": "inferenceCostEfficiency",
+      "level": "Technical",
+      "defaultValue": { "value": 0.7, "weight": 0.12 },
+      "controlType": "weightedMetric",
+      "mathematicalImpact": "Directly adjusts modeled cost realism relative to listed price efficiency.",
+      "dependsOn": ["modelId", "inputTokenPrice", "outputTokenPrice"],
+      "feeds": ["modeledCostRealismFactor", "annualEstimate"],
+      "affectsTotals": ["annualEstimate", "modeledSuitabilityScore"],
+      "signalrPublish": true
+    },
+    {
+      "key": "scalabilityThroughputFit",
+      "level": "Technical",
+      "defaultValue": { "value": 0.7, "weight": 0.06 },
+      "controlType": "weightedMetric",
+      "mathematicalImpact": "May increase or reduce throughput reserve assumptions.",
+      "dependsOn": ["modelId", "deploymentQuantity"],
+      "feeds": ["throughputCostAnnual", "modeledSuitabilityScore"],
+      "affectsTotals": ["annualEstimate", "overageExposure"],
+      "signalrPublish": true
+    },
+    {
+      "key": "robustnessReliability",
+      "level": "Technical",
+      "defaultValue": { "value": 0.7, "weight": 0.07 },
+      "controlType": "weightedMetric",
+      "mathematicalImpact": "Lower robustness may increase retries/fallbacks.",
+      "dependsOn": ["modelId"],
+      "feeds": ["retryOnFailure", "modeledCostRealismFactor"],
+      "affectsTotals": ["annualEstimate", "modeledSuitabilityScore"],
+      "signalrPublish": true
+    },
+    {
+      "key": "biasFairnessSafety",
+      "level": "Technical",
+      "defaultValue": { "value": 0.7, "weight": 0.03 },
+      "controlType": "weightedMetric",
+      "mathematicalImpact": "Mostly suitability/governance score unless safety review cost is modeled.",
+      "dependsOn": ["modelId"],
+      "feeds": ["modeledSuitabilityScore"],
+      "affectsTotals": ["modeledSuitabilityScore"],
+      "signalrPublish": true
+    },
+    {
+      "key": "adaptabilityFineTunability",
+      "level": "Technical",
+      "defaultValue": { "value": 0.6, "weight": 0.03 },
+      "controlType": "weightedMetric",
+      "mathematicalImpact": "Can reduce long-term ownership burden in advanced models.",
+      "dependsOn": ["modelId"],
+      "feeds": ["operationalMaintenanceBurden", "modeledSuitabilityScore"],
+      "affectsTotals": ["annualEstimate", "modeledSuitabilityScore"],
+      "signalrPublish": true
+    },
+    {
+      "key": "latencyResponsiveness",
+      "level": "Technical",
+      "defaultValue": { "value": 0.7, "weight": 0.05 },
+      "controlType": "weightedMetric",
+      "mathematicalImpact": "May bias routing and premium deployment choices.",
+      "dependsOn": ["modelId", "latencySensitiveTrafficPercent"],
+      "feeds": ["routingSplit", "modeledSuitabilityScore"],
+      "affectsTotals": ["annualEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "stabilityConsistency",
+      "level": "Technical",
+      "defaultValue": { "value": 0.7, "weight": 0.05 },
+      "controlType": "weightedMetric",
+      "mathematicalImpact": "Lower stability may increase retries and review burden.",
+      "dependsOn": ["modelId"],
+      "feeds": ["modeledCostRealismFactor", "retryOnFailure"],
+      "affectsTotals": ["annualEstimate", "modeledSuitabilityScore"],
+      "signalrPublish": true
+    },
+    {
+      "key": "operationalMaintenanceBurden",
+      "level": "Technical",
+      "defaultValue": { "value": 0.3, "weight": 0.05 },
+      "controlType": "weightedMetric",
+      "mathematicalImpact": "Adds modeled operational ownership overhead to annual estimate if enabled.",
+      "dependsOn": ["modelId", "trainingAdaptationBurden", "securityPackageEnabled"],
+      "feeds": ["annualEstimate", "modeledCostRealismFactor"],
+      "affectsTotals": ["annualEstimate", "modeledSuitabilityScore"],
+      "signalrPublish": true
+    },
+    {
+      "key": "workflowIntegrationEfficiency",
+      "level": "Technical",
+      "defaultValue": { "value": 0.7, "weight": 0.09 },
+      "controlType": "weightedMetric",
+      "mathematicalImpact": "Higher efficiency reduces wasted calls and improves cost realism.",
+      "dependsOn": ["modelId", "toolUseRate"],
+      "feeds": ["modeledCostRealismFactor", "annualEstimate"],
+      "affectsTotals": ["annualEstimate", "modeledSuitabilityScore"],
+      "signalrPublish": true
+    },
+
+    {
+      "key": "inputTokenPrice",
+      "level": "Technical",
+      "defaultValue": 5,
+      "controlType": "currencyPerMillion",
+      "mathematicalImpact": "apiInputCostAnnual = (totalInputTokensPerYear / 1000000) × inputTokenPrice",
+      "dependsOn": ["vendorId", "modelId", "costSource"],
+      "feeds": ["apiCostAnnual"],
+      "affectsTotals": ["annualEstimate", "monthlyEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "outputTokenPrice",
+      "level": "Technical",
+      "defaultValue": 15,
+      "controlType": "currencyPerMillion",
+      "mathematicalImpact": "apiOutputCostAnnual = (totalOutputTokensPerYear / 1000000) × outputTokenPrice",
+      "dependsOn": ["vendorId", "modelId", "costSource"],
+      "feeds": ["apiCostAnnual"],
+      "affectsTotals": ["annualEstimate", "monthlyEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "cachedInputTokenPrice",
+      "level": "Technical",
+      "defaultValue": 0.5,
+      "controlType": "currencyPerMillion",
+      "mathematicalImpact": "cachedInputCostAnnual = (cachedInputTokensAnnual / 1000000) × cachedInputTokenPrice",
+      "dependsOn": ["vendorId", "modelId", "contextCachingEnabled"],
+      "feeds": ["cachingSavingsAnnual", "apiCostAnnual"],
+      "affectsTotals": ["annualEstimate", "monthlyEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "seatPricePerUserPerMonth",
+      "level": "Technical",
+      "defaultValue": 25,
+      "controlType": "currency",
+      "mathematicalImpact": "seatCostAnnual = userCount × seatPricePerUserPerMonth × 12 × activeSeatFactor",
+      "dependsOn": ["vendorId", "workspaceSeatsEnabled"],
+      "feeds": ["seatCostAnnual"],
+      "affectsTotals": ["annualEstimate", "costPerUserPerMonth", "monthlyEstimate"],
+      "signalrPublish": true
+    },
+    {
+      "key": "throughputUnitCost",
+      "level": "Technical",
+      "defaultValue": 2,
+      "controlType": "currency",
+      "mathematicalImpact": "throughputCostAnnual = unitsPurchased × throughputUnitCost × reservedHoursPerMonth × 12",
+      "dependsOn": ["vendorId", "throughputUnitType", "costSource"],
+      "feeds": ["throughputCostAnnual"],
+      "affectsTotals": ["annualEstimate", "includedCapacity"],
+      "signalrPublish": true
+    }
+  ],
+  "calculationGraph": {
+    "baseDemand": [
+      "userCount",
+      "activeUserPercent",
+      "promptsPerUserPerDay",
+      "activeDaysPerYear",
+      "inputTokensPerPrompt",
+      "outputTokensPerPrompt",
+      "usagePercent"
+    ],
+    "intermediateMath": {
+      "activeUsers": "userCount * activeUserPercent",
+      "groupPromptsAnnual": "activeUsers * promptsPerUserPerDay * activeDaysPerYear",
+      "totalPromptsPerYear": "sum(groupPromptsAnnual across all user groups)",
+      "totalInputTokensPerYear": "sum(groupPromptsAnnual * inputTokensPerPrompt across all user groups)",
+      "totalOutputTokensPerYear": "sum(groupPromptsAnnual * outputTokensPerPrompt across all user groups)",
+      "totalTokensPerYear": "totalInputTokensPerYear + totalOutputTokensPerYear",
+      "apiCostAnnual": "((totalInputTokensPerYear / 1000000) * inputTokenPrice) + ((totalOutputTokensPerYear / 1000000) * outputTokenPrice) - cachingSavingsAnnual",
+      "seatCostAnnual": "userCount * seatPricePerUserPerMonth * 12",
+      "throughputCostAnnual": "unitsPurchased * throughputUnitCost * reservedHoursPerMonth * 12",
+      "securityOverheadAnnual": "auditLoggingCost + policyGovernanceCost + identityIntegrationCost + (baseApplicableCost * adminOverheadPercent)",
+      "supportCostAnnual": "supportFixedFee + (baseApplicableCost * supportUpliftPercent)",
+      "residencyUpliftAnnual": "baseApplicableCost * residencyUpliftPercent",
+      "hybridNetworkCostAnnual": "networkEgressCost + privateConnectivityCost + hybridManagementOverhead",
+      "includedCapacity": "providerIncludedCapacity + grantBasedCapacity + throughputDerivedCapacity",
+      "overageExposure": "max(0, modeledDemandCapacityEquivalent - includedCapacity) * overageRateEquivalent",
+      "annualEstimate": "max(minimumSpend, annualCommitment, seatCostAnnual + apiCostAnnual + throughputCostAnnual + connectorCostAnnual + securityOverheadAnnual + supportCostAnnual + residencyUpliftAnnual + hybridNetworkCostAnnual + overageExposure + operationalAdjustmentAnnual)",
+      "monthlyEstimate": "annualEstimate / 12",
+      "costPerUserPerMonth": "monthlyEstimate / max(1, activeUsers)",
+      "modeledSuitabilityScore": "weighted composite of technical attributes normalized to 0-100",
+      "modeledCostRealismFactor": "weighted composite modifier applied to optional operational adjustment layer"
+    }
+  }
+}

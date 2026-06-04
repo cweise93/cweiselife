@@ -259,6 +259,27 @@
                   additional pricing inputs your deal actually needs.
                 </p>
               </div>
+
+              @if (calculatorPricingDisclosure(); as disclosure) {
+                <div class="tool-disclaimer-card">
+                  <div class="tool-disclaimer-card__header">
+                    <div>
+                      <span class="tool-disclaimer-card__eyebrow">Pricing confidence</span>
+                      <strong>{{ disclosure.vendorLabel }}</strong>
+                    </div>
+                    <span class="tool-disclaimer-card__badge">{{ disclosure.confidenceLabel }}</span>
+                  </div>
+
+                  <p class="tool-disclaimer-card__copy">{{ disclosure.statement }}</p>
+                  <p class="tool-disclaimer-card__meta">Last verified {{ disclosure.lastVerifiedLabel }}</p>
+
+                  <div class="tool-disclaimer-card__sources">
+                    @for (source of disclosure.sourceUrls; track source; let index = $index) {
+                      <a [href]="source" target="_blank" rel="noreferrer">Source {{ index + 1 }}</a>
+                    }
+                  </div>
+                </div>
+              }
             </mat-card>
           </div>
         }

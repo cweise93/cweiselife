@@ -113,6 +113,7 @@ export class FrameworkDetailComponent {
       supporting: [metrics[4], metrics[2], metrics[3]].filter(Boolean)
     };
   });
+  readonly calculatorPricingDisclosure = this.aiCostCalculator.pricingDisclosure;
   readonly fallbackSnapshotItems = computed<CompanionSnapshotItem[]>(() => {
     const framework = this.item();
     if (!framework || this.snapshotItems().length) {

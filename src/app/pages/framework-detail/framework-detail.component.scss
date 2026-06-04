@@ -218,6 +218,78 @@ p {
   background: #16a34a;
 }
 
+.tool-disclaimer-card {
+  display: grid;
+  gap: 10px;
+  padding-top: 2px;
+}
+
+.tool-disclaimer-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.tool-disclaimer-card__header strong {
+  display: block;
+  color: var(--cw-ink);
+  font-size: 0.96rem;
+}
+
+.tool-disclaimer-card__eyebrow {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cw-muted);
+}
+
+.tool-disclaimer-card__badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0 10px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--cw-accent) 18%, var(--cw-line));
+  background: color-mix(in srgb, var(--cw-accent) 6%, var(--cw-panel));
+  color: var(--cw-accent-strong, var(--cw-accent));
+  font-size: 0.75rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.tool-disclaimer-card__copy,
+.tool-disclaimer-card__meta {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--cw-muted);
+}
+
+.tool-disclaimer-card__meta {
+  font-size: 0.84rem;
+}
+
+.tool-disclaimer-card__sources {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+}
+
+.tool-disclaimer-card__sources a {
+  color: var(--cw-accent);
+  font-size: 0.84rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.tool-disclaimer-card__sources a:hover {
+  text-decoration: underline;
+}
+
 .tool-score-main {
   display: grid;
   gap: 18px;
