@@ -1,12 +1,781 @@
 {
   "meta": {
     "version": 1,
-    "updatedOn": "2026-05-26",
+    "updatedOn": "2026-06-01",
     "eyebrow": "Frameworks",
     "headline": "Operational Frameworks",
     "intro": "Frameworks for reducing noise, improving systems translation, and designing cleaner execution paths inside complex organizations."
   },
   "items": [
+    {
+      "id": "framework-005",
+      "slug": "frameworks/2026/06/01/ai-consumption-leverage-framework",
+      "title": "AI Consumption Leverage Framework",
+      "summary": "A tactical framework for reducing unnecessary AI spend, improving workflow efficiency, and helping teams estimate, prioritize, and explain which seven operating levers can improve cost discipline without degrading user experience.",
+      "status": "published",
+      "publishedOn": "2026-06-01",
+      "featured": true,
+      "category": "AI Cost & Operations",
+      "tags": [
+        "AI cost management",
+        "operating leverage",
+        "token consumption",
+        "model routing",
+        "workflow design",
+        "caching",
+        "local models",
+        "planning and budgeting",
+        "d3",
+        "calculator"
+      ],
+      "diagramImage": "assets/images/frameworks/2026-06-01_ai_consumption_leverage_framework/images/01_ai_consumption_leverage_framework_overview.png",
+      "heroImage": "assets/images/frameworks/2026-06-01_ai_consumption_leverage_framework/images/01_ai_consumption_leverage_framework_overview.png",
+      "seo": {
+        "title": "AI Consumption Leverage Framework",
+        "description": "Seven practical ways to reduce unnecessary AI spend, estimate cost, compare hosted and hybrid paths, and prioritize the levers that create the most operating leverage."
+      },
+      "body": {
+        "premise": "This framework is here to make AI cost feel more understandable and more manageable. It gives you a practical way to see what is driving spend, compare realistic paths forward, and decide which changes are most worth making first without having to guess your way through it.",
+        "components": [
+          {
+            "title": "AI Consumption Leverage Calculator",
+            "description": "An inline calculator for estimating monthly and annual AI spend, comparing hosted, local, and hybrid assumptions, and seeing how usage variables change cost."
+          },
+          {
+            "title": "Seven Spend Levers",
+            "description": "A seven-part tactical framework covering prompt reuse, context management, model routing, workflow design, caching, local or hybrid execution, and planning and budgeting."
+          },
+          {
+            "title": "Dynamic D3 Prioritization Map",
+            "description": "An interactive visualization that lets readers rank each lever by implementation effort and expected impact, then updates a shared value-versus-complexity view."
+          }
+        ],
+        "application": "Use this framework when AI adoption is growing and you want a calmer, more concrete way to understand what is happening, where you have room to improve, and how to talk about the next move with more confidence than instinct alone.",
+        "sections": [
+          {
+            "heading": "Why this framework exists",
+            "layout": "split-image-right",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "text": "Most teams do not need more noise around AI cost. They need a clearer way to understand what is happening, what they can influence, and which changes are most likely to improve the outcome without disrupting everything around them."
+              },
+              {
+                "type": "paragraph",
+                "text": "The AI Consumption Leverage Framework is built to create that kind of clarity. It gives you a safe working space to estimate cost, test assumptions, and prioritize practical levers one step at a time so the path forward feels more visible and more controllable."
+              },
+              {
+                "type": "image",
+                "src": "assets/images/frameworks/2026-06-01_ai_consumption_leverage_framework/images/01_ai_consumption_leverage_framework_overview.png",
+                "alt": "AI Consumption Leverage Framework overview",
+                "caption": "The framework combines an inline calculator, seven practical spend levers, and a dynamic prioritization map so readers can estimate cost, act tactically, and explain the value case more clearly.",
+                "title": "AI Consumption Leverage Framework Overview"
+              },
+              {
+                "type": "callout",
+                "tone": "executive",
+                "title": "Core promise",
+                "text": "See what is driving cost. Learn which levers matter most. Move forward with a clearer sense of control."
+              }
+            ]
+          },
+          {
+            "heading": "Start with the calculator, not the guesswork",
+            "layout": "default",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "text": "The first inline tool in the framework is the AI Contract Cost Estimator. It starts where most real conversations start: which vendor is under consideration, what contract structure is on the table, and what baseline level of usage needs to be covered."
+              },
+              {
+                "type": "paragraph",
+                "text": "Answer the minimum fields needed to produce a credible quote first. Then select the capabilities that are actually included in the deal. Each capability opens only the negotiation variables it requires, so the estimator stays calm until the contract asks for more detail."
+              },
+              {
+                "type": "component",
+                "component": "ai-consumption-leverage-calculator",
+                "title": "AI Contract Cost Estimator",
+                "description": "Start with vendor and contract structure, then reveal only the pricing drivers your deal actually needs.",
+                "fallback": "Interactive calculator unavailable. Use the default assumptions table and worksheet to estimate cost manually.",
+                "config": {
+                  "surfaceInputs": [
+                    {
+                      "key": "provider",
+                      "label": "Provider",
+                      "type": "select"
+                    },
+                    {
+                      "key": "model",
+                      "label": "Model",
+                      "type": "select"
+                    },
+                    {
+                      "key": "employeeCount",
+                      "label": "Employee count",
+                      "type": "number"
+                    },
+                    {
+                      "key": "aiUsers",
+                      "label": "AI-active users",
+                      "type": "number"
+                    },
+                    {
+                      "key": "hoursPerDay",
+                      "label": "Hours per day",
+                      "type": "number"
+                    },
+                    {
+                      "key": "averageComplexity",
+                      "label": "Average complexity",
+                      "type": "select"
+                    },
+                    {
+                      "key": "deploymentMode",
+                      "label": "Deployment mode",
+                      "type": "segmented",
+                      "options": [
+                        "hosted",
+                        "local",
+                        "hybrid"
+                      ]
+                    }
+                  ],
+                  "advancedInputs": [
+                    "promptDepth",
+                    "outputLength",
+                    "retryRate",
+                    "contextSize",
+                    "numberOfTurns",
+                    "vsCodeUsage",
+                    "connectorsUsed",
+                    "workflowType",
+                    "hardwareCost",
+                    "taxRate",
+                    "setupLaborHours",
+                    "maintenanceHoursPerMonth",
+                    "depreciationMonths"
+                  ],
+                  "outputs": [
+                    "monthlyCost",
+                    "annualCost",
+                    "costPerUser",
+                    "costPerDepartment",
+                    "hostedVsLocalComparison",
+                    "leverageEstimate",
+                    "usageGrowthScenarios"
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "heading": "What the calculator should show",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "text": "A useful calculator should answer the questions people actually carry into leadership, finance, or operations meetings. What might current usage cost? What happens if adoption doubles? What changes if the average task is more complex than expected? What happens if the organization uses local or hybrid paths for certain workloads?"
+              },
+              {
+                "type": "list",
+                "title": "Core outputs",
+                "items": [
+                  "Monthly spend estimate",
+                  "Annualized spend estimate",
+                  "Cost per AI-active user",
+                  "Cost by team or department",
+                  "Hosted, local, and hybrid comparison",
+                  "Usage-growth scenarios such as two times, five times, and ten times adoption",
+                  "A directional leverage estimate based on the selected assumptions"
+                ]
+              },
+              {
+                "type": "callout",
+                "tone": "technical",
+                "title": "Practical use",
+                "text": "The calculator is not there to win an argument. It is there to give the reader a more useful starting point than instinct or vendor optimism."
+              }
+            ]
+          },
+          {
+            "heading": "The seven levers that can impact spend",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "text": "Once the calculator gives the reader a cost shape, the framework shifts to the seven practical levers that can improve cost discipline without degrading user experience. These levers are not ideological positions. They are operational moves that can be applied immediately or progressively depending on the environment."
+              },
+              {
+                "type": "paragraph",
+                "text": "Use the default rankings below as the framework's starting position, then adjust them if your environment tells a different story. The point is not to complete an exercise. The point is to ask whether these seven levers track with your actual implementation burden and expected benefit."
+              },
+              {
+                "type": "component",
+                "component": "ai-spend-levers-prioritization-map",
+                "title": "Does this match your experience?",
+                "description": "The framework starts with a default ranking for implementation difficulty and expected benefit. If your experience differs, drag the two columns until the map reflects what is true in your environment.",
+                "fallback": "Interactive prioritization map unavailable. Use the default positioning image to guide the first implementation discussion.",
+                "config": {
+                  "layout": "controls",
+                  "xAxisLabel": "Implementation difficulty",
+                  "yAxisLabel": "Expected benefit",
+                  "difficultyHighToLow": [
+                    "planning-budgeting",
+                    "local-hybrid",
+                    "caching-memory",
+                    "model-routing",
+                    "context-management",
+                    "workflow-design",
+                    "prompt-reuse"
+                  ],
+                  "benefitHighToLow": [
+                    "caching-memory",
+                    "context-management",
+                    "prompt-reuse",
+                    "model-routing",
+                    "workflow-design",
+                    "local-hybrid",
+                    "planning-budgeting"
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "heading": "Lever 1: prompt and instruction reuse",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "text": "Prompt reuse is usually the fastest way to remove low-grade waste. Teams often recreate the same instructions, task framing, and role guidance over and over. That raises cost, increases inconsistency, and drives avoidable retry behavior."
+              },
+              {
+                "type": "paragraph",
+                "text": "A reusable instruction layer lets organizations capture what already works and make it easier to apply repeatedly. The goal is not to constrain people into rigid scripts. The goal is to reduce waste from starting over every time."
+              },
+              {
+                "type": "callout",
+                "tone": "executive",
+                "title": "Immediate benefit",
+                "text": "Same outcome. Less prompt waste."
+              }
+            ]
+          },
+          {
+            "heading": "Lever 2: context management",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "text": "Context management is often one of the highest-impact cost levers because many teams send too much information by default. Whole documents, duplicated background, and oversized context windows increase token load without proportionally improving outcomes."
+              },
+              {
+                "type": "paragraph",
+                "text": "Better context discipline means tighter retrieval, stronger source selection, summarized input packages, and a clearer distinction between what the model truly needs and what the user merely has available."
+              },
+              {
+                "type": "callout",
+                "tone": "technical",
+                "title": "Immediate benefit",
+                "text": "Better relevance. Lower token burden."
+              }
+            ]
+          },
+          {
+            "heading": "Lever 3: model routing",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "text": "Model routing helps organizations stop treating all AI work as if it deserves the same model path. Some work needs high-end reasoning. Much of it does not. If everything flows to the most expensive model by default, spend rises faster than value."
+              },
+              {
+                "type": "paragraph",
+                "text": "Routing rules do not need to be complicated to be useful. The basic discipline is to match task type, task risk, and output requirement to an appropriate model path."
+              },
+              {
+                "type": "callout",
+                "tone": "technical",
+                "title": "Immediate benefit",
+                "text": "Not every task deserves the most expensive path."
+              }
+            ]
+          },
+          {
+            "heading": "Lever 4: workflow design",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "text": "Workflow design is the lever that catches waste before model selection even matters. A poorly designed process can create unnecessary AI calls, duplicated human review, and expensive orchestration that never needed to exist."
+              },
+              {
+                "type": "paragraph",
+                "text": "Good workflow design asks where AI belongs, where deterministic automation is better, where a template would work, and where a human step should happen earlier or later to prevent rework."
+              },
+              {
+                "type": "callout",
+                "tone": "warning",
+                "title": "Immediate benefit",
+                "text": "Better process design reduces consumption before model choice even matters."
+              }
+            ]
+          },
+          {
+            "heading": "Lever 5: caching and memory layers",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "text": "Caching and memory layers matter when similar work happens repeatedly. If the same summary, reference package, lookup, or classification must be produced again and again, the system should not behave as if the work is brand new every time."
+              },
+              {
+                "type": "paragraph",
+                "text": "This lever becomes especially valuable in repeated reference workflows, standard research packages, policy lookups, and recurring internal knowledge tasks."
+              },
+              {
+                "type": "callout",
+                "tone": "technical",
+                "title": "Immediate benefit",
+                "text": "Do not pay again for the same useful result."
+              }
+            ]
+          },
+          {
+            "heading": "Lever 6: local or hybrid execution",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "text": "Local or hybrid execution is not an ideological stance. It is a workload-allocation decision. Some workloads may be better handled on hosted models. Others may be more economical or more appropriate on local or hybrid paths once hardware, tax, setup labor, maintenance, and depreciation are considered."
+              },
+              {
+                "type": "paragraph",
+                "text": "This is why the calculator must account for local or hybrid economics rather than assuming hosted models are always the right answer or always the cheaper one."
+              },
+              {
+                "type": "callout",
+                "tone": "executive",
+                "title": "Immediate benefit",
+                "text": "Hosted and local are not belief systems. They are cost-path choices."
+              }
+            ]
+          },
+          {
+            "heading": "Lever 7: proper planning and budgeting",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "text": "Planning and budgeting make the other six levers easier to defend. What gets budgeted gets discussed. What gets discussed can be managed. If AI usage is not forecasted, owned, and reviewed, even good technical decisions can still arrive as budget surprises."
+              },
+              {
+                "type": "paragraph",
+                "text": "A useful planning rhythm includes budget ranges, overage thresholds, growth scenarios, monthly review, and ownership by function or team."
+              },
+              {
+                "type": "callout",
+                "tone": "executive",
+                "title": "Immediate benefit",
+                "text": "Turn invoice surprise into an operating assumption."
+              }
+            ]
+          },
+          {
+            "heading": "The second inline tool: a prioritization surface, not just a graphic",
+            "layout": "split-image-left",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "text": "The second inline tool is the dynamic D3 prioritization map. Its purpose is different from the calculator. The calculator estimates exposure. The D3 map helps the reader decide where to act first."
+              },
+              {
+                "type": "paragraph",
+                "text": "Not every lever is equal. Some are easier to implement. Some are harder. Some create more immediate value. Some require more money, more resources, more change management, or more production disruption than others."
+              },
+              {
+                "type": "component",
+                "component": "ai-spend-levers-prioritization-map",
+                "title": "AI Spend Levers Prioritization Map",
+                "description": "This live D3 view uses the current difficulty and benefit rankings from above to show which levers look like quick wins, which are strategic bets, and which should likely wait.",
+                "fallback": "Interactive prioritization map unavailable. Use the default positioning image to guide the first implementation discussion.",
+                "config": {
+                  "layout": "chart",
+                  "xAxisLabel": "Implementation difficulty",
+                  "yAxisLabel": "Expected benefit",
+                  "difficultyHighToLow": [
+                    "planning-budgeting",
+                    "local-hybrid",
+                    "caching-memory",
+                    "model-routing",
+                    "context-management",
+                    "workflow-design",
+                    "prompt-reuse"
+                  ],
+                  "benefitHighToLow": [
+                    "caching-memory",
+                    "context-management",
+                    "prompt-reuse",
+                    "model-routing",
+                    "workflow-design",
+                    "local-hybrid",
+                    "planning-budgeting"
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "heading": "How the D3 interaction should work",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "text": "You just moved the levers around for a reason: to make the framework feel more like your world and less like mine. As the rankings change, the map stops being a static opinion and starts becoming a clearer expression of what you believe will be hardest to implement, what is most likely to pay off, and where your real operating constraints actually live."
+              },
+              {
+                "type": "paragraph",
+                "text": "That interaction matters because the same seven levers do not behave the same way everywhere. In your environment, model routing might be simple and immediately valuable. In another, workflow redesign might be easier to implement but harder to prove. Reprioritizing in real time helps you feel the tradeoffs more honestly: which levers are true quick wins, which ones deserve a larger bet, and which ones should wait until the system around them is ready."
+              },
+              {
+                "type": "list",
+                "title": "What this should help you decide",
+                "items": [
+                  "Which levers look like the best first move in this environment, not in theory?",
+                  "Which levers appear to create meaningful cost relief without heavy implementation drag?",
+                  "Which levers may be valuable but should wait because the operating burden is still too high?",
+                  "Where does our lived experience disagree with the framework default?",
+                  "What sequence of changes would give us the clearest proof of value fastest?"
+                ]
+              },
+              {
+                "type": "callout",
+                "tone": "executive",
+                "title": "What to do next",
+                "text": "Once the map feels honest, the calculator becomes more than a cost estimate. It becomes a way to put numbers behind the priorities you just shaped. Instead of modeling spend in a vacuum, you can test the scenarios that match the levers you are actually most likely to pull first, which makes the next step feel grounded instead of abstract."
+              }
+            ]
+          },
+          {
+            "heading": "How the calculator and the seven levers work together",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "text": "The calculator gives the reader the economic shape of the problem. The seven levers show where tactical intervention is possible. The D3 map helps decide which interventions are most worth pursuing first."
+              },
+              {
+                "type": "table",
+                "title": "Tactical flow",
+                "columns": [
+                  "Step",
+                  "Question answered",
+                  "Tool"
+                ],
+                "rows": [
+                  [
+                    "1",
+                    "What could our current or projected AI usage cost?",
+                    "AI Consumption Leverage Calculator"
+                  ],
+                  [
+                    "2",
+                    "Which practical levers can reduce unnecessary spend or improve value conversion?",
+                    "Seven Spend Levers"
+                  ],
+                  [
+                    "3",
+                    "Which levers are worth implementing first given effort and likely impact?",
+                    "Dynamic D3 Prioritization Map"
+                  ],
+                  [
+                    "4",
+                    "How do we explain those choices to finance, leadership, or operations?",
+                    "Calculator output + prioritization view"
+                  ]
+                ]
+              },
+              {
+                "type": "callout",
+                "tone": "executive",
+                "title": "Outcome",
+                "text": "The framework helps the reader do the work and carry the insight back to the people asking why it matters."
+              }
+            ]
+          },
+          {
+            "heading": "What this framework should help the reader do immediately",
+            "blocks": [
+              {
+                "type": "list",
+                "title": "Immediate uses",
+                "items": [
+                  "Estimate likely AI cost exposure",
+                  "Spot common sources of waste",
+                  "Compare hosted and hybrid assumptions",
+                  "Prioritize which levers to apply first",
+                  "Generate a clearer internal value case",
+                  "Create a more practical discussion with leadership, finance, or operations"
+                ]
+              },
+              {
+                "type": "paragraph",
+                "text": "The framework is tactical on purpose. It should feel like an answer, not an argument. The Monday piece can get attention. The framework should earn trust by helping someone work the problem."
+              }
+            ]
+          },
+          {
+            "heading": "Final standard",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "text": "The point of this framework is not to prove that AI cost is scary. The point is to help someone reduce unnecessary spend, improve value conversion, and make better operating choices with tools that are useful enough to carry into real conversations."
+              },
+              {
+                "type": "paragraph",
+                "text": "If the reader leaves with a more realistic cost estimate, a clearer view of the seven levers, and a better sense of which changes matter most, the framework has done its job."
+              }
+            ]
+          }
+        ]
+      },
+      "companion": {
+        "snapshot": [
+          {
+            "label": "Category",
+            "value": "AI Cost & Operations"
+          },
+          {
+            "label": "Best for",
+            "value": "CIOs, operations leaders, AI platform owners, finance partners, architects, workflow owners"
+          },
+          {
+            "label": "Core question",
+            "value": "Which AI spend levers are worth applying first, and how much can they change the cost shape?"
+          },
+          {
+            "label": "Primary artifacts",
+            "value": "AI Consumption Leverage Calculator + Dynamic D3 Prioritization Map"
+          },
+          {
+            "label": "Method",
+            "value": "Estimate cost \u2192 apply seven levers \u2192 rank effort and impact \u2192 prioritize the work"
+          }
+        ],
+        "toc": [
+          {
+            "label": "Why this framework exists",
+            "anchor": "why-this-framework-exists"
+          },
+          {
+            "label": "Start with the calculator",
+            "anchor": "start-with-the-calculator-not-the-guesswork"
+          },
+          {
+            "label": "What the calculator should show",
+            "anchor": "what-the-calculator-should-show"
+          },
+          {
+            "label": "Seven spend levers",
+            "anchor": "the-seven-levers-that-can-impact-spend"
+          },
+          {
+            "label": "Lever 1: prompt and instruction reuse",
+            "anchor": "lever-1-prompt-and-instruction-reuse"
+          },
+          {
+            "label": "Lever 2: context management",
+            "anchor": "lever-2-context-management"
+          },
+          {
+            "label": "Lever 3: model routing",
+            "anchor": "lever-3-model-routing"
+          },
+          {
+            "label": "Lever 4: workflow design",
+            "anchor": "lever-4-workflow-design"
+          },
+          {
+            "label": "Lever 5: caching and memory layers",
+            "anchor": "lever-5-caching-and-memory-layers"
+          },
+          {
+            "label": "Lever 6: local or hybrid execution",
+            "anchor": "lever-6-local-or-hybrid-execution"
+          },
+          {
+            "label": "Lever 7: proper planning and budgeting",
+            "anchor": "lever-7-proper-planning-and-budgeting"
+          },
+          {
+            "label": "Dynamic prioritization surface",
+            "anchor": "the-second-inline-tool-a-prioritization-surface-not-just-a-graphic"
+          },
+          {
+            "label": "How the D3 interaction should work",
+            "anchor": "how-the-d3-interaction-should-work"
+          },
+          {
+            "label": "How the tools work together",
+            "anchor": "how-the-calculator-and-the-seven-levers-work-together"
+          },
+          {
+            "label": "What this helps the reader do immediately",
+            "anchor": "what-this-framework-should-help-the-reader-do-immediately"
+          },
+          {
+            "label": "Final standard",
+            "anchor": "final-standard"
+          }
+        ],
+        "callsToAction": [
+          {
+            "title": "Use the calculator",
+            "description": "Estimate AI spend, compare hosted and hybrid cost paths, and see how usage assumptions change the economic picture.",
+            "anchor": "start-with-the-calculator-not-the-guesswork",
+            "buttonLabel": "Open calculator"
+          },
+          {
+            "title": "Rank the seven levers",
+            "description": "Use the dynamic D3 prioritization surface to rank implementation effort and expected impact, then update the value-versus-complexity map.",
+            "anchor": "the-second-inline-tool-a-prioritization-surface-not-just-a-graphic",
+            "buttonLabel": "Open prioritization map"
+          }
+        ],
+        "assets": [
+          {
+            "label": "AI Consumption Leverage Framework Overview",
+            "href": "assets/images/frameworks/2026-06-01_ai_consumption_leverage_framework/images/01_ai_consumption_leverage_framework_overview.png",
+            "description": "Overview image showing the calculator, seven spend levers, and prioritization map as one tactical framework.",
+            "type": "image",
+            "number": "01"
+          },
+          {
+            "label": "AI Consumption Leverage Calculator",
+            "href": "assets/images/frameworks/2026-06-01_ai_consumption_leverage_framework/images/02_ai_consumption_leverage_calculator.png",
+            "description": "Calculator mock showing surface inputs, expandable detail, and cost and leverage outputs.",
+            "type": "image",
+            "number": "02"
+          },
+          {
+            "label": "Seven Spend Levers Overview",
+            "href": "assets/images/frameworks/2026-06-01_ai_consumption_leverage_framework/images/03_seven_spend_levers_overview.png",
+            "description": "Framework visual introducing the seven practical spend levers around operating leverage.",
+            "type": "image",
+            "number": "03"
+          },
+          {
+            "label": "Value vs Complexity Map",
+            "href": "assets/images/frameworks/2026-06-01_ai_consumption_leverage_framework/images/04_value_vs_complexity_map.png",
+            "description": "Map showing the seven levers positioned by implementation effort and expected impact.",
+            "type": "image",
+            "number": "04"
+          },
+          {
+            "label": "AI Consumption Leverage Calculator",
+            "href": "#start-with-the-calculator-not-the-guesswork",
+            "description": "Inline calculator for estimating cost and comparing hosted, local, and hybrid paths.",
+            "type": "component"
+          },
+          {
+            "label": "AI Spend Levers Prioritization Map",
+            "href": "#the-second-inline-tool-a-prioritization-surface-not-just-a-graphic",
+            "description": "Interactive D3 surface for ranking the seven levers and updating the shared prioritization view.",
+            "type": "component"
+          }
+        ],
+        "related": [
+          {
+            "title": "Systems Translation Loop",
+            "slug": "frameworks/2026/03/18/systems-translation-loop",
+            "description": "A framework for preserving business intent as work moves into workflow and technology."
+          },
+          {
+            "title": "Turn Down the Noise",
+            "slug": "frameworks/2026/04/14/turn-down-the-noise",
+            "description": "A framework for reducing noise and improving decision quality once new AI workflows begin to create coordination churn."
+          }
+        ]
+      },
+      "productionAssets": {
+        "frameworkImages": [
+          {
+            "label": "AI Consumption Leverage Framework Overview",
+            "href": "assets/images/frameworks/2026-06-01_ai_consumption_leverage_framework/images/01_ai_consumption_leverage_framework_overview.png",
+            "description": "Overview image showing how the calculator, seven levers, and prioritization map fit together.",
+            "type": "image",
+            "number": "01"
+          },
+          {
+            "label": "AI Consumption Leverage Calculator",
+            "href": "assets/images/frameworks/2026-06-01_ai_consumption_leverage_framework/images/02_ai_consumption_leverage_calculator.png",
+            "description": "Calculator UI concept for estimating spend and leverage.",
+            "type": "image",
+            "number": "02"
+          },
+          {
+            "label": "Seven Spend Levers Overview",
+            "href": "assets/images/frameworks/2026-06-01_ai_consumption_leverage_framework/images/03_seven_spend_levers_overview.png",
+            "description": "Connected framework visual introducing the seven practical spend levers.",
+            "type": "image",
+            "number": "03"
+          },
+          {
+            "label": "Value vs Complexity Map",
+            "href": "assets/images/frameworks/2026-06-01_ai_consumption_leverage_framework/images/04_value_vs_complexity_map.png",
+            "description": "D3-inspired visual showing the seven levers on effort and impact axes.",
+            "type": "image",
+            "number": "04"
+          }
+        ],
+        "imageRenamePlan": [
+          {
+            "current": "assets/images/frameworks/2026-06-01_ai_consumption_leverage_framework/images/1.png",
+            "recommended": "assets/images/frameworks/2026-06-01_ai_consumption_leverage_framework/images/01_ai_consumption_leverage_framework_overview.png",
+            "title": "AI Consumption Leverage Framework Overview"
+          },
+          {
+            "current": "assets/images/frameworks/2026-06-01_ai_consumption_leverage_framework/images/2.png",
+            "recommended": "assets/images/frameworks/2026-06-01_ai_consumption_leverage_framework/images/02_ai_consumption_leverage_calculator.png",
+            "title": "AI Consumption Leverage Calculator"
+          },
+          {
+            "current": "assets/images/frameworks/2026-06-01_ai_consumption_leverage_framework/images/3.png",
+            "recommended": "assets/images/frameworks/2026-06-01_ai_consumption_leverage_framework/images/03_seven_spend_levers_overview.png",
+            "title": "Seven Spend Levers Overview"
+          },
+          {
+            "current": "assets/images/frameworks/2026-06-01_ai_consumption_leverage_framework/images/4.png",
+            "recommended": "assets/images/frameworks/2026-06-01_ai_consumption_leverage_framework/images/04_value_vs_complexity_map.png",
+            "title": "Value vs Complexity Map"
+          }
+        ],
+        "socialImage": {
+          "label": "Framework social image",
+          "href": "assets/images/frameworks/2026-06-01_ai_consumption_leverage_framework/images/01_ai_consumption_leverage_framework_overview.png",
+          "description": "Use the overview image as the default Open Graph/social preview until a dedicated social image is created."
+        }
+      },
+      "imageIndex": [
+        {
+          "number": "01",
+          "title": "AI Consumption Leverage Framework Overview",
+          "href": "assets/images/frameworks/2026-06-01_ai_consumption_leverage_framework/images/01_ai_consumption_leverage_framework_overview.png",
+          "alt": "AI Consumption Leverage Framework overview",
+          "description": "Overview image showing the calculator, the seven spend levers, and the prioritization map as one tactical framework."
+        },
+        {
+          "number": "02",
+          "title": "AI Consumption Leverage Calculator",
+          "href": "assets/images/frameworks/2026-06-01_ai_consumption_leverage_framework/images/02_ai_consumption_leverage_calculator.png",
+          "alt": "AI Consumption Leverage Calculator mock interface",
+          "description": "Calculator mock showing surface inputs, advanced-detail drawers, and cost and leverage outputs."
+        },
+        {
+          "number": "03",
+          "title": "Seven Spend Levers Overview",
+          "href": "assets/images/frameworks/2026-06-01_ai_consumption_leverage_framework/images/03_seven_spend_levers_overview.png",
+          "alt": "Seven AI consumption spend levers around operating leverage",
+          "description": "Framework visual introducing prompt reuse, context management, model routing, workflow design, caching, local or hybrid execution, and planning and budgeting."
+        },
+        {
+          "number": "04",
+          "title": "Value vs Complexity Map",
+          "href": "assets/images/frameworks/2026-06-01_ai_consumption_leverage_framework/images/04_value_vs_complexity_map.png",
+          "alt": "AI spend levers value versus complexity map",
+          "description": "D3-inspired map placing the seven levers on implementation effort and impact axes."
+        }
+      ]
+    },
     {
       "id": "framework-004",
       "slug": "frameworks/2026/05/27/agent-asset-grading-framework",
