@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -18,6 +18,7 @@ const EMPTY_WRITING_PAGE: ContentCollectionViewModel<WritingItem> = {
   standalone: true,
   imports: [RouterLink, DatePipe, MatCardModule, MatButtonModule, MatIconModule],
   templateUrl: './writing.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './writing.component.scss'
 })
 export class WritingComponent {

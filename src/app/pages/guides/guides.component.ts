@@ -1,4 +1,4 @@
-import { Component, HostListener, computed, inject, signal } from '@angular/core';
+import { Component, HostListener, computed, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
@@ -37,6 +37,7 @@ interface GuideTileLayout {
   standalone: true,
   imports: [RouterLink, MatButtonModule, MatGridListModule, MatIconModule],
   templateUrl: './guides.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './guides.component.scss'
 })
 export class GuidesComponent {

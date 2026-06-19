@@ -1,5 +1,5 @@
 import { DOCUMENT } from '@angular/common';
-import { Component, HostBinding, HostListener, computed, effect, inject, signal } from '@angular/core';
+import { Component, HostBinding, HostListener, computed, effect, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
@@ -31,6 +31,7 @@ const EMPTY_FOOTER: FooterContent = { featuredLinks: [] };
   standalone: true,
   imports: [RouterLink, RouterLinkActive, MatButtonModule, MatIconModule, MatDividerModule, MatToolbarModule],
   templateUrl: './site-shell.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './site-shell.component.scss'
 })
 export class SiteShellComponent {

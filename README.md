@@ -4,11 +4,17 @@ Clean-room Angular Material implementation of the repositioned cweise.com homepa
 
 ## Stack
 
-- Angular 21 standalone application
-- Angular Material 21
+- Angular 22 standalone application
+- Angular Material 22
 - SCSS with Material theming priority
 - Route-based pages with separate HTML/SCSS/TS files
 - Included SVG assets generated for this project
+
+## Prerequisites
+
+- Node.js `22.22.3` or newer
+- npm `11` or newer
+- If you use `nvm`, run `nvm use` to pick up the version from `.nvmrc`.
 
 ## Run
 

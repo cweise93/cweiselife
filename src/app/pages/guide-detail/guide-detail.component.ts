@@ -1,5 +1,5 @@
 import { DOCUMENT } from '@angular/common';
-import { Component, effect, HostListener, inject, signal } from '@angular/core';
+import { Component, effect, HostListener, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
@@ -24,6 +24,7 @@ interface GuideArtifact {
   standalone: true,
   imports: [RouterLink, MatButtonModule, MatCardModule, MatChipsModule, MatDividerModule, MatIconModule],
   templateUrl: './guide-detail.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './guide-detail.component.scss'
 })
 export class GuideDetailComponent {

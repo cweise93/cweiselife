@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -22,6 +22,7 @@ const EMPTY_NAVIGATION: SiteNavigation = { primary: [], social: [] };
   standalone: true,
   imports: [MatCardModule, MatButtonModule, MatIconModule],
   templateUrl: './connect.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './connect.component.scss'
 })
 export class ConnectComponent {
