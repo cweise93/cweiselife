@@ -25,6 +25,23 @@ npm run build
 
 Production output is generated under `dist/`.
 
+## SEO Artifacts
+
+Machine-readable discovery files are generated from the source content model:
+
+- `public/llms.txt`
+- `public/llms-full.txt`
+- `public/robots.txt`
+- `public/sitemap.xml`
+
+Regenerate them at any time with:
+
+```bash
+npm run seo:generate
+```
+
+`npm run build` runs that generator automatically before the Angular build.
+
 ## Content Architecture
 
 All authored site content now lives under `src/assets/content/`.

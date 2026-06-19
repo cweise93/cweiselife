@@ -1,7 +1,16 @@
 import { inject, Injectable } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter, startWith } from 'rxjs';
-import { guidesContent, frameworksContent, siteContent, writingContent } from '../content/content.catalog';
+import {
+  aboutContent,
+  frameworksContent,
+  guidesContent,
+  publishedFrameworkItems,
+  publishedGuideItems,
+  publishedWritingItems,
+  siteContent,
+  writingContent
+} from '../content/content.catalog';
 import { SeoService } from './seo.service';
 
 @Injectable({ providedIn: 'root' })
@@ -19,18 +28,23 @@ export class RouteSeoService {
       )
       .subscribe(() => {
         const leafRoute = this.getLeafRoute(this.router.routerState.snapshot.root);
+        const currentPath = this.normalizePath(this.router.url || '/');
         const title = leafRoute.title?.toString() ?? siteContent.meta.title;
         const description =
           (typeof leafRoute.data['seoDescription'] === 'string' && leafRoute.data['seoDescription']) ||
           this.defaultDescription;
+        const pageMetadata = this.createStaticPageMetadata(currentPath, title, description);
 
         this.seoService.applyPageMetadata({
           title,
           description,
-          urlPath: this.router.url || '/',
+          urlPath: currentPath,
           imagePath: this.defaultImagePath,
           imageDimensions: this.seoService.resolveImageDimensions(this.defaultImagePath),
-          type: 'website'
+          imageAlt: title,
+          type: 'website',
+          pageSchemaType: pageMetadata.pageSchemaType,
+          structuredData: pageMetadata.structuredData
         });
       });
   }
@@ -43,5 +57,69 @@ export class RouteSeoService {
     }
 
     return current;
+  }
+
+  private createStaticPageMetadata(
+    currentPath: string,
+    title: string,
+    description: string
+  ): { pageSchemaType: string; structuredData?: Array<Record<string, unknown>> } {
+    switch (currentPath) {
+      case '/about':
+        return {
+          pageSchemaType: 'AboutPage',
+          structuredData: this.seoService.createProfilePageStructuredData(
+            aboutContent.content.headline || title,
+            description
+          )
+        };
+      case '/connect':
+        return {
+          pageSchemaType: 'ContactPage'
+        };
+      case '/writing':
+        return {
+          pageSchemaType: 'CollectionPage',
+          structuredData: this.seoService.createCollectionStructuredData(
+            currentPath,
+            title,
+            description,
+            publishedWritingItems.map((item) => ({ slug: item.slug, title: item.title }))
+          )
+        };
+      case '/frameworks':
+        return {
+          pageSchemaType: 'CollectionPage',
+          structuredData: this.seoService.createCollectionStructuredData(
+            currentPath,
+            title,
+            description,
+            publishedFrameworkItems.map((item) => ({ slug: item.slug, title: item.title }))
+          )
+        };
+      case '/guides':
+        return {
+          pageSchemaType: 'CollectionPage',
+          structuredData: this.seoService.createCollectionStructuredData(
+            currentPath,
+            title,
+            description,
+            publishedGuideItems.map((item) => ({ slug: item.slug, title: item.title }))
+          )
+        };
+      default:
+        return {
+          pageSchemaType: 'WebPage'
+        };
+    }
+  }
+
+  private normalizePath(path: string): string {
+    const normalized = (path || '/').split(/[?#]/, 1)[0] || '/';
+    if (normalized === '/') {
+      return '/';
+    }
+
+    return normalized.endsWith('/') ? normalized.slice(0, -1) : normalized;
   }
 }
