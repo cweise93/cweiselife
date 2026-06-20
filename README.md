@@ -48,6 +48,18 @@ npm run seo:generate
 
 `npm run build` runs that generator automatically before the Angular build.
 
+## C2PA Verification
+
+Tracked media assets in supported formats are expected to carry a valid embedded C2PA manifest.
+
+Verify the repo state with:
+
+```bash
+npm run c2pa:verify
+```
+
+This requires `c2patool` to be available on your `PATH`. The deploy workflow installs a pinned version before build and will fail if any tracked asset is missing a valid manifest.
+
 ## Content Architecture
 
 All authored site content now lives under `src/assets/content/`.

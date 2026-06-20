@@ -4,6 +4,7 @@
   "description": "Clean Angular Material homepage for cweise.com repositioned as a professional thought-leadership and credibility hub.",
   "scripts": {
     "ng": "ng",
+    "c2pa:verify": "node tools/verify-c2pa.mjs",
     "seo:generate": "node tools/generate-seo-artifacts.mjs",
     "prebuild": "npm run seo:generate",
     "start": "ng serve",
