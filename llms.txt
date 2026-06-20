@@ -13,10 +13,10 @@ This site publishes prerendered essays, frameworks, and short-form operating gui
 - [Connect](https://cweise.com/connect/): Subscription and contact options.
 
 ## Featured Writing
+- [The Friday Night Cap](https://cweise.com/writing/2026/06/20/the-friday-night-cap/): A story-driven Operations Executive essay on why AI-supported delivery needs real-time consumption visibility before caps, quotas, and provider limits become missed commitments.
 - [AI Spend Is Rising. Is EBITDA?](https://cweise.com/writing/2026/06/01/ai-spend-is-rising-is-ebitda/): A board-aware essay reframing enterprise AI cost around operating leverage: not whether AI spend is rising, but whether AI consumption is being converted into measurable margin, throughput, decision quality, and enterprise value.
 - [AI Agents Are Becoming Operational Capital](https://cweise.com/writing/2026/05/25/ai-agents-are-becoming-operational-capital/): A board-level essay arguing that AI agents which encode judgment, process logic, institutional knowledge, and repeatable execution should not be treated merely as tools. Some agents will need to be governed as operational assets, graded by maturity, reliability, risk, value, useful life, and cost displacement.
 - [What Kind of Leader Does the Moment Require?](https://cweise.com/writing/2026/05/24/what-kind-of-leader-does-the-moment-require/): A leadership essay on why crisis, scale, and innovation demand different instincts, and why recurring problems sometimes point to missing operating design instead of individual failure.
-- [Organizations Rarely Fail From a Lack of Intelligence](https://cweise.com/writing/2026/05/12/organizations-rarely-fail-from-a-lack-of-intelligence/): An essay on why organizations usually do not fail because they lack smart people, data, strategy, or ideas. They fail when intelligence cannot move through clear priorities, translation layers, operating paths, accountability, and follow-through.
 
 ## Featured Frameworks
 - [Turn Down the Noise](https://cweise.com/frameworks/2026/04/14/turn-down-the-noise/): An operating framework for reducing coordination churn, separating signal from noise, and improving decision quality without losing critical evidence.

@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://cweise.com/</loc>
-    <lastmod>2026-05-26</lastmod>
+    <lastmod>2026-06-20</lastmod>
     <image:image>
       <image:loc>https://cweise.com/assets/images/hero-architecture.png</image:loc>
       <image:title>Operational Intelligence for Complex Organizations</image:title>
@@ -15,11 +15,11 @@
   </url>
   <url>
     <loc>https://cweise.com/connect/</loc>
-    <lastmod>2026-05-26</lastmod>
+    <lastmod>2026-06-20</lastmod>
   </url>
   <url>
     <loc>https://cweise.com/writing/</loc>
-    <lastmod>2026-06-01</lastmod>
+    <lastmod>2026-06-20</lastmod>
   </url>
   <url>
     <loc>https://cweise.com/frameworks/</loc>
@@ -28,6 +28,15 @@
   <url>
     <loc>https://cweise.com/guides/</loc>
     <lastmod>2026-06-01</lastmod>
+  </url>
+  <url>
+    <loc>https://cweise.com/writing/2026/06/20/the-friday-night-cap/</loc>
+    <lastmod>2026-06-20</lastmod>
+    <image:image>
+      <image:loc>https://cweise.com/assets/images/writing/articles/2026-06-20_friday_night_cap/images/01_friday_night_cap_hero.png</image:loc>
+      <image:title>The Friday Night Cap</image:title>
+      <image:caption>A story-driven Operations Executive essay on why AI-supported delivery needs real-time consumption visibility before caps, quotas, and provider limits become missed commitments.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://cweise.com/writing/2026/06/01/ai-spend-is-rising-is-ebitda/</loc>
