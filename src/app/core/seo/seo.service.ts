@@ -9,6 +9,7 @@ export interface PageMetadata {
   title: string;
   description: string;
   urlPath: string;
+  documentTitle?: string;
   imagePath?: string;
   imageAlt?: string;
   imageDimensions?: ImageDimensions;
@@ -39,9 +40,10 @@ export class SeoService {
     const absoluteUrl = this.toAbsoluteUrl(metadata.urlPath);
     const absoluteImageUrl = metadata.imagePath ? this.toAbsoluteUrl(metadata.imagePath) : undefined;
     const imageDimensions = metadata.imageDimensions ?? this.resolveImageDimensions(metadata.imagePath);
+    const imageMimeType = this.resolveImageMimeType(metadata.imagePath);
     const graph = this.buildBaseStructuredData(metadata, absoluteUrl, absoluteImageUrl);
 
-    this.title.setTitle(metadata.title);
+    this.title.setTitle(metadata.documentTitle ?? metadata.title);
 
     this.updateMetaTag('name', 'description', metadata.description);
     this.updateMetaTag('name', 'robots', 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1');
@@ -58,12 +60,21 @@ export class SeoService {
 
     if (absoluteImageUrl) {
       this.updateMetaTag('property', 'og:image', absoluteImageUrl);
+      this.updateMetaTag('property', 'og:image:secure_url', absoluteImageUrl);
       this.updateMetaTag('property', 'og:image:alt', metadata.imageAlt ?? metadata.title);
       this.updateMetaTag('name', 'twitter:image', absoluteImageUrl);
       this.updateMetaTag('name', 'twitter:image:alt', metadata.imageAlt ?? metadata.title);
+
+      if (imageMimeType) {
+        this.updateMetaTag('property', 'og:image:type', imageMimeType);
+      } else {
+        this.removeMetaTag('property', 'og:image:type');
+      }
     } else {
       this.removeMetaTag('property', 'og:image');
+      this.removeMetaTag('property', 'og:image:secure_url');
       this.removeMetaTag('property', 'og:image:alt');
+      this.removeMetaTag('property', 'og:image:type');
       this.removeMetaTag('name', 'twitter:image');
       this.removeMetaTag('name', 'twitter:image:alt');
     }
@@ -90,6 +101,7 @@ export class SeoService {
 
     this.applyPageMetadata({
       title: source.seo.title,
+      documentTitle: `${source.seo.title} | ${this.siteName}`,
       description: source.seo.description,
       urlPath: source.slug,
       imagePath,
@@ -183,6 +195,28 @@ export class SeoService {
     return IMAGE_DIMENSIONS_BY_PATH[imagePath];
   }
 
+  private resolveImageMimeType(imagePath?: string): string | undefined {
+    if (!imagePath) {
+      return undefined;
+    }
+
+    const extension = imagePath.split('.').pop()?.toLowerCase();
+
+    switch (extension) {
+      case 'png':
+        return 'image/png';
+      case 'jpg':
+      case 'jpeg':
+        return 'image/jpeg';
+      case 'webp':
+        return 'image/webp';
+      case 'svg':
+        return 'image/svg+xml';
+      default:
+        return undefined;
+    }
+  }
+
   private updateMetaTag(attribute: 'name' | 'property', selector: string, content: string): void {
     this.meta.updateTag({ [attribute]: selector, content });
   }
@@ -223,7 +257,13 @@ export class SeoService {
     const imageObject = absoluteImageUrl
       ? {
           '@type': 'ImageObject',
-          url: absoluteImageUrl
+          url: absoluteImageUrl,
+          ...(metadata.imageDimensions
+            ? {
+                width: metadata.imageDimensions.width,
+                height: metadata.imageDimensions.height
+              }
+            : {})
         }
       : undefined;
 
@@ -287,6 +327,19 @@ export class SeoService {
           ? (source as FrameworkItem).category || 'Frameworks'
           : 'Guides';
     const bodyText = this.extractBodyText(source);
+    const imageDimensions = this.resolveImageDimensions(imagePath);
+    const imageObject = imagePath
+      ? {
+          '@type': 'ImageObject',
+          url: this.toAbsoluteUrl(imagePath),
+          ...(imageDimensions
+            ? {
+                width: imageDimensions.width,
+                height: imageDimensions.height
+              }
+            : {})
+        }
+      : undefined;
 
     return {
       '@type': schemaType,
@@ -297,7 +350,7 @@ export class SeoService {
       mainEntityOfPage: { '@id': `${absoluteUrl}#webpage` },
       author: { '@id': `${authorUrl}#person` },
       publisher: { '@id': `${this.baseUrl}/#organization` },
-      image: imagePath ? [this.toAbsoluteUrl(imagePath)] : undefined,
+      image: imageObject ? [imageObject] : undefined,
       datePublished: 'publishedOn' in source ? source.publishedOn : undefined,
       dateModified: 'publishedOn' in source ? source.publishedOn : undefined,
       articleSection: section,

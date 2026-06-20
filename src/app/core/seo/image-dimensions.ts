@@ -36,5 +36,6 @@ export const IMAGE_DIMENSIONS_BY_PATH: Record<string, ImageDimensions> = {
   'assets/images/writing/articles/2026-05-12_organizations_rarely_fail_lack_intelligence/images/01_organizations_rarely_fail_hero.png': { width: 1586, height: 992 },
   'assets/images/writing/articles/2026-05-25_ai_agents_operational_capital/og_agent_operational_capital.png': { width: 1731, height: 909 },
   'assets/images/writing/articles/2026-06-01_ai_spend_is_rising_is_ebitda/og_ai_spend_rising_is_ebitda.png': { width: 1729, height: 910 },
+  'assets/images/writing/articles/2026-06-20_friday_night_cap/images/01_friday_night_cap_hero.png': { width: 1672, height: 941 },
   'assets/images/writing/what-kind-of-leader-linkedin-comment.png': { width: 1254, height: 1254 }
 };
