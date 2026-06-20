@@ -19,7 +19,11 @@
   <section class="cw-section">
     <div class="cw-container writing-content-shell">
       <article class="writing-main-content">
-        <p class="intro">{{ article.body.intro }}</p>
+        <div class="intro" aria-label="Essay introduction">
+          @for (paragraph of introParagraphs(); track $index) {
+            <p>{{ paragraph }}</p>
+          }
+        </div>
         <cw-content-renderer [sections]="article.body.sections" />
       </article>
 

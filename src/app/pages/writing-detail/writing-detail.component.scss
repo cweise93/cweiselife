@@ -35,7 +35,6 @@ h1 {
 }
 
 .lead,
-.intro,
 .prose p,
 blockquote {
   max-width: var(--cw-reading-max);
@@ -45,6 +44,20 @@ blockquote {
   font-size: 1.15rem;
   color: var(--cw-muted);
   line-height: 1.8;
+}
+
+.intro {
+  max-width: var(--cw-reading-max);
+  display: grid;
+  gap: 18px;
+}
+
+.intro p {
+  margin: 0;
+  color: var(--cw-ink);
+  font-size: clamp(1.18rem, 1.55vw, 1.42rem);
+  line-height: 1.62;
+  text-wrap: pretty;
 }
 
 .hero-image {

@@ -43,6 +43,14 @@ export class WritingDetailComponent {
   readonly assetItems = computed<CompanionAsset[]>(() => this.item()?.companion?.assets ?? []);
   readonly relatedItems = computed<CompanionRelatedItem[]>(() => this.item()?.companion?.related ?? []);
   readonly callToActionItems = computed<CompanionCallToAction[]>(() => this.item()?.companion?.callsToAction ?? []);
+  readonly introParagraphs = computed<string[]>(() => {
+    const intro = this.item()?.body.intro ?? '';
+
+    return intro
+      .split(/\n\s*\n/g)
+      .map((paragraph) => paragraph.trim())
+      .filter(Boolean);
+  });
 
   constructor() {
     effect(() => {
