@@ -2,7 +2,7 @@ import { ApplicationConfig, ENVIRONMENT_INITIALIZER, inject } from '@angular/cor
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { provideClientHydration, withEventReplay, withNoIncrementalHydration } from '@angular/platform-browser';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { provideRouter, withInMemoryScrolling, withViewTransitions } from '@angular/router';
+import { provideRouter, withInMemoryScrolling } from '@angular/router';
 import { routes } from './app.routes';
 import { AnalyticsService } from './core/analytics/analytics.service';
 
@@ -16,8 +16,7 @@ export const appConfig: ApplicationConfig = {
     },
     provideRouter(
       routes,
-      withInMemoryScrolling({ anchorScrolling: 'enabled', scrollPositionRestoration: 'enabled' }),
-      withViewTransitions()
+      withInMemoryScrolling({ anchorScrolling: 'enabled', scrollPositionRestoration: 'enabled' })
     ),
     provideHttpClient(withFetch()),
     provideClientHydration(withEventReplay(), withNoIncrementalHydration())

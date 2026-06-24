@@ -3,18 +3,18 @@
 <section class="hero">
   <div class="hero-copy-wrap">
     <div class="hero-copy">
-      <p class="cw-eyebrow">{{ vm.home.eyebrow }}</p>
+      <p class="cw-eyebrow">{{ homeHero.eyebrow }}</p>
       <h1>
-        <span class="hero-title-line">Operational Intelligence</span>
-        <span class="hero-title-line">for Complex Organizations</span>
+        <span class="hero-title-line">{{ homeHero.headlineLines[0] }}</span>
+        <span class="hero-title-line">{{ homeHero.headlineLines[1] }}</span>
       </h1>
       <div class="hero-rule" aria-hidden="true"></div>
-      <p class="hero-context">{{ vm.home.eyebrow }} <span>{{ vm.home.subheadline }}</span></p>
-      @if (vm.home.intro[0]) {
-        <p class="lead">{{ vm.home.intro[0] }}</p>
+      <p class="hero-context hero-context--single">{{ homeHero.subheadline }}</p>
+      @if (homeHero.intro[0]) {
+        <p class="lead">{{ homeHero.intro[0] }}</p>
       }
-      @if (vm.home.intro[1]) {
-        <p class="cw-muted">{{ vm.home.intro[1] }}</p>
+      @if (homeHero.intro[1]) {
+        <p class="cw-muted">{{ homeHero.intro[1] }}</p>
       }
       <div class="hero-actions">
         <a mat-flat-button color="primary" routerLink="/writing">
@@ -36,15 +36,15 @@
 <section class="cw-section section-surface--soft">
   <div class="cw-container cw-section-header--split">
     <div>
-      <p class="cw-eyebrow">{{ vm.home.themesSection.eyebrow }}</p>
-      <h2 class="cw-section-title">{{ vm.home.themesSection.headline }}</h2>
+      <p class="cw-eyebrow">{{ homeCapabilitiesSection.eyebrow }}</p>
+      <h2 class="cw-section-title">{{ homeCapabilitiesSection.headline }}</h2>
     </div>
     <div class="cw-section-header__support">
-      <p class="cw-muted">{{ vm.home.themesSection.support }}</p>
+      <p class="cw-muted">{{ homeCapabilitiesSection.support }}</p>
     </div>
   </div>
   <div class="cw-container theme-grid">
-    @for (theme of vm.home.themes; track theme.id) {
+    @for (theme of homeCapabilities; track theme.id) {
       <mat-card appearance="outlined" class="theme-card cw-surface-card">
         <mat-card-content>
           <span class="cw-icon-badge"><mat-icon>{{ theme.icon }}</mat-icon></span>
@@ -59,8 +59,8 @@
 <section class="cw-section writing-band section-surface--soft">
   <div class="cw-container cw-section-header">
     <div>
-      <p class="cw-eyebrow">{{ vm.home.writingSection.eyebrow }}</p>
-      <h2 class="cw-section-title">{{ vm.home.writingSection.headline }}</h2>
+      <p class="cw-eyebrow">{{ homeWritingSection.eyebrow }}</p>
+      <h2 class="cw-section-title">{{ homeWritingSection.headline }}</h2>
     </div>
     <div class="cw-section-header__actions">
       @if (hasWritingCarousel()) {
@@ -160,9 +160,9 @@
         <img [src]="framework.diagramImage" [alt]="framework.title + ' diagram'" />
       </div>
       <div class="feature-copy">
-        <p class="cw-eyebrow">{{ vm.home.frameworkSection.eyebrow }}</p>
-        <h2>{{ framework.title }}</h2>
-        <p class="cw-muted">{{ framework.summary }}</p>
+        <p class="cw-eyebrow">{{ homeFrameworkSection.eyebrow }}</p>
+        <h2>{{ homeFrameworkSection.headline }}</h2>
+        <p class="cw-muted">{{ homeFrameworkSection.support }}</p>
         <p class="cw-muted">{{ framework.body.application }}</p>
         <a mat-button color="primary" [routerLink]="getFrameworkRoute(framework.slug)" class="cw-link-action">
           Explore the framework
@@ -441,7 +441,7 @@
 <section class="cw-section about-connect">
   <div class="cw-container about-grid">
     <div class="about-copy">
-      <p class="cw-eyebrow">{{ vm.home.aboutSection.eyebrow }}</p>
+      <p class="cw-eyebrow">{{ homeAboutSection.eyebrow }}</p>
       <h2>{{ vm.about.headline }}</h2>
       @if (vm.about.narrative[0]) {
         <p class="cw-muted">{{ vm.about.narrative[0] }}</p>

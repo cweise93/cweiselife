@@ -780,7 +780,7 @@
       "id": "framework-004",
       "slug": "frameworks/2026/05/27/agent-asset-grading-framework",
       "title": "Agent Asset Grading Framework",
-      "summary": "A tactical framework for classifying enterprise AI agents by operational materiality, institutional knowledge capture, control evidence, cost traceability, business value, model risk, and useful life so leaders can distinguish disposable experiments from governed operational asset candidates.",
+      "summary": "A tactical framework for grading enterprise AI agents by maturity, materiality, governance, accounting-readiness, value, risk, and useful life.",
       "status": "published",
       "publishedOn": "2026-05-27",
       "featured": true,

@@ -16,10 +16,10 @@ const EMPTY_META: SiteMeta = {
   updatedOn: '2026-05-16',
   siteName: 'cweise.com',
   siteUrl: 'https://cweise.com',
-  title: 'Operational Intelligence for Complex Organizations',
+  title: 'Operational Clarity for Complex Organizations',
   description: '',
   author: 'Charles Weise',
-  footerTagline: 'Operational intelligence for complex organizations.',
+  footerTagline: 'Operational clarity for complex organizations.',
   contactEmail: 'iweise@me.com'
 };
 
@@ -56,6 +56,7 @@ export class SiteShellComponent {
     { initialValue: this.deepestLayout() }
   );
   readonly isFrameworkWorkspace = computed(() => this.activeLayout() === 'framework-workspace');
+  readonly isMobileToolbar = computed(() => this.viewportWidth() <= 820);
   readonly showFrameworkRail = computed(() => this.isFrameworkWorkspace() && this.viewportWidth() >= 1200);
   readonly showTopToolbar = computed(() => !this.showFrameworkRail());
   readonly showFooter = computed(() => !this.isFrameworkWorkspace());
@@ -94,6 +95,11 @@ export class SiteShellComponent {
     this.mobileMenuOpen.set(false);
   }
 
+  toggleThemeFromMobileMenu(): void {
+    this.toggleTheme();
+    this.closeMobileMenu();
+  }
+
   @HostListener('window:scroll')
   onWindowScroll(): void {
     this.isCompact.set((this.window?.scrollY ?? 0) > 24);
@@ -124,8 +130,7 @@ export class SiteShellComponent {
 
   private updateToolbarHeightVariable(): void {
     const root = this.document.documentElement;
-    const isMobile = this.viewportWidth() <= 820;
-    const height = this.showFrameworkRail() ? 0 : this.isCompact() ? 58 : isMobile ? 116 : 72;
+    const height = this.showFrameworkRail() ? 0 : this.isCompact() ? 58 : 72;
     root.style.setProperty('--cw-toolbar-current-height', `${height}px`);
   }
 

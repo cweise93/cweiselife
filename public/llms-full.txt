@@ -1,36 +1,36 @@
 # cweise.com Full Content Guide
 
-> Operational intelligence, workflow design, and execution frameworks for engineering and infrastructure organizations.
+> Operational clarity, organizational sensemaking, distributed judgment, and execution systems for complex organizations turning scattered knowledge into evidence, decisions, and repeatable action.
 
 This file expands the concise `llms.txt` index into a richer text digest of every public page in the current site corpus.
 
 ## Site Metadata
 - Canonical site URL: https://cweise.com/
 - Author: Charles Weise
-- Updated on: 2026-06-20
-- Core themes: Operational Intelligence, Delivery Friction, Systems Translation, Workflow Design, Technology-Enabled Operations
+- Updated on: 2026-06-23
+- Core themes: Surface the Signal, Structure the Evidence, Operationalize the Answer
 - Crawl inventory: https://cweise.com/sitemap.xml
 
 ## Home
 - URL: https://cweise.com/
-- Headline: Operational Intelligence for Complex Organizations
-- Subheadline: Reducing Rework, Risk, and Delivery Gaps
-- I study how complex organizations translate strategy into operational reality and why so many execution problems originate in workflow fragmentation, ownership ambiguity, disconnected systems, and signal loss.
-- My work focuses on operational intelligence: the intersection of systems thinking, delivery execution, organizational workflows, and technology-enabled operating models.
+- Headline: Operational Clarity for Complex Organizations
+- Subheadline: Surface the truth. Structure the evidence. Operationalize the answer.
+- I help complex organizations turn scattered operational knowledge into clear decisions, repeatable systems, and measurable action.
+- My work sits where strategy, field experience, technology, and execution meet. I design the rooms, workflows, frameworks, and operating models that help experienced people surface what the organization already knows but cannot yet see clearly.
 
 ## About
 - URL: https://cweise.com/about/
 - Headline: How I Think. What I Do.
-- I work at the intersection of operational systems, organizational execution, and technology-enabled workflow design.
-- My background spans infrastructure, operational coordination, systems thinking, and translating complexity into executable operating clarity.
-- I am most interested in the places where organizations know what matters but cannot reliably convert that knowledge into coordinated action.
-- Principles: Design workflow paths before adding coordination overhead. | Treat systems translation as an operating discipline, not an accidental side effect. | Reduce noise before demanding more reporting. | Make ownership explicit enough to survive execution pressure.
-- Focus areas: Operational intelligence for engineering and infrastructure organizations | Workflow design for executive follow-through | Reducing rework, risk, and delivery gaps | Technology-enabled operating models that preserve clarity
-- Closing: The consistent thread in my work is simple: better execution requires better operating design.
+- I am most useful when a problem is too cross-functional for one department to solve alone.
+- My work is about assembling the conditions for clarity: bringing the right people into the room, asking the questions that surface real constraints, converting scattered judgment into evidence, and helping leadership turn that evidence into an operating path.
+- Technology is part of that work, but it is not the center of it. The center is execution: how organizations discover what they already know, decide what matters, and build systems that make better action repeatable.
+- Principles: Surround the problem with people who understand it from different angles. | Design the environment before forcing the answer. | Treat field judgment as evidence when it converges across independent sources. | Turn insight into ownership, cadence, workflow, and measurable follow-through.
+- Focus areas: Organizational sensemaking for complex operating environments | Strategic initiatives that cross departments, systems, and leadership boundaries | Relationship intelligence, revenue enablement, and operational follow-through | Technology-enabled operating models that preserve clarity instead of adding complexity
+- Closing: The consistent thread in my work is assembling systems where experienced people can surface the truth, leadership can trust the evidence, and the organization can turn clarity into action.
 
 ## Writing Index
 - URL: https://cweise.com/writing/
-- Summary: Thought-leadership essays for engineering and infrastructure organizations trying to reduce rework, improve workflow design, and translate strategy into operational follow-through.
+- Summary: Essays on operational clarity, organizational sensemaking, leadership systems, and execution design for complex organizations.
 
 ### Essay: The Friday Night Cap
 - URL: https://cweise.com/writing/2026/06/20/the-friday-night-cap/
@@ -1300,6 +1300,6 @@ George did not need to understand every prompt. He needed the delivery engine to
 ## Connect
 - URL: https://cweise.com/connect/
 - Headline: Thoughts on operations, systems, and execution.
-- Intro: Subscribe for essays and observations on operational intelligence, workflow design, and executive follow-through.
-- Note: The best fit for this site is practical operating insight: fewer slogans, more durable execution clarity.
+- Intro: Subscribe for essays and observations on operational clarity, organizational sensemaking, leadership systems, and executive follow-through.
+- Note: The best fit for this site is practical operating insight: clearer signals, stronger evidence, and more durable execution.
 - Primary CTA: Read on Substack (https://substack.com/@opsiq)

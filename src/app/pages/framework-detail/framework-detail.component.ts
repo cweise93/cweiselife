@@ -135,6 +135,7 @@ export class FrameworkDetailComponent {
 
       if (framework) {
         this.seoService.applyContentMetadata(framework);
+        this.resetViewportToTop();
       }
 
       if (!framework || !tocItems.length) {
@@ -403,5 +404,24 @@ export class FrameworkDetailComponent {
   private readCssPx(value: string): number {
     const parsed = Number.parseFloat(value);
     return Number.isFinite(parsed) ? parsed : 0;
+  }
+
+  private resetViewportToTop(): void {
+    const view = this.document.defaultView;
+    if (!view || typeof view.scrollTo !== 'function') {
+      return;
+    }
+
+    const schedule =
+      typeof view.requestAnimationFrame === 'function'
+        ? view.requestAnimationFrame.bind(view)
+        : (callback: FrameRequestCallback) => {
+            callback(0);
+            return 0;
+          };
+
+    schedule(() => {
+      view.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    });
   }
 }

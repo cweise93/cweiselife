@@ -69,13 +69,65 @@ const HOME_GUIDE_BENEFITS: HomeGuideSelectorBenefit[] = [
   { icon: 'task_alt', title: 'Action focused', description: 'Designed to move you forward.' }
 ];
 
+const HOME_HERO = {
+  eyebrow: 'Organizational Sensemaking & Execution',
+  headlineLines: ['Operational Clarity', 'for Complex Organizations'],
+  subheadline: 'Surface the truth. Structure the evidence. Operationalize the answer.',
+  intro: [
+    'I help complex organizations turn scattered operational knowledge into clear decisions, repeatable systems, and measurable action.',
+    'My work sits where strategy, field experience, technology, and execution meet. I design the rooms, workflows, frameworks, and operating models that help experienced people surface what the organization already knows but cannot yet see clearly.'
+  ]
+} as const;
+
+const HOME_CAPABILITIES_SECTION = {
+  eyebrow: 'Core Capabilities',
+  headline: 'How I Create Value',
+  support: 'The work is not more reporting, more meetings, or more tools. It is turning organizational knowledge into operational reality.'
+} as const;
+
+const HOME_CAPABILITIES = [
+  {
+    id: 'surface-the-signal',
+    icon: 'hub',
+    title: 'Surface the Signal',
+    description: 'Create environments where experienced leaders can expose what is actually blocking execution without reducing the problem to opinion, politics, or anecdote.'
+  },
+  {
+    id: 'structure-the-evidence',
+    icon: 'fact_check',
+    title: 'Structure the Evidence',
+    description: 'Turn fragmented input from people, systems, workflows, and history into patterns leadership can evaluate with confidence.'
+  },
+  {
+    id: 'operationalize-the-answer',
+    icon: 'account_tree',
+    title: 'Operationalize the Answer',
+    description: 'Convert insight into ownership, cadence, workflow, technology, accountability, and measurable follow-through.'
+  }
+] as const;
+
+const HOME_WRITING_SECTION = {
+  eyebrow: 'Featured Writing',
+  headline: 'Selected Essays'
+} as const;
+
+const HOME_FRAMEWORK_SECTION = {
+  eyebrow: 'Featured Framework',
+  headline: 'Relationship Capital → Revenue Intelligence',
+  support: 'A framework for making trust, expertise, delivered work, unmet client need, and next-best internal connections visible enough to drive measurable growth.'
+} as const;
+
+const HOME_ABOUT_SECTION = {
+  eyebrow: 'About'
+} as const;
+
 const EMPTY_HOME: HomeContentViewModel = {
   meta: {
     version: 1,
     updatedOn: '2026-05-16',
     siteName: 'cweise.com',
     siteUrl: 'https://cweise.com',
-    title: 'Operational Intelligence for Complex Organizations',
+    title: 'Operational Clarity for Complex Organizations',
     description: '',
     author: 'Charles Weise',
     footerTagline: '',
@@ -143,6 +195,12 @@ export class HomeComponent implements AfterViewInit {
   @ViewChild('publishingPathTimeline') private publishingPathTimeline?: ElementRef<HTMLElement>;
   @ViewChild('publishingPathMapSurface') private publishingPathMapSurface?: ElementRef<HTMLElement>;
   readonly homeContent = toSignal(this.contentService.getHomeContent(), { initialValue: EMPTY_HOME });
+  readonly homeHero = HOME_HERO;
+  readonly homeCapabilitiesSection = HOME_CAPABILITIES_SECTION;
+  readonly homeCapabilities = HOME_CAPABILITIES;
+  readonly homeWritingSection = HOME_WRITING_SECTION;
+  readonly homeFrameworkSection = HOME_FRAMEWORK_SECTION;
+  readonly homeAboutSection = HOME_ABOUT_SECTION;
   readonly guideItems = toSignal(this.contentService.getGuidesIndex(), { initialValue: [] as GuideItem[] });
   readonly featuredWritingItems = computed<WritingItem[]>(() => this.homeContent().featuredWriting ?? []);
   readonly homeGuideMoments = computed<HomeGuideSelectorMoment[]>(() =>

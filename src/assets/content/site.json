@@ -1,32 +1,32 @@
 {
   "meta": {
     "version": 1,
-    "updatedOn": "2026-06-20",
+    "updatedOn": "2026-06-23",
     "siteName": "cweise.com",
     "siteUrl": "https://cweise.com",
-    "title": "Operational Intelligence for Complex Organizations",
-    "description": "Operational intelligence, workflow design, and execution frameworks for engineering and infrastructure organizations.",
+    "title": "Operational Clarity for Complex Organizations",
+    "description": "Operational clarity, organizational sensemaking, distributed judgment, and execution systems for complex organizations turning scattered knowledge into evidence, decisions, and repeatable action.",
     "author": "Charles Weise",
-    "footerTagline": "Operational intelligence for complex organizations.",
+    "footerTagline": "Operational clarity for complex organizations.",
     "contactEmail": "iweise@me.com"
   },
   "home": {
-    "eyebrow": "Engineering & Infrastructure",
-    "headline": "Operational Intelligence for Complex Organizations",
-    "subheadline": "Reducing Rework, Risk, and Delivery Gaps",
+    "eyebrow": "Organizational Sensemaking & Execution",
+    "headline": "Operational Clarity for Complex Organizations",
+    "subheadline": "Surface the truth. Structure the evidence. Operationalize the answer.",
     "intro": [
-      "I study how complex organizations translate strategy into operational reality and why so many execution problems originate in workflow fragmentation, ownership ambiguity, disconnected systems, and signal loss.",
-      "My work focuses on operational intelligence: the intersection of systems thinking, delivery execution, organizational workflows, and technology-enabled operating models."
+      "I help complex organizations turn scattered operational knowledge into clear decisions, repeatable systems, and measurable action.",
+      "My work sits where strategy, field experience, technology, and execution meet. I design the rooms, workflows, frameworks, and operating models that help experienced people surface what the organization already knows but cannot yet see clearly."
     ],
     "heroImage": "assets/images/hero-architecture.png",
     "featuredWritingSlugs": [
-      "writing/2026/06/20/the-friday-night-cap",
-      "writing/2026/06/01/ai-spend-is-rising-is-ebitda",
-      "writing/2026/05/25/ai-agents-are-becoming-operational-capital",
-      "writing/2026/05/24/what-kind-of-leader-does-the-moment-require"
+      "writing/2026/05/24/what-kind-of-leader-does-the-moment-require",
+      "writing/2026/05/12/organizations-rarely-fail-from-a-lack-of-intelligence",
+      "writing/2026/04/28/why-operational-friction-hides-in-translation-layers",
+      "writing/2026/03/31/executive-follow-through-requires-ownership-architecture"
     ],
     "featuredFrameworkSlugs": [
-      "frameworks/2026/04/14/turn-down-the-noise",
+      "frameworks/2026/05/17/relationship-capital-revenue-intelligence",
       "frameworks/2026/03/18/systems-translation-loop"
     ],
     "featuredGuideSlugs": [
@@ -37,49 +37,37 @@
     ],
     "themes": [
       {
-        "id": "operational-intelligence",
-        "icon": "center_focus_strong",
-        "title": "Operational Intelligence",
-        "description": "Understanding how information, workflows, systems, and decisions interact across delivery organizations."
+        "id": "surface-the-signal",
+        "icon": "hub",
+        "title": "Surface the Signal",
+        "description": "Create environments where experienced leaders can expose what is actually blocking execution without reducing the problem to opinion, politics, or anecdote."
       },
       {
-        "id": "delivery-friction",
-        "icon": "troubleshoot",
-        "title": "Delivery Friction",
-        "description": "Reducing rework, ambiguity, and execution gaps across complex operating environments."
+        "id": "structure-the-evidence",
+        "icon": "fact_check",
+        "title": "Structure the Evidence",
+        "description": "Turn fragmented input from people, systems, workflows, and history into patterns leadership can evaluate with confidence."
       },
       {
-        "id": "systems-translation",
-        "icon": "sync_alt",
-        "title": "Systems Translation",
-        "description": "Bridging executive strategy, operational reality, and technical implementation."
-      },
-      {
-        "id": "workflow-design",
+        "id": "operationalize-the-answer",
         "icon": "account_tree",
-        "title": "Workflow Design",
-        "description": "Designing clearer operational paths across people, process, systems, and accountability."
-      },
-      {
-        "id": "technology-enabled-operations",
-        "icon": "layers",
-        "title": "Technology-Enabled Operations",
-        "description": "Using technology to support operating clarity rather than create additional complexity."
+        "title": "Operationalize the Answer",
+        "description": "Convert insight into ownership, cadence, workflow, technology, accountability, and measurable follow-through."
       }
     ],
     "themesSection": {
-      "eyebrow": "Core Themes",
-      "headline": "Where I Focus",
-      "support": "The domains where operational intelligence creates the most value in complex engineering and infrastructure organizations."
+      "eyebrow": "Core Capabilities",
+      "headline": "How I Create Value",
+      "support": "The work is not more reporting, more meetings, or more tools. It is turning organizational knowledge into operational reality."
     },
     "writingSection": {
       "eyebrow": "Featured Writing",
-      "headline": "Recent Essays"
+      "headline": "Selected Essays"
     },
     "frameworkSection": {
       "eyebrow": "Featured Framework",
-      "headline": "Turn Down the Noise",
-      "support": "A simple but powerful model for improving decision quality and operational clarity."
+      "headline": "Relationship Capital \u2192 Revenue Intelligence",
+      "support": "A framework for making trust, expertise, delivered work, unmet client need, and next-best internal connections visible enough to drive measurable growth."
     },
     "guidesSection": {
       "eyebrow": "Operating Tools",
@@ -109,15 +97,15 @@
   "footer": {
     "featuredLinks": [
       { "label": "Operating Tools", "path": "/guides" },
-      { "label": "Turn Down the Noise", "path": "/frameworks/2026/04/14/turn-down-the-noise" },
+      { "label": "Relationship Capital → Revenue Intelligence", "path": "/frameworks/2026/05/17/relationship-capital-revenue-intelligence" },
       { "label": "How I Think. What I Do.", "path": "/about" }
     ]
   },
   "connect": {
     "eyebrow": "Stay Connected",
     "headline": "Thoughts on operations, systems, and execution.",
-    "intro": "Subscribe for essays and observations on operational intelligence, workflow design, and executive follow-through.",
-    "note": "The best fit for this site is practical operating insight: fewer slogans, more durable execution clarity.",
+    "intro": "Subscribe for essays and observations on operational clarity, organizational sensemaking, leadership systems, and executive follow-through.",
+    "note": "The best fit for this site is practical operating insight: clearer signals, stronger evidence, and more durable execution.",
     "ctaLabel": "Read on Substack",
     "ctaUrl": "https://substack.com/@opsiq"
   }

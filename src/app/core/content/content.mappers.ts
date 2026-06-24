@@ -498,9 +498,9 @@ function normalizeTheme(value: any): HomeTheme | null {
 
 function normalizeHome(value: any): HomeContentConfig {
   return {
-    eyebrow: asString(value?.eyebrow, 'Engineering & Infrastructure'),
-    headline: asString(value?.headline, 'Operational Intelligence for Complex Organizations'),
-    subheadline: asString(value?.subheadline, 'Reducing Rework, Risk, and Delivery Gaps'),
+    eyebrow: asString(value?.eyebrow, 'Organizational Sensemaking & Execution'),
+    headline: asString(value?.headline, 'Operational Clarity for Complex Organizations'),
+    subheadline: asString(value?.subheadline, 'Surface the truth. Structure the evidence. Operationalize the answer.'),
     intro: asStringArray(value?.intro),
     heroImage: asString(value?.heroImage, 'assets/images/hero-architecture.png'),
     featuredWritingSlugs: asStringArray(value?.featuredWritingSlugs),
@@ -594,10 +594,10 @@ export function mapSiteFile(value: any): SiteContentFile {
     ...metaBase,
     siteName: asString(value?.meta?.siteName, 'cweise.com'),
     siteUrl: asString(value?.meta?.siteUrl, 'https://cweise.com'),
-    title: asString(value?.meta?.title, 'Operational Intelligence for Complex Organizations'),
+    title: asString(value?.meta?.title, 'Operational Clarity for Complex Organizations'),
     description: asString(value?.meta?.description),
     author: asString(value?.meta?.author, 'Charles Weise'),
-    footerTagline: asString(value?.meta?.footerTagline, 'Operational intelligence for complex organizations.'),
+    footerTagline: asString(value?.meta?.footerTagline, 'Operational clarity for complex organizations.'),
     contactEmail: asString(value?.meta?.contactEmail, 'iweise@me.com')
   };
 
@@ -783,16 +783,16 @@ export const FALLBACK_SITE_CONTENT: SiteContentFile = mapSiteFile({
     updatedOn: '2026-05-16',
     siteName: 'cweise.com',
     siteUrl: 'https://cweise.com',
-    title: 'Operational Intelligence for Complex Organizations',
-    description: 'Operational intelligence for engineering and infrastructure organizations.',
+    title: 'Operational Clarity for Complex Organizations',
+    description: 'Operational clarity, distributed judgment, and execution systems for complex organizations.',
     author: 'Charles Weise',
-    footerTagline: 'Operational intelligence for complex organizations.',
+    footerTagline: 'Operational clarity for complex organizations.',
     contactEmail: 'iweise@me.com'
   },
   home: {
-    eyebrow: 'Engineering & Infrastructure',
-    headline: 'Operational Intelligence for Complex Organizations',
-    subheadline: 'Reducing Rework, Risk, and Delivery Gaps',
+    eyebrow: 'Organizational Sensemaking & Execution',
+    headline: 'Operational Clarity for Complex Organizations',
+    subheadline: 'Surface the truth. Structure the evidence. Operationalize the answer.',
     intro: [],
     heroImage: 'assets/images/hero-architecture.png',
     featuredWritingSlugs: [],

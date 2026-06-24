@@ -4,7 +4,7 @@ import { frameworksContent, guidesContent, siteContent, writingContent } from '.
 export const routes: Routes = [
   {
     path: '',
-    title: 'cweise.com | Operational Intelligence',
+    title: 'cweise.com | Operational Clarity',
     data: { seoDescription: siteContent.meta.description },
     loadComponent: () => import('./pages/home/home.component').then(m => m.HomeComponent)
   },

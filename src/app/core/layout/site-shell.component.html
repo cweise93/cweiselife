@@ -28,9 +28,11 @@
     >
       <mat-icon>{{ mobileMenuOpen() ? 'close' : 'menu' }}</mat-icon>
     </button>
-    <button mat-icon-button type="button" aria-label="Toggle color theme" (click)="toggleTheme()">
-      <mat-icon>{{ themeMode() === 'light' ? 'dark_mode' : 'light_mode' }}</mat-icon>
-    </button>
+    @if (!isMobileToolbar()) {
+      <button mat-icon-button type="button" aria-label="Toggle color theme" (click)="toggleTheme()">
+        <mat-icon>{{ themeMode() === 'light' ? 'dark_mode' : 'light_mode' }}</mat-icon>
+      </button>
+    }
   </mat-toolbar>
 }
 
@@ -48,6 +50,10 @@
           {{ item.label }}
         </a>
       }
+      <button mat-button type="button" class="mobile-nav-theme" (click)="toggleThemeFromMobileMenu()">
+        <mat-icon>{{ themeMode() === 'light' ? 'dark_mode' : 'light_mode' }}</mat-icon>
+        <span>Switch to {{ themeMode() === 'light' ? 'dark' : 'light' }} mode</span>
+      </button>
     </nav>
   </div>
 }

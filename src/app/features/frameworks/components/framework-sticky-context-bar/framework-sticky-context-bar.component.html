@@ -32,14 +32,37 @@
         <mat-progress-bar mode="determinate" [value]="progressValue()"></mat-progress-bar>
       </div>
 
-      <button mat-stroked-button color="primary" type="button" (click)="toggleExpanded()">
+      <button mat-stroked-button color="primary" type="button" class="framework-context-bar__toggle" (click)="toggleExpanded()">
         {{ contextExpanded() ? 'Hide context' : 'Expand context' }}
       </button>
     </div>
 
     @if (contextExpanded()) {
       <div class="framework-context-bar__expanded">
-        <mat-chip-set>
+        @if (toc().length) {
+          <div class="framework-context-bar__mobile-tools">
+            <mat-form-field appearance="outline" subscriptSizing="dynamic" class="context-group context-group--section-picker context-group--section-picker-mobile">
+              <mat-label>Active section</mat-label>
+              <mat-select [value]="activeAnchor()" (selectionChange)="selectSection($event.value)">
+                @for (item of toc(); track item.anchor; let index = $index) {
+                  <mat-option [value]="item.anchor">
+                    {{ index + 1 }}. {{ item.label }}
+                  </mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+
+            <div class="context-group context-group--progress context-group--progress-mobile">
+              <div class="context-group__progress-head">
+                <span class="context-group__label">Progress</span>
+                <span class="context-group__progress-text">{{ progressLabel() }}</span>
+              </div>
+              <mat-progress-bar mode="determinate" [value]="progressValue()"></mat-progress-bar>
+            </div>
+          </div>
+        }
+
+        <mat-chip-set class="framework-context-bar__chips">
           <mat-chip>{{ category() }}</mat-chip>
           <mat-chip>{{ primaryArtifact() }}</mat-chip>
           <mat-chip>{{ method() }}</mat-chip>

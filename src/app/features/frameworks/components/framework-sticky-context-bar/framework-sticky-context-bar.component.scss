@@ -104,6 +104,16 @@ button.context-group {
   padding: 0 0 2px;
 }
 
+.framework-context-bar__mobile-tools {
+  display: none;
+}
+
+.framework-context-bar__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
 :host ::ng-deep .framework-section-menu .mat-mdc-menu-item.is-active {
   font-weight: 700;
 }
@@ -136,19 +146,52 @@ button.context-group {
 
 @media (max-width: 768px) {
   :host {
-    --framework-context-bar-height: 54px;
+    --framework-context-bar-height: 44px;
   }
 
   .framework-context-bar__inner {
-    padding-top: 8px;
-    padding-bottom: 8px;
+    gap: 8px;
+    padding-top: 6px;
+    padding-bottom: 6px;
   }
 
   .framework-context-bar__summary {
-    grid-template-columns: minmax(200px, 1fr) minmax(140px, auto);
+    min-height: auto;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 10px;
   }
 
+  .framework-context-bar__summary .context-group--section-picker,
   .context-group--progress {
     display: none;
+  }
+
+  .framework-context-bar__summary > .context-group {
+    min-width: 0;
+  }
+
+  .framework-context-bar__toggle {
+    min-width: auto;
+    padding-inline: 14px;
+    white-space: nowrap;
+  }
+
+  .framework-context-bar__mobile-tools {
+    display: grid;
+    gap: 12px;
+    padding-bottom: 8px;
+  }
+
+  .context-group--section-picker-mobile,
+  .context-group--progress-mobile {
+    display: grid;
+  }
+
+  .context-group--section-picker-mobile {
+    width: 100%;
+  }
+
+  .framework-context-bar__chips {
+    gap: 10px;
   }
 }
