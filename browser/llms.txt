@@ -1,25 +1,25 @@
 # cweise.com
 
-> Operational intelligence, workflow design, and execution frameworks for engineering and infrastructure organizations.
+> Operational clarity, organizational sensemaking, distributed judgment, and execution systems for complex organizations turning scattered knowledge into evidence, decisions, and repeatable action.
 
-This site publishes prerendered essays, frameworks, and short-form operating guides by Charles Weise. Core pages are available as static HTML, and this file provides a concise machine-readable index for AI systems and other crawlers.
+This site publishes prerendered essays, frameworks, and short-form operating guides by Charles Weise focused on operational clarity, organizational sensemaking, and execution systems. Core pages are available as static HTML, and this file provides a concise machine-readable index for AI systems and other crawlers.
 
 ## Primary Pages
 - [Home](https://cweise.com/): Site overview, themes, and featured content.
 - [About](https://cweise.com/about/): Author profile, principles, and focus areas.
-- [Writing](https://cweise.com/writing/): Essay index focused on operational intelligence and execution clarity.
+- [Writing](https://cweise.com/writing/): Essay index focused on operational clarity, organizational sensemaking, and execution design.
 - [Frameworks](https://cweise.com/frameworks/): Interactive frameworks and implementation-oriented models.
 - [Guides](https://cweise.com/guides/): Practical guides for action, reflection, and decision support.
 - [Connect](https://cweise.com/connect/): Subscription and contact options.
 
 ## Featured Writing
-- [The Friday Night Cap](https://cweise.com/writing/2026/06/20/the-friday-night-cap/): A story-driven Operations Executive essay on why AI-supported delivery needs real-time consumption visibility before caps, quotas, and provider limits become missed commitments.
-- [AI Spend Is Rising. Is EBITDA?](https://cweise.com/writing/2026/06/01/ai-spend-is-rising-is-ebitda/): A board-aware essay reframing enterprise AI cost around operating leverage: not whether AI spend is rising, but whether AI consumption is being converted into measurable margin, throughput, decision quality, and enterprise value.
-- [AI Agents Are Becoming Operational Capital](https://cweise.com/writing/2026/05/25/ai-agents-are-becoming-operational-capital/): A board-level essay arguing that AI agents which encode judgment, process logic, institutional knowledge, and repeatable execution should not be treated merely as tools. Some agents will need to be governed as operational assets, graded by maturity, reliability, risk, value, useful life, and cost displacement.
 - [What Kind of Leader Does the Moment Require?](https://cweise.com/writing/2026/05/24/what-kind-of-leader-does-the-moment-require/): A leadership essay on why crisis, scale, and innovation demand different instincts, and why recurring problems sometimes point to missing operating design instead of individual failure.
+- [Organizations Rarely Fail From a Lack of Intelligence](https://cweise.com/writing/2026/05/12/organizations-rarely-fail-from-a-lack-of-intelligence/): An essay on why organizations usually do not fail because they lack smart people, data, strategy, or ideas. They fail when intelligence cannot move through clear priorities, translation layers, operating paths, accountability, and follow-through.
+- [Why Operational Friction Hides in Translation Layers](https://cweise.com/writing/2026/04/28/why-operational-friction-hides-in-translation-layers/): A deeper essay on why friction usually hides between strategy, workflow, systems, and reporting layers — and why organizations reduce rework by owning the interfaces where meaning changes hands.
+- [Executive Follow-Through Requires Ownership Architecture](https://cweise.com/writing/2026/03/31/executive-follow-through-requires-ownership-architecture/): A strategy does not become durable because leaders care about it. It becomes durable when ownership, decision rights, escalation paths, evidence, and review rhythms are designed into the operating system.
 
 ## Featured Frameworks
-- [Turn Down the Noise](https://cweise.com/frameworks/2026/04/14/turn-down-the-noise/): An operating framework for reducing coordination churn, separating signal from noise, and improving decision quality without losing critical evidence.
+- [Relationship Capital → Revenue Intelligence](https://cweise.com/frameworks/2026/05/17/relationship-capital-revenue-intelligence/): An executive framework for using D3 to map client relationships, service delivery, employee expertise, current value, white-space opportunity, and the next-best connections that turn relationship capital into measurable growth.
 - [Systems Translation Loop](https://cweise.com/frameworks/2026/03/18/systems-translation-loop/): A framework for bridging executive intent, workflow reality, and technical implementation without losing signal.
 
 ## Featured Guides
