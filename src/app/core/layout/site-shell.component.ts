@@ -67,6 +67,10 @@ export class SiteShellComponent {
   }
 
   constructor() {
+    if (this.window?.history && 'scrollRestoration' in this.window.history) {
+      this.window.history.scrollRestoration = 'manual';
+    }
+
     this.applyTheme(this.themeMode());
     effect(() => {
       this.showFrameworkRail();

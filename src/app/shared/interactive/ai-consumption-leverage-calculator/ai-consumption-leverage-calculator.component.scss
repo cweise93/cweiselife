@@ -1,5 +1,8 @@
 :host {
   display: block;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: clip;
 }
 
 .calculator-surface {
@@ -21,6 +24,7 @@
 .record-footer {
   display: grid;
   gap: 16px;
+  min-width: 0;
 }
 
 .calculator-surface__header {
@@ -966,6 +970,19 @@ p {
 
   .calculator-panel {
     padding: 18px;
+  }
+
+  .technical-slider-card__header,
+  .technical-model-card__topline,
+  .technical-model-card__title-row,
+  .technical-preview__header {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .technical-slider-card__header > span,
+  .technical-metric-row__value {
+    white-space: normal;
   }
 
   .contract-stepper ::ng-deep .mat-step-header {

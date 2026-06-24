@@ -102,6 +102,10 @@ button.context-group {
 
 .framework-context-bar__expanded {
   padding: 0 0 2px;
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
 }
 
 .framework-context-bar__mobile-tools {
@@ -112,6 +116,25 @@ button.context-group {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
+}
+
+.framework-context-bar__chips mat-chip {
+  min-width: 0;
+  max-width: 100%;
+}
+
+:host ::ng-deep .framework-context-bar__chips .mdc-evolution-chip,
+:host ::ng-deep .framework-context-bar__chips .mdc-evolution-chip__cell,
+:host ::ng-deep .framework-context-bar__chips .mdc-evolution-chip__action {
+  max-width: 100%;
+}
+
+:host ::ng-deep .framework-context-bar__chips .mdc-evolution-chip__text-label {
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 
 :host ::ng-deep .framework-section-menu .mat-mdc-menu-item.is-active {
@@ -193,5 +216,9 @@ button.context-group {
 
   .framework-context-bar__chips {
     gap: 10px;
+  }
+
+  .framework-context-bar__chips mat-chip {
+    width: 100%;
   }
 }

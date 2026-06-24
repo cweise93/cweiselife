@@ -1,5 +1,8 @@
 :host {
   display: block;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: clip;
 }
 
 .agent-calculator,
@@ -12,6 +15,7 @@
 .summary-checklist {
   display: grid;
   gap: 16px;
+  min-width: 0;
 }
 
 .agent-calculator {
@@ -174,6 +178,21 @@ p {
 
 .hero-actions__signals {
   min-width: 0;
+}
+
+.hero-actions__signals ::ng-deep .mdc-evolution-chip-set__chips,
+.hero-actions__signals mat-chip-set {
+  display: flex;
+  flex-wrap: wrap;
+  min-width: 0;
+}
+
+.hero-actions__signals mat-chip {
+  max-width: 100%;
+}
+
+.hero-actions__signals ::ng-deep .mdc-evolution-chip__text-label {
+  white-space: normal;
 }
 
 .hero-actions__exports {

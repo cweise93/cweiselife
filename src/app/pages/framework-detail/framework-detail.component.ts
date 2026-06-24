@@ -412,6 +412,12 @@ export class FrameworkDetailComponent {
       return;
     }
 
+    const scrollToTop = () => {
+      view.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+      this.document.documentElement.scrollTop = 0;
+      this.document.body.scrollTop = 0;
+    };
+
     const schedule =
       typeof view.requestAnimationFrame === 'function'
         ? view.requestAnimationFrame.bind(view)
@@ -420,8 +426,9 @@ export class FrameworkDetailComponent {
             return 0;
           };
 
-    schedule(() => {
-      view.scrollTo({ top: 0, left: 0, behavior: 'auto' });
-    });
+    scrollToTop();
+    schedule(() => scrollToTop());
+    view.setTimeout(() => scrollToTop(), 0);
+    view.setTimeout(() => scrollToTop(), 120);
   }
 }

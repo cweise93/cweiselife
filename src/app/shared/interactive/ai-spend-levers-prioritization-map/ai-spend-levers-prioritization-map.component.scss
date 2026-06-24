@@ -1,5 +1,8 @@
 :host {
   display: block;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: clip;
 }
 
 .prioritization-map {
@@ -308,10 +311,18 @@
 }
 
 @media (max-width: 820px) {
+  .prioritization-map {
+    padding: 18px;
+  }
+
   .prioritization-map__header,
   .prioritization-map__rank-card-head,
   .prioritization-map__chart-header {
     flex-direction: column;
+  }
+
+  .prioritization-map__guide {
+    white-space: normal;
   }
 
   .prioritization-map__controls,

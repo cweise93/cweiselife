@@ -328,11 +328,19 @@ interface LightboxImage {
     :host {
       display: grid;
       gap: 40px;
+      min-width: 0;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: clip;
     }
 
     .content-section {
       display: grid;
       gap: 16px;
+      min-width: 0;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: clip;
       scroll-margin-top: calc(var(--cw-toolbar-current-height, var(--cw-toolbar-height)) + var(--framework-context-bar-height, 0px) + 24px);
     }
 
@@ -341,6 +349,9 @@ interface LightboxImage {
       grid-template-columns: minmax(0, 0.95fr) minmax(360px, 0.95fr);
       gap: 28px;
       align-items: start;
+      min-width: 0;
+      width: 100%;
+      max-width: 100%;
     }
 
     .content-section--split-left .content-section__prose {
@@ -355,6 +366,8 @@ interface LightboxImage {
       display: grid;
       gap: 16px;
       min-width: 0;
+      width: 100%;
+      max-width: 100%;
     }
 
     .content-section-eyebrow {
@@ -395,6 +408,8 @@ interface LightboxImage {
       display: grid;
       gap: 10px;
       width: min(100%, 1120px);
+      min-width: 0;
+      max-width: 100%;
     }
 
     .content-image--split {
@@ -411,6 +426,8 @@ interface LightboxImage {
       margin: 0;
       background: none;
       display: block;
+      width: 100%;
+      max-width: 100%;
       cursor: zoom-in;
       border-radius: 16px;
       overflow: hidden;
@@ -419,6 +436,7 @@ interface LightboxImage {
     .content-image img {
       display: block;
       width: 100%;
+      max-width: 100%;
       height: auto;
       border-radius: 16px;
       border: 1px solid var(--cw-line);
@@ -446,6 +464,8 @@ interface LightboxImage {
     app-interactive-content-block {
       display: block;
       width: min(100%, 1120px);
+      min-width: 0;
+      max-width: 100%;
     }
 
     .content-section > p,
@@ -528,20 +548,36 @@ interface LightboxImage {
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 14px;
       width: min(100%, 1120px);
+      min-width: 0;
+      max-width: 100%;
     }
 
     .content-card {
       display: grid;
       gap: 8px;
+      min-width: 0;
+      max-width: 100%;
       padding: 18px 20px;
       border: 1px solid var(--cw-line);
       border-radius: 16px;
       background: var(--cw-panel) !important;
     }
 
+    .content-card h3,
+    .content-card p,
+    .content-section h2,
+    .content-section h3,
+    .content-section p,
+    .content-section li,
+    .content-image figcaption {
+      overflow-wrap: anywhere;
+    }
+
     .content-code-block {
       position: relative;
       width: min(100%, 1120px);
+      min-width: 0;
+      max-width: 100%;
       padding: 0 0 20px;
       background: linear-gradient(180deg, #13263a 0%, #0d1d2e 100%);
       border-color: color-mix(in srgb, var(--cw-line) 40%, #18324a);
@@ -709,6 +745,15 @@ interface LightboxImage {
 
       .content-image--split {
         position: static;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .content-image,
+      .content-card-grid,
+      app-interactive-content-block,
+      .content-code-block {
+        width: 100%;
       }
     }
 

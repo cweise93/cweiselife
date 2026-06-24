@@ -75,6 +75,7 @@ h1 {
   display: grid;
   gap: 24px;
   padding-inline: 0;
+  overflow-x: clip;
 }
 
 .framework-core-question-wrap {
@@ -111,6 +112,8 @@ h1 {
   width: 100%;
   display: grid;
   gap: 32px;
+  min-width: 0;
+  overflow-x: clip;
 }
 
 .body-section {
@@ -143,12 +146,31 @@ p {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
+  width: 100%;
+}
+
+.component-summary-grid > * {
+  min-width: 0;
 }
 
 .component-card {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
   padding: 18px;
   display: grid;
   gap: 10px;
+  overflow: hidden;
+}
+
+.component-card > * {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.component-card h3,
+.component-card p {
+  overflow-wrap: anywhere;
 }
 
 .framework-tool-rail {
@@ -870,7 +892,28 @@ p {
   }
 
   .detail-hero {
-    padding: 28px 0 16px;
+    padding: 22px 0 12px;
+  }
+
+  .detail-head {
+    gap: 16px;
+  }
+
+  .detail-head__diagram {
+    display: none;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 10vw, 2.8rem);
+  }
+
+  .detail-meta {
+    gap: 10px;
+  }
+
+  .lead {
+    font-size: 0.98rem;
+    line-height: 1.65;
   }
 
   .framework-workspace {
