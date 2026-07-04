@@ -2,14 +2,14 @@
 
 > Operational clarity, organizational sensemaking, distributed judgment, and execution systems for complex organizations turning scattered knowledge into evidence, decisions, and repeatable action.
 
-This site publishes prerendered essays, frameworks, and short-form operating guides by Charles Weise focused on operational clarity, organizational sensemaking, and execution systems. Core pages are available as static HTML, and this file provides a concise machine-readable index for AI systems and other crawlers.
+This site publishes prerendered essays, frameworks, and short-form operating tools by Charles Weise focused on operational clarity, organizational sensemaking, and execution systems. Core pages are available as static HTML, and this file provides a concise machine-readable index for AI systems and other crawlers.
 
 ## Primary Pages
 - [Home](https://cweise.com/): Site overview, themes, and featured content.
 - [About](https://cweise.com/about/): Author profile, principles, and focus areas.
 - [Writing](https://cweise.com/writing/): Essay index focused on operational clarity, organizational sensemaking, and execution design.
 - [Frameworks](https://cweise.com/frameworks/): Interactive frameworks and implementation-oriented models.
-- [Guides](https://cweise.com/guides/): Practical guides for action, reflection, and decision support.
+- [Operating Tools](https://cweise.com/operating-tools/): Practical tools for action, reflection, and decision support.
 - [Connect](https://cweise.com/connect/): Subscription and contact options.
 
 ## Featured Writing
@@ -22,11 +22,11 @@ This site publishes prerendered essays, frameworks, and short-form operating gui
 - [Relationship Capital → Revenue Intelligence](https://cweise.com/frameworks/2026/05/17/relationship-capital-revenue-intelligence/): An executive framework for using D3 to map client relationships, service delivery, employee expertise, current value, white-space opportunity, and the next-best connections that turn relationship capital into measurable growth.
 - [Systems Translation Loop](https://cweise.com/frameworks/2026/03/18/systems-translation-loop/): A framework for bridging executive intent, workflow reality, and technical implementation without losing signal.
 
-## Featured Guides
-- [A Compass, Not a Map](https://cweise.com/guides/a-compass-not-a-map/): A practical operating tool for moving through ambiguity without over-designing the future.
-- [Avoid to Act Loop](https://cweise.com/guides/avoid-act-loop/): A short intervention for turning avoidance into immediate motion.
-- [Becoming the Solution Provider](https://cweise.com/guides/becoming-the-solution-provider/): A systems-thinking guide for shifting from firefighting to durable problem prevention.
-- [Close the Loop](https://cweise.com/guides/close-the-loop/): A practical end-of-day review for learning, gratitude, and cleaner next steps.
+## Featured Operating Tools
+- [Activation Response](https://cweise.com/operating-tools/activation-response/): A practical guide for moving nervous-system activation out of rumination and into physical motion.
+- [A Compass, Not a Map](https://cweise.com/operating-tools/a-compass-not-a-map/): A practical operating tool for moving through ambiguity without over-designing the future.
+- [Avoid to Act Loop](https://cweise.com/operating-tools/avoid-act-loop/): A short intervention for turning avoidance into immediate motion.
+- [Becoming the Solution Provider](https://cweise.com/operating-tools/becoming-the-solution-provider/): A systems-thinking guide for shifting from firefighting to durable problem prevention.
 
 ## Optional
 - [llms-full.txt](https://cweise.com/llms-full.txt): Expanded machine-readable digest of all public content on the site.

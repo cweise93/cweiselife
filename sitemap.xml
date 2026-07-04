@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://cweise.com/</loc>
-    <lastmod>2026-06-23</lastmod>
+    <lastmod>2026-07-04</lastmod>
     <image:image>
       <image:loc>https://cweise.com/assets/images/hero-architecture.png</image:loc>
       <image:title>Operational Clarity for Complex Organizations</image:title>
@@ -15,7 +15,7 @@
   </url>
   <url>
     <loc>https://cweise.com/connect/</loc>
-    <lastmod>2026-06-23</lastmod>
+    <lastmod>2026-07-04</lastmod>
   </url>
   <url>
     <loc>https://cweise.com/writing/</loc>
@@ -26,8 +26,8 @@
     <lastmod>2026-06-01</lastmod>
   </url>
   <url>
-    <loc>https://cweise.com/guides/</loc>
-    <lastmod>2026-06-01</lastmod>
+    <loc>https://cweise.com/operating-tools/</loc>
+    <lastmod>2026-07-04</lastmod>
   </url>
   <url>
     <loc>https://cweise.com/writing/2026/06/20/the-friday-night-cap/</loc>
@@ -138,183 +138,192 @@
     </image:image>
   </url>
   <url>
-    <loc>https://cweise.com/guides/a-compass-not-a-map/</loc>
-    <lastmod>2026-06-01</lastmod>
+    <loc>https://cweise.com/operating-tools/a-compass-not-a-map/</loc>
+    <lastmod>2026-07-04</lastmod>
     <image:image>
-      <image:loc>https://cweise.com/assets/images/guides/a-compass-not-a-map/01_a_compass_not_a_map.png</image:loc>
+      <image:loc>https://cweise.com/assets/images/operating-tools/a-compass-not-a-map/01_a_compass_not_a_map.png</image:loc>
       <image:title>A Compass, Not a Map</image:title>
       <image:caption>A practical operating tool for moving through ambiguity without over-designing the future.</image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://cweise.com/guides/avoid-act-loop/</loc>
-    <lastmod>2026-06-01</lastmod>
+    <loc>https://cweise.com/operating-tools/avoid-act-loop/</loc>
+    <lastmod>2026-07-04</lastmod>
     <image:image>
-      <image:loc>https://cweise.com/assets/images/guides/avoid-act-loop/01_avoid_act_loop.png</image:loc>
+      <image:loc>https://cweise.com/assets/images/operating-tools/avoid-act-loop/01_avoid_act_loop.png</image:loc>
       <image:title>Avoid to Act Loop</image:title>
       <image:caption>A short intervention for turning avoidance into immediate motion.</image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://cweise.com/guides/becoming-the-solution-provider/</loc>
-    <lastmod>2026-06-01</lastmod>
+    <loc>https://cweise.com/operating-tools/becoming-the-solution-provider/</loc>
+    <lastmod>2026-07-04</lastmod>
     <image:image>
-      <image:loc>https://cweise.com/assets/images/guides/becoming-the-solution-provider/01_becoming_the_solution_provider.png</image:loc>
+      <image:loc>https://cweise.com/assets/images/operating-tools/becoming-the-solution-provider/01_becoming_the_solution_provider.png</image:loc>
       <image:title>Becoming the Solution Provider</image:title>
       <image:caption>A systems-thinking guide for shifting from firefighting to durable problem prevention.</image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://cweise.com/guides/close-the-loop/</loc>
-    <lastmod>2026-06-01</lastmod>
+    <loc>https://cweise.com/operating-tools/close-the-loop/</loc>
+    <lastmod>2026-07-04</lastmod>
     <image:image>
-      <image:loc>https://cweise.com/assets/images/guides/close-the-loop/01_close_the_loop.png</image:loc>
+      <image:loc>https://cweise.com/assets/images/operating-tools/close-the-loop/01_close_the_loop.png</image:loc>
       <image:title>Close the Loop</image:title>
       <image:caption>A practical end-of-day review for learning, gratitude, and cleaner next steps.</image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://cweise.com/guides/design-the-dream-state/</loc>
-    <lastmod>2026-06-01</lastmod>
+    <loc>https://cweise.com/operating-tools/design-the-dream-state/</loc>
+    <lastmod>2026-07-04</lastmod>
     <image:image>
-      <image:loc>https://cweise.com/assets/images/guides/design-the-dream-state/01_design_the_dream_state.png</image:loc>
+      <image:loc>https://cweise.com/assets/images/operating-tools/design-the-dream-state/01_design_the_dream_state.png</image:loc>
       <image:title>Design the Dream State</image:title>
       <image:caption>A sensory rehearsal guide for dream recall, lucid dreaming, and intentional sleep.</image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://cweise.com/guides/meditation-to-lucidity/</loc>
-    <lastmod>2026-06-01</lastmod>
+    <loc>https://cweise.com/operating-tools/meditation-to-lucidity/</loc>
+    <lastmod>2026-07-04</lastmod>
     <image:image>
-      <image:loc>https://cweise.com/assets/images/guides/meditation-to-lucidity/01_meditation_to_lucidity.png</image:loc>
+      <image:loc>https://cweise.com/assets/images/operating-tools/meditation-to-lucidity/01_meditation_to_lucidity.png</image:loc>
       <image:title>Meditation to Lucidity</image:title>
       <image:caption>A practice log for awareness, nervous-system regulation, and dream-state preparation.</image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://cweise.com/guides/prepare-the-night/</loc>
-    <lastmod>2026-06-01</lastmod>
+    <loc>https://cweise.com/operating-tools/prepare-the-night/</loc>
+    <lastmod>2026-07-04</lastmod>
     <image:image>
-      <image:loc>https://cweise.com/assets/images/guides/prepare-the-night/01_prepare_the_night.png</image:loc>
+      <image:loc>https://cweise.com/assets/images/operating-tools/prepare-the-night/01_prepare_the_night.png</image:loc>
       <image:title>Prepare the Night</image:title>
       <image:caption>A practical guide for pre-sleep reflection, intention, and dream readiness.</image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://cweise.com/guides/prime-the-day/</loc>
-    <lastmod>2026-06-01</lastmod>
+    <loc>https://cweise.com/operating-tools/prime-the-day/</loc>
+    <lastmod>2026-07-04</lastmod>
     <image:image>
-      <image:loc>https://cweise.com/assets/images/guides/prime-the-day/01_prime_the_day.png</image:loc>
+      <image:loc>https://cweise.com/assets/images/operating-tools/prime-the-day/01_prime_the_day.png</image:loc>
       <image:title>Prime the Day</image:title>
       <image:caption>A morning guide for setting direction before execution begins.</image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://cweise.com/guides/run-the-day-with-structure/</loc>
-    <lastmod>2026-06-01</lastmod>
+    <loc>https://cweise.com/operating-tools/run-the-day-with-structure/</loc>
+    <lastmod>2026-07-04</lastmod>
     <image:image>
-      <image:loc>https://cweise.com/assets/images/guides/run-the-day-with-structure/01_run_the_day_with_structure.png</image:loc>
+      <image:loc>https://cweise.com/assets/images/operating-tools/run-the-day-with-structure/01_run_the_day_with_structure.png</image:loc>
       <image:title>Run the Day with Structure</image:title>
       <image:caption>A daily operating board for turning intention into execution.</image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://cweise.com/guides/decision-pattern-guide/</loc>
-    <lastmod>2026-06-01</lastmod>
+    <loc>https://cweise.com/operating-tools/decision-pattern-guide/</loc>
+    <lastmod>2026-07-04</lastmod>
     <image:image>
-      <image:loc>https://cweise.com/assets/images/guides/decision-pattern-guide/01_decision_pattern_guide.png</image:loc>
+      <image:loc>https://cweise.com/assets/images/operating-tools/decision-pattern-guide/01_decision_pattern_guide.png</image:loc>
       <image:title>The Decision Pattern Guide</image:title>
       <image:caption>A practical tool for tracing entry points, evaluating choices, and reshaping habit loops.</image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://cweise.com/guides/decision-tree-guide/</loc>
-    <lastmod>2026-06-01</lastmod>
+    <loc>https://cweise.com/operating-tools/decision-tree-guide/</loc>
+    <lastmod>2026-07-04</lastmod>
     <image:image>
-      <image:loc>https://cweise.com/assets/images/guides/decision-tree-guide/01_decision_tree_guide.png</image:loc>
+      <image:loc>https://cweise.com/assets/images/operating-tools/decision-tree-guide/01_decision_tree_guide.png</image:loc>
       <image:title>The Decision Tree Guide</image:title>
       <image:caption>A practical tool for mapping options, consequences, and the best next move.</image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://cweise.com/guides/from-vision-to-measurable-action/</loc>
-    <lastmod>2026-06-01</lastmod>
+    <loc>https://cweise.com/operating-tools/from-vision-to-measurable-action/</loc>
+    <lastmod>2026-07-04</lastmod>
     <image:image>
-      <image:loc>https://cweise.com/assets/images/guides/from-vision-to-measurable-action/01_from_vision_to_measurable_action.png</image:loc>
+      <image:loc>https://cweise.com/assets/images/operating-tools/from-vision-to-measurable-action/01_from_vision_to_measurable_action.png</image:loc>
       <image:title>From Vision to Measurable Action</image:title>
       <image:caption>A planning canvas for turning goals into structured execution.</image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://cweise.com/guides/map-the-habit-loop/</loc>
-    <lastmod>2026-06-01</lastmod>
+    <loc>https://cweise.com/operating-tools/map-the-habit-loop/</loc>
+    <lastmod>2026-07-04</lastmod>
     <image:image>
-      <image:loc>https://cweise.com/assets/images/guides/map-the-habit-loop/01_map_the_habit_loop.png</image:loc>
+      <image:loc>https://cweise.com/assets/images/operating-tools/map-the-habit-loop/01_map_the_habit_loop.png</image:loc>
       <image:title>Map the Habit Loop</image:title>
       <image:caption>A guide for turning recurring reactions into visible, actionable patterns.</image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://cweise.com/guides/operational-power-system/</loc>
-    <lastmod>2026-06-01</lastmod>
+    <loc>https://cweise.com/operating-tools/operational-power-system/</loc>
+    <lastmod>2026-07-04</lastmod>
     <image:image>
-      <image:loc>https://cweise.com/assets/images/guides/operational-power-system/01_operational_power_system.png</image:loc>
+      <image:loc>https://cweise.com/assets/images/operating-tools/operational-power-system/01_operational_power_system.png</image:loc>
       <image:title>Operational Power System</image:title>
       <image:caption>A guide for protecting momentum through narrative, authority, access, execution, and reinforcement.</image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://cweise.com/guides/pattern-to-progress-guide/</loc>
-    <lastmod>2026-06-01</lastmod>
+    <loc>https://cweise.com/operating-tools/pattern-to-progress-guide/</loc>
+    <lastmod>2026-07-04</lastmod>
     <image:image>
-      <image:loc>https://cweise.com/assets/images/guides/pattern-to-progress-guide/01_pattern_to_progress_guide.png</image:loc>
+      <image:loc>https://cweise.com/assets/images/operating-tools/pattern-to-progress-guide/01_pattern_to_progress_guide.png</image:loc>
       <image:title>The Pattern-to-Progress Guide</image:title>
       <image:caption>A tool for turning habit loops into immediate forward action.</image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://cweise.com/guides/question-to-action-filter/</loc>
-    <lastmod>2026-06-01</lastmod>
+    <loc>https://cweise.com/operating-tools/question-to-action-filter/</loc>
+    <lastmod>2026-07-04</lastmod>
     <image:image>
-      <image:loc>https://cweise.com/assets/images/guides/question-to-action-filter/01_question_to_action_filter.png</image:loc>
+      <image:loc>https://cweise.com/assets/images/operating-tools/question-to-action-filter/01_question_to_action_filter.png</image:loc>
       <image:title>The Question-to-Action Filter</image:title>
       <image:caption>A practical guide for turning vague problems into useful next steps.</image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://cweise.com/guides/reframe-the-belief-retrain-the-response/</loc>
-    <lastmod>2026-06-01</lastmod>
+    <loc>https://cweise.com/operating-tools/reframe-the-belief-retrain-the-response/</loc>
+    <lastmod>2026-07-04</lastmod>
     <image:image>
-      <image:loc>https://cweise.com/assets/images/guides/reframe-the-belief-retrain-the-response/01_reframe_the_belief_retrain_the_response.png</image:loc>
+      <image:loc>https://cweise.com/assets/images/operating-tools/reframe-the-belief-retrain-the-response/01_reframe_the_belief_retrain_the_response.png</image:loc>
       <image:title>Reframe the Belief, Retrain the Response</image:title>
       <image:caption>A guide for updating limiting beliefs through reflection, nervous-system awareness, and a stronger replacement belief.</image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://cweise.com/guides/run-the-decision-experiment/</loc>
-    <lastmod>2026-06-01</lastmod>
+    <loc>https://cweise.com/operating-tools/run-the-decision-experiment/</loc>
+    <lastmod>2026-07-04</lastmod>
     <image:image>
-      <image:loc>https://cweise.com/assets/images/guides/run-the-decision-experiment/01_run_the_decision_experiment.png</image:loc>
+      <image:loc>https://cweise.com/assets/images/operating-tools/run-the-decision-experiment/01_run_the_decision_experiment.png</image:loc>
       <image:title>Run the Decision Experiment</image:title>
       <image:caption>A practical guide for moving from dilemma to tested action.</image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://cweise.com/guides/see-the-pattern-choose-the-path/</loc>
-    <lastmod>2026-06-01</lastmod>
+    <loc>https://cweise.com/operating-tools/see-the-pattern-choose-the-path/</loc>
+    <lastmod>2026-07-04</lastmod>
     <image:image>
-      <image:loc>https://cweise.com/assets/images/guides/see-the-pattern-choose-the-path/01_see_the_pattern_choose_the_path.png</image:loc>
+      <image:loc>https://cweise.com/assets/images/operating-tools/see-the-pattern-choose-the-path/01_see_the_pattern_choose_the_path.png</image:loc>
       <image:title>See the Pattern, Choose the Path</image:title>
       <image:caption>A guide for using pattern recognition without getting trapped in the cycle.</image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://cweise.com/guides/start-where-the-signal-appears/</loc>
-    <lastmod>2026-06-01</lastmod>
+    <loc>https://cweise.com/operating-tools/start-where-the-signal-appears/</loc>
+    <lastmod>2026-07-04</lastmod>
     <image:image>
-      <image:loc>https://cweise.com/assets/images/guides/start-where-the-signal-appears/01_start_where_the_signal_appears.png</image:loc>
+      <image:loc>https://cweise.com/assets/images/operating-tools/start-where-the-signal-appears/01_start_where_the_signal_appears.png</image:loc>
       <image:title>Start Where the Signal Appears</image:title>
       <image:caption>A practical guide for choosing the right entry point into a decision.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://cweise.com/operating-tools/activation-response/</loc>
+    <lastmod>2026-07-04</lastmod>
+    <image:image>
+      <image:loc>https://cweise.com/assets/images/operating-tools/activation-response/og_activation_response.png</image:loc>
+      <image:title>Activation Response</image:title>
+      <image:caption>A practical guide for moving nervous-system activation out of rumination and into physical motion.</image:caption>
     </image:image>
   </url>
 </urlset>
