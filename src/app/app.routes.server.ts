@@ -1,7 +1,7 @@
 import { RenderMode, ServerRoute } from '@angular/ssr';
 import {
   publishedFrameworkItems,
-  publishedGuideItems,
+  publishedOperatingToolItems,
   publishedWritingItems
 } from './core/content/content.catalog';
 
@@ -43,15 +43,28 @@ export const serverRoutes: ServerRoute[] = [
     }
   },
   {
+    path: 'operating-tools',
+    renderMode: RenderMode.Prerender
+  },
+  {
     path: 'guides',
     renderMode: RenderMode.Prerender
+  },
+  {
+    path: 'operating-tools/:slug',
+    renderMode: RenderMode.Prerender,
+    async getPrerenderParams() {
+      return publishedOperatingToolItems.map((item) => ({
+        slug: stripRoutePrefix(item.slug, 'operating-tools')
+      }));
+    }
   },
   {
     path: 'guides/:slug',
     renderMode: RenderMode.Prerender,
     async getPrerenderParams() {
-      return publishedGuideItems.map((item) => ({
-        slug: stripRoutePrefix(item.slug, 'guides')
+      return publishedOperatingToolItems.map((item) => ({
+        slug: stripRoutePrefix(item.slug, 'operating-tools')
       }));
     }
   },

@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { frameworksContent, guidesContent, siteContent, writingContent } from './core/content/content.catalog';
+import { frameworksContent, operatingToolsContent, siteContent, writingContent } from './core/content/content.catalog';
 
 export const routes: Routes = [
   {
@@ -22,12 +22,22 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/frameworks/frameworks.component').then(m => m.FrameworksComponent)
   },
   {
-    path: 'guides',
-    title: 'Guides | cweise.com',
-    data: { seoDescription: guidesContent.meta.intro },
-    loadComponent: () => import('./pages/guides/guides.component').then(m => m.GuidesComponent)
+    path: 'operating-tools',
+    title: 'Operating Tools | cweise.com',
+    data: { seoDescription: operatingToolsContent.meta.intro },
+    loadComponent: () => import('./pages/operating-tools/operating-tools.component').then(m => m.OperatingToolsComponent)
   },
-  { path: 'guides/:slug', title: 'Guide | cweise.com', loadComponent: () => import('./pages/guide-detail/guide-detail.component').then(m => m.GuideDetailComponent) },
+  {
+    path: 'guides',
+    title: 'Operating Tools | cweise.com',
+    loadComponent: () => import('./pages/legacy-guides-redirect/legacy-guides-redirect.component').then(m => m.LegacyGuidesRedirectComponent)
+  },
+  {
+    path: 'guides/:slug',
+    title: 'Operating Tool | cweise.com',
+    loadComponent: () => import('./pages/legacy-guides-redirect/legacy-guides-redirect.component').then(m => m.LegacyGuidesRedirectComponent)
+  },
+  { path: 'operating-tools/:slug', title: 'Operating Tool | cweise.com', loadComponent: () => import('./pages/operating-tool-detail/operating-tool-detail.component').then(m => m.OperatingToolDetailComponent) },
   {
     path: 'frameworks/:year/:month/:day/:slug',
     title: 'Framework | cweise.com',

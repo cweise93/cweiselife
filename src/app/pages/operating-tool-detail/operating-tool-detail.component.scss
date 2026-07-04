@@ -56,47 +56,47 @@ h1 {
   line-height: 1.8;
 }
 
-.guide-shell {
+.operating-tool-shell {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(320px, 420px);
   gap: 28px;
   align-items: start;
 }
 
-.guide-main-column {
+.operating-tool-main-column {
   display: grid;
   gap: 24px;
   min-width: 0;
 }
 
-.guide-artifact-rail {
+.operating-tool-artifact-rail {
   position: sticky;
   top: calc(var(--cw-toolbar-current-height, var(--cw-toolbar-height)) + 24px);
   align-self: start;
 }
 
-.guide-artifact-card {
+.operating-tool-artifact-card {
   display: grid;
   gap: 18px;
   padding: 18px;
 }
 
-.guide-artifact-card__header {
+.operating-tool-artifact-card__header {
   display: grid;
   gap: 8px;
 }
 
-.guide-artifact-card__header h2 {
+.operating-tool-artifact-card__header h2 {
   margin: 0;
   font-size: clamp(1.4rem, 2vw, 1.8rem);
   letter-spacing: -0.04em;
 }
 
-.guide-artifact-card__header p {
+.operating-tool-artifact-card__header p {
   margin: 0;
 }
 
-.guide-artifact-trigger {
+.operating-tool-artifact-trigger {
   position: relative;
   display: block;
   padding: 0;
@@ -107,7 +107,7 @@ h1 {
   overflow: hidden;
 }
 
-.guide-artifact-trigger img {
+.operating-tool-artifact-trigger img {
   display: block;
   width: 100%;
   height: auto;
@@ -117,7 +117,7 @@ h1 {
   box-shadow: 0 20px 40px rgba(5, 12, 24, 0.28);
 }
 
-.guide-artifact-trigger__overlay {
+.operating-tool-artifact-trigger__overlay {
   position: absolute;
   inset: auto 14px 14px 14px;
   display: inline-flex;
@@ -134,66 +134,66 @@ h1 {
   transition: opacity 180ms ease, transform 180ms ease;
 }
 
-.guide-artifact-trigger:hover .guide-artifact-trigger__overlay,
-.guide-artifact-trigger:focus-visible .guide-artifact-trigger__overlay {
+.operating-tool-artifact-trigger:hover .operating-tool-artifact-trigger__overlay,
+.operating-tool-artifact-trigger:focus-visible .operating-tool-artifact-trigger__overlay {
   opacity: 1;
   transform: translateY(0);
 }
 
-.guide-artifact-trigger:focus-visible {
+.operating-tool-artifact-trigger:focus-visible {
   outline: 2px solid color-mix(in srgb, var(--cw-accent) 68%, white 18%);
   outline-offset: 4px;
 }
 
-.guide-artifact-card__footer {
+.operating-tool-artifact-card__footer {
   display: flex;
   justify-content: flex-start;
 }
 
-.guide-intro-card mat-card-content {
+.operating-tool-intro-card mat-card-content {
   padding: 22px 24px;
 }
 
-.guide-intro-card p {
+.operating-tool-intro-card p {
   margin: 0;
   color: var(--cw-ink);
   line-height: 1.8;
   font-size: 1.04rem;
 }
 
-.guide-sections {
+.operating-tool-sections {
   display: grid;
   gap: 24px;
 }
 
-.guide-section {
+.operating-tool-section {
   display: grid;
   gap: 16px;
   max-width: 52rem;
 }
 
-.guide-section h2,
-.more-guides h2,
+.operating-tool-section h2,
+.more-operating-tools h2,
 .artifact-modal h2 {
   margin: 0;
   font-size: clamp(1.7rem, 3vw, 2.2rem);
   letter-spacing: -0.04em;
 }
 
-.guide-section p {
+.operating-tool-section p {
   margin: 0;
   color: var(--cw-muted);
   line-height: 1.78;
 }
 
-.guide-image {
+.operating-tool-image {
   margin: 2px 0 0;
   display: grid;
   gap: 10px;
   width: min(100%, 980px);
 }
 
-.guide-image img {
+.operating-tool-image img {
   width: 100%;
   height: auto;
   display: block;
@@ -202,25 +202,25 @@ h1 {
   background: white;
 }
 
-.guide-image figcaption {
+.operating-tool-image figcaption {
   margin: 0;
   color: var(--cw-muted);
   font-size: 0.95rem;
   line-height: 1.6;
 }
 
-.guide-callout mat-card-content {
+.operating-tool-callout mat-card-content {
   display: flex;
   gap: 12px;
   align-items: flex-start;
   padding: 18px 20px;
 }
 
-.guide-callout mat-icon {
+.operating-tool-callout mat-icon {
   color: var(--cw-accent);
 }
 
-.more-guides {
+.more-operating-tools {
   grid-column: 1 / -1;
   display: grid;
   gap: 20px;
@@ -228,30 +228,30 @@ h1 {
   padding-bottom: 56px;
 }
 
-.more-guides__header {
+.more-operating-tools__header {
   display: grid;
   gap: 10px;
 }
 
-.more-guides__grid {
+.more-operating-tools__grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 16px;
 }
 
-.guide-avatar {
+.operating-tool-avatar {
   display: grid;
   place-items: center;
   background: color-mix(in srgb, var(--cw-accent) 10%, var(--cw-panel));
   color: var(--cw-accent);
 }
 
-.related-guide-card mat-card-title,
-.related-guide-card mat-card-subtitle {
+.related-operating-tool-card mat-card-title,
+.related-operating-tool-card mat-card-subtitle {
   white-space: normal;
 }
 
-.related-guide-card mat-card-subtitle {
+.related-operating-tool-card mat-card-subtitle {
   color: var(--cw-muted);
 }
 
@@ -363,33 +363,33 @@ h1 {
 }
 
 :host-context(body.cw-theme-dusk) {
-  .guide-intro-card,
-  .guide-callout,
-  .guide-artifact-card,
-  .related-guide-card {
+  .operating-tool-intro-card,
+  .operating-tool-callout,
+  .operating-tool-artifact-card,
+  .related-operating-tool-card {
     background: var(--cw-panel) !important;
     border-color: var(--cw-line) !important;
   }
 
-  .guide-intro-card p {
+  .operating-tool-intro-card p {
     color: var(--cw-ink);
   }
 
-  .guide-artifact-card__header h2 {
+  .operating-tool-artifact-card__header h2 {
     color: var(--cw-text);
   }
 }
 
 @media (max-width: 1080px) {
-  .guide-shell {
+  .operating-tool-shell {
     grid-template-columns: 1fr;
   }
 
-  .guide-artifact-rail {
+  .operating-tool-artifact-rail {
     position: static;
   }
 
-  .guide-artifact-card {
+  .operating-tool-artifact-card {
     max-width: 44rem;
   }
 }
@@ -399,21 +399,21 @@ h1 {
     padding: 64px 0 24px;
   }
 
-  .guide-shell,
-  .guide-main-column,
-  .guide-sections {
+  .operating-tool-shell,
+  .operating-tool-main-column,
+  .operating-tool-sections {
     gap: 20px;
   }
 
-  .guide-intro-card mat-card-content {
+  .operating-tool-intro-card mat-card-content {
     padding: 18px 18px 20px;
   }
 
-  .guide-artifact-card {
+  .operating-tool-artifact-card {
     padding: 14px;
   }
 
-  .more-guides {
+  .more-operating-tools {
     padding-bottom: 40px;
   }
 

@@ -11,12 +11,12 @@ const site = await loadJson('site.json');
 const about = await loadJson('about.json');
 const writing = await loadJson('writing.json');
 const frameworks = await loadJson('frameworks.json');
-const guides = await loadJson('guides.json');
+const operatingTools = await loadJson('operating-tools.json');
 
 const baseUrl = site.meta.siteUrl.replace(/\/+$/, '');
 const publishedWriting = writing.items.filter((item) => item.status === 'published');
 const publishedFrameworks = frameworks.items.filter((item) => item.status === 'published');
-const publishedGuides = guides.items.filter((item) => item.status === 'published');
+const publishedOperatingTools = operatingTools.items.filter((item) => item.status === 'published');
 
 await mkdir(publicDir, { recursive: true });
 
@@ -88,8 +88,8 @@ function buildLlmsTxt() {
     .map((slug) => publishedFrameworks.find((item) => item.slug === slug))
     .filter(Boolean)
     .slice(0, 3);
-  const featuredGuides = site.home.featuredGuideSlugs
-    .map((slug) => publishedGuides.find((item) => item.slug === slug))
+  const featuredOperatingTools = site.home.featuredOperatingToolSlugs
+    .map((slug) => publishedOperatingTools.find((item) => item.slug === slug))
     .filter(Boolean)
     .slice(0, 4);
 
@@ -98,14 +98,14 @@ function buildLlmsTxt() {
     '',
     `> ${site.meta.description}`,
     '',
-    'This site publishes prerendered essays, frameworks, and short-form operating guides by Charles Weise focused on operational clarity, organizational sensemaking, and execution systems. Core pages are available as static HTML, and this file provides a concise machine-readable index for AI systems and other crawlers.',
+    'This site publishes prerendered essays, frameworks, and short-form operating tools by Charles Weise focused on operational clarity, organizational sensemaking, and execution systems. Core pages are available as static HTML, and this file provides a concise machine-readable index for AI systems and other crawlers.',
     '',
     '## Primary Pages',
     markdownLink('Home', canonicalPageUrl('/')) + ': Site overview, themes, and featured content.',
     markdownLink('About', canonicalPageUrl('/about')) + ': Author profile, principles, and focus areas.',
     markdownLink('Writing', canonicalPageUrl('/writing')) + ': Essay index focused on operational clarity, organizational sensemaking, and execution design.',
     markdownLink('Frameworks', canonicalPageUrl('/frameworks')) + ': Interactive frameworks and implementation-oriented models.',
-    markdownLink('Guides', canonicalPageUrl('/guides')) + ': Practical guides for action, reflection, and decision support.',
+    markdownLink('Operating Tools', canonicalPageUrl('/operating-tools')) + ': Practical tools for action, reflection, and decision support.',
     markdownLink('Connect', canonicalPageUrl('/connect')) + ': Subscription and contact options.',
     '',
     '## Featured Writing',
@@ -118,8 +118,8 @@ function buildLlmsTxt() {
       `${markdownLink(item.title, canonicalPageUrl(item.slug))}: ${item.summary}`
     ),
     '',
-    '## Featured Guides',
-    ...featuredGuides.map((item) =>
+    '## Featured Operating Tools',
+    ...featuredOperatingTools.map((item) =>
       `${markdownLink(item.title, canonicalPageUrl(item.slug))}: ${item.summary}`
     ),
     '',
@@ -133,7 +133,7 @@ function buildLlmsTxt() {
 
 function buildLlmsFullTxt() {
   const sections = [
-    '# cweise.com Full Content Guide',
+    '# cweise.com Full Content Library',
     '',
     `> ${site.meta.description}`,
     '',
@@ -182,14 +182,14 @@ function buildLlmsFullTxt() {
   }
 
   sections.push(
-    '## Guides Index',
-    `- URL: ${canonicalPageUrl('/guides')}`,
-    `- Summary: ${guides.meta.intro}`,
+    '## Operating Tools Index',
+    `- URL: ${canonicalPageUrl('/operating-tools')}`,
+    `- Summary: ${operatingTools.meta.intro}`,
     ''
   );
 
-  for (const item of publishedGuides) {
-    sections.push(...renderContentEntry(item, 'Guide'));
+  for (const item of publishedOperatingTools) {
+    sections.push(...renderContentEntry(item, 'Operating Tool'));
   }
 
   sections.push(
@@ -212,6 +212,9 @@ function renderContentEntry(item, kind) {
     Array.isArray(item.body?.components) && item.body.components.length
       ? [`- Components: ${item.body.components.map((component) => `${component.title}: ${component.description}`).join(' | ')}`]
       : [];
+  const primaryImage = canonicalAssetUrl(
+    item.productionAssets?.socialImage?.href ?? item.heroImage ?? item.diagramImage
+  );
 
   return [
     `### ${kind}: ${item.title}`,
@@ -220,6 +223,7 @@ function renderContentEntry(item, kind) {
     `- Published: ${item.publishedOn ?? 'Not specified'}`,
     `- Tags: ${formatTags(item.tags)}`,
     `- SEO description: ${item.seo?.description ?? item.summary}`,
+    ...(primaryImage ? [`- Primary share image: ${primaryImage}`] : []),
     ...(intro ? [`- Intro: ${intro}`] : []),
     ...application,
     ...components,
@@ -324,7 +328,7 @@ function buildSitemapXml() {
     { url: canonicalPageUrl('/connect'), lastmod: site.meta.updatedOn },
     { url: canonicalPageUrl('/writing'), lastmod: writing.meta.updatedOn },
     { url: canonicalPageUrl('/frameworks'), lastmod: frameworks.meta.updatedOn },
-    { url: canonicalPageUrl('/guides'), lastmod: guides.meta.updatedOn },
+    { url: canonicalPageUrl('/operating-tools'), lastmod: operatingTools.meta.updatedOn },
     ...publishedWriting.map((item) => ({
       url: canonicalPageUrl(item.slug),
       lastmod: item.publishedOn || writing.meta.updatedOn,
@@ -347,9 +351,9 @@ function buildSitemapXml() {
           }
         : undefined
     })),
-    ...publishedGuides.map((item) => ({
+    ...publishedOperatingTools.map((item) => ({
       url: canonicalPageUrl(item.slug),
-      lastmod: guides.meta.updatedOn,
+      lastmod: operatingTools.meta.updatedOn,
       image: item.heroImage
         ? {
             loc: canonicalAssetUrl(item.productionAssets?.socialImage?.href ?? item.heroImage),

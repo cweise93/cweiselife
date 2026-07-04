@@ -1,7 +1,7 @@
 import { ScrollSequenceManifest, SpriteSheetManifest } from '../shared/content/scroll-sprite-sequence';
 
 export type PublishingPathStatus = 'Published' | 'Current' | 'Planned';
-export type PublishingPathKind = 'Writing' | 'Framework' | 'Guide';
+export type PublishingPathKind = 'Writing' | 'Framework' | 'OperatingTool';
 export type PublishingPathAvailability = 'published' | 'planned';
 export type PublishingPathActId = 'cold-open' | 'act-i' | 'act-ii' | 'act-iii';
 export type PublishingPathViewMode = 'story-arc' | 'release-order';
@@ -459,20 +459,20 @@ export const HOME_PUBLISHING_PATH: HomePublishingPath = {
       sceneLabel: 'Act III · Land the tool',
       status: 'Published',
       availability: 'published',
-      kind: 'Guide',
+      kind: 'OperatingTool',
       actId: 'act-iii',
       movement: 'Give people something to use',
       narrativeOrder: 13,
       releaseOrder: 13,
       progressStart: 0.9231,
       progressEnd: 1,
-      releaseDateLabel: 'Published guide',
+      releaseDateLabel: 'Published operating tool',
       title: 'A Compass, Not a Map',
       summary: 'The closing move turns the arc into a room-usable guide for navigating ambiguity without pretending the future can be fully scripted in advance.',
       thesis: 'The best operating tools orient judgment instead of replacing it.',
       stakes: 'If the story cannot land in something leaders and teams can use live, the campaign remains elegant commentary.',
       continuity: 'This is the practical landing point: governed intelligence becomes a tool for real rooms, not just good theory.',
-      slug: 'guides/a-compass-not-a-map'
+      slug: 'operating-tools/a-compass-not-a-map'
     }
   ]
 };

@@ -6,7 +6,7 @@ import {
   ContentCollectionViewModel,
   FooterContent,
   FrameworkItem,
-  GuideItem,
+  OperatingToolItem,
   HomeContentViewModel,
   SiteMeta,
   SiteNavigation,
@@ -20,7 +20,7 @@ import {
 import {
   aboutContent,
   frameworksContent,
-  guidesContent,
+  operatingToolsContent,
   siteContent,
   writingContent
 } from './content.catalog';
@@ -30,7 +30,7 @@ export class ContentService {
   private readonly siteFile$ = of(siteContent);
   private readonly writingFile$ = of(writingContent);
   private readonly frameworksFile$ = of(frameworksContent);
-  private readonly guidesFile$ = of(guidesContent);
+  private readonly operatingToolsFile$ = of(operatingToolsContent);
   private readonly aboutFile$ = of(aboutContent);
 
   getSiteMeta(): Observable<SiteMeta> {
@@ -54,10 +54,10 @@ export class ContentService {
       site: this.siteFile$,
       featuredWriting: this.getFeaturedWriting(),
       featuredFrameworks: this.getFeaturedFrameworks(),
-      featuredGuides: this.getFeaturedGuides(),
+      featuredOperatingTools: this.getFeaturedOperatingTools(),
       about: this.getAboutContent()
     }).pipe(
-      map(({ site, featuredWriting, featuredFrameworks, featuredGuides, about }) => ({
+      map(({ site, featuredWriting, featuredFrameworks, featuredOperatingTools, about }) => ({
         meta: site.meta,
         navigation: site.navigation,
         footer: site.footer,
@@ -65,7 +65,7 @@ export class ContentService {
         home: site.home,
         featuredWriting,
         featuredFrameworks,
-        featuredGuides,
+        featuredOperatingTools,
         about
       }))
     );
@@ -126,33 +126,33 @@ export class ContentService {
     );
   }
 
-  getGuidesPage(): Observable<ContentCollectionViewModel<GuideItem>> {
+  getOperatingToolsPage(): Observable<ContentCollectionViewModel<OperatingToolItem>> {
     return combineLatest({
-      meta: this.guidesFile$.pipe(map((file) => file.meta)),
-      items: this.getGuidesIndex()
+      meta: this.operatingToolsFile$.pipe(map((file) => file.meta)),
+      items: this.getOperatingToolsIndex()
     }).pipe(map(({ meta, items }) => ({ meta, items })));
   }
 
-  getGuidesIndex(): Observable<GuideItem[]> {
-    return this.guidesFile$.pipe(
+  getOperatingToolsIndex(): Observable<OperatingToolItem[]> {
+    return this.operatingToolsFile$.pipe(
       map((file) => file.items.filter((item) => isPublicContent(item.status)))
     );
   }
 
-  getGuideBySlug(slug: string): Observable<GuideItem | null> {
+  getOperatingToolBySlug(slug: string): Observable<OperatingToolItem | null> {
     const normalized = slug.trim();
 
-    return this.getGuidesIndex().pipe(
+    return this.getOperatingToolsIndex().pipe(
       map(
         (items) =>
-          items.find((item) => item.slug === normalized || item.slug === `guides/${normalized}`) ?? null
+          items.find((item) => item.slug === normalized || item.slug === `operating-tools/${normalized}`) ?? null
       )
     );
   }
 
-  getFeaturedGuides(limit?: number): Observable<GuideItem[]> {
-    return combineLatest([this.siteFile$, this.getGuidesIndex()]).pipe(
-      map(([site, items]) => resolveFeaturedItems(site.home.featuredGuideSlugs, items, limit))
+  getFeaturedOperatingTools(limit?: number): Observable<OperatingToolItem[]> {
+    return combineLatest([this.siteFile$, this.getOperatingToolsIndex()]).pipe(
+      map(([site, items]) => resolveFeaturedItems(site.home.featuredOperatingToolSlugs, items, limit))
     );
   }
 

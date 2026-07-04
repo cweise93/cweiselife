@@ -11,13 +11,19 @@ import { MatListModule } from '@angular/material/list';
 import { curveCatmullRom, line } from 'd3';
 import { startWith } from 'rxjs';
 import { ContentService } from '../../core/content/content.service';
-import { FrameworkItem, GuideItem, HomeContentViewModel, WritingItem } from '../../core/content/content.models';
+import { FrameworkItem, OperatingToolItem, HomeContentViewModel, WritingItem } from '../../core/content/content.models';
 import { HOME_PUBLISHING_PATH, PublishingPathAct, PublishingPathActId, PublishingPathItem, PublishingPathViewMode } from '../../data/home-publishing-path.data';
-import { HomeGuideSelectorComponent } from './home-guide-selector.component';
-import { HomeGuideSelectorBenefit, HomeGuideSelectorMoment } from './home-guide-selector.models';
+import { HomeOperatingToolSelectorComponent } from './home-operating-tool-selector.component';
+import {
+  HomeOperatingToolSelectorBenefit,
+  HomeOperatingToolSelectorMoment
+} from './home-operating-tool-selector.models';
 
-interface HomeGuideMomentConfig {
-  prompt: string;
+interface HomeOperatingToolMomentConfig {
+  label: string;
+  title: string;
+  preview: string;
+  icon: string;
   slug: string;
 }
 
@@ -53,16 +59,52 @@ interface PublishingPathGraphData {
   nodes: PublishingPathGraphNode[];
 }
 
-const HOME_GUIDE_MOMENTS: HomeGuideMomentConfig[] = [
-  { prompt: 'Get unstuck', slug: 'guides/avoid-act-loop' },
-  { prompt: 'Find direction', slug: 'guides/a-compass-not-a-map' },
-  { prompt: 'Break a pattern', slug: 'guides/see-the-pattern-choose-the-path' },
-  { prompt: 'Make a decision', slug: 'guides/decision-tree-guide' },
-  { prompt: 'Structure today', slug: 'guides/run-the-day-with-structure' },
-  { prompt: 'Reset and learn', slug: 'guides/close-the-loop' }
+const HOME_OPERATING_TOOL_MOMENTS: HomeOperatingToolMomentConfig[] = [
+  {
+    label: 'Activation spike',
+    title: 'I am overthinking and need motion.',
+    preview: 'Move charged mental energy out of rumination and into physical action before making the next decision.',
+    icon: 'fitness_center',
+    slug: 'operating-tools/activation-response'
+  },
+  {
+    label: 'Avoidance',
+    title: 'I am stuck before starting.',
+    preview: 'Lower the entry cost and make first contact with the work.',
+    icon: 'bolt',
+    slug: 'operating-tools/avoid-act-loop'
+  },
+  {
+    label: 'Decision pressure',
+    title: 'I need a cleaner next move.',
+    preview: 'Make the decision visible enough to compare options, risks, and consequences.',
+    icon: 'account_tree',
+    slug: 'operating-tools/decision-tree-guide'
+  },
+  {
+    label: 'Pattern recognition',
+    title: 'I see the loop but need agency.',
+    preview: 'Use the pattern without getting trapped inside it.',
+    icon: 'travel_explore',
+    slug: 'operating-tools/see-the-pattern-choose-the-path'
+  },
+  {
+    label: 'Ambiguity',
+    title: 'I do not have the full map yet.',
+    preview: 'Move with direction when the full path is not yet clear.',
+    icon: 'explore',
+    slug: 'operating-tools/a-compass-not-a-map'
+  },
+  {
+    label: 'Execution structure',
+    title: 'I need to run the day with more evidence.',
+    preview: 'Turn intention into observable execution and useful feedback.',
+    icon: 'event_available',
+    slug: 'operating-tools/run-the-day-with-structure'
+  }
 ];
 
-const HOME_GUIDE_BENEFITS: HomeGuideSelectorBenefit[] = [
+const HOME_OPERATING_TOOL_BENEFITS: HomeOperatingToolSelectorBenefit[] = [
   { icon: 'schedule', title: 'Fast to start', description: 'Begin in under 1 minute.' },
   { icon: 'visibility', title: 'Visual clarity', description: 'See the big picture at a glance.' },
   { icon: 'autorenew', title: 'Repeatable', description: 'Use it again and get better.' },
@@ -151,17 +193,17 @@ const EMPTY_HOME: HomeContentViewModel = {
     heroImage: '',
     featuredWritingSlugs: [],
     featuredFrameworkSlugs: [],
-    featuredGuideSlugs: [],
+    featuredOperatingToolSlugs: [],
     themes: [],
     themesSection: { eyebrow: '', headline: '', support: '' },
     writingSection: { eyebrow: '', headline: '', support: '' },
     frameworkSection: { eyebrow: '', headline: '', support: '' },
-    guidesSection: { eyebrow: '', headline: '', support: '' },
+    operatingToolsSection: { eyebrow: '', headline: '', support: '' },
     aboutSection: { eyebrow: '', headline: '', support: '' }
   },
   featuredWriting: [],
   featuredFrameworks: [],
-  featuredGuides: [],
+  featuredOperatingTools: [],
   about: {
     headline: '',
     narrative: [],
@@ -174,7 +216,7 @@ const EMPTY_HOME: HomeContentViewModel = {
 @Component({
   selector: 'cw-home',
   standalone: true,
-  imports: [RouterLink, DatePipe, MatButtonModule, MatButtonToggleModule, MatCardModule, MatChipsModule, MatIconModule, MatListModule, HomeGuideSelectorComponent],
+  imports: [RouterLink, DatePipe, MatButtonModule, MatButtonToggleModule, MatCardModule, MatChipsModule, MatIconModule, MatListModule, HomeOperatingToolSelectorComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -201,16 +243,27 @@ export class HomeComponent implements AfterViewInit {
   readonly homeWritingSection = HOME_WRITING_SECTION;
   readonly homeFrameworkSection = HOME_FRAMEWORK_SECTION;
   readonly homeAboutSection = HOME_ABOUT_SECTION;
-  readonly guideItems = toSignal(this.contentService.getGuidesIndex(), { initialValue: [] as GuideItem[] });
+  readonly operatingToolItems = toSignal(this.contentService.getOperatingToolsIndex(), {
+    initialValue: [] as OperatingToolItem[]
+  });
   readonly featuredWritingItems = computed<WritingItem[]>(() => this.homeContent().featuredWriting ?? []);
-  readonly homeGuideMoments = computed<HomeGuideSelectorMoment[]>(() =>
-    HOME_GUIDE_MOMENTS.flatMap((entry) => {
-      const guide = this.guideItems().find((item) => item.slug === entry.slug);
-      return guide ? [{ prompt: entry.prompt, guide, route: this.getGuideRoute(guide) }] : [];
+  readonly homeOperatingToolMoments = computed<HomeOperatingToolSelectorMoment[]>(() =>
+    HOME_OPERATING_TOOL_MOMENTS.flatMap((entry) => {
+      const operatingTool = this.operatingToolItems().find((item) => item.slug === entry.slug);
+      return operatingTool
+        ? [{
+            label: entry.label,
+            title: entry.title,
+            preview: entry.preview,
+            icon: entry.icon,
+            operatingTool,
+            route: this.getOperatingToolRoute(operatingTool)
+          }]
+        : [];
     })
   );
-  readonly homeGuideBenefits = HOME_GUIDE_BENEFITS;
-  readonly selectedHomeGuideMomentIndex = signal(0);
+  readonly homeOperatingToolBenefits = HOME_OPERATING_TOOL_BENEFITS;
+  readonly selectedHomeOperatingToolMomentIndex = signal(0);
   readonly featuredFrameworkItem = computed<FrameworkItem | null>(() => this.homeContent().featuredFrameworks?.[0] ?? null);
   readonly viewportWidth = signal(typeof window === 'undefined' ? 1440 : window.innerWidth);
   readonly cardsPerSlide = signal(this.getWritingCardsPerSlide());
@@ -372,20 +425,20 @@ export class HomeComponent implements AfterViewInit {
     return this.slugToRoute(slug);
   }
 
-  getGuideRoute(guide: GuideItem): string[] {
-    return this.slugToRoute(guide.slug);
+  getOperatingToolRoute(operatingTool: OperatingToolItem): string[] {
+    return this.slugToRoute(operatingTool.slug);
   }
 
-  getGuideTags(guide: GuideItem, limit = 3): string[] {
-    return guide.tags.slice(0, limit);
+  getOperatingToolTags(operatingTool: OperatingToolItem, limit = 3): string[] {
+    return operatingTool.tags.slice(0, limit);
   }
 
-  selectHomeGuideMoment(index: number): void {
-    if (index < 0 || index >= this.homeGuideMoments().length) {
+  selectHomeOperatingToolMoment(index: number): void {
+    if (index < 0 || index >= this.homeOperatingToolMoments().length) {
       return;
     }
 
-    this.selectedHomeGuideMomentIndex.set(index);
+    this.selectedHomeOperatingToolMomentIndex.set(index);
   }
 
   getPublishingPathRoute(item: PublishingPathItem): string[] {

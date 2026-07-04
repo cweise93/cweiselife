@@ -2,20 +2,20 @@
   display: block;
 }
 
-.guide-artifact-dialog__content {
+.operating-tool-artifact-dialog__content {
   display: grid;
   gap: 16px;
   min-width: min(92vw, 980px);
 }
 
-.guide-artifact-dialog__description {
+.operating-tool-artifact-dialog__description {
   margin: 0;
   color: var(--cw-muted);
   font-size: .96rem;
   line-height: 1.45;
 }
 
-.guide-artifact-dialog__frame {
+.operating-tool-artifact-dialog__frame {
   display: grid;
   place-items: center;
   max-height: 72vh;
@@ -24,7 +24,7 @@
   background: linear-gradient(180deg, #23364d 0%, #18293c 100%);
 }
 
-.guide-artifact-dialog__frame img {
+.operating-tool-artifact-dialog__frame img {
   display: block;
   max-width: 100%;
   max-height: calc(72vh - 36px);

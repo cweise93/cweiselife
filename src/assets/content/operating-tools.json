@@ -1,15 +1,15 @@
 {
   "meta": {
     "version": 2,
-    "updatedOn": "2026-06-01",
-    "eyebrow": "Guides",
-    "headline": "Operating Tools",
-    "intro": "Practical guides for turning ambiguity, friction, stuck energy, and unclear next steps into useful action."
+    "updatedOn": "2026-07-04",
+    "eyebrow": "Operating Tools",
+    "headline": "Tools for the moment before the plan.",
+    "intro": "Use these when the issue is not a lack of intelligence. Use them when the next move is hidden inside activation, ambiguity, avoidance, decision pressure, unclear structure, or a repeating pattern."
   },
   "items": [
     {
-      "id": "guide-001",
-      "slug": "guides/a-compass-not-a-map",
+      "id": "operating-tool-001",
+      "slug": "operating-tools/a-compass-not-a-map",
       "title": "A Compass, Not a Map",
       "summary": "A practical operating tool for moving through ambiguity without over-designing the future.",
       "status": "published",
@@ -21,16 +21,16 @@
         "momentum",
         "decision-making"
       ],
-      "heroImage": "assets/images/guides/a-compass-not-a-map/01_a_compass_not_a_map.png",
+      "heroImage": "assets/images/operating-tools/a-compass-not-a-map/01_a_compass_not_a_map.png",
       "seo": {
         "title": "A Compass, Not a Map",
         "description": "A practical operating tool for moving through ambiguity without over-designing the future."
       },
       "productionAssets": {
         "socialImage": {
-          "label": "Guide social image",
-          "href": "assets/images/guides/a-compass-not-a-map/01_a_compass_not_a_map.png",
-          "description": "Use the primary guide artifact as the default Open Graph and social preview image."
+          "label": "Operating tool social image",
+          "href": "assets/images/operating-tools/a-compass-not-a-map/01_a_compass_not_a_map.png",
+          "description": "Use the primary operating tool artifact as the default Open Graph and social preview image."
         }
       },
       "body": {
@@ -70,8 +70,8 @@
       }
     },
     {
-      "id": "guide-002",
-      "slug": "guides/avoid-act-loop",
+      "id": "operating-tool-002",
+      "slug": "operating-tools/avoid-act-loop",
       "title": "Avoid to Act Loop",
       "summary": "A short intervention for turning avoidance into immediate motion.",
       "status": "published",
@@ -83,16 +83,16 @@
         "first contact",
         "execution"
       ],
-      "heroImage": "assets/images/guides/avoid-act-loop/01_avoid_act_loop.png",
+      "heroImage": "assets/images/operating-tools/avoid-act-loop/01_avoid_act_loop.png",
       "seo": {
         "title": "Avoid to Act Loop",
         "description": "A short intervention for turning avoidance into immediate motion."
       },
       "productionAssets": {
         "socialImage": {
-          "label": "Guide social image",
-          "href": "assets/images/guides/avoid-act-loop/01_avoid_act_loop.png",
-          "description": "Use the primary guide artifact as the default Open Graph and social preview image."
+          "label": "Operating tool social image",
+          "href": "assets/images/operating-tools/avoid-act-loop/01_avoid_act_loop.png",
+          "description": "Use the primary operating tool artifact as the default Open Graph and social preview image."
         }
       },
       "body": {
@@ -133,8 +133,8 @@
       }
     },
     {
-      "id": "guide-003",
-      "slug": "guides/becoming-the-solution-provider",
+      "id": "operating-tool-003",
+      "slug": "operating-tools/becoming-the-solution-provider",
       "title": "Becoming the Solution Provider",
       "summary": "A systems-thinking guide for shifting from firefighting to durable problem prevention.",
       "status": "published",
@@ -146,16 +146,16 @@
         "problem solving",
         "execution"
       ],
-      "heroImage": "assets/images/guides/becoming-the-solution-provider/01_becoming_the_solution_provider.png",
+      "heroImage": "assets/images/operating-tools/becoming-the-solution-provider/01_becoming_the_solution_provider.png",
       "seo": {
         "title": "Becoming the Solution Provider",
         "description": "A systems-thinking guide for shifting from firefighting to durable problem prevention."
       },
       "productionAssets": {
         "socialImage": {
-          "label": "Guide social image",
-          "href": "assets/images/guides/becoming-the-solution-provider/01_becoming_the_solution_provider.png",
-          "description": "Use the primary guide artifact as the default Open Graph and social preview image."
+          "label": "Operating tool social image",
+          "href": "assets/images/operating-tools/becoming-the-solution-provider/01_becoming_the_solution_provider.png",
+          "description": "Use the primary operating tool artifact as the default Open Graph and social preview image."
         }
       },
       "body": {
@@ -194,8 +194,8 @@
       }
     },
     {
-      "id": "guide-004",
-      "slug": "guides/close-the-loop",
+      "id": "operating-tool-004",
+      "slug": "operating-tools/close-the-loop",
       "title": "Close the Loop",
       "summary": "A practical end-of-day review for learning, gratitude, and cleaner next steps.",
       "status": "published",
@@ -207,16 +207,16 @@
         "gratitude",
         "follow-through"
       ],
-      "heroImage": "assets/images/guides/close-the-loop/01_close_the_loop.png",
+      "heroImage": "assets/images/operating-tools/close-the-loop/01_close_the_loop.png",
       "seo": {
         "title": "Close the Loop",
         "description": "A practical end-of-day review for learning, gratitude, and cleaner next steps."
       },
       "productionAssets": {
         "socialImage": {
-          "label": "Guide social image",
-          "href": "assets/images/guides/close-the-loop/01_close_the_loop.png",
-          "description": "Use the primary guide artifact as the default Open Graph and social preview image."
+          "label": "Operating tool social image",
+          "href": "assets/images/operating-tools/close-the-loop/01_close_the_loop.png",
+          "description": "Use the primary operating tool artifact as the default Open Graph and social preview image."
         }
       },
       "body": {
@@ -253,8 +253,8 @@
       }
     },
     {
-      "id": "guide-005",
-      "slug": "guides/design-the-dream-state",
+      "id": "operating-tool-005",
+      "slug": "operating-tools/design-the-dream-state",
       "title": "Design the Dream State",
       "summary": "A sensory rehearsal guide for dream recall, lucid dreaming, and intentional sleep.",
       "status": "published",
@@ -266,16 +266,16 @@
         "visualization",
         "state design"
       ],
-      "heroImage": "assets/images/guides/design-the-dream-state/01_design_the_dream_state.png",
+      "heroImage": "assets/images/operating-tools/design-the-dream-state/01_design_the_dream_state.png",
       "seo": {
         "title": "Design the Dream State",
         "description": "A sensory rehearsal guide for dream recall, lucid dreaming, and intentional sleep."
       },
       "productionAssets": {
         "socialImage": {
-          "label": "Guide social image",
-          "href": "assets/images/guides/design-the-dream-state/01_design_the_dream_state.png",
-          "description": "Use the primary guide artifact as the default Open Graph and social preview image."
+          "label": "Operating tool social image",
+          "href": "assets/images/operating-tools/design-the-dream-state/01_design_the_dream_state.png",
+          "description": "Use the primary operating tool artifact as the default Open Graph and social preview image."
         }
       },
       "body": {
@@ -312,8 +312,8 @@
       }
     },
     {
-      "id": "guide-006",
-      "slug": "guides/meditation-to-lucidity",
+      "id": "operating-tool-006",
+      "slug": "operating-tools/meditation-to-lucidity",
       "title": "Meditation to Lucidity",
       "summary": "A practice log for awareness, nervous-system regulation, and dream-state preparation.",
       "status": "published",
@@ -325,16 +325,16 @@
         "dream recall",
         "nervous system"
       ],
-      "heroImage": "assets/images/guides/meditation-to-lucidity/01_meditation_to_lucidity.png",
+      "heroImage": "assets/images/operating-tools/meditation-to-lucidity/01_meditation_to_lucidity.png",
       "seo": {
         "title": "Meditation to Lucidity",
         "description": "A practice log for awareness, nervous-system regulation, and dream-state preparation."
       },
       "productionAssets": {
         "socialImage": {
-          "label": "Guide social image",
-          "href": "assets/images/guides/meditation-to-lucidity/01_meditation_to_lucidity.png",
-          "description": "Use the primary guide artifact as the default Open Graph and social preview image."
+          "label": "Operating tool social image",
+          "href": "assets/images/operating-tools/meditation-to-lucidity/01_meditation_to_lucidity.png",
+          "description": "Use the primary operating tool artifact as the default Open Graph and social preview image."
         }
       },
       "body": {
@@ -372,8 +372,8 @@
       }
     },
     {
-      "id": "guide-007",
-      "slug": "guides/prepare-the-night",
+      "id": "operating-tool-007",
+      "slug": "operating-tools/prepare-the-night",
       "title": "Prepare the Night",
       "summary": "A practical guide for pre-sleep reflection, intention, and dream readiness.",
       "status": "published",
@@ -385,16 +385,16 @@
         "intention",
         "nervous system"
       ],
-      "heroImage": "assets/images/guides/prepare-the-night/01_prepare_the_night.png",
+      "heroImage": "assets/images/operating-tools/prepare-the-night/01_prepare_the_night.png",
       "seo": {
         "title": "Prepare the Night",
         "description": "A practical guide for pre-sleep reflection, intention, and dream readiness."
       },
       "productionAssets": {
         "socialImage": {
-          "label": "Guide social image",
-          "href": "assets/images/guides/prepare-the-night/01_prepare_the_night.png",
-          "description": "Use the primary guide artifact as the default Open Graph and social preview image."
+          "label": "Operating tool social image",
+          "href": "assets/images/operating-tools/prepare-the-night/01_prepare_the_night.png",
+          "description": "Use the primary operating tool artifact as the default Open Graph and social preview image."
         }
       },
       "body": {
@@ -430,8 +430,8 @@
       }
     },
     {
-      "id": "guide-008",
-      "slug": "guides/prime-the-day",
+      "id": "operating-tool-008",
+      "slug": "operating-tools/prime-the-day",
       "title": "Prime the Day",
       "summary": "A morning guide for setting direction before execution begins.",
       "status": "published",
@@ -443,16 +443,16 @@
         "focus",
         "state design"
       ],
-      "heroImage": "assets/images/guides/prime-the-day/01_prime_the_day.png",
+      "heroImage": "assets/images/operating-tools/prime-the-day/01_prime_the_day.png",
       "seo": {
         "title": "Prime the Day",
         "description": "A morning guide for setting direction before execution begins."
       },
       "productionAssets": {
         "socialImage": {
-          "label": "Guide social image",
-          "href": "assets/images/guides/prime-the-day/01_prime_the_day.png",
-          "description": "Use the primary guide artifact as the default Open Graph and social preview image."
+          "label": "Operating tool social image",
+          "href": "assets/images/operating-tools/prime-the-day/01_prime_the_day.png",
+          "description": "Use the primary operating tool artifact as the default Open Graph and social preview image."
         }
       },
       "body": {
@@ -488,8 +488,8 @@
       }
     },
     {
-      "id": "guide-009",
-      "slug": "guides/run-the-day-with-structure",
+      "id": "operating-tool-009",
+      "slug": "operating-tools/run-the-day-with-structure",
       "title": "Run the Day with Structure",
       "summary": "A daily operating board for turning intention into execution.",
       "status": "published",
@@ -501,16 +501,16 @@
         "focus",
         "review"
       ],
-      "heroImage": "assets/images/guides/run-the-day-with-structure/01_run_the_day_with_structure.png",
+      "heroImage": "assets/images/operating-tools/run-the-day-with-structure/01_run_the_day_with_structure.png",
       "seo": {
         "title": "Run the Day with Structure",
         "description": "A daily operating board for turning intention into execution."
       },
       "productionAssets": {
         "socialImage": {
-          "label": "Guide social image",
-          "href": "assets/images/guides/run-the-day-with-structure/01_run_the_day_with_structure.png",
-          "description": "Use the primary guide artifact as the default Open Graph and social preview image."
+          "label": "Operating tool social image",
+          "href": "assets/images/operating-tools/run-the-day-with-structure/01_run_the_day_with_structure.png",
+          "description": "Use the primary operating tool artifact as the default Open Graph and social preview image."
         }
       },
       "body": {
@@ -547,8 +547,8 @@
       }
     },
     {
-      "id": "guide-010",
-      "slug": "guides/decision-pattern-guide",
+      "id": "operating-tool-010",
+      "slug": "operating-tools/decision-pattern-guide",
       "title": "The Decision Pattern Guide",
       "summary": "A practical tool for tracing entry points, evaluating choices, and reshaping habit loops.",
       "status": "published",
@@ -560,16 +560,16 @@
         "habit loops",
         "behavior change"
       ],
-      "heroImage": "assets/images/guides/decision-pattern-guide/01_decision_pattern_guide.png",
+      "heroImage": "assets/images/operating-tools/decision-pattern-guide/01_decision_pattern_guide.png",
       "seo": {
         "title": "The Decision Pattern Guide",
         "description": "A practical tool for tracing entry points, evaluating choices, and reshaping habit loops."
       },
       "productionAssets": {
         "socialImage": {
-          "label": "Guide social image",
-          "href": "assets/images/guides/decision-pattern-guide/01_decision_pattern_guide.png",
-          "description": "Use the primary guide artifact as the default Open Graph and social preview image."
+          "label": "Operating tool social image",
+          "href": "assets/images/operating-tools/decision-pattern-guide/01_decision_pattern_guide.png",
+          "description": "Use the primary operating tool artifact as the default Open Graph and social preview image."
         }
       },
       "body": {
@@ -606,8 +606,8 @@
       }
     },
     {
-      "id": "guide-011",
-      "slug": "guides/decision-tree-guide",
+      "id": "operating-tool-011",
+      "slug": "operating-tools/decision-tree-guide",
       "title": "The Decision Tree Guide",
       "summary": "A practical tool for mapping options, consequences, and the best next move.",
       "status": "published",
@@ -619,16 +619,16 @@
         "consequences",
         "risk"
       ],
-      "heroImage": "assets/images/guides/decision-tree-guide/01_decision_tree_guide.png",
+      "heroImage": "assets/images/operating-tools/decision-tree-guide/01_decision_tree_guide.png",
       "seo": {
         "title": "The Decision Tree Guide",
         "description": "A practical tool for mapping options, consequences, and the best next move."
       },
       "productionAssets": {
         "socialImage": {
-          "label": "Guide social image",
-          "href": "assets/images/guides/decision-tree-guide/01_decision_tree_guide.png",
-          "description": "Use the primary guide artifact as the default Open Graph and social preview image."
+          "label": "Operating tool social image",
+          "href": "assets/images/operating-tools/decision-tree-guide/01_decision_tree_guide.png",
+          "description": "Use the primary operating tool artifact as the default Open Graph and social preview image."
         }
       },
       "body": {
@@ -664,8 +664,8 @@
       }
     },
     {
-      "id": "guide-012",
-      "slug": "guides/from-vision-to-measurable-action",
+      "id": "operating-tool-012",
+      "slug": "operating-tools/from-vision-to-measurable-action",
       "title": "From Vision to Measurable Action",
       "summary": "A planning canvas for turning goals into structured execution.",
       "status": "published",
@@ -677,16 +677,16 @@
         "execution",
         "measurement"
       ],
-      "heroImage": "assets/images/guides/from-vision-to-measurable-action/01_from_vision_to_measurable_action.png",
+      "heroImage": "assets/images/operating-tools/from-vision-to-measurable-action/01_from_vision_to_measurable_action.png",
       "seo": {
         "title": "From Vision to Measurable Action",
         "description": "A planning canvas for turning goals into structured execution."
       },
       "productionAssets": {
         "socialImage": {
-          "label": "Guide social image",
-          "href": "assets/images/guides/from-vision-to-measurable-action/01_from_vision_to_measurable_action.png",
-          "description": "Use the primary guide artifact as the default Open Graph and social preview image."
+          "label": "Operating tool social image",
+          "href": "assets/images/operating-tools/from-vision-to-measurable-action/01_from_vision_to_measurable_action.png",
+          "description": "Use the primary operating tool artifact as the default Open Graph and social preview image."
         }
       },
       "body": {
@@ -721,8 +721,8 @@
       }
     },
     {
-      "id": "guide-013",
-      "slug": "guides/map-the-habit-loop",
+      "id": "operating-tool-013",
+      "slug": "operating-tools/map-the-habit-loop",
       "title": "Map the Habit Loop",
       "summary": "A guide for turning recurring reactions into visible, actionable patterns.",
       "status": "published",
@@ -734,16 +734,16 @@
         "triggers",
         "reward"
       ],
-      "heroImage": "assets/images/guides/map-the-habit-loop/01_map_the_habit_loop.png",
+      "heroImage": "assets/images/operating-tools/map-the-habit-loop/01_map_the_habit_loop.png",
       "seo": {
         "title": "Map the Habit Loop",
         "description": "A guide for turning recurring reactions into visible, actionable patterns."
       },
       "productionAssets": {
         "socialImage": {
-          "label": "Guide social image",
-          "href": "assets/images/guides/map-the-habit-loop/01_map_the_habit_loop.png",
-          "description": "Use the primary guide artifact as the default Open Graph and social preview image."
+          "label": "Operating tool social image",
+          "href": "assets/images/operating-tools/map-the-habit-loop/01_map_the_habit_loop.png",
+          "description": "Use the primary operating tool artifact as the default Open Graph and social preview image."
         }
       },
       "body": {
@@ -779,8 +779,8 @@
       }
     },
     {
-      "id": "guide-014",
-      "slug": "guides/operational-power-system",
+      "id": "operating-tool-014",
+      "slug": "operating-tools/operational-power-system",
       "title": "Operational Power System",
       "summary": "A guide for protecting momentum through narrative, authority, access, execution, and reinforcement.",
       "status": "published",
@@ -792,16 +792,16 @@
         "execution",
         "systems"
       ],
-      "heroImage": "assets/images/guides/operational-power-system/01_operational_power_system.png",
+      "heroImage": "assets/images/operating-tools/operational-power-system/01_operational_power_system.png",
       "seo": {
         "title": "Operational Power System",
         "description": "A guide for protecting momentum through narrative, authority, access, execution, and reinforcement."
       },
       "productionAssets": {
         "socialImage": {
-          "label": "Guide social image",
-          "href": "assets/images/guides/operational-power-system/01_operational_power_system.png",
-          "description": "Use the primary guide artifact as the default Open Graph and social preview image."
+          "label": "Operating tool social image",
+          "href": "assets/images/operating-tools/operational-power-system/01_operational_power_system.png",
+          "description": "Use the primary operating tool artifact as the default Open Graph and social preview image."
         }
       },
       "body": {
@@ -837,8 +837,8 @@
       }
     },
     {
-      "id": "guide-015",
-      "slug": "guides/pattern-to-progress-guide",
+      "id": "operating-tool-015",
+      "slug": "operating-tools/pattern-to-progress-guide",
       "title": "The Pattern-to-Progress Guide",
       "summary": "A tool for turning habit loops into immediate forward action.",
       "status": "published",
@@ -850,16 +850,16 @@
         "behavior change",
         "momentum"
       ],
-      "heroImage": "assets/images/guides/pattern-to-progress-guide/01_pattern_to_progress_guide.png",
+      "heroImage": "assets/images/operating-tools/pattern-to-progress-guide/01_pattern_to_progress_guide.png",
       "seo": {
         "title": "The Pattern-to-Progress Guide",
         "description": "A tool for turning habit loops into immediate forward action."
       },
       "productionAssets": {
         "socialImage": {
-          "label": "Guide social image",
-          "href": "assets/images/guides/pattern-to-progress-guide/01_pattern_to_progress_guide.png",
-          "description": "Use the primary guide artifact as the default Open Graph and social preview image."
+          "label": "Operating tool social image",
+          "href": "assets/images/operating-tools/pattern-to-progress-guide/01_pattern_to_progress_guide.png",
+          "description": "Use the primary operating tool artifact as the default Open Graph and social preview image."
         }
       },
       "body": {
@@ -894,8 +894,8 @@
       }
     },
     {
-      "id": "guide-016",
-      "slug": "guides/question-to-action-filter",
+      "id": "operating-tool-016",
+      "slug": "operating-tools/question-to-action-filter",
       "title": "The Question-to-Action Filter",
       "summary": "A practical guide for turning vague problems into useful next steps.",
       "status": "published",
@@ -907,16 +907,16 @@
         "action",
         "problem solving"
       ],
-      "heroImage": "assets/images/guides/question-to-action-filter/01_question_to_action_filter.png",
+      "heroImage": "assets/images/operating-tools/question-to-action-filter/01_question_to_action_filter.png",
       "seo": {
         "title": "The Question-to-Action Filter",
         "description": "A practical guide for turning vague problems into useful next steps."
       },
       "productionAssets": {
         "socialImage": {
-          "label": "Guide social image",
-          "href": "assets/images/guides/question-to-action-filter/01_question_to_action_filter.png",
-          "description": "Use the primary guide artifact as the default Open Graph and social preview image."
+          "label": "Operating tool social image",
+          "href": "assets/images/operating-tools/question-to-action-filter/01_question_to_action_filter.png",
+          "description": "Use the primary operating tool artifact as the default Open Graph and social preview image."
         }
       },
       "body": {
@@ -952,8 +952,8 @@
       }
     },
     {
-      "id": "guide-017",
-      "slug": "guides/reframe-the-belief-retrain-the-response",
+      "id": "operating-tool-017",
+      "slug": "operating-tools/reframe-the-belief-retrain-the-response",
       "title": "Reframe the Belief, Retrain the Response",
       "summary": "A guide for updating limiting beliefs through reflection, nervous-system awareness, and a stronger replacement belief.",
       "status": "published",
@@ -965,16 +965,16 @@
         "nervous system",
         "reflection"
       ],
-      "heroImage": "assets/images/guides/reframe-the-belief-retrain-the-response/01_reframe_the_belief_retrain_the_response.png",
+      "heroImage": "assets/images/operating-tools/reframe-the-belief-retrain-the-response/01_reframe_the_belief_retrain_the_response.png",
       "seo": {
         "title": "Reframe the Belief, Retrain the Response",
         "description": "A guide for updating limiting beliefs through reflection, nervous-system awareness, and a stronger replacement belief."
       },
       "productionAssets": {
         "socialImage": {
-          "label": "Guide social image",
-          "href": "assets/images/guides/reframe-the-belief-retrain-the-response/01_reframe_the_belief_retrain_the_response.png",
-          "description": "Use the primary guide artifact as the default Open Graph and social preview image."
+          "label": "Operating tool social image",
+          "href": "assets/images/operating-tools/reframe-the-belief-retrain-the-response/01_reframe_the_belief_retrain_the_response.png",
+          "description": "Use the primary operating tool artifact as the default Open Graph and social preview image."
         }
       },
       "body": {
@@ -1010,8 +1010,8 @@
       }
     },
     {
-      "id": "guide-018",
-      "slug": "guides/run-the-decision-experiment",
+      "id": "operating-tool-018",
+      "slug": "operating-tools/run-the-decision-experiment",
       "title": "Run the Decision Experiment",
       "summary": "A practical guide for moving from dilemma to tested action.",
       "status": "published",
@@ -1023,16 +1023,16 @@
         "options",
         "risk"
       ],
-      "heroImage": "assets/images/guides/run-the-decision-experiment/01_run_the_decision_experiment.png",
+      "heroImage": "assets/images/operating-tools/run-the-decision-experiment/01_run_the_decision_experiment.png",
       "seo": {
         "title": "Run the Decision Experiment",
         "description": "A practical guide for moving from dilemma to tested action."
       },
       "productionAssets": {
         "socialImage": {
-          "label": "Guide social image",
-          "href": "assets/images/guides/run-the-decision-experiment/01_run_the_decision_experiment.png",
-          "description": "Use the primary guide artifact as the default Open Graph and social preview image."
+          "label": "Operating tool social image",
+          "href": "assets/images/operating-tools/run-the-decision-experiment/01_run_the_decision_experiment.png",
+          "description": "Use the primary operating tool artifact as the default Open Graph and social preview image."
         }
       },
       "body": {
@@ -1067,8 +1067,8 @@
       }
     },
     {
-      "id": "guide-019",
-      "slug": "guides/see-the-pattern-choose-the-path",
+      "id": "operating-tool-019",
+      "slug": "operating-tools/see-the-pattern-choose-the-path",
       "title": "See the Pattern, Choose the Path",
       "summary": "A guide for using pattern recognition without getting trapped in the cycle.",
       "status": "published",
@@ -1080,16 +1080,16 @@
         "agency",
         "leadership"
       ],
-      "heroImage": "assets/images/guides/see-the-pattern-choose-the-path/01_see_the_pattern_choose_the_path.png",
+      "heroImage": "assets/images/operating-tools/see-the-pattern-choose-the-path/01_see_the_pattern_choose_the_path.png",
       "seo": {
         "title": "See the Pattern, Choose the Path",
         "description": "A guide for using pattern recognition without getting trapped in the cycle."
       },
       "productionAssets": {
         "socialImage": {
-          "label": "Guide social image",
-          "href": "assets/images/guides/see-the-pattern-choose-the-path/01_see_the_pattern_choose_the_path.png",
-          "description": "Use the primary guide artifact as the default Open Graph and social preview image."
+          "label": "Operating tool social image",
+          "href": "assets/images/operating-tools/see-the-pattern-choose-the-path/01_see_the_pattern_choose_the_path.png",
+          "description": "Use the primary operating tool artifact as the default Open Graph and social preview image."
         }
       },
       "body": {
@@ -1125,8 +1125,8 @@
       }
     },
     {
-      "id": "guide-020",
-      "slug": "guides/start-where-the-signal-appears",
+      "id": "operating-tool-020",
+      "slug": "operating-tools/start-where-the-signal-appears",
       "title": "Start Where the Signal Appears",
       "summary": "A practical guide for choosing the right entry point into a decision.",
       "status": "published",
@@ -1138,16 +1138,16 @@
         "patterns",
         "entry points"
       ],
-      "heroImage": "assets/images/guides/start-where-the-signal-appears/01_start_where_the_signal_appears.png",
+      "heroImage": "assets/images/operating-tools/start-where-the-signal-appears/01_start_where_the_signal_appears.png",
       "seo": {
         "title": "Start Where the Signal Appears",
         "description": "A practical guide for choosing the right entry point into a decision."
       },
       "productionAssets": {
         "socialImage": {
-          "label": "Guide social image",
-          "href": "assets/images/guides/start-where-the-signal-appears/01_start_where_the_signal_appears.png",
-          "description": "Use the primary guide artifact as the default Open Graph and social preview image."
+          "label": "Operating tool social image",
+          "href": "assets/images/operating-tools/start-where-the-signal-appears/01_start_where_the_signal_appears.png",
+          "description": "Use the primary operating tool artifact as the default Open Graph and social preview image."
         }
       },
       "body": {
@@ -1178,6 +1178,79 @@
               "Best for stuck decisions, repeating problems, behavior change, and confusing reactions."
             ],
             "callout": "Clear entry points create clearer decisions."
+          }
+        ]
+      }
+    },
+    {
+      "id": "operating-tool-021",
+      "slug": "operating-tools/activation-response",
+      "title": "Activation Response",
+      "summary": "A practical guide for moving nervous-system activation out of rumination and into physical motion.",
+      "status": "published",
+      "featured": true,
+      "icon": "fitness_center",
+      "tags": [
+        "activation",
+        "movement",
+        "rumination",
+        "nervous system",
+        "momentum"
+      ],
+      "heroImage": "assets/images/operating-tools/activation-response/01_activation_response.png",
+      "seo": {
+        "title": "Activation Response",
+        "description": "A practical guide for moving nervous-system activation out of rumination and into physical motion."
+      },
+      "productionAssets": {
+        "socialImage": {
+          "label": "Operating tool social image",
+          "href": "assets/images/operating-tools/activation-response/og_activation_response.png",
+          "description": "Landscape Open Graph and social preview image for LinkedIn, X, and other share surfaces."
+        }
+      },
+      "body": {
+        "intro": "Not every spike in mental activity needs more thinking. Sometimes the mind is carrying energy the body is better equipped to burn. This guide helps recognize activation, stop turning it into a strategy problem, and move before rumination becomes the whole operating system.",
+        "sections": [
+          {
+            "heading": "Recognize activation before analysis",
+            "paragraphs": [
+              "Activation often appears as urgency, looping arguments, imaginary conversations, restless problem solving, or the feeling that everything must be resolved immediately.",
+              "The first move is not to trust every thought as a strategic signal. The first move is to notice that the system is charged."
+            ],
+            "callout": "Not every problem is a strategy problem."
+          },
+          {
+            "heading": "Separate signal from surplus energy",
+            "paragraphs": [
+              "A real issue may exist, but activation can inflate its size, speed, and emotional weight.",
+              "Before making decisions, sending messages, rewriting the plan, or building a case, ask whether the body needs motion first."
+            ],
+            "callout": "When activation spikes, move first."
+          },
+          {
+            "heading": "Give the body a job",
+            "paragraphs": [
+              "Use simple, repeatable movement: row, lift, walk, breathe, stretch, clean, swim, jog, or do one short physical task.",
+              "The goal is not peak performance. The goal is to discharge enough energy for the mind to return to useful signal."
+            ],
+            "callout": "Row. Lift. Walk. Breathe."
+          },
+          {
+            "heading": "Return only after the state shifts",
+            "paragraphs": [
+              "After movement, check whether the thought still matters, whether the action is still necessary, and whether the response can be smaller.",
+              "If the issue remains, handle it from a calmer state. If it fades, it was activation asking for motion."
+            ],
+            "callout": "Less thought. More motion."
+          },
+          {
+            "heading": "Use the activation rule",
+            "paragraphs": [
+              "When the brain starts writing closing arguments, the body probably needs a job.",
+              "The feeling is temporary. The next rep is real."
+            ],
+            "callout": "Stop making your mind carry what your muscles can burn."
           }
         ]
       }

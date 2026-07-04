@@ -6,30 +6,33 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { ContentSection } from '../../core/content/content.models';
-import { HomeGuideSelectorBenefit, HomeGuideSelectorMoment } from './home-guide-selector.models';
-import { HomeGuideArtifactDialogComponent } from './home-guide-artifact-dialog.component';
+import {
+  HomeOperatingToolSelectorBenefit,
+  HomeOperatingToolSelectorMoment
+} from './home-operating-tool-selector.models';
+import { HomeOperatingToolArtifactDialogComponent } from './home-operating-tool-artifact-dialog.component';
 
-interface HomeGuideDetailCard {
+interface HomeOperatingToolDetailCard {
   icon: string;
   title: string;
   description: string;
 }
 
 @Component({
-  selector: 'cw-home-guide-selector',
+  selector: 'cw-home-operating-tool-selector',
   imports: [RouterLink, MatButtonModule, MatCardModule, MatDialogModule, MatDividerModule, MatIconModule],
-  templateUrl: './home-guide-selector.component.html',
-  styleUrl: './home-guide-selector.component.scss',
+  templateUrl: './home-operating-tool-selector.component.html',
+  styleUrl: './home-operating-tool-selector.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HomeGuideSelectorComponent {
+export class HomeOperatingToolSelectorComponent {
   private readonly dialog = inject(MatDialog);
-  readonly moments = input.required<HomeGuideSelectorMoment[]>();
-  readonly benefits = input<HomeGuideSelectorBenefit[]>([]);
+  readonly moments = input.required<HomeOperatingToolSelectorMoment[]>();
+  readonly benefits = input<HomeOperatingToolSelectorBenefit[]>([]);
   readonly selectedIndex = input(0);
   readonly momentSelected = output<number>();
 
-  readonly selectedMoment = computed<HomeGuideSelectorMoment | null>(() => {
+  readonly selectedMoment = computed<HomeOperatingToolSelectorMoment | null>(() => {
     const moments = this.moments();
     if (!moments.length) {
       return null;
@@ -38,18 +41,18 @@ export class HomeGuideSelectorComponent {
     return moments[Math.min(this.selectedIndex(), moments.length - 1)] ?? moments[0]!;
   });
 
-  readonly selectedGuideDetailCards = computed<HomeGuideDetailCard[]>(() => {
+  readonly selectedOperatingToolDetailCards = computed<HomeOperatingToolDetailCard[]>(() => {
     const selectedMoment = this.selectedMoment();
     if (!selectedMoment) {
       return [];
     }
 
-    const sectionCards = selectedMoment.guide.body.sections
+    const sectionCards = selectedMoment.operatingTool.body.sections
       .slice(0, 4)
       .map((section, index) => ({
         icon: this.iconForSection(section, index),
         title: section.heading,
-        description: this.descriptionForSection(section, selectedMoment.guide.body.intro)
+        description: this.descriptionForSection(section, selectedMoment.operatingTool.body.intro)
       }))
       .filter((card) => Boolean(card.description));
 
@@ -76,21 +79,23 @@ export class HomeGuideSelectorComponent {
 
   openArtifactDialog(): void {
     const selectedMoment = this.selectedMoment();
-    const imageSrc = selectedMoment?.guide.heroImage ?? selectedMoment?.guide.productionAssets?.socialImage?.href;
+    const imageSrc =
+      selectedMoment?.operatingTool.heroImage ??
+      selectedMoment?.operatingTool.productionAssets?.socialImage?.href;
 
     if (!selectedMoment || !imageSrc) {
       return;
     }
 
-    this.dialog.open(HomeGuideArtifactDialogComponent, {
+    this.dialog.open(HomeOperatingToolArtifactDialogComponent, {
       data: {
-        title: selectedMoment.guide.title,
-        description: selectedMoment.guide.summary,
+        title: selectedMoment.operatingTool.title,
+        description: selectedMoment.operatingTool.summary,
         imageSrc
       },
       width: '92vw',
       maxWidth: '1120px',
-      panelClass: 'cw-guide-artifact-dialog-panel'
+      panelClass: 'cw-operating-tool-artifact-dialog-panel'
     });
   }
 

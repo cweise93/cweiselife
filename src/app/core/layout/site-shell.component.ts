@@ -143,7 +143,7 @@ export class SiteShellComponent {
       '/': 'home',
       '/writing': 'edit_note',
       '/frameworks': 'dashboard_customize',
-      '/guides': 'handyman',
+      '/operating-tools': 'handyman',
       '/about': 'info',
       '/connect': 'alternate_email'
     };

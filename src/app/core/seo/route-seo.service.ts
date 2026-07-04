@@ -4,9 +4,9 @@ import { filter, startWith } from 'rxjs';
 import {
   aboutContent,
   frameworksContent,
-  guidesContent,
+  operatingToolsContent,
   publishedFrameworkItems,
-  publishedGuideItems,
+  publishedOperatingToolItems,
   publishedWritingItems,
   siteContent,
   writingContent
@@ -97,14 +97,14 @@ export class RouteSeoService {
             publishedFrameworkItems.map((item) => ({ slug: item.slug, title: item.title }))
           )
         };
-      case '/guides':
+      case '/operating-tools':
         return {
           pageSchemaType: 'CollectionPage',
           structuredData: this.seoService.createCollectionStructuredData(
             currentPath,
             title,
             description,
-            publishedGuideItems.map((item) => ({ slug: item.slug, title: item.title }))
+            publishedOperatingToolItems.map((item) => ({ slug: item.slug, title: item.title }))
           )
         };
       default:

@@ -1,0 +1,95 @@
+<mat-card appearance="outlined" class="operating-tool-selector cw-surface-card">
+  <mat-card-content class="operating-tool-selector__layout">
+    <section class="operating-tool-selector__column operating-tool-selector__column--rail">
+      <p class="operating-tool-selector__rail-label">Pick the operating moment</p>
+      <h3 class="operating-tool-selector__rail-title">Start with the state you are actually in.</h3>
+      <p class="operating-tool-selector__rail-support">Choose the moment first. Then open the tool that helps you move.</p>
+
+      <div class="operating-tool-selector__list" role="list">
+        @for (moment of moments(); track moment.operatingTool.id; let index = $index) {
+          <button
+            mat-button
+            type="button"
+            class="operating-tool-selector__prompt"
+            [class.is-selected]="selectedIndex() === index"
+            [attr.aria-pressed]="selectedIndex() === index"
+            (click)="selectMoment(index)"
+          >
+            <span class="operating-tool-selector__prompt-icon">
+              <mat-icon>{{ moment.icon }}</mat-icon>
+            </span>
+            <span class="operating-tool-selector__prompt-copy">
+              <span class="operating-tool-selector__prompt-title">{{ moment.label }}</span>
+              <span class="operating-tool-selector__prompt-line">{{ moment.title }}</span>
+            </span>
+            @if (selectedIndex() === index) {
+              <span class="operating-tool-selector__prompt-check">
+                <mat-icon>check</mat-icon>
+              </span>
+            }
+          </button>
+        }
+      </div>
+    </section>
+
+    @if (selectedMoment(); as selectedMoment) {
+      <section class="operating-tool-selector__column operating-tool-selector__column--preview">
+        <div class="operating-tool-selector__preview-header">
+          <p class="operating-tool-selector__summary-label">Selected operating moment</p>
+          <h3>{{ selectedMoment.title }}</h3>
+          <p>{{ selectedMoment.preview }}</p>
+          <p class="operating-tool-selector__tool-name">Tool: {{ selectedMoment.operatingTool.title }}</p>
+          <div class="operating-tool-selector__actions">
+            <a mat-flat-button color="primary" [routerLink]="selectedMoment.route" class="operating-tool-selector__cta">
+              <mat-icon>open_in_new</mat-icon>
+              Open tool
+            </a>
+          </div>
+        </div>
+
+        <div class="operating-tool-selector__detail-grid">
+          @for (card of selectedOperatingToolDetailCards(); track card.title) {
+            <mat-card appearance="outlined" class="operating-tool-selector__detail-card">
+              <mat-card-content class="operating-tool-selector__detail-card-content">
+                <span class="operating-tool-selector__detail-icon cw-icon-badge">
+                  <mat-icon>{{ card.icon }}</mat-icon>
+                </span>
+                <div class="operating-tool-selector__detail-copy">
+                  <h4>{{ card.title }}</h4>
+                  <p>{{ card.description }}</p>
+                </div>
+              </mat-card-content>
+            </mat-card>
+          }
+        </div>
+      </section>
+
+      <aside class="operating-tool-selector__column operating-tool-selector__column--artifact">
+        <p class="operating-tool-selector__utility-label">Artifact preview</p>
+        <p class="operating-tool-selector__artifact-support">Click to expand, print, or view full screen.</p>
+
+        <button type="button" class="operating-tool-selector__artifact-trigger" (click)="openArtifactDialog()">
+          <div class="operating-tool-selector__frame">
+            <span class="operating-tool-selector__frame-expand">
+              <mat-icon>open_in_full</mat-icon>
+            </span>
+            @if (selectedMoment.operatingTool.heroImage) {
+              <img
+                class="operating-tool-selector__image"
+                [src]="selectedMoment.operatingTool.heroImage"
+                [alt]="selectedMoment.operatingTool.title"
+              />
+            }
+          </div>
+        </button>
+      </aside>
+    } @else {
+      <section class="operating-tool-selector__column operating-tool-selector__column--preview">
+        <div class="operating-tool-selector__preview-empty">
+          <p class="operating-tool-selector__rail-support">The operating tool selector is loading.</p>
+        </div>
+      </section>
+      <aside class="operating-tool-selector__column operating-tool-selector__column--artifact"></aside>
+    }
+  </mat-card-content>
+</mat-card>

@@ -9,10 +9,10 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { combineLatest, map, switchMap } from 'rxjs';
 import { ContentService } from '../../core/content/content.service';
-import { GuideItem } from '../../core/content/content.models';
+import { OperatingToolItem } from '../../core/content/content.models';
 import { SeoService } from '../../core/seo/seo.service';
 
-interface GuideArtifact {
+interface OperatingToolArtifact {
   src: string;
   alt: string;
   title: string;
@@ -20,40 +20,40 @@ interface GuideArtifact {
 }
 
 @Component({
-  selector: 'cw-guide-detail',
+  selector: 'cw-operating-tool-detail',
   standalone: true,
   imports: [RouterLink, MatButtonModule, MatCardModule, MatChipsModule, MatDividerModule, MatIconModule],
-  templateUrl: './guide-detail.component.html',
+  templateUrl: './operating-tool-detail.component.html',
   changeDetection: ChangeDetectionStrategy.Eager,
-  styleUrl: './guide-detail.component.scss'
+  styleUrl: './operating-tool-detail.component.scss'
 })
-export class GuideDetailComponent {
+export class OperatingToolDetailComponent {
   private readonly document = inject(DOCUMENT);
   private readonly route = inject(ActivatedRoute);
   private readonly contentService = inject(ContentService);
   private readonly seoService = inject(SeoService);
-  readonly activeArtifact = signal<GuideArtifact | null>(null);
+  readonly activeArtifact = signal<OperatingToolArtifact | null>(null);
 
   readonly item = toSignal(
     this.route.paramMap.pipe(
       map((params) => params.get('slug') ?? ''),
-      switchMap((slug) => this.contentService.getGuideBySlug(slug))
+      switchMap((slug) => this.contentService.getOperatingToolBySlug(slug))
     ),
-    { initialValue: null as GuideItem | null }
+    { initialValue: null as OperatingToolItem | null }
   );
 
-  readonly relatedGuides = toSignal(
+  readonly relatedOperatingTools = toSignal(
     combineLatest([
       this.route.paramMap.pipe(map((params) => params.get('slug') ?? '')),
-      this.contentService.getGuidesIndex()
+      this.contentService.getOperatingToolsIndex()
     ]).pipe(
-      map(([slug, guides]) =>
-        guides
-          .filter((guide) => guide.slug !== slug && guide.slug !== `guides/${slug}`)
+      map(([slug, operatingTools]) =>
+        operatingTools
+          .filter((operatingTool) => operatingTool.slug !== slug && operatingTool.slug !== `operating-tools/${slug}`)
           .slice(0, 3)
       )
     ),
-    { initialValue: [] as GuideItem[] }
+    { initialValue: [] as OperatingToolItem[] }
   );
 
   constructor() {
@@ -66,20 +66,20 @@ export class GuideDetailComponent {
     });
   }
 
-  getGuideRoute(slug: string): string[] {
+  getOperatingToolRoute(slug: string): string[] {
     return ['/', ...slug.split('/').filter(Boolean)];
   }
 
-  openArtifact(guide: GuideItem): void {
-    if (!guide.heroImage) {
+  openArtifact(operatingTool: OperatingToolItem): void {
+    if (!operatingTool.heroImage) {
       return;
     }
 
     this.activeArtifact.set({
-      src: guide.heroImage,
-      alt: guide.title,
-      title: guide.title,
-      caption: guide.body.intro
+      src: operatingTool.heroImage,
+      alt: operatingTool.title,
+      title: operatingTool.title,
+      caption: operatingTool.body.intro
     });
   }
 
@@ -127,7 +127,7 @@ export class GuideDetailComponent {
   }
 
   async openArtifactFullscreen(): Promise<void> {
-    const stage = this.document.getElementById('guide-artifact-stage');
+    const stage = this.document.getElementById('operating-tool-artifact-stage');
 
     if (!stage || !('requestFullscreen' in stage)) {
       return;

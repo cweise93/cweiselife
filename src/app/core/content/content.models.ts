@@ -217,12 +217,12 @@ export interface HomeContentConfig {
   heroImage: string;
   featuredWritingSlugs: string[];
   featuredFrameworkSlugs: string[];
-  featuredGuideSlugs: string[];
+  featuredOperatingToolSlugs: string[];
   themes: HomeTheme[];
   themesSection: HomeSectionContent;
   writingSection: HomeSectionContent;
   frameworkSection: HomeSectionContent;
-  guidesSection: HomeSectionContent;
+  operatingToolsSection: HomeSectionContent;
   aboutSection: HomeSectionContent;
 }
 
@@ -307,12 +307,12 @@ export interface FrameworkContentFile {
   items: FrameworkItem[];
 }
 
-export interface GuideBody {
+export interface OperatingToolBody {
   intro: string;
   sections: ContentSection[];
 }
 
-export interface GuideItem {
+export interface OperatingToolItem {
   id: string;
   slug: string;
   title: string;
@@ -324,13 +324,13 @@ export interface GuideItem {
   heroImage?: string;
   productionAssets?: ProductionAssets;
   seo: SeoContent;
-  body: GuideBody;
+  body: OperatingToolBody;
   companion?: ContentCompanion;
 }
 
-export interface GuideContentFile {
+export interface OperatingToolContentFile {
   meta: CollectionMeta;
-  items: GuideItem[];
+  items: OperatingToolItem[];
 }
 
 export interface AboutContent {
@@ -359,6 +359,6 @@ export interface HomeContentViewModel {
   home: HomeContentConfig;
   featuredWriting: WritingItem[];
   featuredFrameworks: FrameworkItem[];
-  featuredGuides: GuideItem[];
+  featuredOperatingTools: OperatingToolItem[];
   about: AboutContent;
 }

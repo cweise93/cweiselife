@@ -7,7 +7,7 @@ describe('routes', () => {
     expect(paths).toContain('');
     expect(paths).toContain('writing');
     expect(paths).toContain('frameworks');
-    expect(paths).toContain('guides');
+    expect(paths).toContain('operating-tools');
     expect(paths).toContain('about');
     expect(paths).toContain('connect');
     expect(paths).toContain('**');

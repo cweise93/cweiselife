@@ -4,22 +4,22 @@ import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
-export interface HomeGuideArtifactDialogData {
+export interface HomeOperatingToolArtifactDialogData {
   title: string;
   description: string;
   imageSrc: string;
 }
 
 @Component({
-  selector: 'cw-home-guide-artifact-dialog',
+  selector: 'cw-home-operating-tool-artifact-dialog',
   standalone: true,
   imports: [MatButtonModule, MatDialogModule, MatIconModule],
-  templateUrl: './home-guide-artifact-dialog.component.html',
-  styleUrl: './home-guide-artifact-dialog.component.scss',
+  templateUrl: './home-operating-tool-artifact-dialog.component.html',
+  styleUrl: './home-operating-tool-artifact-dialog.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HomeGuideArtifactDialogComponent {
-  readonly data = inject<HomeGuideArtifactDialogData>(MAT_DIALOG_DATA);
+export class HomeOperatingToolArtifactDialogComponent {
+  readonly data = inject<HomeOperatingToolArtifactDialogData>(MAT_DIALOG_DATA);
   private readonly document = inject(DOCUMENT);
 
   @ViewChild('artifactFrame') private readonly artifactFrame?: ElementRef<HTMLElement>;

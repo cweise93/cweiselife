@@ -1,7 +1,7 @@
 import { DOCUMENT } from '@angular/common';
 import { inject, Injectable } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
-import { FrameworkItem, GuideItem, WritingItem } from '../content/content.models';
+import { FrameworkItem, OperatingToolItem, WritingItem } from '../content/content.models';
 import { siteContent } from '../content/content.catalog';
 import { IMAGE_DIMENSIONS_BY_PATH, ImageDimensions } from './image-dimensions';
 
@@ -13,6 +13,8 @@ export interface PageMetadata {
   imagePath?: string;
   imageAlt?: string;
   imageDimensions?: ImageDimensions;
+  keywords?: string[];
+  section?: string;
   type: 'article' | 'website';
   pageSchemaType?: string;
   publishedTime?: string;
@@ -20,7 +22,7 @@ export interface PageMetadata {
   structuredData?: Array<Record<string, unknown>>;
 }
 
-type ContentMetadataSource = WritingItem | FrameworkItem | GuideItem;
+type ContentMetadataSource = WritingItem | FrameworkItem | OperatingToolItem;
 
 @Injectable({ providedIn: 'root' })
 export class SeoService {
@@ -60,6 +62,7 @@ export class SeoService {
 
     if (absoluteImageUrl) {
       this.updateMetaTag('property', 'og:image', absoluteImageUrl);
+      this.updateMetaTag('property', 'og:image:url', absoluteImageUrl);
       this.updateMetaTag('property', 'og:image:secure_url', absoluteImageUrl);
       this.updateMetaTag('property', 'og:image:alt', metadata.imageAlt ?? metadata.title);
       this.updateMetaTag('name', 'twitter:image', absoluteImageUrl);
@@ -72,6 +75,7 @@ export class SeoService {
       }
     } else {
       this.removeMetaTag('property', 'og:image');
+      this.removeMetaTag('property', 'og:image:url');
       this.removeMetaTag('property', 'og:image:secure_url');
       this.removeMetaTag('property', 'og:image:alt');
       this.removeMetaTag('property', 'og:image:type');
@@ -89,6 +93,9 @@ export class SeoService {
 
     this.setOptionalMetaTag('property', 'article:published_time', metadata.publishedTime);
     this.setOptionalMetaTag('property', 'article:modified_time', metadata.modifiedTime ?? metadata.publishedTime);
+    this.setOptionalMetaTag('property', 'article:section', metadata.type === 'article' ? metadata.section : undefined);
+    this.setOptionalMetaTag('name', 'keywords', metadata.keywords?.length ? metadata.keywords.join(', ') : undefined);
+    this.updateArticleTags(metadata.type === 'article' ? metadata.keywords : undefined);
     this.updateCanonicalLink(absoluteUrl);
     this.updateStructuredData(graph);
   }
@@ -98,15 +105,25 @@ export class SeoService {
       source.productionAssets?.socialImage?.href ??
       source.heroImage ??
       ('diagramImage' in source ? source.diagramImage : undefined);
+    const section =
+      source.slug.startsWith('writing/')
+        ? 'Writing'
+        : source.slug.startsWith('frameworks/')
+          ? ('category' in source ? source.category || 'Frameworks' : 'Frameworks')
+          : 'Operating Tools';
 
     this.applyPageMetadata({
       title: source.seo.title,
-      documentTitle: `${source.seo.title} | ${this.siteName}`,
+      documentTitle: source.slug.startsWith('operating-tools/')
+        ? `${source.seo.title} | Operating Tools | ${this.siteName}`
+        : `${source.seo.title} | ${this.siteName}`,
       description: source.seo.description,
       urlPath: source.slug,
       imagePath,
       imageAlt: source.title,
       imageDimensions: this.resolveImageDimensions(imagePath),
+      keywords: source.tags,
+      section,
       type: 'article',
       publishedTime: 'publishedOn' in source ? source.publishedOn : undefined,
       structuredData: [
@@ -234,6 +251,16 @@ export class SeoService {
     this.meta.removeTag(`${attribute}="${selector}"`);
   }
 
+  private updateArticleTags(tags?: string[]): void {
+    for (const tag of this.meta.getTags('property="article:tag"')) {
+      this.meta.removeTagElement(tag);
+    }
+
+    for (const tag of tags ?? []) {
+      this.meta.addTag({ property: 'article:tag', content: tag });
+    }
+  }
+
   private updateCanonicalLink(href: string): void {
     let link = this.document.head.querySelector('link[rel="canonical"]');
 
@@ -325,9 +352,15 @@ export class SeoService {
         ? 'Writing'
         : isFramework
           ? (source as FrameworkItem).category || 'Frameworks'
-          : 'Guides';
+          : 'Operating Tools';
     const bodyText = this.extractBodyText(source);
     const imageDimensions = this.resolveImageDimensions(imagePath);
+    const topicTerms =
+      source.tags?.map((tag) => ({
+        '@type': 'DefinedTerm',
+        name: tag,
+        inDefinedTermSet: `${this.baseUrl}/#content-topics`
+      })) ?? [];
     const imageObject = imagePath
       ? {
           '@type': 'ImageObject',
@@ -355,6 +388,7 @@ export class SeoService {
       dateModified: 'publishedOn' in source ? source.publishedOn : undefined,
       articleSection: section,
       keywords: source.tags?.join(', '),
+      about: topicTerms.length ? topicTerms : undefined,
       wordCount: bodyText ? bodyText.split(/\s+/).length : undefined,
       timeRequired:
         'readTimeMinutes' in source && source.readTimeMinutes > 0
@@ -374,8 +408,8 @@ export class SeoService {
       items.push({ name: 'Writing', url: this.toAbsoluteUrl('/writing') });
     } else if (slug.startsWith('frameworks/')) {
       items.push({ name: 'Frameworks', url: this.toAbsoluteUrl('/frameworks') });
-    } else if (slug.startsWith('guides/')) {
-      items.push({ name: 'Guides', url: this.toAbsoluteUrl('/guides') });
+    } else if (slug.startsWith('operating-tools/')) {
+      items.push({ name: 'Operating Tools', url: this.toAbsoluteUrl('/operating-tools') });
     }
 
     items.push({ name: title, url: this.toAbsoluteUrl(slug) });
