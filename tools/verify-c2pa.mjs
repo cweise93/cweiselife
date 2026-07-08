@@ -43,6 +43,15 @@ const residualNeedles = [
 const enforceWhereFrom =
   process.platform === "darwin" && process.env.C2PA_VERIFY_WHERE_FROM === "1";
 
+function commandExists(command) {
+  const result = spawnSync("sh", ["-lc", `command -v ${command}`], {
+    cwd: repoRoot,
+    encoding: "utf8",
+  });
+
+  return result.status === 0;
+}
+
 function normalizeToRepo(filePath) {
   return path.relative(repoRoot, filePath).split(path.sep).join("/");
 }
@@ -197,26 +206,28 @@ function verifyFile(filePath) {
     }
   }
 
-  try {
-    const exifOutput = execFileSync("exiftool", [filePath], {
-      cwd: repoRoot,
-      encoding: "utf8",
-    }).toLowerCase();
-    const residualMatches = residualNeedles.filter((needle) => exifOutput.includes(needle));
+  if (commandExists("exiftool")) {
+    try {
+      const exifOutput = execFileSync("exiftool", [filePath], {
+        cwd: repoRoot,
+        encoding: "utf8",
+      }).toLowerCase();
+      const residualMatches = residualNeedles.filter((needle) => exifOutput.includes(needle));
 
-    if (residualMatches.length) {
+      if (residualMatches.length) {
+        return {
+          ok: false,
+          filePath,
+          reason: `Residual source markers found: ${residualMatches.join(", ")}.`,
+        };
+      }
+    } catch (error) {
       return {
         ok: false,
         filePath,
-        reason: `Residual source markers found: ${residualMatches.join(", ")}.`,
+        reason: `Unable to inspect embedded metadata with exiftool: ${error.message}`,
       };
     }
-  } catch (error) {
-    return {
-      ok: false,
-      filePath,
-      reason: `Unable to inspect embedded metadata with exiftool: ${error.message}`,
-    };
   }
 
   return { ok: true, filePath };
