@@ -38,7 +38,7 @@ This file expands the concise `llms.txt` index into a richer text digest of ever
 - Published: 2026-06-20
 - Tags: AI governance, AI consumption telemetry, AI cost management, operations, delivery execution, enterprise AI, operational intelligence
 - SEO description: Why AI consumption visibility has to show up before AI-supported work stops, and how a thin telemetry layer can turn caps, quotas, and model usage into operating signals.
-- Primary share image: https://cweise.com/assets/images/writing/articles/2026-06-20_friday_night_cap/images/01_friday_night_cap_hero.png
+- Primary share image: https://cweise.com/assets/images/writing/articles/2026-06-20_friday_night_cap/images/og_friday_night_cap_hero.png
 - Intro: At 6:43 on a Friday evening, George Rourke was still at his desk.
 
 Most of the office had already emptied out. The project managers had stopped replying. The discipline leads were gone. A few Teams notifications still drifted in, but the tone had changed. Less decision-making. More weekend logistics.
@@ -354,7 +354,7 @@ George did not need to understand every prompt. He needed the delivery engine to
 - Published: 2026-05-24
 - Tags: leadership, systems thinking, growth, operating models
 - SEO description: A leadership essay on matching leadership instinct to the moment, and why growing organizations need both problem-solving and systems-building judgment.
-- Primary share image: https://cweise.com/assets/images/writing/what-kind-of-leader-linkedin-comment.png
+- Primary share image: https://cweise.com/assets/images/writing/carousel/og_leader-moment-cover.png
 - Intro: Not every business moment needs the same kind of leader. That sounds obvious, but it is easy to forget once leadership conversations become personality-driven. We label leaders decisive, visionary, operational, strategic, or transformational, then act as if the label answers the problem. It does not. The more useful question is what the company needs this leader to make true right now.
 - Section: Start with the moment, not the personality
   A company in crisis may need someone who can stabilize the moment. A company growing quickly may need someone who can turn informal coordination into repeatable execution. A company trying to innovate may need someone who can help expertise travel farther than the individual who holds it.
@@ -411,7 +411,7 @@ George did not need to understand every prompt. He needed the delivery engine to
 - Published: 2026-05-12
 - Tags: operational intelligence, execution, decision systems, systems translation, follow-through, operating models
 - SEO description: Why operational failure usually comes from unmanaged complexity, weak translation layers, unclear priorities, and missing follow-through rather than lack of insight.
-- Primary share image: https://cweise.com/assets/images/writing/articles/2026-05-12_organizations_rarely_fail_lack_intelligence/images/01_organizations_rarely_fail_hero.png
+- Primary share image: https://cweise.com/assets/images/writing/articles/2026-05-12_organizations_rarely_fail_lack_intelligence/images/og_organizations_rarely_fail_hero.png
 - Intro: It is tempting to believe organizations struggle because leaders do not see the right answer. In reality, most organizations have more intelligence than they can use. They have research, dashboards, consultants, strategy documents, roadmaps, subject-matter experts, lessons learned, and enough smart people to see the problem from twelve angles. The gap is usually not intelligence. The gap is the operating path between knowing and doing.
 - Section: The real problem is not intelligence scarcity
   Most organizations are not starving for insight. They are drowning in unconverted insight. The organization knows what the client said, what the project needs, what the team noticed, what the dashboard implies, what the strategy intends, and what the last initiative taught. But knowing something inside an organization is not the same as making it operationally usable.
@@ -471,7 +471,7 @@ George did not need to understand every prompt. He needed the delivery engine to
 - Published: 2026-04-28
 - Tags: translation, workflow design, rework, operational intelligence, systems thinking, execution
 - SEO description: How strategy-to-execution translation layers quietly create friction, rework, ambiguity, and delivery drag — and how leaders can engineer cleaner operating paths.
-- Primary share image: https://cweise.com/assets/images/writing/articles/2026-04-28_operational_friction_translation_layers/images/01_translation_layers_hero.png
+- Primary share image: https://cweise.com/assets/images/writing/articles/2026-04-28_operational_friction_translation_layers/images/og_translation_layers_hero.png
 - Intro: Operational friction often hides in the spaces between teams, tools, and planning layers. It feels small in isolation: one unclear handoff, one extra status meeting, one missing definition, one dashboard that requires interpretation, one ticket that does not preserve the original intent. But those small translation failures compound everywhere. By the time the organization feels the drag, the source is hard to see because every team looks reasonable inside its own boundary.
 - Section: The problem usually sits between the boxes
   Most organizations are comfortable naming departments, systems, tools, roles, and initiatives. They are less comfortable naming the interfaces between them. That is where friction usually lives.
@@ -531,7 +531,7 @@ George did not need to understand every prompt. He needed the delivery engine to
 - Published: 2026-03-31
 - Tags: executive follow-through, ownership, governance, operational intelligence, operating models, execution
 - SEO description: Why executive follow-through depends on ownership architecture: clear decision rights, escalation paths, evidence, review rhythms, and operational accountability.
-- Primary share image: https://cweise.com/assets/images/writing/articles/2026-03-31_executive_follow_through_ownership_architecture/images/01_ownership_architecture_hero.png
+- Primary share image: https://cweise.com/assets/images/writing/articles/2026-03-31_executive_follow_through_ownership_architecture/images/og_ownership_architecture_hero.png
 - Intro: Follow-through is rarely a motivation issue. It is usually an architecture issue. Leaders can care deeply about a priority, repeat it in every meeting, and still watch it drift. The problem is not always lack of commitment. It is that the organization never encoded the priority into ownership, decision rights, escalation paths, evidence, and review rhythms strong enough to survive competing work.
 - Section: Follow-through is not a personality trait
   Organizations often talk about follow-through as if it depends mainly on individual discipline. Someone needs to care more, push harder, respond faster, or remember the commitment. Sometimes that is true. But when the same priorities keep stalling, the issue is usually bigger than personal effort.
@@ -604,7 +604,7 @@ George did not need to understand every prompt. He needed the delivery engine to
 - Published: 2026-06-01
 - Tags: AI cost management, operating leverage, token consumption, model routing, workflow design, caching, local models, planning and budgeting, d3, calculator
 - SEO description: Seven practical ways to reduce unnecessary AI spend, estimate cost, compare hosted and hybrid paths, and prioritize the levers that create the most operating leverage.
-- Primary share image: https://cweise.com/assets/images/frameworks/2026-06-01_ai_consumption_leverage_framework/images/01_ai_consumption_leverage_framework_overview.png
+- Primary share image: https://cweise.com/assets/images/frameworks/2026-06-01_ai_consumption_leverage_framework/images/og_ai_consumption_leverage_framework_overview.png
 - Intro: This framework is here to make AI cost feel more understandable and more manageable. It gives you a practical way to see what is driving spend, compare realistic paths forward, and decide which changes are most worth making first without having to guess your way through it.
 - Application: Use this framework when AI adoption is growing and you want a calmer, more concrete way to understand what is happening, where you have room to improve, and how to talk about the next move with more confidence than instinct alone.
 - Components: AI Consumption Leverage Calculator: An inline calculator for estimating monthly and annual AI spend, comparing hosted, local, and hybrid assumptions, and seeing how usage variables change cost. | Seven Spend Levers: A seven-part tactical framework covering prompt reuse, context management, model routing, workflow design, caching, local or hybrid execution, and planning and budgeting. | Dynamic D3 Prioritization Map: An interactive visualization that lets readers rank each lever by implementation effort and expected impact, then updates a shared value-versus-complexity view.
@@ -679,7 +679,7 @@ George did not need to understand every prompt. He needed the delivery engine to
 - Published: 2026-05-27
 - Tags: AI governance, agent grading, operational capital, internal-use software, control evidence, asset governance, CIO, CFO, SOX, NIST AI RMF, COSO
 - SEO description: A tactical framework for grading enterprise AI agents by maturity, materiality, governance, accounting-readiness, value, risk, and useful life.
-- Primary share image: https://cweise.com/assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/01.png
+- Primary share image: https://cweise.com/assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/og_01.png
 - Intro: Most enterprises can count AI tools, pilots, subscriptions, and users. Far fewer can classify which agents are becoming durable operating capabilities. The Agent Asset Grading Framework gives leaders a way to separate disposable experimentation from governed operational assets that may deserve accounting review, board visibility, and lifecycle discipline.
 - Application: Use this framework when an enterprise is moving from AI experimentation toward production deployment and needs to decide which agents should remain lightweight tools, which should become governed process agents, and which may be mature enough to enter accounting, control, and board-level asset review.
 - Components: Classification: A four-grade model that separates disposable agents, assisted workflow agents, governed process agents, and operational asset candidates. | Evidence: A structured evidence package for ownership, controls, cost traceability, useful life, model lineage, auditability, and business value. | Calculator: An inline grading instrument that scores existing agents across seven dimensions and produces a recommended governance posture.
@@ -784,7 +784,7 @@ George did not need to understand every prompt. He needed the delivery engine to
 - Published: 2026-04-14
 - Tags: signal, noise, decision systems, operational clarity, execution quality, workflow design, leadership systems, organizational effectiveness
 - SEO description: A practical operating framework for reducing organizational noise, protecting decision-critical signal, and improving execution quality.
-- Primary share image: https://cweise.com/assets/images/frameworks/2026-04-14_turn_down_the_noise/images/01_turn_down_the_noise_overview.png
+- Primary share image: https://cweise.com/assets/images/frameworks/2026-04-14_turn_down_the_noise/images/og_turn_down_the_noise_overview.png
 - Intro: Most execution problems get worse when organizations cannot distinguish relevant signal from operational noise. The issue is not always that leaders lack information. More often, they are surrounded by activity, updates, meetings, dashboards, escalations, and status language that make the true state of work harder to see.
 - Application: Use this framework when leaders are over-briefed but under-informed, when teams are active but decision quality remains low, or when the organization produces more coordination than clarity.
 - Components: Noise Sources: Interruptions, ambiguity, duplicate effort, status theater, tool sprawl, and escalation churn that obscure what is actually happening. | Signal Conditions: Relevant, timely, actionable, evidence-backed, and decision-linked information that changes action, clarifies risk, or supports a choice. | Volume Control: Workflow choices that reduce non-essential communication while preserving the evidence leaders need to make confident decisions.
@@ -830,7 +830,7 @@ George did not need to understand every prompt. He needed the delivery engine to
 - Published: 2026-03-18
 - Tags: systems translation, strategy, workflow design, requirements, operating model, execution alignment
 - SEO description: A framework for translating strategic intent into operational and technical execution.
-- Primary share image: https://cweise.com/assets/images/frameworks/2026-03-18_systems_translation_loop/images/01_systems_translation_loop_overview.png
+- Primary share image: https://cweise.com/assets/images/frameworks/2026-03-18_systems_translation_loop/images/og_systems_translation_loop_overview.png
 - Intro: Organizations lose execution fidelity when intent, workflow, and implementation are treated as separate conversations instead of one governed loop.
 - Application: Use the loop when teams agree on goals but still produce mismatched plans, conflicting tickets, inconsistent delivery behavior, or solutions that look right in theory but fail in real operating conditions.
 - Components: Capture Intent: Clarify the business goal, success criteria, and constraints before solution design begins. | Translate: Convert intent into explicit functional needs, data and rule requirements, ownership, and acceptance criteria. | Align Options: Match the need to the right workflow, capability stack, and trade-off profile instead of defaulting to the fanciest option. | Validate in Practice: Test the proposed approach in a bounded environment and observe how real users and real work behave. | Close the Loop: Measure results, capture learnings, and feed evidence back into the next round of design and execution.
@@ -879,7 +879,7 @@ George did not need to understand every prompt. He needed the delivery engine to
 - Published: 2026-05-17
 - Tags: d3, relationship intelligence, service expansion, executive growth, client networks, white space, operating model
 - SEO description: A framework for using D3 to map clients, services, employees, relationship ownership, current value, and white-space revenue opportunities.
-- Primary share image: https://cweise.com/assets/images/frameworks/2026-05-17_d3_executive_framework/01_d3_knowledge_framework_header.png
+- Primary share image: https://cweise.com/assets/images/frameworks/2026-05-17_d3_executive_framework/og_d3_knowledge_framework_header.png
 - Intro: Most firms already know who their clients are, which services they provide, who owns the relationships, and which employees deliver the work. The problem is that this knowledge usually lives in fragments. A relationship-value graph connects those fragments into an executive intelligence model that reveals current value, white-space opportunity, next-best connections, and accountable growth paths.
 - Application: Use this framework when an organization has strong client relationships and broad service capabilities, but lacks a clear way to see where trust, expertise, service history, and unmet client need connect into measurable growth.
 - Components: Relationship Capital: Client trust, influence, delivery history, and internal relationship knowledge that already exist but are often invisible as a connected asset. | Service Adjacency: The disciplined comparison of services already delivered with relevant services that could solve adjacent client problems. | Revenue Intelligence Loop: A management rhythm that routes the right people toward the right opportunity, captures outcomes, and improves future opportunity scoring.
@@ -940,7 +940,7 @@ George did not need to understand every prompt. He needed the delivery engine to
 - Published: Not specified
 - Tags: ambiguity, direction, momentum, decision-making
 - SEO description: A practical operating tool for moving through ambiguity without over-designing the future.
-- Primary share image: https://cweise.com/assets/images/operating-tools/a-compass-not-a-map/01_a_compass_not_a_map.png
+- Primary share image: https://cweise.com/assets/images/operating-tools/a-compass-not-a-map/og_a_compass_not_a_map.png
 - Intro: When the full path is unclear, the goal is not to force certainty. This guide helps turn ambiguity into grounded direction, right-sized action, and useful momentum.
 - Section: Start with direction
   Clarify the situation, the constraint, and the next useful move before trying to design the whole future.
@@ -963,7 +963,7 @@ George did not need to understand every prompt. He needed the delivery engine to
 - Published: Not specified
 - Tags: avoidance, momentum, first contact, execution
 - SEO description: A short intervention for turning avoidance into immediate motion.
-- Primary share image: https://cweise.com/assets/images/operating-tools/avoid-act-loop/01_avoid_act_loop.png
+- Primary share image: https://cweise.com/assets/images/operating-tools/avoid-act-loop/og_avoid_act_loop.png
 - Intro: Avoidance often grows when a task feels unknown, too large, or tied to perfection. This guide lowers the entry cost by shifting from outcome pressure to first contact.
 - Section: Catch the avoidance
   Notice the stall without turning it into an identity conclusion.
@@ -987,7 +987,7 @@ George did not need to understand every prompt. He needed the delivery engine to
 - Published: Not specified
 - Tags: systems thinking, root cause, problem solving, execution
 - SEO description: A systems-thinking guide for shifting from firefighting to durable problem prevention.
-- Primary share image: https://cweise.com/assets/images/operating-tools/becoming-the-solution-provider/01_becoming_the_solution_provider.png
+- Primary share image: https://cweise.com/assets/images/operating-tools/becoming-the-solution-provider/og_becoming_the_solution_provider.png
 - Intro: Recurring problems rarely disappear through heroic fixes alone. This guide reframes problem solving as system design: define reality, map the mechanics, implement the fix, and prevent relapse.
 - Section: Define reality
   Trace the friction back to the core mechanics.
@@ -1009,7 +1009,7 @@ George did not need to understand every prompt. He needed the delivery engine to
 - Published: Not specified
 - Tags: reflection, learning, gratitude, follow-through
 - SEO description: A practical end-of-day review for learning, gratitude, and cleaner next steps.
-- Primary share image: https://cweise.com/assets/images/operating-tools/close-the-loop/01_close_the_loop.png
+- Primary share image: https://cweise.com/assets/images/operating-tools/close-the-loop/og_close_the_loop.png
 - Intro: A day becomes more useful when it is reviewed, not just completed. This guide turns experience into learning by closing open loops and shaping the next attempt.
 - Section: Review the day
   Capture what happened, what worked, what missed, and what mattered.
@@ -1029,7 +1029,7 @@ George did not need to understand every prompt. He needed the delivery engine to
 - Published: Not specified
 - Tags: sleep, dream recall, visualization, state design
 - SEO description: A sensory rehearsal guide for dream recall, lucid dreaming, and intentional sleep.
-- Primary share image: https://cweise.com/assets/images/operating-tools/design-the-dream-state/01_design_the_dream_state.png
+- Primary share image: https://cweise.com/assets/images/operating-tools/design-the-dream-state/og_design_the_dream_state.png
 - Intro: Intentional sleep begins before sleep. This guide uses a simple sensory rehearsal to prepare the mind for dream recall, lucid awareness, and a desired emotional state.
 - Section: Choose the desired scene
   Select one simple scene or state you want the mind to revisit.
@@ -1049,7 +1049,7 @@ George did not need to understand every prompt. He needed the delivery engine to
 - Published: Not specified
 - Tags: meditation, awareness, dream recall, nervous system
 - SEO description: A practice log for awareness, nervous-system regulation, and dream-state preparation.
-- Primary share image: https://cweise.com/assets/images/operating-tools/meditation-to-lucidity/01_meditation_to_lucidity.png
+- Primary share image: https://cweise.com/assets/images/operating-tools/meditation-to-lucidity/og_meditation_to_lucidity.png
 - Intro: Awareness becomes more reliable when it is tracked. This guide links meditation, body awareness, emotional state, imagery, and recall into a simple practice loop.
 - Section: Log the session
   Record time, place, method, duration, sound or music, and the objective.
@@ -1070,7 +1070,7 @@ George did not need to understand every prompt. He needed the delivery engine to
 - Published: Not specified
 - Tags: sleep, reflection, intention, nervous system
 - SEO description: A practical guide for pre-sleep reflection, intention, and dream readiness.
-- Primary share image: https://cweise.com/assets/images/operating-tools/prepare-the-night/01_prepare_the_night.png
+- Primary share image: https://cweise.com/assets/images/operating-tools/prepare-the-night/og_prepare_the_night.png
 - Intro: Pre-sleep reflection helps the mind release open loops and enter rest with clearer intention. This guide turns the end of the day into a gentle transition rather than a collapse.
 - Section: Unload the day
   Scan the day without judgment, list what remains unresolved, release what does not need to be carried overnight, and name what matters tomorrow.
@@ -1089,7 +1089,7 @@ George did not need to understand every prompt. He needed the delivery engine to
 - Published: Not specified
 - Tags: morning routine, intention, focus, state design
 - SEO description: A morning guide for setting direction before execution begins.
-- Primary share image: https://cweise.com/assets/images/operating-tools/prime-the-day/01_prime_the_day.png
+- Primary share image: https://cweise.com/assets/images/operating-tools/prime-the-day/og_prime_the_day.png
 - Intro: A better day starts before the to-do list. This guide helps set intention, rehearse the desired state, and support the conditions needed for focused execution.
 - Section: Start with intention
   Name gratitude, the desired scene, the state you want to carry, and the day’s stated intention.
@@ -1108,7 +1108,7 @@ George did not need to understand every prompt. He needed the delivery engine to
 - Published: Not specified
 - Tags: daily planning, execution, focus, review
 - SEO description: A daily operating board for turning intention into execution.
-- Primary share image: https://cweise.com/assets/images/operating-tools/run-the-day-with-structure/01_run_the_day_with_structure.png
+- Primary share image: https://cweise.com/assets/images/operating-tools/run-the-day-with-structure/og_run_the_day_with_structure.png
 - Intro: Structure creates evidence. This guide helps compare the day designed with the day actually lived, so planning can become more honest and useful over time.
 - Section: Use a daily framework
   Plan the day in blocks and compare planned work against actual behavior.
@@ -1128,7 +1128,7 @@ George did not need to understand every prompt. He needed the delivery engine to
 - Published: Not specified
 - Tags: decision-making, patterns, habit loops, behavior change
 - SEO description: A practical tool for tracing entry points, evaluating choices, and reshaping habit loops.
-- Primary share image: https://cweise.com/assets/images/operating-tools/decision-pattern-guide/01_decision_pattern_guide.png
+- Primary share image: https://cweise.com/assets/images/operating-tools/decision-pattern-guide/og_decision_pattern_guide.png
 - Intro: Decisions become easier to improve when the pattern is visible. This guide helps identify where a choice begins, how it repeats, and what better move can be designed.
 - Section: Find the entry point
   A pattern can begin with a challenge, an emotional signal, an observed behavior, or a recurring outcome.
@@ -1148,7 +1148,7 @@ George did not need to understand every prompt. He needed the delivery engine to
 - Published: Not specified
 - Tags: decision tree, options, consequences, risk
 - SEO description: A practical tool for mapping options, consequences, and the best next move.
-- Primary share image: https://cweise.com/assets/images/operating-tools/decision-tree-guide/01_decision_tree_guide.png
+- Primary share image: https://cweise.com/assets/images/operating-tools/decision-tree-guide/og_decision_tree_guide.png
 - Intro: A decision tree turns mental noise into visible branches. This guide helps clarify the real decision, compare paths, and choose the strongest next move.
 - Section: Start with the real decision
   Name the challenge, define the constraint, clarify the goal, and set the decision horizon.
@@ -1167,7 +1167,7 @@ George did not need to understand every prompt. He needed the delivery engine to
 - Published: Not specified
 - Tags: planning, goals, execution, measurement
 - SEO description: A planning canvas for turning goals into structured execution.
-- Primary share image: https://cweise.com/assets/images/operating-tools/from-vision-to-measurable-action/01_from_vision_to_measurable_action.png
+- Primary share image: https://cweise.com/assets/images/operating-tools/from-vision-to-measurable-action/og_from_vision_to_measurable_action.png
 - Intro: Goals become more actionable when direction, meaning, method, friction, and measurement are connected. This guide turns a vague goal into an executable plan.
 - Section: Clarify the vision
   Name the outcome you are trying to create and the priority level it deserves.
@@ -1185,7 +1185,7 @@ George did not need to understand every prompt. He needed the delivery engine to
 - Published: Not specified
 - Tags: habits, behavior change, triggers, reward
 - SEO description: A guide for turning recurring reactions into visible, actionable patterns.
-- Primary share image: https://cweise.com/assets/images/operating-tools/map-the-habit-loop/01_map_the_habit_loop.png
+- Primary share image: https://cweise.com/assets/images/operating-tools/map-the-habit-loop/og_map_the_habit_loop.png
 - Intro: A habit becomes easier to change once the loop is visible. This guide separates triggers, behaviors, results, and rewards so the next response can be designed intentionally.
 - Section: Map the core loop
   Identify the trigger, the behavior, the result, and the reward that keeps the loop available.
@@ -1204,7 +1204,7 @@ George did not need to understand every prompt. He needed the delivery engine to
 - Published: Not specified
 - Tags: leadership, access, execution, systems
 - SEO description: A guide for protecting momentum through narrative, authority, access, execution, and reinforcement.
-- Primary share image: https://cweise.com/assets/images/operating-tools/operational-power-system/01_operational_power_system.png
+- Primary share image: https://cweise.com/assets/images/operating-tools/operational-power-system/og_operational_power_system.png
 - Intro: Work does not move on logic alone. This guide shows how narrative, authority, access, execution, and reinforcement interact to either protect momentum or create a failure loop.
 - Section: Understand the power chain
   Narrative shapes perception. Authority creates legitimacy. Access creates permission. Execution creates proof. Reinforcement keeps the system moving.
@@ -1223,7 +1223,7 @@ George did not need to understand every prompt. He needed the delivery engine to
 - Published: Not specified
 - Tags: habits, progress, behavior change, momentum
 - SEO description: A tool for turning habit loops into immediate forward action.
-- Primary share image: https://cweise.com/assets/images/operating-tools/pattern-to-progress-guide/01_pattern_to_progress_guide.png
+- Primary share image: https://cweise.com/assets/images/operating-tools/pattern-to-progress-guide/og_pattern_to_progress_guide.png
 - Intro: A habit does not have to be changed all at once. This guide turns one observed pattern into the next useful action available right now.
 - Section: Notice the pattern
   Capture one real moment before trying to change the whole pattern: challenge, response, behavior, and outcome.
@@ -1241,7 +1241,7 @@ George did not need to understand every prompt. He needed the delivery engine to
 - Published: Not specified
 - Tags: questions, clarity, action, problem solving
 - SEO description: A practical guide for turning vague problems into useful next steps.
-- Primary share image: https://cweise.com/assets/images/operating-tools/question-to-action-filter/01_question_to_action_filter.png
+- Primary share image: https://cweise.com/assets/images/operating-tools/question-to-action-filter/og_question_to_action_filter.png
 - Intro: A better question produces cleaner action. This guide filters vague problems through specificity, framing, attachment, and concrete next steps.
 - Section: Form the question
   Start with the problem statement and turn it into a clear question.
@@ -1260,7 +1260,7 @@ George did not need to understand every prompt. He needed the delivery engine to
 - Published: Not specified
 - Tags: beliefs, reframing, nervous system, reflection
 - SEO description: A guide for updating limiting beliefs through reflection, nervous-system awareness, and a stronger replacement belief.
-- Primary share image: https://cweise.com/assets/images/operating-tools/reframe-the-belief-retrain-the-response/01_reframe_the_belief_retrain_the_response.png
+- Primary share image: https://cweise.com/assets/images/operating-tools/reframe-the-belief-retrain-the-response/og_reframe_the_belief_retrain_the_response.png
 - Intro: A limiting belief can remain active even after the present situation has changed. This guide helps identify the belief, trace its original meaning, and install a more accurate replacement response.
 - Section: Name the limiting belief
   Identify what belief keeps repeating, what it predicts, and where it shows up.
@@ -1279,7 +1279,7 @@ George did not need to understand every prompt. He needed the delivery engine to
 - Published: Not specified
 - Tags: decision-making, experiments, options, risk
 - SEO description: A practical guide for moving from dilemma to tested action.
-- Primary share image: https://cweise.com/assets/images/operating-tools/run-the-decision-experiment/01_run_the_decision_experiment.png
+- Primary share image: https://cweise.com/assets/images/operating-tools/run-the-decision-experiment/og_run_the_decision_experiment.png
 - Intro: Not every decision needs certainty before action. This guide uses a small experiment to clarify facts, compare options, and learn from reality.
 - Section: Run the five-step cycle
   Define the dilemma, collect facts, generate options, compare approaches, and experiment.
@@ -1297,7 +1297,7 @@ George did not need to understand every prompt. He needed the delivery engine to
 - Published: Not specified
 - Tags: pattern recognition, judgment, agency, leadership
 - SEO description: A guide for using pattern recognition without getting trapped in the cycle.
-- Primary share image: https://cweise.com/assets/images/operating-tools/see-the-pattern-choose-the-path/01_see_the_pattern_choose_the_path.png
+- Primary share image: https://cweise.com/assets/images/operating-tools/see-the-pattern-choose-the-path/og_see_the_pattern_choose_the_path.png
 - Intro: Seeing a pattern is only useful if it helps choose the right scale, the right response, and the next useful move. This guide turns pattern recognition into agency rather than rumination.
 - Section: Use insight at the right scale
   Name the pattern without becoming captive to it. The goal is clarity, judgment, agency, and momentum.
@@ -1316,7 +1316,7 @@ George did not need to understand every prompt. He needed the delivery engine to
 - Published: Not specified
 - Tags: signals, decisions, patterns, entry points
 - SEO description: A practical guide for choosing the right entry point into a decision.
-- Primary share image: https://cweise.com/assets/images/operating-tools/start-where-the-signal-appears/01_start_where_the_signal_appears.png
+- Primary share image: https://cweise.com/assets/images/operating-tools/start-where-the-signal-appears/og_start_where_the_signal_appears.png
 - Intro: A decision does not always begin with a clean problem statement. This guide helps choose the clearest entry point: challenge, emotional response, behavior, or outcome.
 - Section: Choose an entry point
   Start with the challenge, emotional response, behavior, or outcome—whichever is clearest.
@@ -1364,7 +1364,7 @@ George did not need to understand every prompt. He needed the delivery engine to
 - Published: Not specified
 - Tags: agency, leadership, operating systems, governance, decision quality
 - SEO description: A practical operating tool for assessing whether an operating system is producing reality-based leadership, not just more control.
-- Primary share image: https://cweise.com/assets/images/operating-tools/agency-is-the-metric/01_agency_is_the_metric.png
+- Primary share image: https://cweise.com/assets/images/operating-tools/agency-is-the-metric/og_agency_is_the_metric.png
 - Intro: Most operating systems measure activity, output, or compliance. This tool argues that the more useful executive metric is agency: the ability to make reality-based decisions without needing reality to feel emotionally acceptable first.
 - Section: The hidden operating problem
   Many leadership systems over-measure execution artifacts while under-measuring the human capacity required to use them well.
