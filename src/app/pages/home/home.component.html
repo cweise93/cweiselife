@@ -1,6 +1,6 @@
 @let vm = homeContent();
 
-<section class="hero">
+<section id="hero" class="hero">
   <div class="hero-copy-wrap">
     <div class="hero-copy">
       <p class="cw-eyebrow">{{ homeHero.eyebrow }}</p>
@@ -33,7 +33,7 @@
   </div>
 </section>
 
-<section class="cw-section section-surface--soft">
+<section id="capabilities" class="cw-section section-surface--soft">
   <div class="cw-container cw-section-header--split">
     <div>
       <p class="cw-eyebrow">{{ homeCapabilitiesSection.eyebrow }}</p>
@@ -56,7 +56,7 @@
   </div>
 </section>
 
-<section class="cw-section writing-band section-surface--soft">
+<section id="writing" class="cw-section writing-band section-surface--soft">
   <div class="cw-container cw-section-header">
     <div>
       <p class="cw-eyebrow">{{ homeWritingSection.eyebrow }}</p>
@@ -153,7 +153,7 @@
   </div>
 </section>
 
-<section class="cw-section framework-feature">
+<section id="frameworks" class="cw-section framework-feature">
   @if (vm.featuredFrameworks[0]; as framework) {
     <div class="cw-container feature-grid">
       <div class="framework-visual cw-surface-card">
@@ -173,7 +173,7 @@
   }
 </section>
 
-<section class="cw-section operating-tools section-surface--soft">
+<section id="operating-tools" class="cw-section operating-tools section-surface--soft">
   <div class="cw-container cw-section-header">
     <div>
       <p class="cw-eyebrow">Operating Tools</p>
@@ -195,7 +195,7 @@
   </div>
 </section>
 
-<section #publishingPathSection class="publishing-path cw-section">
+<section id="publishing-path" #publishingPathSection class="publishing-path cw-section">
   @let activeItem = activePublishingPathItem();
   @let activeAct = activePublishingPathAct();
   @let graph = publishingPathGraph();
@@ -434,9 +434,9 @@
   </div>
 </section>
 
-<section class="cw-section about-connect">
+<section id="about-connect" class="cw-section about-connect">
   <div class="cw-container about-grid">
-    <div class="about-copy">
+    <div id="about" class="about-copy">
       <p class="cw-eyebrow">{{ homeAboutSection.eyebrow }}</p>
       <h2>{{ vm.about.headline }}</h2>
       @if (vm.about.narrative[0]) {
@@ -450,7 +450,7 @@
         <mat-icon>arrow_forward</mat-icon>
       </a>
     </div>
-    <mat-card class="substack-card cw-dark-panel">
+    <mat-card id="connect" class="substack-card cw-dark-panel">
       <mat-card-content>
         <div class="substack-card-grid">
           <div class="substack-copy">

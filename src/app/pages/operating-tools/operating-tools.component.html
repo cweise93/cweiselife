@@ -1,10 +1,246 @@
-<section class="page-hero">
-  <div class="cw-container page-hero__layout">
-    <div class="page-hero__copy">
-      <p class="cw-eyebrow">{{ hero.eyebrow }}</p>
-      <h1>{{ hero.headline }}</h1>
-      <p class="lead-copy">{{ hero.intro }}</p>
-      <cw-operating-tools-selector />
+<section class="operating-tools-page cw-section">
+  <div class="cw-container operating-tools-page__layout">
+    <header class="page-hero">
+      <div class="page-hero__copy">
+        <p class="cw-eyebrow">{{ page().meta.eyebrow }}</p>
+        <h1>{{ page().meta.headline }}</h1>
+        <p class="lead-copy">{{ page().meta.intro }}</p>
+      </div>
+    </header>
+
+    <div class="catalog-shell__layout">
+      <mat-card appearance="outlined" class="catalog-controls-shell">
+          <mat-toolbar class="catalog-toolbar">
+            <mat-toolbar-row class="catalog-toolbar__row">
+              <mat-form-field appearance="outline" subscriptSizing="dynamic" class="catalog-search">
+                <mat-label>Search operating tools</mat-label>
+                <input
+                  matInput
+                  type="search"
+                  placeholder="Search by title, state, or tag"
+                  [value]="searchTerm()"
+                  (input)="updateSearch($event)"
+                />
+                @if (searchTerm()) {
+                  <button
+                    mat-icon-button
+                    matSuffix
+                    type="button"
+                    aria-label="Clear search"
+                    (click)="clearSearch()"
+                  >
+                    <mat-icon>close</mat-icon>
+                  </button>
+                }
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" subscriptSizing="dynamic" class="catalog-sort">
+                <mat-label>Sort tools</mat-label>
+                <mat-select [value]="sortMode()" (selectionChange)="setSortMode($event.value)">
+                  <mat-option value="recommended">Recommended order</mat-option>
+                  <mat-option value="alphabetical">Alphabetical order</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-button-toggle-group
+                class="catalog-view-toggle"
+                [value]="viewMode()"
+                [hideSingleSelectionIndicator]="true"
+                (change)="setViewMode($event.value)"
+                aria-label="Operating tools display mode"
+              >
+                <mat-button-toggle value="list">
+                  <mat-icon inline>view_list</mat-icon>
+                  <span>List</span>
+                </mat-button-toggle>
+                <mat-button-toggle value="tiles">
+                  <mat-icon inline>grid_view</mat-icon>
+                  <span>Cards</span>
+                </mat-button-toggle>
+              </mat-button-toggle-group>
+            </mat-toolbar-row>
+          </mat-toolbar>
+      </mat-card>
+
+      <div class="catalog-content-layout">
+        <div class="catalog-main">
+          @if (hasResults()) {
+            @for (group of groupedTools(); track group.id) {
+              <section [id]="group.anchor" class="tool-group" [style.--group-accent]="group.accent">
+                <mat-card appearance="outlined" class="tool-group__card">
+                  <mat-card-header class="tool-group__header">
+                    <mat-card-title>{{ group.title }}</mat-card-title>
+                    <mat-card-subtitle>{{ group.description }}</mat-card-subtitle>
+                  </mat-card-header>
+
+                  <mat-card-content>
+                    @if (viewMode() === 'list') {
+                      <div class="tool-list">
+                        @for (tool of group.tools; track tool.id) {
+                          <mat-card
+                            appearance="outlined"
+                            class="tool-list__item"
+                            [class.tool-list__item--selected]="selectedTool()?.id === tool.id"
+                            tabindex="0"
+                            role="button"
+                            (click)="selectTool(tool)"
+                            (keydown.enter)="selectTool(tool)"
+                            (keydown.space)="selectTool(tool); $event.preventDefault()"
+                          >
+                            <mat-card-header>
+                              <div mat-card-avatar class="tool-list__avatar">
+                                <mat-icon [style.color]="group.accent">{{ tool.icon }}</mat-icon>
+                              </div>
+                              <div class="tool-list__copy">
+                                <mat-card-title>{{ tool.title }}</mat-card-title>
+                                <mat-card-subtitle>{{ tool.summary }}</mat-card-subtitle>
+                              </div>
+                              <a
+                                mat-icon-button
+                                class="tool-list__link"
+                                [routerLink]="getOperatingToolRoute(tool.slug)"
+                                [attr.aria-label]="'Read more about ' + tool.title"
+                                (click)="$event.stopPropagation()"
+                              >
+                                <mat-icon [style.color]="group.accent">open_in_new</mat-icon>
+                              </a>
+                            </mat-card-header>
+                          </mat-card>
+                        }
+                      </div>
+                    } @else {
+                      <div class="tool-tile-grid">
+                        @for (tool of group.tools; track tool.id) {
+                          <mat-card
+                            appearance="outlined"
+                            class="tool-tile-card"
+                            [class.tool-tile-card--selected]="selectedTool()?.id === tool.id"
+                            tabindex="0"
+                            role="button"
+                            (click)="selectTool(tool)"
+                            (keydown.enter)="selectTool(tool)"
+                            (keydown.space)="selectTool(tool)"
+                          >
+                              <mat-card-header>
+                                <div mat-card-avatar class="tool-tile-card__avatar">
+                                  <mat-icon [style.color]="group.accent">{{ tool.icon }}</mat-icon>
+                                </div>
+                                <mat-card-title>{{ tool.title }}</mat-card-title>
+                              </mat-card-header>
+                              <mat-card-content>
+                                <p>{{ tool.summary }}</p>
+                              </mat-card-content>
+                              <mat-card-actions align="end">
+                                <a
+                                  mat-icon-button
+                                  class="tool-tile-card__link"
+                                  [routerLink]="getOperatingToolRoute(tool.slug)"
+                                  [attr.aria-label]="'Read more about ' + tool.title"
+                                  (click)="$event.stopPropagation()"
+                                >
+                                  <mat-icon [style.color]="group.accent">open_in_new</mat-icon>
+                                </a>
+                              </mat-card-actions>
+                            </mat-card>
+                        }
+                      </div>
+                    }
+                  </mat-card-content>
+                </mat-card>
+              </section>
+            }
+          } @else {
+            <mat-card appearance="outlined" class="catalog-empty">
+              <mat-card-content>
+                <h2>No tools match that search.</h2>
+                <p>Try a broader phrase or clear the current filter.</p>
+              </mat-card-content>
+            </mat-card>
+          }
+        </div>
+
+        <aside class="selector-sidebar" aria-label="Operating tool state selector">
+          <mat-card appearance="outlined" class="hero-selector-card">
+            @if (selectedTool(); as tool) {
+              <mat-card-header>
+                <mat-card-title>{{ tool.title }}</mat-card-title>
+                <mat-card-subtitle>{{ tool.summary }}</mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content>
+                @if (selectedToolImage(); as imageSrc) {
+                  <img class="selected-tool-preview__image" [src]="imageSrc" [alt]="tool.title" />
+                } @else {
+                  <mat-card
+                    appearance="outlined"
+                    class="selected-tool-preview__fallback"
+                  >
+                    <mat-card-content>
+                      <mat-icon>{{ tool.icon }}</mat-icon>
+                      <span>{{ tool.title }}</span>
+                    </mat-card-content>
+                  </mat-card>
+                }
+              </mat-card-content>
+              <mat-card-actions class="selected-tool-preview__actions">
+                <button mat-stroked-button type="button" (click)="clearSelectedTool()">Clear</button>
+                <a mat-flat-button color="primary" [routerLink]="getOperatingToolRoute(tool.slug)">Read More</a>
+              </mat-card-actions>
+            } @else {
+              <mat-card-header>
+                <mat-card-title>I feel...</mat-card-title>
+                <mat-card-subtitle>Pick the closest state.</mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content>
+                <div class="feeling-selector" aria-label="Filter operating tools by current state">
+                  @for (control of stateControls(); track control.id) {
+                    <mat-card
+                      appearance="outlined"
+                      class="feeling-choice-card"
+                      [class.feeling-choice-card--active]="isFeelingActive(control.id)"
+                      [style.--feeling-accent]="control.accent"
+                      (click)="setFeelingSelection(control.id)"
+                    >
+                      <mat-card-content>
+                        <span class="feeling-choice-card__icon" aria-hidden="true">
+                          <mat-icon [style.color]="control.accent">{{ control.icon }}</mat-icon>
+                        </span>
+                        <span class="feeling-choice-card__label">{{ control.label }}</span>
+                        <mat-checkbox
+                          [checked]="isFeelingActive(control.id)"
+                          [aria-label]="control.label"
+                          (click)="$event.stopPropagation()"
+                          (change)="setFeelingSelection(control.id)"
+                        ></mat-checkbox>
+                      </mat-card-content>
+                    </mat-card>
+                  }
+
+                  <mat-card
+                    appearance="outlined"
+                    class="feeling-choice-card feeling-choice-card--show-all"
+                    [class.feeling-choice-card--active]="isFeelingActive(showAllControl().id)"
+                    [style.--feeling-accent]="showAllControl().accent"
+                    (click)="setFeelingSelection(showAllControl().id)"
+                  >
+                    <mat-card-content>
+                      <span class="feeling-choice-card__icon" aria-hidden="true">
+                        <mat-icon [style.color]="showAllControl().accent">{{ showAllControl().icon }}</mat-icon>
+                      </span>
+                      <span class="feeling-choice-card__label">{{ showAllControl().label }}</span>
+                      <mat-checkbox
+                        [checked]="isFeelingActive(showAllControl().id)"
+                        [aria-label]="showAllControl().label"
+                        (click)="$event.stopPropagation()"
+                        (change)="setFeelingSelection(showAllControl().id)"
+                      ></mat-checkbox>
+                    </mat-card-content>
+                  </mat-card>
+                </div>
+              </mat-card-content>
+            }
+          </mat-card>
+        </aside>
+      </div>
     </div>
   </div>
 </section>

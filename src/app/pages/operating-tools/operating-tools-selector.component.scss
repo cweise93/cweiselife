@@ -85,37 +85,14 @@
   text-align: left;
 }
 
-.feeling-button::after {
-  position: absolute;
-  top: 50%;
-  right: 14px;
-  width: 16px;
-  height: 16px;
-  border: 1.5px solid color-mix(in srgb, var(--cw-muted) 62%, transparent);
-  border-radius: 999px;
-  content: '';
-  transform: translateY(-50%);
-}
-
 .feeling-button--active {
   --mdc-outlined-button-outline-color: color-mix(in srgb, var(--feeling-accent) 58%, var(--cw-line));
   background: color-mix(in srgb, var(--feeling-accent) 10%, var(--toggle-surface)) !important;
 }
 
-.feeling-button--active::after {
-  border-color: var(--feeling-accent);
-  background:
-    radial-gradient(circle, white 0 30%, transparent 33%),
-    var(--feeling-accent);
-}
-
 .feeling-button--wide {
   grid-column: 1 / -1;
   min-height: 74px;
-}
-
-.feeling-button--wide::after {
-  border-color: var(--cw-accent);
 }
 
 :host ::ng-deep .feeling-button .mdc-button__label {
@@ -131,14 +108,14 @@
 
 .feeling-button__content {
   display: grid;
-  grid-template-columns: 42px minmax(0, 1fr);
+  grid-template-columns: 42px minmax(0, 1fr) auto;
   gap: 12px;
   align-content: center;
   align-items: center;
   justify-items: stretch;
   width: 100%;
   height: 100%;
-  padding: 8px 42px 8px 14px;
+  padding: 8px 14px;
 }
 
 .feeling-button__icon {
@@ -179,6 +156,10 @@
   font-size: clamp(0.72rem, 0.74vw, 0.82rem);
   font-weight: 620;
   line-height: 1.24;
+}
+
+.feeling-button__checkbox {
+  pointer-events: none;
 }
 
 .assembly-shell {
@@ -227,10 +208,6 @@
   --machine-shell-surface: color-mix(in srgb, var(--cw-panel) 82%, var(--cw-page) 18%);
   --control-panel-surface: color-mix(in srgb, var(--cw-panel) 78%, var(--cw-page) 22%);
   --toggle-surface: color-mix(in srgb, var(--cw-panel) 76%, var(--cw-page) 24%);
-}
-
-:host-context(body.cw-theme-dusk) .feeling-button::after {
-  border-color: color-mix(in srgb, var(--cw-muted) 72%, var(--cw-line));
 }
 
 :host-context(body.cw-theme-dusk) .feeling-button__icon {

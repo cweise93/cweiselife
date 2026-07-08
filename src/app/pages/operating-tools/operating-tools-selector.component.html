@@ -25,6 +25,13 @@
                   <span class="feeling-button__label">{{ control.label }}</span>
                   <span class="feeling-button__caption">{{ control.caption }}</span>
                 </span>
+                <mat-checkbox
+                  class="feeling-button__checkbox"
+                  tabindex="-1"
+                  aria-hidden="true"
+                  [checked]="isFeelingActive(control.id)"
+                  [disableRipple]="true"
+                ></mat-checkbox>
               </span>
             </button>
           }
@@ -46,6 +53,13 @@
                   <span class="feeling-button__label">{{ control.label }}</span>
                   <span class="feeling-button__caption">{{ control.caption }}</span>
                 </span>
+                <mat-checkbox
+                  class="feeling-button__checkbox"
+                  tabindex="-1"
+                  aria-hidden="true"
+                  [checked]="isFeelingActive(control.id)"
+                  [disableRipple]="true"
+                ></mat-checkbox>
               </span>
             </button>
           }

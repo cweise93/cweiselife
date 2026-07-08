@@ -239,20 +239,54 @@ h1 {
   gap: 16px;
 }
 
+.related-operating-tool-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.related-operating-tool-card mat-card-header {
+  align-items: flex-start;
+}
+
+.related-operating-tool-card .mat-mdc-card-header-text {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
 .operating-tool-avatar {
   display: grid;
   place-items: center;
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
+  flex: 0 0 40px;
+  margin-right: 16px;
+  border-radius: 50%;
   background: color-mix(in srgb, var(--cw-accent) 10%, var(--cw-panel));
   color: var(--cw-accent);
+}
+
+.operating-tool-avatar mat-icon {
+  width: 20px;
+  height: 20px;
+  font-size: 20px;
+  line-height: 20px;
 }
 
 .related-operating-tool-card mat-card-title,
 .related-operating-tool-card mat-card-subtitle {
   white-space: normal;
+  overflow-wrap: anywhere;
 }
 
 .related-operating-tool-card mat-card-subtitle {
   color: var(--cw-muted);
+}
+
+.related-operating-tool-card mat-card-actions {
+  margin-top: auto;
 }
 
 .artifact-modal-backdrop {

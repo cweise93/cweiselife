@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@a
 import { toSignal } from '@angular/core/rxjs-interop';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { ContentCollectionViewModel, OperatingToolItem } from '../../core/content/content.models';
@@ -12,7 +13,7 @@ import {
 } from './operating-tools-puzzle.component';
 import { OperatingToolPreviewDialogComponent } from './operating-tool-preview-dialog.component';
 
-type FeelingKey =
+export type FeelingKey =
   | 'overloaded'
   | 'stuck'
   | 'foggy'
@@ -22,7 +23,7 @@ type FeelingKey =
   | 'show-all';
 type PrimaryFeelingKey = Exclude<FeelingKey, 'show-all'>;
 
-interface FeelingOption {
+export interface FeelingOption {
   id: FeelingKey;
   label: string;
   caption: string;
@@ -44,7 +45,7 @@ const EMPTY_OPERATING_TOOLS_PAGE: ContentCollectionViewModel<OperatingToolItem> 
   items: []
 };
 
-const FEELING_OPTIONS: FeelingOption[] = [
+export const OPERATING_TOOL_FEELING_OPTIONS: FeelingOption[] = [
   {
     id: 'show-all',
     label: 'Show all tools',
@@ -142,6 +143,7 @@ const FEELING_OPTIONS: FeelingOption[] = [
   imports: [
     MatButtonModule,
     MatCardModule,
+    MatCheckboxModule,
     MatDialogModule,
     MatIconModule,
     OperatingToolsAssemblyPlateComponent
@@ -157,7 +159,7 @@ export class OperatingToolsSelectorComponent {
   readonly page = toSignal(this.contentService.getOperatingToolsPage(), {
     initialValue: EMPTY_OPERATING_TOOLS_PAGE
   });
-  readonly controls = FEELING_OPTIONS;
+  readonly controls = OPERATING_TOOL_FEELING_OPTIONS;
   readonly selectedFeelingIds = signal<FeelingKey[]>(['show-all']);
   readonly showAllControl = computed(() => this.controls.find((control) => control.id === 'show-all')!);
   readonly primaryControls = computed(
@@ -273,18 +275,12 @@ export class OperatingToolsSelectorComponent {
   }
 
   toggleFeeling(feelingId: FeelingKey): void {
-    const current = new Set(this.selectedFeelingIds());
-
     if (feelingId === 'show-all') {
-      if (current.has('show-all')) {
-        this.selectedFeelingIds.set([]);
-        return;
-      }
-
       this.selectedFeelingIds.set(['show-all']);
       return;
     }
 
+    const current = new Set(this.selectedFeelingIds());
     current.delete('show-all');
 
     if (current.has(feelingId)) {
@@ -293,7 +289,7 @@ export class OperatingToolsSelectorComponent {
       current.add(feelingId);
     }
 
-    this.selectedFeelingIds.set([...current]);
+    this.selectedFeelingIds.set(current.size ? [...current] : ['show-all']);
   }
 
   openToolPreview(tile: OperatingToolsAssemblyTile): void {
