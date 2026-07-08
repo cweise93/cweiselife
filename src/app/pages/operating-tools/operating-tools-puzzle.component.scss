@@ -1,0 +1,263 @@
+:host {
+  display: block;
+  width: 100%;
+  --network-card: color-mix(in srgb, var(--cw-panel) 98%, white 2%);
+  --network-card-muted: color-mix(in srgb, var(--cw-panel) 92%, var(--cw-soft) 8%);
+  --network-border: color-mix(in srgb, var(--cw-line) 82%, var(--cw-accent) 18%);
+  --network-line: color-mix(in srgb, var(--cw-accent) 36%, var(--cw-line));
+  --network-active: color-mix(in srgb, var(--cw-accent) 76%, #2563eb 24%);
+}
+
+.tool-network {
+  display: grid;
+  gap: 18px;
+  min-height: 100%;
+  padding: clamp(18px, 2vw, 26px);
+}
+
+.tool-network__header {
+  display: flex;
+  gap: 18px;
+  align-items: start;
+  justify-content: space-between;
+}
+
+.tool-network__eyebrow,
+.tool-network__header h2,
+.tool-network__header p {
+  margin: 0;
+}
+
+.tool-network__eyebrow {
+  color: var(--cw-accent);
+  font-size: 0.76rem;
+  font-weight: 820;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.tool-network__header h2 {
+  margin-top: 4px;
+  color: var(--cw-ink);
+  font-size: clamp(1.35rem, 2vw, 2rem);
+  font-weight: 840;
+  letter-spacing: -0.045em;
+  line-height: 1;
+}
+
+.tool-network__header p {
+  margin-top: 7px;
+  max-width: 56ch;
+  color: var(--cw-muted);
+  font-size: 0.92rem;
+  font-weight: 560;
+  line-height: 1.45;
+}
+
+.tool-network__metrics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(82px, auto));
+  gap: 8px;
+}
+
+.tool-network__metrics span {
+  display: grid;
+  gap: 2px;
+  min-width: 82px;
+  padding: 10px 12px;
+  border: 1px solid var(--network-border);
+  border-radius: 14px;
+  background: var(--network-card);
+  color: var(--cw-muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.tool-network__metrics strong {
+  color: var(--cw-ink);
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.tool-network__hub {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 14px;
+  align-items: center;
+  padding: 16px 18px;
+  border: 1px solid var(--network-border);
+  border-radius: 18px;
+  background: var(--network-card);
+  box-shadow: 0 12px 28px rgba(12, 27, 42, 0.05);
+}
+
+.tool-network__hub-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 46px;
+  height: 46px;
+  border: 1px solid color-mix(in srgb, var(--network-active) 64%, var(--network-border));
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--network-active) 10%, var(--cw-panel));
+  color: var(--network-active);
+}
+
+.tool-network__hub-icon mat-icon {
+  display: block;
+  width: 22px;
+  height: 22px;
+  font-size: 22px;
+  line-height: 22px;
+}
+
+.tool-network__hub strong,
+.tool-network__hub em {
+  display: block;
+}
+
+.tool-network__hub strong {
+  color: var(--cw-ink);
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 820;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.tool-network__hub em {
+  margin-top: 3px;
+  color: var(--cw-muted);
+  font-size: 0.86rem;
+  font-style: normal;
+  font-weight: 560;
+}
+
+.tool-network__grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 18px;
+  padding: 18px 0 0;
+}
+
+.tool-node {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+  min-height: 106px;
+  border-color: var(--network-border);
+  border-radius: 18px;
+  background: var(--network-card);
+  overflow: visible;
+  cursor: pointer;
+  text-align: left;
+}
+
+.tool-node--primary {
+  border-color: color-mix(in srgb, var(--network-active) 70%, var(--network-border));
+  background: color-mix(in srgb, var(--network-active) 10%, var(--network-card));
+  box-shadow: 0 18px 30px rgba(37, 99, 235, 0.14);
+}
+
+.tool-node--related:not(.tool-node--primary) {
+  border-color: color-mix(in srgb, var(--network-active) 48%, var(--network-border));
+}
+
+.tool-node--faded {
+  background: var(--network-card-muted);
+  opacity: 0.58;
+}
+
+.tool-node:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--network-active) 38%, transparent);
+  outline-offset: 3px;
+}
+
+.tool-node mat-card-header {
+  position: relative;
+  align-items: center;
+  min-height: 106px;
+  padding: 16px 42px 16px 16px;
+}
+
+.tool-node__avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid color-mix(in srgb, var(--network-active) 58%, var(--network-border));
+  background: color-mix(in srgb, var(--network-active) 8%, var(--cw-panel));
+  color: var(--network-active);
+}
+
+.tool-node__avatar mat-icon {
+  width: 22px;
+  height: 22px;
+  font-size: 22px;
+  line-height: 22px;
+}
+
+:host ::ng-deep .tool-node .mat-mdc-card-header-text {
+  min-width: 0;
+}
+
+.tool-node mat-card-title {
+  color: var(--cw-ink);
+  font-size: 0.98rem;
+  font-weight: 780;
+  letter-spacing: -0.018em;
+  line-height: 1.14;
+  white-space: normal;
+}
+
+.tool-node mat-card-subtitle {
+  margin-top: 5px;
+  color: var(--cw-muted);
+  font-size: 0.72rem;
+  font-weight: 720;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.tool-node__arrow {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  color: color-mix(in srgb, var(--network-active) 74%, var(--cw-muted));
+  width: 18px;
+  height: 18px;
+  font-size: 18px;
+  opacity: 0.68;
+  transform: translateY(-50%);
+}
+
+@media (max-width: 760px) {
+  .tool-network__header,
+  .tool-network__metrics {
+    display: grid;
+  }
+
+  .tool-network__metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .tool-network__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+:host-context(body.cw-theme-dusk) {
+  --network-card: color-mix(in srgb, var(--cw-panel) 76%, var(--cw-page) 24%);
+  --network-card-muted: color-mix(in srgb, var(--cw-panel) 60%, var(--cw-page) 40%);
+  --network-border: color-mix(in srgb, var(--cw-line) 68%, var(--cw-accent) 32%);
+  --network-line: color-mix(in srgb, var(--cw-accent) 68%, #38bdf8 32%);
+  --network-active: color-mix(in srgb, var(--cw-accent) 76%, #38bdf8 24%);
+}
+
+:host-context(body.cw-theme-dusk) .tool-node--primary {
+  box-shadow: 0 18px 32px rgba(56, 189, 248, 0.12);
+}

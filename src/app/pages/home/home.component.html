@@ -191,12 +191,7 @@
     </div>
   </div>
   <div class="cw-container">
-    <cw-home-operating-tool-selector
-      [moments]="homeOperatingToolMoments()"
-      [benefits]="homeOperatingToolBenefits"
-      [selectedIndex]="selectedHomeOperatingToolMomentIndex()"
-      (momentSelected)="selectHomeOperatingToolMoment($event)"
-    />
+    <cw-operating-tools-selector />
   </div>
 </section>
 

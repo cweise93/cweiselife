@@ -1,0 +1,84 @@
+@if (currentTool(); as tool) {
+  <div class="tool-preview__title-block" mat-dialog-title>
+    <h2>{{ tool.title }}</h2>
+    <div class="tool-preview__meta">
+      <span>
+        @if (tool.primary) {
+          Best match
+        } @else if (tool.related) {
+          Surfaced tool
+        } @else {
+          Available tool
+        }
+      </span>
+    </div>
+  </div>
+
+  <mat-dialog-content class="tool-preview">
+    <p class="tool-preview__summary">{{ tool.summary }}</p>
+
+    @if (tool.imageSrc) {
+      <div class="tool-preview__stage">
+        @if (hasMultipleTools()) {
+          <button
+            mat-icon-button
+            type="button"
+            class="tool-preview__nav tool-preview__nav--prev"
+            aria-label="Preview previous tool"
+            (click)="previewPrevious()"
+          >
+            <mat-icon aria-hidden="true">chevron_left</mat-icon>
+          </button>
+        }
+
+        <button
+          type="button"
+          class="tool-preview__artifact-button"
+          aria-label="Open image full screen"
+          (click)="openExpandedImage()"
+        >
+          <mat-card appearance="outlined" class="tool-preview__artifact">
+            <img [src]="tool.imageSrc" [alt]="tool.title + ' preview'" />
+          </mat-card>
+        </button>
+
+        @if (hasMultipleTools()) {
+          <button
+            mat-icon-button
+            type="button"
+            class="tool-preview__nav tool-preview__nav--next"
+            aria-label="Preview next tool"
+            (click)="previewNext()"
+          >
+            <mat-icon aria-hidden="true">chevron_right</mat-icon>
+          </button>
+        }
+      </div>
+    }
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button mat-button type="button" (click)="close()">Back to tools</button>
+    <button mat-flat-button type="button" color="primary" (click)="openFullTool()">Open full tool</button>
+  </mat-dialog-actions>
+
+  @if (imageExpanded() && tool.imageSrc) {
+    <div class="tool-preview__lightbox" (click)="closeExpandedImage()">
+      <button
+        mat-icon-button
+        type="button"
+        class="tool-preview__lightbox-close"
+        aria-label="Close expanded image"
+        (click)="closeExpandedImage(); $event.stopPropagation()"
+      >
+        <mat-icon aria-hidden="true">close</mat-icon>
+      </button>
+      <img
+        class="tool-preview__lightbox-image"
+        [src]="tool.imageSrc"
+        [alt]="tool.title + ' full image'"
+        (click)="$event.stopPropagation()"
+      />
+    </div>
+  }
+}

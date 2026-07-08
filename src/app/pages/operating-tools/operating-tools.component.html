@@ -1,91 +1,10 @@
-@let recommendation = selectedRecommendation();
-
 <section class="page-hero">
   <div class="cw-container page-hero__layout">
     <div class="page-hero__copy">
       <p class="cw-eyebrow">{{ hero.eyebrow }}</p>
       <h1>{{ hero.headline }}</h1>
-      <p class="cw-muted">{{ hero.intro }}</p>
-
-      <div class="state-filter" aria-label="Operating tool state selector">
-        <p class="state-filter__prompt">{{ hero.prompt }}</p>
-        <div class="state-filter__chips" role="group" aria-label="Choose the closest operating state">
-          @for (option of stateOptions; track option.id) {
-            <button
-              type="button"
-              class="state-filter__chip"
-              [class.is-active]="isSelected(option.id)"
-              [attr.aria-pressed]="isSelected(option.id)"
-              (click)="selectState(option.id)"
-            >
-              {{ option.label }}
-            </button>
-          }
-        </div>
-      </div>
+      <p class="lead-copy">{{ hero.intro }}</p>
+      <cw-operating-tools-selector />
     </div>
-  </div>
-</section>
-
-<section class="cw-section operating-library" id="all-operating-tools">
-  <div class="cw-container operating-library__stack">
-    @if (recommendation) {
-      <section class="recommendation-block" aria-label="Recommended operating tool">
-        <p class="cw-eyebrow">Start here.</p>
-        <h2>{{ recommendation.tool.title }}</h2>
-        <p class="recommendation-block__summary">{{ recommendation.sentence }}</p>
-        <a mat-button color="primary" [routerLink]="getOperatingToolRoute(recommendation.tool.slug)">
-          Open tool
-          <mat-icon>arrow_forward</mat-icon>
-        </a>
-      </section>
-
-      <section class="tool-list-section" [attr.data-state]="selectedState()">
-        <div class="tool-list-section__header">
-          <h3>{{ selectedStateLabel() }} tools</h3>
-        </div>
-
-        <div class="tool-list">
-          @for (tool of filteredItems(); track trackBySlug($index, tool)) {
-            <mat-card appearance="outlined" class="tool-item">
-              <div class="tool-item__copy">
-                <h4>{{ tool.title }}</h4>
-                <p>{{ tool.summary }}</p>
-              </div>
-              <a mat-button color="primary" [routerLink]="getOperatingToolRoute(tool.slug)">
-                Open tool
-                <mat-icon>arrow_forward</mat-icon>
-              </a>
-            </mat-card>
-          }
-        </div>
-      </section>
-    } @else {
-      @for (section of groupedSections(); track section.id) {
-        <section class="tool-list-section" [attr.id]="section.id">
-          <div class="tool-list-section__header">
-            <div>
-              <h2>{{ section.title }}</h2>
-              <p class="cw-muted">{{ section.description }}</p>
-            </div>
-          </div>
-
-          <div class="tool-list">
-            @for (tool of section.items; track trackBySlug($index, tool)) {
-              <mat-card appearance="outlined" class="tool-item">
-                <div class="tool-item__copy">
-                  <h3>{{ tool.title }}</h3>
-                  <p>{{ tool.summary }}</p>
-                </div>
-                <a mat-button color="primary" [routerLink]="getOperatingToolRoute(tool.slug)">
-                  Open tool
-                  <mat-icon>arrow_forward</mat-icon>
-                </a>
-              </mat-card>
-            }
-          </div>
-        </section>
-      }
-    }
   </div>
 </section>

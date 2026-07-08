@@ -11,21 +11,9 @@ import { MatListModule } from '@angular/material/list';
 import { curveCatmullRom, line } from 'd3';
 import { startWith } from 'rxjs';
 import { ContentService } from '../../core/content/content.service';
-import { FrameworkItem, OperatingToolItem, HomeContentViewModel, WritingItem } from '../../core/content/content.models';
+import { FrameworkItem, HomeContentViewModel, WritingItem } from '../../core/content/content.models';
 import { HOME_PUBLISHING_PATH, PublishingPathAct, PublishingPathActId, PublishingPathItem, PublishingPathViewMode } from '../../data/home-publishing-path.data';
-import { HomeOperatingToolSelectorComponent } from './home-operating-tool-selector.component';
-import {
-  HomeOperatingToolSelectorBenefit,
-  HomeOperatingToolSelectorMoment
-} from './home-operating-tool-selector.models';
-
-interface HomeOperatingToolMomentConfig {
-  label: string;
-  title: string;
-  preview: string;
-  icon: string;
-  slug: string;
-}
+import { OperatingToolsSelectorComponent } from '../operating-tools/operating-tools-selector.component';
 
 interface PublishingPathRailGroup {
   id: string;
@@ -58,65 +46,6 @@ interface PublishingPathGraphData {
   bands: PublishingPathGraphBand[];
   nodes: PublishingPathGraphNode[];
 }
-
-const HOME_OPERATING_TOOL_MOMENTS: HomeOperatingToolMomentConfig[] = [
-  {
-    label: 'Agency check',
-    title: 'I need to know whether the system is making me clearer or just tighter.',
-    preview: 'Assess whether leadership effectiveness is rising through recovery, cleaner decisions, and follow-through or falling into reactive control.',
-    icon: 'track_changes',
-    slug: 'operating-tools/agency-is-the-metric'
-  },
-  {
-    label: 'Activation spike',
-    title: 'I am overthinking and need motion.',
-    preview: 'Move charged mental energy out of rumination and into physical action before making the next decision.',
-    icon: 'fitness_center',
-    slug: 'operating-tools/activation-response'
-  },
-  {
-    label: 'Avoidance',
-    title: 'I am stuck before starting.',
-    preview: 'Lower the entry cost and make first contact with the work.',
-    icon: 'bolt',
-    slug: 'operating-tools/avoid-act-loop'
-  },
-  {
-    label: 'Decision pressure',
-    title: 'I need a cleaner next move.',
-    preview: 'Make the decision visible enough to compare options, risks, and consequences.',
-    icon: 'account_tree',
-    slug: 'operating-tools/decision-tree-guide'
-  },
-  {
-    label: 'Pattern recognition',
-    title: 'I see the loop but need agency.',
-    preview: 'Use the pattern without getting trapped inside it.',
-    icon: 'travel_explore',
-    slug: 'operating-tools/see-the-pattern-choose-the-path'
-  },
-  {
-    label: 'Ambiguity',
-    title: 'I do not have the full map yet.',
-    preview: 'Move with direction when the full path is not yet clear.',
-    icon: 'explore',
-    slug: 'operating-tools/a-compass-not-a-map'
-  },
-  {
-    label: 'Execution structure',
-    title: 'I need to run the day with more evidence.',
-    preview: 'Turn intention into observable execution and useful feedback.',
-    icon: 'event_available',
-    slug: 'operating-tools/run-the-day-with-structure'
-  }
-];
-
-const HOME_OPERATING_TOOL_BENEFITS: HomeOperatingToolSelectorBenefit[] = [
-  { icon: 'schedule', title: 'Fast to start', description: 'Begin in under 1 minute.' },
-  { icon: 'visibility', title: 'Visual clarity', description: 'See the big picture at a glance.' },
-  { icon: 'autorenew', title: 'Repeatable', description: 'Use it again and get better.' },
-  { icon: 'task_alt', title: 'Action focused', description: 'Designed to move you forward.' }
-];
 
 const HOME_HERO = {
   eyebrow: 'Organizational Sensemaking & Execution',
@@ -223,7 +152,7 @@ const EMPTY_HOME: HomeContentViewModel = {
 @Component({
   selector: 'cw-home',
   standalone: true,
-  imports: [RouterLink, DatePipe, MatButtonModule, MatButtonToggleModule, MatCardModule, MatChipsModule, MatIconModule, MatListModule, HomeOperatingToolSelectorComponent],
+  imports: [RouterLink, DatePipe, MatButtonModule, MatButtonToggleModule, MatCardModule, MatChipsModule, MatIconModule, MatListModule, OperatingToolsSelectorComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -250,27 +179,7 @@ export class HomeComponent implements AfterViewInit {
   readonly homeWritingSection = HOME_WRITING_SECTION;
   readonly homeFrameworkSection = HOME_FRAMEWORK_SECTION;
   readonly homeAboutSection = HOME_ABOUT_SECTION;
-  readonly operatingToolItems = toSignal(this.contentService.getOperatingToolsIndex(), {
-    initialValue: [] as OperatingToolItem[]
-  });
   readonly featuredWritingItems = computed<WritingItem[]>(() => this.homeContent().featuredWriting ?? []);
-  readonly homeOperatingToolMoments = computed<HomeOperatingToolSelectorMoment[]>(() =>
-    HOME_OPERATING_TOOL_MOMENTS.flatMap((entry) => {
-      const operatingTool = this.operatingToolItems().find((item) => item.slug === entry.slug);
-      return operatingTool
-        ? [{
-            label: entry.label,
-            title: entry.title,
-            preview: entry.preview,
-            icon: entry.icon,
-            operatingTool,
-            route: this.getOperatingToolRoute(operatingTool)
-          }]
-        : [];
-    })
-  );
-  readonly homeOperatingToolBenefits = HOME_OPERATING_TOOL_BENEFITS;
-  readonly selectedHomeOperatingToolMomentIndex = signal(0);
   readonly featuredFrameworkItem = computed<FrameworkItem | null>(() => this.homeContent().featuredFrameworks?.[0] ?? null);
   readonly viewportWidth = signal(typeof window === 'undefined' ? 1440 : window.innerWidth);
   readonly cardsPerSlide = signal(this.getWritingCardsPerSlide());
@@ -430,22 +339,6 @@ export class HomeComponent implements AfterViewInit {
 
   getFrameworkRoute(slug: string): string[] {
     return this.slugToRoute(slug);
-  }
-
-  getOperatingToolRoute(operatingTool: OperatingToolItem): string[] {
-    return this.slugToRoute(operatingTool.slug);
-  }
-
-  getOperatingToolTags(operatingTool: OperatingToolItem, limit = 3): string[] {
-    return operatingTool.tags.slice(0, limit);
-  }
-
-  selectHomeOperatingToolMoment(index: number): void {
-    if (index < 0 || index >= this.homeOperatingToolMoments().length) {
-      return;
-    }
-
-    this.selectedHomeOperatingToolMomentIndex.set(index);
   }
 
   getPublishingPathRoute(item: PublishingPathItem): string[] {
