@@ -1,0 +1,238 @@
+:host {
+  display: block;
+  --machine-shell-border: color-mix(in srgb, var(--cw-line) 92%, var(--cw-accent) 8%);
+  --machine-shell-surface: color-mix(in srgb, var(--cw-panel) 98%, white 2%);
+  --control-panel-surface: color-mix(in srgb, var(--cw-panel) 99%, white 1%);
+  --toggle-surface: color-mix(in srgb, var(--cw-panel) 99%, white 1%);
+}
+
+.machine-shell {
+  display: grid;
+  gap: 14px;
+  padding: 18px;
+  border-radius: calc(var(--cw-radius) + 4px) !important;
+  border-color: var(--machine-shell-border) !important;
+  background: var(--machine-shell-surface) !important;
+}
+
+.machine-shell__grid {
+  display: grid;
+  grid-template-columns: minmax(280px, 320px) minmax(0, 1fr);
+  gap: 14px;
+  align-items: start;
+}
+
+.control-panel {
+  --mdc-outlined-card-container-color: var(--control-panel-surface);
+  position: sticky;
+  top: calc(var(--cw-toolbar-current-height, var(--cw-toolbar-height)) + 16px);
+  align-self: start;
+  border-color: var(--machine-shell-border) !important;
+  background: var(--control-panel-surface) !important;
+  box-shadow: none !important;
+}
+
+.control-panel__content {
+  display: grid;
+  gap: 14px;
+  padding: 18px 16px !important;
+}
+
+.control-panel__header {
+  display: grid;
+  gap: 8px;
+}
+
+.control-panel__title {
+  margin: 0;
+  color: var(--cw-ink);
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+
+.control-panel__intro {
+  margin: 0;
+  color: var(--cw-muted);
+  font-size: 0.86rem;
+  font-weight: 560;
+  line-height: 1.45;
+}
+
+.feeling-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 74px repeat(6, minmax(64px, 74px));
+  gap: 10px;
+  align-content: start;
+  min-height: 0;
+}
+
+.feeling-button {
+  --feeling-accent: var(--cw-accent);
+  --mdc-outlined-button-outline-color: color-mix(in srgb, var(--cw-line) 88%, var(--cw-accent) 12%);
+  --mdc-outlined-button-label-text-color: var(--cw-ink);
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+  border-radius: 10px;
+  background: var(--toggle-surface) !important;
+  overflow: hidden;
+  justify-content: flex-start !important;
+  text-align: left;
+}
+
+.feeling-button::after {
+  position: absolute;
+  top: 50%;
+  right: 14px;
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid color-mix(in srgb, var(--cw-muted) 62%, transparent);
+  border-radius: 999px;
+  content: '';
+  transform: translateY(-50%);
+}
+
+.feeling-button--active {
+  --mdc-outlined-button-outline-color: color-mix(in srgb, var(--feeling-accent) 58%, var(--cw-line));
+  background: color-mix(in srgb, var(--feeling-accent) 10%, var(--toggle-surface)) !important;
+}
+
+.feeling-button--active::after {
+  border-color: var(--feeling-accent);
+  background:
+    radial-gradient(circle, white 0 30%, transparent 33%),
+    var(--feeling-accent);
+}
+
+.feeling-button--wide {
+  grid-column: 1 / -1;
+  min-height: 74px;
+}
+
+.feeling-button--wide::after {
+  border-color: var(--cw-accent);
+}
+
+:host ::ng-deep .feeling-button .mdc-button__label {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+:host ::ng-deep .feeling-button .mdc-button__ripple,
+:host ::ng-deep .feeling-button .mat-mdc-button-persistent-ripple {
+  border-radius: inherit;
+}
+
+.feeling-button__content {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr);
+  gap: 12px;
+  align-content: center;
+  align-items: center;
+  justify-items: stretch;
+  width: 100%;
+  height: 100%;
+  padding: 8px 42px 8px 14px;
+}
+
+.feeling-button__icon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid color-mix(in srgb, var(--feeling-accent) 74%, var(--cw-line) 26%);
+  border-radius: 999px;
+  font-size: 21px;
+  line-height: 40px;
+  color: var(--feeling-accent);
+  background: color-mix(in srgb, var(--feeling-accent) 10%, var(--cw-panel));
+}
+
+.feeling-button__text {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+  width: 100%;
+}
+
+.feeling-button__label,
+.feeling-button__caption {
+  white-space: normal;
+}
+
+.feeling-button__label {
+  color: var(--cw-ink);
+  font-size: clamp(0.82rem, 0.84vw, 0.94rem);
+  font-weight: 760;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.feeling-button__caption {
+  color: var(--cw-muted);
+  font-size: clamp(0.72rem, 0.74vw, 0.82rem);
+  font-weight: 620;
+  line-height: 1.24;
+}
+
+.assembly-shell {
+  min-width: 0;
+  min-height: 620px;
+  border: 1px solid var(--machine-shell-border);
+  border-radius: calc(var(--cw-radius) + 2px);
+  overflow: clip;
+  background: transparent;
+}
+
+@media (max-width: 1120px) {
+  .machine-shell__grid {
+    grid-template-columns: minmax(300px, 320px) minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .machine-shell__grid {
+    grid-template-columns: 1fr;
+    min-height: unset;
+  }
+
+  .control-panel {
+    position: static;
+  }
+
+  .assembly-shell {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .feeling-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .feeling-button,
+  .feeling-button--wide {
+    min-height: 112px;
+  }
+}
+
+:host-context(body.cw-theme-dusk) {
+  --machine-shell-border: color-mix(in srgb, var(--cw-line) 84%, var(--cw-accent) 16%);
+  --machine-shell-surface: color-mix(in srgb, var(--cw-panel) 82%, var(--cw-page) 18%);
+  --control-panel-surface: color-mix(in srgb, var(--cw-panel) 78%, var(--cw-page) 22%);
+  --toggle-surface: color-mix(in srgb, var(--cw-panel) 76%, var(--cw-page) 24%);
+}
+
+:host-context(body.cw-theme-dusk) .feeling-button::after {
+  border-color: color-mix(in srgb, var(--cw-muted) 72%, var(--cw-line));
+}
+
+:host-context(body.cw-theme-dusk) .feeling-button__icon {
+  background: color-mix(in srgb, var(--feeling-accent) 13%, var(--cw-panel));
+}

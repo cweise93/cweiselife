@@ -1,0 +1,67 @@
+<section class="machine-shell cw-surface-card">
+  <div class="machine-shell__grid">
+    <mat-card appearance="outlined" class="control-panel">
+      <mat-card-content class="control-panel__content">
+        <div class="control-panel__header">
+          <p class="control-panel__title">I feel...</p>
+          <p class="control-panel__intro">Select the state closest to your current moment.</p>
+        </div>
+
+        <div class="feeling-grid" role="group" aria-label="Select one or more operating states">
+          @if (showAllControl(); as control) {
+            <button
+              mat-stroked-button
+              type="button"
+              class="feeling-button feeling-button--wide"
+              [class.feeling-button--active]="isFeelingActive(control.id)"
+              [style.--feeling-accent]="control.accent"
+              [attr.aria-label]="control.label + ': ' + control.caption"
+              [attr.aria-pressed]="isFeelingActive(control.id)"
+              (click)="toggleFeeling(control.id)"
+            >
+              <span class="feeling-button__content">
+                <mat-icon class="feeling-button__icon">{{ control.icon }}</mat-icon>
+                <span class="feeling-button__text">
+                  <span class="feeling-button__label">{{ control.label }}</span>
+                  <span class="feeling-button__caption">{{ control.caption }}</span>
+                </span>
+              </span>
+            </button>
+          }
+
+          @for (control of primaryControls(); track control.id) {
+            <button
+              mat-stroked-button
+              type="button"
+              class="feeling-button"
+              [class.feeling-button--active]="isFeelingActive(control.id)"
+              [style.--feeling-accent]="control.accent"
+              [attr.aria-label]="control.label + ': ' + control.caption"
+              [attr.aria-pressed]="isFeelingActive(control.id)"
+              (click)="toggleFeeling(control.id)"
+            >
+              <span class="feeling-button__content">
+                <mat-icon class="feeling-button__icon">{{ control.icon }}</mat-icon>
+                <span class="feeling-button__text">
+                  <span class="feeling-button__label">{{ control.label }}</span>
+                  <span class="feeling-button__caption">{{ control.caption }}</span>
+                </span>
+              </span>
+            </button>
+          }
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <div class="assembly-shell">
+      <cw-operating-tools-puzzle
+        [mode]="assemblyMode()"
+        [hubTitle]="hubTitle()"
+        [hubSubtitle]="hubSubtitle()"
+        [hubIcon]="hubIcon()"
+        [tiles]="assemblyTiles()"
+        (tileActivated)="openToolPreview($event)"
+      />
+    </div>
+  </div>
+</section>

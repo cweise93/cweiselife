@@ -1,0 +1,70 @@
+<section class="tool-network" [class.tool-network--focused]="mode() === 'focused'">
+  <header class="tool-network__header">
+    <div>
+      <p class="tool-network__eyebrow">Operating Network</p>
+      <h2>{{ mode() === 'all' ? 'All tools available' : 'Tools surfaced for this state' }}</h2>
+      <p>{{ hubSubtitle() }}</p>
+    </div>
+
+    <div class="tool-network__metrics" aria-label="Tool network summary">
+      <span>
+        <strong>{{ surfacedCount() }}</strong>
+        surfaced
+      </span>
+      <span>
+        <strong>{{ availableCount() }}</strong>
+        available
+      </span>
+    </div>
+  </header>
+
+  <div class="tool-network__hub" [class.tool-network__hub--active]="mode() === 'focused'">
+    <span class="tool-network__hub-icon">
+      <mat-icon aria-hidden="true">{{ hubIcon() }}</mat-icon>
+    </span>
+    <span>
+      <strong>{{ hubTitle() }}</strong>
+      <em>
+        @if (primaryTile(); as tile) {
+          Best first tool: {{ tile.title }}
+        } @else {
+          Select a state to surface the right tools.
+        }
+      </em>
+    </span>
+  </div>
+
+  <div class="tool-network__grid" role="list" aria-label="Operating tools">
+    @for (tile of visibleTiles(); track tile.id) {
+      <mat-card
+        appearance="outlined"
+        class="tool-node"
+        [class.tool-node--primary]="tile.primary"
+        [class.tool-node--related]="tile.related"
+        [class.tool-node--faded]="tile.faded"
+        [attr.aria-label]="'Preview ' + tile.title"
+        role="listitem"
+        tabindex="0"
+        (click)="onTileClick(tile)"
+        (keydown)="onTileKeydown($event, tile)"
+      >
+        <mat-card-header>
+          <div mat-card-avatar class="tool-node__avatar" aria-hidden="true">
+            <mat-icon>{{ tile.icon }}</mat-icon>
+          </div>
+          <mat-card-title>{{ tile.title }}</mat-card-title>
+          <mat-card-subtitle>
+            @if (tile.primary) {
+              Best match
+            } @else if (tile.related) {
+              Surfaced
+            } @else {
+              Available
+            }
+          </mat-card-subtitle>
+          <mat-icon class="tool-node__arrow" aria-hidden="true">arrow_forward</mat-icon>
+        </mat-card-header>
+      </mat-card>
+    }
+  </div>
+</section>
