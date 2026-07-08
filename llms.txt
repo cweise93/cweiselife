@@ -23,10 +23,10 @@ This site publishes prerendered essays, frameworks, and short-form operating too
 - [Systems Translation Loop](https://cweise.com/frameworks/2026/03/18/systems-translation-loop/): A framework for bridging executive intent, workflow reality, and technical implementation without losing signal.
 
 ## Featured Operating Tools
+- [Agency Is the Metric](https://cweise.com/operating-tools/agency-is-the-metric/): A practical operating tool for assessing whether an operating system is producing reality-based leadership, not just more control.
 - [Activation Response](https://cweise.com/operating-tools/activation-response/): A practical guide for moving nervous-system activation out of rumination and into physical motion.
 - [A Compass, Not a Map](https://cweise.com/operating-tools/a-compass-not-a-map/): A practical operating tool for moving through ambiguity without over-designing the future.
 - [Avoid to Act Loop](https://cweise.com/operating-tools/avoid-act-loop/): A short intervention for turning avoidance into immediate motion.
-- [Becoming the Solution Provider](https://cweise.com/operating-tools/becoming-the-solution-provider/): A systems-thinking guide for shifting from firefighting to durable problem prevention.
 
 ## Optional
 - [llms-full.txt](https://cweise.com/llms-full.txt): Expanded machine-readable digest of all public content on the site.

@@ -1358,6 +1358,44 @@ George did not need to understand every prompt. He needed the delivery engine to
   The feeling is temporary. The next rep is real.
   Callout: Stop making your mind carry what your muscles can burn.
 
+### Operating Tool: Agency Is the Metric
+- URL: https://cweise.com/operating-tools/agency-is-the-metric/
+- Summary: A practical operating tool for assessing whether an operating system is producing reality-based leadership, not just more control.
+- Published: Not specified
+- Tags: agency, leadership, operating systems, governance, decision quality
+- SEO description: A practical operating tool for assessing whether an operating system is producing reality-based leadership, not just more control.
+- Primary share image: https://cweise.com/assets/images/operating-tools/agency-is-the-metric/01_agency_is_the_metric.png
+- Intro: Most operating systems measure activity, output, or compliance. This tool argues that the more useful executive metric is agency: the ability to make reality-based decisions without needing reality to feel emotionally acceptable first.
+- Section: The hidden operating problem
+  Many leadership systems over-measure execution artifacts while under-measuring the human capacity required to use them well.
+  When cognitive load rises, leaders do not simply become busy. They often become more reactive, more narrative-dependent, more rigid, and more likely to substitute motion for reality-based action.
+  Callout: A leader can have the right tools, the right meeting cadence, and the right dashboard and still lose effectiveness if agency collapses under load.
+- Section: Agency is the metric
+  Agency is the ability to make reality-based decisions without needing reality to feel emotionally acceptable first.
+  It is the clearest practical signal that an operating system is working because it shows whether a leader can recover, decide, follow through, and compound value under imperfect conditions.
+  Callout: The question is not whether the system creates more control. The question is whether it creates more agency under load.
+- Section: Use the agency stack
+  Treat agency as an operating outcome built through six layers: physiological stability, cognitive load control, executive function availability, signal clarity, agency, and leadership engagement with compounding value.
+  The point is not to romanticize self-mastery. It is to understand that governance quality depends on the condition of the system trying to govern.
+  Callout: Agency is not a personality trait. It is an operating outcome.
+- Section: Why not just max out executive function
+  Over-control can create rigidity, and more decisions do not guarantee better decisions.
+  High agency uses only the amount of executive effort the task actually needs. The goal is optimized governance with lower cognitive load, not permanent strain.
+  Callout: Greater agency reduces dependence on fantasy scripts, villains, and false certainty.
+- Section: Hard metrics anyone can assess
+  Measure recovery time to governance, lead-asset conversion, reactive check count, unplanned spend leakage, and open-loop load to see whether the system is preserving real capacity.
+  Also track decision reversal rate, meeting yield, escalation quality, follow-through ratio, and context switching count. These are observable operating signals, not personality tests.
+  Callout: If agency is improving, recovery should get faster, reactive checking should fall, and follow-through should become more reliable.
+- Section: What OS effectiveness looks like
+  A working system produces faster recovery under load, fewer reactive explanations and fantasy dependencies, cleaner decisions with less internal noise, more protected future value, and more visible compounding from reality-based action.
+  Callout: Healthy agency retains humility, appropriate friction with reality, and appreciation of existing resources.
+- Section: How to use it
+  Use this tool as a diagnostic layer over an existing operating system rather than as another productivity dashboard.
+  Start by asking where agency is degrading: body state, cognitive load, executive function availability, signal clarity, decision quality, or leadership follow-through. Then inspect the hard metrics and the stack together.
+- Section: The operating question
+  If the system is working, leaders should recover faster, decide cleaner, follow through more reliably, and create less drag for the organization around them.
+  Callout: Agency converts inner governance into visible leadership output.
+
 ## Connect
 - URL: https://cweise.com/connect/
 - Headline: Thoughts on operations, systems, and execution.

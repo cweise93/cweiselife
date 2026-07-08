@@ -1254,6 +1254,100 @@
           }
         ]
       }
+    },
+    {
+      "id": "operating-tool-022",
+      "slug": "operating-tools/agency-is-the-metric",
+      "title": "Agency Is the Metric",
+      "summary": "A practical operating tool for assessing whether an operating system is producing reality-based leadership, not just more control.",
+      "status": "published",
+      "featured": true,
+      "icon": "track_changes",
+      "tags": [
+        "agency",
+        "leadership",
+        "operating systems",
+        "governance",
+        "decision quality"
+      ],
+      "heroImage": "assets/images/operating-tools/agency-is-the-metric/01_agency_is_the_metric.png",
+      "seo": {
+        "title": "Agency Is the Metric",
+        "description": "A practical operating tool for assessing whether an operating system is producing reality-based leadership, not just more control."
+      },
+      "productionAssets": {
+        "socialImage": {
+          "label": "Operating tool social image",
+          "href": "assets/images/operating-tools/agency-is-the-metric/01_agency_is_the_metric.png",
+          "description": "Use the primary operating tool artifact as the default Open Graph and social preview image."
+        }
+      },
+      "body": {
+        "intro": "Most operating systems measure activity, output, or compliance. This tool argues that the more useful executive metric is agency: the ability to make reality-based decisions without needing reality to feel emotionally acceptable first.",
+        "sections": [
+          {
+            "heading": "The hidden operating problem",
+            "paragraphs": [
+              "Many leadership systems over-measure execution artifacts while under-measuring the human capacity required to use them well.",
+              "When cognitive load rises, leaders do not simply become busy. They often become more reactive, more narrative-dependent, more rigid, and more likely to substitute motion for reality-based action."
+            ],
+            "callout": "A leader can have the right tools, the right meeting cadence, and the right dashboard and still lose effectiveness if agency collapses under load."
+          },
+          {
+            "heading": "Agency is the metric",
+            "paragraphs": [
+              "Agency is the ability to make reality-based decisions without needing reality to feel emotionally acceptable first.",
+              "It is the clearest practical signal that an operating system is working because it shows whether a leader can recover, decide, follow through, and compound value under imperfect conditions."
+            ],
+            "callout": "The question is not whether the system creates more control. The question is whether it creates more agency under load."
+          },
+          {
+            "heading": "Use the agency stack",
+            "paragraphs": [
+              "Treat agency as an operating outcome built through six layers: physiological stability, cognitive load control, executive function availability, signal clarity, agency, and leadership engagement with compounding value.",
+              "The point is not to romanticize self-mastery. It is to understand that governance quality depends on the condition of the system trying to govern."
+            ],
+            "callout": "Agency is not a personality trait. It is an operating outcome."
+          },
+          {
+            "heading": "Why not just max out executive function",
+            "paragraphs": [
+              "Over-control can create rigidity, and more decisions do not guarantee better decisions.",
+              "High agency uses only the amount of executive effort the task actually needs. The goal is optimized governance with lower cognitive load, not permanent strain."
+            ],
+            "callout": "Greater agency reduces dependence on fantasy scripts, villains, and false certainty."
+          },
+          {
+            "heading": "Hard metrics anyone can assess",
+            "paragraphs": [
+              "Measure recovery time to governance, lead-asset conversion, reactive check count, unplanned spend leakage, and open-loop load to see whether the system is preserving real capacity.",
+              "Also track decision reversal rate, meeting yield, escalation quality, follow-through ratio, and context switching count. These are observable operating signals, not personality tests."
+            ],
+            "callout": "If agency is improving, recovery should get faster, reactive checking should fall, and follow-through should become more reliable."
+          },
+          {
+            "heading": "What OS effectiveness looks like",
+            "paragraphs": [
+              "A working system produces faster recovery under load, fewer reactive explanations and fantasy dependencies, cleaner decisions with less internal noise, more protected future value, and more visible compounding from reality-based action."
+            ],
+            "callout": "Healthy agency retains humility, appropriate friction with reality, and appreciation of existing resources."
+          },
+          {
+            "heading": "How to use it",
+            "paragraphs": [
+              "Use this tool as a diagnostic layer over an existing operating system rather than as another productivity dashboard.",
+              "Start by asking where agency is degrading: body state, cognitive load, executive function availability, signal clarity, decision quality, or leadership follow-through. Then inspect the hard metrics and the stack together."
+            ]
+          },
+          {
+            "heading": "The operating question",
+            "paragraphs": [
+              "If the system is working, leaders should recover faster, decide cleaner, follow through more reliably, and create less drag for the organization around them."
+            ],
+            "callout": "Agency converts inner governance into visible leadership output."
+          }
+        ]
+      }
     }
   ]
 }
