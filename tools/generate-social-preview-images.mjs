@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { execFileSync } from "node:child_process";
+import { execFileSync, spawnSync } from "node:child_process";
 import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import os from "node:os";
 import path from "node:path";
@@ -68,6 +68,15 @@ const staticPageSpecs = [
 const referencedImages = new Set();
 const generatedImages = [];
 const updatedFiles = new Set();
+
+function commandExists(command) {
+  const result = spawnSync(command, [], {
+    cwd: repoRoot,
+    stdio: "ignore",
+  });
+
+  return result.error?.code !== "ENOENT";
+}
 
 function readJson(fileName) {
   return JSON.parse(readFileSync(path.join(contentRoot, fileName), "utf8"));
@@ -169,6 +178,43 @@ function createSocialImageRecord(outputAssetPath) {
   };
 }
 
+function verifyCommittedSocialImages() {
+  for (const spec of staticPageSpecs) {
+    const absolutePath = toAbsolute(spec.output);
+    if (!existsSync(absolutePath)) {
+      throw new Error(`Missing committed static social image: ${spec.output}`);
+    }
+  }
+
+  for (const fileName of contentFiles) {
+    const data = readJson(fileName);
+
+    for (const item of data.items) {
+      if (item.status !== "published") {
+        continue;
+      }
+
+      const socialImage = item.productionAssets?.socialImage?.href;
+      if (!socialImage) {
+        throw new Error(`Published item is missing productionAssets.socialImage: ${item.slug}`);
+      }
+
+      if (!path.posix.basename(socialImage).startsWith("og_")) {
+        throw new Error(`Published item does not reference a dedicated OG image: ${item.slug} -> ${socialImage}`);
+      }
+
+      if (!existsSync(toAbsolute(socialImage))) {
+        throw new Error(`Missing committed social image: ${socialImage}`);
+      }
+    }
+  }
+
+  const dimensionsModule = path.join(srcRoot, "app", "core", "seo", "image-dimensions.ts");
+  if (!existsSync(dimensionsModule)) {
+    throw new Error("Missing committed image dimensions module.");
+  }
+}
+
 function ensureContentSocialImages() {
   for (const fileName of contentFiles) {
     const data = readJson(fileName);
@@ -207,6 +253,12 @@ function ensureContentSocialImages() {
       updatedFiles.add(fileName);
     }
   }
+}
+
+if (!commandExists("sips")) {
+  verifyCommittedSocialImages();
+  console.log("sips unavailable; reused committed social preview images and dimensions.");
+  process.exit(0);
 }
 
 function collectRasterImages(rootDirectory) {

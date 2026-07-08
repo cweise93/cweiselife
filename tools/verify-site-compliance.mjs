@@ -34,6 +34,8 @@ const staticPageImages = [
   "assets/images/about/og_about.png",
   "assets/images/connect/og_connect.png",
 ];
+const imageDimensionsModulePath = path.join(srcRoot, "app", "core", "seo", "image-dimensions.ts");
+const imageDimensionsByPath = parseImageDimensionsModule();
 
 function readJson(fileName) {
   return JSON.parse(readFileSync(path.join(contentRoot, fileName), "utf8"));
@@ -53,7 +55,31 @@ function parseSipsNumber(output, key) {
   return Number.parseInt(match[1], 10);
 }
 
+function parseImageDimensionsModule() {
+  if (!existsSync(imageDimensionsModulePath)) {
+    return {};
+  }
+
+  const text = readFileSync(imageDimensionsModulePath, "utf8");
+  const matches = text.matchAll(/'([^']+)': \{ width: (\d+), height: (\d+) \},/g);
+  const parsed = {};
+
+  for (const match of matches) {
+    parsed[match[1]] = {
+      width: Number.parseInt(match[2], 10),
+      height: Number.parseInt(match[3], 10),
+    };
+  }
+
+  return parsed;
+}
+
 function getImageDimensions(assetPath) {
+  const precomputed = imageDimensionsByPath[assetPath];
+  if (precomputed) {
+    return precomputed;
+  }
+
   const absolutePath = path.join(srcRoot, assetPath);
   const output = execFileSync("sips", ["-g", "pixelWidth", "-g", "pixelHeight", absolutePath], {
     encoding: "utf8",

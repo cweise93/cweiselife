@@ -44,12 +44,12 @@ const enforceWhereFrom =
   process.platform === "darwin" && process.env.C2PA_VERIFY_WHERE_FROM === "1";
 
 function commandExists(command) {
-  const result = spawnSync("sh", ["-lc", `command -v ${command}`], {
+  const result = spawnSync(command, [], {
     cwd: repoRoot,
-    encoding: "utf8",
+    stdio: "ignore",
   });
 
-  return result.status === 0;
+  return result.error?.code !== "ENOENT";
 }
 
 function normalizeToRepo(filePath) {
