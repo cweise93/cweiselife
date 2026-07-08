@@ -425,9 +425,9 @@
       },
       "productionAssets": {
         "socialImage": {
-          "label": "Companion social image",
-          "href": "assets/images/writing/articles/2026-06-20_friday_night_cap/images/01_friday_night_cap_hero.png",
-          "description": "Use the hero image as the default Open Graph/social preview until a separate square social image is created."
+          "label": "Social preview image",
+          "href": "assets/images/writing/articles/2026-06-20_friday_night_cap/images/og_friday_night_cap_hero.png",
+          "description": "Dedicated Open Graph and LinkedIn social preview image generated at a 1200x630 share ratio."
         },
         "articleImages": [
           {
@@ -1392,9 +1392,9 @@
       },
       "productionAssets": {
         "socialImage": {
-          "label": "Companion social image",
-          "href": "assets/images/writing/what-kind-of-leader-linkedin-comment.png",
-          "description": "Square social image for a companion post or comment thread."
+          "label": "Social preview image",
+          "href": "assets/images/writing/carousel/og_leader-moment-cover.png",
+          "description": "Dedicated Open Graph and LinkedIn social preview image generated at a 1200x630 share ratio."
         },
         "carousel": [
           {
@@ -1683,9 +1683,9 @@
       },
       "productionAssets": {
         "socialImage": {
-          "label": "Companion social image",
-          "href": "assets/images/writing/articles/2026-05-12_organizations_rarely_fail_lack_intelligence/images/01_organizations_rarely_fail_hero.png",
-          "description": "Use the hero image as the default Open Graph/social preview until a separate square social image is created."
+          "label": "Social preview image",
+          "href": "assets/images/writing/articles/2026-05-12_organizations_rarely_fail_lack_intelligence/images/og_organizations_rarely_fail_hero.png",
+          "description": "Dedicated Open Graph and LinkedIn social preview image generated at a 1200x630 share ratio."
         },
         "articleImages": [
           {
@@ -1964,9 +1964,9 @@
       },
       "productionAssets": {
         "socialImage": {
-          "label": "Companion social image",
-          "href": "assets/images/writing/articles/2026-04-28_operational_friction_translation_layers/images/01_translation_layers_hero.png",
-          "description": "Use the hero image as the default Open Graph/social preview until a separate square social image is created."
+          "label": "Social preview image",
+          "href": "assets/images/writing/articles/2026-04-28_operational_friction_translation_layers/images/og_translation_layers_hero.png",
+          "description": "Dedicated Open Graph and LinkedIn social preview image generated at a 1200x630 share ratio."
         },
         "articleImages": [
           {
@@ -2270,9 +2270,9 @@
       },
       "productionAssets": {
         "socialImage": {
-          "label": "Companion social image",
-          "href": "assets/images/writing/articles/2026-03-31_executive_follow_through_ownership_architecture/images/01_ownership_architecture_hero.png",
-          "description": "Use the hero image as the default Open Graph/social preview until a separate square social image is created."
+          "label": "Social preview image",
+          "href": "assets/images/writing/articles/2026-03-31_executive_follow_through_ownership_architecture/images/og_ownership_architecture_hero.png",
+          "description": "Dedicated Open Graph and LinkedIn social preview image generated at a 1200x630 share ratio."
         },
         "articleImages": [
           {

@@ -32,6 +32,14 @@ const gitPatterns = [
 
 const expectedIssuer = "cweise.com";
 const expectedCommonName = "Charles Weise";
+const expectedWhereFrom = "https://cweise.com/";
+const residualNeedles = [
+  "chatgpt",
+  "openai",
+  "gpt-image",
+  "openai media service api",
+  "gpt-4o",
+];
 
 function normalizeToRepo(filePath) {
   return path.relative(repoRoot, filePath).split(path.sep).join("/");
@@ -161,6 +169,49 @@ function verifyFile(filePath) {
       ok: false,
       filePath,
       reason: `Manifest validation state was ${parsed.validation_state ?? "unknown"}.`,
+    };
+  }
+
+  try {
+    const whereFrom = execFileSync("mdls", ["-raw", "-name", "kMDItemWhereFroms", filePath], {
+      cwd: repoRoot,
+      encoding: "utf8",
+    }).trim();
+
+    if (!whereFrom.includes(expectedWhereFrom)) {
+      return {
+        ok: false,
+        filePath,
+        reason: `Where from did not include ${expectedWhereFrom}.`,
+      };
+    }
+  } catch (error) {
+    return {
+      ok: false,
+      filePath,
+      reason: `Unable to inspect macOS where-from metadata: ${error.message}`,
+    };
+  }
+
+  try {
+    const exifOutput = execFileSync("exiftool", [filePath], {
+      cwd: repoRoot,
+      encoding: "utf8",
+    }).toLowerCase();
+    const residualMatches = residualNeedles.filter((needle) => exifOutput.includes(needle));
+
+    if (residualMatches.length) {
+      return {
+        ok: false,
+        filePath,
+        reason: `Residual source markers found: ${residualMatches.join(", ")}.`,
+      };
+    }
+  } catch (error) {
+    return {
+      ok: false,
+      filePath,
+      reason: `Unable to inspect embedded metadata with exiftool: ${error.message}`,
     };
   }
 
