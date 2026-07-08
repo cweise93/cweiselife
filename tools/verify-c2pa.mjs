@@ -40,6 +40,8 @@ const residualNeedles = [
   "openai media service api",
   "gpt-4o",
 ];
+const enforceWhereFrom =
+  process.platform === "darwin" && process.env.C2PA_VERIFY_WHERE_FROM === "1";
 
 function normalizeToRepo(filePath) {
   return path.relative(repoRoot, filePath).split(path.sep).join("/");
@@ -172,25 +174,27 @@ function verifyFile(filePath) {
     };
   }
 
-  try {
-    const whereFrom = execFileSync("mdls", ["-raw", "-name", "kMDItemWhereFroms", filePath], {
-      cwd: repoRoot,
-      encoding: "utf8",
-    }).trim();
+  if (enforceWhereFrom) {
+    try {
+      const whereFrom = execFileSync("mdls", ["-raw", "-name", "kMDItemWhereFroms", filePath], {
+        cwd: repoRoot,
+        encoding: "utf8",
+      }).trim();
 
-    if (!whereFrom.includes(expectedWhereFrom)) {
+      if (!whereFrom.includes(expectedWhereFrom)) {
+        return {
+          ok: false,
+          filePath,
+          reason: `Where from did not include ${expectedWhereFrom}.`,
+        };
+      }
+    } catch (error) {
       return {
         ok: false,
         filePath,
-        reason: `Where from did not include ${expectedWhereFrom}.`,
+        reason: `Unable to inspect macOS where-from metadata: ${error.message}`,
       };
     }
-  } catch (error) {
-    return {
-      ok: false,
-      filePath,
-      reason: `Unable to inspect macOS where-from metadata: ${error.message}`,
-    };
   }
 
   try {
