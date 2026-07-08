@@ -61,6 +61,13 @@ interface PublishingPathGraphData {
 
 const HOME_OPERATING_TOOL_MOMENTS: HomeOperatingToolMomentConfig[] = [
   {
+    label: 'Agency check',
+    title: 'I need to know whether the system is making me clearer or just tighter.',
+    preview: 'Assess whether leadership effectiveness is rising through recovery, cleaner decisions, and follow-through or falling into reactive control.',
+    icon: 'track_changes',
+    slug: 'operating-tools/agency-is-the-metric'
+  },
+  {
     label: 'Activation spike',
     title: 'I am overthinking and need motion.',
     preview: 'Move charged mental energy out of rumination and into physical action before making the next decision.',
