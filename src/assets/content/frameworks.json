@@ -548,7 +548,7 @@
           },
           {
             "label": "Method",
-            "value": "Estimate cost \u2192 apply seven levers \u2192 rank effort and impact \u2192 prioritize the work"
+            "value": "Estimate cost → apply seven levers → rank effort and impact → prioritize the work"
           }
         ],
         "toc": [
@@ -740,9 +740,9 @@
           }
         ],
         "socialImage": {
-          "label": "Framework social image",
-          "href": "assets/images/frameworks/2026-06-01_ai_consumption_leverage_framework/images/01_ai_consumption_leverage_framework_overview.png",
-          "description": "Use the overview image as the default Open Graph/social preview until a dedicated social image is created."
+          "label": "Social preview image",
+          "href": "assets/images/frameworks/2026-06-01_ai_consumption_leverage_framework/images/og_ai_consumption_leverage_framework_overview.png",
+          "description": "Dedicated Open Graph and LinkedIn social preview image generated at a 1200x630 share ratio."
         }
       },
       "imageIndex": [
@@ -879,31 +879,31 @@
                   [
                     "A",
                     "Proposal Rewrite Agent",
-                    "G0 \u2014 Disposable",
+                    "G0 — Disposable",
                     "A lightweight productivity aid that improves wording but does not create durable enterprise capability."
                   ],
                   [
                     "B",
                     "PM Meeting Summary Agent",
-                    "G1 \u2014 Assisted",
+                    "G1 — Assisted",
                     "A team workflow helper that summarizes meetings and drafts actions, but leaves accountability with the PM."
                   ],
                   [
                     "C",
                     "Invoice Exception Triage Agent",
-                    "G2 \u2014 Governed",
+                    "G2 — Governed",
                     "A finance process agent that routes exceptions with evidence and may intersect with SOX-relevant control design."
                   ],
                   [
                     "D",
                     "Margin Protection Agent",
-                    "G3 \u2014 Operational Asset Candidate",
+                    "G3 — Operational Asset Candidate",
                     "A production agent that detects project margin risk using financial, contract, staffing, and delivery signals."
                   ],
                   [
                     "E",
                     "Revenue Intelligence Orchestration",
-                    "G3+ \u2014 Enterprise Asset Candidate",
+                    "G3+ — Enterprise Asset Candidate",
                     "A multi-agent system that converts relationship capital, service adjacency, pursuit signals, and outcome feedback into governed revenue expansion recommendations."
                   ]
                 ]
@@ -922,7 +922,7 @@
             "blocks": [
               {
                 "type": "paragraph",
-                "text": "The phrase operational asset must be handled with discipline. A useful agent is not automatically a capitalizable asset. Accounting treatment depends on the organization\u2019s applicable accounting policies, the nature of costs incurred, whether the work is research or implementation, whether there is management authorization and funding, whether probable completion and intended use can be established, and whether costs can be traced reliably."
+                "text": "The phrase operational asset must be handled with discipline. A useful agent is not automatically a capitalizable asset. Accounting treatment depends on the organization’s applicable accounting policies, the nature of costs incurred, whether the work is research or implementation, whether there is management authorization and funding, whether probable completion and intended use can be established, and whether costs can be traced reliably."
               },
               {
                 "type": "paragraph",
@@ -965,19 +965,19 @@
                 "type": "cards",
                 "items": [
                   {
-                    "title": "G0 \u2014 Disposable Agent",
+                    "title": "G0 — Disposable Agent",
                     "description": "A prompt, prototype, or temporary productivity agent with no durable operational dependency. Example A belongs here unless it is formalized into an enterprise workflow."
                   },
                   {
-                    "title": "G1 \u2014 Assisted Workflow Agent",
+                    "title": "G1 — Assisted Workflow Agent",
                     "description": "An agent that helps a defined team process but remains subordinate to human judgment. Example B belongs here when the PM reviews actions before commitments are created."
                   },
                   {
-                    "title": "G2 \u2014 Governed Process Agent",
+                    "title": "G2 — Governed Process Agent",
                     "description": "A controlled agent with ownership, logging, workflow boundaries, and evidence. Example C belongs here because it routes finance exceptions and produces review evidence."
                   },
                   {
-                    "title": "G3 \u2014 Operational Asset Candidate",
+                    "title": "G3 — Operational Asset Candidate",
                     "description": "A production-grade capability with lifecycle discipline, measurable impact, control evidence, cost tracking, and useful-life thinking. Examples D and E may belong here if the evidence package supports the classification."
                   }
                 ]
@@ -1099,25 +1099,25 @@
                     {
                       "min": 0,
                       "max": 6,
-                      "grade": "G0 \u2014 Disposable Agent",
+                      "grade": "G0 — Disposable Agent",
                       "posture": "Lightweight policy controls"
                     },
                     {
                       "min": 7,
                       "max": 13,
-                      "grade": "G1 \u2014 Assisted Workflow Agent",
+                      "grade": "G1 — Assisted Workflow Agent",
                       "posture": "Team-level governance"
                     },
                     {
                       "min": 14,
                       "max": 21,
-                      "grade": "G2 \u2014 Governed Process Agent",
+                      "grade": "G2 — Governed Process Agent",
                       "posture": "Production-readiness controls"
                     },
                     {
                       "min": 22,
                       "max": 28,
-                      "grade": "G3 \u2014 Operational Asset Candidate",
+                      "grade": "G3 — Operational Asset Candidate",
                       "posture": "Enterprise asset governance and accounting review"
                     }
                   ],
@@ -1152,7 +1152,7 @@
                 "type": "image",
                 "src": "assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/03.png",
                 "alt": "The seven grading dimensions and score bands",
-                "caption": "The seven dimensions convert agent classification into a repeatable 0\u201328 scoring model with hard override triggers.",
+                "caption": "The seven dimensions convert agent classification into a repeatable 0–28 scoring model with hard override triggers.",
                 "title": "The Seven Grading Dimensions"
               },
               {
@@ -1458,27 +1458,27 @@
                 "type": "cards",
                 "items": [
                   {
-                    "title": "Gate 0 \u2014 Idea Intake",
+                    "title": "Gate 0 — Idea Intake",
                     "description": "Capture business problem, owner, expected impact, data classification, and initial risk screen. Decide whether the idea belongs in sandbox, prototype, controlled build, or rejection."
                   },
                   {
-                    "title": "Gate 1 \u2014 Experiment Approval",
+                    "title": "Gate 1 — Experiment Approval",
                     "description": "Bound the experiment with restricted data, user group, cost cap, retention rule, model/vendor approval, and stop/continue criteria."
                   },
                   {
-                    "title": "Gate 2 \u2014 Development Authorization",
+                    "title": "Gate 2 — Development Authorization",
                     "description": "Establish management authorization, funding, intended use, probable completion, architecture approval, accounting review, and cost coding."
                   },
                   {
-                    "title": "Gate 3 \u2014 Production Readiness",
+                    "title": "Gate 3 — Production Readiness",
                     "description": "Confirm owner, control matrix, security approval, test results, evidence logging, fallback path, human review rules, and monitoring dashboard."
                   },
                   {
-                    "title": "Gate 4 \u2014 Asset Classification Review",
+                    "title": "Gate 4 — Asset Classification Review",
                     "description": "Review score, cost ledger, business value baseline, useful-life memo, accounting memo, control evidence, and production metrics."
                   },
                   {
-                    "title": "Gate 5 \u2014 Lifecycle Review",
+                    "title": "Gate 5 — Lifecycle Review",
                     "description": "Review usage, performance, cost, incidents, dependency changes, useful life, enhancement needs, retirement criteria, and replacement options."
                   }
                 ]
@@ -1512,36 +1512,36 @@
                 "rows": [
                   [
                     "Proposal Rewrite Agent",
-                    "2\u20135",
-                    "G0 \u2014 Disposable",
+                    "2–5",
+                    "G0 — Disposable",
                     "Useful productivity but little durable operating capability.",
                     "No owner, cost traceability, intended use, or lifecycle evidence."
                   ],
                   [
                     "PM Meeting Summary Agent",
-                    "7\u201311",
-                    "G1 \u2014 Assisted",
+                    "7–11",
+                    "G1 — Assisted",
                     "Supports follow-through but PM remains accountable for commitments.",
                     "Needs workflow owner, retention rules, and review evidence."
                   ],
                   [
                     "Invoice Exception Triage Agent",
-                    "15\u201320",
-                    "G2 \u2014 Governed",
+                    "15–20",
+                    "G2 — Governed",
                     "Embedded in finance process with evidence and reviewer routing.",
                     "Needs SOX screen, control matrix, and cost ledger."
                   ],
                   [
                     "Margin Protection Agent",
-                    "22\u201325",
-                    "G3 \u2014 Operational Asset Candidate",
+                    "22–25",
+                    "G3 — Operational Asset Candidate",
                     "Influences project economics and preserves senior operator judgment.",
                     "Needs useful-life memo, benefit realization, and model-risk monitoring."
                   ],
                   [
                     "Revenue Intelligence Orchestration",
-                    "24\u201328",
-                    "G3+ \u2014 Enterprise Asset Candidate",
+                    "24–28",
+                    "G3+ — Enterprise Asset Candidate",
                     "Connects relationship capital, service adjacency, pursuit logic, and outcome signal into governed revenue execution.",
                     "Needs graph lineage, conflict controls, value attribution, and executive operating rhythm."
                   ]
@@ -1655,11 +1655,11 @@
                 "type": "list",
                 "title": "Primary standards and guidance referenced in this framework",
                 "items": [
-                  "FASB ASU 2025-06 \u2014 Internal-Use Software: FASB project page for targeted improvements to internal-use software cost guidance under Subtopic 350-40.",
+                  "FASB ASU 2025-06 — Internal-Use Software: FASB project page for targeted improvements to internal-use software cost guidance under Subtopic 350-40.",
                   "NIST AI Risk Management Framework: NIST AI RMF resources for voluntary AI risk management.",
                   "NIST Generative AI Profile: NIST AI 600-1 profile that helps organizations identify and manage GenAI-specific risks.",
-                  "ISO/IEC 42001:2023 \u2014 AI Management Systems: ISO standard for establishing, implementing, maintaining, and improving an AI management system.",
-                  "COSO Internal Control \u2014 Integrated Framework: COSO internal-control framework resources.",
+                  "ISO/IEC 42001:2023 — AI Management Systems: ISO standard for establishing, implementing, maintaining, and improving an AI management system.",
+                  "COSO Internal Control — Integrated Framework: COSO internal-control framework resources.",
                   "COSO Generative AI Internal Control Guidance: COSO guidance translating internal-control principles into practical GenAI risk and control guidance.",
                   "SEC Cybersecurity Risk Management, Strategy, Governance, and Incident Disclosure Rule: SEC rule requiring public companies to disclose material cybersecurity incidents and material information about cybersecurity risk management, strategy, and governance."
                 ]
@@ -1859,7 +1859,7 @@
         ],
         "related": [
           {
-            "title": "Relationship Capital \u2192 Revenue Intelligence",
+            "title": "Relationship Capital → Revenue Intelligence",
             "slug": "frameworks/2026/05/17/relationship-capital-revenue-intelligence",
             "description": "A related framework for converting relationship capital, service adjacency, and delivery history into measurable revenue intelligence."
           },
@@ -1972,9 +1972,9 @@
           }
         ],
         "socialImage": {
-          "label": "Framework social image",
-          "href": "assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/01.png",
-          "description": "Use the framework overview image as the default Open Graph/social preview until a separate social image is created."
+          "label": "Social preview image",
+          "href": "assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/og_01.png",
+          "description": "Dedicated Open Graph and LinkedIn social preview image generated at a 1200x630 share ratio."
         }
       },
       "heroImage": "assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/01.png",
@@ -2038,7 +2038,7 @@
       ],
       "sourceReferences": [
         {
-          "label": "FASB ASU 2025-06 \u2014 Internal-Use Software",
+          "label": "FASB ASU 2025-06 — Internal-Use Software",
           "href": "https://www.fasb.org/page/PageContent?pageId=%2Fprojects%2Frecently-completed-projects%2Faccounting-for-and-disclosure-of-software-costs.html",
           "description": "FASB project page for targeted improvements to internal-use software cost guidance under Subtopic 350-40.",
           "type": "external-reference"
@@ -2056,13 +2056,13 @@
           "type": "external-reference"
         },
         {
-          "label": "ISO/IEC 42001:2023 \u2014 AI Management Systems",
+          "label": "ISO/IEC 42001:2023 — AI Management Systems",
           "href": "https://www.iso.org/standard/42001",
           "description": "ISO standard for establishing, implementing, maintaining, and improving an AI management system.",
           "type": "external-reference"
         },
         {
-          "label": "COSO Internal Control \u2014 Integrated Framework",
+          "label": "COSO Internal Control — Integrated Framework",
           "href": "https://www.coso.org/guidance-on-ic",
           "description": "COSO internal-control framework resources.",
           "type": "external-reference"
@@ -2549,7 +2549,7 @@
             "description": "A framework for preserving signal across executive intent, workflow reality, and technical implementation."
           },
           {
-            "title": "Relationship Capital \u2192 Revenue Intelligence",
+            "title": "Relationship Capital → Revenue Intelligence",
             "slug": "frameworks/2026/05/17/relationship-capital-revenue-intelligence",
             "description": "A framework for converting relationship capital, service adjacency, and delivery history into measurable revenue intelligence."
           }
@@ -2621,9 +2621,9 @@
           }
         ],
         "socialImage": {
-          "label": "Framework social image",
-          "href": "assets/images/frameworks/2026-04-14_turn_down_the_noise/images/01_turn_down_the_noise_overview.png",
-          "description": "Use the overview image as the default Open Graph/social preview for the framework."
+          "label": "Social preview image",
+          "href": "assets/images/frameworks/2026-04-14_turn_down_the_noise/images/og_turn_down_the_noise_overview.png",
+          "description": "Dedicated Open Graph and LinkedIn social preview image generated at a 1200x630 share ratio."
         }
       },
       "imageIndex": [
@@ -2989,7 +2989,7 @@
           },
           {
             "label": "Method",
-            "value": "Capture intent \u2192 translate \u2192 align options \u2192 validate \u2192 close the loop"
+            "value": "Capture intent → translate → align options → validate → close the loop"
           }
         ],
         "toc": [
@@ -3078,7 +3078,7 @@
             "description": "A model for reducing operational noise and improving decision quality."
           },
           {
-            "title": "Relationship Capital \u2192 Revenue Intelligence",
+            "title": "Relationship Capital → Revenue Intelligence",
             "slug": "frameworks/2026/05/17/relationship-capital-revenue-intelligence",
             "description": "A framework for turning relationship knowledge into measurable growth."
           }
@@ -3150,9 +3150,9 @@
           }
         ],
         "socialImage": {
-          "label": "Framework social image",
-          "href": "assets/images/frameworks/2026-03-18_systems_translation_loop/images/01_systems_translation_loop_overview.png",
-          "description": "Use the overview image as the default Open Graph/social preview until a separate social image is created."
+          "label": "Social preview image",
+          "href": "assets/images/frameworks/2026-03-18_systems_translation_loop/images/og_systems_translation_loop_overview.png",
+          "description": "Dedicated Open Graph and LinkedIn social preview image generated at a 1200x630 share ratio."
         }
       },
       "heroImage": "assets/images/frameworks/2026-03-18_systems_translation_loop/images/01_systems_translation_loop_overview.png",
@@ -3197,7 +3197,7 @@
     {
       "id": "framework-003",
       "slug": "frameworks/2026/05/17/relationship-capital-revenue-intelligence",
-      "title": "Relationship Capital \u2192 Revenue Intelligence",
+      "title": "Relationship Capital → Revenue Intelligence",
       "summary": "An executive framework for using D3 to map client relationships, service delivery, employee expertise, current value, white-space opportunity, and the next-best connections that turn relationship capital into measurable growth.",
       "status": "published",
       "publishedOn": "2026-05-17",
@@ -3558,6 +3558,13 @@
             "description": "A framework for preserving signal across executive intent, workflow reality, and technical implementation."
           }
         ]
+      },
+      "productionAssets": {
+        "socialImage": {
+          "label": "Social preview image",
+          "href": "assets/images/frameworks/2026-05-17_d3_executive_framework/og_d3_knowledge_framework_header.png",
+          "description": "Dedicated Open Graph and LinkedIn social preview image generated at a 1200x630 share ratio."
+        }
       }
     }
   ]

@@ -17,8 +17,16 @@ import { SeoService } from './seo.service';
 export class RouteSeoService {
   private readonly router = inject(Router);
   private readonly seoService = inject(SeoService);
-  private readonly defaultImagePath = siteContent.home.heroImage;
   private readonly defaultDescription = siteContent.meta.description;
+  private readonly staticImageByPath: Record<string, string> = {
+    '/': 'assets/images/home/og_home.png',
+    '/writing': 'assets/images/writing/og_writing.png',
+    '/frameworks': 'assets/images/frameworks/og_frameworks.png',
+    '/operating-tools': 'assets/images/operating-tools/og_operating_tools.png',
+    '/guides': 'assets/images/operating-tools/og_guides.png',
+    '/about': 'assets/images/about/og_about.png',
+    '/connect': 'assets/images/connect/og_connect.png'
+  };
 
   constructor() {
     this.router.events
@@ -34,13 +42,14 @@ export class RouteSeoService {
           (typeof leafRoute.data['seoDescription'] === 'string' && leafRoute.data['seoDescription']) ||
           this.defaultDescription;
         const pageMetadata = this.createStaticPageMetadata(currentPath, title, description);
+        const imagePath = this.staticImageByPath[currentPath] ?? this.staticImageByPath['/'];
 
         this.seoService.applyPageMetadata({
           title,
           description,
           urlPath: currentPath,
-          imagePath: this.defaultImagePath,
-          imageDimensions: this.seoService.resolveImageDimensions(this.defaultImagePath),
+          imagePath,
+          imageDimensions: this.seoService.resolveImageDimensions(imagePath),
           imageAlt: title,
           type: 'website',
           pageSchemaType: pageMetadata.pageSchemaType,
