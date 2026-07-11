@@ -4,6 +4,7 @@ import { execFileSync, spawnSync } from "node:child_process";
 import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import os from "node:os";
 import path from "node:path";
+import process from "node:process";
 import { fileURLToPath } from "node:url";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -16,6 +17,8 @@ const targetWidth = 1200;
 const targetHeight = 630;
 const targetRatio = targetWidth / targetHeight;
 const dimensionsModulePath = path.join(srcRoot, "app", "core", "seo", "image-dimensions.ts");
+const ownerRefreshScriptPath =
+  process.env.C2PA_OWNER_REFRESH ?? "/Users/charles/.local/bin/c2pa-owner-refresh";
 
 const contentFiles = [
   "writing.json",
@@ -330,6 +333,26 @@ function collectRasterImages(rootDirectory) {
   return discovered.sort((left, right) => left.localeCompare(right));
 }
 
+function signGeneratedImages() {
+  if (!generatedImages.length || process.platform !== "darwin") {
+    return;
+  }
+
+  if (!existsSync(ownerRefreshScriptPath)) {
+    console.warn(`Skipping OG image signing; owner refresh script was not found at ${ownerRefreshScriptPath}.`);
+    return;
+  }
+
+  const uniqueOutputs = [...new Set(generatedImages)].sort((left, right) => left.localeCompare(right));
+  const absoluteOutputs = uniqueOutputs.map(toAbsolute);
+  const logPath = path.join(repoRoot, "c2pa-owner-refresh-failures.log");
+
+  execFileSync(ownerRefreshScriptPath, ["--log", logPath, ...absoluteOutputs], {
+    cwd: repoRoot,
+    stdio: "inherit",
+  });
+}
+
 function writeImageDimensionsModule() {
   const imageFiles = collectRasterImages(imageRoot);
   const lines = [
@@ -358,6 +381,7 @@ function writeImageDimensionsModule() {
 ensureStaticPageSocialImages();
 ensureContentSocialImages();
 writeImageDimensionsModule();
+signGeneratedImages();
 
 const summary = [
   `Generated ${generatedImages.length} social preview image(s).`,
