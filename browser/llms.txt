@@ -13,20 +13,20 @@ This site publishes prerendered essays, frameworks, and short-form operating too
 - [Connect](https://cweise.com/connect/): Subscription and contact options.
 
 ## Featured Writing
+- [Same Capability. Two Different Contracts.](https://cweise.com/writing/2026/07/11/same-capability-two-different-contracts/): Why ambitious employees and growing organizations can create real value together, yet still separate when contribution, evidence, and recognition remain implicit.
 - [What Kind of Leader Does the Moment Require?](https://cweise.com/writing/2026/05/24/what-kind-of-leader-does-the-moment-require/): A leadership essay on why crisis, scale, and innovation demand different instincts, and why recurring problems sometimes point to missing operating design instead of individual failure.
 - [Organizations Rarely Fail From a Lack of Intelligence](https://cweise.com/writing/2026/05/12/organizations-rarely-fail-from-a-lack-of-intelligence/): An essay on why organizations usually do not fail because they lack smart people, data, strategy, or ideas. They fail when intelligence cannot move through clear priorities, translation layers, operating paths, accountability, and follow-through.
 - [Why Operational Friction Hides in Translation Layers](https://cweise.com/writing/2026/04/28/why-operational-friction-hides-in-translation-layers/): A deeper essay on why friction usually hides between strategy, workflow, systems, and reporting layers — and why organizations reduce rework by owning the interfaces where meaning changes hands.
-- [Executive Follow-Through Requires Ownership Architecture](https://cweise.com/writing/2026/03/31/executive-follow-through-requires-ownership-architecture/): A strategy does not become durable because leaders care about it. It becomes durable when ownership, decision rights, escalation paths, evidence, and review rhythms are designed into the operating system.
 
 ## Featured Frameworks
 - [Relationship Capital → Revenue Intelligence](https://cweise.com/frameworks/2026/05/17/relationship-capital-revenue-intelligence/): An executive framework for using D3 to map client relationships, service delivery, employee expertise, current value, white-space opportunity, and the next-best connections that turn relationship capital into measurable growth.
 - [Systems Translation Loop](https://cweise.com/frameworks/2026/03/18/systems-translation-loop/): A framework for bridging executive intent, workflow reality, and technical implementation without losing signal.
 
 ## Featured Operating Tools
+- [The Value Contract](https://cweise.com/operating-tools/the-value-contract/): A practical tool for turning an open need into an agreed contribution, visible evidence, and recognized value.
 - [Agency Is the Metric](https://cweise.com/operating-tools/agency-is-the-metric/): A practical operating tool for assessing whether an operating system is producing reality-based leadership, not just more control.
 - [Activation Response](https://cweise.com/operating-tools/activation-response/): A practical guide for moving nervous-system activation out of rumination and into physical motion.
 - [A Compass, Not a Map](https://cweise.com/operating-tools/a-compass-not-a-map/): A practical operating tool for moving through ambiguity without over-designing the future.
-- [Avoid to Act Loop](https://cweise.com/operating-tools/avoid-act-loop/): A short intervention for turning avoidance into immediate motion.
 
 ## Optional
 - [llms-full.txt](https://cweise.com/llms-full.txt): Expanded machine-readable digest of all public content on the site.

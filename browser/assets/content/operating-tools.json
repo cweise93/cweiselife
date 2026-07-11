@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": 2,
-    "updatedOn": "2026-07-04",
+    "version": 3,
+    "updatedOn": "2026-07-11",
     "eyebrow": "Operating Tools",
     "headline": "Tools for the moment before the plan.",
     "intro": "Use these when the issue is not a lack of intelligence. Use them when the next move is hidden inside activation, ambiguity, avoidance, decision pressure, unclear structure, or a repeating pattern."
@@ -1345,6 +1345,77 @@
               "If the system is working, leaders should recover faster, decide cleaner, follow through more reliably, and create less drag for the organization around them."
             ],
             "callout": "Agency converts inner governance into visible leadership output."
+          }
+        ]
+      }
+    },
+    {
+      "id": "operating-tool-023",
+      "slug": "operating-tools/the-value-contract",
+      "title": "The Value Contract",
+      "summary": "A practical tool for turning an open need into an agreed contribution, visible evidence, and recognized value.",
+      "status": "published",
+      "featured": true,
+      "icon": "handshake",
+      "tags": [
+        "value alignment",
+        "role clarity",
+        "management",
+        "governance",
+        "employee experience"
+      ],
+      "heroImage": "assets/images/operating-tools/the-value-contract/01_same_capability_two_contracts.png",
+      "seo": {
+        "title": "The Value Contract",
+        "description": "A practical operating tool for defining contribution, evidence, and recognition before capability quietly becomes obligation."
+      },
+      "productionAssets": {
+        "socialImage": {
+          "label": "Social preview image",
+          "href": "assets/images/operating-tools/the-value-contract/og_same_capability_two_contracts.png",
+          "description": "Open Graph and LinkedIn preview for The Value Contract."
+        }
+      },
+      "body": {
+        "intro": "An open need is not yet an assignment, and useful work is not yet shared value. Use this tool to define the contract before capability fills the void by assumption.",
+        "sections": [
+          {
+            "heading": "Name the need",
+            "paragraphs": [
+              "Describe the problem and desired outcome before proposing the solution.",
+              "Ask why the need matters now and who is responsible for the result."
+            ],
+            "callout": "Start with the need, not the available capability."
+          },
+          {
+            "heading": "Frame the contribution",
+            "paragraphs": [
+              "Define the work, boundaries, decision rights, and support required.",
+              "Separate what the employee can do from what the organization is asking them to own."
+            ]
+          },
+          {
+            "heading": "Agree on value",
+            "paragraphs": [
+              "Name the evidence that will show whether the contribution worked.",
+              "Agree when role, authority, priority, or compensation will be reconsidered if the contribution expands."
+            ],
+            "callout": "Do not leave recognition to interpretation after delivery."
+          },
+          {
+            "heading": "Deliver and observe",
+            "paragraphs": [
+              "Complete the agreed work and preserve visible evidence of the result.",
+              "Compare the outcome with the original need, not with effort alone."
+            ]
+          },
+          {
+            "heading": "Revisit the contract",
+            "paragraphs": [
+              "Review what the work revealed about the need, the role, and the employee's capability.",
+              "Renew, resize, reassign, or stop the contribution before the exception becomes an invisible expectation."
+            ],
+            "callout": "Capability creates possibility. Agreement gives it value."
           }
         ]
       }
