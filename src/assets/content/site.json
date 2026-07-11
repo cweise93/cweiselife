@@ -20,6 +20,7 @@
     ],
     "heroImage": "assets/images/hero-architecture.png",
     "featuredWritingSlugs": [
+      "writing/2026/07/11/same-capability-two-different-contracts",
       "writing/2026/05/24/what-kind-of-leader-does-the-moment-require",
       "writing/2026/05/12/organizations-rarely-fail-from-a-lack-of-intelligence",
       "writing/2026/04/28/why-operational-friction-hides-in-translation-layers",
@@ -30,12 +31,12 @@
       "frameworks/2026/03/18/systems-translation-loop"
     ],
     "featuredOperatingToolSlugs": [
+      "operating-tools/the-value-contract",
       "operating-tools/agency-is-the-metric",
       "operating-tools/activation-response",
       "operating-tools/a-compass-not-a-map",
       "operating-tools/avoid-act-loop",
-      "operating-tools/becoming-the-solution-provider",
-      "operating-tools/close-the-loop"
+      "operating-tools/becoming-the-solution-provider"
     ],
     "themes": [
       {

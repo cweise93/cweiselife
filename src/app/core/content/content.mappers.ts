@@ -4,6 +4,7 @@ import {
   CollectionMeta,
   CompanionAsset,
   CompanionCallToAction,
+  CitationStyle,
   CompanionRelatedItem,
   CompanionSnapshotItem,
   CompanionTocItem,
@@ -33,8 +34,11 @@ import {
   SiteNavigation,
   WritingBody,
   WritingContentFile,
+  WritingReference,
+  WritingReferenceAuthor,
   WritingItem
 } from './content.models';
+import { validateWritingItemReferences } from './writing-citations';
 
 const DEFAULT_STATUS: ContentStatus = 'draft';
 
@@ -234,12 +238,20 @@ function normalizeProductionAssets(value: any): ProductionAssets | undefined {
   }
 
   const socialImage = normalizeProductionAssetReference(value?.socialImage);
+  const articleImages = Array.isArray(value?.articleImages)
+    ? value.articleImages
+        .map((item: any) => normalizeProductionAssetReference(item))
+        .filter((item: ReturnType<typeof normalizeProductionAssetReference>): item is NonNullable<typeof item> => item !== undefined)
+    : [];
 
-  if (!socialImage) {
+  if (!socialImage && !articleImages.length) {
     return undefined;
   }
 
-  return { socialImage };
+  return {
+    socialImage,
+    articleImages: articleImages.length ? articleImages : undefined
+  };
 }
 
 function normalizeSections(value: any): ContentSection[] {
@@ -411,10 +423,11 @@ function normalizeCompanion(value: any): ContentCompanion | undefined {
   const snapshot = normalizeCompanionSnapshot(value?.snapshot);
   const toc = normalizeCompanionToc(value?.toc);
   const assets = normalizeCompanionAssets(value?.assets);
+  const references = normalizeLegacyReferences(value?.references);
   const related = normalizeCompanionRelated(value?.related);
   const callsToAction = normalizeCompanionCallsToAction(value?.callsToAction);
 
-  if (!snapshot.length && !toc.length && !assets.length && !related.length && !callsToAction.length) {
+  if (!snapshot.length && !toc.length && !assets.length && !references.length && !related.length && !callsToAction.length) {
     return undefined;
   }
 
@@ -422,9 +435,93 @@ function normalizeCompanion(value: any): ContentCompanion | undefined {
     snapshot: snapshot.length ? snapshot : undefined,
     toc: toc.length ? toc : undefined,
     assets: assets.length ? assets : undefined,
+    references: references.length ? references : undefined,
     related: related.length ? related : undefined,
     callsToAction: callsToAction.length ? callsToAction : undefined
   };
+}
+
+function normalizeLegacyReferences(value: any) {
+  if (!Array.isArray(value)) {
+    return [];
+  }
+
+  return value
+    .map((item) => {
+      const title = asString(item?.title);
+      const url = asString(item?.url);
+
+      return title && url
+        ? {
+            title,
+            publisher: asString(item?.publisher) || undefined,
+            url,
+            note: asString(item?.note) || undefined
+          }
+        : null;
+    })
+    .filter((item): item is NonNullable<typeof item> => item !== null);
+}
+
+function normalizeCitationStyle(value: any): CitationStyle | undefined {
+  return asString(value) === 'apa-author-date' ? 'apa-author-date' : undefined;
+}
+
+function normalizeWritingReferenceAuthors(value: any): WritingReferenceAuthor[] {
+  if (!Array.isArray(value)) {
+    return [];
+  }
+
+  return value
+    .map((author) => {
+      const family = asString(author?.family);
+
+      return family
+        ? {
+            family,
+            given: asString(author?.given)
+          }
+        : null;
+    })
+    .filter((author): author is WritingReferenceAuthor => author !== null);
+}
+
+function normalizeWritingReferences(value: any): WritingReference[] {
+  if (!Array.isArray(value)) {
+    return [];
+  }
+
+  const references = value
+    .map((reference): WritingReference | null => {
+      const id = asString(reference?.id);
+      const title = asString(reference?.title);
+      const url = asString(reference?.url);
+      const type = asString(reference?.type);
+      const authors = normalizeWritingReferenceAuthors(reference?.authors);
+      const year = typeof reference?.year === 'number' && Number.isFinite(reference.year) ? reference.year : null;
+
+      if (!id || !title || !url || !authors.length) {
+        return null;
+      }
+
+      return {
+        id,
+        type: type === 'journal-article' || type === 'report' || type === 'web' ? type : 'web',
+        authors,
+        year,
+        title,
+        publication: asString(reference?.publication) || undefined,
+        volume: asString(reference?.volume) || undefined,
+        issue: asString(reference?.issue) || undefined,
+        pages: asString(reference?.pages) || undefined,
+        doi: asString(reference?.doi) || undefined,
+        url,
+        note: asString(reference?.note) || undefined
+      };
+    })
+    .filter((reference): reference is WritingReference => reference !== null);
+
+  return references;
 }
 
 function normalizeSeo(value: any, fallbackTitle: string, fallbackDescription: string): SeoContent {
@@ -621,7 +718,7 @@ export function mapWritingItem(value: any): WritingItem | null {
 
   const summary = asString(value?.summary);
 
-  return {
+  const item: WritingItem = {
     id,
     slug,
     title,
@@ -638,8 +735,16 @@ export function mapWritingItem(value: any): WritingItem | null {
       intro: asString(value?.body?.intro),
       sections: normalizeSections(value?.body?.sections)
     },
+    citationStyle: normalizeCitationStyle(value?.citationStyle),
+    references: normalizeWritingReferences(value?.references),
     companion: normalizeCompanion(value?.companion)
   };
+
+  for (const warning of validateWritingItemReferences(item)) {
+    console.warn(`[content] ${warning}`);
+  }
+
+  return item;
 }
 
 export function mapWritingFile(value: any): WritingContentFile {

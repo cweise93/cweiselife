@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, input, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
@@ -11,8 +11,16 @@ import {
   ContentImageBlock,
   ContentSection,
   ContentSectionBlock,
-  ContentTableBlock
+  ContentTableBlock,
+  WritingReference
 } from '../../core/content/content.models';
+import {
+  CitationSegment,
+  buildReferenceLookup,
+  createCitationParseState,
+  parseCitationSegments
+} from '../../core/content/writing-citations';
+import { InlineCitationTextComponent } from './inline-citation-text.component';
 import { InteractiveContentBlockComponent } from './interactive-content-block/interactive-content-block.component';
 
 interface LightboxImage {
@@ -23,9 +31,9 @@ interface LightboxImage {
 
 @Component({
   selector: 'cw-content-renderer',
-  imports: [MatButtonModule, MatCardModule, MatChipsModule, MatIconModule, MatTableModule, InteractiveContentBlockComponent],
+  imports: [MatButtonModule, MatCardModule, MatChipsModule, MatIconModule, MatTableModule, InteractiveContentBlockComponent, InlineCitationTextComponent],
   template: `
-    @for (section of sections(); track trackSection(section, $index)) {
+    @for (section of sections(); track trackSection(section, $index); let sectionIndex = $index) {
       <section
         class="content-section"
         [class.content-section--split]="isSplitSection(section)"
@@ -38,15 +46,15 @@ interface LightboxImage {
         <h2>{{ section.heading }}</h2>
 
         @if (section.intro) {
-          <p class="section-intro">{{ section.intro }}</p>
+          <p class="section-intro"><cw-inline-citation-text [segments]="sectionIntroSegments(sectionIndex)" /></p>
         }
 
         @if (isSplitSection(section)) {
           <div class="content-section__split">
             <div class="content-section__prose">
               @if (section.paragraphs?.length) {
-                @for (paragraph of section.paragraphs; track paragraph) {
-                  <p>{{ paragraph }}</p>
+                @for (paragraph of section.paragraphs; track paragraph; let paragraphIndex = $index) {
+                  <p><cw-inline-citation-text [segments]="sectionParagraphSegments(sectionIndex, paragraphIndex)" /></p>
                 }
               }
 
@@ -61,10 +69,10 @@ interface LightboxImage {
               }
 
               @if (sectionTextBlocks(section).length) {
-                @for (block of sectionTextBlocks(section); track trackBlock(block, $index)) {
+                @for (block of sectionTextBlocks(section); track trackBlock(block, $index); let visibleBlockIndex = $index) {
                   @switch (block.type) {
                     @case ('paragraph') {
-                      <p>{{ block.text }}</p>
+                      <p><cw-inline-citation-text [segments]="sectionBlockParagraphSegments(sectionIndex, blockLookupIndex(section, visibleBlockIndex))" /></p>
                     }
                     @case ('callout') {
                       <aside class="content-callout" [attr.data-tone]="block.tone ?? 'neutral'">
@@ -161,8 +169,8 @@ interface LightboxImage {
           </div>
         } @else {
           @if (section.paragraphs?.length) {
-            @for (paragraph of section.paragraphs; track paragraph) {
-              <p>{{ paragraph }}</p>
+            @for (paragraph of section.paragraphs; track paragraph; let paragraphIndex = $index) {
+              <p><cw-inline-citation-text [segments]="sectionParagraphSegments(sectionIndex, paragraphIndex)" /></p>
             }
           }
 
@@ -196,7 +204,7 @@ interface LightboxImage {
             @for (block of section.blocks; track trackBlock(block, $index)) {
               @switch (block.type) {
                 @case ('paragraph') {
-                  <p>{{ block.text }}</p>
+                  <p><cw-inline-citation-text [segments]="sectionBlockParagraphSegments(sectionIndex, $index)" /></p>
                 }
                 @case ('image') {
                   <figure class="content-image">
@@ -781,7 +789,21 @@ interface LightboxImage {
 })
 export class ContentRendererComponent {
   readonly sections = input.required<ContentSection[]>();
+  readonly references = input<WritingReference[]>([]);
+  readonly initialCitationCounts = input<Record<string, number>>({});
   readonly activeImage = signal<LightboxImage | null>(null);
+  readonly parsedSections = computed(() => {
+    const referenceLookup = buildReferenceLookup(this.references());
+    const state = createCitationParseState(this.initialCitationCounts());
+
+    return this.sections().map((section) => ({
+      intro: parseCitationSegments(section.intro ?? '', referenceLookup, state),
+      paragraphs: (section.paragraphs ?? []).map((paragraph) => parseCitationSegments(paragraph, referenceLookup, state)),
+      blockParagraphs: (section.blocks ?? []).map((block) =>
+        block.type === 'paragraph' ? parseCitationSegments(block.text, referenceLookup, state) : null
+      )
+    }));
+  });
 
   trackSection(section: ContentSection, index: number): string {
     return `${this.sectionId(section)}-${index}`;
@@ -866,5 +888,22 @@ export class ContentRendererComponent {
 
       return true;
     });
+  }
+
+  sectionIntroSegments(sectionIndex: number): CitationSegment[] {
+    return this.parsedSections()[sectionIndex]?.intro ?? [];
+  }
+
+  sectionParagraphSegments(sectionIndex: number, paragraphIndex: number): CitationSegment[] {
+    return this.parsedSections()[sectionIndex]?.paragraphs[paragraphIndex] ?? [];
+  }
+
+  sectionBlockParagraphSegments(sectionIndex: number, blockIndex: number): CitationSegment[] {
+    return this.parsedSections()[sectionIndex]?.blockParagraphs[blockIndex] ?? [];
+  }
+
+  blockLookupIndex(section: ContentSection, visibleBlockIndex: number): number {
+    const visibleBlock = this.sectionTextBlocks(section)[visibleBlockIndex];
+    return (section.blocks ?? []).findIndex((block) => block === visibleBlock);
   }
 }

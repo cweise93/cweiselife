@@ -6,14 +6,28 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { map, switchMap } from 'rxjs';
 import { ContentService } from '../../core/content/content.service';
-import { CompanionAsset, CompanionCallToAction, CompanionRelatedItem, CompanionSnapshotItem, CompanionTocItem, WritingItem } from '../../core/content/content.models';
+import { CompanionAsset, CompanionCallToAction, CompanionRelatedItem, CompanionSnapshotItem, CompanionTocItem, WritingItem, WritingReference } from '../../core/content/content.models';
+import {
+  CitationSegment,
+  buildReferenceLookup,
+  canonicalReferenceUrl,
+  cloneCitationCounts,
+  createCitationParseState,
+  formatReferenceAuthors,
+  formatReferenceYear,
+  parseCitationSegments,
+  referenceAnchorId,
+  referenceLinkLabel,
+  resolveWritingReferences
+} from '../../core/content/writing-citations';
 import { SeoService } from '../../core/seo/seo.service';
 import { ContentRendererComponent } from '../../shared/content/content-renderer.component';
+import { InlineCitationTextComponent } from '../../shared/content/inline-citation-text.component';
 
 @Component({
   selector: 'cw-writing-detail',
   standalone: true,
-  imports: [RouterLink, DatePipe, MatButtonModule, MatIconModule, ContentRendererComponent],
+  imports: [RouterLink, DatePipe, MatButtonModule, MatIconModule, ContentRendererComponent, InlineCitationTextComponent],
   templateUrl: './writing-detail.component.html',
   styleUrl: './writing-detail.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -43,7 +57,33 @@ export class WritingDetailComponent {
   readonly assetItems = computed<CompanionAsset[]>(() => this.item()?.companion?.assets ?? []);
   readonly relatedItems = computed<CompanionRelatedItem[]>(() => this.item()?.companion?.related ?? []);
   readonly callToActionItems = computed<CompanionCallToAction[]>(() => this.item()?.companion?.callsToAction ?? []);
-  readonly introParagraphs = computed<string[]>(() => {
+  readonly resolvedReferences = computed<WritingReference[]>(() => resolveWritingReferences(this.item()));
+  readonly introCitationDocument = computed(() => {
+    const references = this.resolvedReferences();
+    const lookup = buildReferenceLookup(references);
+    const state = createCitationParseState();
+    const paragraphs = this.rawIntroParagraphs().map((paragraph) =>
+      parseCitationSegments(paragraph, lookup, state, this.item()?.slug)
+    );
+
+    return {
+      paragraphs,
+      counts: cloneCitationCounts(state)
+    };
+  });
+  readonly introParagraphs = computed<CitationSegment[][]>(() => this.introCitationDocument().paragraphs);
+  readonly introCitationCounts = computed<Record<string, number>>(() => this.introCitationDocument().counts);
+  readonly sourceCount = computed(() => this.resolvedReferences().length);
+  readonly hasRailContent = computed(
+    () =>
+      this.snapshotItems().length ||
+      this.tocItems().length ||
+      this.sourceCount() ||
+      this.assetItems().length ||
+      this.relatedItems().length ||
+      this.callToActionItems().length
+  );
+  readonly rawIntroParagraphs = computed<string[]>(() => {
     const intro = this.item()?.body.intro ?? '';
 
     return intro
@@ -72,5 +112,25 @@ export class WritingDetailComponent {
 
   anchorFromHref(href: string): string {
     return href.replace(/^#/, '');
+  }
+
+  referenceId(reference: WritingReference): string {
+    return referenceAnchorId(reference.id);
+  }
+
+  referenceUrl(reference: WritingReference): string {
+    return canonicalReferenceUrl(reference);
+  }
+
+  referenceUrlLabel(reference: WritingReference): string {
+    return referenceLinkLabel(reference);
+  }
+
+  referenceAuthors(reference: WritingReference): string {
+    return formatReferenceAuthors(reference.authors);
+  }
+
+  referenceYear(reference: WritingReference): string {
+    return formatReferenceYear(reference);
   }
 }

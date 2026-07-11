@@ -94,6 +94,13 @@ const OPERATING_TOOLS_GROUPS: OperatingToolsGroupConfig[] = [
     ]
   },
   {
+    id: 'align-contribution-and-value',
+    title: 'Align contribution and value',
+    description: 'Clarify the need, the contribution, and how value will be recognized.',
+    accent: '#8b5cf6',
+    slugs: ['operating-tools/the-value-contract']
+  },
+  {
     id: 'additional-practice-tools',
     title: 'Additional practice tools',
     description: 'Short, focused exercises to build skill and judgment.',

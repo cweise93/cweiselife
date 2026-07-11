@@ -1,5 +1,6 @@
 import { ApplicationConfig, ENVIRONMENT_INITIALIZER, inject } from '@angular/core';
 import { provideHttpClient, withFetch } from '@angular/common/http';
+import { ViewportScroller } from '@angular/common';
 import { provideClientHydration, withEventReplay, withNoIncrementalHydration } from '@angular/platform-browser';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideRouter, withInMemoryScrolling } from '@angular/router';
@@ -13,6 +14,11 @@ export const appConfig: ApplicationConfig = {
       provide: ENVIRONMENT_INITIALIZER,
       multi: true,
       useValue: () => inject(AnalyticsService).initialize()
+    },
+    {
+      provide: ENVIRONMENT_INITIALIZER,
+      multi: true,
+      useValue: () => inject(ViewportScroller).setOffset([0, 112])
     },
     provideRouter(
       routes,

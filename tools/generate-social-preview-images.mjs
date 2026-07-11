@@ -15,6 +15,7 @@ const imageRoot = path.join(srcRoot, "assets", "images");
 const targetWidth = 1200;
 const targetHeight = 630;
 const targetRatio = targetWidth / targetHeight;
+const dimensionsModulePath = path.join(srcRoot, "app", "core", "seo", "image-dimensions.ts");
 
 const contentFiles = [
   "writing.json",
@@ -68,6 +69,7 @@ const staticPageSpecs = [
 const referencedImages = new Set();
 const generatedImages = [];
 const updatedFiles = new Set();
+const recordedDimensionsByPath = parseImageDimensionsModule();
 
 function commandExists(command) {
   const result = spawnSync(command, [], {
@@ -92,6 +94,40 @@ function toAbsolute(assetPath) {
 
 function toPosix(filePath) {
   return filePath.split(path.sep).join("/");
+}
+
+function parseImageDimensionsModule() {
+  if (!existsSync(dimensionsModulePath)) {
+    return {};
+  }
+
+  const text = readFileSync(dimensionsModulePath, "utf8");
+  const matches = text.matchAll(/'([^']+)': \{ width: (\d+), height: (\d+) \},/g);
+  const parsed = {};
+
+  for (const match of matches) {
+    parsed[match[1]] = {
+      width: Number.parseInt(match[2], 10),
+      height: Number.parseInt(match[3], 10),
+    };
+  }
+
+  return parsed;
+}
+
+function isShareCardCompliant(width, height) {
+  const ratio = width / height;
+  return width >= targetWidth && height >= targetHeight && Math.abs(ratio - targetRatio) < 0.05;
+}
+
+function isRecordedSocialImageCompliant(assetPath) {
+  const dimensions = recordedDimensionsByPath[assetPath];
+
+  if (!dimensions) {
+    return false;
+  }
+
+  return isShareCardCompliant(dimensions.width, dimensions.height);
 }
 
 function deriveOgAssetPath(assetPath) {
@@ -184,6 +220,10 @@ function verifyCommittedSocialImages() {
     if (!existsSync(absolutePath)) {
       throw new Error(`Missing committed static social image: ${spec.output}`);
     }
+
+    if (!isRecordedSocialImageCompliant(spec.output)) {
+      throw new Error(`Committed static social image is not share-card compliant: ${spec.output}`);
+    }
   }
 
   for (const fileName of contentFiles) {
@@ -206,11 +246,14 @@ function verifyCommittedSocialImages() {
       if (!existsSync(toAbsolute(socialImage))) {
         throw new Error(`Missing committed social image: ${socialImage}`);
       }
+
+      if (!isRecordedSocialImageCompliant(socialImage)) {
+        throw new Error(`Committed social image is not share-card compliant: ${item.slug} -> ${socialImage}`);
+      }
     }
   }
 
-  const dimensionsModule = path.join(srcRoot, "app", "core", "seo", "image-dimensions.ts");
-  if (!existsSync(dimensionsModule)) {
+  if (!existsSync(dimensionsModulePath)) {
     throw new Error("Missing committed image dimensions module.");
   }
 }
@@ -236,8 +279,18 @@ function ensureContentSocialImages() {
           ? explicitSocialImage
           : deriveOgAssetPath(primarySource);
 
-      if (!(explicitSocialImage && path.posix.basename(explicitSocialImage).startsWith("og_"))) {
+      const hasDedicatedOgImage =
+        explicitSocialImage && path.posix.basename(explicitSocialImage).startsWith("og_");
+      const needsRefresh =
+        !hasDedicatedOgImage ||
+        !existsSync(toAbsolute(outputAssetPath)) ||
+        !isRecordedSocialImageCompliant(outputAssetPath);
+
+      if (needsRefresh) {
         ensureSocialImage(primarySource, outputAssetPath);
+      }
+
+      if (!hasDedicatedOgImage) {
         item.productionAssets = {
           ...(item.productionAssets ?? {}),
           socialImage: createSocialImageRecord(outputAssetPath),

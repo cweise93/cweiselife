@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": 1,
-    "updatedOn": "2026-06-20",
+    "version": 3,
+    "updatedOn": "2026-07-11",
     "eyebrow": "Writing",
     "headline": "Essays on Operational Clarity",
     "intro": "Essays on operational clarity, organizational sensemaking, leadership systems, and execution design for complex organizations."
@@ -2302,6 +2302,536 @@
           }
         ]
       }
+    },
+    {
+      "id": "writing-010",
+      "slug": "writing/2026/07/11/same-capability-two-different-contracts",
+      "title": "Same Capability. Two Different Contracts.",
+      "summary": "Why ambitious employees and growing organizations can create real value together, yet still separate when contribution, evidence, and recognition remain implicit.",
+      "status": "published",
+      "publishedOn": "2026-07-11",
+      "readTimeMinutes": 9,
+      "featured": true,
+      "tags": [
+        "psychological contract",
+        "value alignment",
+        "role clarity",
+        "employee retention",
+        "governance",
+        "management systems"
+      ],
+      "heroImage": "assets/images/writing/articles/2026-07-11_same_capability_two_contracts/images/01_same_capability_two_contracts.png",
+      "seo": {
+        "title": "Same Capability. Two Different Contracts.",
+        "description": "How implicit value contracts create role ambiguity, effort-reward gaps, burnout, and avoidable turnover—and how organizations can make contribution negotiable and visible."
+      },
+      "body": {
+        "intro": "A growing organization often wants people who will see an open need and move toward it. It hires for ambition, judgment, and the willingness to figure things out. The employee hears a reciprocal promise: create meaningful value and the organization will recognize it. That promise can work for years without being written down. Then the organization changes, the employee keeps operating under the original logic, and the two sides begin pricing the same contribution differently.",
+        "sections": [
+          {
+            "heading": "The entrepreneurial promise is still a contract",
+            "paragraphs": [
+              "Employment is governed by more than the formal offer letter. People also form beliefs about reciprocal obligations: what the organization expects from them and what it will provide in return. Organizational scholar [[cite:rousseau-1989|Denise Rousseau (1989)]] described these beliefs as psychological contracts and distinguished them from obligations that are explicit or jointly understood.",
+              "An entrepreneurial culture creates a particularly expansive version of this contract. The organization offers autonomy and possibility. The employee offers initiative beyond a narrowly prescribed role. When both sides can see and reward the exchange, the ambiguity feels like freedom rather than risk.",
+              "The contract is real in its consequences even when its terms remain incomplete. The danger is not informality itself. The danger is allowing contribution, evidence, and recognition to remain private interpretations."
+            ],
+            "callout": "An open culture can create extraordinary initiative while leaving the exchange behind that initiative undefined."
+          },
+          {
+            "heading": "The organization can change the contract without naming the change",
+            "paragraphs": [
+              "As organizations scale, they add role bands, budgets, controls, portfolio priorities, approval paths, and standardized rewards. These changes may be necessary. They also change what the organization can recognize and compensate.",
+              "The earlier contract may have rewarded broad contribution: find a consequential gap, solve it, and grow with the value created. The later system may reward contribution mainly through the employee's current role, formal scope, and established comparison group. The work can remain valuable while the valuation method changes.",
+              "Neither model is inherently dishonest. The fracture occurs when the organization adopts the second model while the employee continues working under the first. Research on psychological-contract breach consistently links perceived breach with lower trust, satisfaction, commitment, and stronger turnover intentions [[cite:zhao-2007|(Zhao et al., 2007)]]."
+            ],
+            "callout": "A contract does not need to be broken deliberately to stop functioning. It only needs to be interpreted differently.",
+            "layout": "split-image-right",
+            "image": {
+              "src": "assets/images/writing/articles/2026-07-11_same_capability_two_contracts/images/02_contract_changed_without_being_named.png",
+              "alt": "A comparison of an opportunity-led open contract and a position-led defined contract as an organization scales.",
+              "caption": "The work may stay valuable while the valuation method changes."
+            }
+          },
+          {
+            "heading": "The employee can misprice the contribution too",
+            "paragraphs": [
+              "The employee's interpretation is not automatically correct. Capability is rarely uniform. Someone may be exceptional at recognizing patterns, designing solutions, or creating momentum while being less effective at adoption, political translation, operational maintenance, or repeatable delivery.",
+              "Ambitious people can also confuse difficulty, effort, novelty, or personal sacrifice with organizational value. The organization may never have requested the contribution, may not rank the underlying problem highly, or may value the result without valuing it at the level the employee inferred.",
+              "This is why value cannot be established by self-assessment or managerial impression alone. Feedback research shows that feedback is not uniformly beneficial; its effect depends on where it directs attention and how it connects performance to the task [[cite:kluger-denisi-1996|(Kluger & DeNisi, 1996)]]. Capability must be calibrated against agreed work and observable outcomes."
+            ],
+            "callout": "Capability is discovered through agreed work and evidence—not assumed by either side.",
+            "layout": "split-image-left",
+            "image": {
+              "src": "assets/images/writing/articles/2026-07-11_same_capability_two_contracts/images/03_capability_requires_calibration.png",
+              "alt": "A capability calibration path moving from assumption through agreed work and evidence to an observed capability profile.",
+              "caption": "Capability is a profile revealed through evidence, not a verdict supplied by either party."
+            }
+          },
+          {
+            "heading": "Ambiguity creates two private pricing systems",
+            "paragraphs": [
+              "Without an explicit value contract, the employee prices the contribution from the inside: complexity absorbed, judgment applied, hours invested, crises prevented, and alternatives created. The organization prices it from the outside: role definition, visible output, strategic priority, comparable positions, budget, and attributable results.",
+              "Both can be rational. They are not measuring the same thing.",
+              "Role-ambiguity research helps explain why the gap persists. A meta-analysis found that role ambiguity is negatively associated with job performance, with effects varying by job and rating source [[cite:tubre-collins-2000|(Tubre & Collins, 2000)]]. Goal-setting research likewise shows that specific goals and feedback help direct attention and effort, while complex work may require learning goals rather than premature performance targets [[cite:locke-latham-2002|(Locke & Latham, 2002)]].",
+              "When scope, standards, evidence, and recognition remain vague, the organization has no stable basis for pricing the contribution and the employee has no reliable basis for limiting it."
+            ],
+            "callout": "The employee prices the contribution. The organization prices the role. The gap grows in the space between them.",
+            "layout": "split-image-right",
+            "image": {
+              "src": "assets/images/writing/articles/2026-07-11_same_capability_two_contracts/images/04_two_private_pricing_systems.png",
+              "alt": "An employee pricing a contribution by complexity, judgment, effort, and risk while the organization prices the role by comparables, priority, and attributable results.",
+              "caption": "The value gap grows because the two parties are measuring different things."
+            }
+          },
+          {
+            "heading": "The capability void becomes a demand system",
+            "paragraphs": [
+              "A capable person can repeatedly absorb work that the organization has not formally assigned because the cost of leaving the need open feels higher than the cost of filling it. Each rescue then makes the capability more available and the void less visible.",
+              "What begins as initiative becomes an informal demand system. The employee experiences expanding responsibility; the organization experiences continued performance. Because the work still gets done, neither side is forced to define the contract.",
+              "The job demands-resources model distinguishes demands that consume sustained effort from resources such as autonomy, support, feedback, and control. High demands are associated with exhaustion, while insufficient resources are associated with disengagement [[cite:demerouti-et-al-2001|(Demerouti et al., 2001)]]. Effort-reward imbalance adds the reciprocity mechanism: sustained high effort paired with inadequate reward is a consequential source of occupational stress [[cite:siegrist-1996|(Siegrist, 1996)]].",
+              "Burnout, in this pattern, is not evidence that the employee cared too much or that the organization cared too little. It is evidence that contribution expanded faster than the contract and its supporting resources."
+            ],
+            "callout": "An exception becomes dangerous when the system begins depending on it without repricing it.",
+            "layout": "split-image-left",
+            "image": {
+              "src": "assets/images/writing/articles/2026-07-11_same_capability_two_contracts/images/05_invisible_scope_spiral.png",
+              "alt": "A loop showing an open need, a capable person stepping in, the work getting done, the need remaining informal, and scope expanding.",
+              "caption": "The successful rescue can hide the missing agreement while dependency grows."
+            }
+          },
+          {
+            "heading": "The manager is where the contract becomes real",
+            "paragraphs": [
+              "The organization can establish job architecture, governance, reward rules, and decision rights. It cannot negotiate every contribution at the point of work. The manager is the local contracting surface between institutional policy and employee capability.",
+              "That role is more demanding than approving tasks. The manager must help frame the need, decide whether the contribution matters, define boundaries, secure authority and resources, specify evidence, and name when success will reopen questions of scope, role, or reward.",
+              "The employee remains an equal participant. The employee must surface the proposed value before silently absorbing the work, test personal assumptions about capability, make the contribution visible, and accept that evidence may narrow the original claim.",
+              "The exchange works when organization, manager, and employee each own the part only they can control."
+            ],
+            "callout": "The organization creates the platform. The manager and employee form the working contract.",
+            "layout": "split-image-right",
+            "image": {
+              "src": "assets/images/writing/articles/2026-07-11_same_capability_two_contracts/images/06_manager_contracting_surface.png",
+              "alt": "The organization creating conditions, the manager binding the working agreement, and the employee creating and calibrating the contribution.",
+              "caption": "The manager is the contracting surface where policy reaches the work."
+            }
+          },
+          {
+            "heading": "Governance should make negotiation easier, not merely constrain action",
+            "paragraphs": [
+              "Governance is often treated as the mechanism that prevents people from doing the wrong work. In an entrepreneurial organization, it also needs to help people contract for valuable work that does not fit neatly inside the current role.",
+              "A useful platform makes five things discussable: the need, the proposed contribution, the decision rights required, the evidence that will matter, and the point at which the exchange will be reconsidered. It does not promise a promotion or a particular reward before value exists. It promises that the value proposition will not remain invisible.",
+              "Research on employee-organization relationships suggests that different balances of employer inducements and expected employee contributions produce different patterns of performance, citizenship behavior, and commitment [[cite:tsui-et-al-1997|(Tsui et al., 1997)]]. The practical implication is not that organizations should overinvest indiscriminately. It is that the exchange must be designed rather than left to folklore."
+            ],
+            "callout": "Good governance does not eliminate discretion. It gives discretion a contract."
+          },
+          {
+            "heading": "Build the contract while the work is still becoming visible",
+            "paragraphs": [
+              "Not every contribution can be priced before it begins. Novel work often reveals its value through discovery. The answer is not a rigid preapproval process that suppresses initiative. The answer is a lightweight agreement that can mature with the work.",
+              "Start with the open need and the intended outcome. Define a bounded contribution, the support and authority available, and the evidence that would justify expansion. Review the evidence early enough to stop, resize, transfer, formalize, or reward the work before temporary initiative becomes permanent invisible scope.",
+              "The contract is therefore iterative: frame, agree, contribute, observe, recognize, and learn. Each cycle calibrates the employee's capability and the organization's valuation at the same time."
+            ],
+            "blocks": [
+              {
+                "type": "list",
+                "title": "The minimum viable value contract",
+                "items": [
+                  "Need: What consequential problem are we trying to solve?",
+                  "Contribution: What work is being proposed, and what remains outside it?",
+                  "Authority: Which decisions, resources, and sponsorship does the work require?",
+                  "Evidence: What observable result would support the value claim?",
+                  "Recognition: When and how will role, priority, authority, or compensation be reconsidered?",
+                  "Review: What did the work reveal about the need, the contribution, and the employee's capability?"
+                ]
+              }
+            ],
+            "callout": "The goal is not certainty before action. It is a shared method for learning what the contribution is worth.",
+            "layout": "split-image-left",
+            "image": {
+              "src": "assets/images/writing/articles/2026-07-11_same_capability_two_contracts/images/07_minimum_viable_value_contract.png",
+              "alt": "A circular minimum viable value contract connecting need, contribution, authority, evidence, recognition, and review around a shared agreement.",
+              "caption": "The contract is a shared method for learning what the work is worth."
+            }
+          },
+          {
+            "heading": "The operating standard",
+            "paragraphs": [
+              "Organizations should continue hiring people who see possibilities beyond their job descriptions. Employees should continue bringing ambition to problems that have not yet been neatly assigned.",
+              "But entrepreneurial energy cannot remain governed by an invisible promise forever. As the organization matures, the value contract must mature with it.",
+              "The standard is not to eliminate every mismatch. It is to ensure that contribution is framed, evidence can correct both parties, and the exchange is revisited before the value gap becomes the relationship."
+            ],
+            "callout": "Capability creates possibility. Agreement gives it value."
+          }
+        ]
+      },
+      "companion": {
+        "snapshot": [
+          {
+            "label": "Core argument",
+            "value": "Ambition creates value only when the employee, manager, and organization share a method for defining, observing, and recognizing the contribution."
+          },
+          {
+            "label": "Primary failure mode",
+            "value": "The employee prices the contribution while the organization prices the role. Both continue operating without realizing the contract has diverged."
+          },
+          {
+            "label": "Management requirement",
+            "value": "Provide a lightweight platform for framing the need, contribution, authority, evidence, recognition, and review."
+          },
+          {
+            "label": "Operating question",
+            "value": "What would have to be agreed and observed for this contribution to change how the organization values the work?"
+          }
+        ],
+        "toc": [
+          {
+            "label": "The entrepreneurial promise is still a contract",
+            "anchor": "the-entrepreneurial-promise-is-still-a-contract"
+          },
+          {
+            "label": "The organization can change the contract without naming the change",
+            "anchor": "the-organization-can-change-the-contract-without-naming-the-change"
+          },
+          {
+            "label": "The employee can misprice the contribution too",
+            "anchor": "the-employee-can-misprice-the-contribution-too"
+          },
+          {
+            "label": "Ambiguity creates two private pricing systems",
+            "anchor": "ambiguity-creates-two-private-pricing-systems"
+          },
+          {
+            "label": "The capability void becomes a demand system",
+            "anchor": "the-capability-void-becomes-a-demand-system"
+          },
+          {
+            "label": "The manager is where the contract becomes real",
+            "anchor": "the-manager-is-where-the-contract-becomes-real"
+          },
+          {
+            "label": "Governance should make negotiation easier, not merely constrain action",
+            "anchor": "governance-should-make-negotiation-easier-not-merely-constrain-action"
+          },
+          {
+            "label": "Build the contract while the work is still becoming visible",
+            "anchor": "build-the-contract-while-the-work-is-still-becoming-visible"
+          },
+          {
+            "label": "The operating standard",
+            "anchor": "the-operating-standard"
+          }
+        ],
+        "assets": [
+          {
+            "label": "Same capability, two different contracts",
+            "href": "assets/images/writing/articles/2026-07-11_same_capability_two_contracts/images/01_same_capability_two_contracts.png",
+            "description": "Primary visual showing how the same open need follows different paths under assumed and agreed value contracts.",
+            "type": "image",
+            "number": "01"
+          },
+          {
+            "label": "The contract changes",
+            "href": "assets/images/writing/articles/2026-07-11_same_capability_two_contracts/images/02_contract_changed_without_being_named.png",
+            "description": "Comparison of opportunity-led and position-led value contracts.",
+            "type": "image",
+            "number": "02"
+          },
+          {
+            "label": "Capability requires calibration",
+            "href": "assets/images/writing/articles/2026-07-11_same_capability_two_contracts/images/03_capability_requires_calibration.png",
+            "description": "Capability calibration through agreed work and evidence.",
+            "type": "image",
+            "number": "03"
+          },
+          {
+            "label": "Two private pricing systems",
+            "href": "assets/images/writing/articles/2026-07-11_same_capability_two_contracts/images/04_two_private_pricing_systems.png",
+            "description": "Employee and organizational perspectives producing a value gap.",
+            "type": "image",
+            "number": "04"
+          },
+          {
+            "label": "The invisible scope spiral",
+            "href": "assets/images/writing/articles/2026-07-11_same_capability_two_contracts/images/05_invisible_scope_spiral.png",
+            "description": "Initiative becoming an informal dependency and expanding scope.",
+            "type": "image",
+            "number": "05"
+          },
+          {
+            "label": "The manager contracting surface",
+            "href": "assets/images/writing/articles/2026-07-11_same_capability_two_contracts/images/06_manager_contracting_surface.png",
+            "description": "The organization, manager, and employee meeting through a working agreement.",
+            "type": "image",
+            "number": "06"
+          },
+          {
+            "label": "The minimum viable value contract",
+            "href": "assets/images/writing/articles/2026-07-11_same_capability_two_contracts/images/07_minimum_viable_value_contract.png",
+            "description": "The six elements needed to frame and revisit a contribution.",
+            "type": "image",
+            "number": "07"
+          }
+        ],
+        "related": [
+          {
+            "title": "The Value Contract",
+            "slug": "operating-tools/the-value-contract",
+            "description": "A practical tool for defining contribution, evidence, and recognition before capability fills an open need."
+          },
+          {
+            "title": "Executive Follow-Through Requires Ownership Architecture",
+            "slug": "writing/2026/03/31/executive-follow-through-requires-ownership-architecture",
+            "description": "A related essay on converting intent into ownership, decision rights, evidence, escalation, and review."
+          }
+        ]
+      },
+      "productionAssets": {
+        "socialImage": {
+          "label": "Social preview image",
+          "href": "assets/images/writing/articles/2026-07-11_same_capability_two_contracts/images/og_same_capability_two_contracts.png",
+          "description": "Open Graph and LinkedIn preview for Same Capability. Two Different Contracts."
+        },
+        "articleImages": [
+          {
+            "label": "Same capability, two different contracts",
+            "href": "assets/images/writing/articles/2026-07-11_same_capability_two_contracts/images/01_same_capability_two_contracts.png",
+            "description": "Primary visual showing how the same open need follows different paths under assumed and agreed value contracts."
+          },
+          {
+            "label": "The contract changes",
+            "href": "assets/images/writing/articles/2026-07-11_same_capability_two_contracts/images/02_contract_changed_without_being_named.png",
+            "description": "Comparison of opportunity-led and position-led value contracts."
+          },
+          {
+            "label": "Capability requires calibration",
+            "href": "assets/images/writing/articles/2026-07-11_same_capability_two_contracts/images/03_capability_requires_calibration.png",
+            "description": "Capability calibration through agreed work and evidence."
+          },
+          {
+            "label": "Two private pricing systems",
+            "href": "assets/images/writing/articles/2026-07-11_same_capability_two_contracts/images/04_two_private_pricing_systems.png",
+            "description": "Employee and organizational perspectives producing a value gap."
+          },
+          {
+            "label": "The invisible scope spiral",
+            "href": "assets/images/writing/articles/2026-07-11_same_capability_two_contracts/images/05_invisible_scope_spiral.png",
+            "description": "Initiative becoming an informal dependency and expanding scope."
+          },
+          {
+            "label": "The manager contracting surface",
+            "href": "assets/images/writing/articles/2026-07-11_same_capability_two_contracts/images/06_manager_contracting_surface.png",
+            "description": "The organization, manager, and employee meeting through a working agreement."
+          },
+          {
+            "label": "The minimum viable value contract",
+            "href": "assets/images/writing/articles/2026-07-11_same_capability_two_contracts/images/07_minimum_viable_value_contract.png",
+            "description": "The six elements needed to frame and revisit a contribution."
+          }
+        ]
+      },
+      "citationStyle": "apa-author-date",
+      "references": [
+        {
+          "id": "rousseau-1989",
+          "type": "journal-article",
+          "authors": [
+            {
+              "family": "Rousseau",
+              "given": "Denise M."
+            }
+          ],
+          "year": 1989,
+          "title": "Psychological and Implied Contracts in Organizations",
+          "publication": "Employee Responsibilities and Rights Journal",
+          "volume": "2",
+          "issue": "2",
+          "pages": "121–139",
+          "doi": "10.1007/BF01384942",
+          "url": "https://doi.org/10.1007/BF01384942",
+          "note": "Foundational account of psychological and implied reciprocal obligations in employment relationships."
+        },
+        {
+          "id": "zhao-2007",
+          "type": "journal-article",
+          "authors": [
+            {
+              "family": "Zhao",
+              "given": "Hao"
+            },
+            {
+              "family": "Wayne",
+              "given": "Sandy J."
+            },
+            {
+              "family": "Glibkowski",
+              "given": "Brian C."
+            },
+            {
+              "family": "Bravo",
+              "given": "Jesus"
+            }
+          ],
+          "year": 2007,
+          "title": "The Impact of Psychological Contract Breach on Work-Related Outcomes: A Meta-Analysis",
+          "publication": "Personnel Psychology",
+          "volume": "60",
+          "issue": "3",
+          "pages": "647–680",
+          "doi": "10.1111/j.1744-6570.2007.00087.x",
+          "url": "https://doi.org/10.1111/j.1744-6570.2007.00087.x",
+          "note": "Meta-analysis connecting perceived contract breach with trust, job attitudes, turnover intentions, and employee effectiveness."
+        },
+        {
+          "id": "tubre-collins-2000",
+          "type": "journal-article",
+          "authors": [
+            {
+              "family": "Tubre",
+              "given": "Travis C."
+            },
+            {
+              "family": "Collins",
+              "given": "Judith M."
+            }
+          ],
+          "year": 2000,
+          "title": "Jackson and Schuler (1985) Revisited: A Meta-Analysis of the Relationships Between Role Ambiguity, Role Conflict, and Job Performance",
+          "publication": "Journal of Management",
+          "volume": "26",
+          "issue": "1",
+          "pages": "155–169",
+          "doi": "10.1177/014920630002600104",
+          "url": "https://doi.org/10.1177/014920630002600104",
+          "note": "Meta-analysis of role ambiguity, role conflict, and job performance."
+        },
+        {
+          "id": "locke-latham-2002",
+          "type": "journal-article",
+          "authors": [
+            {
+              "family": "Locke",
+              "given": "Edwin A."
+            },
+            {
+              "family": "Latham",
+              "given": "Gary P."
+            }
+          ],
+          "year": 2002,
+          "title": "Building a Practically Useful Theory of Goal Setting and Task Motivation: A 35-Year Odyssey",
+          "publication": "American Psychologist",
+          "volume": "57",
+          "issue": "9",
+          "pages": "705–717",
+          "doi": "10.1037/0003-066X.57.9.705",
+          "url": "https://doi.org/10.1037/0003-066X.57.9.705",
+          "note": "Review of how goals, commitment, task complexity, and feedback shape performance."
+        },
+        {
+          "id": "kluger-denisi-1996",
+          "type": "journal-article",
+          "authors": [
+            {
+              "family": "Kluger",
+              "given": "Avraham N."
+            },
+            {
+              "family": "DeNisi",
+              "given": "Angelo"
+            }
+          ],
+          "year": 1996,
+          "title": "The Effects of Feedback Interventions on Performance: A Historical Review, a Meta-Analysis, and a Preliminary Feedback Intervention Theory",
+          "publication": "Psychological Bulletin",
+          "volume": "119",
+          "issue": "2",
+          "pages": "254–284",
+          "doi": "10.1037/0033-2909.119.2.254",
+          "url": "https://doi.org/10.1037/0033-2909.119.2.254",
+          "note": "Meta-analysis showing that feedback effects vary according to where attention is directed."
+        },
+        {
+          "id": "demerouti-et-al-2001",
+          "type": "journal-article",
+          "authors": [
+            {
+              "family": "Demerouti",
+              "given": "Evangelia"
+            },
+            {
+              "family": "Bakker",
+              "given": "Arnold B."
+            },
+            {
+              "family": "Nachreiner",
+              "given": "Friedhelm"
+            },
+            {
+              "family": "Schaufeli",
+              "given": "Wilmar B."
+            }
+          ],
+          "year": 2001,
+          "title": "The Job Demands-Resources Model of Burnout",
+          "publication": "Journal of Applied Psychology",
+          "volume": "86",
+          "issue": "3",
+          "pages": "499–512",
+          "doi": "10.1037/0021-9010.86.3.499",
+          "url": "https://doi.org/10.1037/0021-9010.86.3.499",
+          "note": "Evidence linking job demands primarily with exhaustion and insufficient job resources with disengagement."
+        },
+        {
+          "id": "siegrist-1996",
+          "type": "journal-article",
+          "authors": [
+            {
+              "family": "Siegrist",
+              "given": "Johannes"
+            }
+          ],
+          "year": 1996,
+          "title": "Adverse Health Effects of High-Effort/Low-Reward Conditions",
+          "publication": "Journal of Occupational Health Psychology",
+          "volume": "1",
+          "issue": "1",
+          "pages": "27–41",
+          "doi": "10.1037/1076-8998.1.1.27",
+          "url": "https://doi.org/10.1037/1076-8998.1.1.27",
+          "note": "Foundational effort-reward imbalance model of occupational stress and reciprocal exchange."
+        },
+        {
+          "id": "tsui-et-al-1997",
+          "type": "journal-article",
+          "authors": [
+            {
+              "family": "Tsui",
+              "given": "Anne S."
+            },
+            {
+              "family": "Pearce",
+              "given": "Jone L."
+            },
+            {
+              "family": "Porter",
+              "given": "Lyman W."
+            },
+            {
+              "family": "Tripoli",
+              "given": "Angela M."
+            }
+          ],
+          "year": 1997,
+          "title": "Alternative Approaches to the Employee-Organization Relationship: Does Investment in Employees Pay Off?",
+          "publication": "Academy of Management Journal",
+          "volume": "40",
+          "issue": "5",
+          "pages": "1089–1121",
+          "doi": "10.5465/256928",
+          "url": "https://doi.org/10.5465/256928",
+          "note": "Study of how balances between employer inducements and expected employee contributions relate to performance and commitment."
+        }
+      ]
     }
   ]
 }

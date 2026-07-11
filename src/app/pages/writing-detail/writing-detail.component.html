@@ -21,13 +21,49 @@
       <article class="writing-main-content">
         <div class="intro" aria-label="Essay introduction">
           @for (paragraph of introParagraphs(); track $index) {
-            <p>{{ paragraph }}</p>
+            <p><cw-inline-citation-text [segments]="paragraph" /></p>
           }
         </div>
-        <cw-content-renderer [sections]="article.body.sections" />
+        <cw-content-renderer
+          [sections]="article.body.sections"
+          [references]="resolvedReferences()"
+          [initialCitationCounts]="introCitationCounts()"
+        />
+        @if (resolvedReferences().length) {
+          <section id="references" class="article-references" aria-labelledby="references-heading">
+            <h2 id="references-heading">References</h2>
+            <ol class="article-references__list">
+              @for (reference of resolvedReferences(); track reference.id) {
+                <li [id]="referenceId(reference)" class="article-references__item">
+                  <p class="article-references__entry">
+                    <span>{{ referenceAuthors(reference) }} ({{ referenceYear(reference) }}). </span>
+                    <span>{{ reference.title }}. </span>
+                    @if (reference.publication) {
+                      <span class="article-references__publication">{{ reference.publication }}</span>
+                      @if (reference.volume) {
+                        <span class="article-references__publication">, {{ reference.volume }}</span>
+                      }
+                      @if (reference.issue) {
+                        <span>({{ reference.issue }})</span>
+                      }
+                      @if (reference.pages) {
+                        <span>, {{ reference.pages }}</span>
+                      }
+                      <span>. </span>
+                    }
+                    <a [href]="referenceUrl(reference)">{{ referenceUrlLabel(reference) }}</a>
+                  </p>
+                  @if (reference.note) {
+                    <p class="article-references__note">{{ reference.note }}</p>
+                  }
+                </li>
+              }
+            </ol>
+          </section>
+        }
       </article>
 
-      @if (snapshotItems().length || tocItems().length || assetItems().length || relatedItems().length || callToActionItems().length) {
+      @if (hasRailContent()) {
         <aside class="writing-rail">
           @if (snapshotItems().length) {
             <section class="writing-rail-card">
@@ -51,6 +87,18 @@
                   <a [routerLink]="[]" [fragment]="item.anchor">{{ item.label }}</a>
                 }
               </nav>
+            </section>
+          }
+
+          @if (sourceCount()) {
+            <section class="writing-rail-card">
+              <p class="rail-eyebrow">Sources cited</p>
+              <div class="rail-stack">
+                <p class="sources-jump__count">Sources cited — {{ sourceCount() }}</p>
+                <a class="rail-asset" [routerLink]="[]" [fragment]="'references'">
+                  <span class="asset-label">View complete references</span>
+                </a>
+              </div>
             </section>
           }
 

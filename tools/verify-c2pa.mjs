@@ -81,14 +81,16 @@ function walkDirectory(root) {
 
 function resolveTargets(args) {
   if (!args.length) {
-    const output = execFileSync("git", ["ls-files", "-z", "--", ...gitPatterns], {
+    const tracked = execFileSync("git", ["ls-files", "-z", "--", ...gitPatterns], {
+      cwd: repoRoot,
+      encoding: "utf8",
+    });
+    const untracked = execFileSync("git", ["ls-files", "-z", "-o", "--exclude-standard", "--", ...gitPatterns], {
       cwd: repoRoot,
       encoding: "utf8",
     });
 
-    return output
-      .split("\0")
-      .filter(Boolean)
+    return [...new Set(`${tracked}${untracked}`.split("\0").filter(Boolean))]
       .map((filePath) => path.join(repoRoot, filePath));
   }
 

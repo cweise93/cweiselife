@@ -62,6 +62,7 @@ export const OPERATING_TOOL_FEELING_OPTIONS: FeelingOption[] = [
     accent: '#6d5bd0',
     recommendedSlug: 'operating-tools/activation-response',
     relatedSlugs: [
+      'operating-tools/the-value-contract',
       'operating-tools/activation-response',
       'operating-tools/map-the-habit-loop',
       'operating-tools/reframe-the-belief-retrain-the-response'
@@ -115,6 +116,7 @@ export const OPERATING_TOOL_FEELING_OPTIONS: FeelingOption[] = [
     accent: '#d99b09',
     recommendedSlug: 'operating-tools/see-the-pattern-choose-the-path',
     relatedSlugs: [
+      'operating-tools/the-value-contract',
       'operating-tools/see-the-pattern-choose-the-path',
       'operating-tools/map-the-habit-loop',
       'operating-tools/pattern-to-progress-guide',
@@ -129,6 +131,7 @@ export const OPERATING_TOOL_FEELING_OPTIONS: FeelingOption[] = [
     accent: '#7c5fd6',
     recommendedSlug: 'operating-tools/run-the-day-with-structure',
     relatedSlugs: [
+      'operating-tools/the-value-contract',
       'operating-tools/run-the-day-with-structure',
       'operating-tools/close-the-loop',
       'operating-tools/prime-the-day',

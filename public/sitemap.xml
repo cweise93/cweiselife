@@ -19,7 +19,7 @@
   </url>
   <url>
     <loc>https://cweise.com/writing/</loc>
-    <lastmod>2026-06-20</lastmod>
+    <lastmod>2026-07-11</lastmod>
   </url>
   <url>
     <loc>https://cweise.com/frameworks/</loc>
@@ -27,7 +27,7 @@
   </url>
   <url>
     <loc>https://cweise.com/operating-tools/</loc>
-    <lastmod>2026-07-04</lastmod>
+    <lastmod>2026-07-11</lastmod>
   </url>
   <url>
     <loc>https://cweise.com/writing/2026/06/20/the-friday-night-cap/</loc>
@@ -93,6 +93,15 @@
     </image:image>
   </url>
   <url>
+    <loc>https://cweise.com/writing/2026/07/11/same-capability-two-different-contracts/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <image:image>
+      <image:loc>https://cweise.com/assets/images/writing/articles/2026-07-11_same_capability_two_contracts/images/og_same_capability_two_contracts.png</image:loc>
+      <image:title>Same Capability. Two Different Contracts.</image:title>
+      <image:caption>Why ambitious employees and growing organizations can create real value together, yet still separate when contribution, evidence, and recognition remain implicit.</image:caption>
+    </image:image>
+  </url>
+  <url>
     <loc>https://cweise.com/frameworks/2026/06/01/ai-consumption-leverage-framework/</loc>
     <lastmod>2026-06-01</lastmod>
     <image:image>
@@ -139,7 +148,7 @@
   </url>
   <url>
     <loc>https://cweise.com/operating-tools/a-compass-not-a-map/</loc>
-    <lastmod>2026-07-04</lastmod>
+    <lastmod>2026-07-11</lastmod>
     <image:image>
       <image:loc>https://cweise.com/assets/images/operating-tools/a-compass-not-a-map/og_a_compass_not_a_map.png</image:loc>
       <image:title>A Compass, Not a Map</image:title>
@@ -148,7 +157,7 @@
   </url>
   <url>
     <loc>https://cweise.com/operating-tools/avoid-act-loop/</loc>
-    <lastmod>2026-07-04</lastmod>
+    <lastmod>2026-07-11</lastmod>
     <image:image>
       <image:loc>https://cweise.com/assets/images/operating-tools/avoid-act-loop/og_avoid_act_loop.png</image:loc>
       <image:title>Avoid to Act Loop</image:title>
@@ -157,7 +166,7 @@
   </url>
   <url>
     <loc>https://cweise.com/operating-tools/becoming-the-solution-provider/</loc>
-    <lastmod>2026-07-04</lastmod>
+    <lastmod>2026-07-11</lastmod>
     <image:image>
       <image:loc>https://cweise.com/assets/images/operating-tools/becoming-the-solution-provider/og_becoming_the_solution_provider.png</image:loc>
       <image:title>Becoming the Solution Provider</image:title>
@@ -166,7 +175,7 @@
   </url>
   <url>
     <loc>https://cweise.com/operating-tools/close-the-loop/</loc>
-    <lastmod>2026-07-04</lastmod>
+    <lastmod>2026-07-11</lastmod>
     <image:image>
       <image:loc>https://cweise.com/assets/images/operating-tools/close-the-loop/og_close_the_loop.png</image:loc>
       <image:title>Close the Loop</image:title>
@@ -175,7 +184,7 @@
   </url>
   <url>
     <loc>https://cweise.com/operating-tools/design-the-dream-state/</loc>
-    <lastmod>2026-07-04</lastmod>
+    <lastmod>2026-07-11</lastmod>
     <image:image>
       <image:loc>https://cweise.com/assets/images/operating-tools/design-the-dream-state/og_design_the_dream_state.png</image:loc>
       <image:title>Design the Dream State</image:title>
@@ -184,7 +193,7 @@
   </url>
   <url>
     <loc>https://cweise.com/operating-tools/meditation-to-lucidity/</loc>
-    <lastmod>2026-07-04</lastmod>
+    <lastmod>2026-07-11</lastmod>
     <image:image>
       <image:loc>https://cweise.com/assets/images/operating-tools/meditation-to-lucidity/og_meditation_to_lucidity.png</image:loc>
       <image:title>Meditation to Lucidity</image:title>
@@ -193,7 +202,7 @@
   </url>
   <url>
     <loc>https://cweise.com/operating-tools/prepare-the-night/</loc>
-    <lastmod>2026-07-04</lastmod>
+    <lastmod>2026-07-11</lastmod>
     <image:image>
       <image:loc>https://cweise.com/assets/images/operating-tools/prepare-the-night/og_prepare_the_night.png</image:loc>
       <image:title>Prepare the Night</image:title>
@@ -202,7 +211,7 @@
   </url>
   <url>
     <loc>https://cweise.com/operating-tools/prime-the-day/</loc>
-    <lastmod>2026-07-04</lastmod>
+    <lastmod>2026-07-11</lastmod>
     <image:image>
       <image:loc>https://cweise.com/assets/images/operating-tools/prime-the-day/og_prime_the_day.png</image:loc>
       <image:title>Prime the Day</image:title>
@@ -211,7 +220,7 @@
   </url>
   <url>
     <loc>https://cweise.com/operating-tools/run-the-day-with-structure/</loc>
-    <lastmod>2026-07-04</lastmod>
+    <lastmod>2026-07-11</lastmod>
     <image:image>
       <image:loc>https://cweise.com/assets/images/operating-tools/run-the-day-with-structure/og_run_the_day_with_structure.png</image:loc>
       <image:title>Run the Day with Structure</image:title>
@@ -220,7 +229,7 @@
   </url>
   <url>
     <loc>https://cweise.com/operating-tools/decision-pattern-guide/</loc>
-    <lastmod>2026-07-04</lastmod>
+    <lastmod>2026-07-11</lastmod>
     <image:image>
       <image:loc>https://cweise.com/assets/images/operating-tools/decision-pattern-guide/og_decision_pattern_guide.png</image:loc>
       <image:title>The Decision Pattern Guide</image:title>
@@ -229,7 +238,7 @@
   </url>
   <url>
     <loc>https://cweise.com/operating-tools/decision-tree-guide/</loc>
-    <lastmod>2026-07-04</lastmod>
+    <lastmod>2026-07-11</lastmod>
     <image:image>
       <image:loc>https://cweise.com/assets/images/operating-tools/decision-tree-guide/og_decision_tree_guide.png</image:loc>
       <image:title>The Decision Tree Guide</image:title>
@@ -238,7 +247,7 @@
   </url>
   <url>
     <loc>https://cweise.com/operating-tools/from-vision-to-measurable-action/</loc>
-    <lastmod>2026-07-04</lastmod>
+    <lastmod>2026-07-11</lastmod>
     <image:image>
       <image:loc>https://cweise.com/assets/images/operating-tools/from-vision-to-measurable-action/og_from_vision_to_measurable_action.png</image:loc>
       <image:title>From Vision to Measurable Action</image:title>
@@ -247,7 +256,7 @@
   </url>
   <url>
     <loc>https://cweise.com/operating-tools/map-the-habit-loop/</loc>
-    <lastmod>2026-07-04</lastmod>
+    <lastmod>2026-07-11</lastmod>
     <image:image>
       <image:loc>https://cweise.com/assets/images/operating-tools/map-the-habit-loop/og_map_the_habit_loop.png</image:loc>
       <image:title>Map the Habit Loop</image:title>
@@ -256,7 +265,7 @@
   </url>
   <url>
     <loc>https://cweise.com/operating-tools/operational-power-system/</loc>
-    <lastmod>2026-07-04</lastmod>
+    <lastmod>2026-07-11</lastmod>
     <image:image>
       <image:loc>https://cweise.com/assets/images/operating-tools/operational-power-system/og_operational_power_system.png</image:loc>
       <image:title>Operational Power System</image:title>
@@ -265,7 +274,7 @@
   </url>
   <url>
     <loc>https://cweise.com/operating-tools/pattern-to-progress-guide/</loc>
-    <lastmod>2026-07-04</lastmod>
+    <lastmod>2026-07-11</lastmod>
     <image:image>
       <image:loc>https://cweise.com/assets/images/operating-tools/pattern-to-progress-guide/og_pattern_to_progress_guide.png</image:loc>
       <image:title>The Pattern-to-Progress Guide</image:title>
@@ -274,7 +283,7 @@
   </url>
   <url>
     <loc>https://cweise.com/operating-tools/question-to-action-filter/</loc>
-    <lastmod>2026-07-04</lastmod>
+    <lastmod>2026-07-11</lastmod>
     <image:image>
       <image:loc>https://cweise.com/assets/images/operating-tools/question-to-action-filter/og_question_to_action_filter.png</image:loc>
       <image:title>The Question-to-Action Filter</image:title>
@@ -283,7 +292,7 @@
   </url>
   <url>
     <loc>https://cweise.com/operating-tools/reframe-the-belief-retrain-the-response/</loc>
-    <lastmod>2026-07-04</lastmod>
+    <lastmod>2026-07-11</lastmod>
     <image:image>
       <image:loc>https://cweise.com/assets/images/operating-tools/reframe-the-belief-retrain-the-response/og_reframe_the_belief_retrain_the_response.png</image:loc>
       <image:title>Reframe the Belief, Retrain the Response</image:title>
@@ -292,7 +301,7 @@
   </url>
   <url>
     <loc>https://cweise.com/operating-tools/run-the-decision-experiment/</loc>
-    <lastmod>2026-07-04</lastmod>
+    <lastmod>2026-07-11</lastmod>
     <image:image>
       <image:loc>https://cweise.com/assets/images/operating-tools/run-the-decision-experiment/og_run_the_decision_experiment.png</image:loc>
       <image:title>Run the Decision Experiment</image:title>
@@ -301,7 +310,7 @@
   </url>
   <url>
     <loc>https://cweise.com/operating-tools/see-the-pattern-choose-the-path/</loc>
-    <lastmod>2026-07-04</lastmod>
+    <lastmod>2026-07-11</lastmod>
     <image:image>
       <image:loc>https://cweise.com/assets/images/operating-tools/see-the-pattern-choose-the-path/og_see_the_pattern_choose_the_path.png</image:loc>
       <image:title>See the Pattern, Choose the Path</image:title>
@@ -310,7 +319,7 @@
   </url>
   <url>
     <loc>https://cweise.com/operating-tools/start-where-the-signal-appears/</loc>
-    <lastmod>2026-07-04</lastmod>
+    <lastmod>2026-07-11</lastmod>
     <image:image>
       <image:loc>https://cweise.com/assets/images/operating-tools/start-where-the-signal-appears/og_start_where_the_signal_appears.png</image:loc>
       <image:title>Start Where the Signal Appears</image:title>
@@ -319,7 +328,7 @@
   </url>
   <url>
     <loc>https://cweise.com/operating-tools/activation-response/</loc>
-    <lastmod>2026-07-04</lastmod>
+    <lastmod>2026-07-11</lastmod>
     <image:image>
       <image:loc>https://cweise.com/assets/images/operating-tools/activation-response/og_activation_response.png</image:loc>
       <image:title>Activation Response</image:title>
@@ -328,11 +337,20 @@
   </url>
   <url>
     <loc>https://cweise.com/operating-tools/agency-is-the-metric/</loc>
-    <lastmod>2026-07-04</lastmod>
+    <lastmod>2026-07-11</lastmod>
     <image:image>
       <image:loc>https://cweise.com/assets/images/operating-tools/agency-is-the-metric/og_agency_is_the_metric.png</image:loc>
       <image:title>Agency Is the Metric</image:title>
       <image:caption>A practical operating tool for assessing whether an operating system is producing reality-based leadership, not just more control.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://cweise.com/operating-tools/the-value-contract/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <image:image>
+      <image:loc>https://cweise.com/assets/images/operating-tools/the-value-contract/og_same_capability_two_contracts.png</image:loc>
+      <image:title>The Value Contract</image:title>
+      <image:caption>A practical tool for turning an open need into an agreed contribution, visible evidence, and recognized value.</image:caption>
     </image:image>
   </url>
 </urlset>

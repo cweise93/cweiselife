@@ -18,6 +18,38 @@ export interface ProductionAssetReference {
 
 export interface ProductionAssets {
   socialImage?: ProductionAssetReference;
+  articleImages?: ProductionAssetReference[];
+}
+
+export type CitationStyle = 'apa-author-date';
+
+export interface WritingReferenceAuthor {
+  family: string;
+  given: string;
+}
+
+export type WritingReferenceType = 'journal-article' | 'report' | 'web';
+
+export interface WritingReference {
+  id: string;
+  type: WritingReferenceType;
+  authors: WritingReferenceAuthor[];
+  year: number | null;
+  title: string;
+  publication?: string;
+  volume?: string;
+  issue?: string;
+  pages?: string;
+  doi?: string;
+  url: string;
+  note?: string;
+}
+
+export interface LegacyReference {
+  title: string;
+  publisher?: string;
+  url: string;
+  note?: string;
 }
 
 export interface ContentParagraphBlock {
@@ -153,6 +185,7 @@ export interface ContentCompanion {
   snapshot?: CompanionSnapshotItem[];
   toc?: CompanionTocItem[];
   assets?: CompanionAsset[];
+  references?: LegacyReference[];
   related?: CompanionRelatedItem[];
   callsToAction?: CompanionCallToAction[];
 }
@@ -264,6 +297,8 @@ export interface WritingItem {
   productionAssets?: ProductionAssets;
   seo: SeoContent;
   body: WritingBody;
+  citationStyle?: CitationStyle;
+  references?: WritingReference[];
   companion?: ContentCompanion;
 }
 

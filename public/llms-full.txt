@@ -594,6 +594,70 @@ George did not need to understand every prompt. He needed the delivery engine to
   The leadership standard is not simply to care about the priority. The standard is to make the priority operationally real.
   Callout: A strategy becomes durable when the organization knows how to carry it without constant executive force.
 
+### Essay: Same Capability. Two Different Contracts.
+- URL: https://cweise.com/writing/2026/07/11/same-capability-two-different-contracts/
+- Summary: Why ambitious employees and growing organizations can create real value together, yet still separate when contribution, evidence, and recognition remain implicit.
+- Published: 2026-07-11
+- Tags: psychological contract, value alignment, role clarity, employee retention, governance, management systems
+- SEO description: How implicit value contracts create role ambiguity, effort-reward gaps, burnout, and avoidable turnover—and how organizations can make contribution negotiable and visible.
+- Primary share image: https://cweise.com/assets/images/writing/articles/2026-07-11_same_capability_two_contracts/images/og_same_capability_two_contracts.png
+- Intro: A growing organization often wants people who will see an open need and move toward it. It hires for ambition, judgment, and the willingness to figure things out. The employee hears a reciprocal promise: create meaningful value and the organization will recognize it. That promise can work for years without being written down. Then the organization changes, the employee keeps operating under the original logic, and the two sides begin pricing the same contribution differently.
+- Section: The entrepreneurial promise is still a contract
+  Employment is governed by more than the formal offer letter. People also form beliefs about reciprocal obligations: what the organization expects from them and what it will provide in return. Organizational scholar [[cite:rousseau-1989|Denise Rousseau (1989)]] described these beliefs as psychological contracts and distinguished them from obligations that are explicit or jointly understood.
+  An entrepreneurial culture creates a particularly expansive version of this contract. The organization offers autonomy and possibility. The employee offers initiative beyond a narrowly prescribed role. When both sides can see and reward the exchange, the ambiguity feels like freedom rather than risk.
+  The contract is real in its consequences even when its terms remain incomplete. The danger is not informality itself. The danger is allowing contribution, evidence, and recognition to remain private interpretations.
+  Callout: An open culture can create extraordinary initiative while leaving the exchange behind that initiative undefined.
+- Section: The organization can change the contract without naming the change
+  As organizations scale, they add role bands, budgets, controls, portfolio priorities, approval paths, and standardized rewards. These changes may be necessary. They also change what the organization can recognize and compensate.
+  The earlier contract may have rewarded broad contribution: find a consequential gap, solve it, and grow with the value created. The later system may reward contribution mainly through the employee's current role, formal scope, and established comparison group. The work can remain valuable while the valuation method changes.
+  Neither model is inherently dishonest. The fracture occurs when the organization adopts the second model while the employee continues working under the first. Research on psychological-contract breach consistently links perceived breach with lower trust, satisfaction, commitment, and stronger turnover intentions [[cite:zhao-2007|(Zhao et al., 2007)]].
+  Callout: A contract does not need to be broken deliberately to stop functioning. It only needs to be interpreted differently.
+  Image: A comparison of an opportunity-led open contract and a position-led defined contract as an organization scales.
+- Section: The employee can misprice the contribution too
+  The employee's interpretation is not automatically correct. Capability is rarely uniform. Someone may be exceptional at recognizing patterns, designing solutions, or creating momentum while being less effective at adoption, political translation, operational maintenance, or repeatable delivery.
+  Ambitious people can also confuse difficulty, effort, novelty, or personal sacrifice with organizational value. The organization may never have requested the contribution, may not rank the underlying problem highly, or may value the result without valuing it at the level the employee inferred.
+  This is why value cannot be established by self-assessment or managerial impression alone. Feedback research shows that feedback is not uniformly beneficial; its effect depends on where it directs attention and how it connects performance to the task [[cite:kluger-denisi-1996|(Kluger & DeNisi, 1996)]]. Capability must be calibrated against agreed work and observable outcomes.
+  Callout: Capability is discovered through agreed work and evidence—not assumed by either side.
+  Image: A capability calibration path moving from assumption through agreed work and evidence to an observed capability profile.
+- Section: Ambiguity creates two private pricing systems
+  Without an explicit value contract, the employee prices the contribution from the inside: complexity absorbed, judgment applied, hours invested, crises prevented, and alternatives created. The organization prices it from the outside: role definition, visible output, strategic priority, comparable positions, budget, and attributable results.
+  Both can be rational. They are not measuring the same thing.
+  Role-ambiguity research helps explain why the gap persists. A meta-analysis found that role ambiguity is negatively associated with job performance, with effects varying by job and rating source [[cite:tubre-collins-2000|(Tubre & Collins, 2000)]]. Goal-setting research likewise shows that specific goals and feedback help direct attention and effort, while complex work may require learning goals rather than premature performance targets [[cite:locke-latham-2002|(Locke & Latham, 2002)]].
+  When scope, standards, evidence, and recognition remain vague, the organization has no stable basis for pricing the contribution and the employee has no reliable basis for limiting it.
+  Callout: The employee prices the contribution. The organization prices the role. The gap grows in the space between them.
+  Image: An employee pricing a contribution by complexity, judgment, effort, and risk while the organization prices the role by comparables, priority, and attributable results.
+- Section: The capability void becomes a demand system
+  A capable person can repeatedly absorb work that the organization has not formally assigned because the cost of leaving the need open feels higher than the cost of filling it. Each rescue then makes the capability more available and the void less visible.
+  What begins as initiative becomes an informal demand system. The employee experiences expanding responsibility; the organization experiences continued performance. Because the work still gets done, neither side is forced to define the contract.
+  The job demands-resources model distinguishes demands that consume sustained effort from resources such as autonomy, support, feedback, and control. High demands are associated with exhaustion, while insufficient resources are associated with disengagement [[cite:demerouti-et-al-2001|(Demerouti et al., 2001)]]. Effort-reward imbalance adds the reciprocity mechanism: sustained high effort paired with inadequate reward is a consequential source of occupational stress [[cite:siegrist-1996|(Siegrist, 1996)]].
+  Burnout, in this pattern, is not evidence that the employee cared too much or that the organization cared too little. It is evidence that contribution expanded faster than the contract and its supporting resources.
+  Callout: An exception becomes dangerous when the system begins depending on it without repricing it.
+  Image: A loop showing an open need, a capable person stepping in, the work getting done, the need remaining informal, and scope expanding.
+- Section: The manager is where the contract becomes real
+  The organization can establish job architecture, governance, reward rules, and decision rights. It cannot negotiate every contribution at the point of work. The manager is the local contracting surface between institutional policy and employee capability.
+  That role is more demanding than approving tasks. The manager must help frame the need, decide whether the contribution matters, define boundaries, secure authority and resources, specify evidence, and name when success will reopen questions of scope, role, or reward.
+  The employee remains an equal participant. The employee must surface the proposed value before silently absorbing the work, test personal assumptions about capability, make the contribution visible, and accept that evidence may narrow the original claim.
+  The exchange works when organization, manager, and employee each own the part only they can control.
+  Callout: The organization creates the platform. The manager and employee form the working contract.
+  Image: The organization creating conditions, the manager binding the working agreement, and the employee creating and calibrating the contribution.
+- Section: Governance should make negotiation easier, not merely constrain action
+  Governance is often treated as the mechanism that prevents people from doing the wrong work. In an entrepreneurial organization, it also needs to help people contract for valuable work that does not fit neatly inside the current role.
+  A useful platform makes five things discussable: the need, the proposed contribution, the decision rights required, the evidence that will matter, and the point at which the exchange will be reconsidered. It does not promise a promotion or a particular reward before value exists. It promises that the value proposition will not remain invisible.
+  Research on employee-organization relationships suggests that different balances of employer inducements and expected employee contributions produce different patterns of performance, citizenship behavior, and commitment [[cite:tsui-et-al-1997|(Tsui et al., 1997)]]. The practical implication is not that organizations should overinvest indiscriminately. It is that the exchange must be designed rather than left to folklore.
+  Callout: Good governance does not eliminate discretion. It gives discretion a contract.
+- Section: Build the contract while the work is still becoming visible
+  Not every contribution can be priced before it begins. Novel work often reveals its value through discovery. The answer is not a rigid preapproval process that suppresses initiative. The answer is a lightweight agreement that can mature with the work.
+  Start with the open need and the intended outcome. Define a bounded contribution, the support and authority available, and the evidence that would justify expansion. Review the evidence early enough to stop, resize, transfer, formalize, or reward the work before temporary initiative becomes permanent invisible scope.
+  The contract is therefore iterative: frame, agree, contribute, observe, recognize, and learn. Each cycle calibrates the employee's capability and the organization's valuation at the same time.
+  Callout: The goal is not certainty before action. It is a shared method for learning what the contribution is worth.
+  Image: A circular minimum viable value contract connecting need, contribution, authority, evidence, recognition, and review around a shared agreement.
+  List (The minimum viable value contract): Need: What consequential problem are we trying to solve? | Contribution: What work is being proposed, and what remains outside it? | Authority: Which decisions, resources, and sponsorship does the work require? | Evidence: What observable result would support the value claim? | Recognition: When and how will role, priority, authority, or compensation be reconsidered? | Review: What did the work reveal about the need, the contribution, and the employee's capability?
+- Section: The operating standard
+  Organizations should continue hiring people who see possibilities beyond their job descriptions. Employees should continue bringing ambition to problems that have not yet been neatly assigned.
+  But entrepreneurial energy cannot remain governed by an invisible promise forever. As the organization matures, the value contract must mature with it.
+  The standard is not to eliminate every mismatch. It is to ensure that contribution is framed, evidence can correct both parties, and the exchange is revisited before the value gap becomes the relationship.
+  Callout: Capability creates possibility. Agreement gives it value.
+
 ## Frameworks Index
 - URL: https://cweise.com/frameworks/
 - Summary: Frameworks for reducing noise, improving systems translation, and designing cleaner execution paths inside complex organizations.
@@ -1395,6 +1459,33 @@ George did not need to understand every prompt. He needed the delivery engine to
 - Section: The operating question
   If the system is working, leaders should recover faster, decide cleaner, follow through more reliably, and create less drag for the organization around them.
   Callout: Agency converts inner governance into visible leadership output.
+
+### Operating Tool: The Value Contract
+- URL: https://cweise.com/operating-tools/the-value-contract/
+- Summary: A practical tool for turning an open need into an agreed contribution, visible evidence, and recognized value.
+- Published: Not specified
+- Tags: value alignment, role clarity, management, governance, employee experience
+- SEO description: A practical operating tool for defining contribution, evidence, and recognition before capability quietly becomes obligation.
+- Primary share image: https://cweise.com/assets/images/operating-tools/the-value-contract/og_same_capability_two_contracts.png
+- Intro: An open need is not yet an assignment, and useful work is not yet shared value. Use this tool to define the contract before capability fills the void by assumption.
+- Section: Name the need
+  Describe the problem and desired outcome before proposing the solution.
+  Ask why the need matters now and who is responsible for the result.
+  Callout: Start with the need, not the available capability.
+- Section: Frame the contribution
+  Define the work, boundaries, decision rights, and support required.
+  Separate what the employee can do from what the organization is asking them to own.
+- Section: Agree on value
+  Name the evidence that will show whether the contribution worked.
+  Agree when role, authority, priority, or compensation will be reconsidered if the contribution expands.
+  Callout: Do not leave recognition to interpretation after delivery.
+- Section: Deliver and observe
+  Complete the agreed work and preserve visible evidence of the result.
+  Compare the outcome with the original need, not with effort alone.
+- Section: Revisit the contract
+  Review what the work revealed about the need, the role, and the employee's capability.
+  Renew, resize, reassign, or stop the contribution before the exception becomes an invisible expectation.
+  Callout: Capability creates possibility. Agreement gives it value.
 
 ## Connect
 - URL: https://cweise.com/connect/
