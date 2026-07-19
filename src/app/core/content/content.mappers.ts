@@ -46,6 +46,10 @@ function asString(value: unknown, fallback = ''): string {
   return typeof value === 'string' ? value.trim() : fallback;
 }
 
+function assetPath(value: unknown, fallback = ''): string {
+  return asString(value, fallback).replace(/\.(png|jpe?g)$/i, '.webp');
+}
+
 function asStringArray(value: unknown): string[] {
   return Array.isArray(value)
     ? value.map((item) => asString(item)).filter(Boolean)
@@ -76,7 +80,7 @@ function normalizeTags(value: unknown): string[] {
 }
 
 function normalizeContentImage(value: any): ContentImage | undefined {
-  const src = asString(value?.src);
+  const src = assetPath(value?.src);
   const alt = asString(value?.alt);
 
   if (!src || !alt) {
@@ -599,7 +603,7 @@ function normalizeHome(value: any): HomeContentConfig {
     headline: asString(value?.headline, 'Operational Clarity for Complex Organizations'),
     subheadline: asString(value?.subheadline, 'Surface the truth. Structure the evidence. Operationalize the answer.'),
     intro: asStringArray(value?.intro),
-    heroImage: asString(value?.heroImage, 'assets/images/hero-architecture.png'),
+    heroImage: assetPath(value?.heroImage, 'assets/images/hero-architecture.png'),
     featuredWritingSlugs: asStringArray(value?.featuredWritingSlugs),
     featuredFrameworkSlugs: asStringArray(value?.featuredFrameworkSlugs),
     featuredOperatingToolSlugs: asStringArray(value?.featuredOperatingToolSlugs),
@@ -728,7 +732,7 @@ export function mapWritingItem(value: any): WritingItem | null {
     readTimeMinutes: asNumber(value?.readTimeMinutes, 5),
     featured: asBoolean(value?.featured),
     tags: normalizeTags(value?.tags),
-    heroImage: asString(value?.heroImage) || undefined,
+    heroImage: assetPath(value?.heroImage) || undefined,
     productionAssets: normalizeProductionAssets(value?.productionAssets),
     seo: normalizeSeo(value?.seo, title, summary),
     body: {
@@ -804,8 +808,8 @@ export function mapFrameworkItem(value: any): FrameworkItem | null {
     featured: asBoolean(value?.featured),
     category: asString(value?.category),
     tags: normalizeTags(value?.tags),
-    diagramImage: asString(value?.diagramImage) || undefined,
-    heroImage: asString(value?.heroImage) || undefined,
+    diagramImage: assetPath(value?.diagramImage) || undefined,
+    heroImage: assetPath(value?.heroImage) || undefined,
     productionAssets: normalizeProductionAssets(value?.productionAssets),
     seo: normalizeSeo(value?.seo, title, summary),
     body,
@@ -848,7 +852,7 @@ export function mapOperatingToolItem(value: any): OperatingToolItem | null {
     featured: asBoolean(value?.featured),
     icon: asString(value?.icon, 'handyman'),
     tags: normalizeTags(value?.tags),
-    heroImage: asString(value?.heroImage) || undefined,
+    heroImage: assetPath(value?.heroImage) || undefined,
     productionAssets: normalizeProductionAssets(value?.productionAssets),
     seo: normalizeSeo(value?.seo, title, summary),
     body,
@@ -899,7 +903,7 @@ export const FALLBACK_SITE_CONTENT: SiteContentFile = mapSiteFile({
     headline: 'Operational Clarity for Complex Organizations',
     subheadline: 'Surface the truth. Structure the evidence. Operationalize the answer.',
     intro: [],
-    heroImage: 'assets/images/hero-architecture.png',
+    heroImage: 'assets/images/hero-architecture.webp',
     featuredWritingSlugs: [],
     featuredFrameworkSlugs: [],
     featuredOperatingToolSlugs: [],

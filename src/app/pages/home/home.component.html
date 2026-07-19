@@ -29,7 +29,7 @@
     </div>
   </div>
   <div class="hero-art" aria-hidden="true">
-    <img [src]="vm.home.heroImage" alt="" />
+    <img [src]="vm.home.heroImage" alt="" fetchpriority="high" decoding="async" />
   </div>
 </section>
 
@@ -102,7 +102,7 @@
             @for (article of slide; track article.id) {
               <mat-card appearance="outlined" class="article-card cw-surface-card">
                 <a class="article-media-link" [routerLink]="getWritingRoute(article)" [attr.aria-label]="'Read ' + article.title">
-                  <img [src]="article.heroImage" [alt]="article.title" />
+                  <img [src]="article.heroImage" [alt]="article.title" loading="lazy" decoding="async" />
                 </a>
                 <mat-card-content>
                   <a
@@ -157,7 +157,7 @@
   @if (vm.featuredFrameworks[0]; as framework) {
     <div class="cw-container feature-grid">
       <div class="framework-visual cw-surface-card">
-        <img [src]="framework.diagramImage" [alt]="framework.title + ' diagram'" />
+        <img [src]="framework.diagramImage" [alt]="framework.title + ' diagram'" loading="lazy" decoding="async" />
       </div>
       <div class="feature-copy">
         <p class="cw-eyebrow">{{ homeFrameworkSection.eyebrow }}</p>

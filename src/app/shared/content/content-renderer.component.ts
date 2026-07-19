@@ -159,7 +159,7 @@ interface LightboxImage {
                   [attr.aria-label]="'Open image: ' + image.alt"
                   (click)="openImage(image)"
                 >
-                  <img [src]="image.src" [alt]="image.alt" />
+                  <img [src]="image.src" [alt]="image.alt" loading="lazy" decoding="async" />
                 </button>
                 @if (image.caption) {
                   <figcaption>{{ image.caption }}</figcaption>
@@ -182,7 +182,7 @@ interface LightboxImage {
                 [attr.aria-label]="'Open image: ' + image.alt"
                 (click)="openImage(image)"
               >
-                <img [src]="image.src" [alt]="image.alt" />
+                <img [src]="image.src" [alt]="image.alt" loading="lazy" decoding="async" />
               </button>
               @if (image.caption) {
                 <figcaption>{{ image.caption }}</figcaption>
@@ -214,7 +214,7 @@ interface LightboxImage {
                       [attr.aria-label]="'Open image: ' + block.alt"
                       (click)="openImage(block)"
                     >
-                      <img [src]="block.src" [alt]="block.alt" />
+                      <img [src]="block.src" [alt]="block.alt" loading="lazy" decoding="async" />
                     </button>
                     @if (block.caption) {
                       <figcaption>{{ block.caption }}</figcaption>
