@@ -1,12 +1,1279 @@
 {
   "meta": {
     "version": 1,
-    "updatedOn": "2026-06-01",
+    "updatedOn": "2026-06-24",
     "eyebrow": "Frameworks",
     "headline": "Operational Frameworks",
     "intro": "Frameworks for reducing noise, improving systems translation, and designing cleaner execution paths inside complex organizations."
   },
   "items": [
+    {
+      "id": "framework-006",
+      "slug": "frameworks/2026/06/23/meter-before-cap-framework",
+      "title": "Meter Before Cap Framework",
+      "summary": "A real-time AI consumption framework for turning AI-supported work into visible operating signals before caps, overages, or capacity limits interrupt delivery.",
+      "status": "published",
+      "publishedOn": "2026-06-23",
+      "featured": true,
+      "category": "AI Operations",
+      "tags": [
+        "AI telemetry",
+        "AI consumption",
+        "AI governance",
+        "token visibility",
+        "model routing",
+        "capacity planning",
+        "AI cost management",
+        "operational intelligence",
+        "Azure AI",
+        "OpenTelemetry",
+        "workflow design"
+      ],
+      "diagramImage": "assets/images/frameworks/2026-06-23_meter_before_cap_framework/images/01_real_time_ai_consumption_architecture.png",
+      "heroImage": "assets/images/frameworks/2026-06-23_meter_before_cap_framework/images/01_real_time_ai_consumption_architecture.png",
+      "seo": {
+        "title": "Meter Before Cap Framework",
+        "description": "A framework for giving AI users and leaders real-time consumption visibility through a controlled interface ribbon, telemetry seam, policy routing, and dashboard before usage limits interrupt work."
+      },
+      "body": {
+        "premise": "AI consumption becomes operationally material when it can affect delivery, capacity, cost, or user behavior before leaders see the pattern. The Meter Before Cap Framework defines the layer between AI-supported work and enterprise AI governance: a controlled interface that estimates usage before execution, records telemetry after execution, routes work through policy, and turns capacity limits into earlier decisions instead of late surprises.",
+        "components": [
+          {
+            "title": "Controlled Interface Ribbon",
+            "description": "A user-facing meter that shows model, workstream, estimated usage, remaining capacity, warning state, route, and approval posture before work is submitted."
+          },
+          {
+            "title": "Telemetry Seam",
+            "description": "A normalized event layer that records estimates, actual usage, request context, policy state, capacity exposure, and outcome signals."
+          },
+          {
+            "title": "Policy and Routing Engine",
+            "description": "A rule layer that recommends whether work should proceed, route, require approval, restrict, pause, or rescope."
+          },
+          {
+            "title": "Real-Time AI Consumption Dashboard",
+            "description": "A leadership surface for burn rate, cap exposure, forecasted exhaustion, high-consumption requests, and workstream trends."
+          },
+          {
+            "title": "Velocity Prioritization Overlay",
+            "description": "A management layer that connects consumption, value, velocity, and risk into an acceleration posture."
+          }
+        ],
+        "application": "Use this framework when AI has moved beyond experimentation and is becoming part of how teams deliver work. It is especially useful when leaders can see faster output but cannot yet explain which AI capacity, model choices, context patterns, and policy thresholds are now part of the delivery chain.",
+        "sections": [
+          {
+            "heading": "Why this framework exists",
+            "layout": "split-image-right",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "text": "The Friday Night Cap showed the operating problem: a small team was producing at a new level because AI had become part of its delivery system, but the organization had not instrumented AI capacity as a delivery dependency."
+              },
+              {
+                "type": "paragraph",
+                "text": "That is the gap this framework closes. It does not argue that caps are bad. It argues that limits become disruptive when they are invisible until the moment work is blocked [3].",
+                "referenceIds": [
+                  "fn-azure-openai-quotas"
+                ]
+              },
+              {
+                "type": "paragraph",
+                "text": "A cap protects the boundary. A meter gives the organization time to make a better decision before the boundary is reached."
+              },
+              {
+                "type": "image",
+                "src": "assets/images/frameworks/2026-06-23_meter_before_cap_framework/images/01_real_time_ai_consumption_architecture.png",
+                "alt": "Real-Time AI Consumption Architecture showing user work surface, controlled ribbon, telemetry seam, policy routing, providers, and governance dashboard.",
+                "caption": "The framework moves AI governance from a back-office review surface into the working path where consumption is created.",
+                "title": "Real-Time AI Consumption Architecture",
+                "referenceIds": [
+                  "fn-foundry-platform",
+                  "fn-foundry-routing-observability"
+                ]
+              },
+              {
+                "type": "callout",
+                "tone": "executive",
+                "title": "Core promise",
+                "text": "Make AI consumption visible early enough for users to adjust, leaders to route, and governance to act before capacity becomes a delivery surprise."
+              }
+            ]
+          },
+          {
+            "heading": "The control plane is not the user experience",
+            "layout": "default",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "text": "Enterprise AI platforms are increasingly solving the architect and decision-maker problem: how to build, ground, govern, route, observe, and control AI apps and agents across providers, tools, data, and policy boundaries [1].",
+                "referenceIds": [
+                  "fn-foundry-platform"
+                ]
+              },
+              {
+                "type": "paragraph",
+                "text": "That matters, but it does not fully solve the operating moment for the individual user. The user needs to know whether the work they are about to submit is small, large, risky, near a threshold, better suited for another model, or likely to require approval [3].",
+                "referenceIds": [
+                  "fn-azure-openai-quotas"
+                ]
+              },
+              {
+                "type": "paragraph",
+                "text": "The framework therefore separates two surfaces. The enterprise control plane governs the AI estate. The controlled interface ribbon gives the user real-time feedback while work is still adjustable [2].",
+                "referenceIds": [
+                  "fn-foundry-routing-observability"
+                ]
+              },
+              {
+                "type": "table",
+                "title": "Two surfaces, different jobs",
+                "columns": [
+                  "Surface",
+                  "Primary audience",
+                  "Primary job"
+                ],
+                "rows": [
+                  [
+                    "Enterprise AI control plane",
+                    "Architects, AI platform owners, security, compliance, decision makers",
+                    "Build, ground, govern, observe, route, secure, and operate AI applications and agents at scale."
+                  ],
+                  [
+                    "Controlled interface ribbon",
+                    "Developers, analysts, operators, managers, business users",
+                    "Show consumption, capacity, policy, route, and recommended behavior at the moment work is being created."
+                  ]
+                ]
+              },
+              {
+                "type": "callout",
+                "tone": "technical",
+                "title": "Design implication",
+                "text": "Borrow the confidence and structure of an enterprise AI control plane, but move the most important consumption signal into the user workflow."
+              }
+            ]
+          },
+          {
+            "heading": "The six-layer architecture",
+            "layout": "split-image-left",
+            "blocks": [
+              {
+                "type": "image",
+                "src": "assets/images/frameworks/2026-06-23_meter_before_cap_framework/images/01_real_time_ai_consumption_architecture.png",
+                "alt": "Six-layer AI consumption architecture from user work surface to governance control plane.",
+                "caption": "The architecture starts with the user work surface and ends with analytics, governance, and optimization loops.",
+                "title": "Six-Layer Architecture",
+                "referenceIds": [
+                  "fn-foundry-platform",
+                  "fn-foundry-routing-observability",
+                  "fn-otel-provider-model",
+                  "fn-otel-token-usage"
+                ]
+              },
+              {
+                "type": "paragraph",
+                "text": "The framework is intentionally layered so organizations can implement visibility before they overbuild control. Each layer has a distinct job [2].",
+                "referenceIds": [
+                  "fn-foundry-routing-observability"
+                ]
+              },
+              {
+                "type": "cards",
+                "items": [
+                  {
+                    "title": "1. User work surface",
+                    "description": "Where AI-supported work actually happens: internal apps, IDEs, dashboards, notebooks, plugins, APIs, and controlled AI workspaces."
+                  },
+                  {
+                    "title": "2. Controlled interface ribbon",
+                    "description": "The user-facing meter showing model, reasoning, workstream, token estimate, live usage, remaining capacity, warning state, and route recommendation."
+                  },
+                  {
+                    "title": "3. Telemetry seam",
+                    "description": "The normalized event stream that captures context, usage, cost/cap exposure, policy state, velocity signal, and outcome."
+                  },
+                  {
+                    "title": "4. Policy and routing engine",
+                    "description": "The rule layer that decides whether work proceeds, routes, requires approval, is restricted, or should be paused."
+                  },
+                  {
+                    "title": "5. Model/provider layer",
+                    "description": "The provider-agnostic execution layer across approved hosted, private, local, or hybrid model paths."
+                  },
+                  {
+                    "title": "6. Analytics and governance control plane",
+                    "description": "The leadership surface for burn rate, cap forecast, acceleration posture, approval path, ADO sync, audit, and optimization."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "heading": "The controlled interface ribbon",
+            "layout": "split-image-right",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "text": "The ribbon is the most important product surface in the framework. It turns invisible AI capacity into something the user can see without leaving the work [4].",
+                "referenceIds": [
+                  "fn-azure-quota-management"
+                ]
+              },
+              {
+                "type": "image",
+                "src": "assets/images/frameworks/2026-06-23_meter_before_cap_framework/images/02_governed_execution_surface.png",
+                "alt": "Governed execution surface with a real-time AI consumption ribbon across the top of a developer-grade workspace.",
+                "caption": "The ribbon should sit above the work, not behind it in an admin console.",
+                "title": "Controlled Interface Ribbon",
+                "referenceIds": [
+                  "fn-azure-quota-management",
+                  "fn-azure-monitoring-metrics"
+                ]
+              },
+              {
+                "type": "list",
+                "title": "Ribbon fields",
+                "items": [
+                  "Vendor and model",
+                  "Reasoning level or effort setting",
+                  "Workstream or project tag",
+                  "Task type",
+                  "Estimated tokens before execution",
+                  "Actual tokens after execution when available",
+                  "Remaining capacity and cap position",
+                  "Warning state",
+                  "Route recommendation",
+                  "Approval state",
+                  "Work-management sync status"
+                ]
+              },
+              {
+                "type": "callout",
+                "tone": "executive",
+                "title": "Operating principle",
+                "text": "If the user can change the request, model, reasoning level, scope, or approval path before submission, telemetry is doing useful work."
+              }
+            ]
+          },
+          {
+            "heading": "Pre-flight estimate, actual telemetry, and recommendation",
+            "layout": "default",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "text": "The framework does not require perfect token prediction before execution. It requires useful pre-flight feedback and post-execution reconciliation [5].",
+                "referenceIds": [
+                  "fn-azure-monitoring-metrics"
+                ]
+              },
+              {
+                "type": "paragraph",
+                "text": "Before execution, the system can estimate consumption from prompt length, context size, task type, output burden, selected model, reasoning level, and workstream capacity. After execution, the system can reconcile that estimate against actual usage returned by the provider or captured by the gateway [4][5].",
+                "referenceIds": [
+                  "fn-azure-quota-management",
+                  "fn-azure-monitoring-metrics"
+                ]
+              },
+              {
+                "type": "table",
+                "title": "Three-step consumption loop",
+                "columns": [
+                  "Step",
+                  "What happens",
+                  "Why it matters"
+                ],
+                "rows": [
+                  [
+                    "Estimate",
+                    "The interface estimates tokens, capacity exposure, and risk before submission.",
+                    "Users can adjust the work before capacity is consumed."
+                  ],
+                  [
+                    "Measure",
+                    "The system records actual provider usage, latency, warning state, route, approval, and outcome.",
+                    "Leaders can see what happened rather than inferring it from invoices."
+                  ],
+                  [
+                    "Recommend",
+                    "The policy layer suggests proceed, route, approve, restrict, or rescope.",
+                    "Governance becomes operational feedback instead of delayed restriction."
+                  ]
+                ],
+                "referenceIds": [
+                  "fn-azure-monitoring-metrics"
+                ]
+              },
+              {
+                "type": "callout",
+                "tone": "technical",
+                "title": "Important distinction",
+                "text": "Pre-flight estimates are guidance. Actual provider telemetry is evidence. The framework needs both."
+              }
+            ]
+          },
+          {
+            "heading": "The telemetry event schema",
+            "layout": "default",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "text": "The telemetry seam turns one AI-supported request into an operating signal. It should capture enough context to support user feedback, leadership dashboards, routing rules, cost/cap decisions, and later optimization [6][7].",
+                "referenceIds": [
+                  "fn-otel-provider-model",
+                  "fn-otel-token-usage"
+                ]
+              },
+              {
+                "type": "code",
+                "language": "json",
+                "title": "Minimum telemetry event shape",
+                "code": "{\n  \"event_id\": \"uuid\",\n  \"timestamp\": \"2026-06-23T14:42:17Z\",\n  \"user_id\": \"user-123\",\n  \"role\": \"developer|analyst|manager|operations\",\n  \"team\": \"internal-tools\",\n  \"workstream\": \"cross-department-handoff\",\n  \"surface\": \"controlled-workspace|ide|internal-app|api\",\n  \"vendor\": \"openai|azure-openai|anthropic|local|other\",\n  \"model\": \"string\",\n  \"reasoning_level\": \"low|medium|high\",\n  \"task_type\": \"summarize|analyze|code|refactor|classify|draft|route\",\n  \"estimate\": {\n    \"input_tokens\": 112000,\n    \"output_tokens\": 73000,\n    \"total_tokens\": 185000,\n    \"confidence\": \"medium\"\n  },\n  \"actual\": {\n    \"input_tokens\": 86000,\n    \"output_tokens\": 56000,\n    \"total_tokens\": 142000\n  },\n  \"capacity\": {\n    \"pool\": \"monthly-workstream-cap\",\n    \"used_tokens\": 7200000,\n    \"limit_tokens\": 10000000,\n    \"remaining_tokens\": 2800000,\n    \"warning_threshold_pct\": 80\n  },\n  \"policy\": {\n    \"warning_state\": \"normal|warning|approval_required|blocked\",\n    \"route_recommendation\": \"proceed|route_lower_cost|request_approval|restrict|pause\",\n    \"approval_state\": \"not_required|auto_approved|required|approved|denied\"\n  },\n  \"signals\": {\n    \"value_signal\": \"unknown|low|medium|high\",\n    \"velocity_signal\": \"none|controlled_acceleration|full_speed\",\n    \"risk_signal\": \"low|medium|high\"\n  },\n  \"work_management\": {\n    \"system\": \"ADO\",\n    \"work_item_id\": \"optional\",\n    \"sync_state\": \"not_synced|synced|error\"\n  }\n}",
+                "referenceIds": [
+                  "fn-otel-provider-model",
+                  "fn-otel-token-usage"
+                ]
+              },
+              {
+                "type": "callout",
+                "tone": "technical",
+                "title": "Schema requirement",
+                "text": "The schema should preserve enough context to govern consumption without storing sensitive prompt content unnecessarily."
+              }
+            ]
+          },
+          {
+            "heading": "What the first version should prove",
+            "layout": "default",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "text": "The first interactive version does not need to simulate a full enterprise AI platform. It needs to prove one operating idea: when a user changes the prompt, model, reasoning level, or workstream, the visible capacity signal should change before the request is submitted."
+              },
+              {
+                "type": "paragraph",
+                "text": "That is the product thesis. The ribbon should make capacity visible early enough for the user to adjust the request, route the work differently, seek approval, or reduce unnecessary consumption."
+              },
+              {
+                "type": "list",
+                "title": "Minimum proof points",
+                "items": [
+                  "Changing prompt length changes the token estimate.",
+                  "Changing model or reasoning level changes estimated capacity impact.",
+                  "Changing workstream changes the available capacity pool.",
+                  "Approaching a threshold changes the warning state.",
+                  "Crossing a policy rule changes the recommendation.",
+                  "The user can understand the recommendation without leaving the work surface."
+                ]
+              },
+              {
+                "type": "callout",
+                "tone": "executive",
+                "title": "Artifact standard",
+                "text": "The ribbon is the product. The dashboard is the management surface after the ribbon proves the signal."
+              }
+            ]
+          },
+          {
+            "heading": "The operating surface demo",
+            "layout": "split-image-left",
+            "blocks": [
+              {
+                "type": "image",
+                "src": "assets/images/frameworks/2026-06-23_meter_before_cap_framework/images/03_real_time_ai_consumption_dashboard.png",
+                "alt": "Real-time AI consumption dashboard showing session usage, burn rate, cap posture, forecasted exhaustion, and high-consumption requests.",
+                "caption": "The operating surface turns AI consumption from an invoice surprise into a visible management signal.",
+                "title": "Real-Time AI Consumption Dashboard"
+              },
+              {
+                "type": "paragraph",
+                "text": "The first release does not need a live provider connection. It needs a believable workspace and dashboard that show what users and leaders would need to see before a capacity threshold becomes a delivery problem."
+              },
+              {
+                "type": "paragraph",
+                "text": "The controlled workspace should show the user how their choices affect consumption. The dashboard should show leaders where consumption is concentrating, which workstreams are approaching limits, and which acceleration patterns deserve protection or review."
+              },
+              {
+                "type": "list",
+                "title": "What the first operating surface should show",
+                "items": [
+                  "Current session consumption and remaining capacity.",
+                  "Spend against cap with forecasted exhaustion.",
+                  "Usage by user, team, and workstream.",
+                  "High-consumption requests that need review.",
+                  "Recommended behavior before the next request is submitted."
+                ]
+              },
+              {
+                "type": "callout",
+                "tone": "technical",
+                "title": "Build order",
+                "text": "Start with the ribbon and mock telemetry. Add the full dashboard only after the user-facing meter is believable."
+              }
+            ]
+          },
+          {
+            "heading": "Velocity prioritization is an output, not a separate campaign",
+            "layout": "split-image-right",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "text": "The revised pattern carousel made the key point: prioritization lacks evidence when consumption patterns are invisible. The framework should therefore treat velocity prioritization as an output of telemetry, not as a separate thesis."
+              },
+              {
+                "type": "paragraph",
+                "text": "Once the system can see consumption, value, velocity, and risk signals, it can recommend an acceleration posture [2].",
+                "referenceIds": [
+                  "fn-foundry-routing-observability"
+                ]
+              },
+              {
+                "type": "image",
+                "src": "assets/images/frameworks/2026-06-23_meter_before_cap_framework/images/04_ai_velocity_prioritization_overlay.png",
+                "alt": "AI velocity prioritization overlay showing consumption, velocity, and risk signals feeding a prioritization engine and six posture outputs.",
+                "caption": "Telemetry becomes useful when it changes how the organization routes acceleration, review, and restriction decisions.",
+                "title": "AI Velocity Prioritization Overlay"
+              },
+              {
+                "type": "table",
+                "title": "Velocity posture outputs",
+                "columns": [
+                  "Posture",
+                  "Meaning",
+                  "Typical action"
+                ],
+                "rows": [
+                  [
+                    "Full Speed",
+                    "High value, acceptable consumption, low risk.",
+                    "Continue and protect capacity."
+                  ],
+                  [
+                    "Controlled Acceleration",
+                    "High value but capacity-sensitive.",
+                    "Proceed with monitoring and thresholds."
+                  ],
+                  [
+                    "Budget-Aware Acceleration",
+                    "Useful work, but spend or burn rate needs control.",
+                    "Proceed with routing, reuse, or budget review."
+                  ],
+                  [
+                    "Requires Review",
+                    "High-risk, high-cost, sensitive, or uncertain value.",
+                    "Pause for human approval or scope review."
+                  ],
+                  [
+                    "Restricted",
+                    "Policy, data, risk, or compliance boundary exceeded.",
+                    "Block or route to approved workflow."
+                  ],
+                  [
+                    "Pause / Re-scope",
+                    "Low value or poor evidence relative to consumption.",
+                    "Break the request down, reduce context, or defer."
+                  ]
+                ],
+                "referenceIds": [
+                  "fn-foundry-routing-observability",
+                  "fn-azure-monitoring-metrics"
+                ]
+              },
+              {
+                "type": "callout",
+                "tone": "executive",
+                "title": "Management implication",
+                "text": "The question is not whether AI usage should be faster. The question is which AI-supported work deserves acceleration based on evidence."
+              }
+            ]
+          },
+          {
+            "heading": "Implementation phases",
+            "layout": "default",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "text": "The framework should be adopted in phases. The first phase is visibility, not enforcement [4].",
+                "referenceIds": [
+                  "fn-azure-quota-management"
+                ]
+              },
+              {
+                "type": "cards",
+                "items": [
+                  {
+                    "title": "Phase 1 — Instrument",
+                    "description": "Capture estimates and actual usage from approved AI surfaces. Establish the minimum telemetry event shape."
+                  },
+                  {
+                    "title": "Phase 2 — Expose",
+                    "description": "Show users session consumption, remaining capacity, and warning state inside the work surface."
+                  },
+                  {
+                    "title": "Phase 3 — Attribute",
+                    "description": "Tie consumption to user, role, team, workstream, task type, model, and provider path."
+                  },
+                  {
+                    "title": "Phase 4 — Forecast",
+                    "description": "Show burn rate, cap exposure, and expected exhaustion before the limit interrupts work."
+                  },
+                  {
+                    "title": "Phase 5 — Govern",
+                    "description": "Apply thresholds, routing, approval, restriction, and work-management synchronization."
+                  },
+                  {
+                    "title": "Phase 6 — Optimize",
+                    "description": "Use telemetry to improve prompts, context design, routing defaults, caching, budget planning, and velocity posture."
+                  }
+                ]
+              },
+              {
+                "type": "callout",
+                "tone": "executive",
+                "title": "Adoption principle",
+                "text": "Do not begin with punishment. Begin by making the operating signal visible."
+              }
+            ]
+          },
+          {
+            "heading": "What leaders should inspect first",
+            "layout": "default",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "text": "Leaders should start by inspecting where AI-supported work has become part of the delivery chain but remains invisible to the operating system."
+              },
+              {
+                "type": "list",
+                "title": "Inspection questions",
+                "items": [
+                  "Which teams are producing at a new level because AI is now part of delivery?",
+                  "Which workstreams would slow down or stop if AI capacity were unavailable?",
+                  "Where are caps, quotas, or approval thresholds visible only to administrators?",
+                  "Which requests are consuming the most context, reasoning, or repeated attempts?",
+                  "Which high-consumption workflows are tied to real business commitments?",
+                  "Which acceleration should be protected, routed, reviewed, or rescaled?"
+                ]
+              },
+              {
+                "type": "paragraph",
+                "text": "The answer to those questions determines where the first controlled interface ribbon and telemetry seam should be deployed."
+              }
+            ]
+          },
+          {
+            "heading": "Final standard",
+            "layout": "split-image-right",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "text": "The goal is not less AI. The goal is less unmanaged AI."
+              },
+              {
+                "type": "paragraph",
+                "text": "A firm can spend more on AI and still make the right decision if that consumption is tied to faster delivery, lower rework, better decisions, stronger throughput, or more scalable expertise. But management cannot prove that with enthusiasm."
+              },
+              {
+                "type": "paragraph",
+                "text": "It needs a meter before the cap becomes the operating event."
+              },
+              {
+                "type": "image",
+                "src": "assets/images/frameworks/2026-06-23_meter_before_cap_framework/images/05_visible_ai_consumption_closing.png",
+                "alt": "Synthesis showing invisible AI usage becoming visible AI consumption.",
+                "caption": "From invisible dependency to visible operating signal.",
+                "title": "Visible AI Consumption Closing Synthesis"
+              },
+              {
+                "type": "callout",
+                "tone": "executive",
+                "title": "Framework standard",
+                "text": "The best AI operating model is not the one that uses AI least. It is the one that can see consumption clearly enough to preserve useful work, reduce waste, and govern without panic."
+              }
+            ]
+          },
+          {
+            "heading": "Footnotes and source basis",
+            "blocks": [
+              {
+                "type": "paragraph",
+                "text": "The framework uses light inline footnotes to support the technical claims without turning the page into a documentation mirror. These references establish that quotas, routing, platform monitoring, provider and model metadata, and token telemetry are real enterprise AI concerns while the framework remains an operating model."
+              },
+              {
+                "type": "cards",
+                "items": [
+                  {
+                    "title": "[1] Microsoft Foundry enterprise AI platform positioning",
+                    "description": "Microsoft Azure. Microsoft describes Foundry as a unified platform to build, ground, and govern AI apps and agents, bringing together the agent lifecycle with security, compliance, and policy controls."
+                  },
+                  {
+                    "title": "[2] Model routing, control plane, and observability in Foundry",
+                    "description": "Microsoft Azure. Microsoft describes real-time model routing, a governed control plane integrated with Entra/Purview/Defender, and end-to-end tracing built on OpenTelemetry."
+                  },
+                  {
+                    "title": "[3] Azure OpenAI quotas and limits",
+                    "description": "Microsoft Learn. Microsoft documents Azure OpenAI quotas and limits and states that TPM/RPM limits are defined per region, subscription, model, or deployment type."
+                  },
+                  {
+                    "title": "[4] Azure OpenAI quota assignment and rate-limit enforcement",
+                    "description": "Microsoft Learn. Microsoft explains that quota is assigned in TPM per subscription/region/model/deployment type, assigned to deployments, and mapped to enforced tokens-per-minute rate limits."
+                  },
+                  {
+                    "title": "[5] Azure OpenAI monitoring metrics",
+                    "description": "Microsoft Learn. Microsoft's monitoring reference lists Azure OpenAI metrics including requests, active tokens, generated completion tokens, processed prompt tokens, processed inference tokens, prompt token cache match rate, and latency metrics."
+                  },
+                  {
+                    "title": "[6] OpenTelemetry GenAI provider and model attributes",
+                    "description": "OpenTelemetry. OpenTelemetry's GenAI attribute registry describes provider and model attributes such as gen_ai.provider.name, gen_ai.request.model, and gen_ai.response.model, and notes that provider and model attributes help identify the actual system in use."
+                  },
+                  {
+                    "title": "[7] OpenTelemetry GenAI token usage attributes",
+                    "description": "OpenTelemetry. OpenTelemetry defines GenAI token usage attributes including input tokens, output tokens, cache creation/read input tokens, reasoning output tokens, and workflow name."
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "companion": {
+        "snapshot": [
+          {
+            "label": "Category",
+            "value": "AI Operations"
+          },
+          {
+            "label": "Best for",
+            "value": "Operations Executives, CIOs, AI platform owners, enterprise architects, FinOps partners"
+          },
+          {
+            "label": "Core question",
+            "value": "Can the organization see AI consumption before a limit interrupts delivery or a bill explains the pattern too late?"
+          },
+          {
+            "label": "Primary artifact",
+            "value": "Controlled AI Consumption Workspace + Real-Time AI Consumption Dashboard"
+          },
+          {
+            "label": "Method",
+            "value": "Estimate before execution → measure after execution → attribute usage → forecast capacity → route and govern → optimize velocity"
+          }
+        ],
+        "toc": [
+          {
+            "label": "Why this framework exists",
+            "anchor": "why-this-framework-exists"
+          },
+          {
+            "label": "Control plane vs user experience",
+            "anchor": "the-control-plane-is-not-the-user-experience"
+          },
+          {
+            "label": "Six-layer architecture",
+            "anchor": "the-six-layer-architecture"
+          },
+          {
+            "label": "Controlled interface ribbon",
+            "anchor": "the-controlled-interface-ribbon"
+          },
+          {
+            "label": "Pre-flight estimate and actual telemetry",
+            "anchor": "pre-flight-estimate-actual-telemetry-and-recommendation"
+          },
+          {
+            "label": "Telemetry event schema",
+            "anchor": "the-telemetry-event-schema"
+          },
+          {
+            "label": "First version proof",
+            "anchor": "what-the-first-version-should-prove"
+          },
+          {
+            "label": "Operating surface demo",
+            "anchor": "the-operating-surface-demo"
+          },
+          {
+            "label": "Velocity prioritization output",
+            "anchor": "velocity-prioritization-is-an-output-not-a-separate-campaign"
+          },
+          {
+            "label": "Implementation phases",
+            "anchor": "implementation-phases"
+          },
+          {
+            "label": "What leaders should inspect first",
+            "anchor": "what-leaders-should-inspect-first"
+          },
+          {
+            "label": "Final standard",
+            "anchor": "final-standard"
+          },
+          {
+            "label": "Footnotes and source basis",
+            "anchor": "footnotes-and-source-basis"
+          }
+        ],
+        "callsToAction": [
+          {
+            "title": "Review the architecture",
+            "description": "Start with the six-layer architecture and identify which approved AI surface should receive the first controlled ribbon.",
+            "anchor": "the-six-layer-architecture",
+            "buttonLabel": "Review architecture"
+          },
+          {
+            "title": "Inspect the operating surface",
+            "description": "Review the governed workspace and dashboard screenshots that define the first artifact before the inline simulation is built.",
+            "anchor": "the-operating-surface-demo",
+            "buttonLabel": "Inspect surface"
+          },
+          {
+            "title": "Inspect the event schema",
+            "description": "Use the telemetry event shape as the implementation contract for a first instrumentation pass.",
+            "anchor": "the-telemetry-event-schema",
+            "buttonLabel": "View schema"
+          }
+        ],
+        "assets": [
+          {
+            "label": "Real-Time AI Consumption Architecture",
+            "href": "assets/images/frameworks/2026-06-23_meter_before_cap_framework/images/01_real_time_ai_consumption_architecture.png",
+            "description": "Framework overview showing the full flow from user work surface to governance control plane.",
+            "type": "image",
+            "number": "01"
+          },
+          {
+            "label": "Governed Execution Surface",
+            "href": "assets/images/frameworks/2026-06-23_meter_before_cap_framework/images/02_governed_execution_surface.png",
+            "description": "Workspace mockup with controlled interface ribbon, code and prompt area, live preview, and telemetry side panel.",
+            "type": "image",
+            "number": "02"
+          },
+          {
+            "label": "Real-Time AI Consumption Dashboard",
+            "href": "assets/images/frameworks/2026-06-23_meter_before_cap_framework/images/03_real_time_ai_consumption_dashboard.png",
+            "description": "Operating dashboard showing session consumption, burn rate, cap posture, forecasted exhaustion, and high-consumption requests.",
+            "type": "image",
+            "number": "03"
+          },
+          {
+            "label": "AI Velocity Prioritization Overlay",
+            "href": "assets/images/frameworks/2026-06-23_meter_before_cap_framework/images/04_ai_velocity_prioritization_overlay.png",
+            "description": "Decision overlay converting consumption, velocity, and risk signals into acceleration posture.",
+            "type": "image",
+            "number": "04"
+          },
+          {
+            "label": "Visible AI Consumption Closing",
+            "href": "assets/images/frameworks/2026-06-23_meter_before_cap_framework/images/05_visible_ai_consumption_closing.png",
+            "description": "Closing synthesis showing invisible AI usage becoming visible AI consumption.",
+            "type": "image",
+            "number": "05"
+          },
+          {
+            "label": "Telemetry Event Schema",
+            "href": "assets/data/frameworks/2026-06-23_meter_before_cap_framework/telemetry_event_schema.json",
+            "description": "Base event contract for estimated usage, actual usage, capacity state, policy state, and work-management sync.",
+            "type": "schema"
+          },
+          {
+            "label": "Simulated Event Stream (CSV)",
+            "href": "assets/data/frameworks/2026-06-23_meter_before_cap_framework/simulated_event_stream.csv",
+            "description": "Mock telemetry stream for dashboard seeding, schema review, and first-pass analytics prototyping.",
+            "type": "data"
+          },
+          {
+            "label": "Simulated Event Stream (JSONL)",
+            "href": "assets/data/frameworks/2026-06-23_meter_before_cap_framework/simulated_event_stream.jsonl",
+            "description": "Line-delimited event stream for ingestion and replay testing.",
+            "type": "data"
+          },
+          {
+            "label": "Dashboard Mock Data",
+            "href": "assets/data/frameworks/2026-06-23_meter_before_cap_framework/dashboard_mock_data.json",
+            "description": "Sample aggregate payload for populating the real-time dashboard surface.",
+            "type": "data"
+          }
+        ],
+        "related": [
+          {
+            "title": "The Friday Night Cap",
+            "slug": "writing/2026/06/20/the-friday-night-cap",
+            "description": "The narrative Why article showing how an invisible AI cap became a delivery dependency."
+          },
+          {
+            "title": "AI Consumption Leverage Framework",
+            "slug": "frameworks/2026/06/01/ai-consumption-leverage-framework",
+            "description": "A tactical predecessor focused on estimating AI spend and prioritizing consumption levers."
+          },
+          {
+            "title": "Systems Translation Loop",
+            "slug": "frameworks/2026/03/18/systems-translation-loop",
+            "description": "A framework for preserving business intent as work moves through workflow and technology."
+          }
+        ],
+        "footnotes": [
+          {
+            "id": "fn-foundry-platform",
+            "number": 1,
+            "marker": "[1]",
+            "title": "Microsoft Foundry enterprise AI platform positioning",
+            "publisher": "Microsoft Azure",
+            "url": "https://azure.microsoft.com/en-us/products/ai-foundry",
+            "supports": [
+              "Enterprise AI platforms solve the architect/control-plane problem: build, ground, govern, and manage AI apps and agents at scale.",
+              "The framework's control-plane language is modeled on an enterprise AI platform pattern rather than an end-user chat surface."
+            ],
+            "note": "Microsoft describes Foundry as a unified platform to build, ground, and govern AI apps and agents, bringing together the agent lifecycle with security, compliance, and policy controls."
+          },
+          {
+            "id": "fn-foundry-routing-observability",
+            "number": 2,
+            "marker": "[2]",
+            "title": "Model routing, control plane, and observability in Foundry",
+            "publisher": "Microsoft Azure",
+            "url": "https://azure.microsoft.com/en-us/products/ai-foundry",
+            "supports": [
+              "Model routing, governance control planes, business-value measurement, security posture, and end-to-end tracing are legitimate enterprise AI architecture concepts.",
+              "The proposed Meter Before Cap framework borrows the architecture feel from Foundry while moving consumption feedback into the user's workflow."
+            ],
+            "note": "Microsoft describes real-time model routing, a governed control plane integrated with Entra/Purview/Defender, and end-to-end tracing built on OpenTelemetry."
+          },
+          {
+            "id": "fn-azure-openai-quotas",
+            "number": 3,
+            "marker": "[3]",
+            "title": "Azure OpenAI quotas and limits",
+            "publisher": "Microsoft Learn",
+            "url": "https://learn.microsoft.com/en-us/azure/foundry/openai/quotas-limits",
+            "supports": [
+              "AI caps can be expressed as quotas and rate limits rather than only budget limits.",
+              "TPM and RPM limits are scoped by region, subscription, model, and deployment type in Azure OpenAI."
+            ],
+            "note": "Microsoft documents Azure OpenAI quotas and limits and states that TPM/RPM limits are defined per region, subscription, model, or deployment type."
+          },
+          {
+            "id": "fn-azure-quota-management",
+            "number": 4,
+            "marker": "[4]",
+            "title": "Azure OpenAI quota assignment and rate-limit enforcement",
+            "publisher": "Microsoft Learn",
+            "url": "https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/quota",
+            "supports": [
+              "Quota is an operational allocation, not just a procurement number.",
+              "TPM is assigned to deployments and maps directly to tokens-per-minute rate limits on inferencing requests."
+            ],
+            "note": "Microsoft explains that quota is assigned in TPM per subscription/region/model/deployment type, assigned to deployments, and mapped to enforced tokens-per-minute rate limits."
+          },
+          {
+            "id": "fn-azure-monitoring-metrics",
+            "number": 5,
+            "marker": "[5]",
+            "title": "Azure OpenAI monitoring metrics",
+            "publisher": "Microsoft Learn",
+            "url": "https://learn.microsoft.com/en-us/azure/foundry/openai/monitor-openai-reference",
+            "supports": [
+              "Post-execution telemetry can include processed prompt tokens, generated completion tokens, processed inference tokens, active tokens, requests, latency, and cache-match metrics.",
+              "The dashboard should distinguish estimated pre-flight consumption from actual platform/provider telemetry."
+            ],
+            "note": "Microsoft's monitoring reference lists Azure OpenAI metrics including requests, active tokens, generated completion tokens, processed prompt tokens, processed inference tokens, prompt token cache match rate, and latency metrics."
+          },
+          {
+            "id": "fn-otel-provider-model",
+            "number": 6,
+            "marker": "[6]",
+            "title": "OpenTelemetry GenAI provider and model attributes",
+            "publisher": "OpenTelemetry",
+            "url": "https://opentelemetry.io/docs/specs/semconv/registry/attributes/gen-ai/",
+            "supports": [
+              "A provider/model-agnostic telemetry seam should capture provider name, request model, response model, and related model metadata.",
+              "Telemetry normalization matters because APIs may proxy or host models from different providers."
+            ],
+            "note": "OpenTelemetry's GenAI attribute registry describes provider and model attributes such as gen_ai.provider.name, gen_ai.request.model, and gen_ai.response.model, and notes that provider and model attributes help identify the actual system in use."
+          },
+          {
+            "id": "fn-otel-token-usage",
+            "number": 7,
+            "marker": "[7]",
+            "title": "OpenTelemetry GenAI token usage attributes",
+            "publisher": "OpenTelemetry",
+            "url": "https://opentelemetry.io/docs/specs/semconv/registry/attributes/gen-ai/",
+            "supports": [
+              "A useful AI consumption event schema can include input tokens, output tokens, cache tokens, reasoning-output tokens, and workflow name.",
+              "Token usage should be captured as structured telemetry rather than as unstructured dashboard commentary."
+            ],
+            "note": "OpenTelemetry defines GenAI token usage attributes including input tokens, output tokens, cache creation/read input tokens, reasoning output tokens, and workflow name."
+          }
+        ],
+        "references": [
+          {
+            "id": "fn-foundry-platform",
+            "number": 1,
+            "title": "Microsoft Foundry enterprise AI platform positioning",
+            "publisher": "Microsoft Azure",
+            "url": "https://azure.microsoft.com/en-us/products/ai-foundry",
+            "note": "Microsoft describes Foundry as a unified platform to build, ground, and govern AI apps and agents, bringing together the agent lifecycle with security, compliance, and policy controls."
+          },
+          {
+            "id": "fn-foundry-routing-observability",
+            "number": 2,
+            "title": "Model routing, control plane, and observability in Foundry",
+            "publisher": "Microsoft Azure",
+            "url": "https://azure.microsoft.com/en-us/products/ai-foundry",
+            "note": "Microsoft describes real-time model routing, a governed control plane integrated with Entra/Purview/Defender, and end-to-end tracing built on OpenTelemetry."
+          },
+          {
+            "id": "fn-azure-openai-quotas",
+            "number": 3,
+            "title": "Azure OpenAI quotas and limits",
+            "publisher": "Microsoft Learn",
+            "url": "https://learn.microsoft.com/en-us/azure/foundry/openai/quotas-limits",
+            "note": "Microsoft documents Azure OpenAI quotas and limits and states that TPM/RPM limits are defined per region, subscription, model, or deployment type."
+          },
+          {
+            "id": "fn-azure-quota-management",
+            "number": 4,
+            "title": "Azure OpenAI quota assignment and rate-limit enforcement",
+            "publisher": "Microsoft Learn",
+            "url": "https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/quota",
+            "note": "Microsoft explains that quota is assigned in TPM per subscription/region/model/deployment type, assigned to deployments, and mapped to enforced tokens-per-minute rate limits."
+          },
+          {
+            "id": "fn-azure-monitoring-metrics",
+            "number": 5,
+            "title": "Azure OpenAI monitoring metrics",
+            "publisher": "Microsoft Learn",
+            "url": "https://learn.microsoft.com/en-us/azure/foundry/openai/monitor-openai-reference",
+            "note": "Microsoft's monitoring reference lists Azure OpenAI metrics including requests, active tokens, generated completion tokens, processed prompt tokens, processed inference tokens, prompt token cache match rate, and latency metrics."
+          },
+          {
+            "id": "fn-otel-provider-model",
+            "number": 6,
+            "title": "OpenTelemetry GenAI provider and model attributes",
+            "publisher": "OpenTelemetry",
+            "url": "https://opentelemetry.io/docs/specs/semconv/registry/attributes/gen-ai/",
+            "note": "OpenTelemetry's GenAI attribute registry describes provider and model attributes such as gen_ai.provider.name, gen_ai.request.model, and gen_ai.response.model, and notes that provider and model attributes help identify the actual system in use."
+          },
+          {
+            "id": "fn-otel-token-usage",
+            "number": 7,
+            "title": "OpenTelemetry GenAI token usage attributes",
+            "publisher": "OpenTelemetry",
+            "url": "https://opentelemetry.io/docs/specs/semconv/registry/attributes/gen-ai/",
+            "note": "OpenTelemetry defines GenAI token usage attributes including input tokens, output tokens, cache creation/read input tokens, reasoning output tokens, and workflow name."
+          }
+        ]
+      },
+      "productionAssets": {
+        "frameworkImages": [
+          {
+            "label": "Real-Time AI Consumption Architecture",
+            "href": "assets/images/frameworks/2026-06-23_meter_before_cap_framework/images/01_real_time_ai_consumption_architecture.png",
+            "description": "Overview image for the framework hero and architecture section.",
+            "type": "image",
+            "number": "01"
+          },
+          {
+            "label": "Governed Execution Surface",
+            "href": "assets/images/frameworks/2026-06-23_meter_before_cap_framework/images/02_governed_execution_surface.png",
+            "description": "Operating surface screenshot concept for the controlled ribbon and future inline demo.",
+            "type": "image",
+            "number": "02"
+          },
+        {
+          "label": "Real-Time AI Consumption Dashboard",
+          "href": "assets/images/frameworks/2026-06-23_meter_before_cap_framework/images/03_real_time_ai_consumption_dashboard.png",
+          "description": "Operating dashboard showing session consumption, burn rate, cap posture, forecasted exhaustion, and high-consumption requests.",
+          "type": "image",
+          "number": "03"
+        },
+        {
+          "label": "AI Velocity Prioritization Overlay",
+          "href": "assets/images/frameworks/2026-06-23_meter_before_cap_framework/images/04_ai_velocity_prioritization_overlay.png",
+          "description": "Decision overlay converting consumption, velocity, and risk signals into acceleration posture.",
+          "type": "image",
+          "number": "04"
+        },
+          {
+            "label": "Visible AI Consumption Closing",
+            "href": "assets/images/frameworks/2026-06-23_meter_before_cap_framework/images/05_visible_ai_consumption_closing.png",
+            "description": "Closing synthesis visual.",
+            "type": "image",
+            "number": "05"
+          }
+        ],
+        "imageRenamePlan": [
+          {
+            "current": "/mnt/data/real_time_ai_consumption_architecture_diagram.png",
+            "recommended": "assets/images/frameworks/2026-06-23_meter_before_cap_framework/images/01_real_time_ai_consumption_architecture.png",
+            "title": "Real-Time AI Consumption Architecture"
+          },
+          {
+            "current": "/mnt/data/ai_driven_operational_dashboard_interface.png",
+            "recommended": "assets/images/frameworks/2026-06-23_meter_before_cap_framework/images/02_governed_execution_surface.png",
+            "title": "Governed Execution Surface"
+          },
+        {
+          "current": "/Users/charles/Library/CloudStorage/OneDrive-Certiva/Certiva/Marketing/Content Pipeline/02 - Drafts/02 - AI Consumption Telemetry Layer/05 - Framework Article + Operating Component/Operating Component Screenshots/real-time-ai-consumption-dashboard.png",
+          "recommended": "assets/images/frameworks/2026-06-23_meter_before_cap_framework/images/03_real_time_ai_consumption_dashboard.png",
+          "title": "Real-Time AI Consumption Dashboard"
+        },
+        {
+          "current": "/Users/charles/Library/CloudStorage/OneDrive-Certiva/Certiva/Marketing/Content Pipeline/02 - Drafts/02 - AI Consumption Telemetry Layer/05 - Framework Article + Operating Component/Operating Component Screenshots/ai-velocity-prioritization-operating-surface.png",
+          "recommended": "assets/images/frameworks/2026-06-23_meter_before_cap_framework/images/04_ai_velocity_prioritization_overlay.png",
+          "title": "AI Velocity Prioritization Overlay"
+        },
+          {
+            "current": "/mnt/data/framework_review/ops/01 - Operations Executive-Level Why Article/05 - visible-ai-consumption-closing.png",
+            "recommended": "assets/images/frameworks/2026-06-23_meter_before_cap_framework/images/05_visible_ai_consumption_closing.png",
+            "title": "Visible AI Consumption Closing"
+          }
+        ],
+        "socialImage": {
+          "label": "Framework social image",
+          "href": "assets/images/frameworks/2026-06-23_meter_before_cap_framework/images/01_real_time_ai_consumption_architecture.png",
+          "description": "Use the architecture overview as the default Open Graph/social preview until a dedicated social image is created."
+        }
+      },
+      "imageIndex": [
+        {
+          "number": "01",
+          "title": "Real-Time AI Consumption Architecture",
+          "href": "assets/images/frameworks/2026-06-23_meter_before_cap_framework/images/01_real_time_ai_consumption_architecture.png",
+          "alt": "Six-layer real-time AI consumption architecture",
+          "description": "Shows user work surface, controlled interface ribbon, telemetry seam, policy/routing engine, provider layer, and governance control plane."
+        },
+        {
+          "number": "02",
+          "title": "Governed Execution Surface",
+          "href": "assets/images/frameworks/2026-06-23_meter_before_cap_framework/images/02_governed_execution_surface.png",
+          "alt": "Controlled AI workspace with real-time consumption ribbon",
+          "description": "Shows the future user-facing interface with code/prompt area, terminal, preview, telemetry panel, and consumption ribbon."
+        },
+        {
+          "number": "03",
+          "title": "Real-Time AI Consumption Dashboard",
+          "href": "assets/images/frameworks/2026-06-23_meter_before_cap_framework/images/03_real_time_ai_consumption_dashboard.png",
+          "alt": "Real-time AI consumption dashboard showing session usage, spend against cap, burn rate, forecasted exhaustion, and high-consumption requests.",
+          "description": "Shows the first operating dashboard for session consumption, cap posture, burn rate, forecasted exhaustion, and request-level review."
+        },
+        {
+          "number": "04",
+          "title": "AI Velocity Prioritization Overlay",
+          "href": "assets/images/frameworks/2026-06-23_meter_before_cap_framework/images/04_ai_velocity_prioritization_overlay.png",
+          "alt": "AI velocity prioritization overlay showing consumption, velocity, and risk signals feeding six acceleration postures.",
+          "description": "Shows how telemetry converts consumption, velocity, value, and risk into acceleration posture."
+        },
+        {
+          "number": "05",
+          "title": "Visible AI Consumption Closing",
+          "href": "assets/images/frameworks/2026-06-23_meter_before_cap_framework/images/05_visible_ai_consumption_closing.png",
+          "alt": "Invisible AI usage to visible AI consumption",
+          "description": "Closing synthesis showing scattered prompts and blocked requests converted into feedback, telemetry, dashboard, and capacity decisions."
+        }
+      ],
+      "sourceReferences": [
+        {
+          "id": "fn-foundry-platform",
+          "number": 1,
+          "label": "Microsoft Foundry enterprise AI platform positioning",
+          "publisher": "Microsoft Azure",
+          "href": "https://azure.microsoft.com/en-us/products/ai-foundry",
+          "description": "Microsoft describes Foundry as a unified platform to build, ground, and govern AI apps and agents, bringing together the agent lifecycle with security, compliance, and policy controls.",
+          "supports": [
+            "Enterprise AI platforms solve the architect/control-plane problem: build, ground, govern, and manage AI apps and agents at scale.",
+            "The framework's control-plane language is modeled on an enterprise AI platform pattern rather than an end-user chat surface."
+          ],
+          "type": "footnote-reference"
+        },
+        {
+          "id": "fn-foundry-routing-observability",
+          "number": 2,
+          "label": "Model routing, control plane, and observability in Foundry",
+          "publisher": "Microsoft Azure",
+          "href": "https://azure.microsoft.com/en-us/products/ai-foundry",
+          "description": "Microsoft describes real-time model routing, a governed control plane integrated with Entra/Purview/Defender, and end-to-end tracing built on OpenTelemetry.",
+          "supports": [
+            "Model routing, governance control planes, business-value measurement, security posture, and end-to-end tracing are legitimate enterprise AI architecture concepts.",
+            "The proposed Meter Before Cap framework borrows the architecture feel from Foundry while moving consumption feedback into the user's workflow."
+          ],
+          "type": "footnote-reference"
+        },
+        {
+          "id": "fn-azure-openai-quotas",
+          "number": 3,
+          "label": "Azure OpenAI quotas and limits",
+          "publisher": "Microsoft Learn",
+          "href": "https://learn.microsoft.com/en-us/azure/foundry/openai/quotas-limits",
+          "description": "Microsoft documents Azure OpenAI quotas and limits and states that TPM/RPM limits are defined per region, subscription, model, or deployment type.",
+          "supports": [
+            "AI caps can be expressed as quotas and rate limits rather than only budget limits.",
+            "TPM and RPM limits are scoped by region, subscription, model, and deployment type in Azure OpenAI."
+          ],
+          "type": "footnote-reference"
+        },
+        {
+          "id": "fn-azure-quota-management",
+          "number": 4,
+          "label": "Azure OpenAI quota assignment and rate-limit enforcement",
+          "publisher": "Microsoft Learn",
+          "href": "https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/quota",
+          "description": "Microsoft explains that quota is assigned in TPM per subscription/region/model/deployment type, assigned to deployments, and mapped to enforced tokens-per-minute rate limits.",
+          "supports": [
+            "Quota is an operational allocation, not just a procurement number.",
+            "TPM is assigned to deployments and maps directly to tokens-per-minute rate limits on inferencing requests."
+          ],
+          "type": "footnote-reference"
+        },
+        {
+          "id": "fn-azure-monitoring-metrics",
+          "number": 5,
+          "label": "Azure OpenAI monitoring metrics",
+          "publisher": "Microsoft Learn",
+          "href": "https://learn.microsoft.com/en-us/azure/foundry/openai/monitor-openai-reference",
+          "description": "Microsoft's monitoring reference lists Azure OpenAI metrics including requests, active tokens, generated completion tokens, processed prompt tokens, processed inference tokens, prompt token cache match rate, and latency metrics.",
+          "supports": [
+            "Post-execution telemetry can include processed prompt tokens, generated completion tokens, processed inference tokens, active tokens, requests, latency, and cache-match metrics.",
+            "The dashboard should distinguish estimated pre-flight consumption from actual platform/provider telemetry."
+          ],
+          "type": "footnote-reference"
+        },
+        {
+          "id": "fn-otel-provider-model",
+          "number": 6,
+          "label": "OpenTelemetry GenAI provider and model attributes",
+          "publisher": "OpenTelemetry",
+          "href": "https://opentelemetry.io/docs/specs/semconv/registry/attributes/gen-ai/",
+          "description": "OpenTelemetry's GenAI attribute registry describes provider and model attributes such as gen_ai.provider.name, gen_ai.request.model, and gen_ai.response.model, and notes that provider and model attributes help identify the actual system in use.",
+          "supports": [
+            "A provider/model-agnostic telemetry seam should capture provider name, request model, response model, and related model metadata.",
+            "Telemetry normalization matters because APIs may proxy or host models from different providers."
+          ],
+          "type": "footnote-reference"
+        },
+        {
+          "id": "fn-otel-token-usage",
+          "number": 7,
+          "label": "OpenTelemetry GenAI token usage attributes",
+          "publisher": "OpenTelemetry",
+          "href": "https://opentelemetry.io/docs/specs/semconv/registry/attributes/gen-ai/",
+          "description": "OpenTelemetry defines GenAI token usage attributes including input tokens, output tokens, cache creation/read input tokens, reasoning output tokens, and workflow name.",
+          "supports": [
+            "A useful AI consumption event schema can include input tokens, output tokens, cache tokens, reasoning-output tokens, and workflow name.",
+            "Token usage should be captured as structured telemetry rather than as unstructured dashboard commentary."
+          ],
+          "type": "footnote-reference"
+        }
+      ],
+      "implementationNotes": {
+        "narrativeOnly": true,
+        "inlineArtifactStatus": "separate-build",
+        "componentPlaceholder": "ai-consumption-controlled-workspace",
+        "codexNotes": [
+          "Insert framework-006 near the top of frameworks.json after framework-005 or as newest draft item.",
+          "Keep status as draft until images and component routes are verified.",
+          "If the inline component is unavailable, render the fallback text and screenshots only.",
+          "The asset paths are proposed production paths; copy or generate images before publishing.",
+          "The controlled ribbon component should not send prompts to a real provider in v1 simulation mode."
+        ],
+        "footnoteRendering": {
+          "recommendation": "Render inline bracket markers from paragraph text now, then optionally map block.referenceIds to clickable superscript links if the framework renderer is extended.",
+          "dataShape": "Each supported block may include referenceIds: string[]. The framework also has top-level footnotes, companion.footnotes, companion.references, and sourceReferences for compatibility.",
+          "fallback": "If no renderer work is done, the article still displays bracket markers such as [1] and the Footnotes and source basis section as normal content."
+        }
+      },
+      "footnotes": [
+        {
+          "id": "fn-foundry-platform",
+          "number": 1,
+          "marker": "[1]",
+          "title": "Microsoft Foundry enterprise AI platform positioning",
+          "publisher": "Microsoft Azure",
+          "url": "https://azure.microsoft.com/en-us/products/ai-foundry",
+          "supports": [
+            "Enterprise AI platforms solve the architect/control-plane problem: build, ground, govern, and manage AI apps and agents at scale.",
+            "The framework's control-plane language is modeled on an enterprise AI platform pattern rather than an end-user chat surface."
+          ],
+          "note": "Microsoft describes Foundry as a unified platform to build, ground, and govern AI apps and agents, bringing together the agent lifecycle with security, compliance, and policy controls."
+        },
+        {
+          "id": "fn-foundry-routing-observability",
+          "number": 2,
+          "marker": "[2]",
+          "title": "Model routing, control plane, and observability in Foundry",
+          "publisher": "Microsoft Azure",
+          "url": "https://azure.microsoft.com/en-us/products/ai-foundry",
+          "supports": [
+            "Model routing, governance control planes, business-value measurement, security posture, and end-to-end tracing are legitimate enterprise AI architecture concepts.",
+            "The proposed Meter Before Cap framework borrows the architecture feel from Foundry while moving consumption feedback into the user's workflow."
+          ],
+          "note": "Microsoft describes real-time model routing, a governed control plane integrated with Entra/Purview/Defender, and end-to-end tracing built on OpenTelemetry."
+        },
+        {
+          "id": "fn-azure-openai-quotas",
+          "number": 3,
+          "marker": "[3]",
+          "title": "Azure OpenAI quotas and limits",
+          "publisher": "Microsoft Learn",
+          "url": "https://learn.microsoft.com/en-us/azure/foundry/openai/quotas-limits",
+          "supports": [
+            "AI caps can be expressed as quotas and rate limits rather than only budget limits.",
+            "TPM and RPM limits are scoped by region, subscription, model, and deployment type in Azure OpenAI."
+          ],
+          "note": "Microsoft documents Azure OpenAI quotas and limits and states that TPM/RPM limits are defined per region, subscription, model, or deployment type."
+        },
+        {
+          "id": "fn-azure-quota-management",
+          "number": 4,
+          "marker": "[4]",
+          "title": "Azure OpenAI quota assignment and rate-limit enforcement",
+          "publisher": "Microsoft Learn",
+          "url": "https://learn.microsoft.com/en-us/azure/foundry/openai/how-to/quota",
+          "supports": [
+            "Quota is an operational allocation, not just a procurement number.",
+            "TPM is assigned to deployments and maps directly to tokens-per-minute rate limits on inferencing requests."
+          ],
+          "note": "Microsoft explains that quota is assigned in TPM per subscription/region/model/deployment type, assigned to deployments, and mapped to enforced tokens-per-minute rate limits."
+        },
+        {
+          "id": "fn-azure-monitoring-metrics",
+          "number": 5,
+          "marker": "[5]",
+          "title": "Azure OpenAI monitoring metrics",
+          "publisher": "Microsoft Learn",
+          "url": "https://learn.microsoft.com/en-us/azure/foundry/openai/monitor-openai-reference",
+          "supports": [
+            "Post-execution telemetry can include processed prompt tokens, generated completion tokens, processed inference tokens, active tokens, requests, latency, and cache-match metrics.",
+            "The dashboard should distinguish estimated pre-flight consumption from actual platform/provider telemetry."
+          ],
+          "note": "Microsoft's monitoring reference lists Azure OpenAI metrics including requests, active tokens, generated completion tokens, processed prompt tokens, processed inference tokens, prompt token cache match rate, and latency metrics."
+        },
+        {
+          "id": "fn-otel-provider-model",
+          "number": 6,
+          "marker": "[6]",
+          "title": "OpenTelemetry GenAI provider and model attributes",
+          "publisher": "OpenTelemetry",
+          "url": "https://opentelemetry.io/docs/specs/semconv/registry/attributes/gen-ai/",
+          "supports": [
+            "A provider/model-agnostic telemetry seam should capture provider name, request model, response model, and related model metadata.",
+            "Telemetry normalization matters because APIs may proxy or host models from different providers."
+          ],
+          "note": "OpenTelemetry's GenAI attribute registry describes provider and model attributes such as gen_ai.provider.name, gen_ai.request.model, and gen_ai.response.model, and notes that provider and model attributes help identify the actual system in use."
+        },
+        {
+          "id": "fn-otel-token-usage",
+          "number": 7,
+          "marker": "[7]",
+          "title": "OpenTelemetry GenAI token usage attributes",
+          "publisher": "OpenTelemetry",
+          "url": "https://opentelemetry.io/docs/specs/semconv/registry/attributes/gen-ai/",
+          "supports": [
+            "A useful AI consumption event schema can include input tokens, output tokens, cache tokens, reasoning-output tokens, and workflow name.",
+            "Token usage should be captured as structured telemetry rather than as unstructured dashboard commentary."
+          ],
+          "note": "OpenTelemetry defines GenAI token usage attributes including input tokens, output tokens, cache creation/read input tokens, reasoning output tokens, and workflow name."
+        }
+      ]
+    },
     {
       "id": "framework-005",
       "slug": "frameworks/2026/06/01/ai-consumption-leverage-framework",
@@ -548,7 +1815,7 @@
           },
           {
             "label": "Method",
-            "value": "Estimate cost \u2192 apply seven levers \u2192 rank effort and impact \u2192 prioritize the work"
+            "value": "Estimate cost → apply seven levers → rank effort and impact → prioritize the work"
           }
         ],
         "toc": [
@@ -879,31 +2146,31 @@
                   [
                     "A",
                     "Proposal Rewrite Agent",
-                    "G0 \u2014 Disposable",
+                    "G0 — Disposable",
                     "A lightweight productivity aid that improves wording but does not create durable enterprise capability."
                   ],
                   [
                     "B",
                     "PM Meeting Summary Agent",
-                    "G1 \u2014 Assisted",
+                    "G1 — Assisted",
                     "A team workflow helper that summarizes meetings and drafts actions, but leaves accountability with the PM."
                   ],
                   [
                     "C",
                     "Invoice Exception Triage Agent",
-                    "G2 \u2014 Governed",
+                    "G2 — Governed",
                     "A finance process agent that routes exceptions with evidence and may intersect with SOX-relevant control design."
                   ],
                   [
                     "D",
                     "Margin Protection Agent",
-                    "G3 \u2014 Operational Asset Candidate",
+                    "G3 — Operational Asset Candidate",
                     "A production agent that detects project margin risk using financial, contract, staffing, and delivery signals."
                   ],
                   [
                     "E",
                     "Revenue Intelligence Orchestration",
-                    "G3+ \u2014 Enterprise Asset Candidate",
+                    "G3+ — Enterprise Asset Candidate",
                     "A multi-agent system that converts relationship capital, service adjacency, pursuit signals, and outcome feedback into governed revenue expansion recommendations."
                   ]
                 ]
@@ -922,7 +2189,7 @@
             "blocks": [
               {
                 "type": "paragraph",
-                "text": "The phrase operational asset must be handled with discipline. A useful agent is not automatically a capitalizable asset. Accounting treatment depends on the organization\u2019s applicable accounting policies, the nature of costs incurred, whether the work is research or implementation, whether there is management authorization and funding, whether probable completion and intended use can be established, and whether costs can be traced reliably."
+                "text": "The phrase operational asset must be handled with discipline. A useful agent is not automatically a capitalizable asset. Accounting treatment depends on the organization’s applicable accounting policies, the nature of costs incurred, whether the work is research or implementation, whether there is management authorization and funding, whether probable completion and intended use can be established, and whether costs can be traced reliably."
               },
               {
                 "type": "paragraph",
@@ -965,19 +2232,19 @@
                 "type": "cards",
                 "items": [
                   {
-                    "title": "G0 \u2014 Disposable Agent",
+                    "title": "G0 — Disposable Agent",
                     "description": "A prompt, prototype, or temporary productivity agent with no durable operational dependency. Example A belongs here unless it is formalized into an enterprise workflow."
                   },
                   {
-                    "title": "G1 \u2014 Assisted Workflow Agent",
+                    "title": "G1 — Assisted Workflow Agent",
                     "description": "An agent that helps a defined team process but remains subordinate to human judgment. Example B belongs here when the PM reviews actions before commitments are created."
                   },
                   {
-                    "title": "G2 \u2014 Governed Process Agent",
+                    "title": "G2 — Governed Process Agent",
                     "description": "A controlled agent with ownership, logging, workflow boundaries, and evidence. Example C belongs here because it routes finance exceptions and produces review evidence."
                   },
                   {
-                    "title": "G3 \u2014 Operational Asset Candidate",
+                    "title": "G3 — Operational Asset Candidate",
                     "description": "A production-grade capability with lifecycle discipline, measurable impact, control evidence, cost tracking, and useful-life thinking. Examples D and E may belong here if the evidence package supports the classification."
                   }
                 ]
@@ -1099,25 +2366,25 @@
                     {
                       "min": 0,
                       "max": 6,
-                      "grade": "G0 \u2014 Disposable Agent",
+                      "grade": "G0 — Disposable Agent",
                       "posture": "Lightweight policy controls"
                     },
                     {
                       "min": 7,
                       "max": 13,
-                      "grade": "G1 \u2014 Assisted Workflow Agent",
+                      "grade": "G1 — Assisted Workflow Agent",
                       "posture": "Team-level governance"
                     },
                     {
                       "min": 14,
                       "max": 21,
-                      "grade": "G2 \u2014 Governed Process Agent",
+                      "grade": "G2 — Governed Process Agent",
                       "posture": "Production-readiness controls"
                     },
                     {
                       "min": 22,
                       "max": 28,
-                      "grade": "G3 \u2014 Operational Asset Candidate",
+                      "grade": "G3 — Operational Asset Candidate",
                       "posture": "Enterprise asset governance and accounting review"
                     }
                   ],
@@ -1152,7 +2419,7 @@
                 "type": "image",
                 "src": "assets/images/frameworks/2026-05-27_agent_asset_grading_framework/images/03.png",
                 "alt": "The seven grading dimensions and score bands",
-                "caption": "The seven dimensions convert agent classification into a repeatable 0\u201328 scoring model with hard override triggers.",
+                "caption": "The seven dimensions convert agent classification into a repeatable 0–28 scoring model with hard override triggers.",
                 "title": "The Seven Grading Dimensions"
               },
               {
@@ -1458,27 +2725,27 @@
                 "type": "cards",
                 "items": [
                   {
-                    "title": "Gate 0 \u2014 Idea Intake",
+                    "title": "Gate 0 — Idea Intake",
                     "description": "Capture business problem, owner, expected impact, data classification, and initial risk screen. Decide whether the idea belongs in sandbox, prototype, controlled build, or rejection."
                   },
                   {
-                    "title": "Gate 1 \u2014 Experiment Approval",
+                    "title": "Gate 1 — Experiment Approval",
                     "description": "Bound the experiment with restricted data, user group, cost cap, retention rule, model/vendor approval, and stop/continue criteria."
                   },
                   {
-                    "title": "Gate 2 \u2014 Development Authorization",
+                    "title": "Gate 2 — Development Authorization",
                     "description": "Establish management authorization, funding, intended use, probable completion, architecture approval, accounting review, and cost coding."
                   },
                   {
-                    "title": "Gate 3 \u2014 Production Readiness",
+                    "title": "Gate 3 — Production Readiness",
                     "description": "Confirm owner, control matrix, security approval, test results, evidence logging, fallback path, human review rules, and monitoring dashboard."
                   },
                   {
-                    "title": "Gate 4 \u2014 Asset Classification Review",
+                    "title": "Gate 4 — Asset Classification Review",
                     "description": "Review score, cost ledger, business value baseline, useful-life memo, accounting memo, control evidence, and production metrics."
                   },
                   {
-                    "title": "Gate 5 \u2014 Lifecycle Review",
+                    "title": "Gate 5 — Lifecycle Review",
                     "description": "Review usage, performance, cost, incidents, dependency changes, useful life, enhancement needs, retirement criteria, and replacement options."
                   }
                 ]
@@ -1512,36 +2779,36 @@
                 "rows": [
                   [
                     "Proposal Rewrite Agent",
-                    "2\u20135",
-                    "G0 \u2014 Disposable",
+                    "2–5",
+                    "G0 — Disposable",
                     "Useful productivity but little durable operating capability.",
                     "No owner, cost traceability, intended use, or lifecycle evidence."
                   ],
                   [
                     "PM Meeting Summary Agent",
-                    "7\u201311",
-                    "G1 \u2014 Assisted",
+                    "7–11",
+                    "G1 — Assisted",
                     "Supports follow-through but PM remains accountable for commitments.",
                     "Needs workflow owner, retention rules, and review evidence."
                   ],
                   [
                     "Invoice Exception Triage Agent",
-                    "15\u201320",
-                    "G2 \u2014 Governed",
+                    "15–20",
+                    "G2 — Governed",
                     "Embedded in finance process with evidence and reviewer routing.",
                     "Needs SOX screen, control matrix, and cost ledger."
                   ],
                   [
                     "Margin Protection Agent",
-                    "22\u201325",
-                    "G3 \u2014 Operational Asset Candidate",
+                    "22–25",
+                    "G3 — Operational Asset Candidate",
                     "Influences project economics and preserves senior operator judgment.",
                     "Needs useful-life memo, benefit realization, and model-risk monitoring."
                   ],
                   [
                     "Revenue Intelligence Orchestration",
-                    "24\u201328",
-                    "G3+ \u2014 Enterprise Asset Candidate",
+                    "24–28",
+                    "G3+ — Enterprise Asset Candidate",
                     "Connects relationship capital, service adjacency, pursuit logic, and outcome signal into governed revenue execution.",
                     "Needs graph lineage, conflict controls, value attribution, and executive operating rhythm."
                   ]
@@ -1655,11 +2922,11 @@
                 "type": "list",
                 "title": "Primary standards and guidance referenced in this framework",
                 "items": [
-                  "FASB ASU 2025-06 \u2014 Internal-Use Software: FASB project page for targeted improvements to internal-use software cost guidance under Subtopic 350-40.",
+                  "FASB ASU 2025-06 — Internal-Use Software: FASB project page for targeted improvements to internal-use software cost guidance under Subtopic 350-40.",
                   "NIST AI Risk Management Framework: NIST AI RMF resources for voluntary AI risk management.",
                   "NIST Generative AI Profile: NIST AI 600-1 profile that helps organizations identify and manage GenAI-specific risks.",
-                  "ISO/IEC 42001:2023 \u2014 AI Management Systems: ISO standard for establishing, implementing, maintaining, and improving an AI management system.",
-                  "COSO Internal Control \u2014 Integrated Framework: COSO internal-control framework resources.",
+                  "ISO/IEC 42001:2023 — AI Management Systems: ISO standard for establishing, implementing, maintaining, and improving an AI management system.",
+                  "COSO Internal Control — Integrated Framework: COSO internal-control framework resources.",
                   "COSO Generative AI Internal Control Guidance: COSO guidance translating internal-control principles into practical GenAI risk and control guidance.",
                   "SEC Cybersecurity Risk Management, Strategy, Governance, and Incident Disclosure Rule: SEC rule requiring public companies to disclose material cybersecurity incidents and material information about cybersecurity risk management, strategy, and governance."
                 ]
@@ -1859,7 +3126,7 @@
         ],
         "related": [
           {
-            "title": "Relationship Capital \u2192 Revenue Intelligence",
+            "title": "Relationship Capital → Revenue Intelligence",
             "slug": "frameworks/2026/05/17/relationship-capital-revenue-intelligence",
             "description": "A related framework for converting relationship capital, service adjacency, and delivery history into measurable revenue intelligence."
           },
@@ -2038,7 +3305,7 @@
       ],
       "sourceReferences": [
         {
-          "label": "FASB ASU 2025-06 \u2014 Internal-Use Software",
+          "label": "FASB ASU 2025-06 — Internal-Use Software",
           "href": "https://www.fasb.org/page/PageContent?pageId=%2Fprojects%2Frecently-completed-projects%2Faccounting-for-and-disclosure-of-software-costs.html",
           "description": "FASB project page for targeted improvements to internal-use software cost guidance under Subtopic 350-40.",
           "type": "external-reference"
@@ -2056,13 +3323,13 @@
           "type": "external-reference"
         },
         {
-          "label": "ISO/IEC 42001:2023 \u2014 AI Management Systems",
+          "label": "ISO/IEC 42001:2023 — AI Management Systems",
           "href": "https://www.iso.org/standard/42001",
           "description": "ISO standard for establishing, implementing, maintaining, and improving an AI management system.",
           "type": "external-reference"
         },
         {
-          "label": "COSO Internal Control \u2014 Integrated Framework",
+          "label": "COSO Internal Control — Integrated Framework",
           "href": "https://www.coso.org/guidance-on-ic",
           "description": "COSO internal-control framework resources.",
           "type": "external-reference"
@@ -2549,7 +3816,7 @@
             "description": "A framework for preserving signal across executive intent, workflow reality, and technical implementation."
           },
           {
-            "title": "Relationship Capital \u2192 Revenue Intelligence",
+            "title": "Relationship Capital → Revenue Intelligence",
             "slug": "frameworks/2026/05/17/relationship-capital-revenue-intelligence",
             "description": "A framework for converting relationship capital, service adjacency, and delivery history into measurable revenue intelligence."
           }
@@ -2989,7 +4256,7 @@
           },
           {
             "label": "Method",
-            "value": "Capture intent \u2192 translate \u2192 align options \u2192 validate \u2192 close the loop"
+            "value": "Capture intent → translate → align options → validate → close the loop"
           }
         ],
         "toc": [
@@ -3078,7 +4345,7 @@
             "description": "A model for reducing operational noise and improving decision quality."
           },
           {
-            "title": "Relationship Capital \u2192 Revenue Intelligence",
+            "title": "Relationship Capital → Revenue Intelligence",
             "slug": "frameworks/2026/05/17/relationship-capital-revenue-intelligence",
             "description": "A framework for turning relationship knowledge into measurable growth."
           }
@@ -3197,7 +4464,7 @@
     {
       "id": "framework-003",
       "slug": "frameworks/2026/05/17/relationship-capital-revenue-intelligence",
-      "title": "Relationship Capital \u2192 Revenue Intelligence",
+      "title": "Relationship Capital → Revenue Intelligence",
       "summary": "An executive framework for using D3 to map client relationships, service delivery, employee expertise, current value, white-space opportunity, and the next-best connections that turn relationship capital into measurable growth.",
       "status": "published",
       "publishedOn": "2026-05-17",

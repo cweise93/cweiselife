@@ -113,8 +113,8 @@ const HOME_WRITING_SECTION = {
 
 const HOME_FRAMEWORK_SECTION = {
   eyebrow: 'Featured Framework',
-  headline: 'Relationship Capital → Revenue Intelligence',
-  support: 'A framework for making trust, expertise, delivered work, unmet client need, and next-best internal connections visible enough to drive measurable growth.'
+  headline: 'Meter Before Cap Framework',
+  support: 'A framework for making AI consumption visible before limits interrupt delivery, budgets surprise leadership, or acceleration outruns governance.'
 } as const;
 
 const HOME_ABOUT_SECTION = {

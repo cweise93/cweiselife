@@ -20,9 +20,19 @@ export interface ProductionAssets {
   socialImage?: ProductionAssetReference;
 }
 
+export interface ContentReference {
+  id?: string;
+  number?: number;
+  title: string;
+  publisher?: string;
+  href: string;
+  description?: string;
+}
+
 export interface ContentParagraphBlock {
   type: 'paragraph';
   text: string;
+  referenceIds?: string[];
 }
 
 export interface ContentImageBlock {
@@ -30,6 +40,7 @@ export interface ContentImageBlock {
   src: string;
   alt: string;
   caption?: string;
+  referenceIds?: string[];
 }
 
 export interface ContentCalloutBlock {
@@ -37,12 +48,14 @@ export interface ContentCalloutBlock {
   title?: string;
   text: string;
   tone?: 'neutral' | 'executive' | 'technical' | 'warning';
+  referenceIds?: string[];
 }
 
 export interface ContentListBlock {
   type: 'list';
   title?: string;
   items: string[];
+  referenceIds?: string[];
 }
 
 export interface ContentTableBlock {
@@ -50,6 +63,7 @@ export interface ContentTableBlock {
   title?: string;
   columns: string[];
   rows: string[][];
+  referenceIds?: string[];
 }
 
 export interface ContentCardItem {
@@ -60,6 +74,7 @@ export interface ContentCardItem {
 export interface ContentCardsBlock {
   type: 'cards';
   items: ContentCardItem[];
+  referenceIds?: string[];
 }
 
 export interface ContentCodeBlock {
@@ -67,6 +82,7 @@ export interface ContentCodeBlock {
   title?: string;
   language?: string;
   code: string;
+  referenceIds?: string[];
 }
 
 export type InteractiveComponentKey =
@@ -82,6 +98,7 @@ export interface ContentComponentBlock {
   title?: string;
   description?: string;
   config?: Record<string, unknown>;
+  referenceIds?: string[];
 }
 
 export type ContentSectionBlock =
@@ -98,6 +115,7 @@ export interface ContentImage {
   src: string;
   alt: string;
   caption?: string;
+  referenceIds?: string[];
 }
 
 export interface ContentSection {
@@ -300,6 +318,7 @@ export interface FrameworkItem {
   seo: SeoContent;
   body: FrameworkBody;
   companion?: ContentCompanion;
+  references?: ContentReference[];
 }
 
 export interface FrameworkContentFile {

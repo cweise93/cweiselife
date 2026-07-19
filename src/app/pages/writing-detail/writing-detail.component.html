@@ -11,7 +11,7 @@
     </div>
     @if (article.heroImage) {
       <div class="cw-container">
-        <img class="hero-image" [src]="article.heroImage" [alt]="article.title" />
+        <img class="hero-image" [src]="article.heroImage" [alt]="article.title" fetchpriority="high" decoding="async" />
       </div>
     }
   </section>

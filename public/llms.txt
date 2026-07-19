@@ -19,6 +19,7 @@ This site publishes prerendered essays, frameworks, and short-form operating gui
 - [Executive Follow-Through Requires Ownership Architecture](https://cweise.com/writing/2026/03/31/executive-follow-through-requires-ownership-architecture/): A strategy does not become durable because leaders care about it. It becomes durable when ownership, decision rights, escalation paths, evidence, and review rhythms are designed into the operating system.
 
 ## Featured Frameworks
+- [Meter Before Cap Framework](https://cweise.com/frameworks/2026/06/23/meter-before-cap-framework/): A real-time AI consumption framework for turning AI-supported work into visible operating signals before caps, overages, or capacity limits interrupt delivery.
 - [Relationship Capital → Revenue Intelligence](https://cweise.com/frameworks/2026/05/17/relationship-capital-revenue-intelligence/): An executive framework for using D3 to map client relationships, service delivery, employee expertise, current value, white-space opportunity, and the next-best connections that turn relationship capital into measurable growth.
 - [Systems Translation Loop](https://cweise.com/frameworks/2026/03/18/systems-translation-loop/): A framework for bridging executive intent, workflow reality, and technical implementation without losing signal.
 

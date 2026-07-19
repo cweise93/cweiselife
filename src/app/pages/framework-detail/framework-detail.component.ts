@@ -9,7 +9,16 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { map, switchMap } from 'rxjs';
 import { ContentService } from '../../core/content/content.service';
-import { CompanionAsset, CompanionCallToAction, CompanionRelatedItem, CompanionSnapshotItem, CompanionTocItem, FrameworkItem } from '../../core/content/content.models';
+import {
+  CompanionAsset,
+  CompanionCallToAction,
+  CompanionRelatedItem,
+  CompanionSnapshotItem,
+  CompanionTocItem,
+  ContentReference,
+  ContentSection,
+  FrameworkItem
+} from '../../core/content/content.models';
 import { ContentRendererComponent } from '../../shared/content/content-renderer.component';
 import { FrameworkStickyContextBarComponent } from '../../features/frameworks/components/framework-sticky-context-bar/framework-sticky-context-bar.component';
 import { FrameworkResourceDialogComponent } from './framework-resource-dialog.component';
@@ -69,8 +78,19 @@ export class FrameworkDetailComponent {
   );
 
   readonly frameworkComponents = computed(() => this.item()?.body.components ?? []);
+  readonly references = computed<ContentReference[]>(() => this.item()?.references ?? []);
+  readonly contentSections = computed<ContentSection[]>(() => {
+    const sections = this.item()?.body.sections ?? [];
+    if (!this.references().length) {
+      return sections;
+    }
+
+    return sections.filter((section) => section.heading !== 'Footnotes and source basis');
+  });
   readonly tocItems = computed<CompanionTocItem[]>(() => {
-    const base = this.item()?.companion?.toc ?? [];
+    const base = (this.item()?.companion?.toc ?? []).filter(
+      (item) => !this.references().length || item.anchor !== 'footnotes-and-source-basis'
+    );
     if (!this.templateItems().length || base.some((item) => item.anchor === 'download-templates')) {
       return base;
     }
@@ -81,6 +101,9 @@ export class FrameworkDetailComponent {
   readonly assetItems = computed<CompanionAsset[]>(() => this.item()?.companion?.assets ?? []);
   readonly frameworkAssetItems = computed<CompanionAsset[]>(() => this.assetItems().filter((item) => item.type === 'image'));
   readonly templateItems = computed<CompanionAsset[]>(() => this.assetItems().filter((item) => item.type === 'template'));
+  readonly resourceItems = computed<CompanionAsset[]>(() =>
+    this.assetItems().filter((item) => item.type !== 'image' && item.type !== 'template' && item.type !== 'component')
+  );
   readonly relatedItems = computed<CompanionRelatedItem[]>(() => this.item()?.companion?.related ?? []);
   readonly callToActionItems = computed<CompanionCallToAction[]>(() => this.item()?.companion?.callsToAction ?? []);
   readonly templateActionItem = computed(
@@ -102,7 +125,7 @@ export class FrameworkDetailComponent {
   ]);
   readonly hasAiCostCalculator = computed(
     () =>
-      !!this.item()?.body.sections.some((section) =>
+      !!this.contentSections().some((section) =>
         section.blocks?.some((block) => block.type === 'component' && block.component === 'ai-consumption-leverage-calculator')
       )
   );

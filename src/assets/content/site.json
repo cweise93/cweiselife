@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": 1,
-    "updatedOn": "2026-06-23",
+    "updatedOn": "2026-06-24",
     "siteName": "cweise.com",
     "siteUrl": "https://cweise.com",
     "title": "Operational Clarity for Complex Organizations",
@@ -26,6 +26,7 @@
       "writing/2026/03/31/executive-follow-through-requires-ownership-architecture"
     ],
     "featuredFrameworkSlugs": [
+      "frameworks/2026/06/23/meter-before-cap-framework",
       "frameworks/2026/05/17/relationship-capital-revenue-intelligence",
       "frameworks/2026/03/18/systems-translation-loop"
     ],
@@ -97,7 +98,7 @@
   "footer": {
     "featuredLinks": [
       { "label": "Operating Tools", "path": "/guides" },
-      { "label": "Relationship Capital → Revenue Intelligence", "path": "/frameworks/2026/05/17/relationship-capital-revenue-intelligence" },
+      { "label": "Meter Before Cap Framework", "path": "/frameworks/2026/06/23/meter-before-cap-framework" },
       { "label": "How I Think. What I Do.", "path": "/about" }
     ]
   },

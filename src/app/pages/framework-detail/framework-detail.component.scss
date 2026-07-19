@@ -815,6 +815,23 @@ p {
   gap: 10px;
 }
 
+.reference-item {
+  scroll-margin-top: calc(var(--cw-toolbar-current-height, var(--cw-toolbar-height)) + var(--framework-context-bar-height) + 28px);
+}
+
+.reference-item__copy {
+  display: grid;
+  gap: 4px;
+}
+
+.reference-item__publisher {
+  color: var(--cw-muted);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
 .missing-state {
   min-height: calc(100svh - var(--cw-toolbar-height) - 220px);
   display: grid;

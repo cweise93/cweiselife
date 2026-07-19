@@ -1,0 +1,26 @@
+{
+  "dashboard_title": "Real-Time AI Consumption Dashboard",
+  "v2_new_panel": "AI Velocity Prioritization Overlay",
+  "summary": {
+    "current_session_tokens": 78420,
+    "spend_against_cap_pct": 62,
+    "forecasted_cap_exhaustion_days": 14,
+    "active_warnings": 2
+  },
+  "posture_counts": {
+    "Full Speed": 1,
+    "Controlled Acceleration": 10,
+    "Budget-Aware Acceleration": 8,
+    "Requires Review": 5,
+    "Restricted": 6,
+    "Pause / Re-scope": 0
+  },
+  "recommended_behaviors": [
+    "Use right-sized models",
+    "Optimize prompts",
+    "Leverage caching",
+    "Schedule non-urgent jobs",
+    "Share reusable context packages",
+    "Review high-cost low-value acceleration"
+  ]
+}

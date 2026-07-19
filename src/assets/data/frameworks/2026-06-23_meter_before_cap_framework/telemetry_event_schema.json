@@ -1,0 +1,30 @@
+{
+  "schema_name": "ai_consumption_telemetry_event_v2",
+  "campaign_id": "C02",
+  "fields": {
+    "event_id": "string",
+    "timestamp": "iso8601",
+    "user_id": "string",
+    "role": "string",
+    "team": "string",
+    "workstream_tag": "string",
+    "tool": "string",
+    "provider": "string",
+    "model": "string",
+    "request_type": "string",
+    "input_tokens": "integer",
+    "output_tokens": "integer",
+    "estimated_cost_usd": "number",
+    "remaining_pool_usd": "number",
+    "cap_position_pct": "number",
+    "warning_threshold": "string",
+    "escalation_state": "string",
+    "velocity_signal": "number_0_to_100",
+    "value_signal": "number_0_to_100",
+    "risk_signal": "number_0_to_100",
+    "review_burden": "number_0_to_100",
+    "recommended_posture": "enum: Full Speed | Controlled Acceleration | Budget-Aware Acceleration | Requires Review | Restricted | Pause / Re-scope",
+    "outcome_note": "string"
+  },
+  "notes": "v2 adds velocity/value/risk signals so telemetry can support prioritization posture, not only cost monitoring."
+}

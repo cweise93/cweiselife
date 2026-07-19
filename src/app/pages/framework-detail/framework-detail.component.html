@@ -65,7 +65,7 @@
             </section>
           }
 
-          <cw-content-renderer [sections]="framework.body.sections" />
+          <cw-content-renderer [sections]="contentSections()" [references]="references()" />
         </article>
 
         @if (templateItems().length) {
@@ -349,6 +349,39 @@
             </mat-card>
           }
 
+          @if (resourceItems().length) {
+            <mat-card appearance="outlined" class="tool-rail-card cw-surface-card">
+              <p class="resource-eyebrow">Operating artifacts</p>
+              <div class="resource-link-list">
+                @for (item of resourceItems(); track item.href) {
+                  <article class="resource-asset">
+                    <button class="resource-link resource-link--asset" type="button" (click)="openAsset(item)">
+                      <span class="resource-link__meta">
+                        <span class="resource-link__number">{{ item.type?.toUpperCase() || 'FILE' }}</span>
+                        <span class="resource-link__label">{{ item.label }}</span>
+                      </span>
+                      @if (item.description) {
+                        <span class="resource-link__description">{{ item.description }}</span>
+                      }
+                    </button>
+                    <div class="resource-asset__actions">
+                      <button mat-button color="primary" type="button" (click)="openAsset(item)">Inspect</button>
+                      <button
+                        mat-icon-button
+                        color="primary"
+                        type="button"
+                        aria-label="Download {{ item.label }}"
+                        (click)="downloadAsset(item, $event)"
+                      >
+                        <mat-icon>download</mat-icon>
+                      </button>
+                    </div>
+                  </article>
+                }
+              </div>
+            </mat-card>
+          }
+
           @if (relatedItems().length) {
             <mat-card appearance="outlined" class="tool-rail-card cw-surface-card">
               <p class="resource-eyebrow">Related frameworks</p>
@@ -364,6 +397,34 @@
                       <mat-icon>arrow_forward</mat-icon>
                     </span>
                   </a>
+                }
+              </div>
+            </mat-card>
+          }
+
+          @if (references().length) {
+            <mat-card appearance="outlined" class="tool-rail-card cw-surface-card">
+              <p class="resource-eyebrow">References</p>
+              <div class="resource-link-list">
+                @for (reference of references(); track reference.id || reference.href || reference.title; let index = $index) {
+                  <article class="resource-asset reference-item" [attr.id]="'reference-' + (reference.number || index + 1)">
+                    <div class="resource-link__meta">
+                      <span class="resource-link__number">{{ reference.number || index + 1 }}</span>
+                      <div class="reference-item__copy">
+                        <span class="resource-link__label">{{ reference.title }}</span>
+                        @if (reference.publisher) {
+                          <span class="reference-item__publisher">{{ reference.publisher }}</span>
+                        }
+                      </div>
+                    </div>
+                    @if (reference.description) {
+                      <p class="resource-link__description">{{ reference.description }}</p>
+                    }
+                    <a class="resource-link__action" [href]="reference.href" target="_blank" rel="noreferrer">
+                      Open source
+                      <mat-icon>open_in_new</mat-icon>
+                    </a>
+                  </article>
                 }
               </div>
             </mat-card>

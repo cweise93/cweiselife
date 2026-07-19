@@ -7,7 +7,7 @@ This file expands the concise `llms.txt` index into a richer text digest of ever
 ## Site Metadata
 - Canonical site URL: https://cweise.com/
 - Author: Charles Weise
-- Updated on: 2026-06-23
+- Updated on: 2026-06-24
 - Core themes: Surface the Signal, Structure the Evidence, Operationalize the Answer
 - Crawl inventory: https://cweise.com/sitemap.xml
 
@@ -591,6 +591,80 @@ George did not need to understand every prompt. He needed the delivery engine to
 - URL: https://cweise.com/frameworks/
 - Summary: Frameworks for reducing noise, improving systems translation, and designing cleaner execution paths inside complex organizations.
 
+### Framework: Meter Before Cap Framework
+- URL: https://cweise.com/frameworks/2026/06/23/meter-before-cap-framework/
+- Summary: A real-time AI consumption framework for turning AI-supported work into visible operating signals before caps, overages, or capacity limits interrupt delivery.
+- Published: 2026-06-23
+- Tags: AI telemetry, AI consumption, AI governance, token visibility, model routing, capacity planning, AI cost management, operational intelligence, Azure AI, OpenTelemetry, workflow design
+- SEO description: A framework for giving AI users and leaders real-time consumption visibility through a controlled interface ribbon, telemetry seam, policy routing, and dashboard before usage limits interrupt work.
+- Intro: AI consumption becomes operationally material when it can affect delivery, capacity, cost, or user behavior before leaders see the pattern. The Meter Before Cap Framework defines the layer between AI-supported work and enterprise AI governance: a controlled interface that estimates usage before execution, records telemetry after execution, routes work through policy, and turns capacity limits into earlier decisions instead of late surprises.
+- Application: Use this framework when AI has moved beyond experimentation and is becoming part of how teams deliver work. It is especially useful when leaders can see faster output but cannot yet explain which AI capacity, model choices, context patterns, and policy thresholds are now part of the delivery chain.
+- Components: Controlled Interface Ribbon: A user-facing meter that shows model, workstream, estimated usage, remaining capacity, warning state, route, and approval posture before work is submitted. | Telemetry Seam: A normalized event layer that records estimates, actual usage, request context, policy state, capacity exposure, and outcome signals. | Policy and Routing Engine: A rule layer that recommends whether work should proceed, route, require approval, restrict, pause, or rescope. | Real-Time AI Consumption Dashboard: A leadership surface for burn rate, cap exposure, forecasted exhaustion, high-consumption requests, and workstream trends. | Velocity Prioritization Overlay: A management layer that connects consumption, value, velocity, and risk into an acceleration posture.
+- Section: Why this framework exists
+  The Friday Night Cap showed the operating problem: a small team was producing at a new level because AI had become part of its delivery system, but the organization had not instrumented AI capacity as a delivery dependency.
+  That is the gap this framework closes. It does not argue that caps are bad. It argues that limits become disruptive when they are invisible until the moment work is blocked [3].
+  A cap protects the boundary. A meter gives the organization time to make a better decision before the boundary is reached.
+  Image: Real-Time AI Consumption Architecture showing user work surface, controlled ribbon, telemetry seam, policy routing, providers, and governance dashboard.
+  Callout (Core promise): Make AI consumption visible early enough for users to adjust, leaders to route, and governance to act before capacity becomes a delivery surprise.
+- Section: The control plane is not the user experience
+  Enterprise AI platforms are increasingly solving the architect and decision-maker problem: how to build, ground, govern, route, observe, and control AI apps and agents across providers, tools, data, and policy boundaries [1].
+  That matters, but it does not fully solve the operating moment for the individual user. The user needs to know whether the work they are about to submit is small, large, risky, near a threshold, better suited for another model, or likely to require approval [3].
+  The framework therefore separates two surfaces. The enterprise control plane governs the AI estate. The controlled interface ribbon gives the user real-time feedback while work is still adjustable [2].
+  Table (Two surfaces, different jobs): Enterprise AI control plane / Architects, AI platform owners, security, compliance, decision makers / Build, ground, govern, observe, route, secure, and operate AI applications and agents at scale. | Controlled interface ribbon / Developers, analysts, operators, managers, business users / Show consumption, capacity, policy, route, and recommended behavior at the moment work is being created.
+  Callout (Design implication): Borrow the confidence and structure of an enterprise AI control plane, but move the most important consumption signal into the user workflow.
+- Section: The six-layer architecture
+  Image: Six-layer AI consumption architecture from user work surface to governance control plane.
+  The framework is intentionally layered so organizations can implement visibility before they overbuild control. Each layer has a distinct job [2].
+  Cards: 1. User work surface: Where AI-supported work actually happens: internal apps, IDEs, dashboards, notebooks, plugins, APIs, and controlled AI workspaces. | 2. Controlled interface ribbon: The user-facing meter showing model, reasoning, workstream, token estimate, live usage, remaining capacity, warning state, and route recommendation. | 3. Telemetry seam: The normalized event stream that captures context, usage, cost/cap exposure, policy state, velocity signal, and outcome. | 4. Policy and routing engine: The rule layer that decides whether work proceeds, routes, requires approval, is restricted, or should be paused. | 5. Model/provider layer: The provider-agnostic execution layer across approved hosted, private, local, or hybrid model paths. | 6. Analytics and governance control plane: The leadership surface for burn rate, cap forecast, acceleration posture, approval path, ADO sync, audit, and optimization.
+- Section: The controlled interface ribbon
+  The ribbon is the most important product surface in the framework. It turns invisible AI capacity into something the user can see without leaving the work [4].
+  Image: Governed execution surface with a real-time AI consumption ribbon across the top of a developer-grade workspace.
+  List (Ribbon fields): Vendor and model | Reasoning level or effort setting | Workstream or project tag | Task type | Estimated tokens before execution | Actual tokens after execution when available | Remaining capacity and cap position | Warning state | Route recommendation | Approval state | Work-management sync status
+  Callout (Operating principle): If the user can change the request, model, reasoning level, scope, or approval path before submission, telemetry is doing useful work.
+- Section: Pre-flight estimate, actual telemetry, and recommendation
+  The framework does not require perfect token prediction before execution. It requires useful pre-flight feedback and post-execution reconciliation [5].
+  Before execution, the system can estimate consumption from prompt length, context size, task type, output burden, selected model, reasoning level, and workstream capacity. After execution, the system can reconcile that estimate against actual usage returned by the provider or captured by the gateway [4][5].
+  Table (Three-step consumption loop): Estimate / The interface estimates tokens, capacity exposure, and risk before submission. / Users can adjust the work before capacity is consumed. | Measure / The system records actual provider usage, latency, warning state, route, approval, and outcome. / Leaders can see what happened rather than inferring it from invoices. | Recommend / The policy layer suggests proceed, route, approve, restrict, or rescope. / Governance becomes operational feedback instead of delayed restriction.
+  Callout (Important distinction): Pre-flight estimates are guidance. Actual provider telemetry is evidence. The framework needs both.
+- Section: The telemetry event schema
+  The telemetry seam turns one AI-supported request into an operating signal. It should capture enough context to support user feedback, leadership dashboards, routing rules, cost/cap decisions, and later optimization [6][7].
+  Code (Minimum telemetry event shape): json snippet available on page.
+  Callout (Schema requirement): The schema should preserve enough context to govern consumption without storing sensitive prompt content unnecessarily.
+- Section: What the first version should prove
+  The first interactive version does not need to simulate a full enterprise AI platform. It needs to prove one operating idea: when a user changes the prompt, model, reasoning level, or workstream, the visible capacity signal should change before the request is submitted.
+  That is the product thesis. The ribbon should make capacity visible early enough for the user to adjust the request, route the work differently, seek approval, or reduce unnecessary consumption.
+  List (Minimum proof points): Changing prompt length changes the token estimate. | Changing model or reasoning level changes estimated capacity impact. | Changing workstream changes the available capacity pool. | Approaching a threshold changes the warning state. | Crossing a policy rule changes the recommendation. | The user can understand the recommendation without leaving the work surface.
+  Callout (Artifact standard): The ribbon is the product. The dashboard is the management surface after the ribbon proves the signal.
+- Section: The operating surface demo
+  Image: Real-time AI consumption dashboard showing session usage, burn rate, cap posture, forecasted exhaustion, and high-consumption requests.
+  The first release does not need a live provider connection. It needs a believable workspace and dashboard that show what users and leaders would need to see before a capacity threshold becomes a delivery problem.
+  The controlled workspace should show the user how their choices affect consumption. The dashboard should show leaders where consumption is concentrating, which workstreams are approaching limits, and which acceleration patterns deserve protection or review.
+  List (What the first operating surface should show): Current session consumption and remaining capacity. | Spend against cap with forecasted exhaustion. | Usage by user, team, and workstream. | High-consumption requests that need review. | Recommended behavior before the next request is submitted.
+  Callout (Build order): Start with the ribbon and mock telemetry. Add the full dashboard only after the user-facing meter is believable.
+- Section: Velocity prioritization is an output, not a separate campaign
+  The revised pattern carousel made the key point: prioritization lacks evidence when consumption patterns are invisible. The framework should therefore treat velocity prioritization as an output of telemetry, not as a separate thesis.
+  Once the system can see consumption, value, velocity, and risk signals, it can recommend an acceleration posture [2].
+  Image: AI velocity prioritization overlay showing consumption, velocity, and risk signals feeding a prioritization engine and six posture outputs.
+  Table (Velocity posture outputs): Full Speed / High value, acceptable consumption, low risk. / Continue and protect capacity. | Controlled Acceleration / High value but capacity-sensitive. / Proceed with monitoring and thresholds. | Budget-Aware Acceleration / Useful work, but spend or burn rate needs control. / Proceed with routing, reuse, or budget review. | Requires Review / High-risk, high-cost, sensitive, or uncertain value. / Pause for human approval or scope review. | Restricted / Policy, data, risk, or compliance boundary exceeded. / Block or route to approved workflow. | Pause / Re-scope / Low value or poor evidence relative to consumption. / Break the request down, reduce context, or defer.
+  Callout (Management implication): The question is not whether AI usage should be faster. The question is which AI-supported work deserves acceleration based on evidence.
+- Section: Implementation phases
+  The framework should be adopted in phases. The first phase is visibility, not enforcement [4].
+  Cards: Phase 1 — Instrument: Capture estimates and actual usage from approved AI surfaces. Establish the minimum telemetry event shape. | Phase 2 — Expose: Show users session consumption, remaining capacity, and warning state inside the work surface. | Phase 3 — Attribute: Tie consumption to user, role, team, workstream, task type, model, and provider path. | Phase 4 — Forecast: Show burn rate, cap exposure, and expected exhaustion before the limit interrupts work. | Phase 5 — Govern: Apply thresholds, routing, approval, restriction, and work-management synchronization. | Phase 6 — Optimize: Use telemetry to improve prompts, context design, routing defaults, caching, budget planning, and velocity posture.
+  Callout (Adoption principle): Do not begin with punishment. Begin by making the operating signal visible.
+- Section: What leaders should inspect first
+  Leaders should start by inspecting where AI-supported work has become part of the delivery chain but remains invisible to the operating system.
+  List (Inspection questions): Which teams are producing at a new level because AI is now part of delivery? | Which workstreams would slow down or stop if AI capacity were unavailable? | Where are caps, quotas, or approval thresholds visible only to administrators? | Which requests are consuming the most context, reasoning, or repeated attempts? | Which high-consumption workflows are tied to real business commitments? | Which acceleration should be protected, routed, reviewed, or rescaled?
+  The answer to those questions determines where the first controlled interface ribbon and telemetry seam should be deployed.
+- Section: Final standard
+  The goal is not less AI. The goal is less unmanaged AI.
+  A firm can spend more on AI and still make the right decision if that consumption is tied to faster delivery, lower rework, better decisions, stronger throughput, or more scalable expertise. But management cannot prove that with enthusiasm.
+  It needs a meter before the cap becomes the operating event.
+  Image: Synthesis showing invisible AI usage becoming visible AI consumption.
+  Callout (Framework standard): The best AI operating model is not the one that uses AI least. It is the one that can see consumption clearly enough to preserve useful work, reduce waste, and govern without panic.
+- Section: Footnotes and source basis
+  The framework uses light inline footnotes to support the technical claims without turning the page into a documentation mirror. These references establish that quotas, routing, platform monitoring, provider and model metadata, and token telemetry are real enterprise AI concerns while the framework remains an operating model.
+  Cards: [1] Microsoft Foundry enterprise AI platform positioning: Microsoft Azure. Microsoft describes Foundry as a unified platform to build, ground, and govern AI apps and agents, bringing together the agent lifecycle with security, compliance, and policy controls. | [2] Model routing, control plane, and observability in Foundry: Microsoft Azure. Microsoft describes real-time model routing, a governed control plane integrated with Entra/Purview/Defender, and end-to-end tracing built on OpenTelemetry. | [3] Azure OpenAI quotas and limits: Microsoft Learn. Microsoft documents Azure OpenAI quotas and limits and states that TPM/RPM limits are defined per region, subscription, model, or deployment type. | [4] Azure OpenAI quota assignment and rate-limit enforcement: Microsoft Learn. Microsoft explains that quota is assigned in TPM per subscription/region/model/deployment type, assigned to deployments, and mapped to enforced tokens-per-minute rate limits. | [5] Azure OpenAI monitoring metrics: Microsoft Learn. Microsoft's monitoring reference lists Azure OpenAI metrics including requests, active tokens, generated completion tokens, processed prompt tokens, processed inference tokens, prompt token cache match rate, and latency metrics. | [6] OpenTelemetry GenAI provider and model attributes: OpenTelemetry. OpenTelemetry's GenAI attribute registry describes provider and model attributes such as gen_ai.provider.name, gen_ai.request.model, and gen_ai.response.model, and notes that provider and model attributes help identify the actual system in use. | [7] OpenTelemetry GenAI token usage attributes: OpenTelemetry. OpenTelemetry defines GenAI token usage attributes including input tokens, output tokens, cache creation/read input tokens, reasoning output tokens, and workflow name.
+
 ### Framework: AI Consumption Leverage Framework
 - URL: https://cweise.com/frameworks/2026/06/01/ai-consumption-leverage-framework/
 - Summary: A tactical framework for reducing unnecessary AI spend, improving workflow efficiency, and helping teams estimate, prioritize, and explain which seven operating levers can improve cost discipline without degrading user experience.
@@ -667,7 +741,7 @@ George did not need to understand every prompt. He needed the delivery engine to
 
 ### Framework: Agent Asset Grading Framework
 - URL: https://cweise.com/frameworks/2026/05/27/agent-asset-grading-framework/
-- Summary: A tactical framework for classifying enterprise AI agents by operational materiality, institutional knowledge capture, control evidence, cost traceability, business value, model risk, and useful life so leaders can distinguish disposable experiments from governed operational asset candidates.
+- Summary: A tactical framework for grading enterprise AI agents by maturity, materiality, governance, accounting-readiness, value, risk, and useful life.
 - Published: 2026-05-27
 - Tags: AI governance, agent grading, operational capital, internal-use software, control evidence, asset governance, CIO, CFO, SOX, NIST AI RMF, COSO
 - SEO description: A tactical framework for grading enterprise AI agents by maturity, materiality, governance, accounting-readiness, value, risk, and useful life.

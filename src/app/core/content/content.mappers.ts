@@ -7,6 +7,7 @@ import {
   CompanionRelatedItem,
   CompanionSnapshotItem,
   CompanionTocItem,
+  ContentReference,
   ConnectContent,
   ContentCompanion,
   ContentCollectionViewModel,
@@ -42,6 +43,15 @@ function asString(value: unknown, fallback = ''): string {
   return typeof value === 'string' ? value.trim() : fallback;
 }
 
+function assetPath(value: unknown, fallback = ''): string {
+  return asString(value, fallback).replace(/\.(png|jpe?g)$/i, '.webp');
+}
+
+function assetHref(value: unknown): string {
+  const href = asString(value);
+  return /^https?:\/\//i.test(href) ? href : assetPath(href);
+}
+
 function asStringArray(value: unknown): string[] {
   return Array.isArray(value)
     ? value.map((item) => asString(item)).filter(Boolean)
@@ -72,8 +82,9 @@ function normalizeTags(value: unknown): string[] {
 }
 
 function normalizeContentImage(value: any): ContentImage | undefined {
-  const src = asString(value?.src);
+  const src = assetPath(value?.src);
   const alt = asString(value?.alt);
+  const referenceIds = asStringArray(value?.referenceIds);
 
   if (!src || !alt) {
     return undefined;
@@ -82,7 +93,8 @@ function normalizeContentImage(value: any): ContentImage | undefined {
   return {
     src,
     alt,
-    caption: asString(value?.caption) || undefined
+    caption: asString(value?.caption) || undefined,
+    referenceIds: referenceIds.length ? referenceIds : undefined
   };
 }
 
@@ -95,12 +107,17 @@ function normalizeSectionBlocks(value: any): ContentSectionBlock[] {
 
   for (const block of value) {
     const type = asString(block?.type);
+    const referenceIds = asStringArray(block?.referenceIds);
 
     switch (type) {
       case 'paragraph': {
         const text = asString(block?.text);
         if (text) {
-          blocks.push({ type: 'paragraph', text });
+          blocks.push({
+            type: 'paragraph',
+            text,
+            referenceIds: referenceIds.length ? referenceIds : undefined
+          });
         }
         break;
       }
@@ -119,6 +136,7 @@ function normalizeSectionBlocks(value: any): ContentSectionBlock[] {
             type: 'callout',
             title: asString(block?.title) || undefined,
             text,
+            referenceIds: referenceIds.length ? referenceIds : undefined,
             tone:
               tone === 'neutral' || tone === 'executive' || tone === 'technical' || tone === 'warning'
                 ? tone
@@ -133,7 +151,8 @@ function normalizeSectionBlocks(value: any): ContentSectionBlock[] {
           blocks.push({
             type: 'list',
             title: asString(block?.title) || undefined,
-            items
+            items,
+            referenceIds: referenceIds.length ? referenceIds : undefined
           });
         }
         break;
@@ -151,7 +170,8 @@ function normalizeSectionBlocks(value: any): ContentSectionBlock[] {
             type: 'table',
             title: asString(block?.title) || undefined,
             columns,
-            rows
+            rows,
+            referenceIds: referenceIds.length ? referenceIds : undefined
           });
         }
         break;
@@ -172,7 +192,8 @@ function normalizeSectionBlocks(value: any): ContentSectionBlock[] {
         if (items.length) {
           blocks.push({
             type: 'cards',
-            items
+            items,
+            referenceIds: referenceIds.length ? referenceIds : undefined
           });
         }
         break;
@@ -184,7 +205,8 @@ function normalizeSectionBlocks(value: any): ContentSectionBlock[] {
             type: 'code',
             title: asString(block?.title) || undefined,
             language: asString(block?.language) || undefined,
-            code
+            code,
+            referenceIds: referenceIds.length ? referenceIds : undefined
           });
         }
         break;
@@ -198,6 +220,7 @@ function normalizeSectionBlocks(value: any): ContentSectionBlock[] {
             fallback: asString(block?.fallback) || undefined,
             title: asString(block?.title) || undefined,
             description: asString(block?.description) || undefined,
+            referenceIds: referenceIds.length ? referenceIds : undefined,
             config:
               block?.config && typeof block.config === 'object' && !Array.isArray(block.config)
                 ? (block.config as Record<string, unknown>)
@@ -215,7 +238,7 @@ function normalizeSectionBlocks(value: any): ContentSectionBlock[] {
 }
 
 function normalizeProductionAssetReference(value: any): ProductionAssetReference | undefined {
-  const href = asString(value?.href);
+  const href = assetHref(value?.href);
 
   if (!href) {
     return undefined;
@@ -240,6 +263,50 @@ function normalizeProductionAssets(value: any): ProductionAssets | undefined {
   }
 
   return { socialImage };
+}
+
+function normalizeReferences(value: any): ContentReference[] {
+  const candidates = Array.isArray(value?.sourceReferences)
+    ? value.sourceReferences
+    : Array.isArray(value?.footnotes)
+      ? value.footnotes
+      : [];
+
+  const references = candidates
+    .map((item: any) => {
+      const title = asString(item?.label || item?.title);
+      const href = asString(item?.href || item?.url);
+
+      if (!title || !href) {
+        return null;
+      }
+
+      const number =
+        typeof item?.number === 'number' && Number.isFinite(item.number)
+          ? item.number
+          : undefined;
+
+      return {
+        id: asString(item?.id) || undefined,
+        number,
+        title,
+        publisher: asString(item?.publisher) || undefined,
+        href,
+        description: asString(item?.description || item?.note) || undefined
+      };
+    })
+    .filter((reference: ContentReference | null): reference is ContentReference => reference !== null);
+
+  const seen = new Set<string>();
+  return references.filter((reference: ContentReference) => {
+    const key = reference.id || `${reference.number ?? ''}|${reference.href}|${reference.title}`;
+    if (seen.has(key)) {
+      return false;
+    }
+
+    seen.add(key);
+    return true;
+  });
 }
 
 function normalizeSections(value: any): ContentSection[] {
@@ -327,7 +394,7 @@ function normalizeCompanionAssets(value: any): CompanionAsset[] {
   return value
     .map((item): CompanionAsset | null => {
       const label = asString(item?.label);
-      const href = asString(item?.href);
+      const href = assetHref(item?.href);
       const type = asString(item?.type);
 
       if (!label || !href) {
@@ -384,7 +451,7 @@ function normalizeCompanionCallsToAction(value: any): CompanionCallToAction[] {
     .map((item): CompanionCallToAction | null => {
       const title = asString(item?.title);
       const description = asString(item?.description);
-      const href = asString(item?.href) || undefined;
+      const href = assetHref(item?.href) || undefined;
       const anchor = asString(item?.anchor) || undefined;
       const buttonLabel = asString(item?.buttonLabel) || undefined;
       const action = asString(item?.action);
@@ -502,7 +569,7 @@ function normalizeHome(value: any): HomeContentConfig {
     headline: asString(value?.headline, 'Operational Clarity for Complex Organizations'),
     subheadline: asString(value?.subheadline, 'Surface the truth. Structure the evidence. Operationalize the answer.'),
     intro: asStringArray(value?.intro),
-    heroImage: asString(value?.heroImage, 'assets/images/hero-architecture.png'),
+    heroImage: assetPath(value?.heroImage, 'assets/images/hero-architecture.png'),
     featuredWritingSlugs: asStringArray(value?.featuredWritingSlugs),
     featuredFrameworkSlugs: asStringArray(value?.featuredFrameworkSlugs),
     featuredGuideSlugs: asStringArray(value?.featuredGuideSlugs),
@@ -631,7 +698,7 @@ export function mapWritingItem(value: any): WritingItem | null {
     readTimeMinutes: asNumber(value?.readTimeMinutes, 5),
     featured: asBoolean(value?.featured),
     tags: normalizeTags(value?.tags),
-    heroImage: asString(value?.heroImage) || undefined,
+    heroImage: assetPath(value?.heroImage) || undefined,
     productionAssets: normalizeProductionAssets(value?.productionAssets),
     seo: normalizeSeo(value?.seo, title, summary),
     body: {
@@ -699,12 +766,13 @@ export function mapFrameworkItem(value: any): FrameworkItem | null {
     featured: asBoolean(value?.featured),
     category: asString(value?.category),
     tags: normalizeTags(value?.tags),
-    diagramImage: asString(value?.diagramImage) || undefined,
-    heroImage: asString(value?.heroImage) || undefined,
+    diagramImage: assetPath(value?.diagramImage) || undefined,
+    heroImage: assetPath(value?.heroImage) || undefined,
     productionAssets: normalizeProductionAssets(value?.productionAssets),
     seo: normalizeSeo(value?.seo, title, summary),
     body,
-    companion: normalizeCompanion(value?.companion)
+    companion: normalizeCompanion(value?.companion),
+    references: normalizeReferences(value)
   };
 }
 
@@ -743,7 +811,7 @@ export function mapGuideItem(value: any): GuideItem | null {
     featured: asBoolean(value?.featured),
     icon: asString(value?.icon, 'handyman'),
     tags: normalizeTags(value?.tags),
-    heroImage: asString(value?.heroImage) || undefined,
+    heroImage: assetPath(value?.heroImage) || undefined,
     productionAssets: normalizeProductionAssets(value?.productionAssets),
     seo: normalizeSeo(value?.seo, title, summary),
     body,
@@ -794,7 +862,7 @@ export const FALLBACK_SITE_CONTENT: SiteContentFile = mapSiteFile({
     headline: 'Operational Clarity for Complex Organizations',
     subheadline: 'Surface the truth. Structure the evidence. Operationalize the answer.',
     intro: [],
-    heroImage: 'assets/images/hero-architecture.png',
+    heroImage: 'assets/images/hero-architecture.webp',
     featuredWritingSlugs: [],
     featuredFrameworkSlugs: [],
     featuredGuideSlugs: [],

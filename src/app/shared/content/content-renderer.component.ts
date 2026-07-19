@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, input, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
@@ -9,6 +9,7 @@ import {
   ContentCodeBlock,
   ContentImage,
   ContentImageBlock,
+  ContentReference,
   ContentSection,
   ContentSectionBlock,
   ContentTableBlock
@@ -19,6 +20,11 @@ interface LightboxImage {
   src: string;
   alt: string;
   caption?: string;
+}
+
+interface RichTextSegment {
+  type: 'text' | 'reference';
+  value: string;
 }
 
 @Component({
@@ -38,7 +44,7 @@ interface LightboxImage {
         <h2>{{ section.heading }}</h2>
 
         @if (section.intro) {
-          <p class="section-intro">{{ section.intro }}</p>
+          <p class="section-intro" [innerHTML]="formatRichText(section.intro)"></p>
         }
 
         @if (isSplitSection(section)) {
@@ -46,7 +52,7 @@ interface LightboxImage {
             <div class="content-section__prose">
               @if (section.paragraphs?.length) {
                 @for (paragraph of section.paragraphs; track paragraph) {
-                  <p>{{ paragraph }}</p>
+                  <p [innerHTML]="formatRichText(paragraph)"></p>
                 }
               }
 
@@ -64,14 +70,14 @@ interface LightboxImage {
                 @for (block of sectionTextBlocks(section); track trackBlock(block, $index)) {
                   @switch (block.type) {
                     @case ('paragraph') {
-                      <p>{{ block.text }}</p>
+                      <p [innerHTML]="formatRichText(block.text, block.referenceIds)"></p>
                     }
                     @case ('callout') {
                       <aside class="content-callout" [attr.data-tone]="block.tone ?? 'neutral'">
                         @if (block.title) {
                           <h3>{{ block.title }}</h3>
                         }
-                        <p>{{ block.text }}</p>
+                        <p [innerHTML]="formatRichText(block.text, block.referenceIds)"></p>
                       </aside>
                     }
                     @case ('list') {
@@ -81,9 +87,12 @@ interface LightboxImage {
                         }
                         <ul>
                           @for (item of block.items; track item) {
-                            <li>{{ item }}</li>
+                            <li [innerHTML]="formatRichText(item)"></li>
                           }
                         </ul>
+                        @if (hasReferenceIds(block.referenceIds)) {
+                          <p class="content-block-references" [innerHTML]="formatStandaloneReferences(block.referenceIds)"></p>
+                        }
                       </div>
                     }
                     @case ('component') {
@@ -94,6 +103,9 @@ interface LightboxImage {
                         [description]="block.description"
                         [config]="block.config"
                       />
+                      @if (hasReferenceIds(block.referenceIds)) {
+                        <p class="content-block-references" [innerHTML]="formatStandaloneReferences(block.referenceIds)"></p>
+                      }
                     }
                     @case ('table') {
                       <mat-card appearance="outlined" class="content-table">
@@ -113,6 +125,9 @@ interface LightboxImage {
                             <tr mat-row *matRowDef="let row; columns: tableColumnIds(block)"></tr>
                           </table>
                         </div>
+                        @if (hasReferenceIds(block.referenceIds)) {
+                          <p class="content-block-references" [innerHTML]="formatStandaloneReferences(block.referenceIds)"></p>
+                        }
                       </mat-card>
                     }
                     @case ('cards') {
@@ -124,6 +139,9 @@ interface LightboxImage {
                           </mat-card>
                         }
                       </div>
+                      @if (hasReferenceIds(block.referenceIds)) {
+                        <p class="content-block-references" [innerHTML]="formatStandaloneReferences(block.referenceIds)"></p>
+                      }
                     }
                     @case ('code') {
                       <mat-card appearance="outlined" class="content-code-block">
@@ -135,7 +153,35 @@ interface LightboxImage {
                             <mat-chip>{{ block.language }}</mat-chip>
                           </mat-chip-set>
                         }
-                        <pre><code>{{ block.code }}</code></pre>
+                        @if (hasReferenceIds(block.referenceIds)) {
+                          <p
+                            class="content-block-references content-block-references--code"
+                            [innerHTML]="formatStandaloneReferences(block.referenceIds)"
+                          ></p>
+                        }
+                        <div class="content-code-block__actions">
+                          <button
+                            mat-stroked-button
+                            type="button"
+                            class="content-code-block__button"
+                            (click)="toggleCodeBlock(codeBlockKey(section, block, $index))"
+                          >
+                            <mat-icon>{{ isCodeBlockExpanded(codeBlockKey(section, block, $index)) ? 'unfold_less' : 'unfold_more' }}</mat-icon>
+                            {{ isCodeBlockExpanded(codeBlockKey(section, block, $index)) ? 'Collapse schema' : 'View full schema' }}
+                          </button>
+                          <button
+                            mat-stroked-button
+                            type="button"
+                            class="content-code-block__button"
+                            (click)="copyCodeBlock(codeBlockKey(section, block, $index), block.code)"
+                          >
+                            <mat-icon>{{ copiedCodeBlockKey() === codeBlockKey(section, block, $index) ? 'check' : 'content_copy' }}</mat-icon>
+                            {{ copiedCodeBlockKey() === codeBlockKey(section, block, $index) ? 'Copied' : 'Copy schema' }}
+                          </button>
+                        </div>
+                        <pre [class.content-code-block__pre--collapsed]="!isCodeBlockExpanded(codeBlockKey(section, block, $index))">
+                          <code>{{ block.code }}</code>
+                        </pre>
                       </mat-card>
                     }
                   }
@@ -151,10 +197,10 @@ interface LightboxImage {
                   [attr.aria-label]="'Open image: ' + image.alt"
                   (click)="openImage(image)"
                 >
-                  <img [src]="image.src" [alt]="image.alt" />
+                  <img [src]="image.src" [alt]="image.alt" loading="lazy" decoding="async" />
                 </button>
-                @if (image.caption) {
-                  <figcaption>{{ image.caption }}</figcaption>
+                @if (image.caption || hasReferenceIds(image.referenceIds)) {
+                  <figcaption [innerHTML]="formatRichText(image.caption, image.referenceIds)"></figcaption>
                 }
               </figure>
             }
@@ -162,7 +208,7 @@ interface LightboxImage {
         } @else {
           @if (section.paragraphs?.length) {
             @for (paragraph of section.paragraphs; track paragraph) {
-              <p>{{ paragraph }}</p>
+              <p [innerHTML]="formatRichText(paragraph)"></p>
             }
           }
 
@@ -174,10 +220,10 @@ interface LightboxImage {
                 [attr.aria-label]="'Open image: ' + image.alt"
                 (click)="openImage(image)"
               >
-                <img [src]="image.src" [alt]="image.alt" />
+                <img [src]="image.src" [alt]="image.alt" loading="lazy" decoding="async" />
               </button>
-              @if (image.caption) {
-                <figcaption>{{ image.caption }}</figcaption>
+              @if (image.caption || hasReferenceIds(image.referenceIds)) {
+                <figcaption [innerHTML]="formatRichText(image.caption, image.referenceIds)"></figcaption>
               }
             </figure>
           }
@@ -196,7 +242,7 @@ interface LightboxImage {
             @for (block of section.blocks; track trackBlock(block, $index)) {
               @switch (block.type) {
                 @case ('paragraph') {
-                  <p>{{ block.text }}</p>
+                  <p [innerHTML]="formatRichText(block.text, block.referenceIds)"></p>
                 }
                 @case ('image') {
                   <figure class="content-image">
@@ -206,10 +252,10 @@ interface LightboxImage {
                       [attr.aria-label]="'Open image: ' + block.alt"
                       (click)="openImage(block)"
                     >
-                      <img [src]="block.src" [alt]="block.alt" />
+                      <img [src]="block.src" [alt]="block.alt" loading="lazy" decoding="async" />
                     </button>
-                    @if (block.caption) {
-                      <figcaption>{{ block.caption }}</figcaption>
+                    @if (block.caption || hasReferenceIds(block.referenceIds)) {
+                      <figcaption [innerHTML]="formatRichText(block.caption, block.referenceIds)"></figcaption>
                     }
                   </figure>
                 }
@@ -218,7 +264,7 @@ interface LightboxImage {
                     @if (block.title) {
                       <h3>{{ block.title }}</h3>
                     }
-                    <p>{{ block.text }}</p>
+                    <p [innerHTML]="formatRichText(block.text, block.referenceIds)"></p>
                   </aside>
                 }
                 @case ('list') {
@@ -228,9 +274,12 @@ interface LightboxImage {
                     }
                     <ul>
                       @for (item of block.items; track item) {
-                        <li>{{ item }}</li>
+                        <li [innerHTML]="formatRichText(item)"></li>
                       }
                     </ul>
+                    @if (hasReferenceIds(block.referenceIds)) {
+                      <p class="content-block-references" [innerHTML]="formatStandaloneReferences(block.referenceIds)"></p>
+                    }
                   </div>
                 }
                 @case ('component') {
@@ -241,6 +290,9 @@ interface LightboxImage {
                     [description]="block.description"
                     [config]="block.config"
                   />
+                  @if (hasReferenceIds(block.referenceIds)) {
+                    <p class="content-block-references" [innerHTML]="formatStandaloneReferences(block.referenceIds)"></p>
+                  }
                 }
                 @case ('table') {
                   <mat-card appearance="outlined" class="content-table">
@@ -260,6 +312,9 @@ interface LightboxImage {
                         <tr mat-row *matRowDef="let row; columns: tableColumnIds(block)"></tr>
                       </table>
                     </div>
+                    @if (hasReferenceIds(block.referenceIds)) {
+                      <p class="content-block-references" [innerHTML]="formatStandaloneReferences(block.referenceIds)"></p>
+                    }
                   </mat-card>
                 }
                 @case ('cards') {
@@ -271,6 +326,9 @@ interface LightboxImage {
                       </mat-card>
                     }
                   </div>
+                  @if (hasReferenceIds(block.referenceIds)) {
+                    <p class="content-block-references" [innerHTML]="formatStandaloneReferences(block.referenceIds)"></p>
+                  }
                 }
                 @case ('code') {
                   <mat-card appearance="outlined" class="content-code-block">
@@ -282,7 +340,35 @@ interface LightboxImage {
                         <mat-chip>{{ block.language }}</mat-chip>
                       </mat-chip-set>
                     }
-                    <pre><code>{{ block.code }}</code></pre>
+                    @if (hasReferenceIds(block.referenceIds)) {
+                      <p
+                        class="content-block-references content-block-references--code"
+                        [innerHTML]="formatStandaloneReferences(block.referenceIds)"
+                      ></p>
+                    }
+                    <div class="content-code-block__actions">
+                      <button
+                        mat-stroked-button
+                        type="button"
+                        class="content-code-block__button"
+                        (click)="toggleCodeBlock(codeBlockKey(section, block, $index))"
+                      >
+                        <mat-icon>{{ isCodeBlockExpanded(codeBlockKey(section, block, $index)) ? 'unfold_less' : 'unfold_more' }}</mat-icon>
+                        {{ isCodeBlockExpanded(codeBlockKey(section, block, $index)) ? 'Collapse schema' : 'View full schema' }}
+                      </button>
+                      <button
+                        mat-stroked-button
+                        type="button"
+                        class="content-code-block__button"
+                        (click)="copyCodeBlock(codeBlockKey(section, block, $index), block.code)"
+                      >
+                        <mat-icon>{{ copiedCodeBlockKey() === codeBlockKey(section, block, $index) ? 'check' : 'content_copy' }}</mat-icon>
+                        {{ copiedCodeBlockKey() === codeBlockKey(section, block, $index) ? 'Copied' : 'Copy schema' }}
+                      </button>
+                    </div>
+                    <pre [class.content-code-block__pre--collapsed]="!isCodeBlockExpanded(codeBlockKey(section, block, $index))">
+                      <code>{{ block.code }}</code>
+                    </pre>
                   </mat-card>
                 }
               }
@@ -398,6 +484,28 @@ interface LightboxImage {
       line-height: 1.8;
     }
 
+    :host ::ng-deep .content-reference {
+      margin-left: 0.04em;
+      font-size: 0.68em;
+      line-height: 0;
+      vertical-align: super;
+      white-space: nowrap;
+    }
+
+    :host ::ng-deep .content-reference + .content-reference {
+      margin-left: 0.18em;
+    }
+
+    :host ::ng-deep .content-reference a {
+      color: var(--cw-accent);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    :host ::ng-deep .content-reference a:hover {
+      text-decoration: underline;
+    }
+
     .section-intro {
       color: var(--cw-ink);
       font-weight: 500;
@@ -504,6 +612,12 @@ interface LightboxImage {
       gap: 8px;
     }
 
+    .content-block-references {
+      margin-top: 2px;
+      color: var(--cw-muted);
+      line-height: 1.2;
+    }
+
     .content-table__scroll {
       overflow-x: auto;
     }
@@ -596,13 +710,34 @@ interface LightboxImage {
       color: rgba(241, 245, 249, 0.92);
     }
 
+    .content-code-block__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 12px 22px 0;
+    }
+
+    .content-code-block__button {
+      border-color: rgba(255, 255, 255, 0.16) !important;
+      color: rgba(241, 245, 249, 0.94) !important;
+    }
+
+    .content-code-block__button mat-icon {
+      color: inherit;
+    }
+
+    .content-code-block__pre--collapsed {
+      max-height: 480px;
+      overflow: auto;
+    }
+
     .content-code-block pre {
       margin: 0 22px;
       padding: 18px;
       border-radius: 14px;
       background: rgba(8, 17, 29, 0.72);
       color: rgba(241, 245, 249, 0.96);
-      overflow-x: auto;
+      overflow: auto;
       border: 1px solid rgba(255, 255, 255, 0.08);
     }
 
@@ -781,7 +916,22 @@ interface LightboxImage {
 })
 export class ContentRendererComponent {
   readonly sections = input.required<ContentSection[]>();
+  readonly references = input<ContentReference[]>([]);
   readonly activeImage = signal<LightboxImage | null>(null);
+  readonly expandedCodeBlockKeys = signal<Record<string, boolean>>({});
+  readonly copiedCodeBlockKey = signal<string | null>(null);
+  readonly referenceNumberById = computed(() => {
+    const numbers = new Map<string, string>();
+
+    this.references().forEach((reference, index) => {
+      const number = String(reference.number ?? index + 1);
+      if (reference.id) {
+        numbers.set(reference.id, number);
+      }
+    });
+
+    return numbers;
+  });
 
   trackSection(section: ContentSection, index: number): string {
     return `${this.sectionId(section)}-${index}`;
@@ -818,6 +968,36 @@ export class ContentRendererComponent {
 
   tableCellAt(row: string[], index: number): string {
     return row[index] ?? '';
+  }
+
+  codeBlockKey(section: ContentSection, block: ContentCodeBlock, index: number): string {
+    return `${this.sectionId(section)}-code-${index}-${block.title ?? block.language ?? 'block'}`;
+  }
+
+  isCodeBlockExpanded(key: string): boolean {
+    return !!this.expandedCodeBlockKeys()[key];
+  }
+
+  toggleCodeBlock(key: string): void {
+    this.expandedCodeBlockKeys.update((current) => ({
+      ...current,
+      [key]: !current[key]
+    }));
+  }
+
+  copyCodeBlock(key: string, code: string): void {
+    if (typeof navigator === 'undefined' || !navigator.clipboard?.writeText) {
+      return;
+    }
+
+    void navigator.clipboard.writeText(code).then(() => {
+      this.copiedCodeBlockKey.set(key);
+      setTimeout(() => {
+        if (this.copiedCodeBlockKey() === key) {
+          this.copiedCodeBlockKey.set(null);
+        }
+      }, 2000);
+    });
   }
 
   sectionId(section: ContentSection): string {
@@ -866,5 +1046,117 @@ export class ContentRendererComponent {
 
       return true;
     });
+  }
+
+  hasReferenceIds(referenceIds: string[] | undefined): boolean {
+    return this.resolveReferenceNumbers(referenceIds).length > 0;
+  }
+
+  formatRichText(text: string | undefined, referenceIds?: string[]): string {
+    const source = text ?? '';
+    const inlineNumbers = this.inlineReferenceNumbers(source);
+    const content = this.textSegments(source)
+      .map((segment) =>
+        segment.type === 'text'
+          ? this.escapeHtml(segment.value)
+          : `<sup class="content-reference"><a href="${this.referenceHref(segment.value)}" aria-label="Jump to reference ${segment.value}">${segment.value}</a></sup>`
+      )
+      .join('');
+
+    const trailingReferences = this.resolveReferenceNumbers(referenceIds).filter((number) => !inlineNumbers.includes(number));
+    return `${content}${this.referenceMarkup(trailingReferences)}`;
+  }
+
+  formatStandaloneReferences(referenceIds?: string[], contextText?: string): string {
+    const excluded = this.inlineReferenceNumbers(contextText ?? '');
+    const numbers = this.resolveReferenceNumbers(referenceIds).filter((number) => !excluded.includes(number));
+    return this.referenceMarkup(numbers);
+  }
+
+  private textSegments(text: string): RichTextSegment[] {
+    const segments: RichTextSegment[] = [];
+    const pattern = /\[(\d+)\]/g;
+    let cursor = 0;
+
+    for (const match of text.matchAll(pattern)) {
+      const index = match.index ?? 0;
+
+      if (index > cursor) {
+        segments.push({ type: 'text', value: text.slice(cursor, index) });
+      }
+
+      segments.push({ type: 'reference', value: match[1] });
+      cursor = index + match[0].length;
+    }
+
+    if (cursor < text.length) {
+      segments.push({ type: 'text', value: text.slice(cursor) });
+    }
+
+    return segments.length ? segments : [{ type: 'text', value: text }];
+  }
+
+  private inlineReferenceNumbers(text: string): string[] {
+    const numbers: string[] = [];
+    const seen = new Set<string>();
+
+    for (const match of text.matchAll(/\[(\d+)\]/g)) {
+      const value = match[1];
+      if (!seen.has(value)) {
+        seen.add(value);
+        numbers.push(value);
+      }
+    }
+
+    return numbers;
+  }
+
+  private resolveReferenceNumbers(referenceIds?: string[]): string[] {
+    if (!referenceIds?.length) {
+      return [];
+    }
+
+    const numberById = this.referenceNumberById();
+    const numbers: string[] = [];
+    const seen = new Set<string>();
+
+    for (const referenceId of referenceIds) {
+      const candidate = referenceId.trim();
+      if (!candidate) {
+        continue;
+      }
+
+      const number = numberById.get(candidate) ?? (/^\d+$/.test(candidate) ? candidate : '');
+      if (!number || seen.has(number)) {
+        continue;
+      }
+
+      seen.add(number);
+      numbers.push(number);
+    }
+
+    return numbers;
+  }
+
+  private referenceMarkup(referenceNumbers: string[]): string {
+    return referenceNumbers
+      .map(
+        (referenceNumber) =>
+          `<sup class="content-reference"><a href="${this.referenceHref(referenceNumber)}" aria-label="Jump to reference ${referenceNumber}">${referenceNumber}</a></sup>`
+      )
+      .join('');
+  }
+
+  private referenceHref(referenceNumber: string): string {
+    return `#reference-${referenceNumber}`;
+  }
+
+  private escapeHtml(value: string): string {
+    return value
+      .replaceAll('&', '&amp;')
+      .replaceAll('<', '&lt;')
+      .replaceAll('>', '&gt;')
+      .replaceAll('"', '&quot;')
+      .replaceAll("'", '&#39;');
   }
 }

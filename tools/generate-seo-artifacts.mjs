@@ -68,7 +68,7 @@ function canonicalAssetUrl(assetPath) {
     return assetPath;
   }
 
-  return `${baseUrl}/${assetPath.replace(/^\/+/, '')}`;
+  return `${baseUrl}/${assetPath.replace(/^\/+/, '').replace(/\.(png|jpe?g)$/i, '.webp')}`;
 }
 
 function markdownLink(label, url) {

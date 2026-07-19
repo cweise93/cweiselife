@@ -24,6 +24,11 @@ const angularApp = new AngularNodeAppEngine();
  * ```
  */
 
+app.use('/assets', (req, res, next) => {
+  res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+  next();
+});
+
 /**
  * Serve static files from /browser
  */
