@@ -1,30 +1,38 @@
 import { Routes } from '@angular/router';
-import { frameworksContent, operatingToolsContent, siteContent, writingContent } from './core/content/content.catalog';
+
+const SITE_DESCRIPTION =
+  'Operational clarity for complex organizations.';
+const WRITING_DESCRIPTION =
+  'Essays on operational clarity, organizational sensemaking, leadership systems, and execution design for complex organizations.';
+const FRAMEWORKS_DESCRIPTION =
+  'Reusable systems and visual frameworks for leadership, execution, and organizational clarity.';
+const OPERATING_TOOLS_DESCRIPTION =
+  'Practical operating tools to help you think clearly, decide well, and lead through ambiguity before you commit to a plan.';
 
 export const routes: Routes = [
   {
     path: '',
     title: 'cweise.com | Operational Clarity',
-    data: { seoDescription: siteContent.meta.description },
+    data: { seoDescription: SITE_DESCRIPTION },
     loadComponent: () => import('./pages/home/home.component').then(m => m.HomeComponent)
   },
   {
     path: 'writing',
     title: 'Writing | cweise.com',
-    data: { seoDescription: writingContent.meta.intro },
+    data: { seoDescription: WRITING_DESCRIPTION },
     loadComponent: () => import('./pages/writing/writing.component').then(m => m.WritingComponent)
   },
   { path: 'writing/:year/:month/:day/:slug', title: 'Essay | cweise.com', loadComponent: () => import('./pages/writing-detail/writing-detail.component').then(m => m.WritingDetailComponent) },
   {
     path: 'frameworks',
     title: 'Frameworks | cweise.com',
-    data: { seoDescription: frameworksContent.meta.intro },
+    data: { seoDescription: FRAMEWORKS_DESCRIPTION },
     loadComponent: () => import('./pages/frameworks/frameworks.component').then(m => m.FrameworksComponent)
   },
   {
     path: 'operating-tools',
     title: 'Operating Tools | cweise.com',
-    data: { seoDescription: operatingToolsContent.meta.intro },
+    data: { seoDescription: OPERATING_TOOLS_DESCRIPTION },
     loadComponent: () => import('./pages/operating-tools/operating-tools.component').then(m => m.OperatingToolsComponent)
   },
   {
@@ -44,7 +52,7 @@ export const routes: Routes = [
     data: { layout: 'framework-workspace' },
     loadComponent: () => import('./pages/framework-detail/framework-detail.component').then(m => m.FrameworkDetailComponent)
   },
-  { path: 'about', title: 'About | cweise.com', data: { seoDescription: siteContent.meta.description }, loadComponent: () => import('./pages/about/about.component').then(m => m.AboutComponent) },
-  { path: 'connect', title: 'Connect | cweise.com', data: { seoDescription: siteContent.connect.intro }, loadComponent: () => import('./pages/connect/connect.component').then(m => m.ConnectComponent) },
+  { path: 'about', title: 'About | cweise.com', data: { seoDescription: SITE_DESCRIPTION }, loadComponent: () => import('./pages/about/about.component').then(m => m.AboutComponent) },
+  { path: 'connect', title: 'Connect | cweise.com', data: { seoDescription: 'Connect with Charles Weise.' }, loadComponent: () => import('./pages/connect/connect.component').then(m => m.ConnectComponent) },
   { path: '**', redirectTo: '' }
 ];

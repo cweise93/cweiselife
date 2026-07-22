@@ -2,7 +2,8 @@ import { DOCUMENT } from '@angular/common';
 import { inject, Injectable } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { FrameworkItem, OperatingToolItem, WritingItem } from '../content/content.models';
-import { siteContent } from '../content/content.catalog';
+import siteContentJson from '../../../assets/content/site.json';
+import { mapSiteFile } from '../content/content.mappers';
 import { IMAGE_DIMENSIONS_BY_PATH, ImageDimensions } from './image-dimensions';
 
 export interface PageMetadata {
@@ -23,6 +24,7 @@ export interface PageMetadata {
 }
 
 type ContentMetadataSource = WritingItem | FrameworkItem | OperatingToolItem;
+const siteContent = mapSiteFile(siteContentJson);
 
 @Injectable({ providedIn: 'root' })
 export class SeoService {

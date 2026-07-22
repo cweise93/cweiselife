@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { combineLatest, map, Observable, of } from 'rxjs';
+import { combineLatest, defer, from, map, Observable, shareReplay } from 'rxjs';
 import {
   AboutContent,
   ConnectContent,
@@ -13,25 +13,38 @@ import {
   WritingItem
 } from './content.models';
 import {
+  mapAboutFile,
+  mapFrameworkFile,
+  mapOperatingToolFile,
+  mapSiteFile,
+  mapWritingFile,
   sortNewestFirst,
   isPublicContent,
   resolveFeaturedItems
 } from './content.mappers';
-import {
-  aboutContent,
-  frameworksContent,
-  operatingToolsContent,
-  siteContent,
-  writingContent
-} from './content.catalog';
 
 @Injectable({ providedIn: 'root' })
 export class ContentService {
-  private readonly siteFile$ = of(siteContent);
-  private readonly writingFile$ = of(writingContent);
-  private readonly frameworksFile$ = of(frameworksContent);
-  private readonly operatingToolsFile$ = of(operatingToolsContent);
-  private readonly aboutFile$ = of(aboutContent);
+  private readonly siteFile$ = defer(() => from(import('../../../assets/content/site.json'))).pipe(
+    map((module) => mapSiteFile(module.default)),
+    shareReplay({ bufferSize: 1, refCount: false })
+  );
+  private readonly writingFile$ = defer(() => from(import('../../../assets/content/writing.json'))).pipe(
+    map((module) => mapWritingFile(module.default)),
+    shareReplay({ bufferSize: 1, refCount: false })
+  );
+  private readonly frameworksFile$ = defer(() => from(import('../../../assets/content/frameworks.json'))).pipe(
+    map((module) => mapFrameworkFile(module.default)),
+    shareReplay({ bufferSize: 1, refCount: false })
+  );
+  private readonly operatingToolsFile$ = defer(() => from(import('../../../assets/content/operating-tools.json'))).pipe(
+    map((module) => mapOperatingToolFile(module.default)),
+    shareReplay({ bufferSize: 1, refCount: false })
+  );
+  private readonly aboutFile$ = defer(() => from(import('../../../assets/content/about.json'))).pipe(
+    map((module) => mapAboutFile(module.default)),
+    shareReplay({ bufferSize: 1, refCount: false })
+  );
 
   getSiteMeta(): Observable<SiteMeta> {
     return this.siteFile$.pipe(map((file) => file.meta));

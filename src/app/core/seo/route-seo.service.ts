@@ -1,23 +1,13 @@
 import { inject, Injectable } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter, startWith } from 'rxjs';
-import {
-  aboutContent,
-  frameworksContent,
-  operatingToolsContent,
-  publishedFrameworkItems,
-  publishedOperatingToolItems,
-  publishedWritingItems,
-  siteContent,
-  writingContent
-} from '../content/content.catalog';
 import { SeoService } from './seo.service';
 
 @Injectable({ providedIn: 'root' })
 export class RouteSeoService {
   private readonly router = inject(Router);
   private readonly seoService = inject(SeoService);
-  private readonly defaultDescription = siteContent.meta.description;
+  private readonly defaultDescription = 'Operational clarity for complex organizations.';
   private readonly staticImageByPath: Record<string, string> = {
     '/': 'assets/images/home/og_home.png',
     '/writing': 'assets/images/writing/og_writing.png',
@@ -37,7 +27,7 @@ export class RouteSeoService {
       .subscribe(() => {
         const leafRoute = this.getLeafRoute(this.router.routerState.snapshot.root);
         const currentPath = this.normalizePath(this.router.url || '/');
-        const title = leafRoute.title?.toString() ?? siteContent.meta.title;
+        const title = leafRoute.title?.toString() ?? 'Operational Clarity for Complex Organizations';
         const description =
           (typeof leafRoute.data['seoDescription'] === 'string' && leafRoute.data['seoDescription']) ||
           this.defaultDescription;
@@ -78,7 +68,7 @@ export class RouteSeoService {
         return {
           pageSchemaType: 'AboutPage',
           structuredData: this.seoService.createProfilePageStructuredData(
-            aboutContent.content.headline || title,
+            title,
             description
           )
         };
@@ -93,7 +83,7 @@ export class RouteSeoService {
             currentPath,
             title,
             description,
-            publishedWritingItems.map((item) => ({ slug: item.slug, title: item.title }))
+            []
           )
         };
       case '/frameworks':
@@ -103,7 +93,7 @@ export class RouteSeoService {
             currentPath,
             title,
             description,
-            publishedFrameworkItems.map((item) => ({ slug: item.slug, title: item.title }))
+            []
           )
         };
       case '/operating-tools':
@@ -113,7 +103,7 @@ export class RouteSeoService {
             currentPath,
             title,
             description,
-            publishedOperatingToolItems.map((item) => ({ slug: item.slug, title: item.title }))
+            []
           )
         };
       default:
