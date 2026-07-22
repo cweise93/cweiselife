@@ -303,560 +303,6 @@
 .mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-suffix .mat-icon-button .mat-icon {
   margin: auto;
 }
-</style><style ng-app-id="ng">.mat-mdc-button-base {
-  text-decoration: none;
-}
-.mat-mdc-button-base .mat-icon {
-  min-height: fit-content;
-  flex-shrink: 0;
-}
-@media (hover: none) {
-  .mat-mdc-button-base:hover > span.mat-mdc-button-persistent-ripple::before {
-    opacity: 0;
-  }
-}
-
-.mdc-button {
-  -webkit-user-select: none;
-  user-select: none;
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-  min-width: 64px;
-  border: none;
-  outline: none;
-  line-height: inherit;
-  -webkit-appearance: none;
-  overflow: visible;
-  vertical-align: middle;
-  background: transparent;
-  padding: 0 8px;
-}
-.mdc-button::-moz-focus-inner {
-  padding: 0;
-  border: 0;
-}
-.mdc-button:active {
-  outline: none;
-}
-.mdc-button:hover {
-  cursor: pointer;
-}
-.mdc-button:disabled {
-  cursor: default;
-  pointer-events: none;
-}
-.mdc-button[hidden] {
-  display: none;
-}
-.mdc-button .mdc-button__label {
-  position: relative;
-}
-
-.mat-mdc-button {
-  padding: 0 var(--mat-button-text-horizontal-padding, 12px);
-  height: var(--mat-button-text-container-height, 40px);
-  font-family: var(--mat-button-text-label-text-font, var(--mat-sys-label-large-font));
-  font-size: var(--mat-button-text-label-text-size, var(--mat-sys-label-large-size));
-  letter-spacing: var(--mat-button-text-label-text-tracking, var(--mat-sys-label-large-tracking));
-  text-transform: var(--mat-button-text-label-text-transform);
-  font-weight: var(--mat-button-text-label-text-weight, var(--mat-sys-label-large-weight));
-}
-.mat-mdc-button, .mat-mdc-button .mdc-button__ripple {
-  border-radius: var(--mat-button-text-container-shape, var(--mat-sys-corner-full));
-}
-.mat-mdc-button:not(:disabled) {
-  color: var(--mat-button-text-label-text-color, var(--mat-sys-primary));
-}
-.mat-mdc-button[disabled], .mat-mdc-button.mat-mdc-button-disabled {
-  cursor: default;
-  pointer-events: none;
-  color: var(--mat-button-text-disabled-label-text-color, color-mix(in srgb, var(--mat-sys-on-surface) 38%, transparent));
-}
-.mat-mdc-button.mat-mdc-button-disabled-interactive {
-  pointer-events: auto;
-}
-.mat-mdc-button:has(.material-icons, mat-icon, [matButtonIcon]) {
-  padding: 0 var(--mat-button-text-with-icon-horizontal-padding, 16px);
-}
-.mat-mdc-button > .mat-icon {
-  margin-right: var(--mat-button-text-icon-spacing, 8px);
-  margin-left: var(--mat-button-text-icon-offset, -4px);
-}
-[dir=rtl] .mat-mdc-button > .mat-icon {
-  margin-right: var(--mat-button-text-icon-offset, -4px);
-  margin-left: var(--mat-button-text-icon-spacing, 8px);
-}
-.mat-mdc-button .mdc-button__label + .mat-icon {
-  margin-right: var(--mat-button-text-icon-offset, -4px);
-  margin-left: var(--mat-button-text-icon-spacing, 8px);
-}
-[dir=rtl] .mat-mdc-button .mdc-button__label + .mat-icon {
-  margin-right: var(--mat-button-text-icon-spacing, 8px);
-  margin-left: var(--mat-button-text-icon-offset, -4px);
-}
-.mat-mdc-button .mat-ripple-element {
-  background-color: var(--mat-button-text-ripple-color, color-mix(in srgb, var(--mat-sys-primary) calc(var(--mat-sys-pressed-state-layer-opacity) * 100%), transparent));
-}
-.mat-mdc-button .mat-mdc-button-persistent-ripple::before {
-  background-color: var(--mat-button-text-state-layer-color, var(--mat-sys-primary));
-}
-.mat-mdc-button.mat-mdc-button-disabled .mat-mdc-button-persistent-ripple::before {
-  background-color: var(--mat-button-text-disabled-state-layer-color, var(--mat-sys-on-surface-variant));
-}
-.mat-mdc-button:hover > .mat-mdc-button-persistent-ripple::before {
-  opacity: var(--mat-button-text-hover-state-layer-opacity, var(--mat-sys-hover-state-layer-opacity));
-}
-.mat-mdc-button.cdk-program-focused > .mat-mdc-button-persistent-ripple::before, .mat-mdc-button.cdk-keyboard-focused > .mat-mdc-button-persistent-ripple::before, .mat-mdc-button.mat-mdc-button-disabled-interactive:focus > .mat-mdc-button-persistent-ripple::before {
-  opacity: var(--mat-button-text-focus-state-layer-opacity, var(--mat-sys-focus-state-layer-opacity));
-}
-.mat-mdc-button:active > .mat-mdc-button-persistent-ripple::before {
-  opacity: var(--mat-button-text-pressed-state-layer-opacity, var(--mat-sys-pressed-state-layer-opacity));
-}
-.mat-mdc-button .mat-mdc-button-touch-target {
-  position: absolute;
-  top: 50%;
-  height: var(--mat-button-text-touch-target-size, 48px);
-  display: var(--mat-button-text-touch-target-display, block);
-  left: 0;
-  right: 0;
-  transform: translateY(-50%);
-}
-
-.mat-mdc-unelevated-button {
-  transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
-  height: var(--mat-button-filled-container-height, 40px);
-  font-family: var(--mat-button-filled-label-text-font, var(--mat-sys-label-large-font));
-  font-size: var(--mat-button-filled-label-text-size, var(--mat-sys-label-large-size));
-  letter-spacing: var(--mat-button-filled-label-text-tracking, var(--mat-sys-label-large-tracking));
-  text-transform: var(--mat-button-filled-label-text-transform);
-  font-weight: var(--mat-button-filled-label-text-weight, var(--mat-sys-label-large-weight));
-  padding: 0 var(--mat-button-filled-horizontal-padding, 24px);
-}
-.mat-mdc-unelevated-button > .mat-icon {
-  margin-right: var(--mat-button-filled-icon-spacing, 8px);
-  margin-left: var(--mat-button-filled-icon-offset, -8px);
-}
-[dir=rtl] .mat-mdc-unelevated-button > .mat-icon {
-  margin-right: var(--mat-button-filled-icon-offset, -8px);
-  margin-left: var(--mat-button-filled-icon-spacing, 8px);
-}
-.mat-mdc-unelevated-button .mdc-button__label + .mat-icon {
-  margin-right: var(--mat-button-filled-icon-offset, -8px);
-  margin-left: var(--mat-button-filled-icon-spacing, 8px);
-}
-[dir=rtl] .mat-mdc-unelevated-button .mdc-button__label + .mat-icon {
-  margin-right: var(--mat-button-filled-icon-spacing, 8px);
-  margin-left: var(--mat-button-filled-icon-offset, -8px);
-}
-.mat-mdc-unelevated-button .mat-ripple-element {
-  background-color: var(--mat-button-filled-ripple-color, color-mix(in srgb, var(--mat-sys-on-primary) calc(var(--mat-sys-pressed-state-layer-opacity) * 100%), transparent));
-}
-.mat-mdc-unelevated-button .mat-mdc-button-persistent-ripple::before {
-  background-color: var(--mat-button-filled-state-layer-color, var(--mat-sys-on-primary));
-}
-.mat-mdc-unelevated-button.mat-mdc-button-disabled .mat-mdc-button-persistent-ripple::before {
-  background-color: var(--mat-button-filled-disabled-state-layer-color, var(--mat-sys-on-surface-variant));
-}
-.mat-mdc-unelevated-button:hover > .mat-mdc-button-persistent-ripple::before {
-  opacity: var(--mat-button-filled-hover-state-layer-opacity, var(--mat-sys-hover-state-layer-opacity));
-}
-.mat-mdc-unelevated-button.cdk-program-focused > .mat-mdc-button-persistent-ripple::before, .mat-mdc-unelevated-button.cdk-keyboard-focused > .mat-mdc-button-persistent-ripple::before, .mat-mdc-unelevated-button.mat-mdc-button-disabled-interactive:focus > .mat-mdc-button-persistent-ripple::before {
-  opacity: var(--mat-button-filled-focus-state-layer-opacity, var(--mat-sys-focus-state-layer-opacity));
-}
-.mat-mdc-unelevated-button:active > .mat-mdc-button-persistent-ripple::before {
-  opacity: var(--mat-button-filled-pressed-state-layer-opacity, var(--mat-sys-pressed-state-layer-opacity));
-}
-.mat-mdc-unelevated-button .mat-mdc-button-touch-target {
-  position: absolute;
-  top: 50%;
-  height: var(--mat-button-filled-touch-target-size, 48px);
-  display: var(--mat-button-filled-touch-target-display, block);
-  left: 0;
-  right: 0;
-  transform: translateY(-50%);
-}
-.mat-mdc-unelevated-button:not(:disabled) {
-  color: var(--mat-button-filled-label-text-color, var(--mat-sys-on-primary));
-  background-color: var(--mat-button-filled-container-color, var(--mat-sys-primary));
-}
-.mat-mdc-unelevated-button, .mat-mdc-unelevated-button .mdc-button__ripple {
-  border-radius: var(--mat-button-filled-container-shape, var(--mat-sys-corner-full));
-}
-.mat-mdc-unelevated-button .mat-mdc-button-progress-indicator-container {
-  --mat-progress-spinner-active-indicator-color: var(--mat-button-filled-progress-active-indicator-color, var(--mat-sys-on-primary));
-}
-.mat-mdc-unelevated-button[disabled], .mat-mdc-unelevated-button.mat-mdc-button-disabled {
-  cursor: default;
-  pointer-events: none;
-  color: var(--mat-button-filled-disabled-label-text-color, color-mix(in srgb, var(--mat-sys-on-surface) 38%, transparent));
-  background-color: var(--mat-button-filled-disabled-container-color, color-mix(in srgb, var(--mat-sys-on-surface) 12%, transparent));
-}
-.mat-mdc-unelevated-button.mat-mdc-button-disabled-interactive {
-  pointer-events: auto;
-}
-
-.mat-mdc-raised-button {
-  transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: var(--mat-button-protected-container-elevation-shadow, var(--mat-sys-level1));
-  height: var(--mat-button-protected-container-height, 40px);
-  font-family: var(--mat-button-protected-label-text-font, var(--mat-sys-label-large-font));
-  font-size: var(--mat-button-protected-label-text-size, var(--mat-sys-label-large-size));
-  letter-spacing: var(--mat-button-protected-label-text-tracking, var(--mat-sys-label-large-tracking));
-  text-transform: var(--mat-button-protected-label-text-transform);
-  font-weight: var(--mat-button-protected-label-text-weight, var(--mat-sys-label-large-weight));
-  padding: 0 var(--mat-button-protected-horizontal-padding, 24px);
-}
-.mat-mdc-raised-button > .mat-icon {
-  margin-right: var(--mat-button-protected-icon-spacing, 8px);
-  margin-left: var(--mat-button-protected-icon-offset, -8px);
-}
-[dir=rtl] .mat-mdc-raised-button > .mat-icon {
-  margin-right: var(--mat-button-protected-icon-offset, -8px);
-  margin-left: var(--mat-button-protected-icon-spacing, 8px);
-}
-.mat-mdc-raised-button .mdc-button__label + .mat-icon {
-  margin-right: var(--mat-button-protected-icon-offset, -8px);
-  margin-left: var(--mat-button-protected-icon-spacing, 8px);
-}
-[dir=rtl] .mat-mdc-raised-button .mdc-button__label + .mat-icon {
-  margin-right: var(--mat-button-protected-icon-spacing, 8px);
-  margin-left: var(--mat-button-protected-icon-offset, -8px);
-}
-.mat-mdc-raised-button .mat-ripple-element {
-  background-color: var(--mat-button-protected-ripple-color, color-mix(in srgb, var(--mat-sys-primary) calc(var(--mat-sys-pressed-state-layer-opacity) * 100%), transparent));
-}
-.mat-mdc-raised-button .mat-mdc-button-persistent-ripple::before {
-  background-color: var(--mat-button-protected-state-layer-color, var(--mat-sys-primary));
-}
-.mat-mdc-raised-button.mat-mdc-button-disabled .mat-mdc-button-persistent-ripple::before {
-  background-color: var(--mat-button-protected-disabled-state-layer-color, var(--mat-sys-on-surface-variant));
-}
-.mat-mdc-raised-button:hover > .mat-mdc-button-persistent-ripple::before {
-  opacity: var(--mat-button-protected-hover-state-layer-opacity, var(--mat-sys-hover-state-layer-opacity));
-}
-.mat-mdc-raised-button.cdk-program-focused > .mat-mdc-button-persistent-ripple::before, .mat-mdc-raised-button.cdk-keyboard-focused > .mat-mdc-button-persistent-ripple::before, .mat-mdc-raised-button.mat-mdc-button-disabled-interactive:focus > .mat-mdc-button-persistent-ripple::before {
-  opacity: var(--mat-button-protected-focus-state-layer-opacity, var(--mat-sys-focus-state-layer-opacity));
-}
-.mat-mdc-raised-button:active > .mat-mdc-button-persistent-ripple::before {
-  opacity: var(--mat-button-protected-pressed-state-layer-opacity, var(--mat-sys-pressed-state-layer-opacity));
-}
-.mat-mdc-raised-button .mat-mdc-button-touch-target {
-  position: absolute;
-  top: 50%;
-  height: var(--mat-button-protected-touch-target-size, 48px);
-  display: var(--mat-button-protected-touch-target-display, block);
-  left: 0;
-  right: 0;
-  transform: translateY(-50%);
-}
-.mat-mdc-raised-button:not(:disabled) {
-  color: var(--mat-button-protected-label-text-color, var(--mat-sys-primary));
-  background-color: var(--mat-button-protected-container-color, var(--mat-sys-surface));
-}
-.mat-mdc-raised-button, .mat-mdc-raised-button .mdc-button__ripple {
-  border-radius: var(--mat-button-protected-container-shape, var(--mat-sys-corner-full));
-}
-@media (hover: hover) {
-  .mat-mdc-raised-button:hover {
-    box-shadow: var(--mat-button-protected-hover-container-elevation-shadow, var(--mat-sys-level2));
-  }
-}
-.mat-mdc-raised-button:focus {
-  box-shadow: var(--mat-button-protected-focus-container-elevation-shadow, var(--mat-sys-level1));
-}
-.mat-mdc-raised-button:active, .mat-mdc-raised-button:focus:active {
-  box-shadow: var(--mat-button-protected-pressed-container-elevation-shadow, var(--mat-sys-level1));
-}
-.mat-mdc-raised-button[disabled], .mat-mdc-raised-button.mat-mdc-button-disabled {
-  cursor: default;
-  pointer-events: none;
-  color: var(--mat-button-protected-disabled-label-text-color, color-mix(in srgb, var(--mat-sys-on-surface) 38%, transparent));
-  background-color: var(--mat-button-protected-disabled-container-color, color-mix(in srgb, var(--mat-sys-on-surface) 12%, transparent));
-}
-.mat-mdc-raised-button[disabled].mat-mdc-button-disabled, .mat-mdc-raised-button.mat-mdc-button-disabled.mat-mdc-button-disabled {
-  box-shadow: var(--mat-button-protected-disabled-container-elevation-shadow, var(--mat-sys-level0));
-}
-.mat-mdc-raised-button.mat-mdc-button-disabled-interactive {
-  pointer-events: auto;
-}
-
-.mat-mdc-outlined-button {
-  border-style: solid;
-  transition: border 280ms cubic-bezier(0.4, 0, 0.2, 1);
-  height: var(--mat-button-outlined-container-height, 40px);
-  font-family: var(--mat-button-outlined-label-text-font, var(--mat-sys-label-large-font));
-  font-size: var(--mat-button-outlined-label-text-size, var(--mat-sys-label-large-size));
-  letter-spacing: var(--mat-button-outlined-label-text-tracking, var(--mat-sys-label-large-tracking));
-  text-transform: var(--mat-button-outlined-label-text-transform);
-  font-weight: var(--mat-button-outlined-label-text-weight, var(--mat-sys-label-large-weight));
-  border-radius: var(--mat-button-outlined-container-shape, var(--mat-sys-corner-full));
-  border-width: var(--mat-button-outlined-outline-width, 1px);
-  padding: 0 var(--mat-button-outlined-horizontal-padding, 24px);
-}
-.mat-mdc-outlined-button > .mat-icon {
-  margin-right: var(--mat-button-outlined-icon-spacing, 8px);
-  margin-left: var(--mat-button-outlined-icon-offset, -8px);
-}
-[dir=rtl] .mat-mdc-outlined-button > .mat-icon {
-  margin-right: var(--mat-button-outlined-icon-offset, -8px);
-  margin-left: var(--mat-button-outlined-icon-spacing, 8px);
-}
-.mat-mdc-outlined-button .mdc-button__label + .mat-icon {
-  margin-right: var(--mat-button-outlined-icon-offset, -8px);
-  margin-left: var(--mat-button-outlined-icon-spacing, 8px);
-}
-[dir=rtl] .mat-mdc-outlined-button .mdc-button__label + .mat-icon {
-  margin-right: var(--mat-button-outlined-icon-spacing, 8px);
-  margin-left: var(--mat-button-outlined-icon-offset, -8px);
-}
-.mat-mdc-outlined-button .mat-ripple-element {
-  background-color: var(--mat-button-outlined-ripple-color, color-mix(in srgb, var(--mat-sys-primary) calc(var(--mat-sys-pressed-state-layer-opacity) * 100%), transparent));
-}
-.mat-mdc-outlined-button .mat-mdc-button-persistent-ripple::before {
-  background-color: var(--mat-button-outlined-state-layer-color, var(--mat-sys-primary));
-}
-.mat-mdc-outlined-button.mat-mdc-button-disabled .mat-mdc-button-persistent-ripple::before {
-  background-color: var(--mat-button-outlined-disabled-state-layer-color, var(--mat-sys-on-surface-variant));
-}
-.mat-mdc-outlined-button:hover > .mat-mdc-button-persistent-ripple::before {
-  opacity: var(--mat-button-outlined-hover-state-layer-opacity, var(--mat-sys-hover-state-layer-opacity));
-}
-.mat-mdc-outlined-button.cdk-program-focused > .mat-mdc-button-persistent-ripple::before, .mat-mdc-outlined-button.cdk-keyboard-focused > .mat-mdc-button-persistent-ripple::before, .mat-mdc-outlined-button.mat-mdc-button-disabled-interactive:focus > .mat-mdc-button-persistent-ripple::before {
-  opacity: var(--mat-button-outlined-focus-state-layer-opacity, var(--mat-sys-focus-state-layer-opacity));
-}
-.mat-mdc-outlined-button:active > .mat-mdc-button-persistent-ripple::before {
-  opacity: var(--mat-button-outlined-pressed-state-layer-opacity, var(--mat-sys-pressed-state-layer-opacity));
-}
-.mat-mdc-outlined-button .mat-mdc-button-touch-target {
-  position: absolute;
-  top: 50%;
-  height: var(--mat-button-outlined-touch-target-size, 48px);
-  display: var(--mat-button-outlined-touch-target-display, block);
-  left: 0;
-  right: 0;
-  transform: translateY(-50%);
-}
-.mat-mdc-outlined-button:not(:disabled) {
-  color: var(--mat-button-outlined-label-text-color, var(--mat-sys-primary));
-  border-color: var(--mat-button-outlined-outline-color, var(--mat-sys-outline));
-}
-.mat-mdc-outlined-button[disabled], .mat-mdc-outlined-button.mat-mdc-button-disabled {
-  cursor: default;
-  pointer-events: none;
-  color: var(--mat-button-outlined-disabled-label-text-color, color-mix(in srgb, var(--mat-sys-on-surface) 38%, transparent));
-  border-color: var(--mat-button-outlined-disabled-outline-color, color-mix(in srgb, var(--mat-sys-on-surface) 12%, transparent));
-}
-.mat-mdc-outlined-button.mat-mdc-button-disabled-interactive {
-  pointer-events: auto;
-}
-
-.mat-tonal-button {
-  transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
-  height: var(--mat-button-tonal-container-height, 40px);
-  font-family: var(--mat-button-tonal-label-text-font, var(--mat-sys-label-large-font));
-  font-size: var(--mat-button-tonal-label-text-size, var(--mat-sys-label-large-size));
-  letter-spacing: var(--mat-button-tonal-label-text-tracking, var(--mat-sys-label-large-tracking));
-  text-transform: var(--mat-button-tonal-label-text-transform);
-  font-weight: var(--mat-button-tonal-label-text-weight, var(--mat-sys-label-large-weight));
-  padding: 0 var(--mat-button-tonal-horizontal-padding, 24px);
-}
-.mat-tonal-button:not(:disabled) {
-  color: var(--mat-button-tonal-label-text-color, var(--mat-sys-on-secondary-container));
-  background-color: var(--mat-button-tonal-container-color, var(--mat-sys-secondary-container));
-}
-.mat-tonal-button, .mat-tonal-button .mdc-button__ripple {
-  border-radius: var(--mat-button-tonal-container-shape, var(--mat-sys-corner-full));
-}
-.mat-tonal-button[disabled], .mat-tonal-button.mat-mdc-button-disabled {
-  cursor: default;
-  pointer-events: none;
-  color: var(--mat-button-tonal-disabled-label-text-color, color-mix(in srgb, var(--mat-sys-on-surface) 38%, transparent));
-  background-color: var(--mat-button-tonal-disabled-container-color, color-mix(in srgb, var(--mat-sys-on-surface) 12%, transparent));
-}
-.mat-tonal-button.mat-mdc-button-disabled-interactive {
-  pointer-events: auto;
-}
-.mat-tonal-button > .mat-icon {
-  margin-right: var(--mat-button-tonal-icon-spacing, 8px);
-  margin-left: var(--mat-button-tonal-icon-offset, -8px);
-}
-[dir=rtl] .mat-tonal-button > .mat-icon {
-  margin-right: var(--mat-button-tonal-icon-offset, -8px);
-  margin-left: var(--mat-button-tonal-icon-spacing, 8px);
-}
-.mat-tonal-button .mdc-button__label + .mat-icon {
-  margin-right: var(--mat-button-tonal-icon-offset, -8px);
-  margin-left: var(--mat-button-tonal-icon-spacing, 8px);
-}
-[dir=rtl] .mat-tonal-button .mdc-button__label + .mat-icon {
-  margin-right: var(--mat-button-tonal-icon-spacing, 8px);
-  margin-left: var(--mat-button-tonal-icon-offset, -8px);
-}
-.mat-tonal-button .mat-ripple-element {
-  background-color: var(--mat-button-tonal-ripple-color, color-mix(in srgb, var(--mat-sys-on-secondary-container) calc(var(--mat-sys-pressed-state-layer-opacity) * 100%), transparent));
-}
-.mat-tonal-button .mat-mdc-button-persistent-ripple::before {
-  background-color: var(--mat-button-tonal-state-layer-color, var(--mat-sys-on-secondary-container));
-}
-.mat-tonal-button.mat-mdc-button-disabled .mat-mdc-button-persistent-ripple::before {
-  background-color: var(--mat-button-tonal-disabled-state-layer-color, var(--mat-sys-on-surface-variant));
-}
-.mat-tonal-button:hover > .mat-mdc-button-persistent-ripple::before {
-  opacity: var(--mat-button-tonal-hover-state-layer-opacity, var(--mat-sys-hover-state-layer-opacity));
-}
-.mat-tonal-button.cdk-program-focused > .mat-mdc-button-persistent-ripple::before, .mat-tonal-button.cdk-keyboard-focused > .mat-mdc-button-persistent-ripple::before, .mat-tonal-button.mat-mdc-button-disabled-interactive:focus > .mat-mdc-button-persistent-ripple::before {
-  opacity: var(--mat-button-tonal-focus-state-layer-opacity, var(--mat-sys-focus-state-layer-opacity));
-}
-.mat-tonal-button:active > .mat-mdc-button-persistent-ripple::before {
-  opacity: var(--mat-button-tonal-pressed-state-layer-opacity, var(--mat-sys-pressed-state-layer-opacity));
-}
-.mat-tonal-button .mat-mdc-button-touch-target {
-  position: absolute;
-  top: 50%;
-  height: var(--mat-button-tonal-touch-target-size, 48px);
-  display: var(--mat-button-tonal-touch-target-display, block);
-  left: 0;
-  right: 0;
-  transform: translateY(-50%);
-}
-
-.mat-mdc-button,
-.mat-mdc-unelevated-button,
-.mat-mdc-raised-button,
-.mat-mdc-outlined-button,
-.mat-tonal-button {
-  -webkit-tap-highlight-color: transparent;
-}
-.mat-mdc-button .mat-mdc-button-ripple,
-.mat-mdc-button .mat-mdc-button-persistent-ripple,
-.mat-mdc-button .mat-mdc-button-persistent-ripple::before,
-.mat-mdc-unelevated-button .mat-mdc-button-ripple,
-.mat-mdc-unelevated-button .mat-mdc-button-persistent-ripple,
-.mat-mdc-unelevated-button .mat-mdc-button-persistent-ripple::before,
-.mat-mdc-raised-button .mat-mdc-button-ripple,
-.mat-mdc-raised-button .mat-mdc-button-persistent-ripple,
-.mat-mdc-raised-button .mat-mdc-button-persistent-ripple::before,
-.mat-mdc-outlined-button .mat-mdc-button-ripple,
-.mat-mdc-outlined-button .mat-mdc-button-persistent-ripple,
-.mat-mdc-outlined-button .mat-mdc-button-persistent-ripple::before,
-.mat-tonal-button .mat-mdc-button-ripple,
-.mat-tonal-button .mat-mdc-button-persistent-ripple,
-.mat-tonal-button .mat-mdc-button-persistent-ripple::before {
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  position: absolute;
-  pointer-events: none;
-  border-radius: inherit;
-}
-.mat-mdc-button .mat-mdc-button-ripple,
-.mat-mdc-unelevated-button .mat-mdc-button-ripple,
-.mat-mdc-raised-button .mat-mdc-button-ripple,
-.mat-mdc-outlined-button .mat-mdc-button-ripple,
-.mat-tonal-button .mat-mdc-button-ripple {
-  overflow: hidden;
-}
-.mat-mdc-button .mat-mdc-button-persistent-ripple::before,
-.mat-mdc-unelevated-button .mat-mdc-button-persistent-ripple::before,
-.mat-mdc-raised-button .mat-mdc-button-persistent-ripple::before,
-.mat-mdc-outlined-button .mat-mdc-button-persistent-ripple::before,
-.mat-tonal-button .mat-mdc-button-persistent-ripple::before {
-  content: "";
-  opacity: 0;
-}
-.mat-mdc-button .mdc-button__label,
-.mat-mdc-button .mat-icon,
-.mat-mdc-unelevated-button .mdc-button__label,
-.mat-mdc-unelevated-button .mat-icon,
-.mat-mdc-raised-button .mdc-button__label,
-.mat-mdc-raised-button .mat-icon,
-.mat-mdc-outlined-button .mdc-button__label,
-.mat-mdc-outlined-button .mat-icon,
-.mat-tonal-button .mdc-button__label,
-.mat-tonal-button .mat-icon {
-  z-index: 1;
-  position: relative;
-}
-.mat-mdc-button .mat-focus-indicator,
-.mat-mdc-unelevated-button .mat-focus-indicator,
-.mat-mdc-raised-button .mat-focus-indicator,
-.mat-mdc-outlined-button .mat-focus-indicator,
-.mat-tonal-button .mat-focus-indicator {
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  position: absolute;
-  border-radius: inherit;
-}
-.mat-mdc-button:focus-visible > .mat-focus-indicator::before,
-.mat-mdc-unelevated-button:focus-visible > .mat-focus-indicator::before,
-.mat-mdc-raised-button:focus-visible > .mat-focus-indicator::before,
-.mat-mdc-outlined-button:focus-visible > .mat-focus-indicator::before,
-.mat-tonal-button:focus-visible > .mat-focus-indicator::before {
-  content: "";
-  border-radius: inherit;
-}
-.mat-mdc-button._mat-animation-noopable,
-.mat-mdc-unelevated-button._mat-animation-noopable,
-.mat-mdc-raised-button._mat-animation-noopable,
-.mat-mdc-outlined-button._mat-animation-noopable,
-.mat-tonal-button._mat-animation-noopable {
-  transition: none !important;
-  animation: none !important;
-}
-.mat-mdc-button > .mat-icon,
-.mat-mdc-unelevated-button > .mat-icon,
-.mat-mdc-raised-button > .mat-icon,
-.mat-mdc-outlined-button > .mat-icon,
-.mat-tonal-button > .mat-icon {
-  display: inline-block;
-  position: relative;
-  vertical-align: top;
-  font-size: 1.125rem;
-  height: 1.125rem;
-  width: 1.125rem;
-}
-
-.mat-mdc-outlined-button .mat-mdc-button-ripple,
-.mat-mdc-outlined-button .mdc-button__ripple {
-  top: -1px;
-  left: -1px;
-  bottom: -1px;
-  right: -1px;
-}
-
-.mat-mdc-unelevated-button .mat-focus-indicator::before,
-.mat-tonal-button .mat-focus-indicator::before,
-.mat-mdc-raised-button .mat-focus-indicator::before {
-  margin: calc(calc(var(--mat-focus-indicator-border-width, 3px) + 2px) * -1);
-}
-
-.mat-mdc-outlined-button .mat-focus-indicator::before {
-  margin: calc(calc(var(--mat-focus-indicator-border-width, 3px) + 3px) * -1);
-}
-
-.mat-mdc-button-progress-indicator-container {
-  position: absolute;
-  inset-inline-start: 0;
-  inset-block-start: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  box-sizing: border-box;
-}
-
-.mat-mdc-button-progress-indicator-shown mat-icon,
-.mat-mdc-button-progress-indicator-shown [matButtonIcon],
-.mat-mdc-button-progress-indicator-shown .mdc-button__label {
-  visibility: hidden;
-}
 </style><style ng-app-id="ng">.detail-hero[_ngcontent-ng-c1984279754]{padding:80px 0 32px;background:linear-gradient(135deg,var(--cw-hero-base),var(--cw-hero-mid))}.detail-head[_ngcontent-ng-c1984279754]{display:grid;gap:16px;max-width:56rem}.detail-head__chips[_ngcontent-ng-c1984279754]{display:flex;flex-wrap:wrap;gap:10px}.detail-head__chip[_ngcontent-ng-c1984279754]{--mat-chip-container-height: 46px;--mat-chip-container-shape-radius: 999px;--mat-chip-outline-width: 1px;--mat-chip-outline-color: color-mix(in srgb, var(--cw-accent) 28%, var(--cw-line));--mat-chip-elevated-container-color: color-mix(in srgb, var(--cw-panel) 76%, var(--cw-accent-soft));--mat-chip-label-text-color: color-mix(in srgb, var(--cw-ink) 90%, var(--cw-accent) 10%);--mat-chip-hover-state-layer-color: color-mix(in srgb, var(--cw-accent) 68%, white 10%);--mat-chip-hover-state-layer-opacity: .08;--mat-chip-focus-state-layer-color: color-mix(in srgb, var(--cw-accent) 82%, white 10%);--mat-chip-focus-state-layer-opacity: .14;--mat-chip-label-text-size: .94rem;--mat-chip-label-text-weight: 500;--mat-chip-label-text-tracking: 0;background:var(--mat-chip-elevated-container-color);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);color:var(--mat-chip-label-text-color)}.detail-head__chip.mat-mdc-standard-chip[_ngcontent-ng-c1984279754]{border-radius:999px}.detail-head__chip[_ngcontent-ng-c1984279754]   .mdc-evolution-chip__text-label[_ngcontent-ng-c1984279754]{color:var(--mat-chip-label-text-color)}h1[_ngcontent-ng-c1984279754]{margin:0;font-size:clamp(2.8rem,5vw,4.6rem);line-height:.95;letter-spacing:-.06em}.lead[_ngcontent-ng-c1984279754]{margin:0;font-size:1.15rem;color:var(--cw-muted);line-height:1.8}.operating-tool-shell[_ngcontent-ng-c1984279754]{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(320px,420px);gap:28px;align-items:start}.operating-tool-main-column[_ngcontent-ng-c1984279754]{display:grid;gap:24px;min-width:0}.operating-tool-artifact-rail[_ngcontent-ng-c1984279754]{position:sticky;top:calc(var(--cw-toolbar-current-height, var(--cw-toolbar-height)) + 24px);align-self:start}.operating-tool-artifact-card[_ngcontent-ng-c1984279754]{display:grid;gap:18px;padding:18px}.operating-tool-artifact-card__header[_ngcontent-ng-c1984279754]{display:grid;gap:8px}.operating-tool-artifact-card__header[_ngcontent-ng-c1984279754]   h2[_ngcontent-ng-c1984279754]{margin:0;font-size:clamp(1.4rem,2vw,1.8rem);letter-spacing:-.04em}.operating-tool-artifact-card__header[_ngcontent-ng-c1984279754]   p[_ngcontent-ng-c1984279754]{margin:0}.operating-tool-artifact-trigger[_ngcontent-ng-c1984279754]{position:relative;display:block;padding:0;border:0;background:none;cursor:zoom-in;border-radius:20px;overflow:hidden}.operating-tool-artifact-trigger[_ngcontent-ng-c1984279754]   img[_ngcontent-ng-c1984279754]{display:block;width:100%;height:auto;border-radius:20px;border:1px solid var(--cw-line);background:#fff;box-shadow:0 20px 40px #050c1847}.operating-tool-artifact-trigger__overlay[_ngcontent-ng-c1984279754]{position:absolute;inset:auto 14px 14px;display:inline-flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 14px;border-radius:14px;background:#081220c7;color:#f5f8fcf5;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);opacity:0;transform:translateY(8px);transition:opacity .18s ease,transform .18s ease}.operating-tool-artifact-trigger[_ngcontent-ng-c1984279754]:hover   .operating-tool-artifact-trigger__overlay[_ngcontent-ng-c1984279754], .operating-tool-artifact-trigger[_ngcontent-ng-c1984279754]:focus-visible   .operating-tool-artifact-trigger__overlay[_ngcontent-ng-c1984279754]{opacity:1;transform:translateY(0)}.operating-tool-artifact-trigger[_ngcontent-ng-c1984279754]:focus-visible{outline:2px solid color-mix(in srgb,var(--cw-accent) 68%,white 18%);outline-offset:4px}.operating-tool-artifact-card__footer[_ngcontent-ng-c1984279754]{display:flex;justify-content:flex-start}.operating-tool-intro-card[_ngcontent-ng-c1984279754]   mat-card-content[_ngcontent-ng-c1984279754]{padding:22px 24px}.operating-tool-intro-card[_ngcontent-ng-c1984279754]   p[_ngcontent-ng-c1984279754]{margin:0;color:var(--cw-ink);line-height:1.8;font-size:1.04rem}.operating-tool-sections[_ngcontent-ng-c1984279754]{display:grid;gap:24px}.operating-tool-section[_ngcontent-ng-c1984279754]{display:grid;gap:16px;max-width:52rem}.operating-tool-section[_ngcontent-ng-c1984279754]   h2[_ngcontent-ng-c1984279754], .more-operating-tools[_ngcontent-ng-c1984279754]   h2[_ngcontent-ng-c1984279754], .artifact-modal[_ngcontent-ng-c1984279754]   h2[_ngcontent-ng-c1984279754]{margin:0;font-size:clamp(1.7rem,3vw,2.2rem);letter-spacing:-.04em}.operating-tool-section[_ngcontent-ng-c1984279754]   p[_ngcontent-ng-c1984279754]{margin:0;color:var(--cw-muted);line-height:1.78}.operating-tool-image[_ngcontent-ng-c1984279754]{margin:2px 0 0;display:grid;gap:10px;width:min(100%,980px)}.operating-tool-image[_ngcontent-ng-c1984279754]   img[_ngcontent-ng-c1984279754]{width:100%;height:auto;display:block;border-radius:18px;border:1px solid var(--cw-line);background:#fff}.operating-tool-image[_ngcontent-ng-c1984279754]   figcaption[_ngcontent-ng-c1984279754]{margin:0;color:var(--cw-muted);font-size:.95rem;line-height:1.6}.operating-tool-callout[_ngcontent-ng-c1984279754]   mat-card-content[_ngcontent-ng-c1984279754]{display:flex;gap:12px;align-items:flex-start;padding:18px 20px}.operating-tool-callout[_ngcontent-ng-c1984279754]   mat-icon[_ngcontent-ng-c1984279754]{color:var(--cw-accent)}.more-operating-tools[_ngcontent-ng-c1984279754]{grid-column:1/-1;display:grid;gap:20px;padding-top:16px;padding-bottom:56px}.more-operating-tools__header[_ngcontent-ng-c1984279754]{display:grid;gap:10px}.more-operating-tools__grid[_ngcontent-ng-c1984279754]{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}.related-operating-tool-card[_ngcontent-ng-c1984279754]{display:flex;flex-direction:column;height:100%}.related-operating-tool-card[_ngcontent-ng-c1984279754]   mat-card-header[_ngcontent-ng-c1984279754]{align-items:flex-start}.related-operating-tool-card[_ngcontent-ng-c1984279754]   .mat-mdc-card-header-text[_ngcontent-ng-c1984279754]{min-width:0;flex:1 1 auto}.operating-tool-avatar[_ngcontent-ng-c1984279754]{display:grid;place-items:center;width:40px;height:40px;min-width:40px;min-height:40px;flex:0 0 40px;margin-right:16px;border-radius:50%;background:color-mix(in srgb,var(--cw-accent) 10%,var(--cw-panel));color:var(--cw-accent)}.operating-tool-avatar[_ngcontent-ng-c1984279754]   mat-icon[_ngcontent-ng-c1984279754]{width:20px;height:20px;font-size:20px;line-height:20px}.related-operating-tool-card[_ngcontent-ng-c1984279754]   mat-card-title[_ngcontent-ng-c1984279754], .related-operating-tool-card[_ngcontent-ng-c1984279754]   mat-card-subtitle[_ngcontent-ng-c1984279754]{white-space:normal;overflow-wrap:anywhere}.related-operating-tool-card[_ngcontent-ng-c1984279754]   mat-card-subtitle[_ngcontent-ng-c1984279754]{color:var(--cw-muted)}.related-operating-tool-card[_ngcontent-ng-c1984279754]   mat-card-actions[_ngcontent-ng-c1984279754]{margin-top:auto}.artifact-modal-backdrop[_ngcontent-ng-c1984279754]{position:fixed;inset:0;z-index:1200;display:grid;place-items:center;padding:24px;background:#060c16e6;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}.artifact-modal[_ngcontent-ng-c1984279754]{width:min(96vw,1480px);max-height:calc(100vh - 48px);display:grid;gap:16px}.artifact-modal__toolbar[_ngcontent-ng-c1984279754]{display:flex;gap:18px;align-items:flex-start;justify-content:space-between}.artifact-modal__copy[_ngcontent-ng-c1984279754]{display:grid;gap:6px}.artifact-modal__copy[_ngcontent-ng-c1984279754]   h2[_ngcontent-ng-c1984279754], .artifact-modal__eyebrow[_ngcontent-ng-c1984279754]{color:#f8fafcf5}.artifact-modal__eyebrow[_ngcontent-ng-c1984279754]{margin:0;font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase}.artifact-modal__actions[_ngcontent-ng-c1984279754]{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:flex-end}.artifact-modal__close[_ngcontent-ng-c1984279754]{color:#ffffffeb;border:1px solid rgba(255,255,255,.16);background:#ffffff14}.artifact-modal__stage[_ngcontent-ng-c1984279754]{position:relative;min-height:0;display:grid;place-items:center;padding:20px;border-radius:24px;background:linear-gradient(180deg,#0d192af5,#08111ef5);overflow:hidden}.artifact-modal__watermark[_ngcontent-ng-c1984279754]{position:absolute;inset:0;width:min(44vw,520px);max-width:70%;height:auto;margin:auto;opacity:.08;pointer-events:none;filter:brightness(1.2)}.artifact-modal__image[_ngcontent-ng-c1984279754]{position:relative;z-index:1;display:block;width:auto;max-width:100%;max-height:calc(100vh - 220px);height:auto;object-fit:contain;border-radius:18px;background:#fff;box-shadow:0 24px 60px #00000073}.artifact-modal__caption[_ngcontent-ng-c1984279754]{margin:0;max-width:80ch;color:#ffffffb8;line-height:1.7}.missing-state[_ngcontent-ng-c1984279754]{min-height:calc(100svh - var(--cw-toolbar-height) - 220px);display:grid;align-items:center}body.cw-theme-dusk[_nghost-ng-c1984279754]   .operating-tool-intro-card[_ngcontent-ng-c1984279754], body.cw-theme-dusk   [_nghost-ng-c1984279754]   .operating-tool-intro-card[_ngcontent-ng-c1984279754], body.cw-theme-dusk[_nghost-ng-c1984279754]   .operating-tool-callout[_ngcontent-ng-c1984279754], body.cw-theme-dusk   [_nghost-ng-c1984279754]   .operating-tool-callout[_ngcontent-ng-c1984279754], body.cw-theme-dusk[_nghost-ng-c1984279754]   .operating-tool-artifact-card[_ngcontent-ng-c1984279754], body.cw-theme-dusk   [_nghost-ng-c1984279754]   .operating-tool-artifact-card[_ngcontent-ng-c1984279754], body.cw-theme-dusk[_nghost-ng-c1984279754]   .related-operating-tool-card[_ngcontent-ng-c1984279754], body.cw-theme-dusk   [_nghost-ng-c1984279754]   .related-operating-tool-card[_ngcontent-ng-c1984279754]{background:var(--cw-panel)!important;border-color:var(--cw-line)!important}body.cw-theme-dusk[_nghost-ng-c1984279754]   .operating-tool-intro-card[_ngcontent-ng-c1984279754]   p[_ngcontent-ng-c1984279754], body.cw-theme-dusk   [_nghost-ng-c1984279754]   .operating-tool-intro-card[_ngcontent-ng-c1984279754]   p[_ngcontent-ng-c1984279754]{color:var(--cw-ink)}body.cw-theme-dusk[_nghost-ng-c1984279754]   .operating-tool-artifact-card__header[_ngcontent-ng-c1984279754]   h2[_ngcontent-ng-c1984279754], body.cw-theme-dusk   [_nghost-ng-c1984279754]   .operating-tool-artifact-card__header[_ngcontent-ng-c1984279754]   h2[_ngcontent-ng-c1984279754]{color:var(--cw-text)}@media(max-width:1080px){.operating-tool-shell[_ngcontent-ng-c1984279754]{grid-template-columns:1fr}.operating-tool-artifact-rail[_ngcontent-ng-c1984279754]{position:static}.operating-tool-artifact-card[_ngcontent-ng-c1984279754]{max-width:44rem}}@media(max-width:720px){.detail-hero[_ngcontent-ng-c1984279754]{padding:64px 0 24px}.operating-tool-shell[_ngcontent-ng-c1984279754], .operating-tool-main-column[_ngcontent-ng-c1984279754], .operating-tool-sections[_ngcontent-ng-c1984279754]{gap:20px}.operating-tool-intro-card[_ngcontent-ng-c1984279754]   mat-card-content[_ngcontent-ng-c1984279754]{padding:18px 18px 20px}.operating-tool-artifact-card[_ngcontent-ng-c1984279754]{padding:14px}.more-operating-tools[_ngcontent-ng-c1984279754]{padding-bottom:40px}.artifact-modal-backdrop[_ngcontent-ng-c1984279754]{padding:12px}.artifact-modal[_ngcontent-ng-c1984279754]{width:100%;max-height:calc(100vh - 24px)}.artifact-modal__toolbar[_ngcontent-ng-c1984279754]{display:grid;gap:12px}.artifact-modal__actions[_ngcontent-ng-c1984279754]{justify-content:flex-start}.artifact-modal__stage[_ngcontent-ng-c1984279754]{padding:12px;border-radius:18px}.artifact-modal__image[_ngcontent-ng-c1984279754]{max-height:calc(100vh - 240px)}}</style><meta property="article:section" content="Operating Tools"><meta name="keywords" content="beliefs, reframing, nervous system, reflection"><meta property="article:tag" content="beliefs"><meta property="article:tag" content="reframing"><meta property="article:tag" content="nervous system"><meta property="article:tag" content="reflection"><style ng-app-id="ng">.mat-mdc-chip-set {
   display: flex;
 }
@@ -1662,6 +1108,560 @@ img.mdc-evolution-chip__icon {
   left: auto;
   right: 0;
 }
+</style><style ng-app-id="ng">.mat-mdc-button-base {
+  text-decoration: none;
+}
+.mat-mdc-button-base .mat-icon {
+  min-height: fit-content;
+  flex-shrink: 0;
+}
+@media (hover: none) {
+  .mat-mdc-button-base:hover > span.mat-mdc-button-persistent-ripple::before {
+    opacity: 0;
+  }
+}
+
+.mdc-button {
+  -webkit-user-select: none;
+  user-select: none;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-width: 64px;
+  border: none;
+  outline: none;
+  line-height: inherit;
+  -webkit-appearance: none;
+  overflow: visible;
+  vertical-align: middle;
+  background: transparent;
+  padding: 0 8px;
+}
+.mdc-button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+.mdc-button:active {
+  outline: none;
+}
+.mdc-button:hover {
+  cursor: pointer;
+}
+.mdc-button:disabled {
+  cursor: default;
+  pointer-events: none;
+}
+.mdc-button[hidden] {
+  display: none;
+}
+.mdc-button .mdc-button__label {
+  position: relative;
+}
+
+.mat-mdc-button {
+  padding: 0 var(--mat-button-text-horizontal-padding, 12px);
+  height: var(--mat-button-text-container-height, 40px);
+  font-family: var(--mat-button-text-label-text-font, var(--mat-sys-label-large-font));
+  font-size: var(--mat-button-text-label-text-size, var(--mat-sys-label-large-size));
+  letter-spacing: var(--mat-button-text-label-text-tracking, var(--mat-sys-label-large-tracking));
+  text-transform: var(--mat-button-text-label-text-transform);
+  font-weight: var(--mat-button-text-label-text-weight, var(--mat-sys-label-large-weight));
+}
+.mat-mdc-button, .mat-mdc-button .mdc-button__ripple {
+  border-radius: var(--mat-button-text-container-shape, var(--mat-sys-corner-full));
+}
+.mat-mdc-button:not(:disabled) {
+  color: var(--mat-button-text-label-text-color, var(--mat-sys-primary));
+}
+.mat-mdc-button[disabled], .mat-mdc-button.mat-mdc-button-disabled {
+  cursor: default;
+  pointer-events: none;
+  color: var(--mat-button-text-disabled-label-text-color, color-mix(in srgb, var(--mat-sys-on-surface) 38%, transparent));
+}
+.mat-mdc-button.mat-mdc-button-disabled-interactive {
+  pointer-events: auto;
+}
+.mat-mdc-button:has(.material-icons, mat-icon, [matButtonIcon]) {
+  padding: 0 var(--mat-button-text-with-icon-horizontal-padding, 16px);
+}
+.mat-mdc-button > .mat-icon {
+  margin-right: var(--mat-button-text-icon-spacing, 8px);
+  margin-left: var(--mat-button-text-icon-offset, -4px);
+}
+[dir=rtl] .mat-mdc-button > .mat-icon {
+  margin-right: var(--mat-button-text-icon-offset, -4px);
+  margin-left: var(--mat-button-text-icon-spacing, 8px);
+}
+.mat-mdc-button .mdc-button__label + .mat-icon {
+  margin-right: var(--mat-button-text-icon-offset, -4px);
+  margin-left: var(--mat-button-text-icon-spacing, 8px);
+}
+[dir=rtl] .mat-mdc-button .mdc-button__label + .mat-icon {
+  margin-right: var(--mat-button-text-icon-spacing, 8px);
+  margin-left: var(--mat-button-text-icon-offset, -4px);
+}
+.mat-mdc-button .mat-ripple-element {
+  background-color: var(--mat-button-text-ripple-color, color-mix(in srgb, var(--mat-sys-primary) calc(var(--mat-sys-pressed-state-layer-opacity) * 100%), transparent));
+}
+.mat-mdc-button .mat-mdc-button-persistent-ripple::before {
+  background-color: var(--mat-button-text-state-layer-color, var(--mat-sys-primary));
+}
+.mat-mdc-button.mat-mdc-button-disabled .mat-mdc-button-persistent-ripple::before {
+  background-color: var(--mat-button-text-disabled-state-layer-color, var(--mat-sys-on-surface-variant));
+}
+.mat-mdc-button:hover > .mat-mdc-button-persistent-ripple::before {
+  opacity: var(--mat-button-text-hover-state-layer-opacity, var(--mat-sys-hover-state-layer-opacity));
+}
+.mat-mdc-button.cdk-program-focused > .mat-mdc-button-persistent-ripple::before, .mat-mdc-button.cdk-keyboard-focused > .mat-mdc-button-persistent-ripple::before, .mat-mdc-button.mat-mdc-button-disabled-interactive:focus > .mat-mdc-button-persistent-ripple::before {
+  opacity: var(--mat-button-text-focus-state-layer-opacity, var(--mat-sys-focus-state-layer-opacity));
+}
+.mat-mdc-button:active > .mat-mdc-button-persistent-ripple::before {
+  opacity: var(--mat-button-text-pressed-state-layer-opacity, var(--mat-sys-pressed-state-layer-opacity));
+}
+.mat-mdc-button .mat-mdc-button-touch-target {
+  position: absolute;
+  top: 50%;
+  height: var(--mat-button-text-touch-target-size, 48px);
+  display: var(--mat-button-text-touch-target-display, block);
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+}
+
+.mat-mdc-unelevated-button {
+  transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+  height: var(--mat-button-filled-container-height, 40px);
+  font-family: var(--mat-button-filled-label-text-font, var(--mat-sys-label-large-font));
+  font-size: var(--mat-button-filled-label-text-size, var(--mat-sys-label-large-size));
+  letter-spacing: var(--mat-button-filled-label-text-tracking, var(--mat-sys-label-large-tracking));
+  text-transform: var(--mat-button-filled-label-text-transform);
+  font-weight: var(--mat-button-filled-label-text-weight, var(--mat-sys-label-large-weight));
+  padding: 0 var(--mat-button-filled-horizontal-padding, 24px);
+}
+.mat-mdc-unelevated-button > .mat-icon {
+  margin-right: var(--mat-button-filled-icon-spacing, 8px);
+  margin-left: var(--mat-button-filled-icon-offset, -8px);
+}
+[dir=rtl] .mat-mdc-unelevated-button > .mat-icon {
+  margin-right: var(--mat-button-filled-icon-offset, -8px);
+  margin-left: var(--mat-button-filled-icon-spacing, 8px);
+}
+.mat-mdc-unelevated-button .mdc-button__label + .mat-icon {
+  margin-right: var(--mat-button-filled-icon-offset, -8px);
+  margin-left: var(--mat-button-filled-icon-spacing, 8px);
+}
+[dir=rtl] .mat-mdc-unelevated-button .mdc-button__label + .mat-icon {
+  margin-right: var(--mat-button-filled-icon-spacing, 8px);
+  margin-left: var(--mat-button-filled-icon-offset, -8px);
+}
+.mat-mdc-unelevated-button .mat-ripple-element {
+  background-color: var(--mat-button-filled-ripple-color, color-mix(in srgb, var(--mat-sys-on-primary) calc(var(--mat-sys-pressed-state-layer-opacity) * 100%), transparent));
+}
+.mat-mdc-unelevated-button .mat-mdc-button-persistent-ripple::before {
+  background-color: var(--mat-button-filled-state-layer-color, var(--mat-sys-on-primary));
+}
+.mat-mdc-unelevated-button.mat-mdc-button-disabled .mat-mdc-button-persistent-ripple::before {
+  background-color: var(--mat-button-filled-disabled-state-layer-color, var(--mat-sys-on-surface-variant));
+}
+.mat-mdc-unelevated-button:hover > .mat-mdc-button-persistent-ripple::before {
+  opacity: var(--mat-button-filled-hover-state-layer-opacity, var(--mat-sys-hover-state-layer-opacity));
+}
+.mat-mdc-unelevated-button.cdk-program-focused > .mat-mdc-button-persistent-ripple::before, .mat-mdc-unelevated-button.cdk-keyboard-focused > .mat-mdc-button-persistent-ripple::before, .mat-mdc-unelevated-button.mat-mdc-button-disabled-interactive:focus > .mat-mdc-button-persistent-ripple::before {
+  opacity: var(--mat-button-filled-focus-state-layer-opacity, var(--mat-sys-focus-state-layer-opacity));
+}
+.mat-mdc-unelevated-button:active > .mat-mdc-button-persistent-ripple::before {
+  opacity: var(--mat-button-filled-pressed-state-layer-opacity, var(--mat-sys-pressed-state-layer-opacity));
+}
+.mat-mdc-unelevated-button .mat-mdc-button-touch-target {
+  position: absolute;
+  top: 50%;
+  height: var(--mat-button-filled-touch-target-size, 48px);
+  display: var(--mat-button-filled-touch-target-display, block);
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+}
+.mat-mdc-unelevated-button:not(:disabled) {
+  color: var(--mat-button-filled-label-text-color, var(--mat-sys-on-primary));
+  background-color: var(--mat-button-filled-container-color, var(--mat-sys-primary));
+}
+.mat-mdc-unelevated-button, .mat-mdc-unelevated-button .mdc-button__ripple {
+  border-radius: var(--mat-button-filled-container-shape, var(--mat-sys-corner-full));
+}
+.mat-mdc-unelevated-button .mat-mdc-button-progress-indicator-container {
+  --mat-progress-spinner-active-indicator-color: var(--mat-button-filled-progress-active-indicator-color, var(--mat-sys-on-primary));
+}
+.mat-mdc-unelevated-button[disabled], .mat-mdc-unelevated-button.mat-mdc-button-disabled {
+  cursor: default;
+  pointer-events: none;
+  color: var(--mat-button-filled-disabled-label-text-color, color-mix(in srgb, var(--mat-sys-on-surface) 38%, transparent));
+  background-color: var(--mat-button-filled-disabled-container-color, color-mix(in srgb, var(--mat-sys-on-surface) 12%, transparent));
+}
+.mat-mdc-unelevated-button.mat-mdc-button-disabled-interactive {
+  pointer-events: auto;
+}
+
+.mat-mdc-raised-button {
+  transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--mat-button-protected-container-elevation-shadow, var(--mat-sys-level1));
+  height: var(--mat-button-protected-container-height, 40px);
+  font-family: var(--mat-button-protected-label-text-font, var(--mat-sys-label-large-font));
+  font-size: var(--mat-button-protected-label-text-size, var(--mat-sys-label-large-size));
+  letter-spacing: var(--mat-button-protected-label-text-tracking, var(--mat-sys-label-large-tracking));
+  text-transform: var(--mat-button-protected-label-text-transform);
+  font-weight: var(--mat-button-protected-label-text-weight, var(--mat-sys-label-large-weight));
+  padding: 0 var(--mat-button-protected-horizontal-padding, 24px);
+}
+.mat-mdc-raised-button > .mat-icon {
+  margin-right: var(--mat-button-protected-icon-spacing, 8px);
+  margin-left: var(--mat-button-protected-icon-offset, -8px);
+}
+[dir=rtl] .mat-mdc-raised-button > .mat-icon {
+  margin-right: var(--mat-button-protected-icon-offset, -8px);
+  margin-left: var(--mat-button-protected-icon-spacing, 8px);
+}
+.mat-mdc-raised-button .mdc-button__label + .mat-icon {
+  margin-right: var(--mat-button-protected-icon-offset, -8px);
+  margin-left: var(--mat-button-protected-icon-spacing, 8px);
+}
+[dir=rtl] .mat-mdc-raised-button .mdc-button__label + .mat-icon {
+  margin-right: var(--mat-button-protected-icon-spacing, 8px);
+  margin-left: var(--mat-button-protected-icon-offset, -8px);
+}
+.mat-mdc-raised-button .mat-ripple-element {
+  background-color: var(--mat-button-protected-ripple-color, color-mix(in srgb, var(--mat-sys-primary) calc(var(--mat-sys-pressed-state-layer-opacity) * 100%), transparent));
+}
+.mat-mdc-raised-button .mat-mdc-button-persistent-ripple::before {
+  background-color: var(--mat-button-protected-state-layer-color, var(--mat-sys-primary));
+}
+.mat-mdc-raised-button.mat-mdc-button-disabled .mat-mdc-button-persistent-ripple::before {
+  background-color: var(--mat-button-protected-disabled-state-layer-color, var(--mat-sys-on-surface-variant));
+}
+.mat-mdc-raised-button:hover > .mat-mdc-button-persistent-ripple::before {
+  opacity: var(--mat-button-protected-hover-state-layer-opacity, var(--mat-sys-hover-state-layer-opacity));
+}
+.mat-mdc-raised-button.cdk-program-focused > .mat-mdc-button-persistent-ripple::before, .mat-mdc-raised-button.cdk-keyboard-focused > .mat-mdc-button-persistent-ripple::before, .mat-mdc-raised-button.mat-mdc-button-disabled-interactive:focus > .mat-mdc-button-persistent-ripple::before {
+  opacity: var(--mat-button-protected-focus-state-layer-opacity, var(--mat-sys-focus-state-layer-opacity));
+}
+.mat-mdc-raised-button:active > .mat-mdc-button-persistent-ripple::before {
+  opacity: var(--mat-button-protected-pressed-state-layer-opacity, var(--mat-sys-pressed-state-layer-opacity));
+}
+.mat-mdc-raised-button .mat-mdc-button-touch-target {
+  position: absolute;
+  top: 50%;
+  height: var(--mat-button-protected-touch-target-size, 48px);
+  display: var(--mat-button-protected-touch-target-display, block);
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+}
+.mat-mdc-raised-button:not(:disabled) {
+  color: var(--mat-button-protected-label-text-color, var(--mat-sys-primary));
+  background-color: var(--mat-button-protected-container-color, var(--mat-sys-surface));
+}
+.mat-mdc-raised-button, .mat-mdc-raised-button .mdc-button__ripple {
+  border-radius: var(--mat-button-protected-container-shape, var(--mat-sys-corner-full));
+}
+@media (hover: hover) {
+  .mat-mdc-raised-button:hover {
+    box-shadow: var(--mat-button-protected-hover-container-elevation-shadow, var(--mat-sys-level2));
+  }
+}
+.mat-mdc-raised-button:focus {
+  box-shadow: var(--mat-button-protected-focus-container-elevation-shadow, var(--mat-sys-level1));
+}
+.mat-mdc-raised-button:active, .mat-mdc-raised-button:focus:active {
+  box-shadow: var(--mat-button-protected-pressed-container-elevation-shadow, var(--mat-sys-level1));
+}
+.mat-mdc-raised-button[disabled], .mat-mdc-raised-button.mat-mdc-button-disabled {
+  cursor: default;
+  pointer-events: none;
+  color: var(--mat-button-protected-disabled-label-text-color, color-mix(in srgb, var(--mat-sys-on-surface) 38%, transparent));
+  background-color: var(--mat-button-protected-disabled-container-color, color-mix(in srgb, var(--mat-sys-on-surface) 12%, transparent));
+}
+.mat-mdc-raised-button[disabled].mat-mdc-button-disabled, .mat-mdc-raised-button.mat-mdc-button-disabled.mat-mdc-button-disabled {
+  box-shadow: var(--mat-button-protected-disabled-container-elevation-shadow, var(--mat-sys-level0));
+}
+.mat-mdc-raised-button.mat-mdc-button-disabled-interactive {
+  pointer-events: auto;
+}
+
+.mat-mdc-outlined-button {
+  border-style: solid;
+  transition: border 280ms cubic-bezier(0.4, 0, 0.2, 1);
+  height: var(--mat-button-outlined-container-height, 40px);
+  font-family: var(--mat-button-outlined-label-text-font, var(--mat-sys-label-large-font));
+  font-size: var(--mat-button-outlined-label-text-size, var(--mat-sys-label-large-size));
+  letter-spacing: var(--mat-button-outlined-label-text-tracking, var(--mat-sys-label-large-tracking));
+  text-transform: var(--mat-button-outlined-label-text-transform);
+  font-weight: var(--mat-button-outlined-label-text-weight, var(--mat-sys-label-large-weight));
+  border-radius: var(--mat-button-outlined-container-shape, var(--mat-sys-corner-full));
+  border-width: var(--mat-button-outlined-outline-width, 1px);
+  padding: 0 var(--mat-button-outlined-horizontal-padding, 24px);
+}
+.mat-mdc-outlined-button > .mat-icon {
+  margin-right: var(--mat-button-outlined-icon-spacing, 8px);
+  margin-left: var(--mat-button-outlined-icon-offset, -8px);
+}
+[dir=rtl] .mat-mdc-outlined-button > .mat-icon {
+  margin-right: var(--mat-button-outlined-icon-offset, -8px);
+  margin-left: var(--mat-button-outlined-icon-spacing, 8px);
+}
+.mat-mdc-outlined-button .mdc-button__label + .mat-icon {
+  margin-right: var(--mat-button-outlined-icon-offset, -8px);
+  margin-left: var(--mat-button-outlined-icon-spacing, 8px);
+}
+[dir=rtl] .mat-mdc-outlined-button .mdc-button__label + .mat-icon {
+  margin-right: var(--mat-button-outlined-icon-spacing, 8px);
+  margin-left: var(--mat-button-outlined-icon-offset, -8px);
+}
+.mat-mdc-outlined-button .mat-ripple-element {
+  background-color: var(--mat-button-outlined-ripple-color, color-mix(in srgb, var(--mat-sys-primary) calc(var(--mat-sys-pressed-state-layer-opacity) * 100%), transparent));
+}
+.mat-mdc-outlined-button .mat-mdc-button-persistent-ripple::before {
+  background-color: var(--mat-button-outlined-state-layer-color, var(--mat-sys-primary));
+}
+.mat-mdc-outlined-button.mat-mdc-button-disabled .mat-mdc-button-persistent-ripple::before {
+  background-color: var(--mat-button-outlined-disabled-state-layer-color, var(--mat-sys-on-surface-variant));
+}
+.mat-mdc-outlined-button:hover > .mat-mdc-button-persistent-ripple::before {
+  opacity: var(--mat-button-outlined-hover-state-layer-opacity, var(--mat-sys-hover-state-layer-opacity));
+}
+.mat-mdc-outlined-button.cdk-program-focused > .mat-mdc-button-persistent-ripple::before, .mat-mdc-outlined-button.cdk-keyboard-focused > .mat-mdc-button-persistent-ripple::before, .mat-mdc-outlined-button.mat-mdc-button-disabled-interactive:focus > .mat-mdc-button-persistent-ripple::before {
+  opacity: var(--mat-button-outlined-focus-state-layer-opacity, var(--mat-sys-focus-state-layer-opacity));
+}
+.mat-mdc-outlined-button:active > .mat-mdc-button-persistent-ripple::before {
+  opacity: var(--mat-button-outlined-pressed-state-layer-opacity, var(--mat-sys-pressed-state-layer-opacity));
+}
+.mat-mdc-outlined-button .mat-mdc-button-touch-target {
+  position: absolute;
+  top: 50%;
+  height: var(--mat-button-outlined-touch-target-size, 48px);
+  display: var(--mat-button-outlined-touch-target-display, block);
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+}
+.mat-mdc-outlined-button:not(:disabled) {
+  color: var(--mat-button-outlined-label-text-color, var(--mat-sys-primary));
+  border-color: var(--mat-button-outlined-outline-color, var(--mat-sys-outline));
+}
+.mat-mdc-outlined-button[disabled], .mat-mdc-outlined-button.mat-mdc-button-disabled {
+  cursor: default;
+  pointer-events: none;
+  color: var(--mat-button-outlined-disabled-label-text-color, color-mix(in srgb, var(--mat-sys-on-surface) 38%, transparent));
+  border-color: var(--mat-button-outlined-disabled-outline-color, color-mix(in srgb, var(--mat-sys-on-surface) 12%, transparent));
+}
+.mat-mdc-outlined-button.mat-mdc-button-disabled-interactive {
+  pointer-events: auto;
+}
+
+.mat-tonal-button {
+  transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+  height: var(--mat-button-tonal-container-height, 40px);
+  font-family: var(--mat-button-tonal-label-text-font, var(--mat-sys-label-large-font));
+  font-size: var(--mat-button-tonal-label-text-size, var(--mat-sys-label-large-size));
+  letter-spacing: var(--mat-button-tonal-label-text-tracking, var(--mat-sys-label-large-tracking));
+  text-transform: var(--mat-button-tonal-label-text-transform);
+  font-weight: var(--mat-button-tonal-label-text-weight, var(--mat-sys-label-large-weight));
+  padding: 0 var(--mat-button-tonal-horizontal-padding, 24px);
+}
+.mat-tonal-button:not(:disabled) {
+  color: var(--mat-button-tonal-label-text-color, var(--mat-sys-on-secondary-container));
+  background-color: var(--mat-button-tonal-container-color, var(--mat-sys-secondary-container));
+}
+.mat-tonal-button, .mat-tonal-button .mdc-button__ripple {
+  border-radius: var(--mat-button-tonal-container-shape, var(--mat-sys-corner-full));
+}
+.mat-tonal-button[disabled], .mat-tonal-button.mat-mdc-button-disabled {
+  cursor: default;
+  pointer-events: none;
+  color: var(--mat-button-tonal-disabled-label-text-color, color-mix(in srgb, var(--mat-sys-on-surface) 38%, transparent));
+  background-color: var(--mat-button-tonal-disabled-container-color, color-mix(in srgb, var(--mat-sys-on-surface) 12%, transparent));
+}
+.mat-tonal-button.mat-mdc-button-disabled-interactive {
+  pointer-events: auto;
+}
+.mat-tonal-button > .mat-icon {
+  margin-right: var(--mat-button-tonal-icon-spacing, 8px);
+  margin-left: var(--mat-button-tonal-icon-offset, -8px);
+}
+[dir=rtl] .mat-tonal-button > .mat-icon {
+  margin-right: var(--mat-button-tonal-icon-offset, -8px);
+  margin-left: var(--mat-button-tonal-icon-spacing, 8px);
+}
+.mat-tonal-button .mdc-button__label + .mat-icon {
+  margin-right: var(--mat-button-tonal-icon-offset, -8px);
+  margin-left: var(--mat-button-tonal-icon-spacing, 8px);
+}
+[dir=rtl] .mat-tonal-button .mdc-button__label + .mat-icon {
+  margin-right: var(--mat-button-tonal-icon-spacing, 8px);
+  margin-left: var(--mat-button-tonal-icon-offset, -8px);
+}
+.mat-tonal-button .mat-ripple-element {
+  background-color: var(--mat-button-tonal-ripple-color, color-mix(in srgb, var(--mat-sys-on-secondary-container) calc(var(--mat-sys-pressed-state-layer-opacity) * 100%), transparent));
+}
+.mat-tonal-button .mat-mdc-button-persistent-ripple::before {
+  background-color: var(--mat-button-tonal-state-layer-color, var(--mat-sys-on-secondary-container));
+}
+.mat-tonal-button.mat-mdc-button-disabled .mat-mdc-button-persistent-ripple::before {
+  background-color: var(--mat-button-tonal-disabled-state-layer-color, var(--mat-sys-on-surface-variant));
+}
+.mat-tonal-button:hover > .mat-mdc-button-persistent-ripple::before {
+  opacity: var(--mat-button-tonal-hover-state-layer-opacity, var(--mat-sys-hover-state-layer-opacity));
+}
+.mat-tonal-button.cdk-program-focused > .mat-mdc-button-persistent-ripple::before, .mat-tonal-button.cdk-keyboard-focused > .mat-mdc-button-persistent-ripple::before, .mat-tonal-button.mat-mdc-button-disabled-interactive:focus > .mat-mdc-button-persistent-ripple::before {
+  opacity: var(--mat-button-tonal-focus-state-layer-opacity, var(--mat-sys-focus-state-layer-opacity));
+}
+.mat-tonal-button:active > .mat-mdc-button-persistent-ripple::before {
+  opacity: var(--mat-button-tonal-pressed-state-layer-opacity, var(--mat-sys-pressed-state-layer-opacity));
+}
+.mat-tonal-button .mat-mdc-button-touch-target {
+  position: absolute;
+  top: 50%;
+  height: var(--mat-button-tonal-touch-target-size, 48px);
+  display: var(--mat-button-tonal-touch-target-display, block);
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+}
+
+.mat-mdc-button,
+.mat-mdc-unelevated-button,
+.mat-mdc-raised-button,
+.mat-mdc-outlined-button,
+.mat-tonal-button {
+  -webkit-tap-highlight-color: transparent;
+}
+.mat-mdc-button .mat-mdc-button-ripple,
+.mat-mdc-button .mat-mdc-button-persistent-ripple,
+.mat-mdc-button .mat-mdc-button-persistent-ripple::before,
+.mat-mdc-unelevated-button .mat-mdc-button-ripple,
+.mat-mdc-unelevated-button .mat-mdc-button-persistent-ripple,
+.mat-mdc-unelevated-button .mat-mdc-button-persistent-ripple::before,
+.mat-mdc-raised-button .mat-mdc-button-ripple,
+.mat-mdc-raised-button .mat-mdc-button-persistent-ripple,
+.mat-mdc-raised-button .mat-mdc-button-persistent-ripple::before,
+.mat-mdc-outlined-button .mat-mdc-button-ripple,
+.mat-mdc-outlined-button .mat-mdc-button-persistent-ripple,
+.mat-mdc-outlined-button .mat-mdc-button-persistent-ripple::before,
+.mat-tonal-button .mat-mdc-button-ripple,
+.mat-tonal-button .mat-mdc-button-persistent-ripple,
+.mat-tonal-button .mat-mdc-button-persistent-ripple::before {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  pointer-events: none;
+  border-radius: inherit;
+}
+.mat-mdc-button .mat-mdc-button-ripple,
+.mat-mdc-unelevated-button .mat-mdc-button-ripple,
+.mat-mdc-raised-button .mat-mdc-button-ripple,
+.mat-mdc-outlined-button .mat-mdc-button-ripple,
+.mat-tonal-button .mat-mdc-button-ripple {
+  overflow: hidden;
+}
+.mat-mdc-button .mat-mdc-button-persistent-ripple::before,
+.mat-mdc-unelevated-button .mat-mdc-button-persistent-ripple::before,
+.mat-mdc-raised-button .mat-mdc-button-persistent-ripple::before,
+.mat-mdc-outlined-button .mat-mdc-button-persistent-ripple::before,
+.mat-tonal-button .mat-mdc-button-persistent-ripple::before {
+  content: "";
+  opacity: 0;
+}
+.mat-mdc-button .mdc-button__label,
+.mat-mdc-button .mat-icon,
+.mat-mdc-unelevated-button .mdc-button__label,
+.mat-mdc-unelevated-button .mat-icon,
+.mat-mdc-raised-button .mdc-button__label,
+.mat-mdc-raised-button .mat-icon,
+.mat-mdc-outlined-button .mdc-button__label,
+.mat-mdc-outlined-button .mat-icon,
+.mat-tonal-button .mdc-button__label,
+.mat-tonal-button .mat-icon {
+  z-index: 1;
+  position: relative;
+}
+.mat-mdc-button .mat-focus-indicator,
+.mat-mdc-unelevated-button .mat-focus-indicator,
+.mat-mdc-raised-button .mat-focus-indicator,
+.mat-mdc-outlined-button .mat-focus-indicator,
+.mat-tonal-button .mat-focus-indicator {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  border-radius: inherit;
+}
+.mat-mdc-button:focus-visible > .mat-focus-indicator::before,
+.mat-mdc-unelevated-button:focus-visible > .mat-focus-indicator::before,
+.mat-mdc-raised-button:focus-visible > .mat-focus-indicator::before,
+.mat-mdc-outlined-button:focus-visible > .mat-focus-indicator::before,
+.mat-tonal-button:focus-visible > .mat-focus-indicator::before {
+  content: "";
+  border-radius: inherit;
+}
+.mat-mdc-button._mat-animation-noopable,
+.mat-mdc-unelevated-button._mat-animation-noopable,
+.mat-mdc-raised-button._mat-animation-noopable,
+.mat-mdc-outlined-button._mat-animation-noopable,
+.mat-tonal-button._mat-animation-noopable {
+  transition: none !important;
+  animation: none !important;
+}
+.mat-mdc-button > .mat-icon,
+.mat-mdc-unelevated-button > .mat-icon,
+.mat-mdc-raised-button > .mat-icon,
+.mat-mdc-outlined-button > .mat-icon,
+.mat-tonal-button > .mat-icon {
+  display: inline-block;
+  position: relative;
+  vertical-align: top;
+  font-size: 1.125rem;
+  height: 1.125rem;
+  width: 1.125rem;
+}
+
+.mat-mdc-outlined-button .mat-mdc-button-ripple,
+.mat-mdc-outlined-button .mdc-button__ripple {
+  top: -1px;
+  left: -1px;
+  bottom: -1px;
+  right: -1px;
+}
+
+.mat-mdc-unelevated-button .mat-focus-indicator::before,
+.mat-tonal-button .mat-focus-indicator::before,
+.mat-mdc-raised-button .mat-focus-indicator::before {
+  margin: calc(calc(var(--mat-focus-indicator-border-width, 3px) + 2px) * -1);
+}
+
+.mat-mdc-outlined-button .mat-focus-indicator::before {
+  margin: calc(calc(var(--mat-focus-indicator-border-width, 3px) + 3px) * -1);
+}
+
+.mat-mdc-button-progress-indicator-container {
+  position: absolute;
+  inset-inline-start: 0;
+  inset-block-start: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.mat-mdc-button-progress-indicator-shown mat-icon,
+.mat-mdc-button-progress-indicator-shown [matButtonIcon],
+.mat-mdc-button-progress-indicator-shown .mdc-button__label {
+  visibility: hidden;
+}
 </style><style ng-app-id="ng">.mat-divider {
   display: block;
   margin: 0;
@@ -1685,12 +1685,12 @@ img.mdc-evolution-chip__icon {
 </style></head>
 <body class="cw-theme-light"><!--nghm--><script type="text/javascript" id="ng-event-dispatch-contract">(()=>{function p(t,n,r,o,e,i,f,m){return{eventType:t,event:n,targetElement:r,eic:o,timeStamp:e,eia:i,eirp:f,eiack:m}}function u(t){let n=[],r=e=>{n.push(e)};return{c:t,q:n,et:[],etc:[],d:r,h:e=>{r(p(e.type,e,e.target,t,Date.now()))}}}function s(t,n,r){for(let o=0;o<n.length;o++){let e=n[o];(r?t.etc:t.et).push(e),t.c.addEventListener(e,t.h,r)}}function c(t,n,r,o,e=window){let i=u(t);e._ejsas||(e._ejsas={}),e._ejsas[n]=i,s(i,r),s(i,o,!0)}window.__jsaction_bootstrap=c;})();
 </script><script>window.__jsaction_bootstrap(document.body,"ng",["click","keydown"],[]);</script>
-  <cw-root ng-version="22.0.2" ngh="8" ng-server-context="ssg"><cw-site-shell _nghost-ng-c554135100 class ngh="3"><mat-toolbar _ngcontent-ng-c554135100 class="mat-toolbar shell-toolbar mat-toolbar-single-row" ngh="0"><a _ngcontent-ng-c554135100 routerlink="/" aria-label="cweise.com home" class="brand" href="/" jsaction="click:;"><img _ngcontent-ng-c554135100 src="assets/images/cweise_logo_light_mode.svg" alt="cweise.com"></a><nav _ngcontent-ng-c554135100 aria-label="Primary navigation" class="desktop-nav"><a _ngcontent-ng-c554135100 mat-button routerlinkactive="active" class="mdc-button mat-mdc-button-base mat-mdc-button mat-unthemed _mat-animation-noopable" mat-ripple-loader-uninitialized mat-ripple-loader-class-name="mat-mdc-button-ripple" href="/" ngh="1" jsaction="click:;"><span class="mat-mdc-button-persistent-ripple mdc-button__ripple"></span><span class="mdc-button__label"> Home </span><!----><span class="mat-focus-indicator"></span><span class="mat-mdc-button-touch-target"></span></a><a _ngcontent-ng-c554135100 mat-button routerlinkactive="active" class="mdc-button mat-mdc-button-base mat-mdc-button mat-unthemed _mat-animation-noopable" mat-ripple-loader-uninitialized mat-ripple-loader-class-name="mat-mdc-button-ripple" href="/writing" ngh="1" jsaction="click:;"><span class="mat-mdc-button-persistent-ripple mdc-button__ripple"></span><span class="mdc-button__label"> Writing </span><!----><span class="mat-focus-indicator"></span><span class="mat-mdc-button-touch-target"></span></a><a _ngcontent-ng-c554135100 mat-button routerlinkactive="active" class="mdc-button mat-mdc-button-base mat-mdc-button mat-unthemed _mat-animation-noopable" mat-ripple-loader-uninitialized mat-ripple-loader-class-name="mat-mdc-button-ripple" href="/frameworks" ngh="1" jsaction="click:;"><span class="mat-mdc-button-persistent-ripple mdc-button__ripple"></span><span class="mdc-button__label"> Frameworks </span><!----><span class="mat-focus-indicator"></span><span class="mat-mdc-button-touch-target"></span></a><a _ngcontent-ng-c554135100 mat-button routerlinkactive="active" class="mdc-button mat-mdc-button-base mat-mdc-button mat-unthemed _mat-animation-noopable active" mat-ripple-loader-uninitialized mat-ripple-loader-class-name="mat-mdc-button-ripple" href="/operating-tools" ngh="1" jsaction="click:;"><span class="mat-mdc-button-persistent-ripple mdc-button__ripple"></span><span class="mdc-button__label"> Operating Tools </span><!----><span class="mat-focus-indicator"></span><span class="mat-mdc-button-touch-target"></span></a><a _ngcontent-ng-c554135100 mat-button routerlinkactive="active" class="mdc-button mat-mdc-button-base mat-mdc-button mat-unthemed _mat-animation-noopable" mat-ripple-loader-uninitialized mat-ripple-loader-class-name="mat-mdc-button-ripple" href="/about" ngh="1" jsaction="click:;"><span class="mat-mdc-button-persistent-ripple mdc-button__ripple"></span><span class="mdc-button__label"> About </span><!----><span class="mat-focus-indicator"></span><span class="mat-mdc-button-touch-target"></span></a><a _ngcontent-ng-c554135100 mat-button routerlinkactive="active" class="mdc-button mat-mdc-button-base mat-mdc-button mat-unthemed _mat-animation-noopable" mat-ripple-loader-uninitialized mat-ripple-loader-class-name="mat-mdc-button-ripple" href="/connect" ngh="1" jsaction="click:;"><span class="mat-mdc-button-persistent-ripple mdc-button__ripple"></span><span class="mdc-button__label"> Connect </span><!----><span class="mat-focus-indicator"></span><span class="mat-mdc-button-touch-target"></span></a><!----></nav><button _ngcontent-ng-c554135100 mat-icon-button type="button" aria-label="Toggle navigation menu" class="mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mobile-menu-toggle mat-unthemed _mat-animation-noopable" mat-ripple-loader-uninitialized mat-ripple-loader-class-name="mat-mdc-button-ripple" mat-ripple-loader-centered aria-expanded="false" ngh="2" jsaction="click:;"><span class="mat-mdc-button-persistent-ripple mdc-icon-button__ripple"></span><mat-icon _ngcontent-ng-c554135100 role="img" class="mat-icon notranslate material-icons mat-ligature-font mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font" ngh="0">menu</mat-icon><!----><span class="mat-focus-indicator"></span><span class="mat-mdc-button-touch-target"></span></button><button _ngcontent-ng-c554135100 mat-icon-button type="button" aria-label="Toggle color theme" class="mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-unthemed _mat-animation-noopable" mat-ripple-loader-uninitialized mat-ripple-loader-class-name="mat-mdc-button-ripple" mat-ripple-loader-centered ngh="2" jsaction="click:;"><span class="mat-mdc-button-persistent-ripple mdc-icon-button__ripple"></span><mat-icon _ngcontent-ng-c554135100 role="img" class="mat-icon notranslate material-icons mat-ligature-font mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font" ngh="0">dark_mode</mat-icon><!----><span class="mat-focus-indicator"></span><span class="mat-mdc-button-touch-target"></span></button><!----></mat-toolbar><!----><!----><!----><main _ngcontent-ng-c554135100 class="site-main"><router-outlet></router-outlet><cw-operating-tool-detail _nghost-ng-c1984279754 ngh="7"><article _ngcontent-ng-c1984279754 class="operating-tool-detail"><section _ngcontent-ng-c1984279754 class="detail-hero"><div _ngcontent-ng-c1984279754 class="cw-container detail-head"><p _ngcontent-ng-c1984279754 class="cw-eyebrow">Operating Tool</p><h1 _ngcontent-ng-c1984279754>Reframe the Belief, Retrain the Response</h1><p _ngcontent-ng-c1984279754 class="lead">A guide for updating limiting beliefs through reflection, nervous-system awareness, and a stronger replacement belief.</p><mat-chip-set _ngcontent-ng-c1984279754 aria-label="Operating tool tags" class="mat-mdc-chip-set mdc-evolution-chip-set detail-head__chips" role="presentation" ngh="0" jsaction="keydown:;"><div role="presentation" class="mdc-evolution-chip-set__chips"><mat-chip _ngcontent-ng-c1984279754 class="mat-mdc-chip detail-head__chip mat-primary mdc-evolution-chip mat-mdc-standard-chip _mat-animation-noopable" mat-ripple-loader-uninitialized mat-ripple-loader-class-name="mat-mdc-chip-ripple" mat-ripple-loader-disabled id="mat-mdc-chip-16" ngh="4" jsaction="keydown:;"><span class="mat-mdc-chip-focus-overlay"></span><span class="mdc-evolution-chip__cell mdc-evolution-chip__cell--primary"><span matchipcontent class="mat-mdc-chip-action mdc-evolution-chip__action mdc-evolution-chip__action--presentational mdc-evolution-chip__action--primary" aria-disabled="false"><!----><span class="mdc-evolution-chip__text-label mat-mdc-chip-action-label">beliefs<span class="mat-mdc-chip-primary-focus-indicator mat-focus-indicator"></span></span></span></span><!----></mat-chip><mat-chip _ngcontent-ng-c1984279754 class="mat-mdc-chip detail-head__chip mat-primary mdc-evolution-chip mat-mdc-standard-chip _mat-animation-noopable" mat-ripple-loader-uninitialized mat-ripple-loader-class-name="mat-mdc-chip-ripple" mat-ripple-loader-disabled id="mat-mdc-chip-17" ngh="4" jsaction="keydown:;"><span class="mat-mdc-chip-focus-overlay"></span><span class="mdc-evolution-chip__cell mdc-evolution-chip__cell--primary"><span matchipcontent class="mat-mdc-chip-action mdc-evolution-chip__action mdc-evolution-chip__action--presentational mdc-evolution-chip__action--primary" aria-disabled="false"><!----><span class="mdc-evolution-chip__text-label mat-mdc-chip-action-label">reframing<span class="mat-mdc-chip-primary-focus-indicator mat-focus-indicator"></span></span></span></span><!----></mat-chip><mat-chip _ngcontent-ng-c1984279754 class="mat-mdc-chip detail-head__chip mat-primary mdc-evolution-chip mat-mdc-standard-chip _mat-animation-noopable" mat-ripple-loader-uninitialized mat-ripple-loader-class-name="mat-mdc-chip-ripple" mat-ripple-loader-disabled id="mat-mdc-chip-18" ngh="4" jsaction="keydown:;"><span class="mat-mdc-chip-focus-overlay"></span><span class="mdc-evolution-chip__cell mdc-evolution-chip__cell--primary"><span matchipcontent class="mat-mdc-chip-action mdc-evolution-chip__action mdc-evolution-chip__action--presentational mdc-evolution-chip__action--primary" aria-disabled="false"><!----><span class="mdc-evolution-chip__text-label mat-mdc-chip-action-label">nervous system<span class="mat-mdc-chip-primary-focus-indicator mat-focus-indicator"></span></span></span></span><!----></mat-chip><mat-chip _ngcontent-ng-c1984279754 class="mat-mdc-chip detail-head__chip mat-primary mdc-evolution-chip mat-mdc-standard-chip _mat-animation-noopable" mat-ripple-loader-uninitialized mat-ripple-loader-class-name="mat-mdc-chip-ripple" mat-ripple-loader-disabled id="mat-mdc-chip-19" ngh="4" jsaction="keydown:;"><span class="mat-mdc-chip-focus-overlay"></span><span class="mdc-evolution-chip__cell mdc-evolution-chip__cell--primary"><span matchipcontent class="mat-mdc-chip-action mdc-evolution-chip__action mdc-evolution-chip__action--presentational mdc-evolution-chip__action--primary" aria-disabled="false"><!----><span class="mdc-evolution-chip__text-label mat-mdc-chip-action-label">reflection<span class="mat-mdc-chip-primary-focus-indicator mat-focus-indicator"></span></span></span></span><!----></mat-chip><!----></div></mat-chip-set></div></section><section _ngcontent-ng-c1984279754 class="cw-section"><div _ngcontent-ng-c1984279754 class="cw-container operating-tool-shell"><div _ngcontent-ng-c1984279754 class="operating-tool-main-column"><mat-card _ngcontent-ng-c1984279754 appearance="outlined" class="mat-mdc-card mdc-card operating-tool-intro-card cw-surface-card mat-mdc-card-outlined mdc-card--outlined" ngh="0"><mat-card-content _ngcontent-ng-c1984279754 class="mat-mdc-card-content"><p _ngcontent-ng-c1984279754>A limiting belief can remain active even after the present situation has changed. This guide helps identify the belief, trace its original meaning, and install a more accurate replacement response.</p></mat-card-content></mat-card><div _ngcontent-ng-c1984279754 class="operating-tool-sections"><section _ngcontent-ng-c1984279754 class="operating-tool-section"><h2 _ngcontent-ng-c1984279754>Name the limiting belief</h2><p _ngcontent-ng-c1984279754>Identify what belief keeps repeating, what it predicts, and where it shows up.</p><!----><!----><!----></section><mat-divider _ngcontent-ng-c1984279754 role="separator" class="mat-divider mat-divider-horizontal" aria-orientation="horizontal" ngh="0"></mat-divider><!----><section _ngcontent-ng-c1984279754 class="operating-tool-section"><h2 _ngcontent-ng-c1984279754>Trace the original encoding</h2><p _ngcontent-ng-c1984279754>Look for the earliest memory, what felt true then, and what meaning was assigned.</p><!----><!----><!----></section><mat-divider _ngcontent-ng-c1984279754 role="separator" class="mat-divider mat-divider-horizontal" aria-orientation="horizontal" ngh="0"></mat-divider><!----><section _ngcontent-ng-c1984279754 class="operating-tool-section"><h2 _ngcontent-ng-c1984279754>Notice the nervous-system response</h2><p _ngcontent-ng-c1984279754>Track body sensation, emotion, protective patterns, and what the system does to maintain safety.</p><!----><!----><mat-card _ngcontent-ng-c1984279754 appearance="outlined" class="mat-mdc-card mdc-card operating-tool-callout cw-surface-card mat-mdc-card-outlined mdc-card--outlined" ngh="0"><mat-card-content _ngcontent-ng-c1984279754 class="mat-mdc-card-content"><mat-icon _ngcontent-ng-c1984279754 role="img" class="mat-icon notranslate material-icons mat-ligature-font mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font" ngh="0">lightbulb</mat-icon><p _ngcontent-ng-c1984279754>The body may still react to an old conclusion, even when the present is different.</p></mat-card-content></mat-card><!----></section><mat-divider _ngcontent-ng-c1984279754 role="separator" class="mat-divider mat-divider-horizontal" aria-orientation="horizontal" ngh="0"></mat-divider><!----><section _ngcontent-ng-c1984279754 class="operating-tool-section"><h2 _ngcontent-ng-c1984279754>Create and reinforce the reframe</h2><p _ngcontent-ng-c1984279754>Ask what is more true now, what you did not know then, and what belief better fits reality today. Pair the new belief with grounding, evidence, and one aligned action.</p><!----><!----><mat-card _ngcontent-ng-c1984279754 appearance="outlined" class="mat-mdc-card mdc-card operating-tool-callout cw-surface-card mat-mdc-card-outlined mdc-card--outlined" ngh="0"><mat-card-content _ngcontent-ng-c1984279754 class="mat-mdc-card-content"><mat-icon _ngcontent-ng-c1984279754 role="img" class="mat-icon notranslate material-icons mat-ligature-font mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font" ngh="0">lightbulb</mat-icon><p _ngcontent-ng-c1984279754>The goal is not to deny the past. The goal is to help the nervous system learn what is true now.</p></mat-card-content></mat-card><!----></section><!----><!----></div></div><aside _ngcontent-ng-c1984279754 class="operating-tool-artifact-rail"><section _ngcontent-ng-c1984279754 class="operating-tool-artifact-card cw-surface-card"><div _ngcontent-ng-c1984279754 class="operating-tool-artifact-card__header"><p _ngcontent-ng-c1984279754 class="cw-eyebrow">Tool Artifact</p><h2 _ngcontent-ng-c1984279754>Reference while you read.</h2><p _ngcontent-ng-c1984279754 class="cw-muted">Open the full visual, print it, or keep it pinned beside the tool as you read.</p></div><button _ngcontent-ng-c1984279754 type="button" class="operating-tool-artifact-trigger" aria-label="Open visual tool for Reframe the Belief, Retrain the Response" jsaction="click:;"><img _ngcontent-ng-c1984279754 src="assets/images/operating-tools/reframe-the-belief-retrain-the-response/01_reframe_the_belief_retrain_the_response.webp" alt="Reframe the Belief, Retrain the Response"><span _ngcontent-ng-c1984279754 class="operating-tool-artifact-trigger__overlay"><span _ngcontent-ng-c1984279754>Open visual tool</span><mat-icon _ngcontent-ng-c1984279754 role="img" class="mat-icon notranslate material-icons mat-ligature-font mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font" ngh="0">open_in_full</mat-icon></span></button><div _ngcontent-ng-c1984279754 class="operating-tool-artifact-card__footer"><button _ngcontent-ng-c1984279754 mat-stroked-button color="primary" type="button" class="mdc-button mat-mdc-button-base mdc-button--outlined mat-mdc-outlined-button mat-primary _mat-animation-noopable" mat-ripple-loader-uninitialized mat-ripple-loader-class-name="mat-mdc-button-ripple" ngh="5" jsaction="click:;"><span class="mat-mdc-button-persistent-ripple mdc-button__ripple"></span><mat-icon _ngcontent-ng-c1984279754 role="img" class="mat-icon notranslate material-icons mat-ligature-font mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font" ngh="0">open_in_new</mat-icon><span class="mdc-button__label"> Open visual tool </span><!----><span class="mat-focus-indicator"></span><span class="mat-mdc-button-touch-target"></span></button></div></section></aside><!----></div><div _ngcontent-ng-c1984279754 class="cw-container"><section _ngcontent-ng-c1984279754 class="more-operating-tools"><div _ngcontent-ng-c1984279754 class="more-operating-tools__header"><p _ngcontent-ng-c1984279754 class="cw-eyebrow">More Operating Tools</p><h2 _ngcontent-ng-c1984279754>Keep the operating path moving.</h2></div><div _ngcontent-ng-c1984279754 class="more-operating-tools__grid"><mat-card _ngcontent-ng-c1984279754 appearance="outlined" class="mat-mdc-card mdc-card related-operating-tool-card cw-surface-card mat-mdc-card-outlined mdc-card--outlined" ngh="0"><mat-card-header _ngcontent-ng-c1984279754 class="mat-mdc-card-header" ngh="6"><div _ngcontent-ng-c1984279754 mat-card-avatar class="mat-mdc-card-avatar operating-tool-avatar"><mat-icon _ngcontent-ng-c1984279754 role="img" class="mat-icon notranslate material-icons mat-ligature-font mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font" ngh="0">explore</mat-icon></div><div class="mat-mdc-card-header-text"><mat-card-title _ngcontent-ng-c1984279754 class="mat-mdc-card-title">A Compass, Not a Map</mat-card-title><mat-card-subtitle _ngcontent-ng-c1984279754 class="mat-mdc-card-subtitle">A practical operating tool for moving through ambiguity without over-designing the future.</mat-card-subtitle></div></mat-card-header><mat-card-actions _ngcontent-ng-c1984279754 align="end" class="mat-mdc-card-actions mdc-card__actions mat-mdc-card-actions-align-end"><a _ngcontent-ng-c1984279754 mat-button color="primary" class="mdc-button mat-mdc-button-base mat-mdc-button mat-primary _mat-animation-noopable" mat-ripple-loader-uninitialized mat-ripple-loader-class-name="mat-mdc-button-ripple" href="/operating-tools/a-compass-not-a-map" ngh="5" jsaction="click:;"><span class="mat-mdc-button-persistent-ripple mdc-button__ripple"></span><mat-icon _ngcontent-ng-c1984279754 role="img" class="mat-icon notranslate material-icons mat-ligature-font mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font" ngh="0">arrow_forward</mat-icon><span class="mdc-button__label"> Open tool </span><!----><span class="mat-focus-indicator"></span><span class="mat-mdc-button-touch-target"></span></a></mat-card-actions></mat-card><mat-card _ngcontent-ng-c1984279754 appearance="outlined" class="mat-mdc-card mdc-card related-operating-tool-card cw-surface-card mat-mdc-card-outlined mdc-card--outlined" ngh="0"><mat-card-header _ngcontent-ng-c1984279754 class="mat-mdc-card-header" ngh="6"><div _ngcontent-ng-c1984279754 mat-card-avatar class="mat-mdc-card-avatar operating-tool-avatar"><mat-icon _ngcontent-ng-c1984279754 role="img" class="mat-icon notranslate material-icons mat-ligature-font mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font" ngh="0">bolt</mat-icon></div><div class="mat-mdc-card-header-text"><mat-card-title _ngcontent-ng-c1984279754 class="mat-mdc-card-title">Avoid to Act Loop</mat-card-title><mat-card-subtitle _ngcontent-ng-c1984279754 class="mat-mdc-card-subtitle">A short intervention for turning avoidance into immediate motion.</mat-card-subtitle></div></mat-card-header><mat-card-actions _ngcontent-ng-c1984279754 align="end" class="mat-mdc-card-actions mdc-card__actions mat-mdc-card-actions-align-end"><a _ngcontent-ng-c1984279754 mat-button color="primary" class="mdc-button mat-mdc-button-base mat-mdc-button mat-primary _mat-animation-noopable" mat-ripple-loader-uninitialized mat-ripple-loader-class-name="mat-mdc-button-ripple" href="/operating-tools/avoid-act-loop" ngh="5" jsaction="click:;"><span class="mat-mdc-button-persistent-ripple mdc-button__ripple"></span><mat-icon _ngcontent-ng-c1984279754 role="img" class="mat-icon notranslate material-icons mat-ligature-font mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font" ngh="0">arrow_forward</mat-icon><span class="mdc-button__label"> Open tool </span><!----><span class="mat-focus-indicator"></span><span class="mat-mdc-button-touch-target"></span></a></mat-card-actions></mat-card><mat-card _ngcontent-ng-c1984279754 appearance="outlined" class="mat-mdc-card mdc-card related-operating-tool-card cw-surface-card mat-mdc-card-outlined mdc-card--outlined" ngh="0"><mat-card-header _ngcontent-ng-c1984279754 class="mat-mdc-card-header" ngh="6"><div _ngcontent-ng-c1984279754 mat-card-avatar class="mat-mdc-card-avatar operating-tool-avatar"><mat-icon _ngcontent-ng-c1984279754 role="img" class="mat-icon notranslate material-icons mat-ligature-font mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font" ngh="0">construction</mat-icon></div><div class="mat-mdc-card-header-text"><mat-card-title _ngcontent-ng-c1984279754 class="mat-mdc-card-title">Becoming the Solution Provider</mat-card-title><mat-card-subtitle _ngcontent-ng-c1984279754 class="mat-mdc-card-subtitle">A systems-thinking guide for shifting from firefighting to durable problem prevention.</mat-card-subtitle></div></mat-card-header><mat-card-actions _ngcontent-ng-c1984279754 align="end" class="mat-mdc-card-actions mdc-card__actions mat-mdc-card-actions-align-end"><a _ngcontent-ng-c1984279754 mat-button color="primary" class="mdc-button mat-mdc-button-base mat-mdc-button mat-primary _mat-animation-noopable" mat-ripple-loader-uninitialized mat-ripple-loader-class-name="mat-mdc-button-ripple" href="/operating-tools/becoming-the-solution-provider" ngh="5" jsaction="click:;"><span class="mat-mdc-button-persistent-ripple mdc-button__ripple"></span><mat-icon _ngcontent-ng-c1984279754 role="img" class="mat-icon notranslate material-icons mat-ligature-font mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font" ngh="0">arrow_forward</mat-icon><span class="mdc-button__label"> Open tool </span><!----><span class="mat-focus-indicator"></span><span class="mat-mdc-button-touch-target"></span></a></mat-card-actions></mat-card><!----></div></section></div><!----></section><!----></article><!----><!----></cw-operating-tool-detail><!----></main><footer _ngcontent-ng-c554135100 class="site-footer"><div _ngcontent-ng-c554135100 class="cw-container footer-grid"><section _ngcontent-ng-c554135100 class="footer-brand"><h2 _ngcontent-ng-c554135100>cweise.com</h2><p _ngcontent-ng-c554135100>Operational clarity for complex organizations.</p><p _ngcontent-ng-c554135100 class="footer-copyright">© 2026 cweise.com</p></section><section _ngcontent-ng-c554135100 class="footer-nav"><h3 _ngcontent-ng-c554135100>Navigation</h3><div _ngcontent-ng-c554135100 class="footer-nav-columns"><a _ngcontent-ng-c554135100 href="/" jsaction="click:;">Home</a><a _ngcontent-ng-c554135100 href="/writing" jsaction="click:;">Writing</a><a _ngcontent-ng-c554135100 href="/frameworks" jsaction="click:;">Frameworks</a><a _ngcontent-ng-c554135100 href="/operating-tools" jsaction="click:;">Operating Tools</a><a _ngcontent-ng-c554135100 href="/about" jsaction="click:;">About</a><a _ngcontent-ng-c554135100 href="/connect" jsaction="click:;">Connect</a><!----></div><div _ngcontent-ng-c554135100 class="footer-featured-links"><a _ngcontent-ng-c554135100 href="/operating-tools" jsaction="click:;">Operating Tools</a><a _ngcontent-ng-c554135100 href="/frameworks/2026/05/17/relationship-capital-revenue-intelligence" jsaction="click:;">Relationship Capital → Revenue Intelligence</a><a _ngcontent-ng-c554135100 href="/about" jsaction="click:;">How I Think. What I Do.</a><!----></div></section><section _ngcontent-ng-c554135100 class="footer-connect"><h3 _ngcontent-ng-c554135100>Connect</h3><div _ngcontent-ng-c554135100 class="footer-connect-links"><a _ngcontent-ng-c554135100 target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/cweise/"><mat-icon _ngcontent-ng-c554135100 role="img" class="mat-icon notranslate material-icons mat-ligature-font mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font" ngh="0">work</mat-icon><span _ngcontent-ng-c554135100>LinkedIn</span></a><a _ngcontent-ng-c554135100 target="_blank" rel="noreferrer" href="https://substack.com/@opsiq"><mat-icon _ngcontent-ng-c554135100 role="img" class="mat-icon notranslate material-icons mat-ligature-font mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font" ngh="0">article</mat-icon><span _ngcontent-ng-c554135100>Substack</span></a><a _ngcontent-ng-c554135100 target="_blank" rel="noreferrer" href="mailto:iweise@me.com"><mat-icon _ngcontent-ng-c554135100 role="img" class="mat-icon notranslate material-icons mat-ligature-font mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font" ngh="0">mail</mat-icon><span _ngcontent-ng-c554135100>Email</span></a><!----></div></section><aside _ngcontent-ng-c554135100 class="footer-backtop"><button _ngcontent-ng-c554135100 mat-icon-button type="button" aria-label="Back to top" class="mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-unthemed _mat-animation-noopable" mat-ripple-loader-uninitialized mat-ripple-loader-class-name="mat-mdc-button-ripple" mat-ripple-loader-centered ngh="2" jsaction="click:;"><span class="mat-mdc-button-persistent-ripple mdc-icon-button__ripple"></span><mat-icon _ngcontent-ng-c554135100 role="img" class="mat-icon notranslate material-icons mat-ligature-font mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font" ngh="0">north</mat-icon><!----><span class="mat-focus-indicator"></span><span class="mat-mdc-button-touch-target"></span></button></aside></div></footer><!----></cw-site-shell></cw-root>
-<link rel="modulepreload" href="chunk-SRHPIE4H.js"><link rel="modulepreload" href="chunk-MEF5P6YI.js"><link rel="modulepreload" href="chunk-PUDJBJXL.js"><link rel="modulepreload" href="chunk-ZGBD4UY4.js"><link rel="modulepreload" href="chunk-3KJT3MQF.js"><link rel="modulepreload" href="chunk-KANIEJOZ.js"><link rel="modulepreload" href="chunk-ETFXOOIL.js"><script src="main-AIR332PN.js" type="module"></script>
-<link rel="modulepreload" href="chunk-TJTUIHJK.js">
-<link rel="modulepreload" href="chunk-QPIQ3H7K.js">
-<link rel="modulepreload" href="chunk-4X4YQBA5.js">
-<link rel="modulepreload" href="chunk-DAH55F7N.js">
+  <cw-root ng-version="22.0.2" ngh="8" ng-server-context="ssg"><cw-site-shell _nghost-ng-c554135100 class ngh="3"><mat-toolbar _ngcontent-ng-c554135100 class="mat-toolbar shell-toolbar mat-toolbar-single-row" ngh="0"><a _ngcontent-ng-c554135100 routerlink="/" aria-label="cweise.com home" class="brand" href="/" jsaction="click:;"><img _ngcontent-ng-c554135100 src="assets/images/cweise_logo_light_mode.svg" alt="cweise.com"></a><nav _ngcontent-ng-c554135100 aria-label="Primary navigation" class="desktop-nav"><a _ngcontent-ng-c554135100 mat-button routerlinkactive="active" class="mdc-button mat-mdc-button-base mat-mdc-button mat-unthemed _mat-animation-noopable" mat-ripple-loader-uninitialized mat-ripple-loader-class-name="mat-mdc-button-ripple" href="/" ngh="1" jsaction="click:;"><span class="mat-mdc-button-persistent-ripple mdc-button__ripple"></span><span class="mdc-button__label"> Home </span><!----><span class="mat-focus-indicator"></span><span class="mat-mdc-button-touch-target"></span></a><a _ngcontent-ng-c554135100 mat-button routerlinkactive="active" class="mdc-button mat-mdc-button-base mat-mdc-button mat-unthemed _mat-animation-noopable" mat-ripple-loader-uninitialized mat-ripple-loader-class-name="mat-mdc-button-ripple" href="/writing" ngh="1" jsaction="click:;"><span class="mat-mdc-button-persistent-ripple mdc-button__ripple"></span><span class="mdc-button__label"> Writing </span><!----><span class="mat-focus-indicator"></span><span class="mat-mdc-button-touch-target"></span></a><a _ngcontent-ng-c554135100 mat-button routerlinkactive="active" class="mdc-button mat-mdc-button-base mat-mdc-button mat-unthemed _mat-animation-noopable" mat-ripple-loader-uninitialized mat-ripple-loader-class-name="mat-mdc-button-ripple" href="/frameworks" ngh="1" jsaction="click:;"><span class="mat-mdc-button-persistent-ripple mdc-button__ripple"></span><span class="mdc-button__label"> Frameworks </span><!----><span class="mat-focus-indicator"></span><span class="mat-mdc-button-touch-target"></span></a><a _ngcontent-ng-c554135100 mat-button routerlinkactive="active" class="mdc-button mat-mdc-button-base mat-mdc-button mat-unthemed _mat-animation-noopable active" mat-ripple-loader-uninitialized mat-ripple-loader-class-name="mat-mdc-button-ripple" href="/operating-tools" ngh="1" jsaction="click:;"><span class="mat-mdc-button-persistent-ripple mdc-button__ripple"></span><span class="mdc-button__label"> Operating Tools </span><!----><span class="mat-focus-indicator"></span><span class="mat-mdc-button-touch-target"></span></a><a _ngcontent-ng-c554135100 mat-button routerlinkactive="active" class="mdc-button mat-mdc-button-base mat-mdc-button mat-unthemed _mat-animation-noopable" mat-ripple-loader-uninitialized mat-ripple-loader-class-name="mat-mdc-button-ripple" href="/about" ngh="1" jsaction="click:;"><span class="mat-mdc-button-persistent-ripple mdc-button__ripple"></span><span class="mdc-button__label"> About </span><!----><span class="mat-focus-indicator"></span><span class="mat-mdc-button-touch-target"></span></a><a _ngcontent-ng-c554135100 mat-button routerlinkactive="active" class="mdc-button mat-mdc-button-base mat-mdc-button mat-unthemed _mat-animation-noopable" mat-ripple-loader-uninitialized mat-ripple-loader-class-name="mat-mdc-button-ripple" href="/connect" ngh="1" jsaction="click:;"><span class="mat-mdc-button-persistent-ripple mdc-button__ripple"></span><span class="mdc-button__label"> Connect </span><!----><span class="mat-focus-indicator"></span><span class="mat-mdc-button-touch-target"></span></a><!----></nav><button _ngcontent-ng-c554135100 mat-icon-button type="button" aria-label="Toggle navigation menu" class="mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mobile-menu-toggle mat-unthemed _mat-animation-noopable" mat-ripple-loader-uninitialized mat-ripple-loader-class-name="mat-mdc-button-ripple" mat-ripple-loader-centered aria-expanded="false" ngh="2" jsaction="click:;"><span class="mat-mdc-button-persistent-ripple mdc-icon-button__ripple"></span><mat-icon _ngcontent-ng-c554135100 role="img" class="mat-icon notranslate material-icons mat-ligature-font mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font" ngh="0">menu</mat-icon><!----><span class="mat-focus-indicator"></span><span class="mat-mdc-button-touch-target"></span></button><button _ngcontent-ng-c554135100 mat-icon-button type="button" aria-label="Toggle color theme" class="mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-unthemed _mat-animation-noopable" mat-ripple-loader-uninitialized mat-ripple-loader-class-name="mat-mdc-button-ripple" mat-ripple-loader-centered ngh="2" jsaction="click:;"><span class="mat-mdc-button-persistent-ripple mdc-icon-button__ripple"></span><mat-icon _ngcontent-ng-c554135100 role="img" class="mat-icon notranslate material-icons mat-ligature-font mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font" ngh="0">dark_mode</mat-icon><!----><span class="mat-focus-indicator"></span><span class="mat-mdc-button-touch-target"></span></button><!----></mat-toolbar><!----><!----><!----><main _ngcontent-ng-c554135100 class="site-main"><router-outlet></router-outlet><cw-operating-tool-detail _nghost-ng-c1984279754 ngh="7"><article _ngcontent-ng-c1984279754 class="operating-tool-detail"><section _ngcontent-ng-c1984279754 class="detail-hero"><div _ngcontent-ng-c1984279754 class="cw-container detail-head"><p _ngcontent-ng-c1984279754 class="cw-eyebrow">Operating Tool</p><h1 _ngcontent-ng-c1984279754>Reframe the Belief, Retrain the Response</h1><p _ngcontent-ng-c1984279754 class="lead">A guide for updating limiting beliefs through reflection, nervous-system awareness, and a stronger replacement belief.</p><mat-chip-set _ngcontent-ng-c1984279754 aria-label="Operating tool tags" class="mat-mdc-chip-set mdc-evolution-chip-set detail-head__chips" role="presentation" ngh="0" jsaction="keydown:;"><div role="presentation" class="mdc-evolution-chip-set__chips"><mat-chip _ngcontent-ng-c1984279754 class="mat-mdc-chip detail-head__chip mat-primary mdc-evolution-chip mat-mdc-standard-chip _mat-animation-noopable" mat-ripple-loader-uninitialized mat-ripple-loader-class-name="mat-mdc-chip-ripple" mat-ripple-loader-disabled id="mat-mdc-chip-8" ngh="4" jsaction="keydown:;"><span class="mat-mdc-chip-focus-overlay"></span><span class="mdc-evolution-chip__cell mdc-evolution-chip__cell--primary"><span matchipcontent class="mat-mdc-chip-action mdc-evolution-chip__action mdc-evolution-chip__action--presentational mdc-evolution-chip__action--primary" aria-disabled="false"><!----><span class="mdc-evolution-chip__text-label mat-mdc-chip-action-label">beliefs<span class="mat-mdc-chip-primary-focus-indicator mat-focus-indicator"></span></span></span></span><!----></mat-chip><mat-chip _ngcontent-ng-c1984279754 class="mat-mdc-chip detail-head__chip mat-primary mdc-evolution-chip mat-mdc-standard-chip _mat-animation-noopable" mat-ripple-loader-uninitialized mat-ripple-loader-class-name="mat-mdc-chip-ripple" mat-ripple-loader-disabled id="mat-mdc-chip-9" ngh="4" jsaction="keydown:;"><span class="mat-mdc-chip-focus-overlay"></span><span class="mdc-evolution-chip__cell mdc-evolution-chip__cell--primary"><span matchipcontent class="mat-mdc-chip-action mdc-evolution-chip__action mdc-evolution-chip__action--presentational mdc-evolution-chip__action--primary" aria-disabled="false"><!----><span class="mdc-evolution-chip__text-label mat-mdc-chip-action-label">reframing<span class="mat-mdc-chip-primary-focus-indicator mat-focus-indicator"></span></span></span></span><!----></mat-chip><mat-chip _ngcontent-ng-c1984279754 class="mat-mdc-chip detail-head__chip mat-primary mdc-evolution-chip mat-mdc-standard-chip _mat-animation-noopable" mat-ripple-loader-uninitialized mat-ripple-loader-class-name="mat-mdc-chip-ripple" mat-ripple-loader-disabled id="mat-mdc-chip-10" ngh="4" jsaction="keydown:;"><span class="mat-mdc-chip-focus-overlay"></span><span class="mdc-evolution-chip__cell mdc-evolution-chip__cell--primary"><span matchipcontent class="mat-mdc-chip-action mdc-evolution-chip__action mdc-evolution-chip__action--presentational mdc-evolution-chip__action--primary" aria-disabled="false"><!----><span class="mdc-evolution-chip__text-label mat-mdc-chip-action-label">nervous system<span class="mat-mdc-chip-primary-focus-indicator mat-focus-indicator"></span></span></span></span><!----></mat-chip><mat-chip _ngcontent-ng-c1984279754 class="mat-mdc-chip detail-head__chip mat-primary mdc-evolution-chip mat-mdc-standard-chip _mat-animation-noopable" mat-ripple-loader-uninitialized mat-ripple-loader-class-name="mat-mdc-chip-ripple" mat-ripple-loader-disabled id="mat-mdc-chip-11" ngh="4" jsaction="keydown:;"><span class="mat-mdc-chip-focus-overlay"></span><span class="mdc-evolution-chip__cell mdc-evolution-chip__cell--primary"><span matchipcontent class="mat-mdc-chip-action mdc-evolution-chip__action mdc-evolution-chip__action--presentational mdc-evolution-chip__action--primary" aria-disabled="false"><!----><span class="mdc-evolution-chip__text-label mat-mdc-chip-action-label">reflection<span class="mat-mdc-chip-primary-focus-indicator mat-focus-indicator"></span></span></span></span><!----></mat-chip><!----></div></mat-chip-set></div></section><section _ngcontent-ng-c1984279754 class="cw-section"><div _ngcontent-ng-c1984279754 class="cw-container operating-tool-shell"><div _ngcontent-ng-c1984279754 class="operating-tool-main-column"><mat-card _ngcontent-ng-c1984279754 appearance="outlined" class="mat-mdc-card mdc-card operating-tool-intro-card cw-surface-card mat-mdc-card-outlined mdc-card--outlined" ngh="0"><mat-card-content _ngcontent-ng-c1984279754 class="mat-mdc-card-content"><p _ngcontent-ng-c1984279754>A limiting belief can remain active even after the present situation has changed. This guide helps identify the belief, trace its original meaning, and install a more accurate replacement response.</p></mat-card-content></mat-card><div _ngcontent-ng-c1984279754 class="operating-tool-sections"><section _ngcontent-ng-c1984279754 class="operating-tool-section"><h2 _ngcontent-ng-c1984279754>Name the limiting belief</h2><p _ngcontent-ng-c1984279754>Identify what belief keeps repeating, what it predicts, and where it shows up.</p><!----><!----><!----></section><mat-divider _ngcontent-ng-c1984279754 role="separator" class="mat-divider mat-divider-horizontal" aria-orientation="horizontal" ngh="0"></mat-divider><!----><section _ngcontent-ng-c1984279754 class="operating-tool-section"><h2 _ngcontent-ng-c1984279754>Trace the original encoding</h2><p _ngcontent-ng-c1984279754>Look for the earliest memory, what felt true then, and what meaning was assigned.</p><!----><!----><!----></section><mat-divider _ngcontent-ng-c1984279754 role="separator" class="mat-divider mat-divider-horizontal" aria-orientation="horizontal" ngh="0"></mat-divider><!----><section _ngcontent-ng-c1984279754 class="operating-tool-section"><h2 _ngcontent-ng-c1984279754>Notice the nervous-system response</h2><p _ngcontent-ng-c1984279754>Track body sensation, emotion, protective patterns, and what the system does to maintain safety.</p><!----><!----><mat-card _ngcontent-ng-c1984279754 appearance="outlined" class="mat-mdc-card mdc-card operating-tool-callout cw-surface-card mat-mdc-card-outlined mdc-card--outlined" ngh="0"><mat-card-content _ngcontent-ng-c1984279754 class="mat-mdc-card-content"><mat-icon _ngcontent-ng-c1984279754 role="img" class="mat-icon notranslate material-icons mat-ligature-font mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font" ngh="0">lightbulb</mat-icon><p _ngcontent-ng-c1984279754>The body may still react to an old conclusion, even when the present is different.</p></mat-card-content></mat-card><!----></section><mat-divider _ngcontent-ng-c1984279754 role="separator" class="mat-divider mat-divider-horizontal" aria-orientation="horizontal" ngh="0"></mat-divider><!----><section _ngcontent-ng-c1984279754 class="operating-tool-section"><h2 _ngcontent-ng-c1984279754>Create and reinforce the reframe</h2><p _ngcontent-ng-c1984279754>Ask what is more true now, what you did not know then, and what belief better fits reality today. Pair the new belief with grounding, evidence, and one aligned action.</p><!----><!----><mat-card _ngcontent-ng-c1984279754 appearance="outlined" class="mat-mdc-card mdc-card operating-tool-callout cw-surface-card mat-mdc-card-outlined mdc-card--outlined" ngh="0"><mat-card-content _ngcontent-ng-c1984279754 class="mat-mdc-card-content"><mat-icon _ngcontent-ng-c1984279754 role="img" class="mat-icon notranslate material-icons mat-ligature-font mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font" ngh="0">lightbulb</mat-icon><p _ngcontent-ng-c1984279754>The goal is not to deny the past. The goal is to help the nervous system learn what is true now.</p></mat-card-content></mat-card><!----></section><!----><!----></div></div><aside _ngcontent-ng-c1984279754 class="operating-tool-artifact-rail"><section _ngcontent-ng-c1984279754 class="operating-tool-artifact-card cw-surface-card"><div _ngcontent-ng-c1984279754 class="operating-tool-artifact-card__header"><p _ngcontent-ng-c1984279754 class="cw-eyebrow">Tool Artifact</p><h2 _ngcontent-ng-c1984279754>Reference while you read.</h2><p _ngcontent-ng-c1984279754 class="cw-muted">Open the full visual, print it, or keep it pinned beside the tool as you read.</p></div><button _ngcontent-ng-c1984279754 type="button" class="operating-tool-artifact-trigger" aria-label="Open visual tool for Reframe the Belief, Retrain the Response" jsaction="click:;"><img _ngcontent-ng-c1984279754 src="assets/images/operating-tools/reframe-the-belief-retrain-the-response/01_reframe_the_belief_retrain_the_response.webp" alt="Reframe the Belief, Retrain the Response"><span _ngcontent-ng-c1984279754 class="operating-tool-artifact-trigger__overlay"><span _ngcontent-ng-c1984279754>Open visual tool</span><mat-icon _ngcontent-ng-c1984279754 role="img" class="mat-icon notranslate material-icons mat-ligature-font mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font" ngh="0">open_in_full</mat-icon></span></button><div _ngcontent-ng-c1984279754 class="operating-tool-artifact-card__footer"><button _ngcontent-ng-c1984279754 mat-stroked-button color="primary" type="button" class="mdc-button mat-mdc-button-base mdc-button--outlined mat-mdc-outlined-button mat-primary _mat-animation-noopable" mat-ripple-loader-uninitialized mat-ripple-loader-class-name="mat-mdc-button-ripple" ngh="5" jsaction="click:;"><span class="mat-mdc-button-persistent-ripple mdc-button__ripple"></span><mat-icon _ngcontent-ng-c1984279754 role="img" class="mat-icon notranslate material-icons mat-ligature-font mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font" ngh="0">open_in_new</mat-icon><span class="mdc-button__label"> Open visual tool </span><!----><span class="mat-focus-indicator"></span><span class="mat-mdc-button-touch-target"></span></button></div></section></aside><!----></div><div _ngcontent-ng-c1984279754 class="cw-container"><section _ngcontent-ng-c1984279754 class="more-operating-tools"><div _ngcontent-ng-c1984279754 class="more-operating-tools__header"><p _ngcontent-ng-c1984279754 class="cw-eyebrow">More Operating Tools</p><h2 _ngcontent-ng-c1984279754>Keep the operating path moving.</h2></div><div _ngcontent-ng-c1984279754 class="more-operating-tools__grid"><mat-card _ngcontent-ng-c1984279754 appearance="outlined" class="mat-mdc-card mdc-card related-operating-tool-card cw-surface-card mat-mdc-card-outlined mdc-card--outlined" ngh="0"><mat-card-header _ngcontent-ng-c1984279754 class="mat-mdc-card-header" ngh="6"><div _ngcontent-ng-c1984279754 mat-card-avatar class="mat-mdc-card-avatar operating-tool-avatar"><mat-icon _ngcontent-ng-c1984279754 role="img" class="mat-icon notranslate material-icons mat-ligature-font mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font" ngh="0">explore</mat-icon></div><div class="mat-mdc-card-header-text"><mat-card-title _ngcontent-ng-c1984279754 class="mat-mdc-card-title">A Compass, Not a Map</mat-card-title><mat-card-subtitle _ngcontent-ng-c1984279754 class="mat-mdc-card-subtitle">A practical operating tool for moving through ambiguity without over-designing the future.</mat-card-subtitle></div></mat-card-header><mat-card-actions _ngcontent-ng-c1984279754 align="end" class="mat-mdc-card-actions mdc-card__actions mat-mdc-card-actions-align-end"><a _ngcontent-ng-c1984279754 mat-button color="primary" class="mdc-button mat-mdc-button-base mat-mdc-button mat-primary _mat-animation-noopable" mat-ripple-loader-uninitialized mat-ripple-loader-class-name="mat-mdc-button-ripple" href="/operating-tools/a-compass-not-a-map" ngh="5" jsaction="click:;"><span class="mat-mdc-button-persistent-ripple mdc-button__ripple"></span><mat-icon _ngcontent-ng-c1984279754 role="img" class="mat-icon notranslate material-icons mat-ligature-font mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font" ngh="0">arrow_forward</mat-icon><span class="mdc-button__label"> Open tool </span><!----><span class="mat-focus-indicator"></span><span class="mat-mdc-button-touch-target"></span></a></mat-card-actions></mat-card><mat-card _ngcontent-ng-c1984279754 appearance="outlined" class="mat-mdc-card mdc-card related-operating-tool-card cw-surface-card mat-mdc-card-outlined mdc-card--outlined" ngh="0"><mat-card-header _ngcontent-ng-c1984279754 class="mat-mdc-card-header" ngh="6"><div _ngcontent-ng-c1984279754 mat-card-avatar class="mat-mdc-card-avatar operating-tool-avatar"><mat-icon _ngcontent-ng-c1984279754 role="img" class="mat-icon notranslate material-icons mat-ligature-font mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font" ngh="0">bolt</mat-icon></div><div class="mat-mdc-card-header-text"><mat-card-title _ngcontent-ng-c1984279754 class="mat-mdc-card-title">Avoid to Act Loop</mat-card-title><mat-card-subtitle _ngcontent-ng-c1984279754 class="mat-mdc-card-subtitle">A short intervention for turning avoidance into immediate motion.</mat-card-subtitle></div></mat-card-header><mat-card-actions _ngcontent-ng-c1984279754 align="end" class="mat-mdc-card-actions mdc-card__actions mat-mdc-card-actions-align-end"><a _ngcontent-ng-c1984279754 mat-button color="primary" class="mdc-button mat-mdc-button-base mat-mdc-button mat-primary _mat-animation-noopable" mat-ripple-loader-uninitialized mat-ripple-loader-class-name="mat-mdc-button-ripple" href="/operating-tools/avoid-act-loop" ngh="5" jsaction="click:;"><span class="mat-mdc-button-persistent-ripple mdc-button__ripple"></span><mat-icon _ngcontent-ng-c1984279754 role="img" class="mat-icon notranslate material-icons mat-ligature-font mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font" ngh="0">arrow_forward</mat-icon><span class="mdc-button__label"> Open tool </span><!----><span class="mat-focus-indicator"></span><span class="mat-mdc-button-touch-target"></span></a></mat-card-actions></mat-card><mat-card _ngcontent-ng-c1984279754 appearance="outlined" class="mat-mdc-card mdc-card related-operating-tool-card cw-surface-card mat-mdc-card-outlined mdc-card--outlined" ngh="0"><mat-card-header _ngcontent-ng-c1984279754 class="mat-mdc-card-header" ngh="6"><div _ngcontent-ng-c1984279754 mat-card-avatar class="mat-mdc-card-avatar operating-tool-avatar"><mat-icon _ngcontent-ng-c1984279754 role="img" class="mat-icon notranslate material-icons mat-ligature-font mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font" ngh="0">construction</mat-icon></div><div class="mat-mdc-card-header-text"><mat-card-title _ngcontent-ng-c1984279754 class="mat-mdc-card-title">Becoming the Solution Provider</mat-card-title><mat-card-subtitle _ngcontent-ng-c1984279754 class="mat-mdc-card-subtitle">A systems-thinking guide for shifting from firefighting to durable problem prevention.</mat-card-subtitle></div></mat-card-header><mat-card-actions _ngcontent-ng-c1984279754 align="end" class="mat-mdc-card-actions mdc-card__actions mat-mdc-card-actions-align-end"><a _ngcontent-ng-c1984279754 mat-button color="primary" class="mdc-button mat-mdc-button-base mat-mdc-button mat-primary _mat-animation-noopable" mat-ripple-loader-uninitialized mat-ripple-loader-class-name="mat-mdc-button-ripple" href="/operating-tools/becoming-the-solution-provider" ngh="5" jsaction="click:;"><span class="mat-mdc-button-persistent-ripple mdc-button__ripple"></span><mat-icon _ngcontent-ng-c1984279754 role="img" class="mat-icon notranslate material-icons mat-ligature-font mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font" ngh="0">arrow_forward</mat-icon><span class="mdc-button__label"> Open tool </span><!----><span class="mat-focus-indicator"></span><span class="mat-mdc-button-touch-target"></span></a></mat-card-actions></mat-card><!----></div></section></div><!----></section><!----></article><!----><!----></cw-operating-tool-detail><!----></main><footer _ngcontent-ng-c554135100 class="site-footer"><div _ngcontent-ng-c554135100 class="cw-container footer-grid"><section _ngcontent-ng-c554135100 class="footer-brand"><h2 _ngcontent-ng-c554135100>cweise.com</h2><p _ngcontent-ng-c554135100>Operational clarity for complex organizations.</p><p _ngcontent-ng-c554135100 class="footer-copyright">© 2026 cweise.com</p></section><section _ngcontent-ng-c554135100 class="footer-nav"><h3 _ngcontent-ng-c554135100>Navigation</h3><div _ngcontent-ng-c554135100 class="footer-nav-columns"><a _ngcontent-ng-c554135100 href="/" jsaction="click:;">Home</a><a _ngcontent-ng-c554135100 href="/writing" jsaction="click:;">Writing</a><a _ngcontent-ng-c554135100 href="/frameworks" jsaction="click:;">Frameworks</a><a _ngcontent-ng-c554135100 href="/operating-tools" jsaction="click:;">Operating Tools</a><a _ngcontent-ng-c554135100 href="/about" jsaction="click:;">About</a><a _ngcontent-ng-c554135100 href="/connect" jsaction="click:;">Connect</a><!----></div><div _ngcontent-ng-c554135100 class="footer-featured-links"><a _ngcontent-ng-c554135100 href="/operating-tools" jsaction="click:;">Operating Tools</a><a _ngcontent-ng-c554135100 href="/frameworks/2026/05/17/relationship-capital-revenue-intelligence" jsaction="click:;">Relationship Capital → Revenue Intelligence</a><a _ngcontent-ng-c554135100 href="/about" jsaction="click:;">How I Think. What I Do.</a><!----></div></section><section _ngcontent-ng-c554135100 class="footer-connect"><h3 _ngcontent-ng-c554135100>Connect</h3><div _ngcontent-ng-c554135100 class="footer-connect-links"><a _ngcontent-ng-c554135100 target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/cweise/"><mat-icon _ngcontent-ng-c554135100 role="img" class="mat-icon notranslate material-icons mat-ligature-font mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font" ngh="0">work</mat-icon><span _ngcontent-ng-c554135100>LinkedIn</span></a><a _ngcontent-ng-c554135100 target="_blank" rel="noreferrer" href="https://substack.com/@opsiq"><mat-icon _ngcontent-ng-c554135100 role="img" class="mat-icon notranslate material-icons mat-ligature-font mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font" ngh="0">article</mat-icon><span _ngcontent-ng-c554135100>Substack</span></a><a _ngcontent-ng-c554135100 target="_blank" rel="noreferrer" href="mailto:iweise@me.com"><mat-icon _ngcontent-ng-c554135100 role="img" class="mat-icon notranslate material-icons mat-ligature-font mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font" ngh="0">mail</mat-icon><span _ngcontent-ng-c554135100>Email</span></a><!----></div></section><aside _ngcontent-ng-c554135100 class="footer-backtop"><button _ngcontent-ng-c554135100 mat-icon-button type="button" aria-label="Back to top" class="mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-unthemed _mat-animation-noopable" mat-ripple-loader-uninitialized mat-ripple-loader-class-name="mat-mdc-button-ripple" mat-ripple-loader-centered ngh="2" jsaction="click:;"><span class="mat-mdc-button-persistent-ripple mdc-icon-button__ripple"></span><mat-icon _ngcontent-ng-c554135100 role="img" class="mat-icon notranslate material-icons mat-ligature-font mat-icon-no-color" aria-hidden="true" data-mat-icon-type="font" ngh="0">north</mat-icon><!----><span class="mat-focus-indicator"></span><span class="mat-mdc-button-touch-target"></span></button></aside></div></footer><!----></cw-site-shell></cw-root>
+<link rel="modulepreload" href="chunk-UGAEINLO.js"><link rel="modulepreload" href="chunk-YB3GUFOW.js"><link rel="modulepreload" href="chunk-5WCWIUYX.js"><link rel="modulepreload" href="chunk-M3LOPSY7.js"><link rel="modulepreload" href="chunk-VV2VT535.js"><link rel="modulepreload" href="chunk-CHNOJQ7S.js"><link rel="modulepreload" href="chunk-HL2WJPI3.js"><link rel="modulepreload" href="chunk-2QJGW7U5.js"><link rel="modulepreload" href="chunk-7CGTOI24.js"><script src="main-HG75WOMJ.js" type="module"></script>
+<link rel="modulepreload" href="chunk-B7FPE74X.js">
+<link rel="modulepreload" href="chunk-26AAMH7P.js">
+<link rel="modulepreload" href="chunk-LLBTTK7E.js">
+<link rel="modulepreload" href="chunk-XFWUS4KM.js">
 
 
-<script id="ng-state" type="application/json">{"__nghData__":[{},{"n":{"2":"hfn","5":"hfn2"},"t":{"5":"t2"},"c":{"5":[]}},{"n":{"2":"hfn2"},"t":{"2":"t3"},"c":{"2":[]}},{"t":{"0":"t0","1":"t5","2":"t6","5":"t7"},"c":{"0":[{"i":"t0","r":1,"n":{"1":"0f","7":"6fn","8":"7f"},"t":{"5":"t1","9":"t4"},"c":{"5":[{"i":"t1","r":1,"n":{"1":"0fnf"},"x":6}],"9":[{"i":"t4","r":1,"n":{"1":"0fn","2":"1f"}}]}}],"1":[],"2":[],"5":[{"i":"t7","r":1,"t":{"14":"t8","17":"t9","23":"t10"},"c":{"14":[{"i":"t8","r":1,"x":6}],"17":[{"i":"t9","r":1,"x":3}],"23":[{"i":"t10","r":1,"n":{"2":"1f"},"x":3}]},"n":{"26":"25fn","27":"26f"}}]}},{"t":{"3":"t128","7":"t129"},"c":{"3":[],"7":[]},"n":{"6":"4fn"}},{"n":{"2":"hfn2","5":"hfn3"},"t":{"5":"t2"},"c":{"5":[]}},{"n":{"1":"hfn"}},{"t":{"0":"t126","1":"t139"},"c":{"0":[{"i":"t126","r":1,"n":{"11":"9f2","16":"15f"},"t":{"11":"t127","21":"t130","22":"t135","23":"t136","24":"t138"},"c":{"11":[{"i":"t127","r":1,"n":{"1":"0fnf2nf"},"x":4}],"21":[{"i":"t130","r":3,"t":{"4":"t131","5":"t132","6":"t133","7":"t134"},"c":{"4":[{"i":"t131","r":1}],"5":[],"6":[],"7":[{"i":"t134","r":1}]},"x":2},{"i":"t130","r":3,"t":{"4":"t131","5":"t132","6":"t133","7":"t134"},"c":{"4":[{"i":"t131","r":1}],"5":[],"6":[{"i":"t133","r":1,"n":{"1":"0f","3":"2f"}}],"7":[{"i":"t134","r":1}]}},{"i":"t130","r":2,"t":{"4":"t131","5":"t132","6":"t133","7":"t134"},"c":{"4":[{"i":"t131","r":1}],"5":[],"6":[{"i":"t133","r":1,"n":{"1":"0f","3":"2f"}}],"7":[]}}],"22":[{"i":"t135","r":1,"n":{"15":"14f","18":"17fn2f","19":"17fn","20":"19f"}}],"23":[{"i":"t136","r":1,"t":{"9":"t137"},"c":{"9":[{"i":"t137","r":1,"n":{"1":"0f","2":"1f","4":"3f","5":"1fnf","11":"10fn2f","12":"10fn","13":"12f"},"x":3}]}}],"24":[]}}],"1":[]}},{"n":{"1":"0fn4f"},"c":{"1":[{"i":"c1984279754","r":1}]}}]}</script></body></html>
+<script id="ng-state" type="application/json">{"__nghData__":[{},{"n":{"2":"hfn","5":"hfn2"},"t":{"5":"t2"},"c":{"5":[]}},{"n":{"2":"hfn2"},"t":{"2":"t3"},"c":{"2":[]}},{"t":{"0":"t0","1":"t5","2":"t6","5":"t7"},"c":{"0":[{"i":"t0","r":1,"n":{"1":"0f","7":"6fn","8":"7f"},"t":{"5":"t1","9":"t4"},"c":{"5":[{"i":"t1","r":1,"n":{"1":"0fnf"},"x":6}],"9":[{"i":"t4","r":1,"n":{"1":"0fn","2":"1f"}}]}}],"1":[],"2":[],"5":[{"i":"t7","r":1,"t":{"14":"t8","17":"t9","23":"t10"},"c":{"14":[{"i":"t8","r":1,"x":6}],"17":[{"i":"t9","r":1,"x":3}],"23":[{"i":"t10","r":1,"n":{"2":"1f"},"x":3}]},"n":{"26":"25fn","27":"26f"}}]}},{"t":{"3":"t19","7":"t20"},"c":{"3":[],"7":[]},"n":{"6":"4fn"}},{"n":{"2":"hfn2","5":"hfn3"},"t":{"5":"t2"},"c":{"5":[]}},{"n":{"1":"hfn"}},{"t":{"0":"t16","1":"t17"},"c":{"0":[{"i":"t16","r":1,"n":{"11":"9f2","16":"15f"},"t":{"11":"t18","21":"t21","22":"t26","23":"t27","24":"t29"},"c":{"11":[{"i":"t18","r":1,"n":{"1":"0fnf2nf"},"x":4}],"21":[{"i":"t21","r":3,"t":{"4":"t22","5":"t23","6":"t24","7":"t25"},"c":{"4":[{"i":"t22","r":1}],"5":[],"6":[],"7":[{"i":"t25","r":1}]},"x":2},{"i":"t21","r":3,"t":{"4":"t22","5":"t23","6":"t24","7":"t25"},"c":{"4":[{"i":"t22","r":1}],"5":[],"6":[{"i":"t24","r":1,"n":{"1":"0f","3":"2f"}}],"7":[{"i":"t25","r":1}]}},{"i":"t21","r":2,"t":{"4":"t22","5":"t23","6":"t24","7":"t25"},"c":{"4":[{"i":"t22","r":1}],"5":[],"6":[{"i":"t24","r":1,"n":{"1":"0f","3":"2f"}}],"7":[]}}],"22":[{"i":"t26","r":1,"n":{"15":"14f","18":"17fn2f","19":"17fn","20":"19f"}}],"23":[{"i":"t27","r":1,"t":{"9":"t28"},"c":{"9":[{"i":"t28","r":1,"n":{"1":"0f","2":"1f","4":"3f","5":"1fnf","11":"10fn2f","12":"10fn","13":"12f"},"x":3}]}}],"24":[]}}],"1":[]}},{"n":{"1":"0fn4f"},"c":{"1":[{"i":"c1984279754","r":1}]}}]}</script></body></html>
