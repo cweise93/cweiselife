@@ -159,7 +159,7 @@ interface LightboxImage {
                   [attr.aria-label]="'Open image: ' + image.alt"
                   (click)="openImage(image)"
                 >
-                  <img [src]="image.src" [alt]="image.alt" loading="lazy" decoding="async" />
+                  <img [src]="assetUrl(image.src)" [alt]="image.alt" loading="lazy" decoding="async" />
                 </button>
                 @if (image.caption) {
                   <figcaption>{{ image.caption }}</figcaption>
@@ -182,7 +182,7 @@ interface LightboxImage {
                 [attr.aria-label]="'Open image: ' + image.alt"
                 (click)="openImage(image)"
               >
-                <img [src]="image.src" [alt]="image.alt" loading="lazy" decoding="async" />
+                <img [src]="assetUrl(image.src)" [alt]="image.alt" loading="lazy" decoding="async" />
               </button>
               @if (image.caption) {
                 <figcaption>{{ image.caption }}</figcaption>
@@ -214,7 +214,7 @@ interface LightboxImage {
                       [attr.aria-label]="'Open image: ' + block.alt"
                       (click)="openImage(block)"
                     >
-                      <img [src]="block.src" [alt]="block.alt" loading="lazy" decoding="async" />
+                      <img [src]="assetUrl(block.src)" [alt]="block.alt" loading="lazy" decoding="async" />
                     </button>
                     @if (block.caption) {
                       <figcaption>{{ block.caption }}</figcaption>
@@ -318,8 +318,8 @@ interface LightboxImage {
           </button>
 
           <div class="lightbox-stage">
-            <img class="lightbox-watermark" src="assets/images/cweise_logo_dark_mode.svg" alt="" aria-hidden="true" />
-            <img class="lightbox-image" [src]="image.src" [alt]="image.alt" />
+            <img class="lightbox-watermark" src="/assets/images/cweise_logo_dark_mode.svg" alt="" aria-hidden="true" />
+            <img class="lightbox-image" [src]="assetUrl(image.src)" [alt]="image.alt" />
           </div>
 
           <div class="lightbox-meta">
@@ -850,7 +850,7 @@ export class ContentRendererComponent {
   }
 
   openImage(image: LightboxImage): void {
-    this.activeImage.set(image);
+    this.activeImage.set({ ...image, src: this.assetUrl(image.src) });
   }
 
   closeImage(): void {
@@ -871,6 +871,16 @@ export class ContentRendererComponent {
 
     const imageBlock = section.blocks?.find((block): block is ContentImageBlock => block.type === 'image');
     return imageBlock ?? null;
+  }
+
+  assetUrl(src: string): string {
+    if (!src || /^(?:https?:|data:|blob:|\/)/i.test(src)) {
+      return src;
+    }
+
+    const servedSrc = src.startsWith('assets/') ? src.replace(/\.(png|jpe?g)$/i, '.webp') : src;
+
+    return servedSrc.startsWith('assets/') ? `/${servedSrc}` : servedSrc;
   }
 
   sectionTextBlocks(section: ContentSection): ContentSectionBlock[] {

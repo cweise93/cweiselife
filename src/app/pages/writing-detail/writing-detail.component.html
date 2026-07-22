@@ -11,7 +11,7 @@
     </div>
     @if (article.heroImage) {
       <div class="cw-container">
-        <img class="hero-image" [src]="article.heroImage" [alt]="article.title" fetchpriority="high" decoding="async" />
+        <img class="hero-image" [src]="assetUrl(article.heroImage)" [alt]="article.title" fetchpriority="high" decoding="async" />
       </div>
     }
   </section>
@@ -115,7 +115,7 @@
                       }
                     </a>
                   } @else {
-                    <a class="rail-asset" [href]="item.href">
+                    <a class="rail-asset" [href]="assetUrl(item.href)">
                       <span class="asset-label">{{ item.label }}</span>
                       @if (item.description) {
                         <span class="asset-description">{{ item.description }}</span>

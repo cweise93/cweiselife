@@ -106,6 +106,16 @@ export class WritingDetailComponent {
     return ['/', ...slug.split('/').filter(Boolean)];
   }
 
+  assetUrl(href: string): string {
+    if (!href || /^(?:https?:|mailto:|tel:|#|\/)/i.test(href)) {
+      return href;
+    }
+
+    const servedHref = href.startsWith('assets/') ? href.replace(/\.(png|jpe?g)$/i, '.webp') : href;
+
+    return servedHref.startsWith('assets/') ? `/${servedHref}` : servedHref;
+  }
+
   isLocalAnchor(href: string): boolean {
     return href.startsWith('#');
   }
