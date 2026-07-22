@@ -38,7 +38,7 @@ This file expands the concise `llms.txt` index into a richer text digest of ever
 - Published: 2026-07-20
 - Tags: communication, psychological contract, employee agency, leadership, professional boundaries, psychological safety, organizational behavior, management systems
 - SEO description: How leaders and employees can right-size exchange and connection, clarify boundaries, preserve agency, and prevent workplace warmth, access, or candor from creating unintended promises.
-- Primary share image: https://cweise.com/assets/images/writing/articles/2026-07-20_exchange_connection_framework/images/og_clear_communication_creates_friction.webp
+- Primary share image: https://cweise.com/assets/images/writing/articles/2026-07-20_exchange_connection_framework/images/og_clear_communication_creates_friction.png
 - Intro: A message can be perfectly clear and still make the next interaction harder.
 
 “Send me the draft before it goes out.”
