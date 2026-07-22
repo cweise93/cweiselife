@@ -29,6 +29,11 @@
                 "input": "public"
               },
               {
+                "glob": "**/og_*.png",
+                "input": "src/assets",
+                "output": "assets"
+              },
+              {
                 "glob": "**/*",
                 "input": "src/assets",
                 "output": "assets",
@@ -84,6 +89,7 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               { "glob": "**/*", "input": "public" },
+              { "glob": "**/og_*.png", "input": "src/assets", "output": "assets" },
               {
                 "glob": "**/*",
                 "input": "src/assets",

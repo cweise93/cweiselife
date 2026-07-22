@@ -27,6 +27,11 @@ export class RouteSeoService {
       .subscribe(() => {
         const leafRoute = this.getLeafRoute(this.router.routerState.snapshot.root);
         const currentPath = this.normalizePath(this.router.url || '/');
+
+        if (this.isContentDetailPath(currentPath)) {
+          return;
+        }
+
         const title = leafRoute.title?.toString() ?? 'Operational Clarity for Complex Organizations';
         const description =
           (typeof leafRoute.data['seoDescription'] === 'string' && leafRoute.data['seoDescription']) ||
@@ -120,5 +125,14 @@ export class RouteSeoService {
     }
 
     return normalized.endsWith('/') ? normalized.slice(0, -1) : normalized;
+  }
+
+  private isContentDetailPath(path: string): boolean {
+    return (
+      /^\/writing\/\d{4}\/\d{2}\/\d{2}\/[^/]+$/.test(path) ||
+      /^\/frameworks\/\d{4}\/\d{2}\/\d{2}\/[^/]+$/.test(path) ||
+      /^\/operating-tools\/[^/]+$/.test(path) ||
+      /^\/guides\/[^/]+$/.test(path)
+    );
   }
 }
